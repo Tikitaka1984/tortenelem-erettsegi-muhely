@@ -36,3 +36,99 @@ A munkakörnyezetben külön, egyfájlos „32 kurzusos master” nem állt rend
 ## Későbbi PWA-bővítés
 
 A manifeszt és az ikonkapcsolat elkészült. Teljes offline telepíthetőséghez később 192×192 és 512×512 pixeles végleges PNG-ikon, valamint service worker hozzáadása szükséges.
+
+## Production live audit – 2026. augusztus 22.
+
+### Production deployment
+
+- Production URL: https://tortenelem-erettsegi-muhely-hqnj.vercel.app
+- Production alias: `tortenelem-erettsegi-muhely-hqnj.vercel.app`
+- Deployment URL: `tortenelem-erettsegi-muhely-hqnj-l3mthgpfs.vercel.app`
+- Commit: `393fab250ec53edd40994100ef02462141fff204`
+- Branch: `main`
+- Státusz: **READY / Current / Production**
+- Build időpontja: 2026. augusztus 22. 19:39:04 (Europe/Budapest)
+- Build időtartama: 2 másodperc
+- Build warning/error: **0/0**. A „Skipping cache upload because no files were prepared” sor információs üzenet, nem buildhiba.
+
+### Összesített élő eredmények
+
+| Terület | Eredmény |
+|---|---:|
+| Kurzus-metaadat és kurzusfájl | 32/32 PASS |
+| Kurzus tényleges böngészős megnyitása | 32/32 PASS |
+| Production képek HTTP- és formátumellenőrzése | 62/62 PASS |
+| JavaScript-szintaktikai hiba | 0 |
+| Böngészőkonzol JavaScript-hiba | 0 |
+| Production HTTP-ellenőrzés | 98/98 válasz HTTP 200 |
+| Váratlan 404 | 0 |
+| Hibás helyi hivatkozás | 0 |
+| Duplikált kurzus-ID / source | 0/0 |
+| Hiányzó vagy üres képi alt szöveg | 0 |
+| Mixed-content hivatkozás | 0 |
+
+### Kurzusonkénti betöltési eredmény
+
+| # | Kurzus | Betöltés | Képek | JS hiba | 404 | Eredmény |
+|---:|---|---:|---:|---:|---:|---:|
+| 1 | Zsidó és keresztény vallás | OK | 2 | 0 | 0 | PASS |
+| 2 | Athéni demokrácia | OK | 1 | 0 | 0 | PASS |
+| 3 | Honfoglalás és államalapítás | OK | 2 | 0 | 0 | PASS |
+| 4 | Középkori városok és gazdaság | OK | 1 | 0 | 0 | PASS |
+| 5 | Aranybulla és tatárjárás | OK | 1 | 0 | 0 | PASS |
+| 6 | Károly Róbert | OK | 1 | 0 | 0 | PASS |
+| 7 | Hunyadi János és Mátyás | OK | 2 | 0 | 0 | PASS |
+| 8 | A mohácsi csata és az ország három részre szakadása | OK | 2 | 0 | 0 | PASS |
+| 9 | Reformáció és ellenreformáció | OK | 1 | 0 | 0 | PASS |
+| 10 | Reformáció Magyarországon és Erdélyben | OK | 1 | 0 | 0 | PASS |
+| 11 | A várháborúk kora | OK | 1 | 0 | 0 | PASS |
+| 12 | Az angol alkotmányos monarchia | OK | 1 | 0 | 0 | PASS |
+| 13 | A Rákóczi-szabadságharc | OK | 2 | 0 | 0 | PASS |
+| 14 | Felvilágosodás – új eszmék | OK | 0 | 0 | 0 | PASS |
+| 15 | Az USA függetlensége és létrejötte | OK | 2 | 0 | 0 | PASS |
+| 16 | Az ipari forradalom | OK | 1 | 0 | 0 | PASS |
+| 17 | Felvilágosult abszolutizmus | OK | 1 | 0 | 0 | PASS |
+| 18 | Reformkor: Széchenyi és Kossuth | OK | 1 | 0 | 0 | PASS |
+| 19 | 1848 és az áprilisi törvények | OK | 1 | 0 | 0 | PASS |
+| 20 | A kiegyezés | OK | 1 | 0 | 0 | PASS |
+| 21 | Torlódó társadalom | OK | 2 | 0 | 0 | PASS |
+| 22 | Az első világháború | OK | 2 | 0 | 0 | PASS |
+| 23 | A trianoni békerendszer és következményei | OK | 3 | 0 | 0 | PASS |
+| 24 | A Horthy-korszak és a bethleni konszolidáció | OK | 3 | 0 | 0 | PASS |
+| 25 | A nemzetiszocialista Németország és a kommunista Szovjetunió | OK | 3 | 0 | 0 | PASS |
+| 26 | Magyarország a második világháborúban | OK | 3 | 0 | 0 | PASS |
+| 27 | A holokauszt Európában és Magyarországon | OK | 2 | 0 | 0 | PASS |
+| 28 | A Rákosi-korszak | OK | 3 | 0 | 0 | PASS |
+| 29 | Az 1956-os forradalom és szabadságharc | OK | 4 | 0 | 0 | PASS |
+| 30 | A Kádár-korszak | OK | 3 | 0 | 0 | PASS |
+| 31 | A hidegháború kezdete és kiteljesedése | OK | 5 | 0 | 0 | PASS |
+| 32 | A rendszerváltás Magyarországon | OK | 4 | 0 | 0 | PASS |
+
+Mind a 32 kurzusnál megjelent a főcím és a teljes, nem üres kurzustörzs; a kurzuslistára történő visszalépés működött. Az 1., 16., 25–32. kurzusnál a gombok, inputok, selectek, esszémezők és linkek jelenléte és engedélyezett állapota külön is ellenőrzésre került.
+
+### Kereső, dashboard és témák
+
+- A `reformkor`, `1956`, `Kádár/kadar`, `hidegháború`, `rendszerváltás` és `Rákosi/rakosi` keresések megfelelő találatokat adtak.
+- A `Róma` és a szándékosan hibás lekérdezés 0 találatot adott; a metaadatok között nincs Róma című vagy korszakú kurzus.
+- A kereső törlése után 32/32 kurzus állt vissza.
+- A kedvencjelölés, a Megjelölt/Megkezdett/Mind szűrők és a számlálók működtek; az állapotütközés nem jelentkezett.
+- A világos/sötét témaváltás működött, és a választás oldalfrissítés után megmaradt.
+
+### Mobil és accessibility
+
+- Responsive CSS-töréspontok, rugalmas kártyarácsok és képméretezési szabályok rendelkezésre állnak; a normál böngészős auditban vízszintes túlcsordulás nem jelentkezett.
+- A kért öt pontos viewport-emulációt az auditkörnyezet nem alkalmazta megbízhatóan (a böngésző 1280×720 méreten maradt), ezért a mobil eredmény: **WARNING – külön eszközméretű vizuális regressziós futtatás javasolt**.
+- A fő vezérlők szemantikus `button`, `input`, `select` és `textarea` elemek; a kereső és az iframe neve elérhető, globális `:focus-visible` jelölés van.
+- A 62 képi előfordulás mindegyike rendelkezik nem üres `alt` attribútummal.
+- A teljes Tab-sorrend runtime bejárását a böngészővezérlő nem tudta megbízhatóan végrehajtani, ezért accessibility eredmény: **WARNING**. Súlyos, teljesen billentyűzettel elérhetetlen fő funkciót a szerkezeti ellenőrzés nem azonosított.
+
+### Javított hibák és fennmaradó ismert korlátok
+
+- Ebben az auditkörben új production működési hiba nem került elő, ezért alkalmazáskód-módosítás nem történt.
+- A korábbi production audit során a kezdőoldal „24 témakör” felirata már „32 témakör” értékre lett javítva (`393fab2`).
+- Ismert korlát: a teljes PWA-offline működéshez továbbra is végleges 192×192 és 512×512 PNG-ikon, illetve service worker szükséges; ez nem része a WEB 1.0 jelenlegi követelményeinek.
+- Ismert auditkorlát: az öt előírt viewport és a teljes billentyűzetes fókuszsorrend automatizált futtatása nem volt hitelesen végrehajtható a rendelkezésre álló böngészőfelületen.
+
+### Végső minősítés
+
+**PASS WITH WARNINGS** – a production alkalmazás, mind a 32 kurzus és mind a 62 kép működik; nincs JavaScript-hiba, hibás helyi link vagy váratlan 404. A figyelmeztetés kizárólag a pontos viewport-emuláció és a teljes runtime Tab-sorrend technikai auditkorlátjára vonatkozik.
