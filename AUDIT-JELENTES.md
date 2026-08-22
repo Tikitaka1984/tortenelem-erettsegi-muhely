@@ -43,12 +43,11 @@ A manifeszt és az ikonkapcsolat elkészült. Teljes offline telepíthetőséghe
 
 - Production URL: https://tortenelem-erettsegi-muhely-hqnj.vercel.app
 - Production alias: `tortenelem-erettsegi-muhely-hqnj.vercel.app`
-- Deployment URL: `tortenelem-erettsegi-muhely-hqnj-l3mthgpfs.vercel.app`
-- Commit: `393fab250ec53edd40994100ef02462141fff204`
+- Auditált deployment URL: `tortenelem-erettsegi-muhely-hqnj-d9wytwsv8.vercel.app`
+- Auditált alkalmazáscommit: `59de50ca1b636b626e4274bdb357a881a4386ca9`
 - Branch: `main`
 - Státusz: **READY / Current / Production**
-- Build időpontja: 2026. augusztus 22. 19:39:04 (Europe/Budapest)
-- Build időtartama: 2 másodperc
+- Ellenőrzés időpontja: 2026. augusztus 22. (Europe/Budapest)
 - Build warning/error: **0/0**. A „Skipping cache upload because no files were prepared” sor információs üzenet, nem buildhiba.
 
 ### Összesített élő eredmények
