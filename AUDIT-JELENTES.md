@@ -114,21 +114,38 @@ Mind a 32 kurzusnál megjelent a főcím és a teljes, nem üres kurzustörzs; a
 - A kedvencjelölés, a Megjelölt/Megkezdett/Mind szűrők és a számlálók működtek; az állapotütközés nem jelentkezett.
 - A világos/sötét témaváltás működött, és a választás oldalfrissítés után megmaradt.
 
-### Mobil és accessibility
+### Mobil és responsive regresszió
 
-- Responsive CSS-töréspontok, rugalmas kártyarácsok és képméretezési szabályok rendelkezésre állnak; a normál böngészős auditban vízszintes túlcsordulás nem jelentkezett.
-- A kért öt pontos viewport-emulációt az auditkörnyezet nem alkalmazta megbízhatóan (a böngésző 1280×720 méreten maradt), ezért a mobil eredmény: **WARNING – külön eszközméretű vizuális regressziós futtatás javasolt**.
-- A fő vezérlők szemantikus `button`, `input`, `select` és `textarea` elemek; a kereső és az iframe neve elérhető, globális `:focus-visible` jelölés van.
-- A 62 képi előfordulás mindegyike rendelkezik nem üres `alt` attribútummal.
-- A teljes Tab-sorrend runtime bejárását a böngészővezérlő nem tudta megbízhatóan végrehajtani, ezért accessibility eredmény: **WARNING**. Súlyos, teljesen billentyűzettel elérhetetlen fő funkciót a szerkezeti ellenőrzés nem azonosított.
+Az ellenőrzés valódi headless Chromium böngészőben, pontosan beállított viewportokkal futott. Minden méreten 32 kártya jelent meg, a kereső és a dashboard-szűrők használhatók voltak, vízszintes túlcsordulás vagy a viewporton kívülre lógó elem nem jelentkezett. Az `atheni` keresés minden méreten egy megfelelő találatot adott.
+
+| Viewport | Eredmény | Megjegyzés |
+|---|---:|---|
+| 390×844 | **PASS** | 0 horizontális overflow; mobil kurzusválasztó, kereső, szűrők és navigáció működik |
+| 430×932 | **PASS** | 0 horizontális overflow; kártyák és szövegek nem lógnak ki |
+| 768×1024 | **PASS** | 0 horizontális overflow; tabletelrendezés használható |
+| 1366×768 | **PASS** | 0 horizontális overflow; asztali navigáció és kártyarács működik |
+| 1920×1080 | **PASS** | 0 horizontális overflow; széles asztali elrendezés stabil |
+
+Az 1., 16., 29., 30., 31. és 32. kurzus 390×844 méreten külön is megnyílt. Mind a hatnál volt teljes, nem üres tartalom, 0 belső horizontális overflow, 0 viewporton kívülre lógó kép, 0 hiányzó `alt`, és a kezdőoldalra visszanavigálás működött. Fixed/sticky elem nem takart el fő tartalmat. A másodlagos, ikon jellegű vezérlők között vannak 32 px-nél kisebb célterületek; ezek kattinthatók és billentyűzettel elérhetők, ezért ez nem blokkoló figyelmeztetés.
+
+### Billentyűzetes és accessibility regresszió
+
+| Ellenőrzés | Eredmény | Megjegyzés |
+|---|---:|---|
+| Tab navigáció | **PASS** | a kereső, folytatás, szűrők, kedvenc- és kurzusmegnyitó gombok sorrendben elérhetők |
+| Fókuszállapot | **PASS** | a bejárt interaktív elemek mindegyikén látható `solid` fókuszjelölés jelent meg |
+| Fő funkciók billentyűzetről | **PASS** | keresés, témaváltás, kurzusmegnyitás és visszalépés Enterrel működött; natív gombok Space-aktiválása támogatott |
+| Alt/ARIA alapellenőrzés | **PASS** | 0 címke nélküli input/select, 0 cím nélküli iframe, 0 hiányzó képi alt |
+
+A heading hierarchy alapellenőrzése nem talált hiányzó főcímeket. Egyes kurzusok tartalmában előfordul H1→H3 szintugrás; ez szemantikai figyelmeztetés, nem akadályoz fő funkciót, és a kurzustartalom változtatási tilalma miatt nem került átírva. Teljes WCAG-megfelelőségi tanúsítás nem volt a feladat része.
 
 ### Javított hibák és fennmaradó ismert korlátok
 
-- Ebben az auditkörben új production működési hiba nem került elő, ezért alkalmazáskód-módosítás nem történt.
+- A mobil töréspont korábban elrejtette a keresőt és a kezdőoldalra visszavezető vezérlőt; ezek mobilon látható, használható elrendezést kaptak (`c2c10bf`).
+- A kereső korábban csak az asztali oldalsó kurzuslistát szűrte. Most a kezdőoldali kurzuskártyákat is szűri, így mobilon is tényleges találati eredményt ad.
 - A korábbi production audit során a kezdőoldal „24 témakör” felirata már „32 témakör” értékre lett javítva (`393fab2`).
 - Ismert korlát: a teljes PWA-offline működéshez továbbra is végleges 192×192 és 512×512 PNG-ikon, illetve service worker szükséges; ez nem része a WEB 1.0 jelenlegi követelményeinek.
-- Ismert auditkorlát: az öt előírt viewport és a teljes billentyűzetes fókuszsorrend automatizált futtatása nem volt hitelesen végrehajtható a rendelkezésre álló böngészőfelületen.
 
 ### Végső minősítés
 
-**PASS WITH WARNINGS** – a production alkalmazás, mind a 32 kurzus és mind a 62 kép működik; nincs JavaScript-hiba, hibás helyi link vagy váratlan 404. A figyelmeztetés kizárólag a pontos viewport-emuláció és a teljes runtime Tab-sorrend technikai auditkorlátjára vonatkozik.
+**PASS WITH WARNINGS** – a production alkalmazás, mind a 32 kurzus és mind a 62 kép működik; nincs JavaScript-hiba, hibás helyi link, váratlan 404 vagy mobil overflow. Mind az öt előírt viewport és a billentyűzetes fő funkciók runtime tesztje sikeres. A fennmaradó figyelmeztetés a kurzustartalom néhány heading-szintugrására és egyes másodlagos ikonvezérlők 32 px-nél kisebb célterületére vonatkozik; egyik sem tesz fő funkciót elérhetetlenné.

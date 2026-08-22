@@ -687,6 +687,7 @@ const positionFill=document.getElementById('positionFill');
 const currentIndex=document.getElementById('currentIndex');
 let current=Math.max(0,Math.min(courses.length-1,(parseInt(location.hash.slice(1),10)||1)-1));
 let unifiedTheme=true;
+let dashboardQuery='';
 const UNIFIED_THEME_CSS=`
 /* ============================================================
    TÖRTÉNELEM ÉRETTSÉGI MŰHELY — SHARED COURSE DESIGN SYSTEM
@@ -1630,6 +1631,7 @@ document.getElementById('resetProgress').addEventListener('click',()=>{
 
 search?.addEventListener('input',()=>{
   const q=normalize(search.value.trim());
+  dashboardQuery=q;
   let visible=0;
   document.querySelectorAll('.course').forEach(button=>{
     const hit=!q || button.dataset.search.includes(q);
@@ -1638,6 +1640,7 @@ search?.addEventListener('input',()=>{
   });
   count.textContent=visible+' / '+courses.length;
   empty.classList.toggle('show',visible===0);
+  renderDashboardCourses();
 });
 
 /* ---------- Dashboard ---------- */
@@ -1680,7 +1683,8 @@ function renderDashboardCourses(){
       (dashboardFilter==='started'&&s.visited&&!s.completed)||
       (dashboardFilter==='favorites'&&fav)||
       (dashboardFilter==='completed'&&s.completed);
-    if(!match)return;shown++;
+    const queryMatch=!dashboardQuery||normalize(course.label+' '+course.period).includes(dashboardQuery);
+    if(!match||!queryMatch)return;shown++;
     const card=document.createElement('article');
     card.className='dashboard-course'+(s.completed?' complete':'');
     card.innerHTML='<div class="dashboard-course__top"><div class="dashboard-course__id"><span class="dashboard-course__icon" aria-hidden="true">'+course.icon+'</span><span class="dashboard-course__num">Kurzus '+String(index+1).padStart(2,'0')+'</span></div><button class="favorite-btn'+(fav?' active':'')+'" type="button" aria-pressed="'+(fav?'true':'false')+'" title="'+(fav?'Jelölés eltávolítása':'Kurzus megjelölése')+'">★</button></div><h4>'+escapeHtml(course.label)+'</h4><div class="dashboard-course__period">'+escapeHtml(course.period)+'</div><div class="dashboard-course__bottom"><div class="dashboard-course__statusrow"><span class="status-label '+status.key+'">'+status.label+'</span><span class="dashboard-course__pct">'+pct+'%</span></div><div class="dashboard-course__track"><div class="dashboard-course__fill" style="width:'+pct+'%"></div></div><div class="dashboard-course__actions"><button class="dashboard-course__open" type="button">'+(s.visited?'Megnyitás / folytatás':'Kurzus megnyitása')+'</button></div></div>';
