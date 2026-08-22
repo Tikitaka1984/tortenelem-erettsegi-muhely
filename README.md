@@ -1,4 +1,10 @@
-# Történelem Érettségi Műhely — telepítésre kész csomag
+# Történelem Érettségi Műhely — WEB 1.1
+
+## Verziók és baseline
+
+- **WEB 1.0 production baseline:** `d5414ce5cbe21fa38ff28666ef16422dcff0ed8a`
+- **WEB 1.1 sprint:** telepíthető PWA, offline alkalmazáskeret és verziózott helyi haladáskövetés.
+- A WEB 1.0 változat a Git-előzményekből teljes egészében visszakereshető; a 32 kurzus oktatási tartalma a WEB 1.1 fejlesztésben nem változott.
 
 ## Mi ez?
 Ez a mappa a "Történelem Érettségi Műhely" alkalmazás **teljes, működő, Vercelre telepíthető** változata:
@@ -24,6 +30,8 @@ images/*.webp           → az összes beágyazott kép, optimalizált méretben
 vercel.json (ha hiányzik, lásd lent) → egyszerű statikus-oldal beállítás
 manifest.webmanifest  → webalkalmazás-metaadatok és ikonkapcsolat
 favicon.svg           → böngészőikon és PWA-ikon alaphelye
+icons/*.png           → 192×192, 512×512 és maskable production appikonok
+service-worker.js     → verziózott offline alkalmazáskeret és runtime cache
 AUDIT-JELENTES.md     → a WEB 1.0 production-ready ellenőrzés eredménye
 ```
 
@@ -58,3 +66,30 @@ amit a diákok közvetlenül böngészőben megnyithatnak, telefonon is.
   nem kell az egész oldalt újraépíteni.
 - Ha új kurzust adsz hozzá: tedd be a HTML fájlt a `courses/` mappába, és vedd fel a bejegyzést
   a `course-meta.json`-ba (id, source, label, period, icon).
+
+## WEB 1.1 – PWA és haladáskövetés
+
+### Telepíthetőség és offline működés
+
+- A manifest önálló alkalmazásmódot, alkalmazásazonosítót, scope-ot, kezdő URL-t és valódi PNG-ikonokat tartalmaz.
+- A service worker az alkalmazáskeretet, a metaadatot, a manifesztet és az ikonokat előre gyorsítótárazza.
+- A kurzusok és képeik csak megnyitáskor kerülnek a runtime cache-be; a teljes, több megabájtos tananyag nem töltődik le automatikusan.
+- A kezdőoldal offline is betöltődik. Egy még nem mentett kurzus offline megnyitásakor magyar, felhasználóbarát tájékoztatás jelenik meg.
+- Új cache-verzió aktiválásakor a korábbi `tem-web-*` cache-ek automatikusan törlődnek.
+- Támogatott Chromium böngészőben a kezdőoldalon diszkrét **Telepítés** gomb jelenik meg. iOS-en a telepítés a böngésző megosztási menüjéből végezhető el; automatikus promptot az alkalmazás nem ígér.
+
+### Helyi tanulói állapot
+
+- Kulcs: `tortenelem-erettsegi-muhely-ui2-progress-v1`
+- Sémaverzió: `version: 1`
+- Gyökérmezők: `lastCourse`, `favorites`, `courses`.
+- Kurzusállapot: `visited`, `maxRead`, `lastRead`, `completed`, `lastOpened`, `drafts`.
+- A haladás a legnagyobb elért görgetési arányból számolódik; a **Befejezve** kézi jelölés 100%-ot jelent.
+- A **Folytatás** funkció a legutóbbi kurzust nyitja meg, majd visszaállítja a mentett olvasási pozíció közelét.
+- A reset kizárólag az alkalmazás saját haladási kulcsát állítja alaphelyzetbe; más webhelyadatot nem érint.
+
+### Ismert korlátozások
+
+- A tanulási adatok eszköz- és böngészőprofil-specifikusak, felhőbe nem szinkronizálódnak.
+- Egy kurzus csak az első online megnyitás után érhető el offline.
+- A böngészők PWA-telepítési felülete platformonként eltérő.

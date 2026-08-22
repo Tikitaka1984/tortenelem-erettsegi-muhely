@@ -148,3 +148,38 @@ A heading hierarchy alapellenőrzése nem talált hiányzó főcímeket. Egyes k
 ### Végső minősítés
 
 **PASS WITH WARNINGS** – a production alkalmazás, mind a 32 kurzus és mind a 62 kép működik; nincs JavaScript-hiba, hibás helyi link, váratlan 404 vagy mobil overflow. Mind az öt előírt viewport és a billentyűzetes fő funkciók runtime tesztje sikeres. A fennmaradó figyelmeztetés a kurzustartalom néhány heading-szintugrására és egyes másodlagos ikonvezérlők 32 px-nél kisebb célterületére vonatkozik; egyik sem tesz fő funkciót elérhetetlenné.
+
+## WEB 1.1 – PWA és haladáskövetés
+
+### Baseline és változási kör
+
+- WEB 1.0 production baseline: `d5414ce5cbe21fa38ff28666ef16422dcff0ed8a`.
+- A 32 kurzus HTML-tartalma és a 62 kép nem módosult.
+- A sprint kizárólag a PWA-réteget, az offline működést, a meglévő localStorage-haladás felületét és accessibility tulajdonságait bővíti.
+
+### Megvalósítás
+
+- 192×192 és 512×512 PNG ikon, valamint külön, teljes hátterű 512×512 maskable ikon készült a meglévő TÉ arculati jelből.
+- A manifest `id`, `start_url`, `scope`, `standalone` megjelenítés, színek és production ikonbejegyzések használatával teljes.
+- A verziózott service worker előre cache-eli az alkalmazáskeretet, runtime cache-be menti a meglátogatott kurzusokat és képeket, valamint aktiváláskor törli a régi saját cache-eket.
+- Offline, korábban nem mentett kurzus esetén kulturált magyar tájékoztató oldal jelenik meg.
+- A meglévő localStorage-séma egyetlen verziózott kulcsot használ; a látogatás, olvasási százalék, utolsó megnyitás, kedvenc, kézi befejezés és folytatási pozíció megmarad újratöltés után.
+- A progress bar elemek ARIA progressbar szemantikát kaptak; a kedvencgombok célterülete 44×44 px-re nőtt, és kurzusnévvel kiegészített `aria-label` került rájuk.
+
+### Cache-stratégia
+
+| Erőforrás | Stratégia |
+|---|---|
+| Navigáció / alkalmazás shell | network-first, offline `index.html` fallback |
+| Manifest, metaadat, ikonok | előre cache-elt shell, network-first frissítés |
+| Kurzus HTML | network-first, sikeres megnyitás után runtime cache |
+| Kurzusképek | cache-first, első sikeres kérés után runtime cache |
+| Cache-frissítés | verziónév-váltás és régi `tem-web-*` cache-ek törlése aktiváláskor |
+
+### LocalStorage-séma és haladásszámítás
+
+- Kulcs: `tortenelem-erettsegi-muhely-ui2-progress-v1`.
+- Sémaverzió: `1`.
+- A kurzus százaléka a legnagyobb elért scroll-arány; kézi befejezéskor 100%.
+- A legutóbbi olvasási arány külön mezőben tárolódik a közelítő pozíció-visszaállításhoz.
+- A reset csak ezt az alkalmazássaját haladási kulcsot állítja alaphelyzetbe.
