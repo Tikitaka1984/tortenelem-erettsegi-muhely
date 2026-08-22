@@ -1,0 +1,18 @@
+{
+  "name": "Történelem Érettségi Műhely",
+  "short_name": "TÉ Műhely",
+  "description": "Interaktív történelemérettségi-felkészítő 32 kurzussal.",
+  "lang": "hu",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07101f",
+  "theme_color": "#07101f",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
