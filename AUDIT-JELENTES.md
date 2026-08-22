@@ -183,3 +183,50 @@ A heading hierarchy alapellenőrzése nem talált hiányzó főcímeket. Egyes k
 - A kurzus százaléka a legnagyobb elért scroll-arány; kézi befejezéskor 100%.
 - A legutóbbi olvasási arány külön mezőben tárolódik a közelítő pozíció-visszaállításhoz.
 - A reset csak ezt az alkalmazássaját haladási kulcsot állítja alaphelyzetbe.
+
+### WEB 1.1 production regresszió – 2026. augusztus 22.
+
+Production URL: https://tortenelem-erettsegi-muhely-hqnj.vercel.app/
+
+| Ellenőrzés | Eredmény |
+|---|---:|
+| Manifest betöltés és parse | PASS – 0 hiba |
+| 192×192 / 512×512 / maskable ikon | PASS – 3/3 HTTP 200 |
+| Service worker regisztráció | PASS – ACTIVE |
+| Shell cache létrehozása | PASS – `tem-web-1.1-shell-v1` |
+| Régi saját cache törlése aktiváláskor | PASS |
+| Offline kezdőoldal | PASS |
+| Nem mentett kurzus offline üzenete | PASS |
+| Chromium installability diagnosztika | PASS WITH NOTE – 0 manifesthiba; kizárólag a headless inkognitó tesztkörnyezet tiltja a tényleges telepítést |
+| LocalStorage sémaverzió | PASS – `version: 1` |
+| 1., 16. és 32. kurzus haladásváltozása | PASS |
+| Haladás megmarad újratöltés után | PASS |
+| Kedvenc megmarad újratöltés után | PASS |
+| Kézi Befejezve jelölés | PASS |
+| Folytatás innen | PASS |
+| Reset csak saját tanulási állapotra | PASS |
+| 32 kurzus böngészős betöltése | 32/32 PASS |
+| 32 kurzus production HTTP | 32/32 PASS |
+| Képek production HTTP és MIME | 62/62 PASS |
+| JavaScript console/page error | 0 |
+| Váratlan 404 | 0 |
+
+### WEB 1.1 mobil és accessibility
+
+| Terület | Eredmény |
+|---|---:|
+| 390×844 | PASS – 0 horizontális overflow |
+| 430×932 | PASS – 0 horizontális overflow |
+| 768×1024 | PASS – 0 horizontális overflow |
+| 1366×768 | PASS – 0 horizontális overflow |
+| 1920×1080 | PASS – 0 horizontális overflow |
+| Mobil keresés és szűrés | PASS |
+| Tab-sorrend és látható fókusz | PASS |
+| Témaváltás, kurzusnyitás és visszalépés billentyűzettel | PASS |
+| Input-/iframe-címkék és képi alt | PASS – 0 hiány |
+| Progressbar szemantika | PASS |
+| Érintett kedvencgomb célterülete | PASS – 44×44 px |
+
+### WEB 1.1 végső minősítés
+
+**PASS WITH WARNINGS** – a PWA, az offline alkalmazáskeret, a verziózott localStorage-haladás, a Folytatás funkció, a kedvencek és a kézi befejezés production környezetben működik. Mind a 32 kurzus és mind a 62 kép regressziója sikeres, JavaScript-hiba és váratlan 404 nélkül. Nem blokkoló korlát, hogy az adatok nem szinkronizálódnak eszközök között, egy kurzus csak első online megnyitás után érhető el offline, és a telepítési felület böngésző/platformfüggő.
