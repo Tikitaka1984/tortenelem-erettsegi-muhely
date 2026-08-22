@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A torlódó társadalom és a kiegyezés gazdasági következményei — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1917;
+  --rubric:#8a4a2a;
+  --lapis:#34473f;
+  --gold:#ab8a42;
+  --stone:#d8cdb2;
+  --paper:#f2ede0;
+  --paper-2:#e7dcc3;
+  --line:#c4b790;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(26,25,23,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(171,138,66,.09), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(138,74,42,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#f2ede0; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(26,25,23,.94), rgba(52,71,63,.86)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f6f1e2;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#e5dbc2; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(242,237,224,.35); color:#f2ede0; padding:5px 10px; border-radius:20px;
+  background:rgba(242,237,224,.06);
+}
+.chain-box{
+  background:rgba(15,14,13,.35); border:1px solid rgba(242,237,224,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(242,237,224,.35);
+  background:rgba(242,237,224,.05); color:#f2ede0; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(242,237,224,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(242,237,224,.45);
+  border-top:1px dashed rgba(242,237,224,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(171,138,66,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#e5dbc2; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(242,237,224,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+.fogodzo{
+  background:linear-gradient(120deg,#e5d7ab,#eae0ba); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(196,183,144,.3);}
+.source-box{background:#f8f2e2; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#3a322a; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+.sort-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row span{flex:1 1 200px;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#243530;}
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#231c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#8a6f34;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#ece0b5; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#ece0b5;}
+.tips-list li.first-tip::before{background:var(--gold); color:#231c14;}
+footer{background:var(--ink); color:#d8cdb2; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(196,183,144,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1867–1900-as évek</span>
+    <h1>A torlódó társadalom és a kiegyezés gazdasági következményei</h1>
+    <p class="subtitle">Vasutak, gyárak és a régi–új rend egymás mellett élése</p>
+    <p class="lede">Hat modulban követjük végig, hogyan hozta létre a gazdasági kiegyezés a Monarchia egységes gazdasági terét, hogyan gyorsította fel az állami gazdaságpolitika a vasútépítést, a mezőgazdaság és az ipar modernizációját, és hogyan alakult ki mindeközben a dualizmus kori magyar társadalom sajátos, „torlódó” szerkezete, amelyben a régi feudális és az új polgári-kapitalista viszonyok egymás mellett éltek tovább.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">🚂</span>
+        Rakd össze a láncot, hogy megépüljön a MÁV hálózata!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Gazdasági kiegyezés</a>
+    <a href="#m2">2. Infrastruktúra</a>
+    <a href="#m3">3. Mezőgazdaság, ipar</a>
+    <a href="#m4">4. Torlódó társadalom</a>
+    <a href="#m5">5. Elit és középrétegek</a>
+    <a href="#m6">6. Alsó rétegek</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A gazdasági kiegyezés</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a gazdasági kiegyezés tartalmát és az állami gazdaságpolitika alapelveit.</div>
+
+  <article>
+    <h3>A vám- és kereskedelmi szerződés</h3>
+    <p>A politikai kiegyezés mellett létrejött a <strong>gazdasági kiegyezés</strong> is Ausztria és Magyarország között, a vám- és kereskedelmi szerződés megkötésével. Ezt a szerződést 10 évenként meg kellett újítani, ami lehetőséget adott a változtatásokra — mindkét fél megpróbálta ezt saját érdekei szerint kihasználni, ezért nem véletlen, hogy a 10 évenkénti megújítások idején a parlamenti és a delegációs viták rendszeresen e téma körül csúcsosodtak ki. A gazdasági kiegyezés alapján közös maradt a pénzrendszer, a birodalom kifelé és befelé is vámegységet alkotott, közös és egységes maradt a mértékrendszer, és szabadon áramolhatott a tőke és a munkaerő a Monarchia két fele között.</p>
+
+    <h3>Az állami gazdaságpolitika</h3>
+    <p>A kiegyezést követően megszűnt a politikai bizonytalanság, gyorsan megélénkült a gazdaság. Magyarország a birodalmi munkamegosztás részeseként fejlődött: külkereskedelmének nagy része az örökös tartományokkal zajlott, és igen jelentős volt az osztrák tőkebeáramlás. A megélénkült gazdaság — vasútépítések, mezőgazdaság, iparosítás terén — komoly állami támogatást kapott: vámvisszatérítést, kamatgaranciát, kedvező szállítási tarifapolitikát és kedvezményes kölcsönöket nyújtottak. A magyar gazdaság is megérezte a kor legsúlyosabb, 1873-as válságát, amelytől kezdve tovább erősödött az állami beavatkozás.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a gazdasági kiegyezés <strong>nem</strong> volt egyszeri, végleges megállapodás — a 10 évenkénti kötelező megújítás lehetőséget adott mindkét félnek, hogy újratárgyalja a feltételeket, ez a rendszer állandó politikai feszültségforrás maradt egészen a Monarchia végéig.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>1873 a nagy gazdasági válság <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>1. forrás — A gazdasági kiegyezés feltételei (tartalmi kivonat)</h4>
+      <p class="src-text">A szerződés szövege szerint a Monarchia két fele közös vámterületet alkot, a kereskedelmi és pénzügyi kapcsolatokat egységes szabályok rendezik, a mértékrendszer és a pénzrendszer közös marad, a tőke és a munkaerő pedig akadálytalanul áramolhat a birodalom egész területén. A megállapodást tíz évente felül kell vizsgálni és újra kell tárgyalni.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen területeken biztosított egységességet a gazdasági kiegyezés?</p>
+        <p><strong>b)</strong> Milyen elv érvényesült a tőke és a munkaerő mozgása terén?</p>
+        <p><strong>c)</strong> Miért vezetett rendszeresen politikai vitákhoz a 10 évenkénti megújítás?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A vámrendszer, a pénzrendszer és a mértékrendszer terén.</p>
+          <p><strong>b)</strong> A szabad áramlás elve — nem volt akadálya a tőke és a munkaerő mozgásának a Monarchián belül.</p>
+          <p><strong>c)</strong> Mert mindkét fél megpróbálta a saját érdekeinek megfelelően módosítani a feltételeket, ez rendszeres alkupozíciót és feszültséget teremtett.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: A gazdasági kiegyezés szerződését egyszer kötötték meg, és soha többé nem kellett újratárgyalni.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Milyen formában nyújtott állami támogatást a gazdaság élénkítéséhez?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Vámvisszatérítés, kamatgarancia, kedvezményes kölcsönök</button>
+        <button data-val="b">B) Kizárólag adóemelés</button>
+        <button data-val="c">C) A magántőke teljes betiltása</button>
+        <button data-val="d">D) Külföldi tőke kizárása</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A kor legsúlyosabb gazdasági válsága ______-ban érte el a magyar gazdaságot is.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>Infrastruktúra-fejlesztés — pénzügy, vasút, hajózás</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a bank- és hitelrendszer, a vasúthálózat és a hajózás fejlődését a dualizmus korában.</div>
+
+  <article>
+    <h3>Pénzügyi rendszer</h3>
+    <p>A kiegyezés utáni fellendülés nyomán kialakult a széles körű bank- és hitelrendszer, amelynek vezető intézménye a Magyar Általános Hitelbank volt. Megjelentek a biztosítók és a tőzsde is, ami tovább erősítette a tőkeáramlást és a modern gazdasági szereplők megjelenését.</p>
+
+    <h3>Vasútépítés és a MÁV kialakulása</h3>
+    <p>A vasútépítések nagy lendületet kaptak, a vonalak jellemzően Budapest-centrikusan épültek ki. Az állam a magántőke-beruházásokat úgynevezett kamatbiztosítási rendszerrel támogatta, amely minden esetben biztosította a befektetések hozamát és megtérülését. A személy- és áruszállításban bevezették a <strong>zónatarifa</strong> rendszerét, amellyel a vasúti szállítást igyekeztek versenyképessé tenni és a gazdaságfejlesztés szolgálatába állítani. Az 1873-as válságot követően, 1875-től megindult a magánvasutak államosítása, ez vezetett a <strong>MÁV</strong> (Magyar Államvasutak) kialakulásához <strong>Baross Gábor</strong>, a „vasminiszter” vezetésével.</p>
+
+    <h3>Hajózásfejlesztés</h3>
+    <p>Befejeződött az Al-Duna szabályozása, lezajlott a Tisza-szabályozás (kanyarulatok levágása, gátak építése), ami jelentősen javította a belvízi hajózás feltételeit és csökkentette az árvízveszélyt. 1881-ben Fiume központtal megalakult az Adria Tengerhajózási Társaság, amely Magyarország tengeri kereskedelmi kapcsolatait erősítette.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a magánvasutak államosítása <strong>nem</strong> a kiegyezés első éveiben, hanem csak az 1873-as válság után, 1875-től kezdődött meg — ne állítsd be úgy, mintha a MÁV már a kiegyezéskor létrejött volna.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>MÁV</td>
+        <td>Baross Gábor</td>
+        <td>1875 a vasútállamosítás kezdete <span class="eonly">E</span></td>
+        <td>Fiume</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:49b -->
+<figure class="atlas-map" data-atlas-code="49b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 49b. térkép</span>
+    <h4>A vasúthálózat fejlődése, 1846–1913</h4>
+    <p class="atlas-map__focus">A modernizáció üteme, Budapest központi szerepe és a gazdasági tér összekapcsolódása követhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p051_49b.webp" target="_blank" rel="noopener" aria-label="A vasúthálózat fejlődése, 1846–1913 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img026.webp" alt="Történelmi térkép: A vasúthálózat fejlődése, 1846–1913" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:49b -->
+<div class="source-box">
+      <h4>2. forrás — Baross Gábor vasútpolitikája (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint Baross Gábor közlekedésügyi miniszterként azt vallotta, hogy a vasútnak nem elsősorban jövedelmezőnek, hanem a gazdaság szolgálójának kell lennie. Ezért vezette be a zónatarifa-rendszert, amely a távolságtól viszonylag függetlenített, kedvező árakat biztosított, ezzel ösztönözve az áruszállítást és a személyforgalmat, és hozzájárult a magyar mezőgazdasági termékek versenyképességéhez is.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mi volt Baross Gábor alapelve a vasút szerepéről?</p>
+        <p><strong>b)</strong> Mit vezetett be ennek megfelelően?</p>
+        <p><strong>c)</strong> Milyen gazdasági hatása volt ennek a rendszernek?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Hogy a vasútnak elsősorban a gazdaság fejlesztését, nem a saját jövedelmezőségét kell szolgálnia.</p>
+          <p><strong>b)</strong> A zónatarifa-rendszert.</p>
+          <p><strong>c)</strong> Ösztönözte az áru- és személyszállítást, és javította a magyar termékek versenyképességét.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="choice">
+      <p class="task-q">Melyik intézmény volt a dualizmus kori bankrendszer vezető szereplője?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Magyar Általános Hitelbank</button>
+        <button data-val="b">B) Magyar Nemzeti Bank</button>
+        <button data-val="c">C) Osztrák-Magyar Bank kizárólag</button>
+        <button data-val="d">D) MÁVAG</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="tf">
+      <p class="task-q">Állítás: A magyar vasútvonalak jellemzően Budapest-centrikusan épültek ki.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="match">
+      <p class="task-q">Párosítsd az intézkedést a területével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Kamatbiztosítási rendszer</button>
+          <button class="match-item" data-key="p2">Zónatarifa</button>
+          <button class="match-item" data-key="p3">Adria Tengerhajózási Társaság</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">Vasúti magántőke-beruházások ösztönzése</button>
+          <button class="match-item" data-key="r2">Vasúti szállítási árrendszer</button>
+          <button class="match-item" data-key="r3">Tengeri hajózás, Fiume központtal</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>Mezőgazdaság és ipar fejlődése</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a mezőgazdaság modernizációját és az ipar fő ágazatait a dualizmus korában.</div>
+
+  <article>
+    <h3>A mezőgazdaság modernizációja</h3>
+    <p>A mezőgazdaság fejlődését jellemezte a modernizációt akadályozó tőkehiány — a hitellehetőségekért és a kedvező exportlehetőségekért az OMGE (Országos Magyar Gazdasági Egyesület, a földbirtokosok érdekképviseleti szerve) küzdött. A folyamszabályozások és mocsárlecsapolások következtében mintegy 20%-kal növekedett a szántóterületek aránya. A birtokszerkezetre a kis számú, óriási nagyságú nagybirtok és a nagy számú, kicsi területű kis- és törpebirtok kettőssége volt jellemző. Terjedtek az új művelési rendszerek (vetésforgó), az ipari növények (cukorrépa, komló) és az intenzív kertgazdálkodás; a nagybirtokokon már gépeket is használtak. A borszőlő-termelést megrendítette az 1880–82-es filoxéra-járvány, emiatt új, ellenálló szőlőfajtákat telepítettek, és megkezdődött a szőlőtermesztés a Duna–Tisza közi homokterületeken is, ahol a kártevő nem élt meg. Az állattenyésztésben teret hódított az istállózó (belterjes) állattartás és az új, jól tejelő fajták (holland, svájci, osztrák szarvasmarha) tartása.</p>
+
+    <h3>Az ipar fő ágazatai</h3>
+    <p>Az ipari forradalomhoz kapcsolódó fellendülés az 1890-es évektől jellemző (a céheket csak 1872-ben törölték el). 1902-ben alakult meg a GYOSZ (Magyar Gyáriparosok Országos Szövetsége), amely jelentős befolyással bírt a gazdaságpolitika alakítására. Az <strong>élelmiszeripar</strong> volt a magyar ipar vezető, legfejlettebb ágazata: a malomipar terén Budapest 1900-ig a világ legnagyobb malomipari központja volt, utána is csak Minneapolis előzte meg. Gyorsan fejlődött a húsipar (Budapest: Herz; Szeged: Pick), a cukoripar és a söripar (Budapest: Dréher) is. A <strong>gépipar</strong>ban jelentős volt a hajógyártás (Ganz Danubius), a vasúti eszközök gyártása (MÁVAG, Ganz-gyár), az elektrotechnikai ipar (Ganz Villamossági Művek, amely 1886-ban Luzern mellett üzembe helyezte a világ első váltóáramú erőművét), valamint a hadiipar (<strong>Weiss Manfréd</strong> csepeli gyára, amely 1913-ban 5000 munkással a legnagyobb hadiipari üzem volt).</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: az ipar egyes ágazatai <strong>nem</strong> fejlődtek egyenletesen — míg az élelmiszeripar (különösen a malomipar) és a gépipar világszínvonalú fejlődést mutatott, addig a könnyűipar (textil, bőr, cipőipar) a meghatározó osztrák és cseh áruk versenye miatt gyengén fejlett maradt. Ez a fejlődési egyenlőtlenség fontos jellemzője a dualizmus kori magyar iparnak.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Weiss Manfréd</td>
+        <td>1880–82 a filoxéra-járvány <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:52b -->
+<figure class="atlas-map" data-atlas-code="52b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 52b. térkép</span>
+    <h4>A Magyar Királyság ipara és bányászata 1910 körül</h4>
+    <p class="atlas-map__focus">Az ipari központok, bányavidékek és a gazdasági fejlődés területi egyenlőtlenségei vizsgálhatók.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p054_52b.webp" target="_blank" rel="noopener" aria-label="A Magyar Királyság ipara és bányászata 1910 körül – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img027.webp" alt="Történelmi térkép: A Magyar Királyság ipara és bányászata 1910 körül" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:52b -->
+<div class="source-box">
+      <h4>3. forrás — A magyar malomipar világelsősége (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint Budapest az 1900-as évig a világ legnagyobb malomipari központja volt, kihasználva a magyar Alföld kiváló búzatermő adottságait és a fejlett vasúti-vízi szállítási infrastruktúrát. A budapesti malmok modern technológiával (hengerszék) dolgoztak, és a lisztet nemcsak belföldön, hanem jelentős mennyiségben exportálták is. Csak 1900 után előzte meg Budapestet az amerikai Minneapolis.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen adottságokat használt ki a budapesti malomipar?</p>
+        <p><strong>b)</strong> Meddig volt Budapest a világ vezető malomipari központja?</p>
+        <p><strong>c)</strong> Mit mutat ez a magyar ipar szerkezetéről?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az Alföld kiváló búzatermő adottságait és a fejlett szállítási infrastruktúrát.</p>
+          <p><strong>b)</strong> 1900-ig.</p>
+          <p><strong>c)</strong> Hogy a mezőgazdasághoz kapcsolódó élelmiszeripar (különösen a malomipar) volt a magyar ipar legfejlettebb, világszínvonalú ágazata.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="match">
+      <p class="task-q">Párosítsd a vállalatot a tevékenységi körével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="v1">MÁVAG</button>
+          <button class="match-item" data-key="v2">Ganz Villamossági Művek</button>
+          <button class="match-item" data-key="v3">Weiss Manfréd gyára</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="a1">Mozdonyok gyártása</button>
+          <button class="match-item" data-key="a2">Elektrotechnikai berendezések</button>
+          <button class="match-item" data-key="a3">Hadiipari termékek</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott iparág fejlett vagy gyengén fejlett volt a dualizmus korában?</p>
+      <div class="sort-row"><span>Élelmiszeripar (malomipar)</span>
+        <select data-key="s1"><option value="">válassz</option><option value="fejlett">Fejlett</option><option value="gyenge">Gyengén fejlett</option></select>
+      </div>
+      <div class="sort-row"><span>Könnyűipar (textil, bőr, cipőipar)</span>
+        <select data-key="s2"><option value="">válassz</option><option value="fejlett">Fejlett</option><option value="gyenge">Gyengén fejlett</option></select>
+      </div>
+      <div class="sort-row"><span>Gépipar (hajó-, vasúti eszközök gyártása)</span>
+        <select data-key="s3"><option value="">válassz</option><option value="fejlett">Fejlett</option><option value="gyenge">Gyengén fejlett</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Mi okozta a szőlőtermesztés válságát 1880–82 között?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Aszály</button>
+        <button data-val="b">B) A filoxéra-járvány</button>
+        <button data-val="c">C) Túltermelés</button>
+        <button data-val="d">D) Áremelkedés</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A torlódó társadalom fogalma</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Értsd meg, mit jelent a dualizmus kori magyar társadalom „torlódott” vagy kettős szerkezete.</div>
+
+  <article>
+    <h3>Régi és új rend egymás mellett</h3>
+    <p>A dualizmus korának magyar társadalmát a történettudomány gyakran <strong>kettős szerkezetű</strong> vagy <strong>torlódott társadalom</strong>nak nevezi. Ez azt jelenti, hogy a gyors gazdasági modernizáció ellenére a társadalom szerkezete nem alakult át egységesen, korszerű polgári társadalommá — egymás mellett élt tovább az új, polgárosodó társadalom és a régi, feudális gyökerű társadalom. Az egykori nemesség jelentős része maga is polgárosult: vállalkozókká, értelmiségiekké váltak, bekapcsolódtak a modern gazdasági-hivatali életbe. A polgárság számára viszont — paradox módon — nem a nyugat-európai polgári minta, hanem az arisztokrácia és az „úri világ” életmódja, mentalitása szolgáltatta a követendő mintát.</p>
+
+    <h3>A torlódás következményei</h3>
+    <p>Ez a torlódás azt eredményezte, hogy a modern, kapitalista gazdasági fejlődés (gyárak, bankok, vasutak) és a hagyományos, rendi-nemesi értékrend (birtok, cím, „úri” életforma) egymást átfedve, egymás mellett létezett — nem egymást felváltó, hanem egymást kiegészítő, néha egymásnak ellentmondó rétegekként. Ez magyarázza például, hogy a modern polgárság (bankárok, gyárosok) gyakran birtokot vásárolt és nemesi címet szerzett, miközben az elszegényedő nemesség (a dzsentri) állami hivatalokban vagy a hadseregben keresett megélhetést — társadalmi státuszát azonban igyekezett megőrizni.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a "torlódó társadalom" fogalma <strong>nem</strong> azt jelenti, hogy a magyar társadalom elmaradott vagy fejletlen lett volna — azt jelenti, hogy a modernizáció és a hagyományos rend egyidejűleg, egymás mellett létezett, ami sajátos, Nyugat-Európától eltérő társadalmi szerkezetet eredményezett.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>dzsentri <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — A torlódott társadalom fogalmának meghatározása (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a dualizmus kori magyar társadalom kettős szerkezetét az jellemezte, hogy a modern polgári és a hagyományos feudális elemek nem váltották fel, hanem kiegészítették egymást. Az egykori nemesség egy része polgári foglalkozásokba (vállalkozás, értelmiségi pálya) áramlott át, míg a feltörekvő polgárság mintaként az arisztokrácia és a dzsentri életformáját tekintette, nem pedig egy önálló, polgári értékrendet alakított ki.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen két társadalmi elem élt egymás mellett a leírás szerint?</p>
+        <p><strong>b)</strong> Mi történt az egykori nemesség egy részével?</p>
+        <p><strong>c)</strong> Milyen mintát követett a feltörekvő polgárság, és miért volt ez paradox?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A modern polgári és a hagyományos feudális-nemesi elemeket.</p>
+          <p><strong>b)</strong> Polgári foglalkozásokba (vállalkozás, értelmiségi pálya) áramlott át.</p>
+          <p><strong>c)</strong> Az arisztokrácia és a dzsentri életformáját, ami paradox, mert egy modernizálódó, kapitalista gazdaságban a polgárság elvben saját, önálló értékrendet alakíthatott volna ki nyugati mintára.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: A torlódó társadalom fogalma azt jelenti, hogy a régi feudális és az új polgári társadalmi elemek egymás mellett éltek tovább.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: A feltörekvő polgárság mintaként az arisztokrácia és az „úri világ” ______ ______ vette.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Mi történt az egykori nemesség jelentős részével a dualizmus korában?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Teljesen eltűnt a társadalomból</button>
+        <button data-val="b">B) Polgárosult: vállalkozókká, értelmiségiekké váltak</button>
+        <button data-val="c">C) Kivándorolt külföldre</button>
+        <button data-val="d">D) Mind a hadseregbe állt</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>A társadalmi elit és a középrétegek</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a dualizmus kori társadalom felső és középső rétegeinek szerkezetét.</div>
+
+  <article>
+    <h3>A társadalmi elit</h3>
+    <p>A <strong>nagybirtokosok</strong> (1000 holdnál nagyobb birtokkal) mintegy 2000 családot jelentettek, akik az ország földterületének 20%-át birtokolták. Közülük az <strong>arisztokrácia</strong> (kb. 800 család) magában foglalta a monarchiai nemzetek feletti arisztokratákat (Schönbornok, Coburgok), a magyar főnemeseket (Andrássyak, Batthyányak, Károlyiak, Széchenyiek) és az erdélyi arisztokratákat (Bethlenek, Telekiek, Bánffyak) — jelentős volt politikai szerepük (felsőházban, végrehajtó hatalomban, diplomáciában) és gazdasági szerepük (bankok, nagyvállalatok igazgatótanácsaiban), kasztszerűen elkülönülő életmódot éltek (estélyek, Nemzeti Kaszinó). A vagyonos középnemesség (kb. 1000 család, 1000–2000 hold birtokkal) — közülük került ki például Tisza Kálmán is — összekötő kapocsként működött az arisztokrácia és a dzsentri között. A <strong>nagypolgárság</strong> (kb. 800–1000 család) három rétegből tevődött össze: régi magyar vagy német patrícius-kereskedő családok leszármazottaiból, külföldről (Svájc, Németország, Ausztria) betelepült vállalkozókból (pl. Dréher, Haggenmacher), és régebben vagy a 19. században bevándorolt zsidóságból — elkülönült társadalmi életet éltek (Lipótvárosi Kaszinó). A <strong>polgárarisztokrata családok</strong> (kb. 150) — Weiss, Goldberger, Deutsch, Chorin, Ullmann, Kornfeld — az uralkodótól bárói rangot kaptak, birtokokat vásároltak, és beházasodtak a nagybirtokos famíliákba, hatalmas gazdasági erővel (bankok, iparvállalatok) rendelkeztek.</p>
+
+    <h3>A középrétegek</h3>
+    <p>A <strong>történelmi középosztály</strong>t a polgárosodó nemesi középbirtokosok (akik korszerűsítették birtokaikat) és a <strong>dzsentri</strong>k alkották — az utóbbiak elszegényedő középbirtokosok voltak, akik az államigazgatásban, a hadsereg tisztikarában, vidéki uradalmi szakértelmiségként vagy egyházi pályán helyezkedtek el. A <strong>polgári középosztály</strong>t a városi középpolgárság (kereskedők, üzem- és háztulajdonosok), a gyárak, bankok szakemberei (közöttük jelentős volt a német és zsidó elem aránya, jellemző volt az asszimiláció, például névmagyarosítás, és a dzsentri életmód majmolása), valamint a szabad pályás értelmiségiek (orvos, ügyvéd, hírlapíró) és a kispolgárság (kb. 2,5 millió fő: kisiparosok, kiskereskedők, szolgáltatók, „altisztek”) alkották.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a dzsentri <strong>nem</strong> volt azonos a vagyonos középnemességgel — a dzsentri kifejezetten az elszegényedett, birtokát elvesztő vagy jelentősen csökkentő középbirtokos réteget jelölte, amely hivatalnoki vagy katonai pályán próbálta megőrizni társadalmi státuszát, miközben anyagi helyzete jelentősen leromlott.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>5. forrás — A dualizmus kori társadalmi elit szerkezete (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a nagybirtokos arisztokrácia és a nagypolgárság — bár gazdaságilag és politikailag is meghatározó szerepet töltött be — élesen elkülönült egymástól társadalmi életében: az arisztokrácia a Nemzeti Kaszinóban, a nagypolgárság a Lipótvárosi Kaszinóban szerveződött. A polgárarisztokrata családok jelentették a hidat a két világ között: bárói rangot szereztek, birtokokat vásároltak, és házassági kapcsolatokat építettek ki a nagybirtokos famíliákkal.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen két elkülönült társasági kör jött létre az elit körében?</p>
+        <p><strong>b)</strong> Milyen szerepet töltöttek be a polgárarisztokrata családok?</p>
+        <p><strong>c)</strong> Milyen három konkrét módon építették ki ezt az összekötő szerepet?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A Nemzeti Kaszinó (arisztokrácia) és a Lipótvárosi Kaszinó (nagypolgárság).</p>
+          <p><strong>b)</strong> Hidat képeztek az arisztokrácia és a nagypolgárság között.</p>
+          <p><strong>c)</strong> Bárói rang szerzése, birtokvásárlás, és beházasodás a nagybirtokos famíliákba.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="choice">
+      <p class="task-q">Melyik réteg működött összekötő kapocsként az arisztokrácia és a dzsentri között?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A vagyonos középnemesség</button>
+        <button data-val="b">B) A nagypolgárság</button>
+        <button data-val="c">C) A kispolgárság</button>
+        <button data-val="d">D) A szabad pályás értelmiség</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: A dzsentri elszegényedett középbirtokosokat jelölt, akik az államigazgatásban vagy a hadsereg tisztikarában kerestek megélhetést.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="match">
+      <p class="task-q">Párosítsd a réteget a jellemzőjével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="q1">Arisztokrácia</button>
+          <button class="match-item" data-key="q2">Polgárarisztokrata családok</button>
+          <button class="match-item" data-key="q3">Kispolgárság</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="w1">Kasztszerűen elkülönülő, politikailag befolyásos réteg</button>
+          <button class="match-item" data-key="w2">Bárói rangot szerzett, nagybirtokos családokkal házasodott</button>
+          <button class="match-item" data-key="w3">Kisiparosok, kiskereskedők, szolgáltatók rétege</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>Az alsó rétegek: parasztság és munkásság</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a birtokos parasztság, a szegényparasztság és az ipari munkásság rétegeit.</div>
+
+  <article>
+    <h3>A birtokos parasztság</h3>
+    <p>A <strong>birtokos parasztság</strong> (kb. 7 millió fő) rétegzett volt: a gazdag paraszt (50 holdon felüli birtokkal) nem volt kénytelen fizikai munkát végezni; a közép- és kisparasztság birtokából tisztességesen meg tudott élni; a törpebirtokosok (5 hold körüli birtokkal) viszont sokszor bérmunkásként is dolgoztak megélhetésük kiegészítésére.</p>
+
+    <h3>Szegényparasztság és ipari munkásság</h3>
+    <p>A <strong>szegényparasztság-agrárproletárok</strong> rétegébe tartoztak a summások (akik 5–7 hónapos időtartamra szerződtek „bandákban”), a napszámosok, és a kubikusok (akik a nagy infrastrukturális beruházások — vasút, folyószabályozás — földmunkáit végezték). Az <strong>ipari munkásság</strong>on belül a szakmunkások alkották a legképzettebb, legműveltebb és legjobban megfizetett réteget — szakegyleteket és szakszervezeteket működtettek, szakmai hierarchiájuk élén a nyomdászok és lakatosok álltak. Alattuk helyezkedtek el a betanított és segédmunkások. A legalsó rétegbe a nagy uradalmak és a gazdag parasztok cselédei, valamint a városi házicselédek tartoztak.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a summások, napszámosok és kubikusok <strong>nem</strong> voltak azonosak — a summások idénymunkára szerződtek bandákban, a napszámosok naponta kerestek alkalmi munkát, a kubikusok pedig kifejezetten a nagy földmunkákra (vasútépítés, folyószabályozás) specializálódtak; a vizsgán fontos ezeket pontosan megkülönböztetni.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>6. forrás — A szegényparasztság és a munkásság rétegei (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint az agrárproletárok élete rendkívül bizonytalan volt: a summások néhány hónapos szerződéssel, bandákba szerveződve vándoroltak munkáért, a napszámosok napi bérért dolgoztak, a kubikusok pedig a nagy infrastrukturális beruházások nehéz földmunkáit végezték. Ezzel szemben az ipari szakmunkások — különösen a nyomdászok és lakatosok — viszonylag stabil, jól fizetett, szervezett (szakszervezeti) réteget alkottak, saját érdekvédelmi szervezetekkel.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen három csoportra oszlott az agrárproletariátus?</p>
+        <p><strong>b)</strong> Miben tért el az ipari szakmunkások helyzete az agrárproletárokétól?</p>
+        <p><strong>c)</strong> Mely szakmák álltak a munkásság szakmai hierarchiájának élén?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Summások, napszámosok és kubikusok.</p>
+          <p><strong>b)</strong> Az ipari szakmunkások stabilabb, jobban fizetett, szervezett (szakszervezeti) réteget alkottak, szemben az agrárproletárok bizonytalan, alkalmi jellegű munkájával.</p>
+          <p><strong>c)</strong> A nyomdászok és a lakatosok.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: a birtokos parasztsághoz vagy a szegényparasztsághoz tartozott az adott csoport?</p>
+      <div class="sort-row"><span>Gazdag paraszt (50 hold felett)</span>
+        <select data-key="c1"><option value="">válassz</option><option value="birtokos">Birtokos parasztság</option><option value="szegeny">Szegényparasztság</option></select>
+      </div>
+      <div class="sort-row"><span>Summás</span>
+        <select data-key="c2"><option value="">válassz</option><option value="birtokos">Birtokos parasztság</option><option value="szegeny">Szegényparasztság</option></select>
+      </div>
+      <div class="sort-row"><span>Kubikus</span>
+        <select data-key="c3"><option value="">válassz</option><option value="birtokos">Birtokos parasztság</option><option value="szegeny">Szegényparasztság</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: A nagy infrastrukturális beruházások (vasút, folyószabályozás) földmunkáit a ______ végezték.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="choice">
+      <p class="task-q">Melyik szakma állt a munkásság szakmai hierarchiájának élén?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Bányászok</button>
+        <button data-val="b">B) Nyomdászok, lakatosok</button>
+        <button data-val="c">C) Textilmunkások</button>
+        <button data-val="d">D) Cselédek</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>MÁV</dt><dd>Magyar Államvasutak — az 1875-től induló vasútállamosítás nyomán létrejött állami vasúttársaság.</dd>
+    <dt>zónatarifa</dt><dd>Baross Gábor által bevezetett vasúti szállítási árrendszer, amely a gazdaságfejlesztést szolgálta.</dd>
+    <dt>OMGE</dt><dd>Országos Magyar Gazdasági Egyesület — a nagybirtokosok érdekképviseleti szervezete.</dd>
+    <dt>GYOSZ</dt><dd>Magyar Gyáriparosok Országos Szövetsége (1902) — az iparosok érdekképviseleti szervezete.</dd>
+    <dt>torlódó (kettős szerkezetű) társadalom</dt><dd>A dualizmus kori magyar társadalom sajátos szerkezete, amelyben a régi feudális és az új polgári-kapitalista elemek egymás mellett éltek tovább.</dd>
+    <dt>dzsentri</dt><dd>Elszegényedő középbirtokosok rétege, akik állami hivatalokban, a hadseregben vagy egyházi pályán próbálták megőrizni társadalmi státuszukat.</dd>
+    <dt>polgárarisztokrata családok</dt><dd>Bárói rangot szerzett nagypolgári famíliák, akik birtokokat vásároltak és beházasodtak a nagybirtokos családokba.</dd>
+    <dt>agrárproletár</dt><dd>Föld nélküli vagy minimális földdel rendelkező mezőgazdasági bérmunkás (summás, napszámos, kubikus).</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1867</b> A gazdasági kiegyezés megkötése</li>
+    <li><b>1872</b> A céhek eltörlése</li>
+    <li><b>1873</b> Nagy gazdasági válság <span class="eonly">E</span></li>
+    <li><b>1875</b> A vasútállamosítás kezdete <span class="eonly">E</span></li>
+    <li><b>1880–1882</b> A filoxéra-járvány <span class="eonly">E</span></li>
+    <li><b>1881</b> Az Adria Tengerhajózási Társaság megalakulása</li>
+    <li><b>1886</b> A Ganz üzembe helyezi a világ első váltóáramú erőművét <span class="eonly">E</span></li>
+    <li><b>1890-es évek</b> Az ipari fellendülés felgyorsulása</li>
+    <li><b>1900</b> Budapest a világ legnagyobb malomipari központja (eddig)</li>
+    <li><b>1902</b> A GYOSZ megalakulása <span class="eonly">E</span></li>
+    <li><b>1913</b> A Weiss Manfréd-gyár a legnagyobb hadiipari üzem <span class="eonly">E</span></li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Fiume</li><li>Budapest</li><li>Csepel</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze az 1873-as válságot és a MÁV kialakulását: <em>a MÁV kialakulása; a gazdasági kiegyezés; az 1873-as válság; a vasútépítések felfutása</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> a gazdasági kiegyezés (1867) → a vasútépítések felfutása → az 1873-as válság → a MÁV kialakulása (1875-től).</p>
+        <p><strong>Indoklás:</strong> A gazdasági kiegyezés és az állami támogatás (kamatbiztosítás) nyomán a magánvasutak gyors ütemben épültek ki, de az 1873-as válság megrendítette a magántársaságok pénzügyi helyzetét — ez kényszerítette ki az államot arra, hogy 1875-től megkezdje a magánvasutak államosítását, amelyből kialakult a MÁV.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Iparágak azonosítása</h4>
+    <p>A leírás alapján nevezze meg, melyik iparágról van szó: „Budapest 1900-ig a világ legnagyobb központja volt ebben az ágazatban, amely a magyar Alföld kiváló búzatermő adottságaira épült.” Nevezzen meg egy másik fejlett magyar iparágat is, és adja meg egy jellemző vállalatát.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás a <em>malomiparra</em> vonatkozik. Egy másik lehetséges iparág: a gépipar (MÁVAG, Ganz-gyár) vagy a hadiipar (Weiss Manfréd csepeli gyára).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: a történelmi és a polgári középosztály összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: eredet, jellemző foglalkozások, anyagi helyzet, mintaadás), mi a hasonlóság és mi a különbség a történelmi középosztály (dzsentri) és a polgári középosztály között.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Történelmi középosztály (dzsentri)</th><th>Polgári középosztály</th></tr>
+          <tr><td>Eredet</td><td>Elszegényedő nemesi középbirtokosok</td><td>Városi kereskedők, szakemberek, értelmiség</td></tr>
+          <tr><td>Jellemző foglalkozások</td><td>Államigazgatás, hadsereg, egyházi pálya</td><td>Kereskedelem, ipar, szabad pálya (orvos, ügyvéd)</td></tr>
+          <tr><td>Anyagi helyzet</td><td>Gyakran szerény, csökkenő jövedelem</td><td>Változó, sokszor stabilabb</td></tr>
+          <tr><td>Mintaadás</td><td>Az „úri” életforma mintaadója</td><td>Gyakran a dzsentri életmódját utánozta</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindkét réteg a torlódó társadalom jellegzetes középső rétegét alkotta, egymást is befolyásolva.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+  <p>A torlódó társadalom és a kiegyezés gazdasági következményei <strong>magyar történelmi témakör</strong>, ezért középszinten és emelt szinten egyaránt megjelenhet <strong>hosszú esszé</strong> (210–260 szó) formájában — de rövid esszé (100–130 szó) témájaként is előfordulhat, ha a feladat egy szűkebb részkérdésre (pl. csak a vasútépítésre vagy csak a társadalmi elitre) korlátozódik.</p>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta hosszú esszé (kb. 250 szó):</strong> „Mutassa be a gazdasági kiegyezés hatásait és a dualizmus kori torlódó társadalom szerkezetét!”</p>
+    <p>Az 1867-es politikai kiegyezés mellett létrejött gazdasági kiegyezés — a vám- és kereskedelmi szerződés — közös pénz-, vám- és mértékrendszert, valamint a tőke és munkaerő szabad áramlását biztosította a Monarchián belül. Ez, valamint az állami támogatás (kamatgarancia, vámvisszatérítés) gyors gazdasági fellendülést hozott: a vasútépítés Budapest-centrikusan bontakozott ki, majd az 1873-as válság után, 1875-től Baross Gábor vezetésével megkezdődött a magánvasutak államosítása, létrejött a MÁV. Az ipar terén az élelmiszeripar (Budapest a világ vezető malomipari központja 1900-ig) és a gépipar (MÁVAG, Weiss Manfréd hadiipari gyára) ért el kiemelkedő fejlődést, míg a könnyűipar az osztrák-cseh verseny miatt gyengén fejlett maradt.</p>
+    <p>A gazdasági modernizáció nyomán a magyar társadalom sajátos, „torlódott” szerkezetűvé vált: a modern polgári és a hagyományos feudális elemek nem váltották fel, hanem kiegészítették egymást. Az egykori nemesség jelentős része polgári pályára lépett, miközben a feltörekvő polgárság az arisztokrácia és a dzsentri életformáját tekintette mintának. A társadalom élén az arisztokrácia és a nagypolgárság állt, közöttük hidat képeztek a bárói rangot szerző polgárarisztokrata családok; a középrétegeket a dzsentri és a polgári középosztály alkotta; az alsó rétegeket pedig a birtokos parasztság, az agrárproletariátus (summások, napszámosok, kubikusok) és az ipari munkásság rétegei alkották. Ez a kettős szerkezet évtizedekig meghatározta a magyar társadalom fejlődésének sajátos, Nyugat-Európától eltérő útját.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé két szálon (gazdasági fejlődés, majd társadalmi szerkezet) bontja ki a témát, konkrét adatokkal és nevekkel dolgozik, és a záró gondolatban összeköti a két jelenséget — ez emelt szintű elemző mélységet ad.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130">Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260" selected>Hosszú esszé — középszint (210–260 szó)</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — emelt szint (210–260 szó)</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 210–260 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Kronológiailag pontos adatokat (évszám, névhasználat) tartalmaz</li>
+      <li><input type="checkbox"> Legalább két konkrét tényre vagy forrásra hivatkozik</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be a gazdasági kiegyezés tartalmát és az állami gazdaságpolitika eszközeit!</li>
+    <li><b>E2</b> Jellemezze a MÁV kialakulásának folyamatát Baross Gábor tevékenysége alapján!</li>
+    <li><b>E3</b> Mutassa be a dualizmus kori magyar ipar fejlődésének egyenlőtlenségeit!</li>
+    <li><b>E4</b> Értékelje a torlódó társadalom fogalmának jelentőségét a dualizmus kori Magyarország megértésében!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze a történelmi középosztályt (dzsentri) és a polgári középosztályt a dualizmus korában!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A torlódó társadalom és a kiegyezés gazdasági következményei</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a gazdasági kiegyezés tartalma</td></tr>
+    <tr><td>2 perc</td><td>Infrastruktúra-fejlesztés: pénzügy, vasút, hajózás</td></tr>
+    <tr><td>2 perc</td><td>Mezőgazdaság és ipar fejlődése</td></tr>
+    <tr><td>2 perc</td><td>A torlódó társadalom fogalma</td></tr>
+    <tr><td>2 perc</td><td>A társadalmi elit és a középrétegek</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: az alsó rétegek és a társadalmi szerkezet egésze</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Milyen elemekből állt a gazdasági kiegyezés?</li>
+    <li>Miért és hogyan alakult ki a MÁV?</li>
+    <li>Miért fejlődött egyenetlenül a magyar ipar a dualizmus korában?</li>
+    <li>Mit jelent a torlódó társadalom fogalma?</li>
+    <li>Milyen rétegekből állt a dualizmus kori társadalmi elit?</li>
+    <li>Milyen csoportokat foglalt magába a szegényparasztság és az ipari munkásság?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez magyar történelmi témakör: számíts arra, hogy hosszú esszében (210–260 szó) is kérhetik — ne csak rövid esszére készülj!</li>
+    <li>Ne keverd össze a gazdasági kiegyezést (1867, vám- és kereskedelmi szerződés) és a politikai kiegyezést — két külön, de egymással összefüggő megállapodás.</li>
+    <li>Jegyezd meg pontosan: a MÁV nem 1867-ben, hanem csak 1875-től, az 1873-as válság után jött létre a magánvasutak államosításával.</li>
+    <li>A malomipar és a gépipar volt a legfejlettebb, a könnyűipar viszont gyengén fejlett maradt — ne általánosítsd, hogy „a magyar ipar fejlett volt”.</li>
+    <li>A torlódó társadalom fogalma nem elmaradottságot jelent, hanem azt, hogy a régi és az új társadalmi rend egyidejűleg létezett — ezt a különbséget mindig hangsúlyozd.</li>
+    <li>Ne keverd össze a dzsentrit (elszegényedett középbirtokos) és a vagyonos középnemességet (tehetős, összekötő szerepű réteg) — alapvetően más anyagi helyzetű csoportok.</li>
+    <li>A nagypolgárság három forrásból tevődött össze: régi patrícius családok, betelepült vállalkozók, bevándorolt zsidóság — mindhármat érdemes megemlíteni.</li>
+    <li>Figyelj a mezőgazdasági alsó rétegek pontos megkülönböztetésére: summás (idénymunkás), napszámos (napi bérért dolgozó), kubikus (földmunkás).</li>
+    <li>Kronológiai csapda: a filoxéra-járvány (1880–82) és a GYOSZ megalakulása (1902) között két évtized telt el — ne keverd össze az időrendet.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni Fiume szerepét (tengeri kikötő, Adria Tengerhajózási Társaság) és Csepel szerepét (Weiss Manfréd hadiipari gyára).</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti témavázlati kiadvány, illetve a hivatalos vizsgakövetelmény ajánlott. A Katolikus 11. tankönyv jelen témakörre vonatkozó fejezetei a feltöltött PDF-ből hiányoztak, ezért ennél a kurzusnál is kizárólag a témavázlatot használtuk elsődleges forrásként.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"a"},
+    "m1-t3": {type:"fill", answers:["1873"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"choice", answer:"a"},
+    "m2-t2": {type:"tf", answer:true},
+    "m2-t3": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"match", pairs:{v1:"a1", v2:"a2", v3:"a3"}},
+    "m3-t2": {type:"sort", answers:{s1:"fejlett", s2:"gyenge", s3:"fejlett"}},
+    "m3-t3": {type:"choice", answer:"b"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:true},
+    "m4-t2": {type:"fill", answers:["életformáját","eletformajat"]},
+    "m4-t3": {type:"choice", answer:"b"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"choice", answer:"a"},
+    "m5-t2": {type:"tf", answer:true},
+    "m5-t3": {type:"match", pairs:{q1:"w1", q2:"w2", q3:"w3"}},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"sort", answers:{c1:"birtokos", c2:"szegeny", c3:"szegeny"}},
+    "m6-t2": {type:"fill", answers:["kubikusok"]},
+    "m6-t3": {type:"choice", answer:"b"},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  var chainSteps = [
+    {order:1, text:"A gazdasági kiegyezés (vám- és kereskedelmi szerződés) egységes gazdasági teret hoz létre"},
+    {order:2, text:"Az állami gazdaságpolitika (kamatgarancia, vasútépítés) felgyorsítja a modernizációt"},
+    {order:3, text:"Az 1873-as válság felerősíti az állami beavatkozást, majd megindul a vasútállamosítás"},
+    {order:4, text:"A mezőgazdaság és az ipar (malomipar, gépipar) dinamikusan, de egyenetlenül fejlődik"},
+    {order:5, text:"A gazdasági modernizáció nyomán kialakul a torlódó, kettős szerkezetű társadalom"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">🚂</span>Kirakva! A lánc: gazdasági kiegyezés → állami gazdaságpolitika → 1873 válság és vasútállamosítás → ipar-mezőgazdaság fejlődése → torlódó társadalom.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

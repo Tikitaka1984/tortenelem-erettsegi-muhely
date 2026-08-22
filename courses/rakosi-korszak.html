@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Rákosi-korszak — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#17140f;
+  --rubric:#7a1f1f;
+  --lapis:#3d3a2e;
+  --gold:#a68a3d;
+  --stone:#d6cca9;
+  --paper:#ece6d6;
+  --paper-2:#e0d8bd;
+  --line:#c2b587;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(23,20,15,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(166,138,61,.09), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(122,31,31,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#ece6d6; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(23,20,15,.95), rgba(61,58,46,.88)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f2ecdb;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#e0d7bb; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(236,230,214,.35); color:#ece6d6; padding:5px 10px; border-radius:20px;
+  background:rgba(236,230,214,.06);
+}
+.chain-box{
+  background:rgba(11,10,7,.35); border:1px solid rgba(236,230,214,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(236,230,214,.35);
+  background:rgba(236,230,214,.05); color:#ece6d6; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(236,230,214,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(236,230,214,.45);
+  border-top:1px dashed rgba(236,230,214,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(166,138,61,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#e0d7bb; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(236,230,214,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+.fogodzo{
+  background:linear-gradient(120deg,#dccb95,#e1d19f); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(194,181,135,.3);}
+.source-box{background:#f4eedb; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#332e22; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+.sort-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row span{flex:1 1 200px;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#2a2820;}
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#221c0f; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#846d32;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#ead9a2; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#ead9a2;}
+.tips-list li.first-tip::before{background:var(--gold); color:#221c0f;}
+footer{background:var(--ink); color:#d6cca9; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(194,181,135,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1945–1956</span>
+    <h1>A Rákosi-korszak</h1>
+    <p class="subtitle">A koalíciós évektől a nyílt diktatúráig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan számolta fel a szalámitaktika a többpártrendszert a koalíciós évek (1945–1948) alatt, hogyan épült ki 1948–49-ben a szovjet mintájú pártállam, hogyan alakította át az erőltetett iparosítás és a beszolgáltatás a gazdaságot és a parasztság életét, milyen szerepet játszott az ÁVH terrorja és a koncepciós perek rendszere a társadalom megfélemlítésében, és hogyan hatotta át Rákosi Mátyás személyi kultusza a mindennapi élet és a kultúra minden területét.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">★</span>
+        Rakd össze a láncot, hogy kiépüljön a pártállam!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Koalíciós évek</a>
+    <a href="#m2">2. A fordulat éve</a>
+    <a href="#m3">3. Iparosítás, beszolgáltatás</a>
+    <a href="#m4">4. Terror, ÁVH</a>
+    <a href="#m5">5. Személyi kultusz</a>
+    <a href="#m6">6. Kultúra, propaganda</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A koalíciós évek és a szalámitaktika (1945–1947)</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg az 1945-ös választásokat és a kommunisták fokozatos hatalomkiépítését.</div>
+
+  <article>
+    <h3>Az 1945-ös választások</h3>
+    <p>A Szovjetunió által megszállt országok közül elsőként Magyarországon tartottak szabad választásokat. 1945. november 4-én, az általános és titkos választójog alapján, 92,4%-os részvétel mellett meggyőző fölénnyel győzött a Kisgazdapárt (57%) az SZDP (17,5%) és az MKP (17%) előtt. A Kisgazdapárt azonban — bár megtehette volna abszolút többsége birtokában — a Szövetséges Ellenőrző Bizottság (SZEB) nyomására nem alakíthatott egyedül kormányt: koalíciót kellett kötnie a baloldallal, és át kellett engednie a kulcsminisztériumokat. Tildy Zoltán koalíciós kormányában (1945. nov. – 1946. febr.) a belügyi tárcát a kommunisták kapták, és létrejött a Gazdasági Főtanács, amellyel a gazdaság irányítása kicsúszott a kormányfő kezéből. 1946. február 1-jén kikiáltották a köztársaságot, Tildy Zoltánt köztársasági elnökké választották.</p>
+
+    <h3>A szalámitaktika kezdete</h3>
+    <p>Az új kormányfő, Nagy Ferenc igyekezett a választási eredményeknek megfelelően pozíciókat szerezni pártjának. Válaszul az MKP, az SZDP és az NPP 1946 márciusában megalapította a Baloldali Blokkot, és tömegdemonstrációt tartott Kisgazdapárt-ellenes jelszavakkal. A Baloldali Blokk mozgósítása és a SZEB nyomása miatt a Kisgazdapárt meghátrált: lemondott a kisgazdapárti földművelésügyi miniszter, a pártból 20 képviselőt kizártak, és elfogadták „a demokratikus államrend és a köztársaság büntetőjogi védelméről” szóló törvényt, amelyet később a kommunisták politikai ellenfeleikkel szemben alkalmaztak. Ezzel megkezdődött a Kisgazdapárt fokozatos bomlasztása — ezt a módszert nevezte el Rákosi Mátyás „<strong>szalámitaktiká</strong>”-nak: az ellenfél pártját vékony szeletekben, fokozatosan darabolták fel.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a szalámitaktika <strong>nem</strong> egyetlen nagy csapással számolta fel az ellenfeleket — apró, egymást követő lépésekkel (kizárások, letartóztatások, koholt vádak) fokozatosan gyengítette és darabolta fel a Kisgazdapártot és a többi koalíciós partnert, míg végül teljesen ellehetetlenítette őket; ez a fokozatosság a módszer lényege.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>forint; Független Kisgazdapárt</td>
+        <td>—</td>
+        <td>1945 szovjet megszállás</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>1. forrás — Rákosi Mátyás a „szalámitaktikáról” (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint Rákosi Mátyás egy visszaemlékezésében úgy jellemezte saját politikai módszerét, hogy az ellenfél pártját nem lehet egyetlen csapással megsemmisíteni, mert az ellenállásba ütközne — helyette apró szeletekben, folyamatosan kell „lemetszeni” róla a nem megbízható elemeket, amíg a párt annyira meggyengül, hogy elveszíti önálló politikai súlyát és irányíthatóvá válik.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen hasonlattal írta le Rákosi a módszerét?</p>
+        <p><strong>b)</strong> Miért volt szükség fokozatosságra egyetlen nagy csapás helyett?</p>
+        <p><strong>c)</strong> Mi volt a módszer végső célja?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A szalámi felszeletelésének hasonlatával.</p>
+          <p><strong>b)</strong> Mert az egyetlen nagy csapás komoly ellenállást váltott volna ki.</p>
+          <p><strong>c)</strong> A párt fokozatos meggyengítése, irányíthatóvá tétele, végső soron felszámolása.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: A Kisgazdapárt az 1945-ös választásokon abszolút többséget szerzett, és önállóan alakíthatott kormányt.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Melyik szervezet nyomására kellett a Kisgazdapártnak koalíciót kötnie 1945 után?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A Baloldali Blokk</button>
+        <button data-val="b">B) A Szövetséges Ellenőrző Bizottság (SZEB)</button>
+        <button data-val="c">C) Az ENSZ</button>
+        <button data-val="d">D) A Népfront</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: 1946. február 1-jén kikiáltották a ______, köztársasági elnöknek Tildy Zoltánt választották.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>A fordulat éve és a pártállam kiépítése (1948–1949)</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg az egypárti diktatúra létrejöttét és az 1949-es alkotmány szerinti államszerkezetet.</div>
+
+  <article>
+    <h3>A fordulat éve</h3>
+    <p>Az 1947-es „kékcédulás választásokon” — a Kisgazdapárt több vezetőjének emigrálása után, választási csalások révén — győzött a Kommunista Párt. 1948–49, „a fordulat éve” alatt megszűnt a többpártrendszer: a Magyar Kommunista Párt (MKP) és a Szociáldemokrata Párt (SZDP) egyesülésével (1948) létrejött az egypárti-pártállami diktatúra, amelyben az egyetlen párt a <strong>Magyar Dolgozók Pártja</strong> (MDP) lett. A változásokat az 1949. augusztus 18-án elfogadott, szovjet mintájú alkotmány rögzítette.</p>
+
+    <h3>A pártállami berendezkedés</h3>
+    <p>Az MDP maga alá gyűrte a társadalmat: a párt szervei állami jogköröket sajátítottak ki, az állami intézmények és társadalmi szervezetek pártirányítás alá kerültek. A tényleges irányító szerv a pártvezetés volt, azon belül az 1950-ben megalakított Honvédelmi Bizottság (Rákosi Mátyás, Gerő Ernő, Farkas Mihály), amely mindenféle ellenőrzés nélkül, a szovjet kívánságoknak megfelelően döntött a legfontosabb kérdésekben. Az országgyűlés súlytalanná vált: az 1949-es választásokon csak a Magyar Függetlenségi Népfront listájára lehetett szavazni, az országgyűlés évente csak néhány napig ülésezett, szerepe kimerült a törvények egyhangú megszavazásában. A minisztertanács és a <strong>tanácsrendszer</strong> (helyi államhatalmi, államigazgatási rendszer) volt a diktatúra végrehajtó szerve. Megszüntették a köztársasági elnök intézményét, helyébe az Elnöki Tanács lépett, amely törvényerejű rendeleteket adhatott ki; a szakszervezeteket megfosztották érdekvédelmi szerepüktől.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az 1949-es országgyűlési választásokon <strong>nem</strong> volt valódi választás — csak a Magyar Függetlenségi Népfront egyetlen listájára lehetett szavazni, ez formálisan választás volt, de tartalmilag nem hagyott alternatívát; ezért az országgyűlés a diktatúra idején valódi hatalmi szerepét teljesen elvesztette, csupán a már meghozott döntések formális jóváhagyójává vált.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Magyar Dolgozók Pártja; népköztársaság; pártállam</td>
+        <td>Rákosi Mátyás</td>
+        <td>1948 MDP megalakulása; 1949 kommunista alkotmány; 1948–1956 a Rákosi-diktatúra</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:65b -->
+<figure class="atlas-map" data-atlas-code="65b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 65b. térkép</span>
+    <h4>Területi változások Európában 1945 után</h4>
+    <p class="atlas-map__focus">A kelet-közép-európai kommunista hatalomátvételek időrendje és Magyarország 1948-as fordulata hasonlítható össze.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p067_65b.webp" target="_blank" rel="noopener" aria-label="Területi változások Európában 1945 után – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img044.webp" alt="Történelmi térkép: Területi változások Európában 1945 után" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:65b -->
+<div class="source-box">
+      <h4>2. forrás — Az 1949-es alkotmány és a pártállami berendezkedés (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint az 1949-ben elfogadott, szovjet mintájú alkotmány formálisan biztosított bizonyos demokratikus intézményeket (országgyűlés, választások), a valóságban azonban ezek az intézmények kiüresedtek: az országgyűlés csak néhány napig ülésezett évente és egyhangúlag hagyta jóvá az előterjesztett törvényeket, míg a tényleges hatalmat a pártvezetés, azon belül is egy szűk kör gyakorolta, minden érdemi ellenőrzés nélkül.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen intézményeket biztosított formálisan az alkotmány?</p>
+        <p><strong>b)</strong> Hogyan működött valójában az országgyűlés?</p>
+        <p><strong>c)</strong> Kik gyakorolták a tényleges hatalmat?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Országgyűlést és választásokat.</p>
+          <p><strong>b)</strong> Csak évente néhány napig ülésezett, egyhangúlag hagyta jóvá a törvényeket, érdemi vita nélkül.</p>
+          <p><strong>c)</strong> A pártvezetés szűk köre (pl. a Honvédelmi Bizottság).</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="tf">
+      <p class="task-q">Állítás: 1948-ban az MKP és az SZDP egyesülésével jött létre a Magyar Dolgozók Pártja.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="choice">
+      <p class="task-q">Mi lépett a köztársasági elnök intézménye helyébe?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A Minisztertanács</button>
+        <button data-val="b">B) Az Elnöki Tanács</button>
+        <button data-val="c">C) A Honvédelmi Bizottság</button>
+        <button data-val="d">D) A Népfront</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az 1949. augusztus 18-án elfogadott alkotmány szovjet mintájú államformává tette a Magyar ______-t.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>Erőltetett iparosítás és a mezőgazdasági beszolgáltatás</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a tervgazdálkodás jellemzőit, az iparosítás irányát és a parasztságot sújtó intézkedéseket.</div>
+
+  <article>
+    <h3>Az erőltetett iparosítás</h3>
+    <p>A tervutasításos gazdaságirányítás keretében az első ötéves terv 1950-től indult — a Jugoszlávia-ellenes kampány és a Koreai háború miatt a legfontosabb fejlesztendő terület a hadiipar volt. A nehézipar és az alapanyag-termelés fokozott fejlesztése (szocialista iparosítás) jellemezte a korszakot: a „vas és acél országát” építették, a fogyasztási cikkek gyártása háttérbe szorult. Szocialista iparvárosként hozták létre egy hatalmas vas- és acélgyártó üzemmel <strong>Sztálinváros</strong>t (a mai Dunaújváros). Az ipari üzemeket a teljesítménybérezés, a folyamatosan emelt normák (munkaversenyek, sztahanovizmus) jellemezték.</p>
+
+    <h3>A mezőgazdaság és a beszolgáltatás</h3>
+    <p>Az egyénileg gazdálkodóknak három terménycsoportban (növényi termény és állat; baromfi és tojás; tej) emelkedő mértékű, kötelező <strong>beszolgáltatás</strong>t kellett teljesíteniük. 1949-től megindult a termelőszövetkezetek (tsz) szervezése — a földdel rendelkező parasztok bekényszerítése a közös gazdálkodásba; az ellenállókat zaklatták vagy elítélték, a vagyonosabb gazdákról kuláklistákat készítettek. A parasztság megtörésének egyik eszköze a tagosítás volt — arra hivatkozva, hogy a tsz-ek földjeit egyesíteni kell, rákényszerítették a parasztokat, hogy jó minőségű, könnyen megközelíthető földjeiket távoli, rosszabb minőségűre cseréljék; emellett tájidegen növények (gyapot, gumipitypang) termesztését is erőltették. A tervek nem teljesítése esetén szabotázsról, árulásról beszéltek, amit megtoroltak — az alacsony termésátlagok miatt Magyarország egyes években gabonaimportra szorult, 1952-ben olyan alacsony volt a terméseredmény, hogy a parasztoktól még a következő évi vetőmagot is elvették („<strong>padlássöprés</strong>”).</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a beszolgáltatás és a téeszesítés (tsz-szervezés) <strong>két, egymást kiegészítő</strong>, de különböző eszköz volt a parasztság megtörésére — a beszolgáltatás az egyénileg gazdálkodókra vonatkozó kötelező terménybeadási rendszer volt, a téeszesítés pedig magának a birtokszerkezetnek az erőszakos átalakítására irányult; a kettő együtt szorította a parasztságot a közös gazdálkodás felé.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>beszolgáltatás</td>
+        <td>—</td>
+        <td>—</td>
+        <td>Sztálinváros (Dunaújváros)</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:66a -->
+<figure class="atlas-map" data-atlas-code="66a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 66a. térkép</span>
+    <h4>A megosztott Európa, 1945–1989</h4>
+    <p class="atlas-map__focus">Magyarország szovjet tömbbeli helye, az 1949-ben létrejött KGST és a keleti–nyugati gazdasági megosztottság vizsgálható.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p068_66a.webp" target="_blank" rel="noopener" aria-label="A megosztott Európa, 1945–1989 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img045.webp" alt="Történelmi térkép: A megosztott Európa, 1945–1989" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:66a -->
+<div class="source-box">
+      <h4>3. forrás — A „padlássöprés” (1952, tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint az 1952-es rendkívül gyenge termés miatt a hatóságok a begyűjtési terv teljesítése érdekében olyan mértékben szedték be a parasztoktól a gabonát, hogy a következő évi vetéshez szükséges vetőmagot is elvették tőlük. Ez a gyakorlat vált ismertté „padlássöprés” néven, mert a beszolgáltatási brigádok szó szerint a padlásokat is átkutatták az elrejtett gabona után.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mi váltotta ki a „padlássöprést”?</p>
+        <p><strong>b)</strong> Mit vettek el a parasztoktól?</p>
+        <p><strong>c)</strong> Honnan ered az elnevezés?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az 1952-es rendkívül gyenge termés és a begyűjtési terv teljesítésének kényszere.</p>
+          <p><strong>b)</strong> Még a következő évi vetőmagot is.</p>
+          <p><strong>c)</strong> Onnan, hogy a brigádok a padlásokat is átkutatták az elrejtett gabona után.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="tf">
+      <p class="task-q">Állítás: A Rákosi-korszakban a fogyasztási cikkek gyártása élvezett elsőbbséget a nehéziparral szemben.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="choice">
+      <p class="task-q">Mi volt a tagosítás célja a hivatalos indoklás szerint?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A parasztok földjének megnövelése</button>
+        <button data-val="b">B) A tsz-ek földjeinek egyesítése a nagyüzemi termelés érdekében</button>
+        <button data-val="c">C) Az adók csökkentése</button>
+        <button data-val="d">D) A gépesítés felgyorsítása</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A szocialista iparvárosként létrehozott, ma Dunaújváros néven ismert település eredeti neve ______ volt.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A terror rendszere — ÁVH, kitelepítések, koncepciós perek</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a félelem légkörét, az ÁVH működését és a koncepciós perek mechanizmusát.</div>
+
+  <article>
+    <h3>A félelem légköre és az ÁVH</h3>
+    <p>A rendszert a sztálini „osztályharc éleződik” elmélete uralta: állandósult „éberségi” hisztéria, felkészülés a „harmadik világháborúra”, „osztályidegen” elemek (pl. egykori arisztokraták) kitelepítése. A hatalmi rendszer fő jellemzője és elengedhetetlen kelléke lett a terror: a titkos erőszakszervezet, az <strong>Államvédelmi Hatóság (ÁVH)</strong> vezetője Péter Gábor volt, aki közvetlenül Rákosinak jelentett; adatokat gyűjtöttek, a felnőtt lakosság egyötödéről rendelkeztek adatokkal, besúgóhálózatot működtettek. A kitelepítések során az arisztokrata, nemesi származású, gyáros, kulák vagy más okból megbízhatatlannak ítélt embereket, családokat az Alföldön kijelölt kényszerlakhelyekre vagy a <strong>Hortobágy</strong>ra költöztették, ahol komfort nélküli épületekben kellett élniük és dolgozniuk, engedély nélkül nem hagyhatták el lakhelyüket.</p>
+
+    <h3>Kényszermunkatáborok és koncepciós perek</h3>
+    <p>A közel 100 kisebb-nagyobb internáló- és munkatábor közül az ÁVH által 1950–53 között üzemeltetett <strong>Recsk</strong> volt a legnagyobb — a „magyar GULAG”-nak nevezett tábort a foglyok építették fel, akik 10–12 órás nehéz fizikai munkát végeztek minimális élelmiszer-ellátás és higiénia mellett. A koncepciós per — szovjet minta alapján — előre elkészített forgatókönyv szerint zajlott, amelyet a rendőrség–ügyészség–bíróság–védelem–vádlott teljes egységben hajtott végre, a vádlott kényszer hatására bevallotta bűnösségét. A cél a külső és belső ellenség megtalálása és eltávolítása, illetve a megfélemlítés volt — ellenségkép: a kulák, a volt szociáldemokrata, a tervet nem teljesítő munkás, a klerikális (egyházi személy); jellemző vádak: „Tito bérenc”, kém, trockista, szabotőr. Nevezetes perek: MAORT- és Nitrokémia-perek, Rajk-, Szakasits-, Grősz-per, tábornok-perek.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a koncepciós perekben a védelem <strong>nem</strong> a vádlott érdekeit szolgálta a szó valódi értelmében — a vádlott ügyvédje is a forgatókönyv része volt, a per kimenetele előre eldöntött volt, a „védelem” csupán formális, jogszerűnek látszó elemet adott a koreografált eljáráshoz; ez alapvető különbség egy valódi jogállami büntetőeljáráshoz képest.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>internálás; Államvédelmi Hatóság (ÁVH)</td>
+        <td>—</td>
+        <td>—</td>
+        <td>Recsk; Hortobágy</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:MNL-TABOR -->
+<figure class="atlas-map" data-atlas-code="MNL-TABOR">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Magyar Nemzeti Levéltár – Telepesek projekt</span>
+    <h4>Hortobágyi és nagykunsági kényszermunkatáborok, 1950–1953</h4>
+    <p class="atlas-map__focus">A kitelepítések célterületei és a zárt kényszermunkatáborok földrajzi rendszere azonosítható.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://telepesek.mnl.gov.hu/images/taborvilag/terkep_nagy.gif" target="_blank" rel="noopener" aria-label="Hortobágyi és nagykunsági kényszermunkatáborok, 1950–1953 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img046.webp" alt="Történelmi térkép: Hortobágyi és nagykunsági kényszermunkatáborok, 1950–1953" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://telepesek.mnl.gov.hu/taborvilag.html" target="_blank" rel="noopener">Magyar Nemzeti Levéltár – Telepesek projekt</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:MNL-TABOR -->
+<div class="source-box">
+      <h4>4. forrás — A koncepciós per mechanizmusa (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a koncepciós perek forgatókönyvét előre megírták, és a vádlottat kényszerrel (fizikai és pszichológiai nyomással) vették rá, hogy a koholt vádakat, mint például a „Tito bérenc” vagy „kém” minősítést, saját maga is elismerje. A rendőrség, az ügyészség, a bíróság, sőt még a hivatalosan kirendelt védőügyvéd is a forgatókönyv szerint, egységesen működött közre a per lefolytatásában — a valódi jogvédelem lehetősége nem létezett.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Hogyan született meg a per menete?</p>
+        <p><strong>b)</strong> Milyen módszerrel csikarták ki a beismerést?</p>
+        <p><strong>c)</strong> Miért nem lehet valódi jogvédelemről beszélni ezekben az esetekben?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Előre megírt forgatókönyv alapján.</p>
+          <p><strong>b)</strong> Fizikai és pszichológiai kényszerrel.</p>
+          <p><strong>c)</strong> Mert a védőügyvéd is a forgatókönyv részeként, a hatóságokkal egységben járt el.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="choice">
+      <p class="task-q">Melyik tábort nevezték „magyar GULAG”-nak?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Hortobágy</button>
+        <button data-val="b">B) Recsk</button>
+        <button data-val="c">C) Sztálinváros</button>
+        <button data-val="d">D) Kistarcsa</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="tf">
+      <p class="task-q">Állítás: Péter Gábor, az ÁVH vezetője közvetlenül Rákosi Mátyásnak jelentett.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="match">
+      <p class="task-q">Párosítsd a koncepciós vádat a célcsoporttal!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">„Tito bérenc”</button>
+          <button class="match-item" data-key="p2">Kulák</button>
+          <button class="match-item" data-key="p3">Klerikális</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">Külpolitikai árulás vádja</button>
+          <button class="match-item" data-key="r2">Vagyonosabb parasztok</button>
+          <button class="match-item" data-key="r3">Egyházi személyek</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>Személyi kultusz, ideológia és mindennapok</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Rákosi személyi kultuszát, az ideológiai nevelést és az életviszonyok átalakulását.</div>
+
+  <article>
+    <h3>A személyi kultusz</h3>
+    <p>A totális állam vezére <strong>Rákosi Mátyás</strong> (1892–1971) volt, aki saját kezébe koncentrálta a hatalmat. Sztálini mintára kiépült személyi kultusza fokozatosan alakult ki, csúcspontja Rákosi 60. születésnapjának országos megünneplése volt (előadások, versek, festmények, szobrok) — a magyar nép „bölcs vezérét”, az „ország tanítóját” mindenütt tapsvihar fogadta, sokszor ábrázolták munkás- vagy parasztemberek között. Az ideológiai nevelés célja a „szocialista embertípus” kialakítása volt: gyerekkorban kisdobos és úttörő mozgalom, katonai fegyelem az iskolában, átírt tankönyvek; ifjúkorban a DISZ (Dolgozó Ifjúság Szövetsége); felnőttkorban szocialista brigádok, „Szabad Nép félóra” (ideológiai képzés), tömegsport (MHK). A vallás- és egyházüldözés nem érte el a szovjetunióbeli mértéket, de az 1951-ben felállított Állami Egyházügyi Hivatal beleszólt az egyházak irányításába.</p>
+
+    <h3>Életviszonyok és ünnepek</h3>
+    <p>A társadalmi igazságtalanságok kiküszöbölésének elve a gyakorlatban erőszakos társadalmi mobilitást hozott: a háború előtti vezető csoportokat (földbirtokosok, tőkések) munkáséletre kényszerítették, míg a munkásság és parasztság előnyöket kapott — az egyenlősítés inkább a jobb helyzetűek lesüllyesztésével, mint a szegények felemelésével ment végbe. Az állam mindenkinek biztosított munkahelyet, de alacsonyan tartotta a béreket, amit kötelező kölcsönökkel (béke- és tervkölcsön) is megcsapolt; ugyanakkor ingyenes volt az egészségügy, a bölcsőde, óvoda, iskoláztatás. Háttérbe szorították a vallási ünnepeket (karácsony és húsvét másnapja munkanap lett), új ünnepeket teremtettek (március 21.: Tanácsköztársaság; április 4.: „felszabadulás ünnepe”; november 7.: NOSZF), és visszaszorították a nemzeti jelképek (himnusz, zászló) használatát.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: az egyenlősítés politikája <strong>nem</strong> elsősorban a szegények anyagi helyzetének javításával valósult meg — bár az állam ingyenes szociális szolgáltatásokat (egészségügy, oktatás) biztosított, az „egyenlősítés” gyakorlati módszere inkább a korábban tehetősebb rétegek lesüllyesztése volt, miközben a bérek általánosan alacsonyan maradtak mindenki számára.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>5. forrás — Rákosi 60. születésnapjának megünneplése (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint Rákosi Mátyás 60. születésnapja alkalmából országos ünnepségsorozatot rendeztek: előadásokat tartottak, verseket írtak, festményeket és szobrokat készítettek tiszteletére. A propaganda a magyar nép „bölcs vezéreként” és „az ország tanítójaként” állította be, gyakran munkás- vagy parasztemberek körében ábrázolva, hangsúlyozva közelségét a néphez — a valóságban azonban a hatalom szűk körben, ellenőrzés nélkül összpontosult a kezében.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen művészeti formákban nyilvánult meg a személyi kultusz?</p>
+        <p><strong>b)</strong> Milyen jelzőkkel illették Rákosit a propagandában?</p>
+        <p><strong>c)</strong> Milyen ellentmondás rejlik a propaganda és a valóság között?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Előadások, versek, festmények, szobrok.</p>
+          <p><strong>b)</strong> „Bölcs vezér”, „az ország tanítója”.</p>
+          <p><strong>c)</strong> A propaganda népközelséget hangsúlyozott, miközben a valóságban a hatalom ellenőrizetlenül, szűk körben összpontosult.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="choice">
+      <p class="task-q">Melyik szervezet felelt az ifjúsági ideológiai nevelésért fiatal felnőttkorban?</p>
+      <div class="task-controls">
+        <button data-val="a">A) DISZ (Dolgozó Ifjúság Szövetsége)</button>
+        <button data-val="b">B) MHK</button>
+        <button data-val="c">C) Úttörőmozgalom</button>
+        <button data-val="d">D) Állami Egyházügyi Hivatal</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: A Rákosi-korszakban az egyenlősítés elsősorban a szegényebb rétegek anyagi felemelésével valósult meg.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott ünnep hagyományos vagy új (kommunista) ünnep volt-e?</p>
+      <div class="sort-row"><span>Karácsony</span>
+        <select data-key="s1"><option value="">válassz</option><option value="hagyomanyos">Hagyományos</option><option value="uj">Új (kommunista)</option></select>
+      </div>
+      <div class="sort-row"><span>November 7. (NOSZF)</span>
+        <select data-key="s2"><option value="">válassz</option><option value="hagyomanyos">Hagyományos</option><option value="uj">Új (kommunista)</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>Kultúra, propaganda és az Aranycsapat</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a szocialista realizmus jellemzőit és az élsport propagandisztikus szerepét.</div>
+
+  <article>
+    <h3>A szocialista realizmus</h3>
+    <p>A művészetek a politika fogságába kerültek: az elfogadott irányzat a szocialista realizmus lett — az idealizált kép pontos másolása, a szocialista embertípus ábrázolása volt a feladat, jellemző témák: munkás és paraszt, gyár és búzamező, Sztálin és Rákosi. Sok művészt és művét betiltották (pl. Az ember tragédiája, Bartók művei). Új szimbólumok kerültek a régiek helyébe: szobordöntések (pl. a Parlament előtti Kossuth-szobrot kicserélték, mert az eredeti letargikusnak számított, helyette egy dinamikus, a kommunista ideálnak megfelelő szobrot állítottak), az új címer és vörös csillag került a közintézményekre, gyárakra.</p>
+
+    <h3>Az élsport és az Aranycsapat</h3>
+    <p>A munka világában terjedt a munkaverseny-mozgalom és a sztahanovizmus. Kitüntetett szerep jutott az élsportnak: ez jelentette az egyetlen (részlegesen) politikamentes karrierlehetőséget, viszonylagos jóléttel és külföldi utazási lehetőséggel, nagy állami támogatással. A pártvezetés felismerte a sportban rejlő propaganda-lehetőséget, a híres sportolókat bevonták a rendszer népszerűsítésébe. A legnépszerűbb sportág a labdarúgás volt: az „<strong>Aranycsapat</strong>” 1952-ben olimpiai bajnoki címet, 1953-ban Londonban, az „évszázad mérkőzésén” 6:3-as győzelmet aratott az angolok ellen, de 1954-ben „csak” a 2. helyet szerezte meg a világbajnokságon — 1956-ban tagjai közül többen emigráltak, köztük Puskás Ferenc.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az élsport propagandisztikus felhasználása <strong>visszaütött</strong> a rendszerre — miközben a sportolók kezdetben a rendszer sikerét voltak hivatottak reprezentálni, az 1956-os forradalom után több híres sportoló (pl. Puskás Ferenc) emigrált, ami éppen a propaganda céljával ellentétes hatást keltett: a rendszer gyengeségét, nem erejét mutatta a nemzetközi közvélemény előtt.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>aranycsapat</td>
+        <td>Nagy Imre</td>
+        <td>1953–55 Nagy Imre első kormánya <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>6. forrás — Az Aranycsapat és a propaganda (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint az 1953-as londoni 6:3-as győzelem az angolok ellen a magyar sporttörténet egyik legnagyobb sikere volt, amelyet a pártvezetés azonnal a szocialista rendszer felsőbbrendűségének bizonyítékaként állított be a propagandában. A sportolók állami támogatást, viszonylagos anyagi jólétet és külföldi utazási lehetőséget kaptak cserébe azért, hogy sikereikkel a rendszer hírnevét öregbítsék — 1956 után azonban több kulcsjátékos, köztük Puskás Ferenc, úgy döntött, hogy nem tér haza, és emigrációban folytatta pályafutását.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Hogyan használta fel a propaganda az 1953-as győzelmet?</p>
+        <p><strong>b)</strong> Milyen előnyöket kaptak cserébe a sportolók?</p>
+        <p><strong>c)</strong> Mi történt 1956 után több kulcsjátékossal?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A szocialista rendszer felsőbbrendűségének bizonyítékaként állította be.</p>
+          <p><strong>b)</strong> Állami támogatást, anyagi jólétet, külföldi utazási lehetőséget.</p>
+          <p><strong>c)</strong> Több kulcsjátékos, köztük Puskás Ferenc, emigrált.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="tf">
+      <p class="task-q">Állítás: A szocialista realizmus stílusában a fő téma a munkás, a paraszt és a szocialista építkezés ábrázolása volt.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="choice">
+      <p class="task-q">Milyen eredményt ért el az Aranycsapat 1954-ben a világbajnokságon?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Bajnoki cím</button>
+        <button data-val="b">B) 2. hely</button>
+        <button data-val="c">C) 3. hely</button>
+        <button data-val="d">D) Kiesés a csoportkörben</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az 1953-as londoni mérkőzésen a magyar válogatott 6:3-ra győzte le ______-t.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>szalámitaktika</dt><dd>Rákosi Mátyás módszere a koalíciós partnerek fokozatos, apró lépésekben történő felszámolására.</dd>
+    <dt>pártállam</dt><dd>Az a berendezkedés, amelyben a párt szervei állami jogköröket sajátítanak ki, és minden intézményt pártirányítás alá vonnak.</dd>
+    <dt>Magyar Dolgozók Pártja (MDP)</dt><dd>Az 1948-ban az MKP és az SZDP egyesülésével létrejött egyetlen, államot irányító párt.</dd>
+    <dt>Államvédelmi Hatóság (ÁVH)</dt><dd>A Rákosi-korszak titkos erőszakszervezete, amely megfigyeléssel, besúgóhálózattal és terrorral tartotta rettegésben a társadalmat.</dd>
+    <dt>internálás</dt><dd>Bírósági eljárás nélküli fogva tartás vagy kényszerlakhelyre költöztetés.</dd>
+    <dt>tanácsrendszer</dt><dd>A helyi államhatalmi, államigazgatási és közigazgatási rendszer a Rákosi-korszakban.</dd>
+    <dt>beszolgáltatás</dt><dd>Az egyénileg gazdálkodó parasztokra kirótt, kötelező terménybeadási rendszer.</dd>
+    <dt>aranycsapat</dt><dd>Az 1950-es évek elején rendkívül sikeres magyar labdarúgó-válogatott elnevezése.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1945. nov. 4.</b> Az első szabad választások</li>
+    <li><b>1946. febr. 1.</b> A köztársaság kikiáltása</li>
+    <li><b>1946</b> A forint bevezetése; a svábok kitelepítésének kezdete</li>
+    <li><b>1947</b> A kékcédulás választások</li>
+    <li><b>1948</b> Az MDP megalakulása — „a fordulat éve”</li>
+    <li><b>1949. aug. 18.</b> A kommunista alkotmány elfogadása</li>
+    <li><b>1949</b> A téeszesítés kezdete</li>
+    <li><b>1950</b> A Honvédelmi Bizottság megalakulása; az első ötéves terv kezdete</li>
+    <li><b>1950–53</b> A recski kényszermunkatábor működése</li>
+    <li><b>1951</b> Az Állami Egyházügyi Hivatal felállítása</li>
+    <li><b>1952</b> A „padlássöprés”; az Aranycsapat olimpiai bajnoki címe</li>
+    <li><b>1953. márc.</b> Sztálin halála</li>
+    <li><b>1953. nov. 25.</b> A londoni 6:3-as győzelem</li>
+    <li><b>1953–55</b> Nagy Imre első kormánya <span class="eonly">E</span></li>
+    <li><b>1954</b> Az Aranycsapat 2. helye a világbajnokságon</li>
+    <li><b>1948–1956</b> A Rákosi-diktatúra</li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Sztálinváros (Dunaújváros)</li><li>Recsk</li><li>Hortobágy</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze a szalámitaktikát és az 1949-es alkotmányt: <em>az 1949-es kommunista alkotmány; az 1945-ös választások; a szalámitaktika kezdete; a kékcédulás választások</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> az 1945-ös választások → a szalámitaktika kezdete (1946) → a kékcédulás választások (1947) → az 1949-es kommunista alkotmány.</p>
+        <p><strong>Indoklás:</strong> Az 1945-ös választásokon a Kisgazdapárt győzött, de a szalámitaktikával fokozatosan felszámolták a koalíciós partnereket; az 1947-es kékcédulás választásokon már csalással biztosították a kommunisták fölényét; ez a folyamat vezetett el az egypárti diktatúra és az 1949-es szovjet mintájú alkotmány elfogadásához.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Személyek azonosítása</h4>
+    <p>A leírás alapján nevezze meg, kiről van szó: „Az Államvédelmi Hatóság vezetője volt, aki közvetlenül Rákosi Mátyásnak jelentett, és akinek irányítása alatt a felnőtt lakosság egyötödéről gyűjtöttek adatokat.” Nevezzen meg egy másik, a témakörben szereplő személyt is, és adja meg szerepét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Péter Gáborra</em> vonatkozik. Egy másik lehetséges személy: Nagy Imre (a Sztálin halála utáni reformer miniszterelnök) vagy Rajk László (koncepciós per áldozata).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: a koalíciós évek és a nyílt diktatúra összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: pártrendszer, választások jellege, gazdaságpolitika, erőszakszervezet), mi a hasonlóság és mi a különbség a koalíciós évek (1945–47) és a nyílt diktatúra (1949–53) berendezkedése között.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Koalíciós évek (1945–47)</th><th>Nyílt diktatúra (1949–53)</th></tr>
+          <tr><td>Pártrendszer</td><td>Többpárti koalíció</td><td>Egypárti (MDP)</td></tr>
+          <tr><td>Választások jellege</td><td>Szabad, majd fokozatosan manipulált</td><td>Formális, egyetlen lista</td></tr>
+          <tr><td>Gazdaságpolitika</td><td>Földosztás, vegyes gazdaság</td><td>Tervgazdaság, erőltetett iparosítás</td></tr>
+          <tr><td>Erőszakszervezet</td><td>Kialakulóban (politikai rendőrség)</td><td>Kiépült ÁVH-terror</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindkét szakaszban a kommunisták fokozatosan, tudatos stratégiával növelték hatalmukat.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+  <p>A Rákosi-korszak <strong>magyar történelmi témakör</strong>, ezért középszinten és emelt szinten egyaránt megjelenhet <strong>hosszú esszé</strong> (210–260 szó) formájában — de rövid esszé (100–130 szó) témájaként is előfordulhat, ha a feladat egy szűkebb részkérdésre (pl. csak a koncepciós perekre) korlátozódik.</p>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta hosszú esszé (kb. 250 szó):</strong> „Mutassa be a Rákosi-diktatúra kiépítését és a terror rendszerét!”</p>
+    <p>A kommunisták 1945 után fokozatosan, a „szalámitaktika” módszerével számolták fel koalíciós partnereiket: a Baloldali Blokk nyomására a Kisgazdapárt meghátrált, kizárták képviselőit, majd az 1947-es kékcédulás választásokon csalással biztosították fölényüket. 1948-ban az MKP és az SZDP egyesülésével létrejött a Magyar Dolgozók Pártja, megszűnt a többpártrendszer, és az 1949-es szovjet mintájú alkotmány rögzítette az egypárti pártállamot — az országgyűlés súlytalanná vált, a tényleges hatalmat a pártvezetés szűk köre gyakorolta. A gazdaságban erőltetett iparosítás (Sztálinváros, hadiipar) és kötelező mezőgazdasági beszolgáltatás jellemezte a korszakot, súlyos következményekkel (1952-es padlássöprés).</p>
+    <p>A rendszer alapvető eszköze a terror volt: az Államvédelmi Hatóság (ÁVH) Péter Gábor vezetésével besúgóhálózatot működtetett, a felnőtt lakosság egyötödéről gyűjtött adatokat. Az „osztályidegennek” minősítetteket kitelepítették a Hortobágyra, a politikai foglyokat a recski „magyar GULAG”-ba zárták. A koncepciós perek (Rajk-per és mások) előre megírt forgatókönyv alapján, kikényszerített vallomásokkal működtek. Mindezt Rákosi Mátyás sztálini mintájú személyi kultusza és a mindennapokat átható ideológiai nevelés (DISZ, Szabad Nép félóra) egészítette ki, amely a szocialista embertípus kialakítására törekedett. A Rákosi-korszak így a totális állami kontroll és a félelem légkörének tökéletes példája volt Magyarországon.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé két szálon (politikai-gazdasági kiépítés, majd a terror rendszere) bontja ki a témát, konkrét dátumokkal, nevekkel és intézményekkel dolgozik — ez emelt szintű elemző mélységet ad.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130">Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260" selected>Hosszú esszé — középszint (210–260 szó)</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — emelt szint (210–260 szó)</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 210–260 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Kronológiailag pontos adatokat (évszám, névhasználat) tartalmaz</li>
+      <li><input type="checkbox"> Legalább két konkrét tényre vagy forrásra hivatkozik</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be a szalámitaktika lépéseit és eredményét!</li>
+    <li><b>E2</b> Jellemezze az 1949-es alkotmány szerinti államszerkezetet!</li>
+    <li><b>E3</b> Mutassa be a mezőgazdaságot sújtó intézkedéseket a Rákosi-korszakban!</li>
+    <li><b>E4</b> Értékelje az ÁVH terrorjának és a koncepciós pereknek a szerepét!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze a koalíciós évek (1945–47) és a nyílt diktatúra (1949–53) politikai berendezkedését!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A Rákosi-korszak</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a koalíciós évek és a szalámitaktika</td></tr>
+    <tr><td>2 perc</td><td>A fordulat éve és a pártállam kiépítése</td></tr>
+    <tr><td>2 perc</td><td>Erőltetett iparosítás és a mezőgazdasági beszolgáltatás</td></tr>
+    <tr><td>2 perc</td><td>A terror rendszere — ÁVH, kitelepítések, koncepciós perek</td></tr>
+    <tr><td>2 perc</td><td>Személyi kultusz, ideológia és mindennapok</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: kultúra, propaganda és az Aranycsapat</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Mit jelent a „szalámitaktika” kifejezés?</li>
+    <li>Milyen államszerkezetet rögzített az 1949-es alkotmány?</li>
+    <li>Milyen módszerekkel kényszerítették a parasztságot a téeszekbe?</li>
+    <li>Hogyan működött az ÁVH és a koncepciós perek rendszere?</li>
+    <li>Milyen eszközökkel épült ki Rákosi személyi kultusza?</li>
+    <li>Milyen szerepet játszott az élsport a rendszer propagandájában?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez magyar történelmi témakör: számíts arra, hogy hosszú esszében (210–260 szó) is kérhetik — ne csak rövid esszére készülj!</li>
+    <li>Ne keverd össze a koalíciós éveket (1945–47, még többpártrendszer) és a nyílt diktatúrát (1949-től, egypártrendszer) — a határvonal az 1948-as „fordulat éve”.</li>
+    <li>Jegyezd meg pontosan: az MDP az MKP és az SZDP egyesülésével jött létre 1948-ban — ez nem ugyanaz, mint a későbbi MSZMP (1956 után).</li>
+    <li>A beszolgáltatás és a téeszesítés két különböző, de összefüggő eszköz volt a parasztság megtörésére — ne mosd össze őket.</li>
+    <li>Ne feledd: a koncepciós perekben a védelem is a forgatókönyv része volt — nem volt valódi jogvédelem.</li>
+    <li>Recsk (kényszermunkatábor) és Hortobágy (kitelepítési célterület) két különböző típusú helyszín — más funkcióval.</li>
+    <li>A személyi kultusz és a valóság közötti ellentmondást (népközelség hangoztatása vs. ellenőrizetlen hatalom) mindig emeld ki, ha erről írsz.</li>
+    <li>Kronológiai csapda: Sztálin halála (1953. márc.) és Nagy Imre első kormánya (1953–55) közvetlenül összefüggenek — Nagy Imre kinevezése Moszkva utasítására történt.</li>
+    <li>Az Aranycsapat sikerei (1952 olimpiai bajnokság, 1953 londoni 6:3) és az 1956-os emigrációk (Puskás Ferenc) fontos, konkrét adatpárt alkotnak.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni Sztálinvárost (Dunaújváros), Recsket és Hortobágyot a térképen.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti témavázlati kiadvány, illetve a hivatalos vizsgakövetelmény ajánlott.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"b"},
+    "m1-t3": {type:"fill", answers:["köztársaságot","koztarsasagot"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"tf", answer:true},
+    "m2-t2": {type:"choice", answer:"b"},
+    "m2-t3": {type:"fill", answers:["népköztársaságot","nepkoztarsasagot"]},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"tf", answer:false},
+    "m3-t2": {type:"choice", answer:"b"},
+    "m3-t3": {type:"fill", answers:["sztálinváros","sztalinvaros"]},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"choice", answer:"b"},
+    "m4-t2": {type:"tf", answer:true},
+    "m4-t3": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"choice", answer:"a"},
+    "m5-t2": {type:"tf", answer:false},
+    "m5-t3": {type:"sort", answers:{s1:"hagyomanyos", s2:"uj"}},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"tf", answer:true},
+    "m6-t2": {type:"choice", answer:"b"},
+    "m6-t3": {type:"fill", answers:["anglia","angliát","angliat"]},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  var chainSteps = [
+    {order:1, text:"A koalíciós pártok közötti szalámitaktika fokozatosan felszámolja a többpártrendszert"},
+    {order:2, text:"1948–49-ben megalakul az MDP és elfogadják a szovjet mintájú alkotmányt, kiépül a pártállam"},
+    {order:3, text:"Az erőltetett iparosítás és a beszolgáltatás átalakítja a gazdaságot és a parasztság életét"},
+    {order:4, text:"Az ÁVH terrorja, a kitelepítések és a koncepciós perek megfélemlítik a társadalmat"},
+    {order:5, text:"A személyi kultusz és az ideológiai nevelés átformálja a mindennapi életet és a kultúrát"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">★</span>Kirakva! A lánc: szalámitaktika → pártállam → erőltetett iparosítás → ÁVH-terror → személyi kultusz.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

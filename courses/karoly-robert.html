@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Károly Róbert — érettségi mini kurzus</title>
+<meta name="description" content="Interaktív érettségi felkészítő mini kurzus: a tartományuraság korától Károly Róbert trónharcán és gazdasági reformjain át a visegrádi királytalálkozóig.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#211B12;--ink-soft:#524A38;--rubric:#8A3A0E;--lapis:#1F4E6B;--gold:#A67C1E;
+  --stone:#EEE6D2;--stone-2:#E2D6B4;--paper:#FFFFFF;--line:#D8C89A;--ok:#2E6B4F;--bad:#8A3A0E;
+  --serif:"EB Garamond",Garamond,Georgia,serif;--sans:"Source Sans 3",-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.col{max-width:720px;margin:0 auto}
+header.masthead{background:var(--paper);border-bottom:1px solid var(--line);padding:64px 0 46px;position:relative;overflow:hidden}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--rubric);margin:0 0 18px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,6.4vw,3.8rem);line-height:1.04;margin:0 0 6px;letter-spacing:-.01em}
+h1 .sub{display:block;font-weight:400;font-style:italic;color:var(--ink-soft);font-size:.58em;margin-top:.22em}
+.lede{font-family:var(--serif);font-size:1.26rem;line-height:1.5;color:var(--ink-soft);margin:26px 0 0;max-width:38em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--line);padding:6px 11px;color:var(--ink-soft);background:#FBF8EE}
+nav.rail{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.rail-inner{max-width:860px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:14px;height:56px}
+.rail-scroll{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+.rail-scroll::-webkit-scrollbar{display:none}
+.rail a{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-decoration:none;color:var(--ink-soft);padding:7px 9px;white-space:nowrap;border-bottom:2px solid transparent}
+.rail a:hover{color:var(--rubric)}
+.rail a.on{color:var(--rubric);border-bottom-color:var(--rubric)}
+.prog{display:flex;align-items:center;gap:8px;flex:none}
+.prog-bar{width:64px;height:5px;background:var(--stone-2);position:relative;overflow:hidden}
+.prog-fill{position:absolute;inset:0 100% 0 0;background:var(--gold);transition:right .5s ease}
+.prog-txt{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+@media(max-width:640px){.prog{display:none}}
+main{background:var(--stone)}
+section.mod{padding:60px 0 10px}
+.mod-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.mod-num{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.14em;border:1px solid var(--gold);padding:3px 8px;flex:none}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.14;margin:0}
+h3{font-family:var(--serif);font-weight:600;font-size:1.4rem;margin:34px 0 8px;color:var(--ink)}
+h4{font-family:var(--sans);font-weight:700;font-size:.86rem;letter-spacing:.11em;text-transform:uppercase;color:var(--rubric);margin:30px 0 10px}
+p{margin:0 0 14px}
+.card{background:var(--paper);border:1px solid var(--line);padding:26px 26px 20px;margin:18px 0}
+.goal{background:#EAF0F4;border:1px solid #C1D4DF;border-left:4px solid var(--lapis);padding:18px 20px;margin:18px 0}
+.goal .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--lapis);display:block;margin-bottom:7px}
+.goal p{margin:0;font-size:.97rem}
+ul.marks{list-style:none;padding:0;margin:0 0 14px}
+ul.marks li{position:relative;padding-left:24px;margin-bottom:8px}
+ul.marks li::before{content:"⚜";position:absolute;left:0;top:0;color:var(--rubric);font-size:.9em}
+.tbl-scroll{overflow-x:auto;margin:18px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:var(--paper)}
+th{background:var(--ink);color:#F5F0E2;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:10px 12px}
+td{border-bottom:1px solid var(--line);padding:10px 12px;vertical-align:top}
+tbody tr:nth-child(even) td{background:#F8F3E4}
+td strong{font-weight:700}
+.source{background:#FBF7E7;border:1px solid var(--line);border-left:4px solid var(--rubric);padding:22px 24px;margin:20px 0}
+.source .src-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rubric);display:block;margin-bottom:10px}
+.source .src-txt{font-family:var(--serif);font-size:1.08rem;line-height:1.6}
+.qs{list-style:none;counter-reset:q;padding:0;margin:16px 0 0}
+.qs li{counter-increment:q;position:relative;padding-left:28px;margin-bottom:9px;font-size:.95rem}
+.qs li::before{content:counter(q,lower-alpha) ")";position:absolute;left:0;font-family:var(--mono);font-size:12px;color:var(--lapis);top:2px}
+.eonly{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;background:var(--gold);color:#fff;padding:1px 5px;vertical-align:2px;margin-right:5px}
+.task{background:var(--paper);border:1px solid var(--line);margin:16px 0;padding:20px 22px}
+.task.done{border-color:var(--gold);box-shadow:inset 3px 0 0 var(--gold)}
+.task-id{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--rubric);display:block;margin-bottom:6px}
+.task-q{font-weight:600;margin-bottom:14px}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+.chip{background:#FBF8EE;border:1px solid var(--line);padding:8px 13px;font-size:.9rem;transition:all .16s ease;text-align:left;color:var(--ink)}
+.chip:hover{border-color:var(--lapis);color:var(--lapis)}
+.chip.sel{border-color:var(--lapis);background:#E8EFF3;color:var(--lapis)}
+.chip.ok{border-color:var(--ok);background:#EDF5F0;color:var(--ok)}
+.chip.bad{border-color:var(--bad);background:#FAEBE3;color:var(--bad)}
+.chip[disabled]{cursor:default;opacity:.85}
+.tf-row{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px dotted var(--line);flex-wrap:wrap}
+.tf-row:last-of-type{border-bottom:0}
+.tf-txt{flex:1;min-width:220px;font-size:.95rem}
+.tf-btns{display:flex;gap:6px;flex-wrap:wrap}
+.tf-note{flex-basis:100%;font-size:.88rem;color:var(--ink-soft);font-style:italic;display:none;padding-top:4px}
+.tf-note.show{display:block}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.match{grid-template-columns:1fr}}
+.match .colhead{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.match .stack{display:flex;flex-direction:column;gap:7px}
+.fill-in{font-family:var(--mono);font-size:.9rem;border:0;border-bottom:1.5px solid var(--lapis);background:#F1F5F7;padding:2px 6px;min-width:130px;color:var(--ink)}
+.fill-in.ok{border-color:var(--ok);background:#EDF5F0}
+.fill-in.bad{border-color:var(--bad);background:#FAEBE3}
+.act{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.btn{background:var(--ink);color:#F5F0E2;border:1px solid var(--ink);padding:8px 16px;font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase}
+.btn:hover{background:var(--rubric);border-color:var(--rubric)}
+.btn.ghost{background:transparent;color:var(--ink-soft);border-color:var(--line)}
+.btn.ghost:hover{color:var(--rubric);border-color:var(--rubric);background:transparent}
+.verdict{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em}
+.verdict.ok{color:var(--ok)}
+.verdict.bad{color:var(--bad)}
+.answer{display:none;margin-top:14px;padding:15px 17px;background:#F3EDD8;border-left:3px solid var(--gold);font-size:.94rem}
+.answer.show{display:block}
+.answer .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
+.chain-wrap{background:var(--paper);border:1px solid var(--line);padding:28px 26px 24px;margin-top:38px;position:relative}
+.chain-wrap .src-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rubric);display:block;margin-bottom:4px}
+.chain-wrap h3{margin:0 0 4px;font-size:1.5rem}
+.chain-wrap .hint{font-size:.93rem;color:var(--ink-soft);margin-bottom:18px}
+.chain-pool{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chain-track{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-height:46px;padding:12px;background:#F9F4E1;border:1px dashed var(--line)}
+.chain-slot{font-family:var(--sans);font-size:.88rem;background:#fff;border:1px solid var(--lapis);color:var(--lapis);padding:7px 12px}
+.chain-arrow{color:var(--gold);font-family:var(--mono)}
+.chain-goal{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:.09em;color:var(--stone-2);border:1px solid var(--line);padding:8px 18px;transition:all .55s ease}
+.chain-goal.lit{color:#fff;background:var(--rubric);border-color:var(--rubric);box-shadow:0 0 0 4px rgba(166,124,30,.28)}
+.search{width:100%;padding:12px 14px;border:1px solid var(--line);background:var(--paper);font-family:var(--sans);font-size:.98rem;color:var(--ink)}
+.search:focus{outline:2px solid var(--lapis);outline-offset:-2px}
+.gloss{margin-top:14px}
+.gloss .row{display:grid;grid-template-columns:210px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+@media(max-width:600px){.gloss .row{grid-template-columns:1fr;gap:3px}}
+.gloss dt{font-family:var(--serif);font-size:1.1rem;font-weight:600}
+.gloss dd{margin:0;font-size:.94rem;color:var(--ink-soft)}
+.no-hit{padding:16px 0;color:var(--ink-soft);font-style:italic}
+.time{border-left:2px solid var(--line);margin:18px 0 0;padding-left:0}
+.time .ev{position:relative;padding:0 0 20px 26px}
+.time .ev::before{content:"";position:absolute;left:-6px;top:8px;width:9px;height:9px;background:var(--rubric);border-radius:50%}
+.time .yr{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--rubric)}
+.time .ttl{font-family:var(--serif);font-size:1.15rem;font-weight:600;line-height:1.3}
+.time .why{font-size:.9rem;color:var(--ink-soft)}
+.essay-tool{background:var(--paper);border:1px solid var(--line);padding:24px}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:7px 12px;border:1px solid var(--line);background:#FBF8EE;color:var(--ink-soft)}
+.pill.on{background:var(--lapis);border-color:var(--lapis);color:#fff}
+textarea{width:100%;min-height:190px;padding:14px;border:1px solid var(--line);background:#FCFAF0;font-family:var(--serif);font-size:1.08rem;line-height:1.6;color:var(--ink);resize:vertical}
+textarea:focus{outline:2px solid var(--lapis);outline-offset:-2px}
+.counter{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.counter .n{font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1}
+.counter .state{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em}
+.gauge{flex:1;min-width:160px;height:8px;background:var(--stone-2);position:relative}
+.gauge .zone{position:absolute;top:0;bottom:0;background:rgba(46,107,79,.28)}
+.gauge .mark{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+.check-list{list-style:none;padding:0;margin:18px 0 0}
+.check-list li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:.93rem}
+.check-list input{margin-top:5px;accent-color:var(--rubric);width:16px;height:16px}
+.tips{counter-reset:tip;list-style:none;padding:0;margin:0}
+.tips li{counter-increment:tip;position:relative;padding:16px 0 16px 56px;border-bottom:1px solid var(--line)}
+.tips li::before{content:counter(tip,decimal-leading-zero);position:absolute;left:0;top:16px;font-family:var(--mono);font-size:13px;color:var(--gold);letter-spacing:.06em}
+.tips b{font-family:var(--serif);font-size:1.14rem;display:block;margin-bottom:3px}
+footer{background:var(--ink);color:#D2C9AE;padding:52px 0 60px;margin-top:70px;font-size:.9rem}
+footer h3{color:#F5F0E2;font-family:var(--serif);font-size:1.4rem;margin:0 0 14px}
+footer a{color:var(--gold)}
+footer ul{padding-left:18px;margin:0 0 18px}
+footer li{margin-bottom:7px}
+.note{font-size:.85rem;color:#9C9174;font-style:italic;border-top:1px solid #383221;padding-top:18px;margin-top:24px}
+.anim .fade{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.anim .fade.in{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--lapis);outline-offset:2px}
+@media print{
+  nav.rail,.chain-wrap,.act,.essay-tool{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .answer{display:block!important}
+  section.mod{padding:14px 0}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Mini kurzus · Történelem érettségi</p>
+    <h1>Károly Róbert<span class="sub">a tartományuraság felszámolásától a visegrádi királytalálkozóig</span></h1>
+    <p class="lede">Hat modul, hat forrás, húsz feladat — a három koronázástól és Rozgonytól a bányareformon, az aranyforinton és a kapuadón át a visegrádi hármas királytalálkozóig.</p>
+    <div class="meta">
+      <span class="tag">6 modul</span>
+      <span class="tag">20 feladat</span>
+      <span class="tag">6 forrás</span>
+      <span class="tag">Középszint + <b>E</b></span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+
+    <div class="chain-wrap" id="chain">
+      <span class="src-lbl">A témakör gerince</span>
+      <h3>Építsd fel az ok-okozati láncot!</h3>
+      <p class="hint">Hogyan lett a szétdarabolt, tartományuraktól terhelt országból négy évtized alatt Európa vezető aranytermelő királysága? Kattints a lépésekre abban a sorrendben, ahogyan egymásból következnek.</p>
+      <div class="chain-pool" id="chainPool"></div>
+      <div class="chain-track" id="chainTrack"><span style="font-family:var(--mono);font-size:11px;color:#9C9576" id="chainPlaceholder">A sorrend ide épül…</span></div>
+      <div class="act">
+        <button class="btn ghost" id="chainReset">Újrakezdem</button>
+        <span class="verdict" id="chainVerdict"></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <div class="rail-scroll" id="railScroll">
+      <a href="#m1">1 · Trónharc</a>
+      <a href="#m2">2 · Felszámolás</a>
+      <a href="#m3">3 · Megszilárdítás</a>
+      <a href="#m4">4 · Bánya, pénz</a>
+      <a href="#m5">5 · Adók</a>
+      <a href="#m6">6 · Külpolitika</a>
+      <a href="#osszefoglalo">Fogalomtár</a>
+      <a href="#bank">Feladatbank</a>
+      <a href="#esszemuhely">Esszéműhely</a>
+      <a href="#szobeli">Szóbeli</a>
+      <a href="#tippek">Tippek</a>
+    </div>
+    <div class="prog" title="Megoldott feladatok">
+      <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+      <span class="prog-txt" id="progTxt">0/20</span>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ 1. MODUL ============ -->
+<section class="mod fade" id="m1">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">1. modul</span></div>
+    <h2>A tartományuraság kora és a trónharc</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni a tartományuraság jellemzőit és legfontosabb szereplőit, valamint Károly Róbert három koronázásának körülményeit és vetélytársait.</p>
+    </div>
+
+    <h3>A tartományuraság</h3>
+    <p>1301-ben meghalt az utolsó Árpád-házi király, III. András — halálakor a <b>tartományuraság</b> fénykorát élte. A tartományúr (más néven oligarcha vagy kiskirály) olyan nagybirtokos volt, akinek kiterjedt magánfamiliája volt, ő maga azonban egyetlen más famíliának sem volt tagja — vagyis senkinek nem tartozott hűséggel, csak saját magának. A legerősebb tartományurak — <b>Csák Máté</b> (Északkelet-Magyarország), <b>Kőszegi Henrik</b> (Nyugat-Dunántúl) és Subics Pál (Horvátország-Dalmácia) — legalább 50 várat és 20 vármegyét tartottak kézben. További jelentős tartományurak voltak Aba Amádé, Borsa Kopasz és Kán László.</p>
+    <p>A tartományuraság egyszerre volt óriásira nőtt nagybirtok és függetlenségre törekvő részállam: az oligarchák önálló pénzt verettek, saját külpolitikát folytattak, és gyakran erőszakosan léptek fel az egyházzal, a jobbágyokkal, a városi polgársággal és a köznemesekkel szemben, akik közül igyekeztek minél több familiárist gyűjteni. Alapvető érdekük az volt, hogy olyan új király és dinasztia kerüljön a magyar trónra, amelyik nem tudja megerősíteni a központi hatalmat.</p>
+
+    <h3>Károly Róbert három koronázása</h3>
+    <p>A nápolyi Anjou családból származó <b>Károly Róbert</b> (Caroberto) — V. István király dédunokája — 1300-ban érkezett Magyarországra, és a délvidéki horvát urak (Babonicsok, Frangepánok, Subicsok), valamint az egyház támogatását élvezte. <b>1301-ben megkoronázták</b> magyar királlyá, de nem a Szent Koronával, ezért a főurak nagy része nem fogadta el uralkodónak, és behívta az országba II. Vencel cseh király fiát, aki Vencel néven foglalta el a trónt (1301–1305).</p>
+    <p>A gyerek Vencel hamarosan visszatért Prágába, és lemondott a magyar trónról a bajor herceg, <b>Wittelsbach Ottó</b> javára, aki 1305–1307 között volt koronázott magyar király, de támogatók híján végül ő is elhagyta az országot. Károly Róbert ezután — miután megtörte az Ottóhoz hű budai polgárok ellenállását — 1308-ban elérte, hogy a két leghatalmasabb tartományúr, Csák Máté és Kőszegi Henrik is elismerje hatalmát; ezután <b>1309-ben másodszor</b>, majd <b>1310-ben harmadszor és véglegesen</b> megkoronázták — immár a Szent Koronával, Székesfehérváron, az esztergomi érsek által, ahogy azt a XIII. századra kialakult koronázási rend megkövetelte.</p>
+    <div class="goal" style="background:#F8F1DC;border-color:#E0CE99;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó</span>
+      <p>A <b>három koronázás</b> gyakori vizsgacsapda: az első (1301) érvénytelen volt, mert nem a Szent Koronával történt; a második (1309) sem volt teljesen szabályos; csak a <b>harmadik, 1310-es</b> koronázás felelt meg minden feltételnek (Szent Korona, Székesfehérvár, esztergomi érsek). Ezért Károly Róbert uralkodásának kezdetét hivatalosan <b>1308-tól</b> számítjuk (amikor a legfontosabb tartományurak elismerték), de csak 1310-től volt vitathatatlanul törvényes király.</p>
+    </div>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th></tr></thead>
+      <tbody><tr>
+        <td>aranyforint, regálé, kapuadó, kilenced, bandérium</td>
+        <td>I. (Anjou) Károly</td>
+        <td>1301: az Árpád-ház kihalása<br>1308: I. Károly uralkodásának kezdete<br><span class="eonly">E</span>1308–1342: I. (Anjou) Károly</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>1. forrás</h4>
+    
+<!-- ATLAS_MAP_START:20a -->
+<figure class="atlas-map" data-atlas-code="20a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 20a. térkép</span>
+    <h4>Tartományurak hatalmi területei 1310 körül</h4>
+    <p class="atlas-map__focus">A királyi hatalom újjászervezésének kiinduló területi problémáját mutatja.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p022_20a.webp" target="_blank" rel="noopener" aria-label="Tartományurak hatalmi területei 1310 körül – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img008.webp" alt="Történelmi térkép: Tartományurak hatalmi területei 1310 körül" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:20a -->
+<div class="source">
+      <span class="src-lbl">Károly Róbert trónigénye — tartalmi kivonat egy pápai bullából</span>
+      <p class="src-txt">A pápa levelében kijelenti, hogy Károlyt, aki V. István magyar király egyenes ági leszármazottja, jogos örökösnek ismeri el a magyar trónon, és felszólítja a magyar főpapokat és bárókat, hogy fogadják el uralkodójuknak. A bulla hangsúlyozza, hogy a magyar korona Rómával való szoros kapcsolata régi hagyomány, és a pápaság érdeke, hogy Magyarországon a Szentszékkel jó viszonyt ápoló király uralkodjon.</p>
+      <ol class="qs">
+        <li>Milyen származási alapon vezeti le a forrás Károly Róbert trónigényét?</li>
+        <li>Milyen eszközzel próbálta a pápaság érvényesíteni álláspontját a magyar bárók felé?</li>
+        <li>Mit jelenthetett Károly Róbert számára a pápai támogatás egy olyan helyzetben, amikor a tartományurak nagy része nem ismerte el uralkodónak?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src1">Megoldásvázlat</button></div>
+      <div class="answer" id="src1"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Azzal, hogy Károly V. István király egyenes ági (dédunokai) leszármazottja, tehát az Árpád-házhoz vérségileg kötődik. <b>b)</b> Pápai bulla kiadásával, amelyben felszólította a magyar főpapokat és bárókat Károly elismerésére. <b>c)</b> Nemzetközi legitimációt és az egyházi előkelők támogatását jelentette, ami különösen fontos volt, amíg a világi tartományurak jelentős része más trónkövetelőt (Vencelt, majd Ottót) támogatott.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m1"></div>
+  </div>
+</section>
+
+<!-- ============ 2. MODUL ============ -->
+<section class="mod fade" id="m2">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">2. modul</span></div>
+    <h2>A tartományúri hatalom felszámolása</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni Károly Róbert módszereit a tartományurak leverésére, ismered a rozgonyi csata jelentőségét, és tudod, hogyan és mikor ért véget a tartományuraság kora.</p>
+    </div>
+
+    <h3>Károly módszerei</h3>
+    <p>A megkoronázott, de hatalmában még korlátozott Károly Róbertnek hosszú, fokozatos küzdelemben kellett felszámolnia a tartományúri hatalmat. Ebben a harcban a főpapságra, a nemességre és néhány város polgárságára támaszkodhatott. Károly a helyzethez igazította módszereit: a legerősebb tartományurakat — például Csák Mátét — egy ideig nem háborgatta, míg akiket lehetett, egymás ellen játszott ki. Másokat rászedett — Kán Lászlótól például a vajdai méltóság ígéretével szerezte meg a Szent Koronát. Gyarapodó híveit gazdagon megjutalmazta, és ha alkalom kínálkozott, fegyverhez is nyúlt. Az erősödő Károlyhoz egyre többen csatlakoztak a tartományurak híveiből is.</p>
+
+    <h3>A rozgonyi csata és a leverés menete</h3>
+    <p>Amikor Kassa polgárai szembekerültek az Abákkal, Károly nem habozott az uralmát egyébként elismerő tartományúrral szemben a város mellé állni. A <b>rozgonyi csatában (1312)</b> a szász polgárokkal összefogva győzte le az Abákat. A király ezután fegyverrel törte meg a Dunántúl nyugati részét uraló Kőszegiek és a tiszántúli Borsa Kopasz hatalmát is. Mivel a tartományurak nem fogtak össze ellene, Károly sorra, egyenként legyőzte őket — köztük Kán Lászlót is. Legjelentősebb ellenfele, <b>Csák Máté</b> területére azonban csak annak halála után, <b>1321-ben</b> tehette rá a kezét. Végül a Károlyt mindvégig támogató délvidéki urak is behódoltak, így <b>1324 körül</b> véget ért a tartományuraság korszaka Magyarországon.</p>
+    <div class="goal" style="background:#F8F1DC;border-color:#E0CE99;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó</span>
+      <p>Károly négyféle eszközt vetett be a tartományurak ellen: <b>kijátszotta</b> egymás ellen őket, <b>átcsábította</b> familiárisaikat, <b>rászedte</b> egyeseket ígéretekkel, és <b>fegyverrel</b> törte meg azokat, akik nem hódoltak be. Ez a négyes eszköztár — nem csak a katonai erő — jó válasz arra a kérdésre, hogyan tudott egyetlen ifjú uralkodó felülkerekedni több tucat, egyenként is erős tartományúron.</p>
+    </div>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Személyek</th><th>Topográfia</th></tr></thead>
+      <tbody><tr>
+        <td>bandérium</td>
+        <td>I. (Anjou) Károly</td>
+        <td>Visegrád</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>2. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">A rozgonyi csata — tartalmi kivonat a Képes Krónika alapján</span>
+      <p class="src-txt">A krónikás elmondja, hogy amikor Kassa polgárai fellázadtak az Abák hatalmaskodása ellen, Károly király hadával a szász polgárság oldalára állt. A csatában a király serege, a kassai és eperjesi polgárok fegyveresei, valamint néhány hozzá hű nemesi bandérium mérkőzött meg az Abák és szövetségeseik seregével. A király serege győzelmet aratott, és ezzel megtörte az Abák hatalmát Kassa térségében.</p>
+      <ol class="qs">
+        <li>Kik alkották Károly seregét a forrás szerint a rozgonyi csatában?</li>
+        <li>Milyen politikai üzenete volt annak, hogy a király a polgárok oldalára állt egy tartományúrral szemben?</li>
+        <li>Milyen jellegű alakulatok vívták meg a csatát, és milyen következtetést vonhatunk le ebből a kortárs magyar hadviselésre nézve?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src2">Megoldásvázlat</button></div>
+      <div class="answer" id="src2"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> A király saját serege, a kassai és eperjesi polgárok fegyveresei, valamint hű nemesi bandériumok. <b>b)</b> Azt jelezte, hogy Károly a tartományurak önkényével szemben a polgárság és a köznemesség támogatójaként lép fel — ez hosszú távon szövetségeseket szerzett neki e rétegek körében. <b>c)</b> A csatát nem egységes királyi hadsereg, hanem különböző eredetű bandériumok (városi, nemesi) vívták — ez mutatja, hogy a magyar hadviselés ekkor még nem központosított, hanem magánhadseregekre épült.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m2"></div>
+  </div>
+</section>
+
+<!-- ============ 3. MODUL ============ -->
+<section class="mod fade" id="m3">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">3. modul</span></div>
+    <h2>A hatalom megszilárdítása</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni a familiaritás rendszerét és az új bárói réteg kialakulását, ismered a honorbirtok fogalmát, és tudod, mi történt Zách Felicián merényletében.</p>
+    </div>
+
+    <h3>Familiaritás és az új arisztokrácia</h3>
+    <p>A bárók a birtokaik vonzáskörzetében élő nemességet szolgálatukba fogadták: velük irányíttatták birtokaikat, ők vezették magánhadseregeiket, és az országos méltóságaikból fakadó ügyeket is az őket szolgáló nemesek segítségével intézték. A bárók szolgálatába szegődött nemeseket <b>familiárisoknak</b>, magát a rendszert <b>familiaritásnak</b> nevezzük. A familiaritás sokban hasonlít a nyugati hűbériséghez, ám alapvetően különbözik attól abban, hogy a familiáris a <b>királytól</b>, és nem az urától kapta a birtokát, valamint hogy ez a viszony nem öröklődött.</p>
+    <p>Károly Róbert a tartományurak leverésével jelentősen megnövelte a királyi birtokállományt. Ugyanakkor adományokkal az őt támogató familiárisokból új, a személyéhez hű bárói réteget hozott létre — ilyen új családok voltak a <b>Garaiak, Lackfiak, Újlakiak és Szécsiek</b>. Az új főnemeseket nemcsak a hála, hanem az anyagi érdek is a királyhoz kötötte: jövedelmük nagyobbik része a király által adományozott méltóságokból (nádor, vajda, tárnokmester stb.) származott. Ezekkel a méltóságokkal ugyanis együtt járt bizonyos királyi várak és földek birtoklása — ezt nevezzük <b>honorbirtoknak</b>. Mivel a méltóságokat az uralkodó gyakran újraosztotta, a bárók jövedelme jelentős részben a királyi kegytől függött. A hűséges bárók és Károly familiárisai élvezhették a királyi udvar fényét és lovagi külsőségeit — 1326-ban a király Szent György Lovagrendet is alapított, amelyben a leghűségesebb bárók tömörültek.</p>
+
+    <h3>A Zách-merénylet (1330)</h3>
+    <p>Károly Róbert belpolitikája az 1320-as évek közepétől elcsöndesedett, egyetlen kivétellel: 1330-ban <b>Zách Felicián</b> merényletet kísérelt meg a királyi család ellen. A királynak nem esett bántódása, de a védekezésre emelt kezű királyné négy ujját a merénylő kardja levágta. A merénylőt azonnal megölték, testét feldarabolták, és intő példaként szétküldték az ország különböző részeibe; a Zách családra és nemzetségre pedig rendkívül szigorú büntetéseket (kivégzéseket, vagyonelkobzást) szabtak ki. A merénylet mögötti indítékot a történészek vitatják: egyesek a tartományuraság utolsó rezdülését látják benne, míg az epikus hagyomány (Arany János balladája) személyes motívumot említ — Zách Felicián lányát, Klárát a királyné öccse, Kázmér megbecstelenítette.</p>
+    <div class="goal" style="background:#F8F1DC;border-color:#E0CE99;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó — forráskritika</span>
+      <p>A Zách-merénylet jó példa arra, hogyan él egymás mellett a <b>történeti magyarázat</b> (a tartományuraság utolsó fellángolása) és az <b>epikus hagyomány</b> (a sértett becsület bosszúja). Az érettségin mindkettőt érdemes megemlíteni, jelezve, melyik melyik forrástípusból ered — ez önmagában forráskritikai teljesítmény.</p>
+    </div>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Emelt szinten</th></tr></thead>
+      <tbody><tr>
+        <td>bandérium</td>
+        <td><span class="eonly">E</span>honorbirtok, familiaritás</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>3. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">A familiaritás rendszere — tartalmi kivonat a tankönyvi szöveg alapján</span>
+      <p class="src-txt">A bárók birtokaik környezetében élő nemeseket fogadtak szolgálatukba: ezek a familiárisok igazgatták uraik birtokait, és háború esetén annak magánhadseregében, a bandériumban katonáskodtak. A familiáris viszony sokban hasonlít a nyugat-európai hűbériséghez, abban azonban különbözik tőle, hogy a familiáris a birtokát nem az urától, hanem a királytól kapta, és a viszony nem volt örökíthető, ellentétben a nyugati hűbérbirtokkal.</p>
+      <ol class="qs">
+        <li>Nevezze meg a familiáris két fő feladatát a forrás alapján!</li>
+        <li>Fogalmazza meg, miben különbözik a familiaritás a nyugat-európai hűbériségtől!</li>
+        <li>Milyen politikai jelentősége volt annak, hogy a familiáris nem az urától, hanem a királytól kapta birtokát?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src3">Megoldásvázlat</button></div>
+      <div class="answer" id="src3"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Ura birtokának igazgatása, valamint katonáskodás a báró bandériumában háború esetén. <b>b)</b> A familiáris nem az urától, hanem a királytól kapta a birtokát, és a familiáris viszony — a nyugati hűbérbirtokkal ellentétben — nem öröklődött. <b>c)</b> A király közvetett módon megtarthatta befolyását a familiárisok fölött is, hiszen végső soron az ő adományától függtek — ez erősítette a központi hatalmat a báróival szemben.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m3"></div>
+  </div>
+</section>
+
+<!-- ============ 4. MODUL ============ -->
+<section class="mod fade" id="m4">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">4. modul</span></div>
+    <h2>Gazdasági reformok I — bányareform és aranyforint</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni a bányaregálé reformját, a nemesfém- és pénzverési monopóliumot, és ismered az aranyforint bevezetésének körülményeit és jelentőségét.</p>
+    </div>
+
+    <h3>A gazdasági reform alapjai</h3>
+    <p>A XIV. század elején már megértek a feltételek arra, hogy a király a korábbi, királyi birtokból beszedett <b>domaniális jövedelmek</b> helyett a királyi jogon beszedett <b>regálé jövedelmekre</b> támaszkodjon. A reform alapját az jelentette, hogy Magyarország rendkívül gazdag volt nemesfémekben: <b>1330 és 1380 között Magyarország adta Európa aranytermelésének mintegy 75%-át</b> (évi kb. 2500 kg), és jelentős volt az ezüsttermelése is (évi kb. 10 000 kg). A reformfolyamatot <b>Nekcsei Demeter</b> tárnokmester irányította.</p>
+
+    <h3>A bányaregálé (urbura) reformja</h3>
+    <p>Az Árpád-korban a király kiváltságolt bányászai a kitermelt arany egytizedét, az ezüst egynyolcadát adták át a királynak — ez volt a <b>bányaregálé (urbura)</b>. Korábban az a terület, amelyen bányát fedeztek fel, csere útján a királyé lett, ami visszatartotta a földbirtokosokat attól, hogy bányanyitást engedélyezzenek földjükön. Károly Róbert ezt megváltoztatta: <span class="eonly">E</span>a földbirtokosok immár megtarthatták a bányát rejtő területet, maguk is nyithattak bányát, és a király lemondott a földesúr javára az urbura egyharmadáról is. Bár ez elvileg csökkentette volna a kincstár bevételét, a fellendülő bányászkodás és az ebből fakadó többletbevétel bőven ellensúlyozta a veszteséget.</p>
+
+    <h3>A nemesfém- és pénzverési monopólium</h3>
+    <p>Az 1320-as évektől tilos volt a kitermelt nyersfémet adni-venni és kivinni az országból — korábban ugyanis a kereskedők megvették és kivitték a nemesfémet, amiből a királynak alig származott haszna. Ezután a kitermelt fémet a <b>királyi kamarák</b> (kincstári hivatalok) vásárolták fel, az általuk meghatározott beváltási árfolyamon, amely az ezüstnél 35%-os, az aranynál 40%-os hasznot biztosított a kincstárnak.</p>
+    <p>A felhalmozott nemesfémből Károly Róbert Firenzéből hozatott mesterek segítségével, firenzei mintára új, értékálló pénzt veretett: az első <b>aranyforint 1325-ben</b> készült el. Az érme előoldalán Keresztelő Szent János, hátoldalán az Anjouk liliomos címere volt látható. Váltópénzei az ezüstgaras és az ezüstdénár voltak (1 aranyforint = 16 ezüstgaras = 96 ezüstdénár). Az intézkedések nyomán fellendült a bányászat a Garam menti bányavárosokban — <b>Körmöcbányán, Selmecbányán, Besztercebányán</b> —, és Magyarország Európa fő aranytermelőjévé vált.</p>
+    <div class="goal" style="background:#F8F1DC;border-color:#E0CE99;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó</span>
+      <p>A bányareform logikája fordított a mai megszokotthoz képest: Károly <b>lemondott</b> a korábbi teljes állami monopóliumról (a bányanyitás jogáról), mert így a földbirtokosok érdekeltté váltak a bányászat fellendítésében — a kisebb részesedés egy sokkal nagyobb, növekvő gazdaságból végül nagyobb összbevételt hozott. Ez a fajta „engedj, hogy többet nyerj” logika jó esszéérv.</p>
+    </div>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Topográfia</th></tr></thead>
+      <tbody><tr>
+        <td>aranyforint, regálé</td>
+        <td>Körmöcbánya, Selmecbánya, Besztercebánya</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>4. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">A bányaregálé reformja — tartalmi kivonat egy Károly Róbert-kori oklevél alapján</span>
+      <p class="src-txt">A király elrendeli, hogy ezentúl azon a földbirtokon, ahol bányát nyitnak, a föld ura maga is nyithat bányát, és a bányanyitás nem jár a terület elvesztésével, mint korábban. A kitermelt nemesfém után fizetendő urburából a földbirtokos megkapja az egyharmad részt, a fennmaradó kétharmad a királyi kincstárat illeti. A rendelkezés célja, hogy a földesurak maguk is érdekeltek legyenek új bányák felkutatásában és megnyitásában.</p>
+      <ol class="qs">
+        <li>Mi változott a korábbi gyakorlathoz képest a bányát rejtő földterület tulajdonjogában?</li>
+        <li>Mekkora részt kapott a földbirtokos az urburából a rendelkezés szerint?</li>
+        <li>Milyen gazdasági célt szolgált a reform, és miért lehetett ez hosszú távon a királynak is előnyös annak ellenére, hogy lemondott az urbura egy részéről?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src4">Megoldásvázlat</button></div>
+      <div class="answer" id="src4"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Korábban a bányát rejtő terület a királyé lett; a reform után a földbirtokos megtarthatta a területet. <b>b)</b> Az urbura egyharmadát. <b>c)</b> Érdekeltté tette a földbirtokosokat a bányanyitásban, ami fellendítette a bányászatot; a megnövekedett termelésből származó többletbevétel bőven ellensúlyozta azt, hogy a király lemondott az urbura egy részéről.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m4"></div>
+  </div>
+</section>
+
+<!-- ============ 5. MODUL ============ -->
+<section class="mod fade" id="m5">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">5. modul</span></div>
+    <h2>Gazdasági reformok II — a kapuadó és a városok</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni a kapuadó bevezetésének okát és mechanizmusát, ismered a további regálékat, és el tudod helyezni a magyar városhálózat típusait a XIV. századi gazdaságban.</p>
+    </div>
+
+    <h3>Az évenkénti pénzváltás megszűnése és a kapuadó</h3>
+    <p>Az értékálló, évente már nem beváltott aranyforint és ezüst váltópénz megjelenésével a király elvesztette az addigi évenkénti pénzbeváltásból származó bevételét, a <b>kamara hasznát</b>. Ennek pótlására vezette be <b>1336-ban a kapuadót</b> (portális adót): minden olyan kapu után, amelyen egy szénásszekér átfért, évente <b>18 ezüstdénárt</b> kellett fizetni a királyi kincstárnak; ahol nem volt ekkora kapu, ott csak a felét. Az adót a jobbágyok fizették portánként (kapunként), nem személyenként.</p>
+    <p>A pénzben fizetendő adó bevezetését az tette lehetővé, hogy a jobbágy ekkorra már el tudta adni terménye egy részét a piacon — az árutermelés kibontakozásával és a pénzgazdálkodás fejlődésével a városok is megerősödtek.</p>
+
+    <h3>További regálék</h3>
+    <ul class="marks">
+      <li><b>Rendkívüli adó</b> — a korábbi századokban szokásos volt az utazó királyi udvar vendéglátása; ennek megszűnésével ezt a rendkívüli adó váltotta fel.</li>
+      <li><b>Harmincadvám</b> — a megnövekedett külkereskedelmi forgalomra kivetett határvám.</li>
+      <li><b>Kiváltságosok és városok adói</b> — a szászok, jászok, kunok és egyéb kiváltságolt csoportok, valamint a városok külön adói.</li>
+      <li><span class="eonly">E</span><b>Egyházi tized egy része</b> — Károly Róbert esetenként lefoglalta a pápaságnak juttatott tizedrészt (általában a tized egyharmadát, amelyre a pápaság rendkívüli események idején tartott igényt).</li>
+    </ul>
+    <p>A gazdaság fejlődése biztosította, hogy a harmincadvám is jelentős bevételt hozzon. A külkereskedelemben a beérkező iparcikkekért (szövetek, fegyverek, egyéb fémáruk) Magyarország döntő mértékben aranypénzzel és részben élelmiszerrel (élő marha, bor) fizetett.</p>
+
+    <h3>A városhálózat típusai</h3>
+    <p>Magyarországon viszonylag kevés nyugati típusú város jött létre — olyan, amelyben megjelentek a céhek. Ezek voltak a nagy önállósággal rendelkező, fallal körülvett <b>szabad királyi városok</b> és a <b>bányavárosok</b>. A városok zöme azonban földesúri joghatóság alatt álló <b>mezőváros</b> volt: ezeknek a mezőgazdasági jellegű településeknek a korlátozott önállóságát legfőképp az jelentette, hogy adójukat egy összegben fizették.</p>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Kronológia</th></tr></thead>
+      <tbody><tr>
+        <td>kapuadó, kilenced</td>
+        <td>1336: a kapuadó bevezetése</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>5. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">A kapuadó bevezetéséről — tartalmi kivonat I. Károly dekrétumából</span>
+      <p class="src-txt">A király elrendeli, hogy mivel az új, értékálló pénz bevezetésével megszűnt az évenkénti pénzváltásból származó jövedelme, ezentúl minden portától (kapu, amelyen egy szénásszekér átfér) tizennyolc dénár adót kell fizetni évente a királyi kincstárnak. Ahol a kapu ennél kisebb, ott csak a felét kell megfizetni. Az adó megfizetése alól sem a nemesek, sem az egyházi birtokok jobbágyai nem mentesülnek.</p>
+      <ol class="qs">
+        <li>Milyen okra vezeti vissza a király az új adó bevezetésének szükségességét?</li>
+        <li>Kiket érintett közvetlenül ez a rendelkezés?</li>
+        <li>Miért lehetett pénzügyileg kedvező az uralkodó számára ez a reform az évenkénti pénzváltáshoz képest?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src5">Megoldásvázlat</button></div>
+      <div class="answer" id="src5"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Az értékálló pénz bevezetésével megszűnt az évenkénti pénzváltásból (kamara hasznából) származó jövedelme, ezt kellett pótolnia. <b>b)</b> Közvetlenül a jobbágyokat, portánként (telkenként), a birtokos jogállásától (nemesi vagy egyházi) függetlenül. <b>c)</b> Mert kiszámítható, rendszeres, évente ismétlődő bevételi forrást biztosított, amely nem függött a pénz gyakori (és a gazdaságra nézve káros) átváltásától.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m5"></div>
+  </div>
+</section>
+
+<!-- ============ 6. MODUL ============ -->
+<section class="mod fade" id="m6">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">6. modul</span></div>
+    <h2>Károly Róbert külpolitikája és a visegrádi királytalálkozó</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni Károly Róbert külpolitikájának három irányát, a posadai vereséget, és részletesen ismered az 1335-ös visegrádi királytalálkozó céljait és eredményeit.</p>
+    </div>
+
+    <h3>Három külpolitikai irány</h3>
+    <p>Károly Róbert három irányban igyekezett aktív külpolitikát folytatni. <b>Itáliában</b> megpróbálta fenntartani trónigényét a nápolyi Anjouknál: fia, András eljegyezte, majd feleségül vette a nápolyi trón örökösnőjét, Johannát. A <b>Balkánon</b> szerette volna újraéleszteni a korábbi évszázadokban a Magyar Királyságtól függő területek feletti ellenőrzést, ezért <b>1330-ban hadjáratot indított Basarab havasalföldi vajda ellen</b> — a hadjárat során azonban Basarab seregei a Kárpátok egyik szorosában tőrbe csalták a magyar sereget (<b>posadai csata</b>), ahonnan maga Károly Róbert is csak nehezen tudott elmenekülni; a vállalkozás így kudarcba fulladt.</p>
+
+    <h3>Közép-Európa és a visegrádi királytalálkozó</h3>
+    <p>Károly Róbert Közép-Európában igyekezett jó kapcsolatot fenntartani a szomszédos országokkal — dinasztikus politikáját mutatja, hogy harmadik felesége cseh, negyedik felesége (Łokietek Ulászló leánya, Erzsébet) lengyel uralkodócsaládból származott. <b>1335-ben Visegrádon</b> cseh–lengyel–magyar hármas királytalálkozót tartottak, amelynek két fő eredménye volt:</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Megállapodás</th><th>Tartalma</th><th>Eredménye</th></tr></thead>
+      <tbody>
+        <tr><td><b>Cseh–lengyel kibékítés</b></td><td>Károly Róbert kibékítette I. János cseh és III. Kázmér lengyel királyt</td><td>János lemondott lengyel trónigényéről, Kázmér Sziléziáról — sikeres</td></tr>
+        <tr><td><b>Új kereskedelmi útvonal</b></td><td>a három uralkodó megállapodott egy Bécset elkerülő, királyi védelem alatt álló új útvonalról</td><td>meghiúsult: a kereskedők a jól bevált Duna-menti útvonalat használták tovább</td></tr>
+      </tbody>
+    </table></div>
+    <p>Fontos utólagos árnyalás: a Bécs szerepét csökkenteni kívánó terv végül azért bukott meg, mert a <b>kereskedelmi útvonalak alakulásában a gazdasági és földrajzi tényezők nagyobb szerepet játszottak, mint a politikai döntések</b> — a kereskedők a biztonságosabb és olcsóbb Duna-menti utat részesítették előnyben.</p>
+
+    <h3>Dinasztikus örökség</h3>
+    <p>Dinasztikus politikája eredményeként Károly Róbert biztosította, hogy elsőszülött fia, <b>Lajos</b> örökölje a lengyel trónt — ezt <b>1339-ben</b> III. Kázmér lengyel királlyal kötött megállapodás rögzítette, amely szerint Kázmér utód nélküli halála esetén Lajos örökli a lengyel koronát. Kisebbik gyermeke, András igényét a nápolyi trónra házassági szerződéssel (a Johannával kötött házassággal) alapozta meg.</p>
+    <p>Károly Róbert 1342-es halálakor gazdaságilag megerősödött, a királyi hatalom erejét reformokkal visszanyerő, a térségben aktív szerepet játszó országot hagyott örökül fiának, Lajosnak.</p>
+    <div class="goal" style="background:#F8F1DC;border-color:#E0CE99;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó</span>
+      <p>A visegrádi királytalálkozó kiváló példa arra, hogy egy politikai megállapodás <b>részlegesen sikeres</b> is lehet: a diplomáciai cél (cseh–lengyel béke) teljesült, a gazdasági cél (Bécs megkerülése) viszont nem — mert a gazdaság logikája erősebbnek bizonyult a politikai szándéknál. Ez a fajta árnyalt értékelés — nem „sikeres” vagy „sikertelen”, hanem „részben” — a történelmi gondolkodás szempontnál hoz pontot.</p>
+    </div>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Kronológia</th><th>Topográfia</th></tr></thead>
+      <tbody><tr>
+        <td>1335: a visegrádi királytalálkozó</td>
+        <td>Visegrád, Lengyelország, Csehország, Bécs</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>6. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">A visegrádi megállapodás — tartalmi kivonat egy krónikás feljegyzés alapján</span>
+      <p class="src-txt">A három uralkodó — a magyar, a cseh és a lengyel király — Visegrádon gyűlt össze. Megegyeztek abban, hogy János cseh király lemond a lengyel trónra vonatkozó igényéről, Kázmér lengyel király pedig Sziléziáról mond le a csehek javára. Megállapodtak továbbá egy új kereskedelmi útvonal megnyitásáról, amely elkerülné Bécs városát, és amelyet mindhárom uralkodó katonai védelemben részesítene, hogy a kereskedők ne az osztrák várost válasszák áruik szállítására.</p>
+      <ol class="qs">
+        <li>Foglalja össze tömören a visegrádi megállapodás két fő pontját!</li>
+        <li>Melyik uralkodó melyik igényről mondott le a forrás szerint?</li>
+        <li>Miért próbálták elkerülni Bécset az új kereskedelmi útvonallal? Sikerült-e ez hosszú távon?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src6">Megoldásvázlat</button></div>
+      <div class="answer" id="src6"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> A cseh–lengyel területi vita rendezése, valamint egy Bécset elkerülő új kereskedelmi útvonal létrehozása. <b>b)</b> János cseh király lemondott a lengyel trónigényről, Kázmér lengyel király Sziléziáról mondott le. <b>c)</b> Mert Bécs árumegállító joga miatt a kereskedőknek ott kellett árulniuk, ami hasznot hozott a városnak, nem a magyar és szövetséges térségnek; a terv végül nem sikerült, mert a kereskedők a megszokott, olcsóbb Duna-menti útvonalat választották.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m6"></div>
+  </div>
+</section>
+
+<!-- ============ ÖSSZEFOGLALÓ ============ -->
+<section class="mod fade" id="osszefoglalo">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Összefoglaló</span></div>
+    <h2>Fogalomtár és kronológia</h2>
+
+    <h4>Fogalomtár — gépeld be, amit keresel</h4>
+    <input class="search" id="glossSearch" type="search" placeholder="Keresés a fogalmak között… (pl. urbura, honorbirtok, kapuadó)" aria-label="Keresés a fogalomtárban">
+    <div class="gloss" id="glossList"></div>
+
+    <h4>Kronológia</h4>
+    <div class="time" id="timeline"></div>
+
+    <h4>Topográfia — mit kell megmutatni az atlaszban?</h4>
+    <ul class="marks">
+      <li><b>A tartományurak területei:</b> Csák Máté (Északkelet-Magyarország), Kőszegi Henrik (Nyugat-Dunántúl), Subics Pál (Horvátország-Dalmácia).</li>
+      <li><b>A hatalommegszilárdítás helyszínei:</b> Rozgony (Kassa mellett), Visegrád.</li>
+      <li><b>A bányavárosok:</b> Körmöcbánya, Selmecbánya, Besztercebánya (a Garam mentén).</li>
+      <li><b>A külpolitika helyszínei:</b> Nápoly (Itália), Havasalföld (a posadai csata), Bécs, Lengyelország, Csehország.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FELADATBANK ============ -->
+<section class="mod fade" id="bank">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Feladatbank</span></div>
+    <h2>Érettségi típusú komplex feladatok</h2>
+    <p>A három feladat az írásbeli I. részének mintájára készült: forrásalapú, több részkérdésből áll, és részpontokra megy. Oldd meg papíron, majd nyisd meg a pontozott megoldást.</p>
+
+    <div class="card">
+      <span class="task-id">K1 · Károly Róbert trónra kerülésének állomásai</span>
+      <p style="font-size:.95rem">Adott három évszám: <b>1301</b>, <b>1308</b>, <b>1310</b>.</p>
+      <ol class="qs">
+        <li>Nevezze meg mindhárom évszámhoz a hozzá kapcsolódó eseményt! <b>(6 pont)</b></li>
+        <li>Nevezze meg, melyik koronázás volt az egyetlen, amely minden feltételnek megfelelt, és sorolja fel ezeket a feltételeket! <b>(4 pont)</b></li>
+        <li>Nevezze meg Károly Róbert két vetélytársát, akik közbeeső időszakban koronázott magyar királyok voltak! <b>(2 pont)</b></li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="k1">Pontozott megoldás</button></div>
+      <div class="answer" id="k1"><span class="lbl">Megoldás · 12 pont</span>
+        <b>a)</b> 1301: Károly Róbert első, érvénytelen koronázása (nem a Szent Koronával). 1308: a legfontosabb tartományurak elismerik hatalmát, uralkodásának hivatalos kezdete. 1310: a harmadik, végérvényes koronázás. <b>b)</b> Az 1310-es koronázás; feltételek: Szent Korona, Székesfehérvár, koronázást az esztergomi érsek végzi. <b>c)</b> Vencel (1301–1305) és Wittelsbach Ottó (1305–1307).
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-id">K2 · a gazdasági reform elemei (rendszerezés)</span>
+      <ol class="qs">
+        <li>Nevezze meg, melyik évben verték az első aranyforintot! <b>(1 pont)</b></li>
+        <li>Nevezze meg, mekkora hasznot biztosított a kincstárnak a nemesfém-felvásárlási árfolyam aranynál és ezüstnél! <b>(2 pont)</b></li>
+        <li>Nevezze meg a kapuadó bevezetésének évét és a befizetendő összeget! <b>(2 pont)</b></li>
+        <li>Fogalmazza meg az ok-okozati összefüggést az aranyforint bevezetése és a kapuadó bevezetése között! <b>(3 pont)</b></li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="k2">Pontozott megoldás</button></div>
+      <div class="answer" id="k2"><span class="lbl">Megoldás · 8 pont</span>
+        <b>a)</b> 1325. <b>b)</b> Ezüstnél 35%, aranynál 40%. <b>c)</b> 1336, portánként (kapunként) 18 ezüstdénár. <b>d)</b> Az értékálló aranyforint bevezetésével megszűnt az évenkénti pénzváltásból (kamara haszna) származó bevétel, ezért vezették be a kapuadót, amely ezt a kiesett jövedelmet volt hivatott pótolni.
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-id">K3 · a visegrádi királytalálkozó (forráselemzés)</span>
+      <div class="source" style="margin-top:6px">
+        <p class="src-txt" style="margin:0">„A három uralkodó Visegrádon gyűlt össze. Megegyeztek, hogy János cseh király lemond a lengyel trónigényről, Kázmér lengyel király pedig Sziléziáról mond le. Megállapodtak egy Bécset elkerülő új kereskedelmi útvonal létesítéséről is.” (tartalmi kivonat)</p>
+      </div>
+      <ol class="qs">
+        <li>Nevezze meg a találkozó évét és a három résztvevő országot! <b>(4 pont)</b></li>
+        <li>Nevezze meg, melyik célkitűzés valósult meg, és melyik nem! <b>(2 pont)</b></li>
+        <li>Magyarázza meg, miért hiúsult meg a kereskedelmi útvonalról szóló terv! <b>(2 pont)</b></li>
+        <li>Nevezze meg, melyik későbbi dinasztikus megállapodás épített tovább a visegrádi jó viszonyra! <b>(2 pont)</b></li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="k3">Pontozott megoldás</button></div>
+      <div class="answer" id="k3"><span class="lbl">Megoldás · 10 pont</span>
+        <b>a)</b> 1335; Magyarország, Csehország, Lengyelország. <b>b)</b> Megvalósult a cseh–lengyel kibékítés; nem valósult meg az új kereskedelmi útvonal. <b>c)</b> Mert a kereskedők a gazdasági és földrajzi tényezők miatt továbbra is a jól bevált, olcsóbb és biztonságosabb Duna-menti útvonalat használták. <b>d)</b> Az 1339-es megállapodás, amely szerint III. Kázmér utód nélküli halála esetén Károly Róbert fia, Lajos örökli a lengyel trónt.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESSZÉMŰHELY ============ -->
+<section class="mod fade" id="esszemuhely">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Esszéműhely</span></div>
+    <h2>Esszéírás — szerkezet, minta, szószámláló</h2>
+
+    <h4>Fontos: ez a témakör mindig magyar történelmi</h4>
+    <p>Károly Róbert uralkodása magyar történelmi téma, ezért középszinten kizárólag a <b>hosszú esszében</b> (210–260 szó) szerepelhet, a rövid esszé ilyenkor egyetemes témát dolgoz fel. Emelt szinten bármelyik esszétípusban előfordulhat.</p>
+
+    <h4>Kidolgozott hosszú esszé</h4>
+    <div class="source">
+      <span class="src-lbl">A feladat</span>
+      <p style="margin:0 0 14px;font-size:.96rem">Mutassa be a források és ismeretei segítségével I. Károly gazdasági reformjait, és fejtse ki, hogyan alapozták meg a királyi hatalom megerősödését! <i>(hosszú esszé, 210–260 szó)</i></p>
+      <span class="src-lbl">Mintamegoldás · 235 szó</span>
+      <div class="src-txt">
+        <p>A feladat I. Károly gazdasági reformjainak bemutatását kéri, kitérve azok politikai jelentőségére.</p>
+        <p>A XIV. század elején megértek a feltételek arra, hogy a király a domaniális jövedelmek helyett a regálékra támaszkodjon — ezt Magyarország kivételes nemesfémgazdagsága tette lehetővé: az ország 1330 és 1380 között Európa aranytermelésének mintegy háromnegyedét adta. Nekcsei Demeter tárnokmester irányításával Károly átalakította a bányaregálét: a földbirtokosok megtarthatták a bányát rejtő területet, és az urbura egyharmadát is megkapták, ami érdekeltté tette őket az új bányák nyitásában.</p>
+        <p>1320-tól tilos lett a nyersfém kivitele, azt a királyi kamarák vásárolták fel jelentős haszonnal. A felhalmozott nemesfémből 1325-ben megverték az első aranyforintot, firenzei mintára. Az értékálló pénz miatt azonban a király elvesztette az évenkénti pénzváltás hasznát, ezért 1336-ban bevezette a kapuadót, portánként 18 dénár értékben.</p>
+        <p>E reformok politikai jelentősége abban áll, hogy a regálé jövedelmek — szemben a domaniális jövedelmekkel — nem függtek a bárók kegyétől, hanem közvetlenül a királyi kincstárba folytak be. Ez tette lehetővé, hogy Károly erős királyi bandériumot tartson fenn, és megjutalmazza a hozzá hű, familiárisokból emelt új bárói réteget. A gazdasági reform tehát nem öncélú volt: a megerősödött királyi hatalom katonai és politikai alapját is megteremtette.</p>
+      </div>
+    </div>
+    <p><b>Miért működik?</b> Az első mondat visszahangozza a feladatot. A bekezdések logikus sorrendben haladnak: alapok → bányareform → pénzreform → politikai összefüggés. A záró mondat nem ismétel, hanem <i>értékel</i>: kimondja, miért nem öncélú a gazdasági reform — ez a „történelmi gondolkodás” szempontnál hoz pontot.</p>
+
+    <h4>Írd meg te — élő szószámlálóval</h4>
+    <div class="essay-tool">
+      <div class="pill-row" id="essayPills"></div>
+      <p style="font-size:.94rem;color:var(--ink-soft)" id="essayPrompt"></p>
+      <textarea id="essayBox" placeholder="Ide írd az esszédet. Kezdd a feladat kérdésének visszahangzásával…" aria-label="Esszé szövege"></textarea>
+      <div class="counter">
+        <span class="n" id="wordN">0</span>
+        <div class="gauge" id="gauge"><div class="zone" id="gzone"></div><div class="mark" id="gmark" style="left:0"></div></div>
+        <span class="state" id="wordState">Kezdj el írni…</span>
+      </div>
+      <ul class="check-list">
+        <li><input type="checkbox" id="c1"><label for="c1">Az első mondatban visszahangoztam a feladat kérdését.</label></li>
+        <li><input type="checkbox" id="c2"><label for="c2">Megadtam az időt (évszázad, pontos évszám).</label></li>
+        <li><input type="checkbox" id="c3"><label for="c3">Legalább kétszer konkrétan hivatkoztam a forrásra.</label></li>
+        <li><input type="checkbox" id="c4"><label for="c4">Legalább öt szakkifejezést használtam pontosan.</label></li>
+        <li><input type="checkbox" id="c5"><label for="c5">Nem soroltam, hanem érveltem: minden állításhoz tartozik magyarázat.</label></li>
+        <li><input type="checkbox" id="c6"><label for="c6">A záró mondat értékel vagy következtet, nem ismétel.</label></li>
+      </ul>
+      <p style="font-size:.82rem;color:var(--ink-soft);margin:14px 0 0;font-style:italic">A szöveg csak ebben a böngészőablakban él — frissítéskor elvész.</p>
+    </div>
+
+    <h4>Gyakorló esszétémák</h4>
+    <ul class="marks">
+      <li><b>E1</b> — Mutassa be a tartományuraság jellemzőit, és fejtse ki, hogyan számolta fel Károly Róbert az oligarchák hatalmát! <i>(hosszú)</i></li>
+      <li><b>E2</b> — Mutassa be a familiaritás rendszerét és az új bárói réteg kialakulását Károly Róbert korában! <i>(hosszú)</i></li>
+      <li><b>E3</b> — Fejtse ki I. Károly bányareformját és az aranyforint bevezetésének jelentőségét! <i>(hosszú)</i></li>
+      <li><b>E4</b> — Mutassa be I. Károly külpolitikájának három irányát, és értékelje sikerességüket! <i>(hosszú)</i></li>
+      <li><span class="eonly">E</span><b>E5</b> — Hasonlítsa össze I. Károly domaniális és regálé jövedelmekre épülő gazdaságpolitikáját, és értékelje, miért volt ez politikailag is előnyös! <i>(komplex/összehasonlító)</i></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SZÓBELI ============ -->
+<section class="mod fade" id="szobeli">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Szóbeli</span></div>
+    <h2>Tételvázlat és vizsgáztatói kérdések</h2>
+    <div class="goal">
+      <span class="lbl">A tétel</span>
+      <p><b>A királyi hatalom újbóli megszilárdítása Anjou I. Károly idején, a visegrádi királytalálkozó.</b><br>A válaszában térjen ki a tartományuraság felszámolására, a hatalom gazdasági alapjaira és a visegrádi királytalálkozóra! Használja a mellékelt forrásokat és az atlaszt!</p>
+    </div>
+
+    <h4>Felelet-váz (kb. 15 perc)</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Perc</th><th>Rész</th><th>Tartalom</th></tr></thead>
+      <tbody>
+        <tr><td><b>0–2</b></td><td>Bevezetés</td><td>A tartományuraság jellemzői 1301-ben; Károly Róbert három koronázása.</td></tr>
+        <tr><td><b>2–6</b></td><td>A hatalom felszámolása</td><td>Rozgony (1312), Csák Máté halála (1321), a tartományuraság vége (1324). <b>Forrás:</b> a rozgonyi csata.</td></tr>
+        <tr><td><b>6–10</b></td><td>Gazdasági alapok</td><td>Bányareform, urbura, aranyforint (1325), kapuadó (1336). <b>Forrás:</b> a bányareform.</td></tr>
+        <tr><td><b>10–15</b></td><td>Külpolitika, zárás</td><td>Posadai vereség, visegrádi királytalálkozó (1335). <b>Atlasz:</b> Visegrád, Havasalföld. Zárás: gazdasági reform és politikai megerősödés összefüggése.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Várható vizsgáztatói kérdések</h4>
+    <ul class="marks">
+      <li>Miért nem volt érvényes az 1301-es koronázás?</li>
+      <li>Milyen módszereket alkalmazott Károly Róbert a tartományurak ellen?</li>
+      <li>Mi a különbség a familiaritás és a nyugat-európai hűbériség között?</li>
+      <li>Miért volt kedvező a királynak, hogy lemondott az urbura egy részéről?</li>
+      <li>Miért vezették be a kapuadót?</li>
+      <li><span class="eonly">E</span>Miért hiúsult meg a visegrádi kereskedelmi útvonal terve?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TIPPEK ============ -->
+<section class="mod fade" id="tippek">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Tippek</span></div>
+    <h2>Tíz érettségi tipp ehhez a témakörhöz</h2>
+    <ol class="tips">
+      <li><b>Ez a témakör mindig magyar történelmi.</b> Középszinten csakis a hosszú esszében szerepelhet — készülj fel rá alaposan, mert nagy eséllyel előkerül.</li>
+      <li><b>A három koronázást fejből tudd!</b> 1301 (érvénytelen), 1308 (a tartományurak elismerik), 1310 (végleges, a Szent Koronával). Ez a leggyakoribb csapdapont.</li>
+      <li><b>Négy eszközt köss Károly hatalomfelszámolásához.</b> Kijátszás, familiáris-átcsábítás, becsapás, fegyver — ez a négyes eszköztár jó válasz bármilyen „hogyan” kérdésre.</li>
+      <li><b>Ne keverd a domaniális és a regálé jövedelmet!</b> Domaniális = a királyi birtokból; regálé = királyi jogon, pénzben (urbura, kapuadó, harmincadvám mind regálé).</li>
+      <li><b>A forrás nem díszlet.</b> Minden esszében legalább kétszer hivatkozz rá konkrétan — a forráshasználat a szóbelin 12 pontot ér.</li>
+      <li><b>Kösd össze az aranyforintot és a kapuadót ok-okozati lánccal!</b> Az értékálló pénz megszüntette a kamara hasznát, ezért kellett a kapuadó — ez klasszikus vizsgakérdés.</li>
+      <li><b>Kösd össze az évszámokat eseményekkel.</b> 1312 (Rozgony), 1321 (Csák Máté halála), 1325 (aranyforint), 1330 (Zách-merénylet, posadai csata), 1335 (Visegrád), 1336 (kapuadó) — ezek önmagukban is kérdezhetők.</li>
+      <li><b>Ne mondd „sikeres” vagy „sikertelen” egyértelműen a visegrádi találkozóról!</b> A diplomáciai cél teljesült, a gazdasági nem — ez az árnyalt értékelés plusz pontot ér.</li>
+      <li><b>A familiaritás és a honorbirtok emelt szintű, de fontos fogalompár.</b> A honorbirtok a méltósághoz kötött, nem örökölhető birtok — ez különbözteti meg a hűbérbirtoktól.</li>
+      <li><b>Gyakorolj időre.</b> A hosszú esszére 45–50 perc jusson; a szóbeli 30 perces felkészülési idejében készíts a fenti perc-beosztást követő vázlatot.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap col">
+    <h3>Források és tanári megjegyzések</h3>
+    <ul>
+      <li>Oktatási Hivatal: <i>Történelem 9.</i> tankönyv (OH-TOR09TB) — Az Anjouk fejezet.</li>
+      <li>B. Mátyus Gyöngyi – Bori István: <i>Történelem érettségi témavázlatok II. Közép- és emelt szint</i> — A királyi hatalom újbóli megszilárdítása Anjou I. Károly idején témakör követelménytáblái és tartalmi vázlata.</li>
+      <li>A 2024-től hatályos történelem részletes érettségi vizsgakövetelmény és vizsgaleírás (Oktatási Hivatal).</li>
+    </ul>
+    <p class="note">A kurzusban szereplő korabeli források <b>tartalmi kivonatok</b>, nem szó szerinti idézetek: a pápai bulla, a Képes Krónika, a Károly Róbert-kori oklevelek és a visegrádi megállapodás lényegi tartalmát foglalják össze szerkesztett, tanulási célú formában. Hivatalos szóbeli tételsorhoz javasolt a Képes Krónika és a fennmaradt oklevelek hitelesített, szó szerinti fordítása.</p>
+    <p class="note">A rövid feladatok és a mintaesszé saját szerkesztésű kiegészítő anyagok, amelyek a témavázlat és a tankönyv adatait dolgozzák fel gyakorlási céllal — az esszék pontos pontbontását minden vizsgaidőszakban a hivatalos javítási-értékelési útmutató rögzíti. A Zách-merénylet indítékára nézve a történettudomány több hipotézist is számon tart; a kurzus ezt a nyitottságot tudatosan jelzi.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+var CHAIN = [
+  "Károly Róbert leveri a tartományurakat (1312–1324)",
+  "a megnövekedett királyi birtok és a bányagazdagság kiaknázása",
+  "a bányareform fellendíti a nemesfémtermelést",
+  "aranyforint verése (1325), regálé jövedelmek",
+  "erős királyi bandérium és hű bárói réteg"
+];
+
+var TASKS = {
+  m1:[
+    {id:"F1.1",type:"tf",q:"Döntsd el az állításokról, hogy igazak vagy hamisak!",items:[
+      {t:"A tartományúr olyan nagybirtokos volt, aki maga is más nagybirtokos familiárisa volt.",a:false,n:"Hamis — a tartományúr éppen az volt, aki senkinek nem volt familiárisa, csak neki voltak familiárisai."},
+      {t:"Károly Róbertet 1301-ben a Szent Koronával koronázták meg.",a:false,n:"Hamis — az első koronázás éppen azért volt vitatott, mert nem a Szent Koronával történt."},
+      {t:"A tartományurak érdekeltek voltak abban, hogy gyenge központi hatalmú király kerüljön trónra.",a:true,n:"Igaz — így megtarthatták saját, félig önálló hatalmukat."},
+      {t:"Károly Róbertet 1310-ben véglegesen és szabályosan megkoronázták.",a:true,n:"Igaz — Székesfehérváron, a Szent Koronával, az esztergomi érsek által."}
+    ]},
+    {id:"F1.2",type:"match",q:"Párosítsd a trónkövetelőt az uralkodási időszakával!",
+      left:["Károly Róbert (első koronázás)","Vencel","Wittelsbach Ottó","Károly Róbert (végleges)"],
+      right:["1301","1301–1305","1305–1307","1310"],
+      pairs:[0,1,2,3]},
+    {id:"F1.3",type:"open",q:"Nevezz meg két tartományurat és azok birtokterületét!",
+      answer:"Például: Csák Máté (Északkelet-Magyarország), Kőszegi Henrik (Nyugat-Dunántúl), Subics Pál (Horvátország-Dalmácia) közül bármely kettő."}
+  ],
+  m2:[
+    {id:"F2.1",type:"choice",q:"Melyik évben zajlott a rozgonyi csata?",
+      options:["1301","1308","1312","1321"],correct:2,
+      answer:"1312-ben."},
+    {id:"F2.2",type:"open",q:"Milyen négy módszert alkalmazott Károly Róbert a tartományurak ellen?",
+      answer:"Egymás ellen kijátszotta őket, familiárisaikat magához csábította, néhányat rászedett ígéretekkel, és akiket lehetett, fegyverrel győzött le."},
+    {id:"F2.3",type:"open",q:"Mikor és hogyan szerezte meg Károly Róbert Csák Máté területeit?",
+      answer:"1321-ben, Csák Máté halála után — életében nem tudta legyőzni vagy behódoltatni a leghatalmasabb tartományurat."},
+    {id:"F2.4",type:"open",q:"Mikor ért véget a tartományuraság kora Magyarországon, és mi volt ennek utolsó lépése?",
+      answer:"1324 körül, amikor a Károlyt mindvégig támogató délvidéki urak is behódoltak a királynak."}
+  ],
+  m3:[
+    {id:"F3.1",type:"sort",q:"Csoportosítsd a jellemzőket aszerint, hogy a familiaritásra vagy a nyugati hűbériségre jellemzőek!",cats:["Familiaritás","Nyugati hűbériség"],
+      items:[["a birtokot a királytól kapja",0],["a birtokot az úrtól kapja",1],["örökíthető viszony",1],["nem örökíthető viszony",0]],
+      answer:"Familiaritás: a birtokot a királytól kapja, nem örökíthető viszony. Hűbériség: a birtokot az úrtól kapja, örökíthető viszony."},
+    {id:"F3.2",type:"open",q:"Mi a honorbirtok, és milyen méltóságokhoz kapcsolódott?",
+      answer:"Bizonyos tisztségekkel (nádor, vajda, tárnokmester stb.) együtt járó, a méltóság betöltéséhez kötött, nem örökíthető királyi vár- és földbirtok."},
+    {id:"F3.3",type:"open",q:"Mi történt Zách Felicián merényletében (1330), és milyen két magyarázat él az indítékára?",
+      answer:"Zách Felicián megtámadta a királyi családot; a királynak nem esett bántódása, de a királyné négy ujját levágta. Két magyarázat: a tartományuraság utolsó fellángolása (történészi nézet), illetve személyes bosszú lánya meggyalázása miatt (epikus hagyomány, Arany János balladája)."}
+  ],
+  m4:[
+    {id:"F4.1",type:"fill",q:"Egészítsd ki a szöveget!",
+      parts:["Az első aranyforintot ",0," -ban verték, ",1," mintára. A reformfolyamatot ",2," tárnokmester irányította."],
+      blanks:[["1325"],["firenzei"],["nekcsei demeter","nekcsei"]],
+      answer:"1325 — firenzei — Nekcsei Demeter."},
+    {id:"F4.2",type:"open",q:"Mi változott a bányaregálé (urbura) reformjában a korábbi gyakorlathoz képest?",
+      answer:"Korábban a bányát rejtő terület a királyé lett; a reform után a földbirtokos megtarthatta a területet, maga is nyithatott bányát, és megkapta az urbura egyharmadát."},
+    {id:"F4.3",type:"open",q:"Miért tiltotta meg Károly Róbert az 1320-as évektől a nyersfém szabad kereskedelmét?",
+      answer:"Mert korábban a kereskedők megvették és kivitték a nemesfémet az országból, amiből a királynak alig származott haszna; ezután a királyi kamarák vásárolták fel jelentős haszonnal a kitermelt fémet."},
+    {id:"F4.4",type:"open",q:"Nevezd meg a Garam menti három legfontosabb bányavárost!",
+      answer:"Körmöcbánya, Selmecbánya, Besztercebánya."}
+  ],
+  m5:[
+    {id:"F5.1",type:"open",q:"Miért vezette be Károly Róbert 1336-ban a kapuadót?",
+      answer:"Mert az értékálló aranyforint bevezetésével megszűnt az évenkénti pénzváltásból (kamara hasznából) származó bevétele, ezt kellett pótolnia."},
+    {id:"F5.2",type:"choice",q:"Mennyi volt a kapuadó összege portánként?",
+      options:["8 dénár","18 dénár","36 dénár","96 dénár"],correct:1,
+      answer:"18 ezüstdénár."},
+    {id:"F5.3",type:"sort",q:"Csoportosítsd a városokat típusuk szerint!",cats:["Szabad királyi / bányaváros","Mezőváros"],
+      items:[["Körmöcbánya",0],["Debrecen",1],["Kassa",0],["Kecskemét",1]],
+      answer:"Szabad királyi / bányaváros: Körmöcbánya, Kassa. Mezőváros: Debrecen, Kecskemét."}
+  ],
+  m6:[
+    {id:"F6.1",type:"open",q:"Mi történt a posadai csatában (1330), és milyen következménnyel járt?",
+      answer:"Basarab havasalföldi vajda seregei tőrbe csalták a magyar sereget a Kárpátok egyik szorosában; Károly Róbert csak nehezen tudott elmenekülni, a hadjárat kudarcba fulladt."},
+    {id:"F6.2",type:"open",q:"Nevezd meg a visegrádi királytalálkozó (1335) két fő megállapodását, és értékeld, melyik valósult meg!",
+      answer:"A cseh–lengyel kibékítés (János lemondott a lengyel trónigényről, Kázmér Sziléziáról) megvalósult; a Bécset elkerülő új kereskedelmi útvonal terve nem valósult meg."},
+    {id:"F6.3",type:"open",q:"Milyen dinasztikus megállapodást kötött Károly Róbert 1339-ben, és mi lett a hosszú távú következménye?",
+      answer:"Megállapodott III. Kázmér lengyel királlyal, hogy Kázmér utód nélküli halála esetén Károly fia, Lajos örökli a lengyel trónt — ez alapozta meg a későbbi lengyel–magyar perszonáluniót."}
+  ]
+};
+
+var GLOSS = [
+  ["tartományúr (oligarcha)","nagybirtokos, aki más familiájának nem tagja, de kiterjedt saját familiája van"],
+  ["honorbirtok (E)","méltósághoz kötött, nem örökíthető királyi vár- és földbirtok"],
+  ["familiaritás","a köznemesség bárói szolgálati rendszere, a birtok a királytól ered, nem örökíthető"],
+  ["bandérium","egy báró vagy a király magánhadserege, zászlaja alatt"],
+  ["urbura","bányaregálé: a kitermelt nemesfém királynak fizetendő része"],
+  ["aranyforint","az 1325-től vert, firenzei mintájú, értékálló magyar aranypénz"],
+  ["kapuadó (portális adó)","1336-tól portánként fizetendő, 18 dénáros jobbágyadó"],
+  ["kilenced","a jobbágy által a földesúrnak fizetett terményjáradék"],
+  ["regálé","a királyi felségjog alapján, pénzben szedett jövedelem"],
+  ["domaniális jövedelem","a királyi birtokból, természetben beszedett jövedelem"],
+  ["harmincadvám","a külkereskedelmi forgalomra kivetett határvám"],
+  ["szabad királyi város","fallal körülvett, nagy önállósággal rendelkező, céhes nyugati típusú város"],
+  ["mezőváros","földesúri joghatóság alatt álló, mezőgazdasági jellegű, egy összegben adózó város"],
+  ["perszonálunió (E)","két ország azonos uralkodó alatti egyesülése, önálló államiság megtartásával"],
+  ["Szent György Lovagrend","az 1326-ban Károly Róbert által alapított, hű bárókat tömörítő lovagrend"]
+];
+
+var TIME = [
+  ["1301","III. András halála","Az Árpád-ház kihalása, a tartományuraság fénykora."],
+  ["1301","Károly Róbert első koronázása","Érvénytelen, mert nem a Szent Koronával történt."],
+  ["1305–1307","Wittelsbach Ottó uralkodása","Károly Róbert második vetélytársa."],
+  ["1308","Károly Róbert uralkodásának kezdete","A legfontosabb tartományurak elismerik hatalmát."],
+  ["1310","A végleges koronázás","Székesfehérváron, a Szent Koronával."],
+  ["1312","A rozgonyi csata","Győzelem az Abák felett."],
+  ["1321","Csák Máté halála","A legnagyobb tartományúr területei a királyé lesznek."],
+  ["1324 körül","A tartományuraság korának vége","A délvidéki urak is behódolnak."],
+  ["1325","Az első aranyforint verése","Firenzei mintára, értékálló pénz."],
+  ["1330","A Zách-merénylet és a posadai vereség","Belső és külső válságpontok egy évben."],
+  ["1335","A visegrádi királytalálkozó","Cseh–lengyel–magyar hármas csúcstalálkozó."],
+  ["1336","A kapuadó bevezetése","A kamara hasznának pótlására."],
+  ["1339","Lengyel trónöröklési megállapodás","Lajos öröklési jogának biztosítása."],
+  ["1342","Károly Róbert halála","Fia, Lajos örökli a megerősödött országot."]
+];
+
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"");}
+var TOTAL=0, done={};
+function markDone(id,box){ if(done[id])return; done[id]=1; box.classList.add("done"); updateProg(); }
+function updateProg(){
+  var n=Object.keys(done).length;
+  document.getElementById("progTxt").textContent=n+"/"+TOTAL;
+  document.getElementById("progFill").style.right=(100-(n/TOTAL*100))+"%";
+}
+function answerBox(text){
+  var a=el("div","answer"); var l=el("span","lbl","Megoldás"); a.appendChild(l);
+  var p=el("p",null,text); p.style.margin="0"; a.appendChild(p); return a;
+}
+
+function buildTask(t){
+  var box=el("div","task");
+  box.appendChild(el("span","task-id",t.id));
+  box.appendChild(el("div","task-q",t.q));
+  var ans=t.answer?answerBox(t.answer):null;
+
+  if(t.type==="tf"){
+    t.items.forEach(function(it){
+      var row=el("div","tf-row");
+      row.appendChild(el("div","tf-txt",it.t));
+      var btns=el("div","tf-btns");
+      var note=el("div","tf-note",it.n);
+      ["Igaz","Hamis"].forEach(function(lbl,i){
+        var b=el("button","chip",lbl);
+        b.addEventListener("click",function(){
+          var picked=(i===0);
+          Array.prototype.forEach.call(btns.children,function(x){x.disabled=true;});
+          b.classList.add(picked===it.a?"ok":"bad");
+          note.classList.add("show");
+          markDone(t.id,box);
+        });
+        btns.appendChild(b);
+      });
+      row.appendChild(btns); row.appendChild(note); box.appendChild(row);
+    });
+  }
+
+  else if(t.type==="choice"){
+    var opts=el("div","tf-btns");
+    t.options.forEach(function(o,i){
+      var b=el("button","chip",o);
+      b.addEventListener("click",function(){
+        Array.prototype.forEach.call(opts.children,function(x){x.disabled=true;});
+        b.classList.add(i===t.correct?"ok":"bad");
+        if(i!==t.correct) opts.children[t.correct].classList.add("ok");
+        if(ans) ans.classList.add("show");
+        markDone(t.id,box);
+      });
+      opts.appendChild(b);
+    });
+    box.appendChild(opts);
+  }
+
+  else if(t.type==="match"){
+    var wrap=el("div","match");
+    var lc=el("div"), rc=el("div");
+    lc.appendChild(el("div","colhead","Elem"));
+    rc.appendChild(el("div","colhead","Megfelelője"));
+    var ls=el("div","stack"), rs=el("div","stack");
+    lc.appendChild(ls); rc.appendChild(rs);
+    var sel=null, pairedL={}, pairedR={}, count=0;
+    var rOrder=t.right.map(function(x,i){return [x,i];}).sort(function(){return Math.random()-.5;});
+    t.left.forEach(function(x,i){
+      var b=el("button","chip",x);
+      b.addEventListener("click",function(){
+        if(pairedL[i])return;
+        if(sel&&sel.b!==b) sel.b.classList.remove("sel");
+        sel={i:i,b:b}; b.classList.add("sel");
+      });
+      ls.appendChild(b);
+    });
+    rOrder.forEach(function(pair){
+      var b=el("button","chip",pair[0]);
+      b.addEventListener("click",function(){
+        if(!sel||pairedR[pair[1]])return;
+        var ok=(t.pairs[sel.i]===pair[1]);
+        sel.b.classList.remove("sel");
+        sel.b.classList.add(ok?"ok":"bad"); b.classList.add(ok?"ok":"bad");
+        if(ok){ pairedL[sel.i]=1; pairedR[pair[1]]=1; count++; }
+        else { var sb=sel.b; setTimeout(function(){sb.classList.remove("bad");b.classList.remove("bad");},900); }
+        sel=null;
+        if(count===t.left.length){ if(ans)ans.classList.add("show"); markDone(t.id,box); }
+      });
+      rs.appendChild(b);
+    });
+    wrap.appendChild(lc); wrap.appendChild(rc); box.appendChild(wrap);
+  }
+
+  else if(t.type==="sort"){
+    var listWrap=el("div");
+    var left=t.items.length;
+    t.items.forEach(function(it){
+      var row=el("div","tf-row");
+      row.appendChild(el("div","tf-txt",it[0]));
+      var btns=el("div","tf-btns");
+      t.cats.forEach(function(cat,ci){
+        var b=el("button","chip",cat);
+        b.addEventListener("click",function(){
+          Array.prototype.forEach.call(btns.children,function(x){x.disabled=true;});
+          b.classList.add(ci===it[1]?"ok":"bad");
+          if(ci!==it[1]) btns.children[it[1]].classList.add("ok");
+          left--; if(left===0){ if(ans)ans.classList.add("show"); markDone(t.id,box); }
+        });
+        btns.appendChild(b);
+      });
+      row.appendChild(btns); listWrap.appendChild(row);
+    });
+    box.appendChild(listWrap);
+  }
+
+  else if(t.type==="fill"){
+    var pWrap=el("p"); pWrap.style.lineHeight="2.2";
+    var inputs=[];
+    t.parts.forEach(function(seg){
+      if(typeof seg==="string"){ pWrap.appendChild(document.createTextNode(seg)); }
+      else{
+        var inp=document.createElement("input");
+        inp.type="text"; inp.className="fill-in"; inp.setAttribute("aria-label","Kiegészítendő szó");
+        inputs.push([inp,t.blanks[seg]]); pWrap.appendChild(inp);
+      }
+    });
+    box.appendChild(pWrap);
+    var act2=el("div","act");
+    var chk=el("button","btn","Ellenőrzés");
+    var v2=el("span","verdict","");
+    chk.addEventListener("click",function(){
+      var good=0;
+      inputs.forEach(function(pair){
+        var val=norm(pair[0].value);
+        var ok=pair[1].some(function(a){return val===norm(a);});
+        pair[0].classList.remove("ok","bad"); pair[0].classList.add(ok?"ok":"bad");
+        if(ok)good++;
+      });
+      v2.textContent=good+"/"+inputs.length+" helyes";
+      v2.className="verdict "+(good===inputs.length?"ok":"bad");
+      if(ans)ans.classList.add("show");
+      markDone(t.id,box);
+    });
+    act2.appendChild(chk); act2.appendChild(v2); box.appendChild(act2);
+  }
+
+  else {
+    var act3=el("div","act");
+    var b3=el("button","btn ghost","Megoldás megjelenítése");
+    b3.addEventListener("click",function(){
+      if(ans)ans.classList.toggle("show");
+      b3.textContent=(ans&&ans.classList.contains("show"))?"Megoldás elrejtése":"Megoldás megjelenítése";
+      markDone(t.id,box);
+    });
+    act3.appendChild(b3); box.appendChild(act3);
+  }
+
+  if(ans) box.appendChild(ans);
+  return box;
+}
+
+Object.keys(TASKS).forEach(function(m){
+  var host=document.getElementById("tasks-"+m);
+  if(!host)return;
+  TASKS[m].forEach(function(t){ TOTAL++; host.appendChild(buildTask(t)); });
+});
+updateProg();
+
+(function(){
+  var pool=document.getElementById("chainPool"),
+      track=document.getElementById("chainTrack"),
+      ph=document.getElementById("chainPlaceholder"),
+      v=document.getElementById("chainVerdict"),
+      seq=[];
+  function build(){
+    pool.innerHTML=""; track.innerHTML=""; track.appendChild(ph); ph.style.display="";
+    v.textContent=""; v.className="verdict"; seq=[];
+    CHAIN.map(function(x,i){return [x,i];}).sort(function(){return Math.random()-.5;})
+    .forEach(function(pair){
+      var b=el("button","chip",pair[0]);
+      b.addEventListener("click",function(){
+        if(b.disabled)return; b.disabled=true; b.classList.add("sel"); seq.push(pair[1]);
+        ph.style.display="none";
+        if(seq.length>1) track.appendChild(el("span","chain-arrow","→"));
+        track.appendChild(el("span","chain-slot",pair[0]));
+        if(seq.length===CHAIN.length){
+          var ok=seq.every(function(x,i){return x===i;});
+          track.appendChild(el("span","chain-arrow","→"));
+          var goal=el("span","chain-goal","ARANYKORSZAK");
+          track.appendChild(goal);
+          if(ok){ setTimeout(function(){goal.classList.add("lit");},120);
+            v.textContent="Pontosan ez a lánc — ezt jutalmazza a javítókulcs."; v.className="verdict ok"; }
+          else { v.textContent="Nem stimmel a sorrend. Kezdd a tartományurak leverésénél, és haladj a reformokig."; v.className="verdict bad"; }
+        }
+      });
+      pool.appendChild(b);
+    });
+  }
+  document.getElementById("chainReset").addEventListener("click",build);
+  build();
+})();
+
+(function(){
+  var host=document.getElementById("glossList"), inp=document.getElementById("glossSearch");
+  function render(q){
+    host.innerHTML="";
+    var nq=norm(q), hits=0;
+    GLOSS.forEach(function(g){
+      if(nq && norm(g[0]).indexOf(nq)<0 && norm(g[1]).indexOf(nq)<0) return;
+      hits++;
+      var row=el("div","row");
+      row.appendChild(el("dt",null,g[0])); row.appendChild(el("dd",null,g[1]));
+      host.appendChild(row);
+    });
+    if(!hits) host.appendChild(el("p","no-hit","Erre a szóra nincs találat. Próbáld a fogalom rövidebb alakjával."));
+  }
+  inp.addEventListener("input",function(){render(inp.value);});
+  render("");
+})();
+
+(function(){
+  var host=document.getElementById("timeline");
+  TIME.forEach(function(t){
+    var ev=el("div","ev");
+    ev.appendChild(el("div","yr",t[0]));
+    ev.appendChild(el("div","ttl",t[1]));
+    ev.appendChild(el("div","why",t[2]));
+    host.appendChild(ev);
+  });
+})();
+
+(function(){
+  var TYPES=[
+    {k:"Hosszú · középszint",min:210,max:260,p:"Magyar történelmi téma, például: Mutassa be I. Károly gazdasági reformjait!"},
+    {k:"Hosszú · emelt",min:240,max:290,p:"Emelt szintű hosszú esszé — mélyebb elemzés, több forrás."},
+    {k:"Rövid · emelt",min:110,max:130,p:"Emelt szintű rövid esszé, ha a témát emelt szinten rövid formában kérik."},
+    {k:"Komplex · emelt",min:290,max:340,p:"Korszakokon átívelő vagy összehasonlító esszé, például I. Károly és Szent István államszervezésének összevetése."}
+  ];
+  var pills=document.getElementById("essayPills"), box=document.getElementById("essayBox"),
+      n=document.getElementById("wordN"), st=document.getElementById("wordState"),
+      zone=document.getElementById("gzone"), mark=document.getElementById("gmark"),
+      prompt=document.getElementById("essayPrompt");
+  var cur=0, SCALE=380;
+  TYPES.forEach(function(t,i){
+    var b=el("button","pill"+(i===0?" on":""),t.k+" · "+t.min+"–"+t.max+" szó");
+    b.addEventListener("click",function(){
+      cur=i;
+      Array.prototype.forEach.call(pills.children,function(x){x.classList.remove("on");});
+      b.classList.add("on"); paint();
+    });
+    pills.appendChild(b);
+  });
+  function count(){
+    var w=box.value.trim();
+    if(!w)return 0;
+    return w.split(/\s+/).filter(function(x){return x.length>0;}).length;
+  }
+  function paint(){
+    var t=TYPES[cur], c=count();
+    prompt.textContent=t.p;
+    n.textContent=c;
+    zone.style.left=(t.min/SCALE*100)+"%";
+    zone.style.width=((t.max-t.min)/SCALE*100)+"%";
+    mark.style.left=Math.min(c/SCALE*100,100)+"%";
+    if(c===0){ st.textContent="Kezdj el írni…"; st.style.color="var(--ink-soft)"; }
+    else if(c<t.min){ st.textContent="Még "+(t.min-c)+" szó a minimumig"; st.style.color="var(--rubric)"; }
+    else if(c<=t.max){ st.textContent="A terjedelem rendben"; st.style.color="var(--ok)"; }
+    else { st.textContent=(c-t.max)+" szóval túllépted a keretet"; st.style.color="var(--rubric)"; }
+  }
+  box.addEventListener("input",paint);
+  paint();
+})();
+
+Array.prototype.forEach.call(document.querySelectorAll("[data-reveal]"),function(b){
+  b.addEventListener("click",function(){
+    var t=document.getElementById(b.getAttribute("data-reveal"));
+    if(!t)return;
+    t.classList.toggle("show");
+    b.textContent=t.classList.contains("show")?"Megoldás elrejtése":(b.dataset.lbl||b.textContent);
+  });
+  b.dataset.lbl=b.textContent;
+});
+
+(function(){
+  var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"));}).filter(Boolean);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id);});
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px"});
+  secs.forEach(function(s){io.observe(s);});
+
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!reduce){
+    document.documentElement.classList.add("anim");
+    var fio=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); fio.unobserve(e.target);} });
+    },{rootMargin:"0px 0px -8% 0px"});
+    Array.prototype.forEach.call(document.querySelectorAll(".fade"),function(f){fio.observe(f);});
+  }
+})();
+
+})();
+</script>
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

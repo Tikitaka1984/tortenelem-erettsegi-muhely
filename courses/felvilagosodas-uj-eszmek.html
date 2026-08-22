@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A felvilágosodás és az új eszmék — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#1d1a1e;
+  --rubric:#5c3a6e;
+  --lapis:#2f5a6e;
+  --gold:#b8923f;
+  --stone:#d8cfc0;
+  --paper:#f2ede1;
+  --paper-2:#e8e0cf;
+  --line:#c7bca6;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(29,26,30,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(184,146,63,.08), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(92,58,110,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#f2ede1; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+
+/* ===== HEADER ===== */
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(29,26,30,.94), rgba(47,90,110,.88)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f7f1e3;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#e6dcc7; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(242,237,225,.35); color:#f2ede1; padding:5px 10px; border-radius:20px;
+  background:rgba(242,237,225,.06);
+}
+
+/* ok-okozati lánc */
+.chain-box{
+  background:rgba(15,13,16,.35); border:1px solid rgba(242,237,225,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(242,237,225,.35);
+  background:rgba(242,237,225,.05); color:#f2ede1; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(242,237,225,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(242,237,225,.45);
+  border-top:1px dashed rgba(242,237,225,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(184,146,63,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+
+/* ===== NAV ===== */
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#e6dcc7; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(242,237,225,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+
+/* ===== LAYOUT ===== */
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+
+.fogodzo{
+  background:linear-gradient(120deg,#e9ddb9,#eee4c5); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(216,207,192,.3);}
+
+.source-box{background:#fbf8ef; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#3a322a; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+
+.sort-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#22434f;}
+
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#231c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#977633;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+
+/* Glossary/summary */
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+
+/* feladatbank / K tasks */
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+
+/* essay workshop */
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#f2e6c8; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.essay-dual{background:#e9eef2; border:1px solid var(--lapis); border-radius:5px; padding:14px 18px; margin:16px 0; font-size:.94rem;}
+.essay-dual .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:6px;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+
+/* szóbeli */
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+
+/* tippek */
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#f2e6c8;}
+.tips-list li.first-tip::before{background:var(--gold); color:#231c14;}
+
+footer{background:var(--ink); color:#d8cfc0; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(216,207,192,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 18–19. század</span>
+    <h1>A felvilágosodás és az új eszmék</h1>
+    <p class="subtitle">Államelméletektől a liberalizmusig, a nacionalizmusig és a konzervativizmusig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan alapozta meg Locke, Montesquieu és Rousseau államelmélete a modern politikai gondolkodást, hogyan született meg 1789-ben az Emberi és Polgári Jogok Nyilatkozata, majd hogyan formálódott a bécsi kongresszus és a Szent Szövetség árnyékában a 19. század három nagy politikai eszmeárama: a liberalizmus, a nacionalizmus és a konzervativizmus.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">💡</span>
+        Rakd össze a láncot, hogy kigyulladjon a felvilágosodás fáklyája!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Locke, Kant</a>
+    <a href="#m2">2. Voltaire, Montesquieu</a>
+    <a href="#m3">3. Rousseau</a>
+    <a href="#m4">4. 1789 és a Nyilatkozat</a>
+    <a href="#m5">5. Szent Szövetség</a>
+    <a href="#m6">6. Liberalizmus, nacionalizmus</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A felvilágosodás fogalma — az angol és a német felvilágosodás</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a felvilágosodás alapvető céljait, valamint Locke és Kant gondolkodásának főbb elemeit.</div>
+
+  <article>
+    <h3>Mi a felvilágosodás?</h3>
+    <p>Immanuel Kant híres meghatározása szerint a felvilágosodás jelmondata: <em>„Sapere aude!”</em> — „Merj gondolkodni!”, „Hallgass az értelmedre!”. A <strong>felvilágosodás</strong> eszmei mozgalom, amely szakítani akart a feudalizmus uralkodó ideológiájával és a katolikus egyház intézményesített hatalmával, reformokkal kívánta korszerűsíteni a gazdaságot és a társadalmat, új, emberközpontú erkölcsi értékrendet hirdetett, és célja az egyén felszabadítása, boldoggá tétele, valamint a tudomány eredményeinek — a „világosságnak” — a terjesztése volt.</p>
+
+    <h3>Az angol és a német felvilágosodás</h3>
+    <p>A felvilágosodás a kapitalista fejlődésben élenjáró Angliában született meg. <strong>John Locke</strong> (1632–1704), „az alkotmányos monarchia filozófusa”, <em>Két értekezés a polgári kormányzásról</em> című művében rakta le a politikai liberalizmus és a <strong>társadalmi szerződés</strong> eszméjének alapjait. <em>Értekezés az emberi természetről</em> című munkájában kifejtette: velünk született eszmék nem léteznek, az újszülött tudata tiszta lap (<em>tabula rasa</em>), amelyre az érzéki tapasztalat és a nevelés írja rá a külvilágból érkező információkat (szenzualizmus).</p>
+    <p>A német felvilágosodás jelentős alakja <strong>Immanuel Kant</strong> (1724–1804), aki <em>A tiszta ész kritikája</em> és <em>A gyakorlati ész kritikája</em> című műveiben az észt állította a középpontba, ugyanakkor elismerte, hogy vannak velünk született (a priori) ismereteink is — az értelem, miközben törvényei alá vonja az érzékelést és a képzeletet, lehetővé teszi a természetet kormányzó elsődleges törvények felállítását.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: Locke <strong>tabula rasa</strong> elmélete (szenzualizmus) és Kant a priori ismeretekről szóló tanítása <strong>ellentétes</strong> kiindulópontok — Locke szerint minden tudás tapasztalatból ered, Kant szerint léteznek velünk született, tapasztalat előtti ismeretkategóriák is.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>felvilágosodás; társadalmi szerződés</td>
+        <td>—</td>
+        <td>—</td>
+        <td>Anglia <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>1. forrás — John Locke: Értekezés az emberi természetről (tartalmi kivonat)</h4>
+      <p class="src-text">Locke szerint az emberi elmében nincsenek velünk született eszmék vagy alapelvek — az újszülött tudata olyan, mint egy üres, semmivel be nem írt lap. Minden ismeretünk forrása a tapasztalat: az érzékelés útján szerzett benyomások és a saját elménk működésének megfigyelése (reflexió) tölti fel tartalommal a kezdetben üres tudatot.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit jelent a „tabula rasa” kifejezés Locke elméletében?</p>
+        <p><strong>b)</strong> Milyen két forrásból származik Locke szerint minden ismeretünk?</p>
+        <p><strong>c)</strong> Miért nevezik ezt a felfogást szenzualizmusnak?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Azt, hogy az emberi tudat születéskor üres, tartalom nélküli — nincsenek vele született eszmék.</p>
+          <p><strong>b)</strong> Az érzékelésből (külvilági tapasztalat) és a reflexióból (saját elménk működésének megfigyelése).</p>
+          <p><strong>c)</strong> Mert a tudás forrását kizárólag az érzéki tapasztalatban (szenzus) jelöli meg, elutasítva a velünk született ismeretek létét.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: Kant szerint jelmondata, a „Sapere aude!” azt jelenti: „Hallgass a hagyományokra!”</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Melyik művében fejtette ki Locke a társadalmi szerződés eszméjét?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Két értekezés a polgári kormányzásról</button>
+        <button data-val="b">B) A tiszta ész kritikája</button>
+        <button data-val="c">C) A törvények szelleméről</button>
+        <button data-val="d">D) Társadalmi szerződés</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: Locke szerint az újszülött tudata olyan, mint egy üres lap — ezt latinul tabula ______ kifejezéssel illetjük.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>A francia felvilágosodás — Voltaire, Montesquieu és az Enciklopédia</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Voltaire egyházkritikáját, Montesquieu hatalommegosztás-elméletét és az Enciklopédia jelentőségét.</div>
+
+  <article>
+    <h3>Voltaire és az egyházkritika</h3>
+    <p>A francia felvilágosodás első szakaszában (1680–1715) <strong>Voltaire</strong> (1694–1778) — művei közül a <em>Candide</em> és a <em>Filozófiai ábécé</em> a legismertebbek — élesen támadta az egyházat, mint az elnyomó hatalom ideológiai támaszát. Deista volt: Isten létét elismerte, de szerepét kizárólag a teremtésre korlátozta, elutasítva a szervezett vallás dogmáit és intézményeit.</p>
+
+    <h3>Montesquieu és a hatalommegosztás elve</h3>
+    <p><strong>Montesquieu</strong> (1689–1755) <em>Perzsa levelek</em> (1721) című művében elképzelt perzsiai és franciaországi állapotok párhuzamos bemutatásával bírálta a francia viszonyokat. Fő műve, <em>A törvények szelleméről</em> (1748) három alapvető gondolatot fogalmazott meg: a társadalmak fejlődését a földrajzi környezet befolyásolja (a mérsékelt övben, azon belül a közepes méretű országokban a legkedvezőbb a helyzet); a szabadság az a jog, hogy mindenki megteheti, amit a törvények megengednek, és ez a vagyonbírás biztonságából ered; végül a <strong>hatalmi ágak megosztása</strong>: a törvényhozói, végrehajtói és bírói hatalom szétválasztása és kölcsönös ellenőrzése biztosíthatja egyedül a zsarnokság felszámolását.</p>
+
+    <h3>Az Enciklopédia</h3>
+    <p>A felvilágosodás második szakaszában (1715–1760), a „felvilágosodás delén” jelent meg az <em>Enciklopédia, avagy a tudományok, művészetek, mesterségek értelmező szótára</em>, angol minta (1728, Chambers-féle Cyclopaedia) nyomán. Az 1751–1772 között megjelent 28 kötetes mű szerkesztői és szerzői közé tartozott Diderot (filozófiai cikkek), D'Alembert (matematika, fizika) és Condorcet márki (közgazdaság) — a Sorbonne elítélte, a királyi tanács pedig elkoboztatta, mégis nagy szerepet játszott a modern szókincs megteremtésében.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: Montesquieu hatalommegosztás-elmélete <strong>nem</strong> a hatalmi ágak teljes elszigetelését jelenti, hanem azok kölcsönös ellenőrzését (fékek és egyensúlyok rendszere) — a cél a zsarnokság megakadályozása, nem a kormányzás megbénítása.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>hatalmi ágak megosztása</td>
+        <td>Charles Louis Montesquieu</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>2. forrás — Montesquieu: A törvények szelleméről (1748, tartalmi kivonat)</h4>
+      <p class="src-text">Montesquieu kifejti: ha a törvényhozó és a végrehajtó hatalom ugyanabban a személyben vagy testületben egyesül, nincs szabadság, mert az uralkodó vagy testület zsarnoki törvényeket hozhat és hajthat végre. Szabadság akkor sincs, ha a bírói hatalom nincs elválasztva a másik kettőtől — ha a törvényhozáshoz kapcsolódik, önkényessé válik az állampolgárok élete és vagyona feletti hatalom, ha a végrehajtáshoz, elnyomó jelleget ölt.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mi történik Montesquieu szerint, ha a törvényhozó és végrehajtó hatalom egy kézben összpontosul?</p>
+        <p><strong>b)</strong> Milyen két veszélyt említ a bírói hatalom kapcsán?</p>
+        <p><strong>c)</strong> Milyen általános elvet fogalmaz meg a forrás a szabadság biztosítására?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Zsarnoki törvényhozás és végrehajtás valósulhat meg, mert nincs, ami korlátozná a hatalmat.</p>
+          <p><strong>b)</strong> Ha a törvényhozáshoz kapcsolódik, önkényessé válik; ha a végrehajtáshoz, elnyomóvá.</p>
+          <p><strong>c)</strong> A három hatalmi ág (törvényhozó, végrehajtó, bírói) egymástól való elválasztásának és kölcsönös ellenőrzésének elvét.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="choice">
+      <p class="task-q">Milyen vallási felfogást vallott Voltaire?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Ateizmus</button>
+        <button data-val="b">B) Deizmus</button>
+        <button data-val="c">C) Ortodox katolicizmus</button>
+        <button data-val="d">D) Kálvinizmus</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="tf">
+      <p class="task-q">Állítás: Az Enciklopédiát a francia egyházi-állami hatóságok (Sorbonne, királyi tanács) támogatták és díjazták.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="match">
+      <p class="task-q">Párosítsd a szerzőt a szakterületével az Enciklopédiában!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Diderot</button>
+          <button class="match-item" data-key="p2">D'Alembert</button>
+          <button class="match-item" data-key="p3">Condorcet</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">Filozófiai cikkek</button>
+          <button class="match-item" data-key="r2">Matematika és fizika</button>
+          <button class="match-item" data-key="r3">Közgazdaság</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>Rousseau és a társadalmi szerződés</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Rousseau radikális társadalomkritikáját és a népfelség elvét.</div>
+
+  <article>
+    <h3>„Vissza a természethez”</h3>
+    <p>A felvilágosodás harmadik szakaszában (1760-tól) az eszmék szétágazását <strong>Jean-Jacques Rousseau</strong> (1712–1778) munkássága jelzi. <em>Az emberek közti egyenlőtlenség eredetéről</em> (1754) című művében a társadalom emberének állapotát a vademberével vetette össze: szerinte az ember „természeti állapotát” az egyenlőség jellemezte, és ennek felbomlása okozta a világ minden baját — jelszava: „Vissza a természethez”. Rousseau radikális nézeteiben a civilizáció és a magántulajdon kialakulásának káros hatásait hangsúlyozta, szemben a többi felvilágosult filozófussal, akik lelkesedtek a kialakuló polgári társadalomért.</p>
+
+    <h3>A társadalmi szerződés és a népfelség elve</h3>
+    <p><em>Társadalmi szerződés</em> (1762) című művében Rousseau kifejtette: a szerződés az egyének és a közösség között áll fenn — nem a fejedelem és az alattvalók között, ahogy korábban Locke gondolta. A <strong>népfelség</strong> (népszuverenitás) elve szerint a hatalom birtokosa a nép; a döntések meghozatalában mindenkinek joga van részt venni, a közvetlen demokráciában pedig mindenki köteles elfogadni a többségi döntésnek minősülő általános akaratot. Rousseau feleslegesnek tartotta a hatalmi ágak szétválasztását, hiszen szerinte az általános akarat maga a szabadság kifejeződése, amely a közjót szolgálja — ezt a felfogást fejezi ki a sokat vitatott mondata: „kényszeríteni kell, hogy szabad legyen”, amelyet többen egy esetleges zsarnokság ideológiai megalapozásaként értelmeztek.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: Rousseau társadalmi szerződés-felfogása <strong>alapvetően eltér</strong> Locke-étól — Locke szerint a szerződés a kormányzat és a nép között jön létre (és felbontható, ha a kormányzat visszaél hatalmával), míg Rousseau szerint a szerződés kizárólag az egyének és a közösség (általános akarat) között áll fenn, közvetítő fél nélkül.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>népfelség</td>
+        <td>Jean-Jacques Rousseau</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>3. forrás — Rousseau: A társadalmi szerződésről (1762, tartalmi kivonat)</h4>
+      <p class="src-text">Rousseau leírja, hogy a társulás minden tagja lemond önmagáról és minden jogáról a közösség javára — mindenki, minden képességével együtt, az általános akarat legfőbb irányítása alá kerül. Aki nem hajlandó követni az általános akaratot, azt az egész közösség kényszeríteni fogja az engedelmességre — vagyis kényszeríteni fogják, hogy szabad legyen, hiszen a kettő (kényszer és szabadság) Rousseau szerint egy és ugyanaz.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Miről mond le az egyén a társadalmi szerződés megkötésekor?</p>
+        <p><strong>b)</strong> Mi történik azzal, aki nem követi az általános akaratot?</p>
+        <p><strong>c)</strong> Miért tekintik egyes értelmezők vitathatónak a „kényszeríteni kell, hogy szabad legyen” gondolatot?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Önmagáról és minden egyéni jogáról a közösség (általános akarat) javára.</p>
+          <p><strong>b)</strong> A közösség kényszeríti az engedelmességre.</p>
+          <p><strong>c)</strong> Mert a kényszer és a szabadság azonosítása ideológiai alapot adhat egy zsarnoki, a többség nevében fellépő hatalomgyakorlásnak.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="match">
+      <p class="task-q">Párosítsd a filozófust a jellemző elméletével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="v1">Locke</button>
+          <button class="match-item" data-key="v2">Montesquieu</button>
+          <button class="match-item" data-key="v3">Rousseau</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="a1">Tabula rasa, szenzualizmus</button>
+          <button class="match-item" data-key="a2">Hatalmi ágak megosztása</button>
+          <button class="match-item" data-key="a3">Népfelség, általános akarat</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="sort">
+      <p class="task-q">Csoportosítsd: Rousseau vagy Montesquieu álláspontjához tartozik-e az adott állítás?</p>
+      <div class="sort-row"><span>A hatalmi ágak szétválasztása feleslegessé válik, ha érvényesül az általános akarat</span>
+        <select data-key="s1"><option value="">válassz</option><option value="rousseau">Rousseau</option><option value="montesquieu">Montesquieu</option></select>
+      </div>
+      <div class="sort-row"><span>A zsarnokság megakadályozásához elengedhetetlen a törvényhozó, végrehajtó és bírói hatalom szétválasztása</span>
+        <select data-key="s2"><option value="">válassz</option><option value="rousseau">Rousseau</option><option value="montesquieu">Montesquieu</option></select>
+      </div>
+      <div class="sort-row"><span>A természeti állapotot az egyenlőség jellemezte</span>
+        <select data-key="s3"><option value="">válassz</option><option value="rousseau">Rousseau</option><option value="montesquieu">Montesquieu</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Mi Rousseau jelszava az „Emberek közti egyenlőtlenség eredetéről” című művében?</p>
+      <div class="task-controls">
+        <button data-val="a">A) „Sapere aude!”</button>
+        <button data-val="b">B) „Vissza a természethez”</button>
+        <button data-val="c">C) „Megőrizve megújítani”</button>
+        <button data-val="d">D) „Szabadság, egyenlőség, testvériség”</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>1789 és az Emberi és Polgári Jogok Nyilatkozata</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a francia forradalom kirobbanásának okait és az Emberi és Polgári Jogok Nyilatkozatának tartalmát.</div>
+
+  <article>
+    <h3>A forradalom okai és kitörése</h3>
+    <p>A francia forradalom kirobbanásához négy tényező vezetett: a felvilágosodás eszméi megkérdőjelezték az abszolutista uralom alapjait; kormányzati válság alakult ki (XVI. Lajos helyett gyakorlatilag felesége, Marie Antoinette irányított); pénzügyi válság sújtotta az országot (rosszul beszedett adók, udvari fényűzés, az amerikai függetlenségi háború támogatásának költségei); és gazdasági-szociális válság bontakozott ki (rossz termésű évek, az angol textilipar termékeinek betörése a francia piacra). XVI. Lajos 1789. május 5-re összehívta a rendi gyűlést Versailles-ba, a harmadik rend azonban azt követelte, hogy rendenként helyett fejenként szavazzanak — a király ezt elutasította, mire a harmadik rend képviselői (csatlakozó nemesekkel és papokkal együtt) alkotmányozó nemzetgyűléssé nyilvánították magukat. 1789. július 14-én a párizsi tömeg megostromolta a Bastille-t — ezzel kezdetét vette a francia forradalom.</p>
+
+    <h3>Az Emberi és Polgári Jogok Nyilatkozata</h3>
+    <p>1789. augusztus 26-án adta ki a nemzetgyűlés a 17 cikkelyből álló <strong>Emberi és Polgári Jogok Nyilatkozatát</strong>, amely — amerikai mintára (Függetlenségi Nyilatkozat) készülve, La Fayette fogalmazásában, Thomas Jefferson közreműködésével — lefektette a megszülető alkotmányos monarchia alapértékeit. Fő elemei: polgári szabadságjogok (minden ember szabadnak és egyenlőnek születik; jog a szabadsághoz, tulajdonhoz, biztonsághoz, elnyomással szembeni ellenálláshoz; meggyőződés-, vallás- és sajtószabadság; az ártatlanság vélelme); az államhatalmi ágak szétválasztása (Montesquieu elvei alapján); a jogegyenlőség és az arányos közteherviselés elve; a <strong>népfelség elve</strong> („a törvény a közakarat kifejezése”); valamint a jogállamiság elve („mindent szabad, amit a törvény nem tilt”).</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az Emberi és Polgári Jogok Nyilatkozata <strong>nem</strong> egyszerű másolata az amerikai Függetlenségi Nyilatkozatnak (1776) — annál részletesebb, a személyes és politikai szabadságjogokat sokkal alaposabban definiáló dokumentum, amely nem egy idegen uralkodó elleni lázadásból, hanem évszázados belső, feudális struktúrák lerombolásából született.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>jogegyenlőség; szabad verseny</td>
+        <td>—</td>
+        <td>1789. július 14. Bastille ostroma; 1789. augusztus 26. az Emberi és Polgári Jogok Nyilatkozata</td>
+        <td>Franciaország</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — Az Emberi és Polgári Jogok Nyilatkozatából (1789, tartalmi kivonat)</h4>
+      <p class="src-text">A dokumentum kimondja: minden ember szabadnak és egyenlő jogokkal születik, a társadalmi különbségek csak a közösség hasznosságán alapulhatnak. A törvény a közakarat kifejezése, amelynek megalkotásában minden polgár közvetlenül vagy képviselője útján részt vehet — a képviselők pedig számonkérhetők. Semmi sem tiltható, csak amit a törvény kifejezetten megtilt.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen alapon lehetnek különbségek az emberek között a Nyilatkozat szerint?</p>
+        <p><strong>b)</strong> Hogyan határozza meg a Nyilatkozat a törvényt?</p>
+        <p><strong>c)</strong> Melyik felvilágosodás kori elv köszön vissza a „képviselők számonkérhetők” kitételben?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Csak a társadalmi hasznosság (érdem, teljesítmény) alapján, nem születési kiváltság alapján.</p>
+          <p><strong>b)</strong> A közakarat kifejezéseként, amelynek megalkotásában minden polgár részt vehet.</p>
+          <p><strong>c)</strong> A népfelség (népszuverenitás) elve — a hatalom végső forrása és ellenőrzője a nép.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: Az Emberi és Polgári Jogok Nyilatkozata amerikai mintára, a Függetlenségi Nyilatkozat hatására született.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: A párizsi tömeg 1789. július 14-én megostromolta a ______-t.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Mit követelt a harmadik rend a rendi gyűlésen 1789-ben?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Rendenkénti szavazást</button>
+        <button data-val="b">B) Fejenkénti szavazást</button>
+        <button data-val="c">C) A rendi gyűlés feloszlatását</button>
+        <button data-val="d">D) A király lemondását</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>A Szent Szövetség és a konzervativizmus válasza</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a bécsi kongresszus rendezését, a Szent Szövetség működését és Burke konzervatív elméletét.</div>
+
+  <article>
+    <h3>A bécsi kongresszus és a Szent Szövetség</h3>
+    <p>A Napóleon feletti győzelem után a hatalmak 1814–1815-ben megtartották a <strong>bécsi kongresszus</strong>t, amely a dinasztiák tekintélyének visszaállítására és 1789 szellemiségének felszámolására törekedett — Metternich herceg vezetésével. I. Sándor orosz cár javaslatára szilárd szövetségi rendszert hoztak létre a forradalom szellemiségével szemben: ez volt a <strong>Szent Szövetség</strong>, amely a legitimizmus (az uralkodói hatalom Isten kegyelméből fakadó, jogszerű volta) alapján állt, és a „felforgató” eszmék elleni fellépést, a társadalmi változások megakadályozását tűzte ki célul. A politikai nyilatkozat hamarosan katonai együttműködés alapjává vált: a szövetséges hatalmak vállalták, hogy fegyveres beavatkozással (intervencióval) segítik egymást a forradalmi mozgalmak leverésében — ezt az elvet 1820–21-ben, a dél-európai (spanyol, itáliai) forradalmak, majd 1825-ben az oroszországi dekabrista felkelés leverésekor is alkalmazták.</p>
+
+    <h3>Edmund Burke és a konzervativizmus</h3>
+    <p>A konzervativizmus (latinul <em>conservare</em> = megtartani, megőrizni) a liberalizmusra adott válaszként jelent meg, reflektálva a francia forradalom eszméire és eseményeire. Az irányzat első modern megfogalmazója <strong>Edmund Burke</strong> brit parlamenti képviselő volt, aki <em>Töprengések a francia forradalomról</em> (1790) című művében bírálta a radikális átalakulás erőltetett lépéseit: szerinte a túl nagy, hirtelen változások erőszakhoz és terrorhoz vezetnek, a franciák hibát követtek el, amikor semmibe vették a több évszázados hagyományokat. Burke gondolkodásának középpontjában a „megőrizve megújítani” elv állt: az évszázadok alatt szervesen kialakult intézményeket (monarchia, egyház, család, tulajdon) meg kell védeni, miközben mérsékelt reformokkal lehet — sőt kell — korszerűsíteni azokat.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: Burke „fontolva haladó”, mérsékelt konzervativizmusa <strong>nem</strong> azonos Metternich <em>ókonzervatív</em> irányzatával — Burke elismerte a fokozatos reformok szükségességét, míg Metternich politikája elsősorban a változtatások teljes elutasítására és a status quo fenntartására irányult.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>konzervativizmus; reform</td>
+        <td>Burke <span class="eonly">E</span></td>
+        <td>1814–1815 bécsi kongresszus <span class="eonly">E</span>; 1815 a Szent Szövetség létrejötte <span class="eonly">E</span></td>
+        <td>Bécs <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>5. forrás — Edmund Burke: Töprengések a francia forradalomról (1790, tartalmi kivonat)</h4>
+      <p class="src-text">Burke szerint a régi alkotmány használható részeinek megtartása és az új gondos hozzáillesztése a nélkülözhetetlen óvatosság feladata — ez az elővigyázatosság még inkább szükséges, amikor a rombolás és alkotás tárgya nem élettelen anyag, hanem érző emberek, akiket ezrével lehet nyomorba dönteni meggondolatlan döntésekkel. A franciák sietsége és a hagyományos megoldásokkal szembeni bizalmatlanságuk kiszolgáltatta őket kalandoroknak és cselszövőknek.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen elvi hibát ró fel Burke a francia forradalmároknak?</p>
+        <p><strong>b)</strong> Miért kell különös óvatossággal eljárni a társadalmi átalakítás során Burke szerint?</p>
+        <p><strong>c)</strong> Milyen veszélyre figyelmeztet a forradalmi sietség kapcsán?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A hagyományok teljes elvetését és a túl gyors, megfontolatlan átalakítást.</p>
+          <p><strong>b)</strong> Mert a társadalmi átalakítás tárgya nem élettelen anyag, hanem emberek, akiknek sorsát meggondolatlan döntésekkel könnyű tönkretenni.</p>
+          <p><strong>c)</strong> Arra, hogy a bizalmatlanság és a sietség kiszolgáltathatja a mozgalmat felelőtlen vagy manipulatív vezetőknek.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="choice">
+      <p class="task-q">Ki javasolta a Szent Szövetség létrehozását?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Metternich herceg</button>
+        <button data-val="b">B) I. Sándor orosz cár</button>
+        <button data-val="c">C) Edmund Burke</button>
+        <button data-val="d">D) XVIII. Lajos</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: Nagy-Britannia is csatlakozott a Szent Szövetséghez.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="match">
+      <p class="task-q">Párosítsd az eseményt a Szent Szövetség fellépésével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="q1">Spanyol és itáliai forradalmak (1820–21)</button>
+          <button class="match-item" data-key="q2">Dekabrista felkelés (1825)</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="w1">Osztrák és francia csapatok fojtották el</button>
+          <button class="match-item" data-key="w2">I. Miklós cár verte le</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>Liberalizmus és nacionalizmus a 19. században</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a liberalizmus és a nacionalizmus alapelveit, és lásd, hogyan kapcsolódtak össze a 19. század politikai mozgalmaiban.</div>
+
+  <article>
+    <h3>A liberalizmus</h3>
+    <p>A <strong>liberalizmus</strong> (latinul <em>liber</em> = szabad származású ember) a felvilágosodás eszméire támaszkodva az egyéni szabadság megvalósítását tűzte ki célul: alapvető jogok (vallás-, vélemény-, sajtószabadság, gyülekezési szabadság), jogegyenlőség és közteherviselés a törvény előtt (a többi területen viszont a versenyt és az egyenlőtlenséget természetesnek tartotta), alkotmányos berendezkedés (hatalommegosztás, választott, kétkamarás parlament) és gazdasági szabadság (iparűzés, kereskedelem, vállalkozás szabadsága). A klasszikus liberalizmus szerint a történelem főszereplője az egyén, az állam szerepe pedig három területre korlátozódik („éjjeliőr állam”): az ország védelme, a társadalom tagjainak egymással szembeni védelme, és a nem profitorientált intézmények (iskolák, kórházak) fenntartása. A liberalizmus klasszikus elvei Angliában alakultak ki — John Locke mellett <strong>Adam Smith</strong> (<em>A nemzetek gazdasága</em>, a „láthatatlan kéz” fogalma) és <strong>J. S. Mill</strong> (<em>A szabadságról</em>, az egyéni szabadság védelme az állammal szemben) alapvető gondolkodói voltak. A vagyoni cenzushoz kötött választójog kezdetben leszűkítette a választópolgárok körét — a korai liberálisok úgy vélték, csak a művelt, vagyonos polgárság képes működőképes demokráciát kialakítani.</p>
+
+    <h3>A nacionalizmus</h3>
+    <p>A <strong>nacionalizmus</strong> (latinul <em>natio</em> = nemzet) a napóleoni háborúk alatt bontakozott ki: a korábbi rendi nemzetfelfogás helyett (amely csak a kiváltságosokat tekintette a nemzet részének) kialakult a modern polgári nemzetfogalom — egy terület lakosságának nyelv, kultúra és történelmi hagyomány által kibontakozó közössége. A modern nemzetek kialakulásának két útja volt: az <strong>államnemzeti fejlődés</strong> (pl. Anglia, Franciaország, ahol a nemzetté válás egy már meglévő állam keretei között zajlott) és a <strong>kultúrnemzeti fejlődés</strong> (pl. német, olasz, magyar, ahol önálló államiság hiányában a fejlődés a kultúra világában kezdődött — nagy szerepet kapott a nemzeti nyelv, gyorsan kialakultak a nemzeti szimbólumok, megkezdődött a dicső múlt keresése). Itáliában Giuseppe Mazzini szervezte az <strong>Ifjú Itália</strong> mozgalmat az egységes olasz nemzetállamért, később Giuseppe Garibaldi vált a fegyveres szervezkedés vezető alakjává; Németországban elsősorban egyetemi tanárok és diákok alapítottak mozgalmat (Ifjú Németország), alkotmányos eszközökkel törekedve az egyesítésre. A nacionalizmus kezdetben összekapcsolódhatott mind a liberalizmussal, mind a konzervativizmussal — Magyarországon a nemzeti liberalizmus lett a reformkor egyik fő eszméje.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a nacionalizmus <strong>nem</strong> minden esetben szélsőséges vagy elutasítandó ideológia — 19. századi eredeti formájában a nemzeti önrendelkezés és a polgári nemzetállamok kialakulásának eszméjét szolgálta; szélsőséges, kirekesztő formáját külön fogalommal, sovinizmusnak nevezzük.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>liberalizmus; nacionalizmus; nemzetállam</td>
+        <td>Mill <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>6. forrás — Giuseppe Mazzini: Az Ifjú Itália elvei (1832, tartalmi kivonat)</h4>
+      <p class="src-text">Mazzini az Ifjú Itáliát azon olaszok testvériségeként határozza meg, akik hisznek a haladás és a kötelesség törvényében, és meggyőződésük, hogy Itália hivatása a nemzetté válás, amit saját erejéből vihet véghez. A korábbi kudarcokat nem a gyengeség, hanem a forradalmi mozgalmak erőtlen vezetésének tulajdonítja — a siker titkát az erőfeszítések állhatatosságában és egységében látja. Célja egy szabad, egységes, független és államilag önálló olasz nemzet megteremtése.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit tekint Mazzini Itália „hivatásának”?</p>
+        <p><strong>b)</strong> Minek tulajdonítja a korábbi mozgalmak kudarcát?</p>
+        <p><strong>c)</strong> Milyen államformát képzel el végcélként?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az egységes olasz nemzetté válást.</p>
+          <p><strong>b)</strong> A forradalmi mozgalmak gyenge, összehangolatlan vezetésének, nem a nép gyengeségének.</p>
+          <p><strong>c)</strong> Egy szabad, egységes, független és államilag önálló Itáliát (köztársasági berendezkedésben).</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: a nemzet az adott ország esetében állam- vagy kultúrnemzeti úton fejlődött?</p>
+      <div class="sort-row"><span>Franciaország</span>
+        <select data-key="c1"><option value="">válassz</option><option value="allam">Államnemzeti fejlődés</option><option value="kultura">Kultúrnemzeti fejlődés</option></select>
+      </div>
+      <div class="sort-row"><span>Németország</span>
+        <select data-key="c2"><option value="">válassz</option><option value="allam">Államnemzeti fejlődés</option><option value="kultura">Kultúrnemzeti fejlődés</option></select>
+      </div>
+      <div class="sort-row"><span>Magyarország</span>
+        <select data-key="c3"><option value="">válassz</option><option value="allam">Államnemzeti fejlődés</option><option value="kultura">Kultúrnemzeti fejlődés</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: A klasszikus liberalizmus felfogása szerint az állam szerepét minimálisra korlátozó modellt „______ állam”-nak nevezzük.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="choice">
+      <p class="task-q">Ki szervezte az Ifjú Itália mozgalmat?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Giuseppe Garibaldi</button>
+        <button data-val="b">B) Giuseppe Mazzini</button>
+        <button data-val="c">C) Adam Smith</button>
+        <button data-val="d">D) John Stuart Mill</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>felvilágosodás</dt><dd>18. századi eszmei mozgalom, amely az ész, a tapasztalat és a haladás eszméjére építve bírálta a feudalizmust és az egyházi tekintélyt.</dd>
+    <dt>társadalmi szerződés</dt><dd>Az az elképzelés, hogy a politikai hatalom az egyének önkéntes megállapodásán alapul, nem isteni eredetű.</dd>
+    <dt>hatalmi ágak megosztása</dt><dd>Montesquieu elve: a törvényhozó, végrehajtó és bírói hatalom elválasztása és kölcsönös ellenőrzése a zsarnokság megelőzésére.</dd>
+    <dt>népfelség</dt><dd>Az elv, mely szerint a politikai hatalom végső forrása a nép, nem az uralkodó.</dd>
+    <dt>jogegyenlőség</dt><dd>A törvény előtti egyenlőség elve, amely megszünteti a rendi kiváltságokat.</dd>
+    <dt>szabad verseny</dt><dd>A gazdasági liberalizmus elve: az állami beavatkozás nélküli piaci verseny biztosítja a leghatékonyabb erőforrás-elosztást.</dd>
+    <dt>liberalizmus</dt><dd>A felvilágosodás eszméire épülő politikai irányzat, amely az egyéni szabadságjogok és az alkotmányos berendezkedés megvalósítását tűzte ki célul.</dd>
+    <dt>konzervativizmus</dt><dd>A liberalizmusra és a francia forradalomra válaszként kialakult irányzat, amely a hagyományos intézmények szerves, fokozatos megújítását szorgalmazza.</dd>
+    <dt>nacionalizmus</dt><dd>A modern polgári nemzet eszméjét középpontba állító irányzat, amely a nemzetállamok kialakulásában játszott szerepet.</dd>
+    <dt>nemzetállam</dt><dd>Olyan állam, amelynek határai nagyjából egybeesnek egy adott nemzet lakta területtel.</dd>
+    <dt>legitimizmus</dt><dd>A Szent Szövetség alapelve: az uralkodói hatalom kizárólag Isten kegyelméből és a hagyományos öröklési rendből származhat jogszerűen.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1721</b> Montesquieu: Perzsa levelek</li>
+    <li><b>1748</b> Montesquieu: A törvények szelleméről</li>
+    <li><b>1751–1772</b> Az Enciklopédia megjelenése</li>
+    <li><b>1754</b> Rousseau: Az emberek közti egyenlőtlenség eredetéről</li>
+    <li><b>1762</b> Rousseau: A társadalmi szerződésről</li>
+    <li><b>1776</b> Amerikai Függetlenségi Nyilatkozat <span class="eonly">E</span></li>
+    <li><b>1789. július 14.</b> A Bastille ostroma — a francia forradalom kezdete</li>
+    <li><b>1789. augusztus 26.</b> Az Emberi és Polgári Jogok Nyilatkozata</li>
+    <li><b>1790</b> Burke: Töprengések a francia forradalomról</li>
+    <li><b>1814–1815</b> Bécsi kongresszus <span class="eonly">E</span></li>
+    <li><b>1815</b> A Szent Szövetség létrejötte <span class="eonly">E</span></li>
+    <li><b>1820–1821</b> Dél-európai forradalmak és leverésük <span class="eonly">E</span></li>
+    <li><b>1825</b> Dekabrista felkelés <span class="eonly">E</span></li>
+    <li><b>1832</b> Mazzini: Az Ifjú Itália elvei</li>
+    <li><b>1859</b> Mill: A szabadságról <span class="eonly">E</span></li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Anglia</li><li>Franciaország</li><li>Bécs</li><li>Itália</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze Rousseau népfelség-elvét és a Szent Szövetség létrejöttét: <em>Rousseau: A társadalmi szerződésről; az Emberi és Polgári Jogok Nyilatkozata; a Szent Szövetség létrejötte; a Bastille ostroma</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> Rousseau: A társadalmi szerződésről (1762) → a Bastille ostroma (1789. július 14.) → az Emberi és Polgári Jogok Nyilatkozata (1789. augusztus 26.) → a Szent Szövetség létrejötte (1815).</p>
+        <p><strong>Indoklás:</strong> Rousseau népfelség-elve eszmei alapot adott a francia forradalomnak és az Emberi és Polgári Jogok Nyilatkozatának; az ezáltal felszabadított radikális eszmék (népszuverenitás, forradalmi változás) annyira megrémítették Európa uralkodóit, hogy a Napóleon feletti győzelem után válaszul létrehozták a Szent Szövetséget a hasonló mozgalmak megelőzésére.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Filozófusok azonosítása</h4>
+    <p>A leírás alapján nevezze meg, kiről van szó: „Fő műve A törvények szelleméről, amelyben kifejtette a hatalmi ágak megosztásának elméletét.” Nevezzen meg egy másik felvilágosodás kori filozófust is, és adja meg fő elméletének lényegét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Montesquieu-re</em> vonatkozik. Egy másik lehetséges filozófus: Locke (társadalmi szerződés, szenzualizmus) vagy Rousseau (népfelség elve, általános akarat).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: a liberalizmus és a konzervativizmus összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: az egyén vagy a közösség elsődlegessége, viszony a hagyományokhoz, viszony az emberi jogokhoz, a változás üteme), mi a hasonlóság és mi a különbség a liberalizmus és a konzervativizmus között.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Liberalizmus</th><th>Konzervativizmus</th></tr>
+          <tr><td>Elsődlegesség</td><td>Az egyén (individuum)</td><td>A közösségek (család, egyház, állam)</td></tr>
+          <tr><td>Viszony a hagyományokhoz</td><td>Kritikus, a régi struktúrák lebontását szorgalmazza</td><td>Tisztelet, szerves megőrzés</td></tr>
+          <tr><td>Viszony az emberi jogokhoz</td><td>Elidegeníthetetlen emberi jogok elismerése</td><td>Az elidegeníthetetlen jogok tanának elutasítása</td></tr>
+          <tr><td>A változás üteme</td><td>Reformra, alkotmányos átalakulásra nyitott</td><td>Fokozatos, mérsékelt reform („megőrizve megújítani”)</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindkettő a francia forradalom tapasztalatára reflektál, és mindkettő elutasítja a radikális, erőszakos átalakulást.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+
+  <div class="essay-dual">
+    <span class="lbl">Egyetemes témakör</span>
+    A felvilágosodás és a 19. századi új eszmék (liberalizmus, nacionalizmus, konzervativizmus) <strong>egyetemes (világtörténelmi) témakör</strong> — nem magyar történelmi esemény, ezért középszinten <strong>csak rövid esszében</strong> (100–130 szó) kérhető, hosszú esszé témájaként nem szerepel. Emelt szinten is elsősorban rövid, tömör kifejtést vár a feladat, de mélyebb, elemző-összehasonlító tartalommal.
+  </div>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta rövid esszé (kb. 120 szó):</strong> „Mutassa be a felvilágosodás államelméleti alapelveit!”</p>
+    <p>A felvilágosodás filozófusai a politikai hatalom új alapjait keresték. Locke a társadalmi szerződés eszméjét fogalmazta meg: a hatalom az egyének és a kormányzat közötti megállapodásból ered. Montesquieu A törvények szelleméről című művében kidolgozta a hatalmi ágak megosztásának elvét — a törvényhozó, végrehajtó és bírói hatalom szétválasztását tartotta a zsarnokság elleni egyetlen biztosítéknak. Rousseau ezzel szemben a népfelség elvét hirdette: szerinte a hatalom kizárólagos forrása a nép, amelynek közvetlen demokráciában kell gyakorolnia az önrendelkezést. Ezek az elvek — a hatalommegosztás és a népszuverenitás — alapozták meg 1789-ben az Emberi és Polgári Jogok Nyilatkozatát is.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé rövid terjedelemben is három konkrét gondolkodót és műveiket nevezi meg, pontosan megkülönbözteti elméleteiket, és egy záró mondatban kapcsolja össze a témát a francia forradalommal — ez tömör, mégis elemző jellegű kifejtés.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130" selected>Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260">Hosszú esszé — középszint (210–260 szó)*</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — emelt szint (210–260 szó)*</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 100–130 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Legalább két gondolkodót vagy dokumentumot pontosan megnevez</li>
+      <li><input type="checkbox"> Nem keveri össze az egyes elméletek fogalmait</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be Locke társadalmiszerződés-elméletét!</li>
+    <li><b>E2</b> Jellemezze Montesquieu hatalommegosztás-elméletét!</li>
+    <li><b>E3</b> Mutassa be az Emberi és Polgári Jogok Nyilatkozatának legfontosabb pontjait!</li>
+    <li><b>E4</b> Értékelje a Szent Szövetség működésének elveit és céljait!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze Montesquieu és Rousseau államelméletét!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A felvilágosodás államelméletei és a 19. századi új eszmék</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a felvilágosodás fogalma és célja</td></tr>
+    <tr><td>2 perc</td><td>Locke, Montesquieu és Rousseau államelméletei</td></tr>
+    <tr><td>2 perc</td><td>A francia forradalom és az Emberi és Polgári Jogok Nyilatkozata</td></tr>
+    <tr><td>2 perc</td><td>A bécsi kongresszus és a Szent Szövetség</td></tr>
+    <tr><td>2 perc</td><td>Liberalizmus és nacionalizmus a 19. században</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: az eszmék kapcsolódásai és hatásuk a század politikájára</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Miben tér el Locke és Rousseau társadalmiszerződés-felfogása?</li>
+    <li>Miért tartotta Montesquieu elengedhetetlennek a hatalmi ágak szétválasztását?</li>
+    <li>Milyen okok vezettek a francia forradalom kirobbanásához?</li>
+    <li>Miért jött létre a Szent Szövetség, és milyen elvek alapján működött?</li>
+    <li>Miben különbözik Burke mérsékelt konzervativizmusa Metternich politikájától?</li>
+    <li>Mi a különbség az államnemzeti és a kultúrnemzeti fejlődés között?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez egyetemes (világtörténelmi) témakör: mind középszinten, mind emelt szinten elsősorban rövid esszében (100–130 szó) kérhető — ne készülj hosszú esszére ehhez a témához!</li>
+    <li>Ne keverd össze Locke, Montesquieu és Rousseau elméleteit — mindegyiknek más a kiindulópontja (szenzualizmus / hatalommegosztás / népfelség).</li>
+    <li>Jegyezd meg pontosan: Voltaire deista volt (elismerte Istent, de csak teremtőként), nem ateista.</li>
+    <li>Az Enciklopédia (1751–1772) és a francia forradalom (1789) között évtizedek teltek el — ne keverd össze időrendben.</li>
+    <li>Figyelj a két nyilatkozat sorrendjére: Amerikai Függetlenségi Nyilatkozat (1776) → Emberi és Polgári Jogok Nyilatkozata (1789).</li>
+    <li>A Szent Szövetség (1815) és a konzervativizmus (Burke, 1790) nem ugyanaz — Burke elméleti megalapozó, a Szent Szövetség gyakorlati-politikai szövetségi rendszer.</li>
+    <li>Ne feledd: Burke „fontolva haladó” konzervativizmusa és Metternich „ókonzervatív” gyakorlata között jelentős különbség van a reformokhoz való viszonyban.</li>
+    <li>A liberalizmus „éjjeliőr állam” fogalmát pontosan idézd fel: csak honvédelem, belső rend, nem profitorientált intézmények fenntartása — semmi több.</li>
+    <li>Kronológiai csapda: Mazzini Ifjú Itáliája (1832) megelőzi a magyar reformkor csúcspontjait — a nacionalizmus egész Európában nagyjából egy időben bontakozott ki.</li>
+    <li>A topográfiai-fogalmi kérdéseknél tudd megkülönböztetni az államnemzeti (Anglia, Franciaország) és a kultúrnemzeti (Németország, Itália, Magyarország) fejlődési utat.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>Száray Miklós (szerk.): Történelem 10. — OH-TOR10TA, Oktatási Hivatal</li>
+      <li>Katolikus történelem 10. tankönyv</li>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti tankönyvi és témavázlati kiadványok, illetve a hivatalos vizsgakövetelmény ajánlott.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"a"},
+    "m1-t3": {type:"fill", answers:["rasa"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"choice", answer:"b"},
+    "m2-t2": {type:"tf", answer:false},
+    "m2-t3": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"match", pairs:{v1:"a1", v2:"a2", v3:"a3"}},
+    "m3-t2": {type:"sort", answers:{s1:"rousseau", s2:"montesquieu", s3:"rousseau"}},
+    "m3-t3": {type:"choice", answer:"b"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:true},
+    "m4-t2": {type:"fill", answers:["bastille","bastille-t"]},
+    "m4-t3": {type:"choice", answer:"b"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"choice", answer:"b"},
+    "m5-t2": {type:"tf", answer:false},
+    "m5-t3": {type:"match", pairs:{q1:"w1", q2:"w2"}},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"sort", answers:{c1:"allam", c2:"kultura", c3:"kultura"}},
+    "m6-t2": {type:"fill", answers:["éjjeliőr","ejjelior"]},
+    "m6-t3": {type:"choice", answer:"b"},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  // ---- TF & CHOICE ----
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  // ---- FILL ----
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  // ---- MATCH ----
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  // ---- SORT ----
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  // ---- OPEN ----
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  // ---- OK-OKOZATI LÁNC ----
+  var chainSteps = [
+    {order:1, text:"Locke és az angol felvilágosodás megalapozza a társadalmi szerződés eszméjét"},
+    {order:2, text:"Montesquieu kidolgozza a hatalmi ágak szétválasztásának elméletét"},
+    {order:3, text:"Rousseau népfelség-elve és a francia forradalom megszületteti az Emberi és Polgári Jogok Nyilatkozatát (1789)"},
+    {order:4, text:"A Szent Szövetség és Burke konzervativizmusa válaszol a forradalmi eszmékre"},
+    {order:5, text:"Kibontakozik a liberalizmus és a nacionalizmus mint önálló politikai ideológia"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">💡</span>Kirakva! A lánc: Locke → Montesquieu → Rousseau és 1789 → Szent Szövetség → liberalizmus és nacionalizmus.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  // ---- GLOSSARY SEARCH ----
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  // ---- ESSAY WORD COUNTER ----
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

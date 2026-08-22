@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A reformáció Magyarországon és Erdély sajátos helyzete — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#1e1c1a;
+  --rubric:#7a3a2e;
+  --lapis:#3d4a7a;
+  --gold:#ab8f3f;
+  --stone:#d9cfb2;
+  --paper:#f2ede0;
+  --paper-2:#e8dec2;
+  --line:#c9bb93;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(30,28,26,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(171,143,63,.09), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(61,74,122,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#f2ede0; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+
+/* ===== HEADER ===== */
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(30,28,26,.94), rgba(61,74,122,.88)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f6f1e2;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#e6dcc0; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(242,237,224,.35); color:#f2ede0; padding:5px 10px; border-radius:20px;
+  background:rgba(242,237,224,.06);
+}
+
+/* ok-okozati lánc */
+.chain-box{
+  background:rgba(16,15,13,.35); border:1px solid rgba(242,237,224,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(242,237,224,.35);
+  background:rgba(242,237,224,.05); color:#f2ede0; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(242,237,224,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(242,237,224,.45);
+  border-top:1px dashed rgba(242,237,224,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(171,143,63,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+
+/* ===== NAV ===== */
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#e6dcc0; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(242,237,224,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+
+/* ===== LAYOUT ===== */
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+
+.fogodzo{
+  background:linear-gradient(120deg,#eadfb9,#efe6c6); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(217,207,178,.3);}
+
+.source-box{background:#fbf8ee; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#3a322a; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+
+.sort-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#2c3760;}
+
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#231c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#8c7433;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+
+/* Glossary/summary */
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+
+/* feladatbank / K tasks */
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+
+/* essay workshop */
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#f2e8c6; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.essay-dual{background:#eef0f7; border:1px solid var(--lapis); border-radius:5px; padding:14px 18px; margin:16px 0; font-size:.94rem;}
+.essay-dual .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:6px;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+
+/* szóbeli */
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+
+/* tippek */
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#f2e8c6;}
+.tips-list li.first-tip::before{background:var(--gold); color:#231c14;}
+
+footer{background:var(--ink); color:#d9cfb2; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(217,207,178,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 16. század</span>
+    <h1>A reformáció Magyarországon és Erdély sajátos helyzete</h1>
+    <p class="subtitle">Luther 95 tézisétől a tordai vallásszabadságig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan indult el Wittenbergből a reformáció, hogyan alakultak ki fő irányzatai (evangélikus, református, unitárius), miért terjedt rendkívül gyorsan Magyarországon a meggyengült katolikus egyház talaján, és hogyan hozta létre a három nemzet (magyar, székely, szász) által lakott Erdély 1568-ban, a tordai országgyűlésen Európa első, négy bevett vallást elismerő vallásszabadság-törvényét.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">✝</span>
+        Rakd össze a láncot, hogy kigyulladjon a tordai határozat!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Luther</a>
+    <a href="#m2">2. Kálvin és radikálisok</a>
+    <a href="#m3">3. Vallásháborúk</a>
+    <a href="#m4">4. Reformáció Mo.-on</a>
+    <a href="#m5">5. Erdély nemzetei</a>
+    <a href="#m6">6. Tordai határozat</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A reformáció kezdete: Luther Márton fellépése</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a reformáció kiváltó okait és Luther Márton tanításának alapelveit.</div>
+
+  <article>
+    <h3>A reneszánsz pápaság és a reformáció előzményei</h3>
+    <p>A 16. század elejére a pápaságra is hatott a humanizmus és a reneszánsz szemlélet — a katolikus egyház erőteljesen elvilágiasodott. Ennek nyomán a század elején felerősödött egy belső reformmozgalom, amely bírálta a pápaság politikáját, különösen a <strong>búcsúcédulák</strong> árusítását és annak módját. <strong>Luther Márton</strong> ágostonrendi szerzetes 1517. október 31-én Wittenbergben tette közzé <strong>95 tézisét</strong> — ezt tartjuk a reformáció kezdetének szimbolikus dátumaként.</p>
+
+    <h3>Luther tanításának alapelvei</h3>
+    <p>Luther szerint egyedül a hit üdvözíthet (<em>sola fide</em>) — a jó cselekedetek a hit bizonyítékai, de önmagukban nem vezetnek üdvösséghez. Egyedül az isteni kegyelem juttathatja el az embert az üdvösséghez (<em>sola gratia</em>), a hit egyetlen forrása a Biblia (<em>sola Scriptura</em>), és az üdvösséghez egyedül Krisztuson keresztül vezet az út (<em>solus Christus</em>) — nincs szükség a papság közbenjárására. Ez az elv („minden hívő pap”) megkérdőjelezte a papság közvetítő szerepét: a lelkészek feladata csupán a prédikálás. Luther elvetette mindazt, ami nem igazolható a Bibliából (pápai tévedhetetlenség, mise, szerzetesség, cölibátus, zarándoklatok), a szentségek közül csak a keresztelést és a kétszín alatti úrvacsorát tartotta meg. A lutheri tanításokat Melanchton Fülöp foglalta össze 28 tételben, amelyet 1530-ban az augsburgi birodalmi gyűlésen fogadtak el (ágostai/augsburgi hitvallás). Az <strong>evangélikus</strong> (lutheránus) irányzat elsősorban Észak- és Kelet-Németországban, valamint Skandináviában terjedt el.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: Luther <strong>nem</strong> az egész katolikus tanrendszert utasította el egyszerre — kiindulópontja konkrétan a búcsúcédulák árusítása elleni tiltakozás volt, és tanítása fokozatosan, a vitákkal párhuzamosan radikalizálódott a teljes egyházszakadásig.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>reformáció; protestáns; evangélikus</td>
+        <td>Luther Márton</td>
+        <td>1517 a reformáció kezdete</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>1. forrás — Luther Márton 95 tétele (1517, tartalmi kivonat)</h4>
+      <p class="src-text">Luther egyik tétele felveti: ha a pápa ismeri a búcsúcédula-árusok kizsákmányoló gyakorlatát, miért nem inkább a saját vagyonából építteti fel a Szent Péter-bazilikát, ahelyett hogy a szegény hívek pénzén gazdagodna. Egy másik tétele szerint a pápa egyetlen bűnt sem tud megbocsátani, legfeljebb kihirdetheti és megerősítheti Isten már megadott bocsánatát.</p>
+      <p class="src-meta">Katolikus történelem 10. tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen visszaélést kifogásol Luther a búcsúcédulák kapcsán?</p>
+        <p><strong>b)</strong> Milyen elvi kérdést vet fel a pápa bűnbocsátó hatalmával kapcsolatban?</p>
+        <p><strong>c)</strong> Miért volt különösen provokatív ez a két tétel a korabeli egyházi hierarchia számára?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Azt, hogy a búcsúcédulák árusítása a szegény hívek kizsákmányolásán alapul, miközben a pápaság gazdag.</p>
+          <p><strong>b)</strong> Azt, hogy a bűnbocsánat kizárólag Istené, a pápa csak kihirdetheti, nem adhatja meg saját hatáskörében.</p>
+          <p><strong>c)</strong> Mert közvetlenül megkérdőjelezte a pápai hatalom és a búcsúcédula-üzlet legitimitását, ami az egyházi jövedelmek egyik fontos forrása volt.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: Luther szerint a jó cselekedetek önmagukban elegendők az üdvösséghez.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Melyik évben és városban tette közzé Luther a 95 tézist?</p>
+      <div class="task-controls">
+        <button data-val="a">A) 1517, Wittenberg</button>
+        <button data-val="b">B) 1530, Augsburg</button>
+        <button data-val="c">C) 1541, Genf</button>
+        <button data-val="d">D) 1555, Speyer</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az elv, mely szerint egyedül a hit üdvözíthet, latinul sola ______.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>Kálvin, a helvét reformáció és a radikális irányzatok</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Kálvin tanításának sajátosságait, valamint az anabaptista és antitrinitárius irányzatok jellemzőit.</div>
+
+  <article>
+    <h3>Zwingli és Kálvin — a helvét (svájci) reformáció</h3>
+    <p>A svájci reformáció elindítója <strong>Ulrich Zwingli</strong> volt, aki Lutherhez hasonló nézeteket vallott, de az úrvacsora értelmezésében eltért tőle. Halála után a Franciaországból menekülő <strong>Kálvin János</strong> (Jean Calvin) fejlesztette tovább a tanokat fő művében, <em>A keresztény vallás tanítása</em> címűben. Kálvin szerint Isten a világmindenség abszolút szuverén ura, az ember nem szerezhet érdemeket; a <strong>predesztináció</strong> (eleve elrendelés) elve szerint Isten már a születéskor meghatározza minden ember sorsát. Az erényes, istennek tetsző élet ismérvei: tiszta erkölcs, szorgalom, takarékosság — a tisztességes kamatszedést Kálvin nem tartotta bűnnek.</p>
+    <p>Míg Luthert inkább az egyéni hit és megigazulás érdekelte, Kálvin az egyházszervezés terén alkotott maradandót: demokratikus egyházszervezetet hozott létre, ahol az egyházközösségeket a lelkipásztorok és világi hívekből álló testület, a <strong>presbitérium</strong> irányította. 1541-ben Genfben („kálvinista Róma”) telepedett le, ahol teokratikus államot szervezett — szigorúan szabályozta a mindennapi életet (templomba járási kényszer, bujálkodás- és kocsmatilalom); a 15 ezer lakosú városban 4 év alatt 900 embert tartóztattak le, 58-at kivégeztek.</p>
+
+    <h3>Radikális irányzatok: anabaptisták és antitrinitáriusok</h3>
+    <p>Az <strong>anabaptisták</strong> (újrakeresztelők) a reformáció népi, radikális irányzatát képviselték Münzer Tamás vezetésével: elvetették a gyermekkori keresztséget, vagyonközösséget és az egyházi-világi hierarchia eltörlését hirdették; jelentős szerepet játszottak az 1524–25-ös német parasztháborúban. Az <strong>antitrinitáriusok</strong> nem fogadták el Jézus isteni mivoltát és a Szentlélek létét — legismertebb képviselőjüket, Szervét Mihályt (Miguel Serveto) nézetei miatt Kálvin 1553-ban Genfben megégettette. Az antitrinitarizmus <strong>unitárius</strong> néven terjedt el Magyarországon és Erdélyben.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: <strong>ne</strong> keverd össze Kálvin és a genfi hatalom viszonyát az egyházüldözés fogalmával — Kálvin maga is szigorú, sokszor kegyetlen büntetéseket alkalmazó teokratikus rendszert épített ki Genfben (l. Szervét Mihály megégetése), tehát a reformáció hívei egymással szemben sem voltak feltétlenül türelmesek.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>református; unitárius; presbiter <span class="eonly">E</span>; predesztináció <span class="eonly">E</span></td>
+        <td>Kálvin János</td>
+        <td>1541 Kálvin Genfben telepszik le <span class="eonly">E</span></td>
+        <td>Genf <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>2. forrás — Kálvin János: A keresztény vallás tanítása (1536, tartalmi kivonat)</h4>
+      <p class="src-text">Kálvin úgy vélekedik, hogy az eleve elrendelésről másképp gondolkodni annyi volna, mint tudatlanságot keresni ott, ahol a tudás bölcsesség — vagyis Isten öröktől fogva eldöntötte, ki jut üdvösségre és ki kárhozatra, és ez az emberi ész számára nem megkérdőjelezhető.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Hogyan viszonyul Kálvin az eleve elrendelés emberi megkérdőjelezéséhez?</p>
+        <p><strong>b)</strong> Milyen világképet sugall ez a felfogás Isten és ember viszonyáról?</p>
+        <p><strong>c)</strong> Miért vezethetett ez a tanítás a szorgalom és takarékosság erkölcsi felértékelődéséhez?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Elutasítja azt — Isten döntését emberi ésszel nem lehet és nem is szabad megkérdőjelezni.</p>
+          <p><strong>b)</strong> Isten mindenható, szuverén, az ember alávetett, sorsa eleve elrendelt.</p>
+          <p><strong>c)</strong> Mert a földi siker (szorgalom, takarékosság) az üdvösségre való kiválasztottság jelének volt tekinthető, ami erős etikai ösztönzést adott a mértékletes, dolgos életmódra.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="choice">
+      <p class="task-q">Kit égettetett meg Kálvin Genfben 1553-ban?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Ulrich Zwinglit</button>
+        <button data-val="b">B) Szervét Mihályt</button>
+        <button data-val="c">C) Münzer Tamást</button>
+        <button data-val="d">D) Melanchton Fülöpöt</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="tf">
+      <p class="task-q">Állítás: Kálvin szerint a tisztességes kamatszedés bűnnek számít.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="match">
+      <p class="task-q">Párosítsd az irányzatot a jellemzőjével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Anabaptisták</button>
+          <button class="match-item" data-key="p2">Antitrinitáriusok</button>
+          <button class="match-item" data-key="p3">Reformátusok</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">Elvetik a gyermekkeresztséget, vagyonközösséget hirdetnek</button>
+          <button class="match-item" data-key="r2">Elutasítják a Szentháromság tanát</button>
+          <button class="match-item" data-key="r3">Presbitériumi egyházszervezetet alkalmaznak</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>Vallásháborúk és a reformáció hatásai Európában <span class="eonly">E</span></h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a német és francia vallásháborúk lezárását, valamint a reformáció kulturális hatásait.</div>
+
+  <article>
+    <h3>A német és francia vallásháborúk <span class="eonly">E</span></h3>
+    <p>Luthert X. Leó pápa 1520-ban eretneknek nyilvánította, V. Károly császár pedig az 1521-es wormsi birodalmi gyűlésen birodalmi átokkal sújtotta. Az 1529-es speyeri gyűlésen megtiltották a lutheri tanok terjesztését, ami ellen a reformáció hívei tiltakoztak („protestáltak” — innen a protestáns elnevezés). A protestáns fejedelmek (1531, schmalkaldeni szövetség) és a katolikus rendek (1538, Szent Liga) fegyveres összecsapása 1546–47-ben a császári győzelmet hozta, végül azonban 1555-ben megszületett az <strong>augsburgi vallásbéke</strong>: a vallásválasztás jogát a tartomány urai kapták meg („akié a föld, azé a vallás”), és megtiltották az erőszakos vallásváltoztatásra kényszerítést.</p>
+    <p>Franciaországban a katolikusok és a hugenották (francia kálvinisták) közötti küzdelem 1572-ben a Szent Bertalan-éji vérengzésben tetőzött, majd a „3 Henrik háborúja” után Bourbon IV. Henrik (1589–1610) 1598-ban kiadta a <strong>nantes-i ediktumot</strong>: a hugenották szabad vallásgyakorlatot kaptak kijelölt városokban, betölthettek tisztségeket, és fenntarthatták intézményeiket — ez volt a kor első kísérlete a különböző vallásúak együttélésének jogi szabályozására.</p>
+
+    <h3>A reformáció kulturális hatásai</h3>
+    <p>A reformáció nyomán a Bibliát nemzeti nyelvekre fordították (Luther fordítása a német irodalmi nyelv alapja lett), fellendült a nyomdászat, és megszervezték az alap- és középfokú oktatást, hogy a hívek olvasni tudják a Bibliát. Melanchton („Németország tanítója”) 1528-ban dolgozott ki átfogó művelődési programot, és protestáns egyetemek jöttek létre (Wittenberg, Heidelberg, Genf) a lelkészképzés céljából.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: az augsburgi vallásbéke (1555) <strong>nem</strong> biztosított egyéni vallásszabadságot — csak a tartományurak választhattak vallást, az alattvalóknak alkalmazkodniuk kellett (vagy ki kellett vándorolniuk). Ez alapvetően különbözik a néhány évtizeddel később, Erdélyben elfogadott tordai elvtől, amely már egyéni szabad vallásgyakorlatot mondott ki.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>vallási türelem</td>
+        <td>—</td>
+        <td>1555 augsburgi vallásbéke <span class="eonly">E</span>; 1598 nantes-i ediktum <span class="eonly">E</span></td>
+        <td>Speyer <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>3. forrás — Az augsburgi vallásbéke és a nantes-i ediktum összevetése (tartalmi kivonat)</h4>
+      <p class="src-text">Az augsburgi vallásbéke szerint a tartomány uralkodója dönti el, hogy területén katolikus vagy lutheránus vallás legyen érvényben — az alattvalóknak ehhez kellett alkalmazkodniuk. A nantes-i ediktum ezzel szemben lehetővé tette, hogy a hugenották — bár korlátozott, kijelölt helyeken — nyilvánosan gyakorolják vallásukat a katolikus többségű Franciaországban is, és világi tisztségeket is betölthessenek.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mi volt az alapelve az augsburgi vallásbékének?</p>
+        <p><strong>b)</strong> Miben jelentett előrelépést a nantes-i ediktum?</p>
+        <p><strong>c)</strong> Melyik dokumentum állt közelebb az egyéni vallásszabadság elvéhez?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> „Akié a föld, azé a vallás” — a tartományúr dönti el a hivatalos vallást.</p>
+          <p><strong>b)</strong> Lehetővé tette egy vallási kisebbség (hugenották) korlátozott, de nyilvános vallásgyakorlatát a többségi valláson belül.</p>
+          <p><strong>c)</strong> A nantes-i ediktum, mert nem a fejedelem, hanem — bár korlátozottan — az egyén, illetve közössége szintjén biztosított vallásgyakorlási jogot.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="match">
+      <p class="task-q">Párosítsd a dokumentumot az évszámmal!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="v1">Speyeri birodalmi gyűlés</button>
+          <button class="match-item" data-key="v2">Augsburgi vallásbéke</button>
+          <button class="match-item" data-key="v3">Nantes-i ediktum</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="a1">1529</button>
+          <button class="match-item" data-key="a2">1555</button>
+          <button class="match-item" data-key="a3">1598</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="sort">
+      <p class="task-q">Csoportosítsd: a reformáció mely hatásához tartozik az adott jelenség?</p>
+      <div class="sort-row"><span>Luther bibliafordítása mint a német irodalmi nyelv alapja</span>
+        <select data-key="s1"><option value="">válassz</option><option value="nyelv">Nemzeti nyelvek fejlődése</option><option value="oktatas">Oktatásszervezés</option></select>
+      </div>
+      <div class="sort-row"><span>Melanchton művelődési programja</span>
+        <select data-key="s2"><option value="">válassz</option><option value="nyelv">Nemzeti nyelvek fejlődése</option><option value="oktatas">Oktatásszervezés</option></select>
+      </div>
+      <div class="sort-row"><span>Protestáns egyetemek alapítása (Wittenberg, Heidelberg)</span>
+        <select data-key="s3"><option value="">válassz</option><option value="nyelv">Nemzeti nyelvek fejlődése</option><option value="oktatas">Oktatásszervezés</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Honnan ered a „protestáns” elnevezés?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Luther nevéből</button>
+        <button data-val="b">B) A speyeri gyűlés tilalma elleni tiltakozásból</button>
+        <button data-val="c">C) A wittenbergi egyetem nevéből</button>
+        <button data-val="d">D) A búcsúcédulák elleni tüntetésből</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A reformáció Magyarországon</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Értsd meg, miért terjedt a reformáció rendkívül gyorsan Magyarországon, és ismerd meg a legfontosabb hazai reformátorokat.</div>
+
+  <article>
+    <h3>A gyors terjedés okai</h3>
+    <p>A protestáns hitújítás Magyarországon is gyorsan elterjedt, jellemzője volt, hogy a hívek gyakran tértek át egyik irányzatról a másikra, illetve vegyítették az egyes ágak hitelveit. A reformáció elsősorban a hódoltsági területen és a Tiszától keletre terjedt gyorsan, a Dunántúlon csak a század végén hódított teret. A terjedést elősegítette, hogy a mohácsi csatában a 12 magyar püspökből 7 meghalt, az egyházi vezetők is részt vettek a hatalmi harcokban, és a háborúk során az egyház birtokai és jövedelmei is jelentősen csökkentek — az ország három részre szakadása közvetve meggyengítette és így megkönnyítette a reformáció terjedését. Az Oszmán Birodalom elsősorban a katolikus egyházzal szemben lépett fel, és nem akadályozta a protestáns lelkészek tevékenységét.</p>
+
+    <h3>A hazai reformátorok és irányzatok</h3>
+    <p>Az evangélikus (lutheri) tanok terjedését a Wittenbergbe járó diákok és a budai német polgárok segítették elő; elsőként a szepességi és erdélyi szász városokban, majd a német végvári katonaság és a szlovákság körében terjedtek el. Korai reformátorok: Dévai Bíró Mátyás (az első magyar ábécéskönyv szerzője) és Heltai Gáspár (a század leghíresebb nyomdásza). A református (kálvini) tanok az 1550-es évektől terjedtek gyorsan, elsősorban a Tiszántúlon — <strong>Mélius Juhász Péter</strong> Debrecenben zsinatot tartott (1562) és megfogalmazta a debrecen-egervölgyi hitvallást; a kálvinizmus a köznemesség, a mezővárosi polgárság, a parasztság és a végvári katonaság körében terjedt el, Debrecen a „kálvinista Róma” nevet kapta. Károli Gáspár gönci esperes hat református lelkésztárssal 1590-ben elkészítette az első teljes magyar nyelvű Bibliát, a vizsolyi Bibliát.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a reformáció magyarországi terjedését <strong>nem</strong> a török közvetlen támogatása, hanem közvetett tényezők tették lehetővé — az Oszmán Birodalom egyszerűen nem lépett fel a protestáns lelkészek ellen (mert célpontja a katolikus egyház volt), ez azonban nem jelent aktív pártfogást.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Károli Gáspár; Méliusz Juhász Péter <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>Sárospatak</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — A sárospataki iskola törvényeiből (1621, tartalmi kivonat)</h4>
+      <p class="src-text">A dokumentum előírja, hogy tanárnak vagy segédtanárnak csak tekintélyes, igaz hitű, helvét (református) hitvallású, jó képzettségű, a görög, latin és héber nyelveket ismerő férfiút szabad ajánlani. Aki egy hónapon belül nem ad be stílusgyakorlatot tanárának, pénzbírságot fizet. Szigorúan tiltják a búcsú- és távozási lakomákat, valamint az iskolai mulatozásokat, mint sok bajt okozó veszélyforrást.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen elvárásokat támasztottak a tanárokkal szemben?</p>
+        <p><strong>b)</strong> Milyen fegyelmi eszközöket alkalmaztak a diákokkal szemben?</p>
+        <p><strong>c)</strong> Mit árul el ez a forrás a protestáns iskolák oktatási színvonaláról?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Erős hitbeli elkötelezettséget, nyelvtudást (görög, latin, héber) és magas szintű teológiai képzettséget.</p>
+          <p><strong>b)</strong> Pénzbírságot, illetve alternatívaként memoriter-feladatokat (közmondások megtanulását).</p>
+          <p><strong>c)</strong> Azt, hogy magas követelményeket támasztottak, és igyekeztek fegyelmezett, komoly tanulási környezetet kialakítani.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: A reformáció Magyarországon elsősorban a Dunántúlon terjedt el először, és csak később ért el a Tiszántúlra.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az első teljes magyar nyelvű Bibliát ______ ______ fordította le 1590-ben.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Melyik város kapta a „kálvinista Róma” elnevezést?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Sárospatak</button>
+        <button data-val="b">B) Debrecen</button>
+        <button data-val="c">C) Vizsoly</button>
+        <button data-val="d">D) Eperjes</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>Erdély sajátos etnikai és vallási helyzete</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Erdély három nemzetének (magyar, székely, szász) sajátos berendezkedését és a vallási sokszínűség hátterét.</div>
+
+  <article>
+    <h3>A három rendi nemzet <span class="eonly">E</span></h3>
+    <p>1600 körül Erdélynek mintegy 1 millió lakosa volt (magyar 400 ezer, román 330 ezer, székely 170 ezer, szász 100 ezer) — az etnikai kép tehát sokszínű volt, a jogi értelemben vett rendi berendezkedés viszont csak három <strong>rendi nemzet</strong>et ismert el: a magyar nemességet, a székelyeket és a szászokat. Ezek 1437-ben, a Budai Nagy Antal-vezette parasztfelkelés idején léptek szövetségre (<strong>kápolnai unió</strong>), és ez adta jogi alapját az erdélyi rendi országgyűlésen való részvételüknek. A románság — bár népességszáma jelentős volt — nem alkotott rendi nemzetet: túlnyomórészt hegyvidéki pásztorkodó jobbágyként éltek, csak egy szűk rétegük (pl. Kendeffyek) tudott a magyar nemességbe integrálódni.</p>
+    <p>A székelyek középkori eredetű, három rendből álló (főemberek/primórok, lovon szolgáló lófők, gyalogos község) katonai társadalma a 16. század közepére bomlásnak indult; az elszegényedett székelyek jobbágysorba kerültek, ami 1562-ben, majd a század végén ismételt felkeléshez vezetett. A szászok megőrizték középkori kiváltságaikat (közös adózás, önálló tisztségviselő-választás), élükön Nagyszeben állt; szász városaik (Brassó, Beszterce, Segesvár) az ország legszebb, leggazdagabb települései közé tartoztak.</p>
+
+    <h3>A vallási sokszínűség és a fokozatos türelem</h3>
+    <p>A reformáció Erdélyben először a szász városi polgárság körében (evangélikusok), majd a magyarok körében (reformátusok és unitáriusok) terjedt el; a székelyek nagy része katolikus maradt, a románság megőrizte ortodox hitét. Míg Európa nagy részén vallásháborúk dúltak, Erdélyt fokozatosan bővülő vallási türelem jellemezte: 1557-ben a katolikusok és evangélikusok, 1564-ben az evangélikusok és reformátusok, majd 1568-ban a tordai országgyűlésen — János Zsigmond fejedelem támogatásával — az unitáriusok szabad vallásgyakorlatát is kimondták.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: az erdélyi „három nemzet” fogalma <strong>nem</strong> etnikai, hanem jogi-rendi kategória — a románság annak ellenére nem tartozott a rendi nemzetek közé, hogy létszámban jelentős, sőt a század végétől erősen növekvő népességet alkotott Erdélyben.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>három rendi nemzet <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>1437 kápolnai unió <span class="eonly">E</span>; 1568 a tordai határozat</td>
+        <td>Nagyszeben <span class="eonly">E</span>; Brassó <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:30b -->
+<figure class="atlas-map" data-atlas-code="30b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 30b. térkép</span>
+    <h4>Felekezeti és kulturális viszonyok a 16. század végén</h4>
+    <p class="atlas-map__focus">A magyarországi és erdélyi felekezeti sokszínűség térbeli mintázata értelmezhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p032_30b.webp" target="_blank" rel="noopener" aria-label="Felekezeti és kulturális viszonyok a 16. század végén – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img014.webp" alt="Történelmi térkép: Felekezeti és kulturális viszonyok a 16. század végén" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:30b -->
+<div class="source-box">
+      <h4>5. forrás — Az erdélyi rendi nemzetek és a vallási sokszínűség (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint Erdélyben három népcsoport (magyarok, szászok, románok) élt, ám csak három, jogi értelemben vett nemzet létezett: a magyar nemesek, a székelyek és a szászok, akik az 1437-es kápolnai unió alapján vettek részt az országgyűlésen. A vallási térképen a szász városi polgárság evangélikus, a magyarok többsége református vagy unitárius, a székelyek jelentős része katolikus, a románság pedig ortodox hitű volt.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Miért nem esik egybe a népességszám és a rendi-jogi elismertség Erdélyben?</p>
+        <p><strong>b)</strong> Milyen összefüggés figyelhető meg az etnikai csoportok és a vallási hovatartozás között?</p>
+        <p><strong>c)</strong> Mi adta a három rendi nemzet együttműködésének jogi alapját?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Mert a jogi elismertséget nem a létszám, hanem a történelmi (1437-es) szövetség és a hozzá kapcsolódó kiváltságok adták — a románság ebből kimaradt.</p>
+          <p><strong>b)</strong> Az egyes etnikai csoportok jellemzően más-más felekezethez kötődtek (szászok–evangélikus, magyarok–református/unitárius, székelyek–katolikus, románok–ortodox).</p>
+          <p><strong>c)</strong> Az 1437-es kápolnai unió, a Budai Nagy Antal-féle parasztfelkelés idején kötött szövetség.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="choice">
+      <p class="task-q">Melyik népcsoport NEM alkotott jogi értelemben vett rendi nemzetet Erdélyben?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Magyar nemesek</button>
+        <button data-val="b">B) Székelyek</button>
+        <button data-val="c">C) Szászok</button>
+        <button data-val="d">D) Románok</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: A tordai országgyűlés (1568) volt az első lépés az erdélyi vallási türelem bővítésében, megelőzve az 1557-es és 1564-es rendelkezéseket.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="match">
+      <p class="task-q">Párosítsd az etnikai csoportot a jellemző felekezetével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="q1">Szászok</button>
+          <button class="match-item" data-key="q2">Románok</button>
+          <button class="match-item" data-key="q3">Székelyek (nagy részük)</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="w1">Evangélikus</button>
+          <button class="match-item" data-key="w2">Ortodox</button>
+          <button class="match-item" data-key="w3">Katolikus</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>A tordai határozat és az unitárius egyház Erdélyben</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Értsd meg a tordai vallásszabadság jelentőségét, és ismerd meg Dávid Ferenc és az unitárius egyház szerepét.</div>
+
+  <article>
+    <h3>A négy bevett vallás</h3>
+    <p>Az 1568-as <strong>tordai országgyűlés</strong> — melyet János Zsigmond fejedelem is támogatott — kimondta a katolikus, református, evangélikus és <strong>unitárius</strong> vallás szabad gyakorlását: ez volt a négy „bevett vallás”. A bevett vallások mellett szabad vallásgyakorlat és önkormányzatiság illette meg az úgynevezett „megtűrt” felekezeteket is (pl. ortodoxok, izraeliták), bár papjaik nem részesültek kiváltságokban. A tordai határozat egyedülálló jelentőségű volt a maga korában: miközben Nyugat-Európában vallásháborúk dúltak, Erdély törvényben rögzítette a vallási sokszínűség elfogadását.</p>
+
+    <h3>Dávid Ferenc és az unitárius egyház</h3>
+    <p>Az antitrinitárius (unitárius) irányzat elterjedésében döntő szerepe volt <strong>Dávid Ferenc</strong>nek, aki katolikusként született, majd 1557-ben evangélikus, ezután református, 1576-tól pedig unitárius püspök lett — egyúttal János Zsigmond fejedelem udvari lelkésze is volt. Az általa vezetett egyház elsősorban Erdélyben növelte létszámát, ahol a magyar lakosság több mint fele az unitárius egyházhoz tartozott. Az irányzatok közötti szellemi versengést jól mutatja az 1566-os hitvita Mélius Juhász Péter és Dávid Ferenc között, magának János Zsigmond fejedelemnek a jelenlétében. A protestáns felekezetek jelentős intézményhálózatot építettek ki: a legjelentősebb református kollégiumok Debrecenben, Sárospatakon, Nagyváradon, Gyulafehérváron és Marosvásárhelyen működtek, az unitáriusok híres kollégiuma Kolozsváron állt.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: Dávid Ferenc pályafutása <strong>nem</strong> egyetlen, egyszeri hitváltás volt — négy egymást követő felekezeti állomáson (katolikus → evangélikus → református → unitárius) ment keresztül, ami jól szemlélteti a korabeli erdélyi vallási élet rendkívüli mozgékonyságát és nyitottságát.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>vallási türelem</td>
+        <td>—</td>
+        <td>1568 a tordai határozat</td>
+        <td>Sárospatak</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>6. forrás — A tordai országgyűlés határozatából (1568, tartalmi kivonat)</h4>
+      <p class="src-text">A határozat kimondja, hogy minden helyen a prédikátorok az evangéliumot mindenki saját értelmezése szerint hirdethetik, a hallgatóság pedig szabadon választhatja meg, melyik tanítást fogadja el — senkit nem szabad emiatt bántalmazni, mert a hit Isten ajándéka, amely a hallásból, nem pedig a kényszerítésből fakad.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen elvi indokolással támasztja alá a határozat a vallásszabadságot?</p>
+        <p><strong>b)</strong> Kire és mire terjed ki a szabad választás joga a szöveg szerint?</p>
+        <p><strong>c)</strong> Miért tekinthető ez a szöveg koraiakénak a vallási türelem történetében?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Azzal, hogy a hit Isten ajándéka, amely nem kényszeríthető ki — ezért a vallási kényszer elvi ellentmondásban áll a hit lényegével.</p>
+          <p><strong>b)</strong> A prédikátorokra (szabad tanításra) és a hallgatóságra (szabad választásra a tanítások között).</p>
+          <p><strong>c)</strong> Mert egyéni, nem csak fejedelmi-tartományúri szinten mondja ki a vallásszabadság elvét, jóval megelőzve a nyugat-európai fejlődést ezen a téren.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott vallás a „bevett” vagy a „megtűrt” kategóriába tartozott-e Erdélyben 1568 után?</p>
+      <div class="sort-row"><span>Unitárius</span>
+        <select data-key="c1"><option value="">válassz</option><option value="bevett">Bevett vallás</option><option value="megturt">Megtűrt felekezet</option></select>
+      </div>
+      <div class="sort-row"><span>Ortodox</span>
+        <select data-key="c2"><option value="">válassz</option><option value="bevett">Bevett vallás</option><option value="megturt">Megtűrt felekezet</option></select>
+      </div>
+      <div class="sort-row"><span>Evangélikus</span>
+        <select data-key="c3"><option value="">válassz</option><option value="bevett">Bevett vallás</option><option value="megturt">Megtűrt felekezet</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az unitárius irányzat elterjedésében kulcsszerepet játszó püspök neve ______ ______.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="choice">
+      <p class="task-q">Hány „bevett vallást” ismert el Erdély a tordai határozat (1568) után?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Kettőt</button>
+        <button data-val="b">B) Hármat</button>
+        <button data-val="c">C) Négyet</button>
+        <button data-val="d">D) Ötöt</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>reformáció</dt><dd>A 16. századi egyházi megújulási mozgalom, amely Luther fellépésétől a katolikus egyház szakadásához vezetett.</dd>
+    <dt>protestáns</dt><dd>A reformáció híveinek gyűjtőneve, amely az 1529-es speyeri tilalom elleni tiltakozásból (protestatio) ered.</dd>
+    <dt>evangélikus</dt><dd>Luther tanításait követő, elsősorban Németországban és Skandináviában elterjedt felekezet.</dd>
+    <dt>református</dt><dd>Kálvin tanításait követő, presbiteri egyházszervezetű felekezet.</dd>
+    <dt>unitárius</dt><dd>A Szentháromság tanát elutasító antitrinitárius irányzat magyarországi és erdélyi elnevezése.</dd>
+    <dt>vallási türelem</dt><dd>A más felekezetűek szabad vallásgyakorlatának elismerése — Erdélyben törvénybe iktatott elv volt 1568-tól.</dd>
+    <dt>presbiter</dt><dd>A református egyházközösség világi vezetője, aki a lelkésszel együtt irányítja a gyülekezetet.</dd>
+    <dt>predesztináció</dt><dd>Kálvin tanítása az eleve elrendelésről: Isten már a születéskor meghatározza az ember üdvösségét vagy kárhozatát.</dd>
+    <dt>három rendi nemzet</dt><dd>Erdély jogi-rendi berendezkedésének alapja: a magyar nemesség, a székelyek és a szászok 1437-es szövetsége (kápolnai unió).</dd>
+    <dt>bevett vallás</dt><dd>Az 1568-as tordai határozat után Erdélyben törvényesen elismert négy felekezet: katolikus, református, evangélikus, unitárius.</dd>
+    <dt>megtűrt felekezet</dt><dd>Az ortodoxokhoz és izraelitákhoz hasonló, Erdélyben szabad vallásgyakorlatot élvező, de kiváltságokban nem részesülő közösségek.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1437</b> Kápolnai unió — a három erdélyi rendi nemzet szövetsége <span class="eonly">E</span></li>
+    <li><b>1517</b> Luther 95 tézise — a reformáció kezdete</li>
+    <li><b>1520</b> Luther kiközösítése <span class="eonly">E</span></li>
+    <li><b>1529</b> Speyeri birodalmi gyűlés <span class="eonly">E</span></li>
+    <li><b>1530</b> Ágostai (augsburgi) hitvallás</li>
+    <li><b>1541</b> Kálvin letelepedése Genfben <span class="eonly">E</span></li>
+    <li><b>1553</b> Szervét Mihály megégetése Genfben <span class="eonly">E</span></li>
+    <li><b>1555</b> Augsburgi vallásbéke <span class="eonly">E</span></li>
+    <li><b>1557</b> Katolikusok és evangélikusok szabad vallásgyakorlata Erdélyben</li>
+    <li><b>1562</b> Debreceni református zsinat</li>
+    <li><b>1564</b> Evangélikusok és reformátusok szabad vallásgyakorlata Erdélyben</li>
+    <li><b>1566</b> Mélius Juhász Péter és Dávid Ferenc hitvitája</li>
+    <li><b>1568</b> A tordai országgyűlés — négy bevett vallás</li>
+    <li><b>1572</b> Szent Bertalan-éj <span class="eonly">E</span></li>
+    <li><b>1590</b> A vizsolyi Biblia megjelenése</li>
+    <li><b>1598</b> Nantes-i ediktum <span class="eonly">E</span></li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Wittenberg</li><li>Genf</li><li>Speyer</li><li>Augsburg</li>
+    <li>Vizsoly</li><li>Sárospatak</li><li>Debrecen</li><li>Torda</li>
+    <li>Gyulafehérvár</li><li>Kolozsvár</li><li>Nagyszeben</li><li>Brassó</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze a mohácsi csatát és a tordai vallásszabadságot: <em>mohácsi csata; a reformáció gyors magyarországi terjedése; tordai országgyűlés; Luther 95 tézise</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> Luther 95 tézise (1517) → mohácsi csata (1526) → a reformáció gyors magyarországi terjedése → tordai országgyűlés (1568).</p>
+        <p><strong>Indoklás:</strong> A mohácsi csatában a magyar katolikus egyház vezető rétege (a püspökök nagy része) elpusztult, ami meggyengítette az egyházat és megkönnyítette a Luther által elindított reformáció gyors terjedését; ez a vallási sokszínűség Erdélyben végül jogi elismeréshez, a tordai határozathoz vezetett.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Reformátorok azonosítása</h4>
+    <p>A leírás alapján nevezze meg, kiről van szó: „Katolikusként született, majd evangélikus, református, végül unitárius püspök lett, János Zsigmond fejedelem udvari lelkésze.” Nevezzen meg egy másik magyarországi reformátort is, és adja meg tevékenységének lényegét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Dávid Ferencre</em> vonatkozik. Egy másik lehetséges reformátor: Mélius Juhász Péter (debrecen-egervölgyi hitvallás megfogalmazása) vagy Károli Gáspár (a vizsolyi Biblia lefordítása).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: az augsburgi vallásbéke és a tordai határozat összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: évszám, ki dönt a vallásról, hány felekezetet ismer el, a döntés szintje), mi a hasonlóság és mi a különbség az augsburgi vallásbéke (1555) és a tordai határozat (1568) között.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Augsburgi vallásbéke (1555)</th><th>Tordai határozat (1568)</th></tr>
+          <tr><td>Ki dönt a vallásról</td><td>A tartomány ura</td><td>Elvben az egyén (hallgató és prédikátor)</td></tr>
+          <tr><td>Elismert felekezetek száma</td><td>Kettő (katolikus, lutheránus)</td><td>Négy (katolikus, református, evangélikus, unitárius)</td></tr>
+          <tr><td>A döntés szintje</td><td>Fejedelmi-tartományúri</td><td>Egyéni szabad választás elve</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindkettő törvényes keretbe foglalta a vallási sokszínűséget, elkerülve a teljes vallásháborút.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+
+  <div class="essay-dual">
+    <span class="lbl">Kettős jellegű témakör</span>
+    A reformáció kérdésköre <strong>kettős jellegű</strong>: az európai reformáció (Luther, Kálvin, vallásháborúk) <strong>egyetemes témakörnek</strong> számít, ezért középszinten csak <strong>rövid esszében</strong> (100–130 szó) kérhető. Ezzel szemben a reformáció <strong>magyarországi elterjedése és Erdély sajátos helyzete</strong> <strong>magyar történelmi témakörnek</strong> minősül, ezért <strong>hosszú esszében</strong> (210–260 szó) is szerepelhet. A mintaesszé az utóbbi, domináns (magyar/erdélyi) irányhoz igazodik.
+  </div>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta hosszú esszé (kb. 245 szó):</strong> „Mutassa be a reformáció magyarországi elterjedésének okait, és értékelje Erdély vallási türelmének egyedülálló jellegét Európában!”</p>
+    <p>A Luther Márton 1517-es fellépésével induló reformáció Magyarországon rendkívül gyorsan terjedt el. Ezt közvetve elősegítette a mohácsi csata (1526): a 12 magyar püspökből 7 életét vesztette, az egyház anyagi és szellemi ereje jelentősen meggyengült, az ország három részre szakadása pedig tovább nehezítette az egységes egyházi fellépést. A lutheri tanok elsőként a szász városokban, majd a kálvini tanítások az 1550-es évektől a Tiszántúlon (Mélius Juhász Péter működése nyomán, Debrecen — a „kálvinista Róma” — központtal) terjedtek el. A század végére Károli Gáspár elkészítette az első teljes magyar nyelvű Bibliát (vizsolyi Biblia, 1590), a lakosság többsége pedig protestánssá vált.</p>
+    <p>Erdély vallási helyzete különösen figyelemre méltó: a három rendi nemzet (magyar, székely, szász) 1437-es kápolnai uniója adta a rendi berendezkedés kereteit, miközben a vallási térkép rendkívül sokszínű volt. Míg Nyugat-Európában vallásháborúk dúltak (pl. az 1572-es Szent Bertalan-éj Franciaországban), Erdélyben fokozatosan bővült a türelem: 1557, 1564, majd az 1568-as tordai országgyűlésen — Dávid Ferenc unitárius püspök és János Zsigmond fejedelem támogatásával — kimondták a négy bevett vallás (katolikus, református, evangélikus, unitárius) szabad gyakorlását. Ez a döntés, amely a hitet Isten ajándékának, nem kikényszeríthető kötelezettségnek tekintette, évtizedekkel megelőzte a nyugat-európai vallási türelem jogi elismerését, és Erdélyt Európa egyik legtürelmesebb államává tette.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé két szálon (magyarországi terjedés okai, majd Erdély kiemelt esete) bontja ki a témát, konkrét évszámokkal és nevekkel dolgozik, és a záró gondolatban európai összevetéssel emeli ki Erdély egyediségét — ez emelt szintű elemző mélységet ad.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130">Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260" selected>Hosszú esszé — középszint (210–260 szó)</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — emelt szint (210–260 szó)</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 210–260 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Kronológiailag pontos adatokat (évszám, névhasználat) tartalmaz</li>
+      <li><input type="checkbox"> Legalább két konkrét tényre vagy forrásra hivatkozik</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be Luther Márton tanításának alapelveit! (egyetemes témakör — csak rövid esszében kérhető)</li>
+    <li><b>E2</b> Jellemezze a reformáció magyarországi gyors terjedésének okait!</li>
+    <li><b>E3</b> Mutassa be Erdély három rendi nemzetének berendezkedését! <span class="eonly">E</span></li>
+    <li><b>E4</b> Értékelje a tordai határozat (1568) jelentőségét a vallási türelem történetében!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze az augsburgi vallásbékét (1555) és a tordai országgyűlés határozatát (1568) a vallási türelem szempontjából!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A reformáció Magyarországon és Erdély sajátos vallási helyzete</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a reformáció fogalma és Luther fellépése</td></tr>
+    <tr><td>2 perc</td><td>Kálvin tanításai és a radikális irányzatok</td></tr>
+    <tr><td>2 perc</td><td>A reformáció gyors magyarországi terjedésének okai</td></tr>
+    <tr><td>2 perc</td><td>Erdély három rendi nemzete és a vallási sokszínűség</td></tr>
+    <tr><td>2 perc</td><td>A tordai határozat (1568) és a négy bevett vallás</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: Erdély helye az európai vallási türelem történetében</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Miért terjedt olyan gyorsan a reformáció a meggyengült magyar katolikus egyház talaján?</li>
+    <li>Miben tér el Luther és Kálvin tanításának hangsúlya?</li>
+    <li>Miért nem alkotott a románság rendi nemzetet Erdélyben, annak ellenére, hogy jelentős népességet képviselt?</li>
+    <li>Milyen fokozatokban bővült az erdélyi vallási türelem 1557 és 1568 között?</li>
+    <li>Miben különbözik a tordai határozat elve az augsburgi vallásbéke elvétől?</li>
+    <li>Ki volt Dávid Ferenc, és milyen szerepet játszott az unitárius egyház megszervezésében?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez kettős jellegű témakör: az európai reformáció csak rövid esszében (100–130 szó), a magyarországi/erdélyi rész viszont hosszú esszében (210–260 szó) is kérhető — mindig figyeld a feladat pontos megfogalmazását!</li>
+    <li>Ne keverd össze Luther négy alapelvét (sola fide, sola gratia, sola Scriptura, solus Christus) — mindegyiknek pontos jelentése van.</li>
+    <li>Jegyezd meg: az antitrinitárius irányzat Magyarországon és Erdélyben unitárius néven honosodott meg.</li>
+    <li>A „három rendi nemzet” (magyar, székely, szász) jogi, nem etnikai fogalom — a románság ebbe nem tartozott bele annak ellenére, hogy jelentős népességet alkotott.</li>
+    <li>A tordai határozat (1568) fokozatos folyamat eredménye volt (1557, 1564, 1568) — ne úgy mutasd be, mintha egyetlen lépésben jött volna létre.</li>
+    <li>Az augsburgi vallásbéke (1555) és a tordai határozat (1568) között alapvető különbség: az előbbi a tartományúr, az utóbbi elvben az egyén szintjén mondja ki a vallásválasztás szabadságát.</li>
+    <li>Ne feledd Dávid Ferenc négyszeres hitváltását (katolikus → evangélikus → református → unitárius) — ez gyakori vizsgakérdés.</li>
+    <li>Kronológiai csapda: a vizsolyi Biblia (1590) később készült el, mint a tordai határozat (1568) — ne cseréld fel a sorrendet.</li>
+    <li>Tudd megkülönböztetni a „bevett” (katolikus, református, evangélikus, unitárius) és a „megtűrt” (ortodox, izraelita) felekezetek jogi státuszát Erdélyben.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni az európai (Wittenberg, Genf, Augsburg) és a magyarországi-erdélyi (Vizsoly, Debrecen, Torda, Kolozsvár) helyszíneket egyaránt.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>Száray Miklós (szerk.): Történelem 10. — OH-TOR10TA, Oktatási Hivatal</li>
+      <li>Katolikus történelem 10. tankönyv</li>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti tankönyvi és témavázlati kiadványok, illetve a hivatalos vizsgakövetelmény ajánlott.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"a"},
+    "m1-t3": {type:"fill", answers:["fide"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"choice", answer:"b"},
+    "m2-t2": {type:"tf", answer:false},
+    "m2-t3": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"match", pairs:{v1:"a1", v2:"a2", v3:"a3"}},
+    "m3-t2": {type:"sort", answers:{s1:"nyelv", s2:"oktatas", s3:"oktatas"}},
+    "m3-t3": {type:"choice", answer:"b"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:false},
+    "m4-t2": {type:"fill", answers:["károli gáspár","karoli gaspar"]},
+    "m4-t3": {type:"choice", answer:"b"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"choice", answer:"d"},
+    "m5-t2": {type:"tf", answer:false},
+    "m5-t3": {type:"match", pairs:{q1:"w1", q2:"w2", q3:"w3"}},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"sort", answers:{c1:"bevett", c2:"megturt", c3:"bevett"}},
+    "m6-t2": {type:"fill", answers:["dávid ferenc","david ferenc"]},
+    "m6-t3": {type:"choice", answer:"c"},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  // ---- TF & CHOICE ----
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  // ---- FILL ----
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  // ---- MATCH ----
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  // ---- SORT ----
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  // ---- OPEN ----
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  // ---- OK-OKOZATI LÁNC ----
+  var chainSteps = [
+    {order:1, text:"A katolikus egyház válsága és Luther fellépése elindítja a reformációt (1517)"},
+    {order:2, text:"Kálvin és a helvét irányzat új egyházszervezeti modellt teremt"},
+    {order:3, text:"A reformáció gyorsan terjed Magyarországon a meggyengült katolikus egyház talaján"},
+    {order:4, text:"Erdély három rendi nemzete és fokozatosan bővülő vallási türelme egyedülálló modellt hoz létre"},
+    {order:5, text:"A tordai országgyűlés (1568) kimondja a négy bevett vallás szabad gyakorlását"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">✝</span>Kirakva! A lánc: Luther fellépése → Kálvin → magyarországi terjedés → erdélyi türelem → tordai határozat (1568).';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  // ---- GLOSSARY SEARCH ----
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  // ---- ESSAY WORD COUNTER ----
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

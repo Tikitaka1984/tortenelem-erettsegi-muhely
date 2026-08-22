@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A kiegyezés és előzményei — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1820;
+  --rubric:#5c2a44;
+  --lapis:#3a5a52;
+  --gold:#ab8a42;
+  --stone:#d9cfb8;
+  --paper:#f1ece0;
+  --paper-2:#e6dcc4;
+  --line:#c5b892;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(26,24,32,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(171,138,66,.09), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(92,42,68,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#f1ece0; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(26,24,32,.94), rgba(58,90,82,.85)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f6f1e2;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#e5dac0; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(241,236,224,.35); color:#f1ece0; padding:5px 10px; border-radius:20px;
+  background:rgba(241,236,224,.06);
+}
+.chain-box{
+  background:rgba(14,13,17,.35); border:1px solid rgba(241,236,224,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(241,236,224,.35);
+  background:rgba(241,236,224,.05); color:#f1ece0; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(241,236,224,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(241,236,224,.45);
+  border-top:1px dashed rgba(241,236,224,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(171,138,66,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#e5dac0; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(241,236,224,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+.fogodzo{
+  background:linear-gradient(120deg,#e3d7ac,#e9deb9); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(197,184,146,.3);}
+.source-box{background:#f8f2e3; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#3a322a; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+.sort-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row span{flex:1 1 200px;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#26433c;}
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#231c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#8a6f34;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#ecdfb5; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#ecdfb5;}
+.tips-list li.first-tip::before{background:var(--gold); color:#231c14;}
+footer{background:var(--ink); color:#d9cfb8; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(197,184,146,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1849–1867</span>
+    <h1>A kiegyezés és előzményei</h1>
+    <p class="subtitle">A Bach-korszaktól a dualista Monarchiáig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan alakította ki a Bach-rendszer ellentmondásos öröksége, a neoabszolutizmus válsága és a kölcsönös kompromisszumkészség a kiegyezéshez vezető utat, hogyan zajlottak Deák Ferenc és Andrássy Gyula tárgyalásai a bécsi udvarral, és hogyan hozta létre az 1867-es kiegyezési törvény a közös ügyeken alapuló, kétközpontú Osztrák–Magyar Monarchiát.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">🤝</span>
+        Rakd össze a láncot, hogy létrejöjjön a kiegyezés!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Bach-korszak</a>
+    <a href="#m2">2. Válság 1857–61</a>
+    <a href="#m3">3. Kompromisszumkészség</a>
+    <a href="#m4">4. Tárgyalások</a>
+    <a href="#m5">5. Közös ügyek</a>
+    <a href="#m6">6. Vita, értékelés</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A Bach-korszak ellentmondásai</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a Bach-rendszer kettős jellegét: az elnyomó politikai berendezkedést és a polgári-liberális gazdasági-jogi keretet.</div>
+
+  <article>
+    <h3>Az elnyomó neoabszolutizmus</h3>
+    <p>Az 1848–49-es szabadságharc leverése után, az 1850-es évektől kiépülő, <strong>Alexander Bach</strong> belügyminiszter nevével fémjelzett rendszert (Bach-korszak) alapvető ellentmondás jellemezte. Politikailag elnyomó volt: egységesítő centralizmust és germanizációt (a németesítés politikáját) valósított meg, Magyarországon nem működött országgyűlés, megszűnt a helyi önkormányzatiság, az országot megfosztották a politikai hatalom gyakorlásának és a véleménynyilvánításnak minden formájától. A megtorlás is súlyos volt (Batthyány Lajos és az aradi vértanúk kivégzése, emigrációba kényszerülők sokasága).</p>
+
+    <h3>A polgári állam ellentmondásos öröksége</h3>
+    <p>Ugyanakkor a birodalom polgári állammá alakult, amelyben érvényesült a gazdasági és jogi liberalizmus — csak éppen a politikai szabadságjogok nem. A birodalom népei által 1848–49-ben kivívott vívmányok közül megmaradt a <strong>jobbágyfelszabadítás</strong> és a törvény előtti egyenlőség, sőt, ahol szükséges volt, folytatódott a megkezdett reformok megvalósítása (pl. egységes adórendszer, modern közigazgatás, bírósági reform). A magyar politikai élet válasza erre a helyzetre a <strong>passzív ellenállás</strong> lett: a politikai vezető réteg (Deák Ferenc irányításával) nem vállalt hivatalt az új rendszerben, nem működött együtt a hatóságokkal, de fegyveres ellenállást sem szervezett.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a Bach-rendszer <strong>nem</strong> volt egyszerűen "rossz" vagy "jó" — egyszerre valósította meg a politikai elnyomást és a polgári jogi-gazdasági modernizációt; ez a kettősség később, a kiegyezés utáni fejlődés egyik alapját is jelentette, hiszen a gazdasági-jogi keretek nagy része érintetlenül fennmaradt.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>emigráció; passzív ellenállás</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>1. forrás — A Bach-rendszer jellemzése (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a Bach-korszak berendezkedése egyszerre volt elnyomó és modernizáló: miközben az ország elveszítette önálló politikai intézményeit és a németesítés erőltetett politikáját szenvedte el, eközben egységes, korszerű közigazgatási és jogi keretek jöttek létre, amelyek a korábbi rendi különállásokat felszámolták, és megteremtették a modern polgári állam alapjait.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen két, egymásnak ellentmondó jellemzőt említ a forrás?</p>
+        <p><strong>b)</strong> Mit veszített el az ország a Bach-korszak alatt?</p>
+        <p><strong>c)</strong> Mi maradt meg vagy fejlődött tovább ennek ellenére?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az elnyomó, önállóságot felszámoló politikát és a modernizáló, polgári jogi-közigazgatási fejlődést.</p>
+          <p><strong>b)</strong> Az önálló politikai intézményeket (országgyűlés, önkormányzatiság), a magyar nyelv hivatalos használatát.</p>
+          <p><strong>c)</strong> Az egységes közigazgatás, a modern jogrend és a korábbi rendi kiváltságok felszámolása.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: A Bach-korszak alatt a jobbágyfelszabadítás vívmányát visszavonták.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Mi jellemezte a magyar politikai vezető réteg válaszát a Bach-korszakra?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Azonnali fegyveres felkelés</button>
+        <button data-val="b">B) Passzív ellenállás — hivatalvállalás és együttműködés megtagadása</button>
+        <button data-val="c">C) Teljes együttműködés a hatóságokkal</button>
+        <button data-val="d">D) Azonnali emigráció mindenki számára</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A neoabszolutizmus rendszerét irányító osztrák belügyminiszter neve Alexander ______.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>A neoabszolutizmus válsága (1857–1861)</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, milyen belső és külső tényezők kényszerítették alkotmányos engedményekre a bécsi udvart.</div>
+
+  <article>
+    <h3>Az 1857-es fordulópont</h3>
+    <p>Az 1857-es esztendő határvonalnak számít a neoabszolutizmus történetében: a gazdasági válság elérte a birodalmat, államcsőd fenyegetett, és külpolitikailag is elbizonytalanodott a birodalom — 1859-ben a solferínói vereség (az itáliai egységmozgalommal vívott háborúban) tovább rontotta a helyzetet. Ferenc József ezért óvatos változtatásokba kezdett: menesztette Bachot, és fokozatosan elfogadta az alkotmányosság igényét.</p>
+
+    <h3>Az októberi diploma és a februári pátens kudarca</h3>
+    <p>1860. október 20-án kiadták az <strong>októberi diplomát</strong>, amely lényegében az 1847-es viszonyok visszaállítását ígérte — ezt azonban az osztrák centralista körök is elutasították. 1861. február 27-én ezért kibocsátották a <strong>februári pátens</strong>t, amely birodalmi összparlamentet állított volna fel, az örökös tartományok túlsúlyával. A magyar politikai elit elutasította, hogy küldötteket delegáljon ebbe az összparlamentbe — az 1861-ben összeült magyar országgyűlést emiatt Ferenc József feloszlatta, és megkezdődött a <strong>provizórium</strong> időszaka (1861–1865), amelynek vezető alakja Schmerling lovag államminiszter volt. Ez az időszak egy mérsékeltebb abszolutizmus volt, amely alatt fokozatosan erősödött a kompromisszumkészség mind az osztrák, mind a magyar oldalon.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az októberi diploma és a februári pátens <strong>nem</strong> ugyanazt jelentette — az októberi diploma inkább a korábbi, tartományi-rendi berendezkedéshez tért volna vissza, míg a februári pátens egy centralizált, birodalmi összparlament felállítását célozta; mindkettőt elutasította a magyar politikai elit, de eltérő okokból.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Ferenc József</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>2. forrás — Az októberi diploma és a februári pátens (tartalmi kivonat)</h4>
+      <p class="src-text">Az októberi diploma szövege szerint az uralkodó helyreállítja a tartományok alkotmányos jogait, az 1847-es állapotokhoz hasonló berendezkedést ígérve. A februári pátens ezzel szemben egy erős, birodalmi szintű összparlamentet hozott volna létre, amelyben az örökös tartományok képviselői döntő súllyal rendelkeztek volna a magyar küldöttekkel szemben.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen berendezkedést ígért az októberi diploma?</p>
+        <p><strong>b)</strong> Miben tért el ettől a februári pátens elképzelése?</p>
+        <p><strong>c)</strong> Miért utasította el a magyar politikai elit mindkét megoldást?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az 1847-es, rendi-tartományi jellegű alkotmányos állapotok visszaállítását.</p>
+          <p><strong>b)</strong> A februári pátens egy centralizált birodalmi összparlamentet hozott volna létre, az örökös tartományok túlsúlyával.</p>
+          <p><strong>c)</strong> Mert egyik sem biztosította Magyarország önálló államiságát és a magyar országgyűlés valódi döntési jogkörét.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="choice">
+      <p class="task-q">Melyik vereség rontotta tovább a birodalom külpolitikai helyzetét 1859-ben?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Königgrätz</button>
+        <button data-val="b">B) Solferíno</button>
+        <button data-val="c">C) Sedan</button>
+        <button data-val="d">D) Waterloo</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="tf">
+      <p class="task-q">Állítás: A magyar országgyűlés elfogadta, hogy küldötteket delegáljon a februári pátens által létrehozott birodalmi összparlamentbe.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="match">
+      <p class="task-q">Párosítsd az eseményt az évszámmal!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Solferínói vereség</button>
+          <button class="match-item" data-key="p2">Októberi diploma</button>
+          <button class="match-item" data-key="p3">Februári pátens</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">1859</button>
+          <button class="match-item" data-key="r2">1860</button>
+          <button class="match-item" data-key="r3">1861</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>A kompromisszumkészség kialakulása</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, milyen tényezők ösztönözték mindkét felet a megegyezésre a provizórium éveiben.</div>
+
+  <article>
+    <h3>Magyar oldali tényezők</h3>
+    <p>A magyar politikai vezető réteg körében több tényező is a kiegyezés felé mutatott. A konzervatívok (gróf Apponyi György memoranduma) a Pragmatica Sanctio és a '48-as törvények összeegyeztetését szorgalmazták. Ugyanakkor félelmet keltett a magyar uralmat is veszélyeztető emigrációs tervek lehetősége (pl. Kossuth Dunai Szövetség-elgondolása, amely a Habsburg Birodalom Duna-menti népeinek föderációját célozta, ami a magyar túlsúlyt is korlátozta volna). Szórványosan fellángoló parasztmozgalmak és a nemzetiségek növekvő nyomása is nyugtalanságot okozott. Emellett a <strong>passzív ellenállásba</strong> gazdaságilag belerokkant a magyar nemesség, a magyar polgárság pedig jelentős birodalmi megrendelésektől esett el a politikai szembenállás miatt.</p>
+
+    <h3>Osztrák oldali tényezők</h3>
+    <p>Az osztrák oldalon is nyomós érvek szóltak a megegyezés mellett: a drága abszolutizmus állandó anyagi gondokat okozott a birodalomnak. Külpolitikai bizonytalanságot jelentett a német egységfolyamat parázsló vitái és várható összetűzései (amelyek egy konszolidált, stabil hátországot igényeltek volna) — ez a fenyegetés különösen felerősödött az 1866-os porosz–osztrák háború közeledtével.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a kompromisszumkészség <strong>nem</strong> egyoldalú engedmény volt — mindkét fél saját, kényszerítő körülményei miatt (magyar oldalon gazdasági kimerülés és belső feszültségek, osztrák oldalon pénzügyi válság és külpolitikai fenyegetettség) jutott el a tárgyalóasztalhoz, ez magyarázza, hogy a megegyezés kölcsönös kompromisszumként, nem pedig egyoldalú győzelemként jött létre.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>közjogi kérdés</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>3. forrás — Apponyi György konzervatív terve (tartalmi kivonat)</h4>
+      <p class="src-text">A memorandum azt javasolja, hogy a Pragmatica Sanctio elvi alapját össze kell egyeztetni az 1848-as áprilisi törvények vívmányaival — vagyis meg kell találni azt a közjogi formulát, amely egyszerre biztosítja a Habsburg-dinasztia jogait és a magyar alkotmányos önállóság alapvető elemeit, elkerülve mind a teljes szakítást, mind a teljes alávetettséget.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen két elvet próbál összeegyeztetni a memorandum?</p>
+        <p><strong>b)</strong> Milyen két szélsőséges megoldást igyekszik elkerülni?</p>
+        <p><strong>c)</strong> Miért fontos ez a terv a kiegyezéshez vezető út szempontjából?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A Pragmatica Sanctio dinasztikus jogait és az 1848-as törvények alkotmányos vívmányait.</p>
+          <p><strong>b)</strong> A teljes szakítást (függetlenség) és a teljes alávetettséget (abszolutizmus elfogadása).</p>
+          <p><strong>c)</strong> Mert korai előfutára volt annak a közjogi konstrukciónak, amelyet végül a kiegyezés valósított meg.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="match">
+      <p class="task-q">Párosítsd a tényezőt azzal az oldallal, ahol felmerült!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="v1">Kossuth Dunai Szövetség-terve</button>
+          <button class="match-item" data-key="v2">Drága abszolutizmus, állandó anyagi gondok</button>
+          <button class="match-item" data-key="v3">Apponyi memoranduma</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="a1">Magyar emigráció</button>
+          <button class="match-item" data-key="a2">Osztrák pénzügyi helyzet</button>
+          <button class="match-item" data-key="a3">Magyar konzervatívok</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott tényező a magyar vagy az osztrák oldal kompromisszumkészségét erősítette?</p>
+      <div class="sort-row"><span>A passzív ellenállásba belerokkant nemesség</span>
+        <select data-key="s1"><option value="">válassz</option><option value="magyar">Magyar oldal</option><option value="osztrak">Osztrák oldal</option></select>
+      </div>
+      <div class="sort-row"><span>A német egységfolyamat várható összetűzései</span>
+        <select data-key="s2"><option value="">válassz</option><option value="magyar">Magyar oldal</option><option value="osztrak">Osztrák oldal</option></select>
+      </div>
+      <div class="sort-row"><span>A nemzetiségek növekvő nyomása</span>
+        <select data-key="s3"><option value="">válassz</option><option value="magyar">Magyar oldal</option><option value="osztrak">Osztrák oldal</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Miért esett el jelentős birodalmi megrendelésektől a magyar polgárság a provizórium alatt?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Mert a gazdaság összeomlott</button>
+        <button data-val="b">B) A politikai szembenállás (passzív ellenállás) miatt</button>
+        <button data-val="c">C) Mert nem volt elég munkaerő</button>
+        <button data-val="d">D) Mert az osztrák udvar betiltotta a magyar ipart</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A tárgyalások és a kiegyezési törvény elfogadása</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Kövesd végig a Deák–Augusz tárgyalásoktól az 1867-es törvény szentesítéséig vezető utat.</div>
+
+  <article>
+    <h3>A húsvéti cikk és az országgyűlés összehívása</h3>
+    <p>1864 decemberében a bécsi udvar részéről Augusz Antal báró kereste fel <strong>Deák Ferenc</strong>et — Deák elfogadta tárgyalási alapnak a Pragmatica Sanctiót, Augusz pedig a császár nevében megígérte, hogy szakítanak a schmerlingi politikával. Ennek nyomán Deák — addigi hallgatását megtörve — megírta a „<strong>húsvéti cikk</strong>et” a Pesti Naplóban (1865. április 16.), amelyben körvonalazta a kiegyezés lehetséges alapelveit. Schmerling megbukott, és Ferenc József 1865. december 14-én újra összehívta a magyar országgyűlést.</p>
+
+    <h3>A tárgyalások és a törvény elfogadása</h3>
+    <p>Az országgyűlés 1866. március 1-jén 67 tagú bizottságot küldött ki a tárgyalások lefolytatására, amelyek június 25-re be is fejeződtek. A porosz–osztrák háború (1866) rövid időre megakasztotta a folyamatot, de a tárgyalások 1867 januárjától újra megindultak: február 17-én az uralkodó <strong>Andrássy Gyulá</strong>t nevezte ki miniszterelnöknek, február 20-án megalakult a felelős magyar minisztérium, május 29-én a képviselőház részletes vita után elfogadta a kiegyezési törvényt, június 8-án Ferenc Józsefet magyar királlyá koronázták, július 28-án pedig szentesítette az 1867: I–XII. törvénycikket (a kiegyezési törvény a XII. tc. volt).</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a porosz–osztrák háborús vereség (Königgrätz, 1866) <strong>nem</strong> akadályozta meg, hanem éppen felgyorsította a kiegyezést — a vereség tovább gyengítette az osztrák tárgyalási pozíciót, és megerősítette a bécsi udvar belátását, hogy a magyar megegyezés nélkülözhetetlen a birodalom stabilitásához.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>húsvéti cikk</td>
+        <td>Andrássy Gyula</td>
+        <td>1867 a kiegyezés</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — Deák Ferenc „húsvéti cikke” (1865. április 16., tartalmi kivonat)</h4>
+      <p class="src-text">Deák cikkében kifejti: a nemzet nem mondhat le jogairól, de a Pragmatica Sanctio alapján el kell ismernie a közös uralkodó és a birodalom biztonságával összefüggő közös érdekeket is. A megegyezés alapja csakis a törvényes, 1848-as alkotmány lehet, amelyet módosítani lehet a birodalom szükségleteinek megfelelően, de amelynek lényegét — a felelős magyar kormányzatot és az alkotmányos berendezkedést — nem szabad feladni.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen jogi alapot jelöl meg Deák a tárgyalások kiindulópontjaként?</p>
+        <p><strong>b)</strong> Mit tart elengedhetetlennek megőrizni a tárgyalások során?</p>
+        <p><strong>c)</strong> Miért volt jelentős lépés, hogy Deák megtörte addigi hallgatását ezzel a cikkel?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az 1848-as törvényes alkotmányt és a Pragmatica Sanctiót.</p>
+          <p><strong>b)</strong> A felelős magyar kormányzatot és az alkotmányos berendezkedés lényegét.</p>
+          <p><strong>c)</strong> Mert ez jelezte a nyilvánosság felé, hogy a tárgyalások érdemi szakaszba léptek, és Deák hajlandó nyilvánosan is felvállalni a kompromisszum irányát.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: A porosz–osztrák háború (1866) végleg meghiúsította a kiegyezési tárgyalásokat.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: Deák Ferenc 1865. április 16-án a Pesti Naplóban közölte a „______ cikk”-et.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Kit nevezett ki Ferenc József 1867. február 17-én miniszterelnöknek?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Deák Ferencet</button>
+        <button data-val="b">B) Andrássy Gyulát</button>
+        <button data-val="c">C) Schmerling lovagot</button>
+        <button data-val="d">D) Apponyi Györgyöt</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>A kiegyezés tartalma — közös ügyek és dualizmus</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a dualista berendezkedés jogi alapjait, a közös ügyek rendszerét és a delegációk működését.</div>
+
+  <article>
+    <h3>A kiegyezés jogi jellege</h3>
+    <p>A kiegyezéssel létrejött kétközpontú, <strong>dualista</strong> monarchia jóval több volt egy szokványos államközi kapcsolatnál — több volt a perszonálunciónál, inkább <strong>reáluniónak</strong> nevezhető, mert az uralkodó személye mellett egyes „ügyek” is közösek voltak. A birodalom két részének — a Lajtántúli területeknek (az örökös tartományok cseh és lengyel területekkel) és a Lajtán inneni területeknek (Magyarország a horvát, szlavón és dalmát társországokkal) — kapcsolatát a <strong>Pragmatica Sanctio</strong>, pontosabban az 1723: I–II. törvénycikk alapján szabályozták: a birodalom feloszthatatlan és elválaszthatatlan, biztonságán együtt kell őrködni — ebből adódtak a <strong>közös ügyek</strong>: a kül-, a had- és az ezek fedezésére szolgáló pénzügy. A kapcsolat a paritás elvére épült: a két fél teljes egyenjogúságot élvezett, ez érvényes volt a két fővárosra is.</p>
+
+    <h3>A közös minisztériumok és a delegációk</h3>
+    <p>A közös ügyeket közös minisztériumokban intézték, élükön a király által kinevezett közös miniszterekkel. Mindkét ország külön-külön ellenőrizte ezeket: mindkét parlament 60 tagú, felügyeleti jogot gyakorló <strong>delegáció</strong>t választott, amelyek évente egyszer, váltakozva Bécsben és Pesten üléseztek, de nem együtt, hanem külön-külön — így nem válhattak közös parlamentté. Az ügyekben levélváltással érintkeztek; ha háromszori üzenetváltás után sem sikerült megegyezniük, együttes ülésen és szavazáson dönthettek, ellentétes álláspont esetén pedig a császár. A delegációk állapították meg a közös ügyek költségvetését is; a közös költségvetésből való részesedés (kvóta) arányát a két parlament 10 évre állapította meg — Magyarországra kezdetben 30% jutott, ez 1908-ra 36%-ra nőtt.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a delegációk <strong>nem</strong> alkottak közös parlamentet — bár mindkét ország küldött delegátusokat, ezek külön-külön üléseztek, és csak kivételes esetben, tartós nézetkülönbség esetén ültek össze egyetlen közös szavazásra; ez a szerkezet biztosította, hogy egyik ország se olvadjon bele a másikba jogilag.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>közös ügyek; dualizmus</td>
+        <td>—</td>
+        <td>—</td>
+        <td>Osztrák-Magyar Monarchia; Fiume</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:52c -->
+<figure class="atlas-map" data-atlas-code="52c">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 52c. térkép</span>
+    <h4>Az Osztrák–Magyar Monarchia, 1867–1918</h4>
+    <p class="atlas-map__focus">A dualista állam két központja, tartományai és belső államjogi tagolódása vizsgálható.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p054_52c.webp" target="_blank" rel="noopener" aria-label="Az Osztrák–Magyar Monarchia, 1867–1918 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img025.webp" alt="Történelmi térkép: Az Osztrák–Magyar Monarchia, 1867–1918" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:52c -->
+<div class="source-box">
+      <h4>5. forrás — A közös ügyek rendszere (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a közös hadügy terén a kiegyezés egyértelműen a birodalmi érdekeket helyezte előtérbe: az uralkodó lett a legfőbb hadúr, a közös hadsereg (K.u.K., császári és királyi) létszáma 800 ezer fő körül alakult, vezényleti nyelve a német volt. Ezzel párhuzamosan, de a közös hadügyminisztériumtól függetlenül, felállították a 100-100 ezer fős magyar Honvédséget és a Lajtántúli Landwehrt — ezek legfőbb hadura szintén Ferenc József volt.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen jogosítványokat kapott az uralkodó a közös hadügy terén?</p>
+        <p><strong>b)</strong> Milyen két, egymástól független haderőt hoztak létre a közös hadsereg mellett?</p>
+        <p><strong>c)</strong> Mi volt közös vonása a közös hadseregnek és a honvédségnek/Landwehrnek annak ellenére, hogy szervezetileg különváltak?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A legfőbb hadúri jogkört (vezérleti és vezényleti hatalom, kinevezési jog).</p>
+          <p><strong>b)</strong> A magyar Honvédséget és a Lajtántúli Landwehrt.</p>
+          <p><strong>c)</strong> Mindháromnak Ferenc József volt a legfőbb hadura, tehát az uralkodó személyén keresztül mégis egységes maradt a katonai főparancsnokság.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="choice">
+      <p class="task-q">Melyik jogi dokumentum szolgált a kiegyezés alapjául a birodalom két része közötti kapcsolat szabályozásában?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Az 1848-as áprilisi törvények</button>
+        <button data-val="b">B) A Pragmatica Sanctio (1723: I–II. tc.)</button>
+        <button data-val="c">C) A februári pátens</button>
+        <button data-val="d">D) A Bill of Rights</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: A két ország delegációi közösen, egyetlen közös parlamentként üléseztek.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="match">
+      <p class="task-q">Párosítsd a fogalmat a jelentésével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="q1">Delegáció</button>
+          <button class="match-item" data-key="q2">Kvóta</button>
+          <button class="match-item" data-key="q3">Reálunió</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="w1">60 tagú, felügyeleti jogú testület</button>
+          <button class="match-item" data-key="w2">A közös költségvetésből való részesedés aránya</button>
+          <button class="match-item" data-key="w3">Az uralkodó személye mellett közös ügyeket is megosztó kapcsolat</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>A kiegyezés vitája és értékelése</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Kossuth és Deák eltérő álláspontját a kiegyezésről, és tudj önállóan érvelni mindkét oldal mellett.</div>
+
+  <article>
+    <h3>Kossuth kritikája — a Kasszandra-levél</h3>
+    <p>A kiegyezés előnyös vagy előnytelen voltáról a vita már 1867-ben megindult. A törvény elfogadása előtt Kossuth Lajos emigrációból írt, híres <strong>Kasszandra-levele</strong>ben élesen bírálta a készülő megegyezést: szerinte Magyarország feladta a végső célt, a függetlenséget; a szorult helyzetben lévő osztrákoktól többet is el lehetett volna érni; és a kialakítandó, soknemzetiségű, de csak két uralkodó nemzetre (magyar, osztrák-német) épülő konstrukció a nemzetállamok korában hosszú távon életképtelennek bizonyulhat — ez utóbbi jóslat a levél nevét is adta (Kasszandra a görög mitológiában igaz, de senki által el nem hitt jóslatokat tett).</p>
+
+    <h3>Deák védelme és az utólagos értékelések</h3>
+    <p><strong>Deák Ferenc</strong> ezzel szemben úgy védelmezte a kiegyezést, hogy az adott helyzetben reális kompromisszum született: az osztrákok a Königgrätznél (1866) elszenvedett vereség után sem gyengültek meg annyira, hogy a kialkudottnál is előnyösebb feltételeket lehetett volna kicsikarni tőlük — és ha mégis sikerült volna, az akkor sem szólhatott volna hosszú távra. Deák azzal is érvelt, hogy a magyar függetlenségnek nem volt, és a közeljövőben nem is lesz külföldi támogatottsága. Az osztrák történészek közül sokan a kiegyezést egyenesen magyar győzelemként értékelték, azt állítva, hogy Magyarországnak nagyobb súlya és befolyása volt az Osztrák–Magyar Monarchiában, mint magának Ausztriának.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a Kossuth–Deák vita <strong>nem</strong> arról szólt, hogy melyikük szerette jobban a hazát — mindketten a nemzet érdekét tartották szem előtt, csupán eltérően ítélték meg, mi a reálisan elérhető és a hosszú távon fenntartható megoldás egy adott történelmi pillanatban; ezt a különbséget kell kiemelni esszében és szóbelin egyaránt, elkerülve az egyoldalú, leegyszerűsítő állásfoglalást.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>nyílt és titkos szavazás</td>
+        <td>—</td>
+        <td>1848/1867–1916 Ferenc József uralkodása</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>6. forrás — Kossuth Kasszandra-levele és Deák válasza (1867, tartalmi kivonat)</h4>
+      <p class="src-text">Kossuth azt írja, hogy a kiegyezéssel Magyarország lemond a nemzeti önállóság végső biztosítékáról, és egy olyan berendezkedésbe kényszerül, amely a nemzetiségi kérdés miatt előbb-utóbb feszültségekhez vezet. Deák ezzel szemben úgy érvel, hogy a politika a lehetségesek művészete: az adott erőviszonyok között a kiegyezés az elérhető legjobb megoldást jelentette, és a bizonytalan, támogatás nélküli függetlenségi kísérletnél biztosabb alapot adott az ország fejlődésének.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mitől félt Kossuth a kiegyezéssel kapcsolatban?</p>
+        <p><strong>b)</strong> Milyen elvi alapon érvelt Deák a kiegyezés mellett?</p>
+        <p><strong>c)</strong> Miért nevezhető mindkét álláspont racionálisnak a maga szempontjából?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Attól, hogy a nemzetiségi kérdés miatt a berendezkedés hosszú távon nem lesz fenntartható.</p>
+          <p><strong>b)</strong> Azzal, hogy a politika a lehetségesek művészete — a reálisan elérhető, biztos megoldást kell választani a bizonytalan helyett.</p>
+          <p><strong>c)</strong> Mert Kossuth hosszú távú, elvi-stratégiai szempontból, Deák pedig rövid-középtávú, gyakorlati-realista szempontból közelítette meg a kérdést — mindkettő logikus saját nézőpontjából.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott érv Kossuthhoz vagy Deákhoz köthető?</p>
+      <div class="sort-row"><span>A kiegyezés feladja a végső célt, a függetlenséget</span>
+        <select data-key="c1"><option value="">válassz</option><option value="kossuth">Kossuth</option><option value="deak">Deák</option></select>
+      </div>
+      <div class="sort-row"><span>Az adott helyzetben ez volt a reálisan elérhető legjobb megoldás</span>
+        <select data-key="c2"><option value="">válassz</option><option value="kossuth">Kossuth</option><option value="deak">Deák</option></select>
+      </div>
+      <div class="sort-row"><span>A konstrukció hosszú távon életképtelen lehet a nemzetiségi kérdés miatt</span>
+        <select data-key="c3"><option value="">válassz</option><option value="kossuth">Kossuth</option><option value="deak">Deák</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: Kossuth Lajos a kiegyezést bíráló levelét ______-levélnek nevezik, egy görög mitológiai jósnő nevéből.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="choice">
+      <p class="task-q">Hogyan értékelték a kiegyezést egyes osztrák történészek?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Osztrák győzelemként</button>
+        <button data-val="b">B) Magyar győzelemként — nagyobb magyar befolyást feltételezve</button>
+        <button data-val="c">C) Teljes kudarcként mindkét fél számára</button>
+        <button data-val="d">D) Semleges, jelentéktelen megállapodásként</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>emigráció</dt><dd>Az 1848–49 utáni politikai száműzetés — sokan (köztük Kossuth Lajos) külföldön folytatták a Habsburg-ellenes politikai tevékenységet.</dd>
+    <dt>passzív ellenállás</dt><dd>A magyar politikai elit magatartása a Bach-korszakban: hivatalvállalás és aktív együttműködés megtagadása fegyveres felkelés nélkül.</dd>
+    <dt>kiegyezés</dt><dd>Az 1867-es törvény, amely dualista berendezkedést hozott létre Ausztria és Magyarország között, közös ügyek mentén.</dd>
+    <dt>közös ügyek</dt><dd>A kiegyezés által meghatározott, mindkét országra vonatkozó terület: külügy, hadügy és az ezek fedezésére szolgáló pénzügy.</dd>
+    <dt>közjogi kérdés</dt><dd>Az ország és a Habsburg-dinasztia/birodalom viszonyát szabályozó jogi-alkotmányos probléma.</dd>
+    <dt>húsvéti cikk</dt><dd>Deák Ferenc 1865. április 16-i, a Pesti Naplóban megjelent írása, amely megnyitotta a kiegyezési tárgyalások útját.</dd>
+    <dt>dualizmus</dt><dd>Kétközpontú államberendezkedés, amelyben két, egyenrangú fél oszt meg bizonyos közös ügyeket egy uralkodó alatt.</dd>
+    <dt>delegáció</dt><dd>A két ország parlamentje által választott, 60 tagú testület, amely a közös ügyeket felügyelte.</dd>
+    <dt>nyílt és titkos szavazás</dt><dd>A kiegyezés utáni választási rendszer egyik vitatott eleme: a nyílt szavazás lehetővé tette a választók befolyásolását.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1849–1859</b> A Bach-korszak</li>
+    <li><b>1857</b> Gazdasági válság a birodalomban</li>
+    <li><b>1859</b> Solferínói vereség</li>
+    <li><b>1860. október 20.</b> Októberi diploma</li>
+    <li><b>1861. február 27.</b> Februári pátens</li>
+    <li><b>1861–1865</b> Provizórium (Schmerling)</li>
+    <li><b>1864. december</b> Augusz Antal felkeresi Deák Ferencet</li>
+    <li><b>1865. április 16.</b> Deák „húsvéti cikke”</li>
+    <li><b>1865. december 14.</b> A magyar országgyűlés újraösszehívása</li>
+    <li><b>1866. március 1.</b> A 67-es bizottság kiküldése</li>
+    <li><b>1866</b> Porosz–osztrák háború, Königgrätz</li>
+    <li><b>1867. február 17.</b> Andrássy Gyula miniszterelnöki kinevezése</li>
+    <li><b>1867. február 20.</b> A felelős magyar minisztérium megalakulása</li>
+    <li><b>1867. május 29.</b> A kiegyezési törvény elfogadása</li>
+    <li><b>1867. június 8.</b> Ferenc József magyar királlyá koronázása</li>
+    <li><b>1867. július 28.</b> Az 1867: I–XII. tc. szentesítése</li>
+    <li><b>1848/1867–1916</b> Ferenc József uralkodása</li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Osztrák-Magyar Monarchia</li><li>Fiume</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze a solferínói vereséget és a kiegyezési törvény elfogadását: <em>a kiegyezési törvény elfogadása; solferínói vereség; húsvéti cikk; februári pátens</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> solferínói vereség (1859) → februári pátens (1861) → húsvéti cikk (1865) → a kiegyezési törvény elfogadása (1867. május 29.).</p>
+        <p><strong>Indoklás:</strong> A solferínói vereség és a pénzügyi válság kényszerítette Ferenc Józsefet első alkotmányos engedményekre, de a februári pátens még nem hozott megoldást, mert nem vette figyelembe a magyar önállóság igényét; a helyzet csak a kölcsönös kompromisszumkészség kialakulásával, Deák húsvéti cikkével kezdett oldódni, ami végül elvezetett az 1867-es törvény elfogadásához.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Személyek azonosítása</h4>
+    <p>A leírás alapján nevezze meg, kiről van szó: „1865-ben megírta a húsvéti cikket, amellyel megnyitotta a kiegyezési tárgyalások útját, majd az adott helyzetben reális kompromisszumként védelmezte a kiegyezést.” Nevezzen meg egy másik, a témakörben szereplő politikust is, és adja meg szerepét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Deák Ferencre</em> vonatkozik. Egy másik lehetséges politikus: Andrássy Gyula (1867-es miniszterelnök) vagy Kossuth Lajos (a kiegyezés bírálója, Kasszandra-levél).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: Kossuth és Deák álláspontjának összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: viszonyulás a függetlenséghez, időtávlat, a nemzetiségi kérdés megítélése, a döntés jellege), mi a hasonlóság és mi a különbség Kossuth és Deák álláspontja között a kiegyezésről.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Kossuth Lajos</th><th>Deák Ferenc</th></tr>
+          <tr><td>Viszonyulás a függetlenséghez</td><td>A függetlenséget tartja végső célnak</td><td>A reális, elérhető kompromisszumot részesíti előnyben</td></tr>
+          <tr><td>Időtávlat</td><td>Hosszú távú, elvi-stratégiai szempont</td><td>Rövid-középtávú, gyakorlati-realista szempont</td></tr>
+          <tr><td>A nemzetiségi kérdés megítélése</td><td>Hosszú távon veszélyt lát benne</td><td>Kevésbé hangsúlyozza ezt a kockázatot</td></tr>
+          <tr><td>A döntés jellege</td><td>Elvi elutasítás</td><td>Pragmatikus elfogadás</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindketten a nemzet érdekét tartják szem előtt, csak eltérően ítélik meg a reálisan elérhető megoldást.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+  <p>A kiegyezés és előzményei <strong>magyar történelmi témakör</strong>, ezért középszinten és emelt szinten egyaránt megjelenhet <strong>hosszú esszé</strong> (210–260 szó) formájában — de rövid esszé (100–130 szó) témájaként is előfordulhat, ha a feladat egy szűkebb részkérdésre (pl. csak a Bach-korszakra) korlátozódik.</p>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta hosszú esszé (kb. 250 szó):</strong> „Mutassa be a kiegyezéshez vezető utat a Bach-korszaktól 1867-ig, és értékelje a kiegyezés jelentőségét!”</p>
+    <p>Az 1848–49-es szabadságharc leverése után kiépülő Bach-rendszer ellentmondásos berendezkedést hozott: politikailag elnyomó volt (centralizmus, germanizáció, önkormányzatiság hiánya), ugyanakkor megőrizte a jobbágyfelszabadítás és a törvény előtti egyenlőség vívmányait. A magyar politikai elit válasza a passzív ellenállás lett Deák Ferenc vezetésével. Az 1857-es gazdasági válság és az 1859-es solferínói vereség megingatta a neoabszolutizmust: az októberi diploma (1860) és a februári pátens (1861) sem hozott megoldást, ezért a magyar országgyűlés feloszlatása után provizórium következett (1861–1865). Eközben mindkét oldalon erősödött a kompromisszumkészség — a magyar nemesség gazdaságilag kimerült, az osztrák udvar pedig pénzügyi és külpolitikai nyomás alatt állt.</p>
+    <p>1865-ben Deák húsvéti cikke megnyitotta a tárgyalások útját; a porosz–osztrák háborús vereség (1866) tovább gyorsította a folyamatot. 1867-ben Andrássy Gyula miniszterelnöki kinevezése, majd a kiegyezési törvény elfogadása és Ferenc József megkoronázása nyomán létrejött a dualista Osztrák–Magyar Monarchia: közös kül-, had- és pénzügyekkel, delegációkkal és a paritás elvén nyugvó berendezkedéssel. A kiegyezés megítélése azóta is vitatott: Kossuth a függetlenség feladását és a nemzetiségi kérdés hosszú távú veszélyeit látta benne, Deák viszont az adott erőviszonyok között elérhető legjobb, reális megoldásként védelmezte azt — mindkét álláspont logikus volt a maga történelmi nézőpontjából, és a kiegyezés valóban évtizedekre meghatározta Magyarország fejlődését.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé világos ok-okozati láncot épít fel (Bach-korszak ellentmondása → válság → tárgyalások → kiegyezés), konkrét dátumokkal és nevekkel dolgozik, és a záró gondolatban kiegyensúlyozottan mutatja be a kortárs vitát is — ez emelt szintű elemző mélységet ad.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130">Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260" selected>Hosszú esszé — középszint (210–260 szó)</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — emelt szint (210–260 szó)</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 210–260 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Kronológiailag pontos adatokat (évszám, névhasználat) tartalmaz</li>
+      <li><input type="checkbox"> Legalább két konkrét tényre vagy forrásra hivatkozik</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be a Bach-korszak ellentmondásos jellegét!</li>
+    <li><b>E2</b> Jellemezze a neoabszolutizmus válságát 1857 és 1861 között!</li>
+    <li><b>E3</b> Mutassa be Deák Ferenc szerepét a kiegyezéshez vezető tárgyalásokban!</li>
+    <li><b>E4</b> Értékelje a kiegyezés közös ügyeinek rendszerét!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze Kossuth és Deák Ferenc álláspontját a kiegyezésről!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A kiegyezés és előzményei</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a Bach-korszak ellentmondásai</td></tr>
+    <tr><td>2 perc</td><td>A neoabszolutizmus válsága (1857–1861)</td></tr>
+    <tr><td>2 perc</td><td>A kompromisszumkészség kialakulása mindkét oldalon</td></tr>
+    <tr><td>2 perc</td><td>A tárgyalások és a kiegyezési törvény elfogadása</td></tr>
+    <tr><td>2 perc</td><td>A közös ügyek rendszere és a dualista berendezkedés</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: a kiegyezés vitája és jelentősége</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Miben állt a Bach-rendszer alapvető ellentmondása?</li>
+    <li>Miért nem hozott megoldást sem az októberi diploma, sem a februári pátens?</li>
+    <li>Milyen tényezők ösztönözték mindkét oldalt a kiegyezésre?</li>
+    <li>Milyen szerepet játszott Deák Ferenc a tárgyalások megindításában?</li>
+    <li>Mik voltak a kiegyezés által létrehozott közös ügyek, és hogyan működtek a delegációk?</li>
+    <li>Miben tért el Kossuth és Deák álláspontja a kiegyezésről?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez magyar történelmi témakör: számíts arra, hogy hosszú esszében (210–260 szó) is kérhetik — ne csak rövid esszére készülj!</li>
+    <li>Ne keverd össze az októberi diplomát (1860, tartományi-rendi visszaállítás) és a februári pátenst (1861, birodalmi összparlament) — más-más elképzelést tükröztek.</li>
+    <li>Jegyezd meg pontosan: a húsvéti cikk (1865) megnyitotta a tárgyalásokat, de a kiegyezési törvényt csak 1867. május 29-én fogadták el — közel két év telt el.</li>
+    <li>A porosz–osztrák háború (1866) nem akadályozta, hanem felgyorsította a kiegyezést — ezt a vizsgacsapdát mindig érdemes kiemelni.</li>
+    <li>A delegációk nem alkottak közös parlamentet — külön-külön üléseztek Bécsben és Pesten, csak kivételes esetben szavaztak együtt.</li>
+    <li>Ne feledd: a közös ügyek csak a kül-, had- és pénzügyre terjedtek ki — minden más terület (oktatás, igazságszolgáltatás, belügy) nemzeti hatáskörben maradt.</li>
+    <li>Kossuth Kasszandra-levele és Deák válasza két, egyaránt logikus, de eltérő időtávú érvelést képvisel — ne állíts be egyiket "helyesnek", másikat "tévesnek".</li>
+    <li>A kvóta (Magyarország részesedése a közös költségvetésből) kezdetben 30% volt, ez 1908-ra 36%-ra nőtt — fontos konkrét adat emelt szinten.</li>
+    <li>Kronológiai csapda: Andrássy Gyula miniszterelnöki kinevezése (február 17.) megelőzte a kiegyezési törvény elfogadását (május 29.) — a kettő nem egyszerre történt.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni az Osztrák–Magyar Monarchia és Fiume szerepét (Magyarország egyetlen tengeri kikötője, közvetlenül a magyar korona alá tartozott).</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti témavázlati kiadvány, illetve a hivatalos vizsgakövetelmény ajánlott. A Katolikus 11. tankönyv jelen témakörre vonatkozó fejezetei (I. A dualizmus kora) a feltöltött PDF-ből hiányoztak, ezért ennél a kurzusnál kizárólag a témavázlatot használtuk elsődleges forrásként.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"b"},
+    "m1-t3": {type:"fill", answers:["bach"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"choice", answer:"b"},
+    "m2-t2": {type:"tf", answer:false},
+    "m2-t3": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"match", pairs:{v1:"a1", v2:"a2", v3:"a3"}},
+    "m3-t2": {type:"sort", answers:{s1:"magyar", s2:"osztrak", s3:"magyar"}},
+    "m3-t3": {type:"choice", answer:"b"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:false},
+    "m4-t2": {type:"fill", answers:["húsvéti","husveti"]},
+    "m4-t3": {type:"choice", answer:"b"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"choice", answer:"b"},
+    "m5-t2": {type:"tf", answer:false},
+    "m5-t3": {type:"match", pairs:{q1:"w1", q2:"w2", q3:"w3"}},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"sort", answers:{c1:"kossuth", c2:"deak", c3:"kossuth"}},
+    "m6-t2": {type:"fill", answers:["kasszandra"]},
+    "m6-t3": {type:"choice", answer:"b"},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  var chainSteps = [
+    {order:1, text:"A Bach-rendszer elnyomó, de polgári jellegű berendezkedése ellentmondásokat szül"},
+    {order:2, text:"Az 1859-es solferínói vereség és a pénzügyi válság megingatja a neoabszolutizmust"},
+    {order:3, text:"Az októberi diploma és a februári pátens kudarca a provizóriumhoz vezet (1861–65)"},
+    {order:4, text:"A kölcsönös kompromisszumkészség és Deák húsvéti cikke (1865) megnyitja a tárgyalások útját"},
+    {order:5, text:"Az 1867-es kiegyezési törvény létrehozza a dualista Osztrák–Magyar Monarchiát"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">🤝</span>Kirakva! A lánc: Bach-rendszer → solferínói válság → provizórium → húsvéti cikk → kiegyezés (1867).';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

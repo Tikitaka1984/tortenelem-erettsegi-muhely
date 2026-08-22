@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A hidegháború kezdete és kiteljesedése — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#10151a;
+  --rubric:#7a2020;
+  --lapis:#1f3a52;
+  --gold:#8a8f7a;
+  --stone:#c7cdc4;
+  --paper:#e4e6e0;
+  --paper-2:#d8dad2;
+  --line:#aeb5a8;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(16,21,26,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(138,143,122,.09), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(122,32,32,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#e4e6e0; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(16,21,26,.95), rgba(31,58,82,.88)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2rem,4.6vw,2.9rem);
+  margin:.3em 0 .1em;
+  color:#eaece5;
+  line-height:1.1;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#d3d6cc; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(228,230,224,.35); color:#e4e6e0; padding:5px 10px; border-radius:20px;
+  background:rgba(228,230,224,.06);
+}
+.chain-box{
+  background:rgba(7,9,12,.35); border:1px solid rgba(228,230,224,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(228,230,224,.35);
+  background:rgba(228,230,224,.05); color:#e4e6e0; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(228,230,224,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(228,230,224,.45);
+  border-top:1px dashed rgba(228,230,224,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(138,143,122,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#d3d6cc; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(228,230,224,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.85rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+.fogodzo{
+  background:linear-gradient(120deg,#c6c9b6,#cbcebd); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--rubric); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(174,181,168,.3);}
+.source-box{background:#eceee5; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#282c26; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#6b7166; margin:-6px 0 14px 14px;}
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+.sort-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row span{flex:1 1 200px;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#152b3e;}
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--rubric); color:#f0eee7; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#5c1818;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--rubric); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--lapis); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--lapis);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#d5d8c8; border-left:3px solid var(--lapis); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.essay-dual{background:#dfe1da; border:1px solid var(--lapis); border-radius:5px; padding:14px 18px; margin:16px 0; font-size:.94rem;}
+.essay-dual .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:6px;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--lapis); background:#d5d8c8;}
+.tips-list li.first-tip::before{background:var(--lapis); color:#fff;}
+footer{background:var(--ink); color:#c7cdc4; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(174,181,168,.2); padding-top:14px; font-size:.78rem; color:#9aa196;}
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1945–1963</span>
+    <h1>A hidegháború kezdete és kiteljesedése</h1>
+    <p class="subtitle">A vasfüggönytől a kubai rakétaválságig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan alakult át a győztes szövetségesek együttműködése nyílt szembenállássá, hogyan hirdette meg az Egyesült Államok a feltartóztatás politikáját a Truman-doktrínával és a Marshall-tervvel, hogyan válaszolt erre a Szovjetunió a Kominformmal és a szovjetizálással, hogyan vezettek a berlini válságok a berlini fal felépítéséhez, és hogyan érte el a szembenállás csúcspontját 1962-ben a kubai rakétaválságban, amely majdnem atomháborúhoz vezetett.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">☎</span>
+        Rakd össze a láncot, hogy létrejöjjön a „forró drót”!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Vasfüggöny</a>
+    <a href="#m2">2. Feltartóztatás</a>
+    <a href="#m3">3. Két tábor elmélete</a>
+    <a href="#m4">4. Berlini válságok</a>
+    <a href="#m5">5. Kiteljesedés, Korea</a>
+    <a href="#m6">6. Kubai rakétaválság</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A szövetségesek szembenállása és a vasfüggöny</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, hogyan alakult át az antifasiszta koalíció együttműködése nyílt szembenállássá.</div>
+
+  <article>
+    <h3>A háború utáni rendezés és az első konfliktusok</h3>
+    <p>A II. világháború végéig fennmaradt az antifasiszta koalíció együttműködése, de a győzelem közeledtével egyre erőteljesebbé váltak a viták. A megszállt területeken a győztesek Szövetséges Ellenőrző Bizottságokat (SZEB) hoztak létre — a tényleges vezetés Közép-Európában a szovjet tagé volt. A szovjet hadsereg által megszállt kelet-közép-európai térségben a kommunista pártok kerültek egyre erősebb helyzetbe, míg a nyugati hatalmak többek között Görögországban, Olaszországban, Japánban és Iránban igyekeztek érvényesíteni befolyásukat. Az USA és a Szovjetunió szuperhatalommá vált, együttműködésük gyorsan megromlott: Iránban a szovjet csapatok kivonása körüli vita, Görögországban pedig a brit, majd amerikai támogatású kormányerők és a kommunista felkelők polgárháborúja jelezte a feszültséget.</p>
+
+    <h3>A fultoni beszéd és a vasfüggöny</h3>
+    <p>Churchill 1946. március 5-i fultoni beszédében fogalmazta meg a híres mondatot: „A Balti-tenger mellett fekvő Stettintől az Adriai-tenger mentén fekvő Triesztig <strong>vasfüggöny</strong> ereszkedik le Európára.” Churchill, aki ekkor már nem volt angol miniszterelnök, rámutatott, hogy a Szovjetunió igyekszik szovjetizálni Kelet-Európát, és ha ezt meg akarják állítani, erőt kell felmutatni Sztálinnal szemben. A fultoni beszéd már a nyílt szembenállást mutatta az egykori szövetségesek között.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: Churchill fultoni beszédének (1946) idején <strong>nem</strong> volt hivatalban lévő brit miniszterelnök — ekkorra már leváltották, ellenzéki politikusként, a fultoni Westminster College-ban mondta el beszédét; ez nem csökkentette a beszéd nemzetközi jelentőségét, de fontos pontosítás a vizsgán.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Egyesült Nemzetek Szervezete (ENSZ); kitelepítés; hidegháború; vasfüggöny; szuperhatalom</td>
+        <td>—</td>
+        <td>1945 az ENSZ létrejötte; 1947 a párizsi béke, a hidegháború kezdete</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:66a -->
+<figure class="atlas-map" data-atlas-code="66a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 66a. térkép</span>
+    <h4>A megosztott Európa, 1945–1989</h4>
+    <p class="atlas-map__focus">A vasfüggöny, a nyugati és keleti tömb, valamint a katonai szövetségek térbeli rendszere értelmezhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p068_66a.webp" target="_blank" rel="noopener" aria-label="A megosztott Európa, 1945–1989 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img054.webp" alt="Történelmi térkép: A megosztott Európa, 1945–1989" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:66a -->
+<div class="source-box">
+      <h4>1. forrás — Churchill fultoni beszéde (1946. március 5., tartalmi kivonat)</h4>
+      <p class="src-text">Churchill beszédében arra figyelmeztetett, hogy Kelet- és Közép-Európa jelentős részét a Szovjetunió szoros ellenőrzés alá vonta, és a térség fővárosaiban a moszkvai irányítás egyre erőteljesebben érvényesül. Churchill szerint ez a folyamat egy láthatatlan, de valós határvonalat húzott a kontinensre, amely elválasztja a szabad, nyugati világot a szovjet befolyás alá kerülő kelet-európai országoktól — ezt nevezte „vasfüggönynek”.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mire figyelmeztetett Churchill a beszédében?</p>
+        <p><strong>b)</strong> Milyen elnevezést adott a kialakuló határvonalnak?</p>
+        <p><strong>c)</strong> Milyen fellépést sürgetett Sztálinnal szemben?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A Szovjetunió Kelet-Közép-Európa feletti egyre erősödő ellenőrzésére.</p>
+          <p><strong>b)</strong> „Vasfüggöny”.</p>
+          <p><strong>c)</strong> Erőt kell felmutatni, szembe kell szállni a szovjet terjeszkedéssel.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: Churchill fultoni beszédét brit miniszterelnökként mondta el 1946-ban.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Melyik két országban zajlott polgárháború vagy konfrontáció, amely a szövetségesek szembenállásának korai jele volt?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Franciaország és Olaszország</button>
+        <button data-val="b">B) Irán és Görögország</button>
+        <button data-val="c">C) Spanyolország és Portugália</button>
+        <button data-val="d">D) Lengyelország és Csehszlovákia</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: Churchill szerint a vasfüggöny a Balti-tenger melletti Stettintől az Adriai-tenger menti ______-ig ereszkedett le.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>A feltartóztatás politikája — Truman-doktrína és Marshall-terv</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg az amerikai válasz eszközeit a szovjet terjeszkedésre.</div>
+
+  <article>
+    <h3>A Truman-doktrína</h3>
+    <p>A hidegháború kialakulása 1945 és 1947 között gyorsult fel; 1947 a nyílt blokkosodás egyik fordulópontja volt. Nagy-Britannia ekkor jelezte, hogy már nem tudja tovább finanszírozni Görögország és Törökország támogatását. Truman 1947. március 12-i kongresszusi beszéde, a <strong>Truman-doktrína</strong> politikai, gazdasági és katonai segítséget ígért a külső nyomással vagy fegyveres kisebbségekkel szemben védekező „szabad népeknek”. A doktrína a <strong>feltartóztatás</strong> stratégiájába illeszkedett: nem a már kialakult szovjet hatalmi övezet katonai felszámolását, hanem a szovjet befolyás további terjedésének megakadályozását célozta. A később, főként az 1950-es évek ázsiai konfliktusai kapcsán elterjedt dominóelv nem azonos a Truman-doktrínával.</p>
+
+    <h3>A Marshall-terv</h3>
+    <p>A nagyszabású gazdasági segélyprogramot George C. Marshall amerikai külügyminiszter 1947. június 5-én hirdette meg; hivatalos neve Európai Újjáépítési Program volt. Célja Európa gazdasági talpra állítása, a társadalmi és politikai stabilitás erősítése, valamint az amerikai–európai gazdasági kapcsolatok bővítése volt. A résztvevő államoktól közös szükségletfelmérést és együttműködést vártak. A Szovjetunió elutasította a programot, és a befolyása alatt álló országokat is visszalépésre kényszerítette. Az 1948 és 1952 között működő program keretében mintegy <strong>13,3 milliárd dollár</strong> támogatás jutott tizenhat európai államnak; az együttműködést az OEEC hangolta össze. A nyugati biztonságpolitikai együttműködés intézményeként <strong>1949. április 4-én létrejött a NATO</strong>.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a Marshall-terv <strong>nem</strong> zárta ki elvileg a szovjet blokk országait — a program formálisan egész Európának szólt, csak a Szovjetunió és az általa ellenőrzött országok utasították el a feltételeket (közös irányítás, gazdasági helyzet feltárása); ez fontos különbség, mert nem az USA zárta ki a keleti blokkot, hanem a Szovjetunió döntött az elutasítás mellett.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Truman-doktrína <span class="eonly">E</span>; Marshall-segély <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>2. forrás — A Marshall-terv feltételei (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a Marshall-terv formálisan minden európai ország számára elérhető lett volna, ám szigorú feltételekhez kötötték: a résztvevőknek koordinált, közös irányítás alatt kellett megvalósítaniuk az újjáépítést, ami feltárta volna gazdaságuk valós állapotát. A Szovjetunió ezt elfogadhatatlannak találta, mert félt az amerikai befolyás növekedésétől, ezért nemcsak saját maga utasította el a részvételt, hanem megtiltotta azt az általa megszállt kelet-európai országoknak is.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Kik számára szólt formálisan a Marshall-terv?</p>
+        <p><strong>b)</strong> Miért utasította el a Szovjetunió a feltételeket?</p>
+        <p><strong>c)</strong> Mit tett a Szovjetunió a megszállt országokkal kapcsolatban?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Egész Európa számára.</p>
+          <p><strong>b)</strong> Mert a közös irányítás feltárta volna gazdasága valós helyzetét, és félt az amerikai befolyástól.</p>
+          <p><strong>c)</strong> Megtiltotta nekik is a részvételt.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="tf">
+      <p class="task-q">Állítás: A feltartóztatás célja a szovjet befolyás további terjedésének megakadályozása volt, nem a már kialakult szovjet hatalmi övezet katonai felszámolása.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="choice">
+      <p class="task-q">Mikor alakult meg a NATO?</p>
+      <div class="task-controls">
+        <button data-val="a">A) 1947. március 12.</button>
+        <button data-val="b">B) 1947. június 5.</button>
+        <button data-val="c">C) 1949. április 4.</button>
+        <button data-val="d">D) 1955</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A Truman-doktrína a szovjet befolyás további terjedésének ______ politikájába illeszkedett.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>A két tábor elmélete és a szovjetizálás</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a szovjet válaszlépéseket és a kelet-európai hatalomátvétel fázisait.</div>
+
+  <article>
+    <h3>A Kominform és a Zsdanov-doktrína</h3>
+    <p>A Szovjetunió a Marshall-tervet Európa amerikai uralom alá vonásának tekintette. Sztálint aggasztotta, hogy a befolyása alatt lévő kelet-európai országok csatlakozni akartak a tervhez. Válaszul 1947 szeptemberében létrehozták a Kommunista és Munkáspártok Tájékoztató Irodáját (<strong>Kominform</strong>). 1947. október 5-én elfogadták a Zsdanov-doktrínát, amely szerint a világ két táborra oszlik: az imperialista tábor (amelynek célja egy új háború előkészítése) és az antiimperialista (béke)tábor. Kelet-Európa szovjet zónájában ez fordulatot hozott: „aki nincs velünk, az ellenünk van” — érvényesült az „osztályharc éleződésének” elmélete.</p>
+
+    <h3>A kelet-európai hatalomátvétel fázisai</h3>
+    <p>A kommunista hatalomátvétel Kelet-Európában országonként eltérő ütemben és körülmények között zajlott. Általános mintája a szovjet katonai jelenlétre támaszkodó kommunista térnyerés, a kulcsfontosságú állami szervek megszerzése, a politikai ellenfelek kiszorítása vagy felszámolása, végül az egypárti diktatúra kiépítése volt. Jugoszlávia külön utat járt: Tito saját partizánmozgalmára támaszkodva alapozta meg hatalmát, majd 1948-ban szakított Sztálinnal. A keleti blokk gazdasági együttműködésére 1949-ben létrejött a <strong>KGST</strong>, katonai szövetsége pedig 1955-ben a <strong>Varsói Szerződés</strong> lett. Utóbbi közvetlen előzménye az NSZK NATO-csatlakozása és a nyugatnémet újrafelfegyverzés volt.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a kelet-európai kommunista hatalomátvételek <strong>nem</strong> azonos forgatókönyv és időrend szerint zajlottak. A közös vonás a szovjet befolyás és a pluralizmus fokozatos felszámolása; az országonkénti eltéréseket konkrét példákkal érdemes bemutatni.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Kölcsönös Gazdasági Segítség Tanácsa (KGST); Varsói Szerződés</td>
+        <td>Tito <span class="eonly">E</span></td>
+        <td>1955 a Varsói Szerződés létrehozása</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:68 -->
+<figure class="atlas-map" data-atlas-code="68">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 68. térkép</span>
+    <h4>A kétpólusú világ és konfliktusai, 1945–1989</h4>
+    <p class="atlas-map__focus">A globális blokkosodás, a szövetségi rendszerek és a hidegháborús konfliktusok földrajzi kiterjedése vizsgálható.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p070_68.webp" target="_blank" rel="noopener" aria-label="A kétpólusú világ és konfliktusai, 1945–1989 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img055.webp" alt="Történelmi térkép: A kétpólusú világ és konfliktusai, 1945–1989" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:68 -->
+<div class="source-box">
+      <h4>3. forrás — Tito szakítása Sztálinnal (1948, tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a Jugoszláv Kommunista Párt vezetője, Tito marsall, a világháború alatti sikeres partizánmozgalomra támaszkodva, a szovjet felszabadítástól viszonylag függetlenül alapozta meg saját hatalmát Jugoszláviában. Amikor Tito egy, a Szovjetuniót megkerülő balkáni államszövetség tervével állt elő, Sztálin ezt elfogadhatatlannak tartotta — Titót és Jugoszláviát 1948-tól kiközösítették és megbélyegezték a szocialista táborból.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mire alapozta Tito saját hatalmát?</p>
+        <p><strong>b)</strong> Milyen tervvel állt elő, amely elfogadhatatlan volt Sztálin számára?</p>
+        <p><strong>c)</strong> Mi lett ennek a következménye?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A világháborús sikeres partizánmozgalomra.</p>
+          <p><strong>b)</strong> Egy, a Szovjetuniót megkerülő balkáni államszövetség tervével.</p>
+          <p><strong>c)</strong> Jugoszláviát kiközösítették és megbélyegezték a szocialista táborból.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd időrend szerint a két katonai szövetséget!</p>
+      <div class="sort-row"><span>NATO (1949)</span>
+        <select data-key="s1"><option value="">válassz</option><option value="korabbi">Korábban alakult</option><option value="kesobbi">Később alakult</option></select>
+      </div>
+      <div class="sort-row"><span>Varsói Szerződés (1955)</span>
+        <select data-key="s2"><option value="">válassz</option><option value="korabbi">Korábban alakult</option><option value="kesobbi">Később alakult</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="tf">
+      <p class="task-q">Állítás: A Varsói Szerződés (1955) korábban jött létre, mint a NATO (1949).</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Mit mondott ki a Zsdanov-doktrína?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A világ egyetlen, egységes tábort alkot</button>
+        <button data-val="b">B) A világ két táborra oszlik: imperialista és antiimperialista</button>
+        <button data-val="c">C) A gyarmatok azonnali felszabadítását sürgette</button>
+        <button data-val="d">D) Az ENSZ megszüntetését javasolta</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A német kérdés és a berlini válságok</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a két Németország megalakulását és a berlini válságok sorozatát a berlini fal felépítéséig.</div>
+
+  <article>
+    <h3>A berlini blokád és a két Németország</h3>
+    <p>A nyugati megszállási övezetek egyesítése (Bizónia, majd Trizónia), a Marshall-tervbe való bekapcsolás és az 1948. június 20-i nyugati valutareform a gazdaság fellendítését szolgálta. A szovjet zóna válasza saját valutareform, majd <strong>Nyugat-Berlin blokádja</strong> volt (1948 június – 1949 május): lezárták a Nyugat-Berlinbe vezető utakat, az USA és Anglia légihidat létesített, és 11 hónapon át repülőgépekkel biztosították a város ellátását. A blokádot 1949 májusában feloldották, de ez elvezetett a két német állam megalakulásához: <strong>1949. szeptember 7-én megalakult az NSZK</strong> (Német Szövetségi Köztársaság), <strong>1949. október 7-én az NDK</strong> (Német Demokratikus Köztársaság).</p>
+
+    <h3>A második berlini válság és a fal</h3>
+    <p>Sztálin halála után, 1953. június 17-én kitört a kelet-berlini felkelés, amelyet a keletnémet hatalom szovjet katonai segítséggel fojtott el. A <strong>második berlini válság</strong> Hruscsov 1958. novemberi ultimátumával kezdődött: a nyugati megszállók kivonását és Nyugat-Berlin „szabad várossá” alakítását követelte. A tárgyalások nem hoztak megoldást, miközben 1949 és 1961 között mintegy 2,7 millió ember hagyta el az NDK-t, jelentős részük Berlinen keresztül. 1961. augusztus 13-án az NDK lezárta a kelet- és nyugat-berlini átkelőket, és megkezdte a <strong>berlini fal</strong> kiépítését. A fal a második berlini válság tetőpontja és a hidegháborús megosztottság szimbóluma lett. A határátkelőket 1989. november 9-én nyitották meg; a fal fizikai lebontása főként 1990-ben zajlott.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a bevett korszakolás két nagy berlini válságot különít el. Az első az 1948–49-es blokád és légihíd; a második az 1958-as szovjet ultimátumtól 1961-ig tartó válság, amelynek tetőpontja a berlini fal felépítése volt.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>berlini fal</td>
+        <td>Adenauer <span class="eonly">E</span>; Brandt <span class="eonly">E</span></td>
+        <td>1949 az NSZK és az NDK megalakulása</td>
+        <td>Berlin; Németországi Szövetségi Köztársaság (NSZK); Német Demokratikus Köztársaság (NDK)</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:66b -->
+<figure class="atlas-map" data-atlas-code="66b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 66b. térkép</span>
+    <h4>A megosztott Berlin</h4>
+    <p class="atlas-map__focus">A négy megszállási szektor, Nyugat-Berlin különleges helyzete és a berlini fal nyomvonala azonosítható.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p068_66b.webp" target="_blank" rel="noopener" aria-label="A megosztott Berlin – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img056.webp" alt="Történelmi térkép: A megosztott Berlin" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:66b -->
+<div class="source-box">
+      <h4>4. forrás — A berlini blokád és a légihíd (1948–49, tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a szovjetek 1948 júniusában lezárták a Nyugat-Berlinbe vezető szárazföldi és vízi útvonalakat, remélve, hogy ezzel kikényszerítik a nyugati hatalmak kivonulását a városból. Az Egyesült Államok és Nagy-Britannia válaszul légihidat szervezett: repülőgépekkel, folyamatos járatokkal szállították a város ellátásához szükséges élelmiszert, szenet és más árukat. A szovjetek nem akadályozták a légi forgalmat, és 11 hónap után, mivel a blokád értelmetlenné vált, feloldották azt.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit reméltek a szovjetek a blokáddal?</p>
+        <p><strong>b)</strong> Hogyan válaszoltak a nyugati hatalmak?</p>
+        <p><strong>c)</strong> Miért oldották fel végül a blokádot?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A nyugati hatalmak kivonulásának kikényszerítését Berlinből.</p>
+          <p><strong>b)</strong> Légihíddal, folyamatos repülőgépjáratokkal látták el a várost.</p>
+          <p><strong>c)</strong> Mert a blokád értelmetlenné vált — a légihíd sikeres volt.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="match">
+      <p class="task-q">Párosítsd a két berlini válságot a hozzá kapcsolódó időszakkal!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Első berlini válság (blokád)</button>
+          <button class="match-item" data-key="p2">Második berlini válság (ultimátumtól a falig)</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">1948–49</button>
+          <button class="match-item" data-key="r2">1958–1961</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="tf">
+      <p class="task-q">Állítás: Az NSZK korábban alakult meg, mint az NDK, 1949-ben.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Miért zárta le az NDK 1961-ben a berlini átkelőket?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Terrorveszély miatt</button>
+        <button data-val="b">B) Az NDK-ból az NSZK-ba tartó tömeges elvándorlás megállítására</button>
+        <button data-val="c">C) Katonai gyakorlat miatt</button>
+        <button data-val="d">D) A koreai háború miatt</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>A hidegháború kiteljesedése — a koreai háború és a klasszikus szakasz</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a hidegháború periodizációját és a koreai háború jelentőségét.</div>
+
+  <article>
+    <h3>A hidegháború szakaszai</h3>
+    <p>A hidegháború időszaka a két szuperhatalom szembenállásával jellemezhető, romló és javuló kapcsolatokkal, súlyosbodó konfliktusokkal és enyhülési időszakokkal. A korszakolás többféle lehet, de jól elkülöníthető a <strong>klasszikus hidegháború</strong> (1947–1962), amelyet a doktrínák, a blokkosodás, a berlini válságok és a koreai háború jellemzett; az <strong>enyhülés időszaka</strong> (1963–1979); az 1979 után ismét kiéleződő szembenállás; végül az 1985-től kibontakozó rendezési folyamat, amely 1989–1991-ben a keleti blokk és a Szovjetunió felbomlásával lezárta a hidegháborút.</p>
+
+    <h3>A koreai háború</h3>
+    <p>Korea az 1894–95-ös kínai–japán, majd az 1904–05-ös orosz–japán háborúk után japán megszállás alá került, majd a II. világháború után a 38. szélességi fok mentén szovjet (északi) és amerikai (déli) megszállási övezetre osztották. A <strong>koreai háború</strong> (1950–1953) 1950. június 25-én robbant ki, amikor Észak-Korea szovjet és kínai támogatással megtámadta Dél-Koreát. Az ENSZ Biztonsági Tanácsa elítélte a támadást, és katonai segítséget ajánlott Dél-Koreának. A határozatok elfogadását az tette lehetővé, hogy a Szovjetunió a Kínai Népköztársaság képviseletének vitája miatt bojkottálta a BT üléseit, ezért nem élt vétójogával. Az USA vezette ENSZ-erők beavatkozása után Kína is hadba lépett. A front 1951-re állóháborúvá merevedett, az 1953-as fegyverszünet pedig a 38. szélességi kör közelében, de nem pontosan azon jelölte ki a katonai demarkációs vonalat. A háború nem hozott döntő területi átrendeződést, és a hidegháború első nagy, nyílt fegyveres helyettesítő háborújává vált.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az 1953-as fegyverszüneti vonal <strong>nem azonos</strong> a 38. szélességi körrel, csak annak közelében húzódik. A háború kisebb területi eltérések ellenére nem hozott döntő átrendeződést, és békeszerződés helyett fegyverszünettel zárult.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>kétpólusú világ; jóléti állam</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:70b -->
+<figure class="atlas-map" data-atlas-code="70b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 70b. térkép</span>
+    <h4>A koreai háború, 1950–1953</h4>
+    <p class="atlas-map__focus">A frontvonalak gyors változása, a kínai beavatkozás és az 1953-as fegyverszüneti vonal követhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p072_70b.webp" target="_blank" rel="noopener" aria-label="A koreai háború, 1950–1953 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img057.webp" alt="Történelmi térkép: A koreai háború, 1950–1953" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:70b -->
+<div class="source-box">
+      <h4>5. forrás — A hidegháború klasszikus szakaszának jellemzése (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a hidegháború klasszikus szakaszát (1947–1962) a két szuperhatalom közötti folyamatos, éles konfliktus jellemezte: a hidegháborús doktrínák meghirdetése, a szovjet rendszer kelet-európai kiterjesztése, a berlini válságok sorozata és a koreai háború mind ehhez az időszakhoz tartoznak. A szakasz az 1962-es kubai rakétaválsággal érte el csúcspontját, amely után fokozatosan megkezdődött az enyhülés folyamata.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen időhatárok közé esik a klasszikus hidegháborús szakasz?</p>
+        <p><strong>b)</strong> Milyen eseményeket sorol fel a leírás ebből az időszakból?</p>
+        <p><strong>c)</strong> Milyen esemény zárta le ezt a szakaszt?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> 1947–1962 között.</p>
+          <p><strong>b)</strong> A hidegháborús doktrínák meghirdetését, a berlini válságokat és a koreai háborút.</p>
+          <p><strong>c)</strong> A kubai rakétaválság.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="tf">
+      <p class="task-q">Állítás: A koreai háború után a határvonal jelentősen eltolódott az eredeti, 38. szélességi fok menti vonaltól.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="choice">
+      <p class="task-q">Melyik évben robbant ki a koreai háború?</p>
+      <div class="task-controls">
+        <button data-val="a">A) 1947</button>
+        <button data-val="b">B) 1950</button>
+        <button data-val="c">C) 1953</button>
+        <button data-val="d">D) 1962</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A klasszikus hidegháborús szakasz 1947-től 1962-ig, a ______ ______ig tartott.</p>
+      <input type="text" class="fill-input" placeholder="pl. kubai rakétaválságig">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>A kubai rakétaválság — a hidegháború csúcspontja</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a kubai rakétaválság előzményeit, lefolyását és a válság megoldását.</div>
+
+  <article>
+    <h3>A kubai forradalom és a szovjet rakétatelepítés</h3>
+    <p>Fidel Castro és Che Guevara gerillaháborúja forradalomba torkollott: 1959. január 1-jén a felkelő csapatok bevonultak Havannába, Batista diktátor elmenekült. A forradalmi kormány földreformot és nagyszabású változtatásokat hajtott végre, amelyek sértették az amerikai érdekeket — az USA gazdasági szankciókat vezetett be, majd 1961. április 17-én a CIA által kiképzett és támogatott kubai emigráns erők sikertelen partraszállást hajtottak végre a Disznó-öbölben. Az USA ellenségessé válása miatt Castro és Kuba a szocialista tábor felé fordult: a Szovjetunió kőolajat kezdett szállítani, felvásárolta a kubai cukorkészleteket. Castro és Hruscsov megállapodtak, hogy a Szovjetunió közepes hatótávolságú, atomtöltetekkel felszerelt rakétákat telepít Kubába, amelyekkel már az USA keleti parti nagyvárosait is el lehetett érni.</p>
+
+    <h3>A tizenhárom drámai nap</h3>
+    <p>1962 nyarán megkezdődött a szovjet fegyverek Kubába szállítása, amit az amerikai hírszerzés kémrepülőkkel dokumentált. <strong>A kubai rakétaválság</strong> (1962. október) idején Kennedy elnök tengeri „karantént” rendelt el Kuba körül; a kifejezést tudatosan választották a hadiállapotot feltételező blokád helyett. A két szuperhatalom nukleáris készültsége rendkívül magas szintre emelkedett. A levélváltások, Robert Kennedy és Anatolij Dobrinyin titkos egyeztetése, valamint U Thant ENSZ-főtitkár diplomáciai kezdeményezései segítették a rendezést. Hruscsov vállalta a kubai szovjet rakéták eltávolítását, az USA pedig nyilvánosan ígéretet tett Kuba megtámadásának mellőzésére; titokban azt is jelezte, hogy rövid időn belül kivonja Jupiter-rakétáit Törökországból, ami 1963-ban megtörtént. A válság után, 1963-ban közvetlen, írásos üzenetek továbbítására alkalmas washingtoni–moszkvai kommunikációs kapcsolatot hoztak létre. A „<strong>forró drót</strong>” eredetileg nem telefon, hanem távíró/teleprinter alapú összeköttetés volt.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a kubai rakétaválság megoldása <strong>nem</strong> volt egyoldalú engedmény — a nyilvános megállapodás csak a szovjet rakéták kubai leszereléséről szólt, de titokban az USA is engedményt tett (a törökországi rakéták kivonása); ez a rejtett kölcsönösség fontos vizsgacsapda, mert felszínesen úgy tűnhet, mintha csak a Szovjetunió hátrált volna meg.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>harmadik világ <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:70c -->
+<figure class="atlas-map" data-atlas-code="70c">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 70c. térkép</span>
+    <h4>Az Egyesült Államok és a Szovjetunió katonai szembenállása a hidegháború idején</h4>
+    <p class="atlas-map__focus">A katonai támaszpontok, rakétatávolságok és Kuba stratégiai helyzete együtt értelmezhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p072_70c.webp" target="_blank" rel="noopener" aria-label="Az Egyesült Államok és a Szovjetunió katonai szembenállása a hidegháború idején – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img058.webp" alt="Történelmi térkép: Az Egyesült Államok és a Szovjetunió katonai szembenállása a hidegháború idején" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:70c -->
+<div class="source-box">
+      <h4>6. forrás — A kubai rakétaválság megoldása (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a válság idején nyilvánosan csak a szovjet fél tett engedményt: Hruscsov beleegyezett, hogy leszereli a Kubába telepített rakétákat, cserébe azért, hogy az USA nem támadja meg a szigetet. A háttérben azonban egy titkos, nem nyilvánosságra hozott megállapodás is született: az Egyesült Államok vállalta, hogy egy éven belül kivonja a Törökországban telepített, a Szovjetuniót közvetlenül fenyegető Jupiter-rakétákat — ez 1963-ban valóban meg is történt.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit vállalt nyilvánosan a Szovjetunió?</p>
+        <p><strong>b)</strong> Milyen titkos engedményt tett az USA?</p>
+        <p><strong>c)</strong> Miért fontos ismerni ezt a titkos elemet a válság értékeléséhez?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A kubai rakéták leszerelését.</p>
+          <p><strong>b)</strong> A törökországi Jupiter-rakéták kivonását.</p>
+          <p><strong>c)</strong> Mert enélkül a válság megoldása egyoldalú szovjet meghátrálásnak tűnhet, holott valójában kölcsönös kompromisszum volt.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="tf">
+      <p class="task-q">Állítás: A kubai rakétaválság idején az USA titokban vállalta a törökországi rakéták kivonását.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="choice">
+      <p class="task-q">Ki közvetített a válság megoldásában?</p>
+      <div class="task-controls">
+        <button data-val="a">A) De Gaulle</button>
+        <button data-val="b">B) U Thant ENSZ-főtitkár</button>
+        <button data-val="c">C) Adenauer</button>
+        <button data-val="d">D) Truman</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A válság után létrejött a két szuperhatalom közötti közvetlen távközlési kapcsolat, a „______ drót”.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>vasfüggöny</dt><dd>Churchill 1946-os fultoni beszédében használt kifejezés a Kelet- és Nyugat-Európát elválasztó politikai-ideológiai határvonalra.</dd>
+    <dt>Truman-doktrína</dt><dd>Az 1947-es amerikai külpolitikai elv, amely a kommunizmus terjedésének feltartóztatását hirdette meg.</dd>
+    <dt>Marshall-terv</dt><dd>Az amerikai gazdasági segélyprogram Nyugat-Európa újjáépítésére, hivatalos nevén Európai Újjáépítési Program.</dd>
+    <dt>Kominform</dt><dd>A Kommunista és Munkáspártok Tájékoztató Irodája, a szovjet befolyás alatt álló kommunista pártok koordinációs szerve.</dd>
+    <dt>KGST</dt><dd>Kölcsönös Gazdasági Segítségnyújtás Tanácsa — a szocialista országok gazdasági együttműködési szervezete.</dd>
+    <dt>NATO</dt><dd>Észak-atlanti Szerződés Szervezete — a nyugati országok védelmi katonai szövetsége, 1949-től.</dd>
+    <dt>Varsói Szerződés</dt><dd>A szocialista országok katonai szövetsége, 1955-től, válaszul a NATO-ra és az NSZK NATO-csatlakozására.</dd>
+    <dt>berlini fal</dt><dd>Az 1961-ben épített, Berlin keleti és nyugati részét elválasztó határzár, a hidegháború jelképe.</dd>
+    <dt>kétpólusú világ</dt><dd>A nemzetközi rendszer, amelyben két szuperhatalom (USA, Szovjetunió) áll egymással szemben.</dd>
+    <dt>forró drót</dt><dd>A kubai rakétaválság után, 1963-ban létrehozott, közvetlen írásos üzenetváltást biztosító washingtoni–moszkvai kommunikációs kapcsolat; eredetileg nem telefonvonal volt.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1945</b> Az ENSZ létrejötte</li>
+    <li><b>1946. márc. 5.</b> Churchill fultoni beszéde</li>
+    <li><b>1947. márc. 12.</b> A Truman-doktrína meghirdetése</li>
+    <li><b>1947. jún. 5.</b> A Marshall-terv meghirdetése</li>
+    <li><b>1947. szept.</b> A Kominform létrehozása</li>
+    <li><b>1947</b> A párizsi béke, a hidegháború kezdete</li>
+    <li><b>1948. jún. – 1949. máj.</b> A berlini blokád</li>
+    <li><b>1948</b> Tito szakítása Sztálinnal</li>
+    <li><b>1949. ápr. 4.</b> A NATO megalakulása</li>
+    <li><b>1949</b> Az NSZK és az NDK megalakulása; a KGST megalakulása</li>
+    <li><b>1950–1953</b> A koreai háború</li>
+    <li><b>1953. jún. 17.</b> A kelet-berlini felkelés</li>
+    <li><b>1955</b> A Varsói Szerződés létrehozása</li>
+    <li><b>1958. okt. 27.</b> A második berlini válság (Hruscsov ultimátuma)</li>
+    <li><b>1961. ápr. 17.</b> A Disznó-öbölbeli partraszállási kísérlet</li>
+    <li><b>1961. aug. 13.</b> A berlini fal építésének kezdete (harmadik berlini válság)</li>
+    <li><b>1962. okt.</b> A kubai rakétaválság</li>
+    <li><b>1963</b> A törökországi rakéták kivonása</li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Berlin</li>
+    <li>Németországi Szövetségi Köztársaság (NSZK)</li>
+    <li>Német Demokratikus Köztársaság (NDK)</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze a berlini blokádot és az NSZK-NDK megalakulását: <em>az NSZK és az NDK megalakulása; a berlini blokád; Churchill fultoni beszéde; a Truman-doktrína meghirdetése</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> Churchill fultoni beszéde (1946) → a Truman-doktrína meghirdetése (1947) → a berlini blokád (1948–49) → az NSZK és az NDK megalakulása (1949).</p>
+        <p><strong>Indoklás:</strong> Churchill beszéde jelezte a szövetségesek szembenállásának nyílttá válását, ezt követte az amerikai feltartóztatási politika meghirdetése; a nyugati zónák gazdasági egyesítésére és valutareformjára válaszul a szovjetek blokád alá vették Nyugat-Berlint, ám a sikeres légihíd után a blokád feloldásával párhuzamosan alakult meg végleges formájában a két, immár teljesen külön fejlődő német állam.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Fogalmak azonosítása</h4>
+    <p>A leírás alapján nevezze meg, miről van szó: „Az amerikai gazdasági segélyprogram, amely Nyugat-Európa újjáépítését szolgálta, és amelyet a Szovjetunió elutasított.” Nevezzen meg egy másik, a témakörben szereplő fogalmat is, és adja meg jelentését.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás a <em>Marshall-tervre</em> vonatkozik. Egy másik lehetséges fogalom: a Truman-doktrína (a feltartóztatás politikájának meghirdetése) vagy a Kominform (a kommunista pártok koordinációs szerve).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: a két berlini válság összevetése</h4>
+    <p>A modulokban megismert információk alapján hasonlítsa össze legalább négy szempont szerint (időszak, kiváltó ok, nyugati válasz, kimenetel) az első és a második berlini válságot.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Első válság (1948–49)</th><th>Második válság (1958–61)</th></tr>
+          <tr><td>Kiváltó ok</td><td>A nyugati övezetek integrációja és a valutareform</td><td>Hruscsov ultimátuma; az NDK-ból történő tömeges elvándorlás</td></tr>
+          <tr><td>Jellege</td><td>Nyugat-Berlin szárazföldi blokádja</td><td>Diplomáciai nyomás, majd a határ lezárása és a fal kiépítése</td></tr>
+          <tr><td>Nyugati válasz</td><td>Légihíd</td><td>A nyugati jelenlét fenntartása, tárgyalások, a fal tudomásulvétele</td></tr>
+          <tr><td>Kimenetel</td><td>A blokád feloldása; a német megosztottság megszilárdulása</td><td>A fal 1961-es felépítése; Berlin megosztottságának fizikai rögzítése</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindkettő Berlin különleges megszállási helyzetéből és a szuperhatalmi szembenállásból fakadt.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+
+  <div class="essay-dual">
+    <span class="lbl">Egyetemes témakör</span>
+    A hidegháború kezdete és kiteljesedése <strong>egyetemes (világtörténelmi) témakör</strong> — nem magyar történelmi esemény, ezért középszinten <strong>elsősorban rövid esszében</strong> (100–130 szó) kérhető. Emelt szinten is elsősorban rövid, tömör kifejtést vár a feladat, de mélyebb, elemző-összehasonlító tartalommal.
+  </div>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta rövid esszé (kb. 120 szó):</strong> „Mutassa be a Truman-doktrína és a Marshall-terv jelentőségét a hidegháború kezdetén!”</p>
+    <p>1947. március 12-én Truman elnök meghirdette a feltartóztatás politikáját: az USA politikai, gazdasági és katonai támogatást ígért a külső nyomással vagy fegyveres kisebbségekkel szemben védekező „szabad népeknek”, hogy megakadályozza a szovjet befolyás további terjedését. Ezt egészítette ki a Marshall-terv (1947. jún. 5.), amely gazdasági segélyekkel kívánta talpra állítani Nyugat-Európát, hogy megszűnjön a nyomor forradalmasító hatása. A Szovjetunió elutasította a terv feltételeit, és megtiltotta a részvételt a megszállt kelet-európai országoknak is — ezzel a két blokk gazdasági-politikai szétválása véglegessé vált, megalapozva a hidegháború évtizedekig tartó szembenállását.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé rövid terjedelemben is pontosan bemutatja mindkét amerikai lépés célját és a szovjet választ, konkrét dátumokkal — tömör, mégis tartalmilag pontos.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130" selected>Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260">Hosszú esszé — nem jellemző erre a témára*</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — nem jellemző erre a témára*</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 100–130 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Konkrét évszámokat és neveket nevez meg</li>
+      <li><input type="checkbox"> Nem keveri össze a berlini válságok sorrendjét</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be, hogyan vált a szövetségesek együttműködése szembenállássá!</li>
+    <li><b>E2</b> Jellemezze a szovjet válaszlépéseket (Kominform, KGST, Varsói Szerződés)!</li>
+    <li><b>E3</b> Mutassa be a berlini válságok sorozatát a blokádtól a fal felépítéséig!</li>
+    <li><b>E4</b> Értékelje a koreai háború szerepét a hidegháború kiteljesedésében!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze a berlini válságok kiváltó okait és következményeit!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A hidegháború kezdete és kiteljesedése</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a szövetségesek szembenállása és a vasfüggöny</td></tr>
+    <tr><td>2 perc</td><td>A feltartóztatás politikája — Truman-doktrína és Marshall-terv</td></tr>
+    <tr><td>2 perc</td><td>A két tábor elmélete és a szovjetizálás</td></tr>
+    <tr><td>2 perc</td><td>A német kérdés és a berlini válságok</td></tr>
+    <tr><td>2 perc</td><td>A hidegháború kiteljesedése — koreai háború</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: a kubai rakétaválság</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Mit jelent a „vasfüggöny” fogalma, és milyen összefüggésben tette Churchill közismertté?</li>
+    <li>Mi volt a Truman-doktrína és a Marshall-terv célja?</li>
+    <li>Hogyan reagált a Szovjetunió az amerikai lépésekre?</li>
+    <li>Milyen szakaszai voltak a berlini válságoknak?</li>
+    <li>Miért tekinthető a koreai háború a hidegháború kiteljesedésének?</li>
+    <li>Hogyan zajlott és hogyan oldódott meg a kubai rakétaválság?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez egyetemes (világtörténelmi) témakör: mind középszinten, mind emelt szinten elsősorban rövid esszében (100–130 szó) kérhető — ne készülj hosszú esszére ehhez a témához!</li>
+    <li>Ne keverd össze a Truman-doktrínát (politikai feltartóztatás) és a Marshall-tervet (gazdasági segély) — két különböző, de egymást kiegészítő eszköz.</li>
+    <li>Jegyezd meg pontosan: a NATO (1949) korábban jött létre, mint a Varsói Szerződés (1955) — a szovjet szövetség a nyugati szövetségre adott válasz volt.</li>
+    <li>A két nagy berlini válságot különítsd el: az 1948–49-es blokádot és az 1958–61-es válságot, amely a fal felépítésében tetőzött.</li>
+    <li>Ne feledd: a Marshall-tervet elvileg egész Európának szánták — a Szovjetunió maga utasította el, nem az USA zárta ki a keleti blokkot.</li>
+    <li>A koreai háború (1950–53) a hidegháború első nagy, nyílt fegyveres helyettesítő háborúja volt; kisebb határváltozásokkal, békeszerződés nélkül zárult.</li>
+    <li>A kubai rakétaválság megoldása kölcsönös kompromisszum volt — az USA titokban vállalta a törökországi rakéták kivonását, nem csak a Szovjetunió hátrált meg.</li>
+    <li>Kronológiai csapda: Tito szakítása Sztálinnal (1948) megelőzte a KGST (1949) és a Varsói Szerződés (1955) megalakulását.</li>
+    <li>A kelet-európai kommunista hatalomátvételek üteme és módszere országonként eltért — a közös mintát ne kezeld merev, mindenütt azonos háromlépcsős sémaként.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni Berlint, az NSZK-t és az NDK-t a térképen.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    <li><a href="https://history.state.gov/milestones/1945-1952/truman-doctrine">U.S. Department of State, Office of the Historian – The Truman Doctrine</a></li>
+      <li><a href="https://history.state.gov/milestones/1945-1952/marshall-plan">U.S. Department of State, Office of the Historian – The Marshall Plan</a></li>
+      <li><a href="https://history.state.gov/milestones/1945-1952/berlin-airlift">U.S. Department of State, Office of the Historian – The Berlin Airlift</a></li>
+      <li><a href="https://history.state.gov/milestones/1953-1960/berlin-crises">U.S. Department of State, Office of the Historian – The Berlin Crisis, 1958–1961</a></li>
+      <li><a href="https://digitallibrary.un.org/record/112026/">United Nations Digital Library – Security Council Resolution 83 (1950)</a></li>
+      <li><a href="https://history.state.gov/milestones/1961-1968/cuban-missile-crisis">U.S. Department of State, Office of the Historian – The Cuban Missile Crisis</a></li>
+      <li>Történelmi Atlasz – 66a, 66b, 68, 70b és 70c térkép</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti témavázlati kiadvány, illetve a hivatalos vizsgakövetelmény ajánlott. A hidegháború enyhülési korszaka (1963–1979) és a végső szakasz a témavázlat külön alfejezete — ez a kurzus a klasszikus, 1945–1962 közötti szakaszra fókuszál.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"b"},
+    "m1-t3": {type:"fill", answers:["triesztig","trieszt"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"tf", answer:true},
+    "m2-t2": {type:"choice", answer:"c"},
+    "m2-t3": {type:"fill", answers:["feltartóztatása","feltartoztatasa","feltartóztatás","feltartoztatas"]},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"sort", answers:{s1:"korabbi", s2:"kesobbi"}},
+    "m3-t2": {type:"tf", answer:false},
+    "m3-t3": {type:"choice", answer:"b"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"match", pairs:{p1:"r1", p2:"r2"}},
+    "m4-t2": {type:"tf", answer:true},
+    "m4-t3": {type:"choice", answer:"b"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"tf", answer:false},
+    "m5-t2": {type:"choice", answer:"b"},
+    "m5-t3": {type:"fill", answers:["kubai rakétaválságig","kubai rakétaválság"]},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"tf", answer:true},
+    "m6-t2": {type:"choice", answer:"b"},
+    "m6-t3": {type:"fill", answers:["forró","forro"]},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  var chainSteps = [
+    {order:1, text:"Az egykori szövetségesek szembenállása és Churchill fultoni beszéde jelzi a vasfüggöny leereszkedését"},
+    {order:2, text:"A Truman-doktrína és a Marshall-terv meghirdetése elindítja a feltartóztatás politikáját"},
+    {order:3, text:"A Kominform és a Zsdanov-doktrína nyomán kiépül a szovjet blokk, létrejön a NATO és a Varsói Szerződés"},
+    {order:4, text:"A berlini válságok sorozata a német kérdést a hidegháború legfeszültebb pontjává teszi"},
+    {order:5, text:"A kubai rakétaválság a hidegháború csúcspontja, amely után megkezdődik az enyhülés"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">☎</span>Kirakva! A lánc: vasfüggöny → feltartóztatás → két tábor elmélete → berlini válságok → kubai rakétaválság.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

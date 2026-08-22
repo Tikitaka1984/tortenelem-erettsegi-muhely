@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Horthy-korszak és a bethleni konszolidáció — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#15171c;
+  --rubric:#5a2f1a;
+  --lapis:#1f3350;
+  --gold:#ab8f4a;
+  --stone:#d8cfb2;
+  --paper:#eee7d4;
+  --paper-2:#e2d9bc;
+  --line:#c1b389;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(21,23,28,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(171,143,74,.09), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(31,51,80,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#eee7d4; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(21,23,28,.95), rgba(31,51,80,.86)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f3ecda;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#e1d7ba; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(238,231,212,.35); color:#eee7d4; padding:5px 10px; border-radius:20px;
+  background:rgba(238,231,212,.06);
+}
+.chain-box{
+  background:rgba(10,11,14,.35); border:1px solid rgba(238,231,212,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(238,231,212,.35);
+  background:rgba(238,231,212,.05); color:#eee7d4; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(238,231,212,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(238,231,212,.45);
+  border-top:1px dashed rgba(238,231,212,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(171,143,74,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#e1d7ba; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(238,231,212,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+.fogodzo{
+  background:linear-gradient(120deg,#dccda0,#e2d3a9); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(193,179,137,.3);}
+.source-box{background:#f6efdc; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#3a322a; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+.sort-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row span{flex:1 1 200px;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#152538;}
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#231c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#8a7239;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#e8dbac; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#e8dbac;}
+.tips-list li.first-tip::before{background:var(--gold); color:#231c14;}
+footer{background:var(--ink); color:#d8cfb2; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(193,179,137,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1919–1931</span>
+    <h1>A Horthy-korszak és a bethleni konszolidáció</h1>
+    <p class="subtitle">A kormányzóválasztástól a pengőig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan választották kormányzóvá Horthy Miklóst 1920-ban, hogyan indította el Bethlen István miniszterelnök a politikai konszolidációt (Egységes Párt, választójog szűkítése), hogyan stabilizálta a gazdaságot a népszövetségi kölcsön és az új fizetőeszköz, a pengő bevezetése, milyen szerkezetű volt az államfői és végrehajtó hatalom, hogyan érvényesültek — korlátozottan — a szabadságjogok, és hogyan határozta meg a korszakot a trianoni revízió gondolata.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">🪙</span>
+        Rakd össze a láncot, hogy bevezessék a pengőt!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Hatalomváltás</a>
+    <a href="#m2">2. Politikai konszolidáció</a>
+    <a href="#m3">3. Gazdasági konszolidáció</a>
+    <a href="#m4">4. Államfő és hatalom</a>
+    <a href="#m5">5. Szabadságjogok</a>
+    <a href="#m6">6. Revíziós külpolitika</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A hatalomváltás és Horthy kormányzóvá választása</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, hogyan alakult ki a Horthy-rendszer államformája és államfői tisztsége 1919–1921 között.</div>
+
+  <article>
+    <h3>Az átmeneti kormányok és Horthy bevonulása</h3>
+    <p>A Tanácsköztársaság bukása után, a román megszállás idején, átmeneti kormányok következtek: Peidl Gyula „szakszervezeti kormánya” (1919. aug. 1–6.) elkezdte a tanácsrendszer lebontását, majd Friedrich István kormánya (aug. 6. – nov. 24.) alatt román felügyelet mellett megtisztították a politikai életet a kommunistáktól. <strong>Horthy Miklós</strong>, a Nemzeti Hadsereg vezetője tárgyalt az antant megbízottjával, majd 1919. november 16-án bevonult Budapestre. Huszár Károly kormánya (nov. 24. – 1920. márc. 10.) elküldte a magyar küldöttséget a békekonferenciára.</p>
+
+    <h3>A királyság visszaállítása és a kormányzóválasztás</h3>
+    <p>Magyarország 1920-ban visszatért a királyság államformájához (1920. évi I. tc.). Államfővé, kormányzóként, ideiglenes jelleggel — a királyt helyettesítendő — 1920. március 1-jén Horthy Miklóst választották meg. 1920 szeptemberében fogadták el a <strong>numerus clausus</strong> törvényt, amely korlátozta a zsidó származású fiatalok egyetemi felvételét. Miután Habsburg IV. Károly kétszeri visszatérési kísérlete (királypuccsok, az utóbbi 1921. október 20–23-án) is kudarcba fulladt, nemzetközi nyomásra sor került a Habsburg-Lotaringiai-ház detronizációjára (1921. évi XLVII. tc.) — így Magyarország egy király nélküli királysággá vált.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: Horthy Miklós <strong>nem</strong> királyként, hanem ideiglenes jelleggel megválasztott kormányzóként töltötte be az államfői tisztséget — Magyarország hivatalosan királyság maradt, de a trónt nem töltötték be; ezt az egyedi berendezkedést nevezik „király nélküli királyságnak”.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>legitimizmus <span class="eonly">E</span>; numerus clausus <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>1921 a Habsburg-ház trónfosztása <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:59a -->
+<figure class="atlas-map" data-atlas-code="59a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 59a. térkép</span>
+    <h4>Csonka-Magyarország területének megszállása, 1919–1921</h4>
+    <p class="atlas-map__focus">A román, csehszlovák, délszláv és francia megszállás, a csapatkivonások üteme, valamint a soproni népszavazás térbeli összefüggései vizsgálhatók.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p061_59a.webp" target="_blank" rel="noopener" aria-label="Csonka-Magyarország területének megszállása, 1919–1921 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img033.webp" alt="Történelmi térkép: Csonka-Magyarország területének megszállása, 1919–1921" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:59a -->
+<div class="source-box">
+      <h4>1. forrás — A numerus clausus törvény (1920, tartalmi kivonat)</h4>
+      <p class="src-text">A törvény szövege szerint az egyetemi felvételi eljárás során figyelembe kell venni a jelentkező nemzethűségét és erkölcsi megbízhatóságát, és a nemzetiségi és felekezeti arányoknak megfelelően kell szabályozni a felvehető hallgatók összetételét. A törvény gyakorlati alkalmazása a zsidó származású fiatalok egyetemi bejutását korlátozta erőteljesen, számukat a korábbi arányukhoz képest jelentősen csökkentve.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen szempontokat írt elő a törvény az egyetemi felvételinél?</p>
+        <p><strong>b)</strong> Kiket sújtott a törvény gyakorlati alkalmazása leginkább?</p>
+        <p><strong>c)</strong> Milyen elvi indoklással próbálták igazolni a korlátozást?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A nemzethűséget, az erkölcsi megbízhatóságot, valamint a nemzetiségi-felekezeti arányok betartását.</p>
+          <p><strong>b)</strong> A zsidó származású fiatalokat, akiknek egyetemi bejutását erősen korlátozta.</p>
+          <p><strong>c)</strong> Azzal, hogy a felvehető hallgatók összetételét a társadalom nemzetiségi-felekezeti arányaihoz kell igazítani.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: Horthy Miklós 1920-ban Magyarország királyává koronáztatta magát.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Mikor választották meg Horthy Miklóst kormányzóvá?</p>
+      <div class="task-controls">
+        <button data-val="a">A) 1919. november 16.</button>
+        <button data-val="b">B) 1920. március 1.</button>
+        <button data-val="c">C) 1921. november 26.</button>
+        <button data-val="d">D) 1920. október 20.</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A második sikertelen ______ (Habsburg IV. Károly visszatérési kísérlete) után nemzetközi nyomásra detronizálták a Habsburg-házat.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>A Bethlen-kormány politikai konszolidációja</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Bethlen István kettős politikai küzdelmét és a konzervatív rendszer kiépítésének lépéseit.</div>
+
+  <article>
+    <h3>Bethlen kettős küzdelme</h3>
+    <p><strong>Bethlen István</strong> miniszterelnöksége (1921. ápr. 14. – 1931. aug. 24.) idején a belpolitikában uralkodó szerephez akarta juttatni a konzervatív politikai tábort, amely a háború előtti korlátozott parlamentarizmus újbóli megvalósítását tűzte ki célul. Ehhez kettős küzdelmet folytatott: egyrészt a paraszti (Kisgazdapárt), polgári (liberális) és munkás (MSZDP) demokrata tábor ellen, amely a választójog kiterjesztését, a rendszer demokratizálását akarta; másrészt a jobboldali radikális csoportosulások ellen, amelyek a parlamentarizmus korlátozását vagy felszámolását hirdették.</p>
+
+    <h3>A konszolidáció állomásai</h3>
+    <p>A két táborral szembeni küzdelem állomásai egyben a konzervatív rendszer konszolidációját is jelentették: 1921-ben megkötötték a <strong>Bethlen–Peyer paktum</strong>ot (az MSZDP visszatérhetett a politikai életbe, ha korlátozza a kormánnyal szembeni fellépését); 1922-ben létrehozták az <strong>Egységes Párt</strong>ot (a KNEP és a Kisgazdapárt egyesítésével, erős kormánypártként); 1922-ben módosították a választójogot (szűkítették a jogosultak körét — kizárva a legitimista és a paraszti demokrata szavazóbázist —, és visszaállították a nyílt szavazást); 1923-ban kiszorították a szélsőjobbot a kormánypártból (Gömbös Gyula csoportja megalakította a Fajvédő Pártot); 1926-ban pedig új felsőházi törvényt fogadtak el, konzervatív többségű felsőházat létrehozva.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: Bethlen politikai küzdelme <strong>nem</strong> egyirányú volt — nem csupán a szélsőjobbot vagy csupán a demokratákat kellett visszaszorítania, hanem egyidejűleg mindkét irányba kellett védekeznie, hogy a konzervatív centrum megőrizhesse uralkodó pozícióját. Ez a kettős küzdelem magyarázza a látszólag ellentmondásos lépéseket (pl. paktum a szociáldemokratákkal, de a választójog szűkítése is egyszerre).</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Egységes Párt</td>
+        <td>Bethlen István</td>
+        <td>1921–31 Bethlen miniszterelnöksége</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:59b -->
+<figure class="atlas-map" data-atlas-code="59b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 59b. térkép</span>
+    <h4>Nemzetgyűlési választások, 1920. január</h4>
+    <p class="atlas-map__focus">A választások területi korlátai, valamint a két vezető politikai erő regionális támogatottsága értelmezhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p061_59b.webp" target="_blank" rel="noopener" aria-label="Nemzetgyűlési választások, 1920. január – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img034.webp" alt="Történelmi térkép: Nemzetgyűlési választások, 1920. január" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:59b -->
+<div class="source-box">
+      <h4>2. forrás — A Bethlen–Peyer paktum és a választójogi módosítás (1921–1922, tartalmi kivonat)</h4>
+      <p class="src-text">A Bethlen–Peyer paktum értelmében a Magyarországi Szociáldemokrata Párt visszatérhetett a legális politikai életbe, cserébe vállalta, hogy tartózkodik a kormánnyal szembeni radikális fellépéstől, sztrájkszervezéstől a köztisztviselők és a mezőgazdasági munkások körében. Az 1922-es választójogi rendelet ezzel párhuzamosan szűkítette a választásra jogosultak körét (az összlakosság 40%-áról 28%-ára), és — a fővároson és a törvényhatósági városokon kívül — visszaállította a nyílt szavazást.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit vállalt az MSZDP a Bethlen–Peyer paktumban?</p>
+        <p><strong>b)</strong> Hogyan változott a választásra jogosultak aránya 1922-ben?</p>
+        <p><strong>c)</strong> Milyen szavazási módot vezettek be ekkor?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A kormánnyal szembeni radikális fellépés (pl. sztrájkszervezés) korlátozását bizonyos rétegekben.</p>
+          <p><strong>b)</strong> 40%-ról 28%-ra csökkent.</p>
+          <p><strong>c)</strong> A nyílt szavazást (a fővároson és a törvényhatósági városokon kívül).</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="match">
+      <p class="task-q">Párosítsd az intézkedést az évszámmal!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Bethlen–Peyer paktum</button>
+          <button class="match-item" data-key="p2">Egységes Párt megalakulása</button>
+          <button class="match-item" data-key="p3">Új felsőházi törvény</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">1921</button>
+          <button class="match-item" data-key="r2">1922</button>
+          <button class="match-item" data-key="r3">1926</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="tf">
+      <p class="task-q">Állítás: Gömbös Gyula csoportja 1923-ban kilépett az Egységes Pártból, és megalakította a Fajvédő Pártot.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="choice">
+      <p class="task-q">Melyik két párt egyesítésével jött létre 1922-ben az Egységes Párt?</p>
+      <div class="task-controls">
+        <button data-val="a">A) MSZDP és Fajvédő Párt</button>
+        <button data-val="b">B) KNEP és Kisgazdapárt</button>
+        <button data-val="c">C) Liberálisok és legitimisták</button>
+        <button data-val="d">D) Kisgazdapárt és MSZDP</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>A gazdasági konszolidáció — pengő és népszövetségi kölcsön</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, hogyan sikerült megfékezni az inflációt és stabilizálni a magyar gazdaságot az 1920-as években.</div>
+
+  <article>
+    <h3>A gazdasági válság és a kudarcos kísérletek</h3>
+    <p>A bethleni politikai konszolidáció csak a gazdaság stabilizálódásával párhuzamosan valósulhatott meg. Az első világháború terhei, az antant gazdasági blokádja, a forradalmi időszak és a román megszállás nagy veszteségeket okozott: a gazdaság szektorai a háború előtti szint kevesebb mint 50%-át teljesítették, a korona inflálódott, a Monarchia korábbi piacai gyakorlatilag megszűntek. A Teleki-kormány, majd a Bethlen-kormány is antiinflációs, adóemelő politikával próbálta kezelni a válságot — sikertelenül. Ezután a Bethlen-kormány más módszerhez folyamodott: beindult a bankóprés, az állam valorizálatlan (aranyban nem rögzített értékű) hiteleket nyújtott, ami beindította az üzleti életet, de a felgyorsuló infláció miatt a bérből és fizetésből élőkre nagy terhet rakott.</p>
+
+    <h3>A népszövetségi kölcsön és a pengő bevezetése</h3>
+    <p>A gazdasági eredmények megtartásához és a társadalmi béke megőrzéséhez pénzügyi konszolidációra volt szükség, ehhez pedig külföldi kölcsönre. Magyarországot 1922-ben felvették a Népszövetségbe, 1923-ban bejelentette igényét egy hosszú távú kölcsönre, majd hosszas tárgyalások után folyósítottak egy 307 millió aranykorona névértékű, de ténylegesen csak 250 millió aranykorona értékű, magas kamatozású <strong>népszövetségi kölcsön</strong>t. A monetáris politika irányítására 1924-ben felállították a <strong>Magyar Nemzeti Bank</strong>ot; a kölcsön segítségével sikerült megfékezni az inflációt, majd a stabilizáció utolsó lépéseként 1927-ben bevezették az új, stabil, aranyalapú fizetőeszközt, a <strong>pengő</strong>t és váltópénzét, a fillért. A stabilizáció után a gazdaság gyorsan fejlődött: az ipari termelés 1929-ben már 12%-kal múlta felül az 1913-as szintet (textilipar, ruházati-, bőr-, vegy-, gyógyszer- és villamosenergia-ipar tört előre; Ganz motorvonatok, Orion rádiók, Egyesült Izzó villanyégői versenyképesek voltak világpiaci szinten is), miközben a mezőgazdaság alapvetően stagnált.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a bankóprés és a valorizálatlan hitelek politikája <strong>nem</strong> volt hosszú távú megoldás, csupán átmeneti eszköz — az inflációt tudatosan használták ki (a hiteleket később elértéktelenedett pénzben fizették vissza), de ez a bérből és fizetésből élőket sújtotta, és végül csak a népszövetségi kölcsön és a pengő 1927-es bevezetése hozott tartós pénzügyi stabilitást.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>pengő; Magyar Nemzeti Bank</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>3. forrás — A gazdasági stabilizáció lépései (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a magyar gazdaság stabilizálásához elengedhetetlen volt a külföldi tőke bevonása: Magyarország 1922-ben felvételt nyert a Népszövetségbe, majd 1923-tól hosszas tárgyalások kezdődtek egy hosszú távú kölcsön megszerzéséért. A ténylegesen folyósított összeg jóval alacsonyabb volt a névleges összegnél, és magas kamatozású volt, mégis lehetővé tette az infláció megfékezését, a Magyar Nemzeti Bank felállítását 1924-ben, majd 1927-ben az új, stabil fizetőeszköz bevezetését.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen nemzetközi szervezetbe vették fel Magyarországot 1922-ben?</p>
+        <p><strong>b)</strong> Milyen jellemzői voltak a folyósított kölcsönnek?</p>
+        <p><strong>c)</strong> Milyen két intézményi-pénzügyi lépés következett a kölcsön nyomán?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A Népszövetségbe.</p>
+          <p><strong>b)</strong> Alacsonyabb tényleges összeg a névleges értéknél, és magas kamatozás.</p>
+          <p><strong>c)</strong> A Magyar Nemzeti Bank felállítása (1924) és a pengő bevezetése (1927).</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="tf">
+      <p class="task-q">Állítás: Az 1922–23-as antiinflációs, adóemelő politika sikeresen megfékezte az inflációt.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az 1927-ben bevezetett új fizetőeszköz neve ______, váltópénze a fillér.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Melyik ágazat maradt lényegében stagnáló az 1920-as évek gazdasági fejlődése idején?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Textilipar</button>
+        <button data-val="b">B) Vegyipar</button>
+        <button data-val="c">C) Mezőgazdaság</button>
+        <button data-val="d">D) Villamosenergia-ipar</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>Az államfői jogkör és a végrehajtó hatalom szerkezete</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a kormányzói jogkör korlátait és bővülését, valamint a parlament és a kormány szerkezetét.</div>
+
+  <article>
+    <h3>A kormányzói jogkör</h3>
+    <p>A kormányzó jogköre kevesebb volt egy uralkodóénál, egy közepesen erős köztársasági elnökéhez hasonlított: a törvényjavaslatokat egyszer küldhette vissza újratárgyalásra, nem rendelkezett szentesítési jogkörrel, törvényt vagy rendeletet csak miniszteri ellenjegyzéssel kezdeményezhetett, nemzetközi szerződéseket csak a parlament jóváhagyásával köthetett. „Legfőbb Hadúrként” ugyanakkor nagy befolyással rendelkezett a hadügyek területén — kivételes esetben elrendelhette a hadsereg bevetését, utólagos parlamenti jóváhagyással. Nemességet nem adományozhatott, főkegyúri jogot nem gyakorolhatott. Az 1920-ban kialakított jogkör az 1930-as években több lépésben bővült: 1933-tól a kormányzó korlátlan időre elnapolhatta az országgyűlés üléseit; 1937-ben megszűnt felelősségre vonásának lehetősége, kétszer is visszaküldhette a törvényjavaslatokat, a törvények kihirdetését egy évig halaszthatta, és lehetőséget kapott utód ajánlására is.</p>
+
+    <h3>A parlament és a végrehajtó hatalom</h3>
+    <p>1920–26 között egykamarás nemzetgyűlés működött, 1927-től alakult ki a felsőház (az 1918 előtti főrendiház örököseként), így kétkamarássá vált az országgyűlés — a felsőház kiegyensúlyozó szerepet töltött be, mert többségében arisztokraták, nagy- és középbirtokosok, egyházi személyek és főtisztviselők alkották, akik a konzervatív erők hatalmát őrizték. A miniszterelnök és a miniszterek kinevezése a kormányzó joga volt; a kormány megbuktatására az ellenzéknek gyakorlatilag nem volt esélye. A vármegyei törvényhatóságok élén a kormány által kinevezett főispánok álltak; Budapest főpolgármesterét is a kormány, majd 1930-tól a kormányzó jelöltjei közül a fővárosi törvényhatóság választotta.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a kormányzói jogkör <strong>nem</strong> volt statikus — az 1920-ban meghatározott, viszonylag korlátozott jogkör az 1930-as években fokozatosan bővült, mégpedig kifejezetten a szélsőjobboldal elleni alkotmányos védekezés eszközeként, nem pedig eleve tervezett hatalomkoncentrációként.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — A kormányzói jogkör korlátai 1920-ban (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint az 1920-ban kialakított kormányzói jogkör tudatosan korlátozott volt: a kormányzó nem gyakorolhatott olyan uralkodói előjogokat, mint a szentesítés vagy a nemesség adományozása, minden jogi aktusát miniszteri ellenjegyzéshez kötötték, és a nemzetközi szerződések megkötéséhez is a parlament jóváhagyása kellett. Egyetlen területen — a hadügyekben — élvezett kivételesen nagyobb önállóságot, „Legfőbb Hadúrként”.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen uralkodói előjogoktól fosztották meg a kormányzót?</p>
+        <p><strong>b)</strong> Milyen ellenőrzési mechanizmus kötötte a jogi aktusait?</p>
+        <p><strong>c)</strong> Melyik területen volt kivételesen nagyobb önállósága?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A szentesítés jogától és a nemesség adományozásának jogától.</p>
+          <p><strong>b)</strong> A miniszteri ellenjegyzés kötelezettsége.</p>
+          <p><strong>c)</strong> A hadügyek terén, „Legfőbb Hadúrként”.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: 1920–1926 között kétkamarás volt a magyar országgyűlés.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="choice">
+      <p class="task-q">Mikortól élvezhetett a kormányzó korlátlan időre elnapolási jogot az országgyűlés üléseivel kapcsolatban?</p>
+      <div class="task-controls">
+        <button data-val="a">A) 1920-tól</button>
+        <button data-val="b">B) 1927-től</button>
+        <button data-val="c">C) 1933-tól</button>
+        <button data-val="d">D) 1937-től</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="match">
+      <p class="task-q">Párosítsd a testületet a jellemző összetételével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Felsőház</button>
+          <button class="match-item" data-key="p2">Vármegyei törvényhatóságok vezetői</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">Arisztokraták, nagy- és középbirtokosok, egyháziak</button>
+          <button class="match-item" data-key="r2">A kormány által kinevezett főispánok</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>Szabadságjogok és társadalompolitika</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, hogyan érvényesültek — korlátozottan — a szabadságjogok, és milyen szociálpolitikai reformok valósultak meg.</div>
+
+  <article>
+    <h3>Szabadságjogok a Bethlen-korszakban</h3>
+    <p>Az első világháborúban, majd az 1918–1919-es forradalmi időszakban erősen korlátozták az általános szabadságjogokat; ezen enyhítéseket a Bethlen-kormány hajtotta végre. 1923-ra megszüntették a gyorsított bűnvádi eljárást, bár az internálás intézménye megmaradt, már csak ritkán alkalmazták. Az egyesülési és gyülekezési jog megszorításokkal érvényesült: politikai gyűlést csak zárt helyen, előzetes bejelentés után lehetett tartani, új egyesület csak belügyminisztériumi engedéllyel alakulhatott. A szélsőséges politikai erők szervezkedése bűnténynek számított: a mindvégig illegalitásban tevékenykedő kommunistákat (pl. Rákosi Mátyást) többször börtönbe zárták, a 30-as években a nyilasokkal (pl. Szálasi Ferenccel) szemben is felléptek. Sajtócenzúra nem volt, helyette sajtó tájékoztató-bizottság véleményezte a megjelenő cikkeket; a kormány megszüntethetett, betilthatott vagy korlátozhatott lapokat.</p>
+
+    <h3>Társadalompolitika és a Horthy-rendszer jellege</h3>
+    <p>A bethleni konszolidáció szociálpolitikai reformokat is hozott: a kötelező beteg- és balesetbiztosítást kiterjesztették (a városi munkásság 80–90%-a biztosított lett), 1928-tól bevezették a kötelező öregségi-, rokkantsági-, özvegyi- és árvasági biztosítást (a mezőgazdaságban dolgozókra ez még nem terjedt ki), és felállították az Országos Társadalombiztosító Intézetet (OTI). A Horthy-rendszer politikai kategorizálását tekintve sokféle, egymással ellentétes értékelés született (demokrácia vagy fasiszta állam, diktatúra vagy többpárti jogállam); napjaink tudományos megközelítése alapján a rendszer egy <strong>autoriter, tekintélyelvű</strong> berendezkedésnek tekinthető, amelyben korlátozottan érvényesültek a demokratikus elvek — működő többpártrendszer volt, de a parlamenti váltógazdálkodásnak nem volt reális esélye, és a végrehajtó hatalom fölényben volt a törvényhozóval szemben.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a Horthy-rendszer <strong>nem</strong> sorolható egyszerűen sem a „demokrácia”, sem a „fasiszta diktatúra” kategóriájába — a tudományos konszenzus szerint autoriter, tekintélyelvű rendszerről van szó, amely formálisan többpártrendszerű volt, de a hatalomváltás reális esélye nélkül; ezt a köztes kategóriát mindig pontosan kell megnevezni, nem szabad leegyszerűsíteni.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>5. forrás — A Horthy-rendszer politikai jellegének megítélése (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a Horthy-rendszerről sokféle, egymással ellentétes tudományos értékelés született az évtizedek során: egyesek demokráciának, mások fasiszta államnak minősítették, egyesek diktatúraként, mások többpárti jogállamként jellemezték. A mai tudományos konszenzus szerint a rendszer autoriter, tekintélyelvű berendezkedésnek tekinthető: formálisan működött többpártrendszer, de a kialakított szabályok mellett nem volt reális esélye annak, hogy az ellenzéki erők hatalomra kerüljenek.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen ellentétes értékelések születtek a Horthy-rendszerről?</p>
+        <p><strong>b)</strong> Mi a mai tudományos konszenzus szerinti besorolás?</p>
+        <p><strong>c)</strong> Miért nem beszélhetünk valódi demokráciáról a formális többpártrendszer ellenére sem?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Demokrácia vagy fasiszta állam, diktatúra vagy többpárti jogállam — egymásnak ellentmondó besorolások.</p>
+          <p><strong>b)</strong> Autoriter, tekintélyelvű rendszer.</p>
+          <p><strong>c)</strong> Mert bár volt többpártrendszer, a szabályok miatt nem volt reális esélye a hatalomváltásnak (parlamenti váltógazdálkodásnak).</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="tf">
+      <p class="task-q">Állítás: A Horthy-korszakban formális sajtócenzúra működött, amely előzetesen engedélyezte a megjelenő cikkeket.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: 1928-ban felállították az Országos Társadalombiztosító Intézetet, rövidítve ______.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott jelenség szabadságjog-korlátozás vagy szociálpolitikai reform volt-e?</p>
+      <div class="sort-row"><span>Kötelező öregségi biztosítás bevezetése (1928)</span>
+        <select data-key="s1"><option value="">válassz</option><option value="korlatozas">Korlátozás</option><option value="reform">Reform</option></select>
+      </div>
+      <div class="sort-row"><span>Új egyesület csak belügyminiszteri engedéllyel alakulhatott</span>
+        <select data-key="s2"><option value="">válassz</option><option value="korlatozas">Korlátozás</option><option value="reform">Reform</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>A revíziós külpolitika és a Szent István-i állameszme</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a revíziós gondolat elméleti alapjait, fokozatait és Bethlen külpolitikai lépéseit.</div>
+
+  <article>
+    <h3>A Szent István-i állameszme és a revízió fokozatai</h3>
+    <p>A két világháború közötti magyar külpolitika meghatározója a revízió volt. <strong>Teleki Pál</strong> dolgozta ki a földrajzi törvényszerűségekre, történeti és kulturális tradíciókra alapozott <strong>Szent István-i állameszmé</strong>t, amely szerint a magyarság volt 900 évig és kell legyen továbbra is a Kárpát-medence irányító nemzete — a hegemónia helyreállítása (a revízió) után azonban teljes egyenjogúságot biztosítana a nemzetiségeknek. A revíziós gondolat széles körű társadalmi támogatást élvezett, három fokozata alakult ki: az <strong>etnikai revízió</strong> (a határmenti magyar lakta területek visszaszerzése — ezt a liberálisok, szociáldemokraták és a nagyhatalmak is legfeljebb támogatták volna); az <strong>optimális revízió</strong> (legalább a magyar többségű területek visszaszerzése — ez volt a hivatalos magyar külpolitikai álláspont 1927 után); és a <strong>teljes (integrális) revízió</strong> (a Horvátország és Burgenland nélküli történelmi Magyarország visszaállítása — ezt hirdette a magyar közvélemény nagy része és a revíziós propaganda).</p>
+
+    <h3>Bethlen külpolitikája és a frankhamisítási botrány</h3>
+    <p>Bethlen két alapvető célkitűzése a revízió és a dunai országok gazdasági-védelmi együttműködésének megteremtése volt — a kisantant (Csehszlovákia, Románia, a Szerb-Horvát-Szlovén Királyság) kialakulásával azonban a két cél összeegyeztethetetlenné vált, így Bethlen a revíziót „választotta”. A revíziós terveket nyíltan nem lehetett felvállalni, ezért titkos akciókkal igyekeztek Franciaországot destabilizálni: 1923-tól hamis frankot gyártottak Magyarországon, azt tervezve, hogy elárasztják vele Franciaországot — 1925 decemberében azonban Hágában letartóztattak egy magyar diplomáciai futárt hamis frankokkal, kirobbant a <strong>frankhamisítási botrány</strong>, amelyet csak angol és olasz támogatással sikerült lecsendesíteni. A magyar diplomácia sikeresebb lépése volt az 1927-es olasz–magyar szerződés (Olaszország a délszláv állammal szemben keresett szövetségest), ugyanekkor szűnt meg Magyarország állandó katonai ellenőrzése is, és 1927. június 21-én jelent meg Lord Rothermere cikke a Daily Mailben, amely felvetette a trianoni béke etnikai revízióját.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a revízió három fokozata (etnikai, optimális, integrális) <strong>nem</strong> ugyanazt jelentette, és nem is egyformán volt reális — az etnikai revíziót a nagyhatalmak is elfogadhatónak tartották, míg a teljes (integrális) revízió, amelyet a közvélemény többsége akart, nemzetközileg támogatás nélkül maradt; Bethlen hivatalos külpolitikája (1927 után) a köztes, optimális revíziót képviselte.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Szent István-i állameszme</td>
+        <td>—</td>
+        <td>1921 a soproni népszavazás <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:55b -->
+<figure class="atlas-map" data-atlas-code="55b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 55b. térkép</span>
+    <h4>Európa a párizsi békék után, 1919–1924</h4>
+    <p class="atlas-map__focus">Az új közép-európai államhatárok, a kisantant földrajzi környezete és Magyarország külpolitikai mozgástere helyezhető összefüggésbe.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p057_55b.webp" target="_blank" rel="noopener" aria-label="Európa a párizsi békék után, 1919–1924 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img035.webp" alt="Történelmi térkép: Európa a párizsi békék után, 1919–1924" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:55b -->
+<div class="source-box">
+      <h4>6. forrás — A frankhamisítási botrány (1925, tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint 1923-tól magyar körökben titokban hamis francia frankokat gyártottak, azzal a céllal, hogy elárasztva Franciaországot a hamis pénzzel, destabilizálják a francia gazdaságot — remélve, hogy ez gyengíti a kisantant fő támogatóját, és így közvetve elősegíti a magyar revíziós törekvéseket. A terv 1925 decemberében bukott le, amikor Hágában letartóztattak egy magyar diplomáciai futárt jelentős mennyiségű hamis frankkal, és a botrányt csak nagy nehézségek árán, angol és olasz támogatással sikerült elcsitítani.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mi volt a hamis frank gyártásának célja?</p>
+        <p><strong>b)</strong> Hogyan bukott le a terv?</p>
+        <p><strong>c)</strong> Hogyan sikerült végül lecsendesíteni a botrányt?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Franciaország gazdaságának destabilizálása, közvetve a kisantant meggyengítése a revízió elősegítése érdekében.</p>
+          <p><strong>b)</strong> Hágában letartóztattak egy magyar diplomáciai futárt hamis frankokkal.</p>
+          <p><strong>c)</strong> Angol és olasz támogatással, valamint a felelősök bíróság elé állításával.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: melyik revíziós fokozathoz tartozik az adott leírás?</p>
+      <div class="sort-row"><span>A nagyhatalmak által is elfogadhatónak tartott, legkisebb mértékű revízió</span>
+        <select data-key="c1"><option value="">válassz</option><option value="etnikai">Etnikai revízió</option><option value="integralis">Teljes (integrális) revízió</option></select>
+      </div>
+      <div class="sort-row"><span>A Horvátország és Burgenland nélküli történelmi Magyarország visszaállítása</span>
+        <select data-key="c2"><option value="">válassz</option><option value="etnikai">Etnikai revízió</option><option value="integralis">Teljes (integrális) revízió</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="tf">
+      <p class="task-q">Állítás: Bethlen két célja (revízió és a dunai országokkal való együttműködés) összeegyeztethetetlenné vált a kisantant kialakulásával.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="choice">
+      <p class="task-q">Ki dolgozta ki a Szent István-i állameszmét?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Bethlen István</button>
+        <button data-val="b">B) Teleki Pál</button>
+        <button data-val="c">C) Horthy Miklós</button>
+        <button data-val="d">D) Apponyi Albert</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>Egységes Párt</dt><dd>Bethlen István kormánypártja, amely 1922-ben a KNEP és a Kisgazdapárt egyesítésével jött létre.</dd>
+    <dt>pengő</dt><dd>Az 1927-ben bevezetett új, stabil, aranyalapú magyar fizetőeszköz.</dd>
+    <dt>Magyar Nemzeti Bank</dt><dd>1924-ben felállított jegybank, amely a monetáris politikát irányította.</dd>
+    <dt>Szent István-i állameszme</dt><dd>Teleki Pál elmélete, amely szerint a magyarság a Kárpát-medence irányító nemzete volt és kell legyen továbbra is.</dd>
+    <dt>legitimizmus</dt><dd>A Habsburg-ház trónigényének fenntartását támogató politikai irányzat.</dd>
+    <dt>numerus clausus</dt><dd>Az 1920-as törvény, amely nemzetiségi-felekezeti arányok alapján korlátozta az egyetemi felvételt, elsősorban a zsidó fiatalokat sújtva.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1919. nov. 16.</b> Horthy Miklós bevonulása Budapestre</li>
+    <li><b>1920. évi I. tc.</b> Visszatérés a királysághoz</li>
+    <li><b>1920. márc. 1.</b> Horthy Miklós kormányzóvá választása</li>
+    <li><b>1920. szept.</b> A numerus clausus törvény elfogadása</li>
+    <li><b>1920. okt. 20–23.</b> A második királypuccs</li>
+    <li><b>1921. ápr. 14.</b> Bethlen István miniszterelnöksége kezdődik</li>
+    <li><b>1921</b> Bethlen–Peyer paktum; a Habsburg-ház trónfosztása <span class="eonly">E</span>; a soproni népszavazás <span class="eonly">E</span></li>
+    <li><b>1922</b> Az Egységes Párt megalakulása; a választójog szűkítése; Magyarország felvétele a Népszövetségbe</li>
+    <li><b>1923</b> Gömbös kiválása, a Fajvédő Párt megalakulása; a gyorsított bűnvádi eljárás megszüntetése</li>
+    <li><b>1924</b> A Magyar Nemzeti Bank felállítása</li>
+    <li><b>1925. dec.</b> A frankhamisítási botrány kirobbanása</li>
+    <li><b>1926</b> Új felsőházi törvény</li>
+    <li><b>1927</b> A pengő bevezetése; olasz–magyar szerződés; Lord Rothermere cikke</li>
+    <li><b>1928</b> Az OTI felállítása, kötelező öregségi biztosítás</li>
+    <li><b>1931. aug. 24.</b> Bethlen István lemondása</li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>—</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze Horthy kormányzóvá választását és a pengő bevezetését: <em>a pengő bevezetése; Horthy kormányzóvá választása; Egységes Párt megalakulása; a Magyar Nemzeti Bank felállítása</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> Horthy kormányzóvá választása (1920) → Egységes Párt megalakulása (1922) → a Magyar Nemzeti Bank felállítása (1924) → a pengő bevezetése (1927).</p>
+        <p><strong>Indoklás:</strong> Horthy megválasztása megteremtette a rendszer államfői kereteit; Bethlen ezen az alapon építette ki a politikai konszolidációt (Egységes Párt), amely stabil hátteret adott a gazdasági stabilizációhoz; ez vezetett a Magyar Nemzeti Bank felállításához, majd a pénzügyi stabilizáció betetőzéseként a pengő bevezetéséhez.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Politikusok azonosítása</h4>
+    <p>A leírás alapján nevezze meg, kiről van szó: „Miniszterelnökként 10 éven át (1921–1931) irányította a konzervatív politikai rendszer és a gazdaság konszolidációját.” Nevezzen meg egy másik, a témakörben szereplő politikust is, és adja meg szerepét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Bethlen Istvánra</em> vonatkozik. Egy másik lehetséges politikus: Teleki Pál (a Szent István-i állameszme kidolgozója, korábbi miniszterelnök) vagy Horthy Miklós (kormányzó).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: Teleki Pál és Bethlen István összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: világnézet, viszonyulás a liberalizmushoz, politikusi pálya, közös vonás), mi a hasonlóság és mi a különbség Teleki Pál és Bethlen István között.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Teleki Pál</th><th>Bethlen István</th></tr>
+          <tr><td>Világnézet</td><td>Antiliberális újkonzervatív</td><td>Liberális ókonzervatív</td></tr>
+          <tr><td>Viszonyulás a liberalizmushoz</td><td>Elutasította a XIX. századi liberális örökséget</td><td>Ragaszkodott a XIX. századi polgári elvekhez</td></tr>
+          <tr><td>Politikusi pálya</td><td>1920–21 miniszterelnök, majd egyetemi tanár</td><td>1921–31 miniszterelnök (10 évig)</td></tr>
+          <tr><td>Egyéb jellemző</td><td>Antiszemita, legitimista</td><td>Elutasította a diktatúrákat, legitimista</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindketten történelmi múltú, erdélyi grófi családból származtak, és legitimisták voltak.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+  <p>A Horthy-korszak és a bethleni konszolidáció <strong>magyar történelmi témakör</strong>, ezért középszinten és emelt szinten egyaránt megjelenhet <strong>hosszú esszé</strong> (210–260 szó) formájában — de rövid esszé (100–130 szó) témájaként is előfordulhat, ha a feladat egy szűkebb részkérdésre (pl. csak a pengő bevezetésére) korlátozódik.</p>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta hosszú esszé (kb. 250 szó):</strong> „Mutassa be a bethleni konszolidáció politikai és gazdasági lépéseit!”</p>
+    <p>1920-ban Magyarország visszatért a királyság államformájához, és Horthy Miklóst választották meg ideiglenes kormányzóvá — ez a „király nélküli királyság” egyedi berendezkedését hozta létre. A második sikertelen királypuccs után 1921-ben detronizálták a Habsburg-házat. Ugyanebben az évben Bethlen István lett miniszterelnök, aki tíz éven át (1921–1931) irányította az ország politikai és gazdasági konszolidációját. Politikai téren kettős küzdelmet folytatott: egyrészt a demokratikus törekvések (Bethlen–Peyer paktum, majd a választójog szűkítése és a nyílt szavazás visszaállítása 1922-ben), másrészt a szélsőjobb (Gömbös kiszorítása 1923-ban) ellen. Az 1922-ben megalakított Egységes Párt és az 1926-os felsőházi törvény megszilárdította a konzervatív politikai rendszert.</p>
+    <p>Gazdaságilag a háború és a forradalmak utáni válságot kezdetben sikertelen antiinflációs politikával próbálták kezelni, majd a bankóprés és a valorizálatlan hitelek átmeneti megoldást hoztak, de az inflációt csak a Népszövetségtől 1924-ben felvett kölcsön, a Magyar Nemzeti Bank felállítása, majd 1927-ben a pengő bevezetése tudta tartósan megfékezni. A stabilizáció után a gazdaság gyorsan fejlődött, 1929-re az ipari termelés 12%-kal meghaladta a háború előtti szintet, miközben a mezőgazdaság stagnált. A politikai és gazdasági konszolidáció együttesen tette lehetővé, hogy a trianoni sokk utáni Magyarország stabil, bár erősen tekintélyelvű berendezkedést alakítson ki, amely az 1930-as évekig meghatározta az ország fejlődését.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé két szálon (politikai, majd gazdasági konszolidáció) bontja ki a témát, konkrét dátumokkal és intézményekkel dolgozik, és a záró gondolatban összeköti a két folyamatot — ez emelt szintű elemző mélységet ad.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130">Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260" selected>Hosszú esszé — középszint (210–260 szó)</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — emelt szint (210–260 szó)</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 210–260 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Kronológiailag pontos adatokat (évszám, névhasználat) tartalmaz</li>
+      <li><input type="checkbox"> Legalább két konkrét tényre vagy forrásra hivatkozik</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be, hogyan alakult ki a „király nélküli királyság” államformája!</li>
+    <li><b>E2</b> Jellemezze Bethlen István kettős politikai küzdelmét!</li>
+    <li><b>E3</b> Mutassa be a gazdasági stabilizáció lépéseit a pengő bevezetéséig!</li>
+    <li><b>E4</b> Értékelje a Horthy-rendszer politikai jellegét a tudományos konszenzus alapján!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze Teleki Pál és Bethlen István politikusi pályáját és világnézetét!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A Horthy-korszak és a bethleni konszolidáció</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a hatalomváltás és Horthy kormányzóvá választása</td></tr>
+    <tr><td>2 perc</td><td>A Bethlen-kormány politikai konszolidációja</td></tr>
+    <tr><td>2 perc</td><td>A gazdasági konszolidáció — pengő és népszövetségi kölcsön</td></tr>
+    <tr><td>2 perc</td><td>Az államfői és végrehajtó hatalom szerkezete</td></tr>
+    <tr><td>2 perc</td><td>Szabadságjogok és társadalompolitika</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: a revíziós külpolitika</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Miért nevezik „király nélküli királyságnak” a Horthy-korszak államformáját?</li>
+    <li>Milyen kettős küzdelmet folytatott Bethlen István a politikai konszolidáció során?</li>
+    <li>Hogyan sikerült megfékezni az inflációt és stabilizálni a gazdaságot?</li>
+    <li>Milyen korlátai voltak a kormányzói jogkörnek 1920-ban?</li>
+    <li>Hogyan minősíthető tudományosan a Horthy-rendszer politikai jellege?</li>
+    <li>Milyen fokozatai voltak a revíziós gondolatnak?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez magyar történelmi témakör: számíts arra, hogy hosszú esszében (210–260 szó) is kérhetik — ne csak rövid esszére készülj!</li>
+    <li>Ne keverd össze Horthy kormányzóvá választását (1920. márc. 1.) és budapesti bevonulását (1919. nov. 16.) — a kettő között több hónap telt el.</li>
+    <li>Jegyezd meg pontosan: Bethlen kettős küzdelmet folytatott — egyszerre a demokraták ÉS a szélsőjobb ellen, nem csak egyik irányban.</li>
+    <li>A bankóprés és a valorizálatlan hitelek átmeneti, nem tartós megoldás volt — a valódi stabilizációt a népszövetségi kölcsön és a pengő (1927) hozta el.</li>
+    <li>Ne feledd: a kormányzói jogkör az 1930-as években bővült, nem 1920-ban volt már a mai ismert, erősebb formájában.</li>
+    <li>A Horthy-rendszer politikai jellegét mindig „autoriter, tekintélyelvű” rendszerként nevezd meg — kerüld az egyoldalú „diktatúra” vagy „demokrácia” minősítést.</li>
+    <li>A revízió három fokozatát (etnikai, optimális, integrális) pontosan tudd megkülönböztetni — más-más területi igényt jelentettek.</li>
+    <li>Kronológiai csapda: a frankhamisítási botrány (1925) megelőzte az olasz–magyar szerződést (1927) — a diplomáciai kudarc és siker időrendben elváltak egymástól.</li>
+    <li>A numerus clausus (1920) és a zsidótörvények (1938-tól) két különböző, időben távol eső jelenség — ne keverd össze őket.</li>
+    <li>A társadalompolitikai reformok (OTI, biztosítás) és a szabadságjog-korlátozások egyszerre, párhuzamosan léteztek a Bethlen-korszakban — ez a rendszer kettősségét mutatja.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti témavázlati kiadvány, illetve a hivatalos vizsgakövetelmény ajánlott.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"b"},
+    "m1-t3": {type:"fill", answers:["királypuccs","kiralypuccs"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "m2-t2": {type:"tf", answer:true},
+    "m2-t3": {type:"choice", answer:"b"},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"tf", answer:false},
+    "m3-t2": {type:"fill", answers:["pengő","pengo"]},
+    "m3-t3": {type:"choice", answer:"c"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:false},
+    "m4-t2": {type:"choice", answer:"c"},
+    "m4-t3": {type:"match", pairs:{p1:"r1", p2:"r2"}},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"tf", answer:false},
+    "m5-t2": {type:"fill", answers:["oti"]},
+    "m5-t3": {type:"sort", answers:{s1:"reform", s2:"korlatozas"}},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"sort", answers:{c1:"etnikai", c2:"integralis"}},
+    "m6-t2": {type:"tf", answer:true},
+    "m6-t3": {type:"choice", answer:"b"},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  var chainSteps = [
+    {order:1, text:"Horthy Miklóst kormányzóvá választják, kialakul a „király nélküli királyság” (1920)"},
+    {order:2, text:"Bethlen István politikai konszolidációja (Egységes Párt, választójog szűkítése) megszilárdítja a rendszert"},
+    {order:3, text:"A gazdasági válságot kezdetben sikertelen antiinflációs politikával próbálják kezelni"},
+    {order:4, text:"A népszövetségi kölcsön és a Magyar Nemzeti Bank felállítása megalapozza a pénzügyi stabilizációt"},
+    {order:5, text:"1927-ben bevezetik a pengőt, ezzel lezárul a gazdasági konszolidáció"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">🪙</span>Kirakva! A lánc: Horthy kormányzóvá választása → Bethlen politikai konszolidációja → sikertelen kísérletek → népszövetségi kölcsön → pengő (1927).';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

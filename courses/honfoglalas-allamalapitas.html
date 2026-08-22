@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Honfoglalás és államalapítás — érettségi mini kurzus</title>
+<meta name="description" content="Interaktív érettségi felkészítő mini kurzus: a magyar őstörténettől és a honfoglalástól a kalandozásokon át Géza és Szent István államalapításáig.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#211B16;--ink-soft:#524A3F;--rubric:#8C2F2F;--lapis:#2C5145;--gold:#B3872F;
+  --stone:#EDE5D3;--stone-2:#E1D5B7;--paper:#FFFFFF;--line:#D7C79E;--ok:#2E6B4F;--bad:#8C2F2F;
+  --serif:"EB Garamond",Garamond,Georgia,serif;--sans:"Source Sans 3",-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--stone);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.col{max-width:720px;margin:0 auto}
+header.masthead{background:var(--paper);border-bottom:1px solid var(--line);padding:64px 0 46px;position:relative;overflow:hidden}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--rubric);margin:0 0 18px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,6.4vw,3.8rem);line-height:1.03;margin:0 0 6px;letter-spacing:-.01em}
+h1 .sub{display:block;font-weight:400;font-style:italic;color:var(--ink-soft);font-size:.6em;margin-top:.2em}
+.lede{font-family:var(--serif);font-size:1.27rem;line-height:1.5;color:var(--ink-soft);margin:26px 0 0;max-width:38em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;border:1px solid var(--line);padding:6px 11px;color:var(--ink-soft);background:#FBF8EF}
+nav.rail{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.rail-inner{max-width:860px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:14px;height:56px}
+.rail-scroll{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+.rail-scroll::-webkit-scrollbar{display:none}
+.rail a{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-decoration:none;color:var(--ink-soft);padding:7px 9px;white-space:nowrap;border-bottom:2px solid transparent}
+.rail a:hover{color:var(--rubric)}
+.rail a.on{color:var(--rubric);border-bottom-color:var(--rubric)}
+.prog{display:flex;align-items:center;gap:8px;flex:none}
+.prog-bar{width:64px;height:5px;background:var(--stone-2);position:relative;overflow:hidden}
+.prog-fill{position:absolute;inset:0 100% 0 0;background:var(--gold);transition:right .5s ease}
+.prog-txt{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+@media(max-width:640px){.prog{display:none}}
+main{background:var(--stone)}
+section.mod{padding:60px 0 10px}
+.mod-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.mod-num{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.14em;border:1px solid var(--gold);padding:3px 8px;flex:none}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.14;margin:0}
+h3{font-family:var(--serif);font-weight:600;font-size:1.4rem;margin:34px 0 8px;color:var(--ink)}
+h4{font-family:var(--sans);font-weight:700;font-size:.86rem;letter-spacing:.11em;text-transform:uppercase;color:var(--rubric);margin:30px 0 10px}
+p{margin:0 0 14px}
+.card{background:var(--paper);border:1px solid var(--line);padding:26px 26px 20px;margin:18px 0}
+.goal{background:#EAF0EC;border:1px solid #C1D4C7;border-left:4px solid var(--lapis);padding:18px 20px;margin:18px 0}
+.goal .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--lapis);display:block;margin-bottom:7px}
+.goal p{margin:0;font-size:.97rem}
+ul.marks{list-style:none;padding:0;margin:0 0 14px}
+ul.marks li{position:relative;padding-left:24px;margin-bottom:8px}
+ul.marks li::before{content:"❖";position:absolute;left:0;top:1px;color:var(--rubric);font-size:.75em}
+.tbl-scroll{overflow-x:auto;margin:18px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:var(--paper)}
+th{background:var(--ink);color:#F6F1E4;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:10px 12px}
+td{border-bottom:1px solid var(--line);padding:10px 12px;vertical-align:top}
+tbody tr:nth-child(even) td{background:#F9F4E7}
+td strong{font-weight:700}
+.source{background:#FBF7E9;border:1px solid var(--line);border-left:4px solid var(--rubric);padding:22px 24px;margin:20px 0}
+.source .src-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rubric);display:block;margin-bottom:10px}
+.source .src-txt{font-family:var(--serif);font-size:1.08rem;line-height:1.6}
+.qs{list-style:none;counter-reset:q;padding:0;margin:16px 0 0}
+.qs li{counter-increment:q;position:relative;padding-left:28px;margin-bottom:9px;font-size:.95rem}
+.qs li::before{content:counter(q,lower-alpha) ")";position:absolute;left:0;font-family:var(--mono);font-size:12px;color:var(--lapis);top:2px}
+.eonly{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;background:var(--gold);color:#fff;padding:1px 5px;vertical-align:2px;margin-right:5px}
+.task{background:var(--paper);border:1px solid var(--line);margin:16px 0;padding:20px 22px}
+.task.done{border-color:var(--gold);box-shadow:inset 3px 0 0 var(--gold)}
+.task-id{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--rubric);display:block;margin-bottom:6px}
+.task-q{font-weight:600;margin-bottom:14px}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+.chip{background:#FBF8EF;border:1px solid var(--line);padding:8px 13px;font-size:.9rem;transition:all .16s ease;text-align:left;color:var(--ink)}
+.chip:hover{border-color:var(--lapis);color:var(--lapis)}
+.chip.sel{border-color:var(--lapis);background:#E9F0EB;color:var(--lapis)}
+.chip.ok{border-color:var(--ok);background:#EDF5F0;color:var(--ok)}
+.chip.bad{border-color:var(--bad);background:#FBEBE9;color:var(--bad)}
+.chip[disabled]{cursor:default;opacity:.85}
+.tf-row{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px dotted var(--line);flex-wrap:wrap}
+.tf-row:last-of-type{border-bottom:0}
+.tf-txt{flex:1;min-width:220px;font-size:.95rem}
+.tf-btns{display:flex;gap:6px;flex-wrap:wrap}
+.tf-note{flex-basis:100%;font-size:.88rem;color:var(--ink-soft);font-style:italic;display:none;padding-top:4px}
+.tf-note.show{display:block}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.match{grid-template-columns:1fr}}
+.match .colhead{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.match .stack{display:flex;flex-direction:column;gap:7px}
+.fill-in{font-family:var(--mono);font-size:.9rem;border:0;border-bottom:1.5px solid var(--lapis);background:#F2F6F3;padding:2px 6px;min-width:130px;color:var(--ink)}
+.fill-in.ok{border-color:var(--ok);background:#EDF5F0}
+.fill-in.bad{border-color:var(--bad);background:#FBEBE9}
+.act{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.btn{background:var(--ink);color:#F6F1E4;border:1px solid var(--ink);padding:8px 16px;font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase}
+.btn:hover{background:var(--rubric);border-color:var(--rubric)}
+.btn.ghost{background:transparent;color:var(--ink-soft);border-color:var(--line)}
+.btn.ghost:hover{color:var(--rubric);border-color:var(--rubric);background:transparent}
+.verdict{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em}
+.verdict.ok{color:var(--ok)}
+.verdict.bad{color:var(--bad)}
+.answer{display:none;margin-top:14px;padding:15px 17px;background:#F4EFDD;border-left:3px solid var(--gold);font-size:.94rem}
+.answer.show{display:block}
+.answer .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
+.chain-wrap{background:var(--paper);border:1px solid var(--line);padding:28px 26px 24px;margin-top:38px;position:relative}
+.chain-wrap .src-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rubric);display:block;margin-bottom:4px}
+.chain-wrap h3{margin:0 0 4px;font-size:1.5rem}
+.chain-wrap .hint{font-size:.93rem;color:var(--ink-soft);margin-bottom:18px}
+.chain-pool{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chain-track{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-height:46px;padding:12px;background:#FAF5E4;border:1px dashed var(--line)}
+.chain-slot{font-family:var(--sans);font-size:.88rem;background:#fff;border:1px solid var(--lapis);color:var(--lapis);padding:7px 12px}
+.chain-arrow{color:var(--gold);font-family:var(--mono)}
+.chain-goal{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:.09em;color:var(--stone-2);border:1px solid var(--line);padding:8px 18px;transition:all .55s ease}
+.chain-goal.lit{color:#fff;background:var(--rubric);border-color:var(--rubric);box-shadow:0 0 0 4px rgba(179,135,47,.28)}
+.search{width:100%;padding:12px 14px;border:1px solid var(--line);background:var(--paper);font-family:var(--sans);font-size:.98rem;color:var(--ink)}
+.search:focus{outline:2px solid var(--lapis);outline-offset:-2px}
+.gloss{margin-top:14px}
+.gloss .row{display:grid;grid-template-columns:210px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+@media(max-width:600px){.gloss .row{grid-template-columns:1fr;gap:3px}}
+.gloss dt{font-family:var(--serif);font-size:1.1rem;font-weight:600}
+.gloss dd{margin:0;font-size:.94rem;color:var(--ink-soft)}
+.no-hit{padding:16px 0;color:var(--ink-soft);font-style:italic}
+.time{border-left:2px solid var(--line);margin:18px 0 0;padding-left:0}
+.time .ev{position:relative;padding:0 0 20px 26px}
+.time .ev::before{content:"";position:absolute;left:-6px;top:8px;width:9px;height:9px;background:var(--rubric);border-radius:50%}
+.time .yr{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--rubric)}
+.time .ttl{font-family:var(--serif);font-size:1.15rem;font-weight:600;line-height:1.3}
+.time .why{font-size:.9rem;color:var(--ink-soft)}
+.essay-tool{background:var(--paper);border:1px solid var(--line);padding:24px}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:7px 12px;border:1px solid var(--line);background:#FBF8EF;color:var(--ink-soft)}
+.pill.on{background:var(--lapis);border-color:var(--lapis);color:#fff}
+textarea{width:100%;min-height:190px;padding:14px;border:1px solid var(--line);background:#FCFAF1;font-family:var(--serif);font-size:1.08rem;line-height:1.6;color:var(--ink);resize:vertical}
+textarea:focus{outline:2px solid var(--lapis);outline-offset:-2px}
+.counter{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.counter .n{font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1}
+.counter .state{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em}
+.gauge{flex:1;min-width:160px;height:8px;background:var(--stone-2);position:relative}
+.gauge .zone{position:absolute;top:0;bottom:0;background:rgba(46,107,79,.28)}
+.gauge .mark{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+.check-list{list-style:none;padding:0;margin:18px 0 0}
+.check-list li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:.93rem}
+.check-list input{margin-top:5px;accent-color:var(--rubric);width:16px;height:16px}
+.tips{counter-reset:tip;list-style:none;padding:0;margin:0}
+.tips li{counter-increment:tip;position:relative;padding:16px 0 16px 56px;border-bottom:1px solid var(--line)}
+.tips li::before{content:counter(tip,decimal-leading-zero);position:absolute;left:0;top:16px;font-family:var(--mono);font-size:13px;color:var(--gold);letter-spacing:.06em}
+.tips b{font-family:var(--serif);font-size:1.14rem;display:block;margin-bottom:3px}
+footer{background:var(--ink);color:#D3CCBB;padding:52px 0 60px;margin-top:70px;font-size:.9rem}
+footer h3{color:#F6F1E4;font-family:var(--serif);font-size:1.4rem;margin:0 0 14px}
+footer a{color:var(--gold)}
+footer ul{padding-left:18px;margin:0 0 18px}
+footer li{margin-bottom:7px}
+.note{font-size:.85rem;color:#A39B85;font-style:italic;border-top:1px solid #3A3327;padding-top:18px;margin-top:24px}
+.anim .fade{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.anim .fade.in{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--lapis);outline-offset:2px}
+@media print{
+  nav.rail,.chain-wrap,.act,.essay-tool{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .answer{display:block!important}
+  section.mod{padding:14px 0}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Mini kurzus · Történelem érettségi</p>
+    <h1>Honfoglalás és államalapítás<span class="sub">a vándorlástól Szent István királyságáig</span></h1>
+    <p class="lede">Hat modul, hat forrás, huszonhárom feladat — a magyar őstörténettől és Etelköztől a honfoglaláson és a kalandozásokon át Géza és Szent István keresztény államáig.</p>
+    <div class="meta">
+      <span class="tag">6 modul</span>
+      <span class="tag">23 feladat</span>
+      <span class="tag">6 forrás</span>
+      <span class="tag">Középszint + <b>E</b></span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+
+    <div class="chain-wrap" id="chain">
+      <span class="src-lbl">A témakör gerince</span>
+      <h3>Építsd fel az ok-okozati láncot!</h3>
+      <p class="hint">Hogyan lett a kalandozó törzsi államból négy évtized alatt keresztény királyság? Kattints a lépésekre abban a sorrendben, ahogyan egymásból következnek.</p>
+      <div class="chain-pool" id="chainPool"></div>
+      <div class="chain-track" id="chainTrack"><span style="font-family:var(--mono);font-size:11px;color:#9C9376" id="chainPlaceholder">A sorrend ide épül…</span></div>
+      <div class="act">
+        <button class="btn ghost" id="chainReset">Újrakezdem</button>
+        <span class="verdict" id="chainVerdict"></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <div class="rail-scroll" id="railScroll">
+      <a href="#m1">1 · Őstörténet</a>
+      <a href="#m2">2 · Etelköz</a>
+      <a href="#m3">3 · Honfoglalás</a>
+      <a href="#m4">4 · Kalandozások</a>
+      <a href="#m5">5 · Géza és István</a>
+      <a href="#m6">6 · Az állam</a>
+      <a href="#osszefoglalo">Fogalomtár</a>
+      <a href="#bank">Feladatbank</a>
+      <a href="#esszemuhely">Esszéműhely</a>
+      <a href="#szobeli">Szóbeli</a>
+      <a href="#tippek">Tippek</a>
+    </div>
+    <div class="prog" title="Megoldott feladatok">
+      <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+      <span class="prog-txt" id="progTxt">0/23</span>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ 1. MODUL ============ -->
+<section class="mod fade" id="m1">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">1. modul</span></div>
+    <h2>A magyar őstörténet — a vándorlás évezredei</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Ismered az őstörténet-kutatás forrásait és nehézségeit, be tudod mutatni a finnugor elmélet szerinti vándorlás fő állomásait, és tudod, miért folyik ma is vita a magyarság eredetéről.</p>
+    </div>
+
+    <h3>Az őstörténet-kutatás forrásai és nehézségei</h3>
+    <p>A magyar őstörténet-kutatás legnagyobb nehézsége az egykorú írásos források hiánya. Az <b>eredethagyományból</b> értékes elemeket őriztek meg középkori krónikásaink: a csodaszarvasmonda (eredetmítosz), a turulmonda (az uralkodóház eredete), a vérszerződés (a sztyeppeállam megalapítása) és a fehér ló mondája (a honfoglalás). E mondák párhuzamai a sztyeppei — szkíta, hun, törökségi — népek felé mutatnak. A magyarokról idegen szerzők (muszlim földrajzi írók, bizánci császárok, latinul író nyugat-európai krónikások) is sok adatot megőriztek, de csak a külső szemlélő nézőpontjából.</p>
+    <p>Mivel az írott adatok száma korlátozott, az őstörténet-kutatásban kiemelt szerepe van más tudományoknak is: a <b>nyelvészet</b> a nyelv történeti fejlődését vázolja fel, és nyelvcsaládokba sorolja a népeket; a <b>néprajz- és népzenekutatás</b> a szellemi kultúra hagyatékát vizsgálja; a <b>régészet</b> a tárgyi hagyatékot tárja fel (elsősorban temetők feltárásával); az <b>embertan és a történeti genetika</b> pedig a csontokból von le következtetéseket. Fontos korlát, hogy egy régészeti kultúrához több nép is tartozhatott, és a nyelv története nem feltétlenül azonos a nép őstörténetével.</p>
+
+    <h3>A finnugor elmélet szerinti vándorlás</h3>
+    <p>A finnugor elmélet a magyarok őshazáját az Ural-hegység és az Ob folyó menti erdős-mocsaras vidékre helyezi. Innen indult a halász-vadász életmódot folytató finnugor népek szétvándorlása. A vándorlás állomásait a nyelvcsaládfa-elmélet alapján lehet rekonstruálni:</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Korszak</th><th>Terület</th><th>Jellemző</th></tr></thead>
+      <tbody>
+        <tr><td><b>Urali kor</b></td><td>Ural-hegység, Nyugat-Szibéria</td><td>halászó-vadászó-madarászó életmód</td></tr>
+        <tr><td><b>Finnugor kor</b></td><td>az Ural két oldala</td><td>halászó-vadászó-madarászó életmód, anyajogú társadalom</td></tr>
+        <tr><td><b>Ugor kor</b></td><td>az Ural keleti oldala</td><td>az éghajlat felmelegedése nyomán megkezdődik a földművelés és az állattenyésztés</td></tr>
+        <tr><td><b>Sztyeppei vándorlás</b></td><td>az eurázsiai sztyeppövezet</td><td>nagyállattartó nomadizálás; törökös jellegű hadviselés, viselet, kultúra (rovásírás)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Kr. e. 1300 körül felmelegedett, majd Kr. e. 800 körül lehűlt az éghajlat: az ellehetetlenülő mezőgazdasági termelés miatt a magyarok a füves pusztákra indultak, és ezzel kiváltak az ugor közösségből. Innentől — a Kr. e. 500 és Kr. u. 500 közötti időszakban — nagyállattartó nomád életmódot folytattak az eurázsiai sztyeppövezetben.</p>
+
+    <h3>A vita a magyarság eredetéről</h3>
+    <p>Őstörténetünk alapkérdéseiben (nyelvrokonság, az őshaza helye) folyamatos tudományos vita zajlik, amelyet — ahogy a tankönyv is jelzi — politikai felhangok is színeztek és színeznek: ez elsősorban a <b>finnugor vagy török származás</b> kérdése körül forog. A magyarság sok más néphez hasonlóan <b>többgyökerű</b>: a magyarokra használt népelnevezések, az eredethagyomány és a népzenekincs párhuzamai a sztyeppei törökségi népekhez vezetnek, míg a nyelvet a XIX. század második felében felállított nyelvcsaládfa-elmélet a finnugor nyelvcsaládba sorolja. A kettő nem zárja ki egymást: a nép és a nyelv története a sztyeppén nem feltétlenül fut párhuzamosan.</p>
+    <div class="goal" style="background:#FBF6E5;border-color:#E3D19E;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó</span>
+      <p>A vizsgán gyakran csapdát jelent, ha valaki a finnugor és a török eredetet egymást kizáró elméletként mutatja be. A helyes válasz: a <b>nyelv</b> finnugor eredetű, míg a <b>harcmodor, a viselet és a kultúra</b> jelentős része törökös jellegű — ez a kettősség a sztyeppei népek kialakulásának általános sajátossága, nem magyar különlegesség.</p>
+    </div>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Topográfia</th></tr></thead>
+      <tbody><tr>
+        <td>nyelvcsalád, finnugor elmélet, sztyeppei vándorlás, rovásírás</td>
+        <td>Ural-hegység, Ob folyó, eurázsiai sztyeppövezet</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>1. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">Az őstörténet forrásainak sokfélesége — tartalmi kivonat a tankönyvi szöveg alapján</span>
+      <p class="src-txt">A magyarokat különböző korokban és helyeken élt szerzők különféle néven említik: van, aki hunnak, van, aki avarnak, onogurnak vagy baskírnak nevezi őket. Ez azzal magyarázható, hogy az egyes írók nem mindig ugyanazt a magyarságot látták, hanem csak azokat a népcsoportokat, amelyekből a magyarság végül összeállt. A magyar eredethagyományt a hazai krónikások is csak később, latinul jegyezték le, ezért ők is az idegen népnévhasználathoz igazodtak.</p>
+      <ol class="qs">
+        <li>Milyen okra vezeti vissza a forrás azt, hogy a magyarokat sokféle néven említik a korabeli szerzők?</li>
+        <li>Miért nehezíti ez a sokféleség az őstörténet-kutatást?</li>
+        <li>Mit jelent az, hogy a magyar krónikások „az idegen népnévhasználathoz igazodtak”? Milyen nyelven írtak?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src1">Megoldásvázlat</button></div>
+      <div class="answer" id="src1"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Az egyes szerzők nem mindig ugyanazt a magyarságot látták, hanem csak azokat a népcsoportokat, amelyekből a magyarság kialakult. <b>b)</b> Mert nehéz eldönteni, mikor valódi más népről, és mikor a magyarság egy korábbi állapotáról van szó egy-egy forrásban. <b>c)</b> A hazai krónikások latinul írtak, ezért az akkor Nyugaton elterjedt (gyakran téves vagy elavult) népnévhasználatot vették át a magyarokra is.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m1"></div>
+  </div>
+</section>
+
+<!-- ============ 2. MODUL ============ -->
+<section class="mod fade" id="m2">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">2. modul</span></div>
+    <h2>Levédiától Etelközig — a fejedelemség kialakulása</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni a magyar törzsek kazár kapcsolatát, a hét törzs és a kabarok szövetségét, valamint a vérszerződés és Álmos fejedelemsége körülményeit és jelentőségét.</p>
+    </div>
+
+    <h3>Levédia és a kazár kapcsolat</h3>
+    <p>A magyarok első névről ismert kelet-európai szállásterületét — Bíborbanszületett Konstantin bizánci császár műve alapján — <b>Levédiának</b> nevezzük; a Don és a Dnyeper folyók vidékére tehető (kb. VII–IX. század). Itt a magyarok szoros kapcsolatba kerültek a térség legerősebb hatalmával, a <b>Kazár Birodalommal</b> — egyes vélemények szerint ez a kapcsolat magyarázhatja a később kialakuló kettős fejedelemség rendszerét is. <span class="eonly">E</span>Levédiában érhette a magyar törzseket besenyő támadás, aminek hatására a népesség szétvált: egy csoport Perzsia vidékére, egy másik a Volga–Káma vidékére (a későbbi Magna Hungariába), egy harmadik pedig nyugatra, Etelköz földjére vándorolt.</p>
+
+    <h3>Etelköz és a vérszerződés</h3>
+    <p><b>Etelköz</b> (Folyóköz) a Don és a Duna közötti síkvidék — a magyarsággal kapcsolatba hozható régészeti leletek alapján szűkebb értelemben a Dnyeper és a Dnyeszter folyók vidékét jelölhette. Itt, Etelközben zajlott le a magyar történelem egyik legfontosabb eseménye: a <b>hét magyar törzs</b> (Nyék, Megyer, Kürtgyarmat, Tarján, Jenő, Kér, Keszi) vezetői <b>vérszerződést</b> kötöttek — ez a szkíták óta ismert sztyeppei szokás volt. A hagyomány szerinti hét vezér: Álmos, Előd, Ond, Kond, Tas, Huba és Töhötöm (Tétény).</p>
+    <p>A vérszerződés minden bizonnyal nem egészen önkéntesen, hanem <b>Álmos katonai erejének hatására</b> jött létre, és megerősítette Álmos egyszemélyi vezető szerepét. Mivel a vérszerződés után olyan erős állami egységbe tömörültek az etelközi magyarok, hogy a törzsek önálló politikai tényezőkké soha nem váltak, a tankönyv szerint nem is érdemes „törzsszövetségről” beszélni — mivel Álmos utódait, Árpádot és dédunokáját, Gézát is „nagyfejedelemnek” nevezték a külföldi források, helyesebb <b>Magyar Nagyfejedelemségről</b> beszélni. Etelközi tartózkodásuk idején csatlakoztak a magyarokhoz a kazároktól elpártolt <b>kabarok</b> (nyolcadik törzsként), akik segédhadként harcoltak, támadáskor elöl, visszavonuláskor hátul.</p>
+    <div class="goal" style="background:#FBF6E5;border-color:#E3D19E;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó — vigyázz a fogalomra!</span>
+      <p>Kerüld a „magyar törzsszövetség” kifejezést Etelköz utáni időszakra! A tankönyvi álláspont szerint a vérszerződés után a hatalom annyira egy kézbe (Álmoséba) került, hogy a törzsek elveszítették önálló politikai súlyukat — a helyes fogalom ezért a <b>Magyar Nagyfejedelemség</b>, nem a törzsszövetség.</p>
+    </div>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Személyek</th><th>Topográfia</th></tr></thead>
+      <tbody><tr>
+        <td>törzs, fejedelem, kabarok, vérszerződés</td>
+        <td>Álmos, Árpád</td>
+        <td>Etelköz</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>2. forrás</h4>
+    
+<!-- ATLAS_MAP_START:14a -->
+<figure class="atlas-map" data-atlas-code="14a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 14a. térkép</span>
+    <h4>Korábbi szállásterületek és a honfoglalás</h4>
+    <p class="atlas-map__focus">A magyar törzsek vándorlásának állomásait és a Kárpát-medencébe vezető útvonalakat szemlélteti.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p016_14a.webp" target="_blank" rel="noopener" aria-label="Korábbi szállásterületek és a honfoglalás – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img004.webp" alt="Történelmi térkép: Korábbi szállásterületek és a honfoglalás" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:14a -->
+<div class="source">
+      <span class="src-lbl">A vérszerződés — tartalmi kivonat a krónikás hagyomány alapján</span>
+      <p class="src-txt">A hét vezér — Álmos, Előd, Ond, Kond, Tas, Huba és Töhötöm — esküt tett egymásnak: vérüket közös edénybe csorgatva fogadták, hogy amíg életük tart, mindig egy fejedelmet választanak maguk közül, és annak fiait is a fejedelmi méltóságra emelik; hogy a hadjáratokban szerzett zsákmányból mindannyian egyenlő részt kapnak; és hogy aki a vérszerződést megszegi, azt az eskü szerint saját vérének kiontásával kell büntetni.</p>
+      <ol class="qs">
+        <li>Milyen államjogi jelentősége van a forrás szerint a vérszerződésnek?</li>
+        <li>Milyen öröklési elvet rögzít a szöveg a fejedelmi méltóságra nézve?</li>
+        <li>Miért nem tekinthető a vérszerződés utáni magyar politikai berendezkedés „törzsszövetségnek”?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src2">Megoldásvázlat</button></div>
+      <div class="answer" id="src2"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Egyetlen fejedelmi hatalom alá rendeli a hét törzs vezetőit, vagyis állami egységet teremt a korábban önálló törzsek fölött. <b>b)</b> Öröklődő fejedelemséget rögzít: a fejedelem fiai is fejedelmi méltóságra jogosultak — ez alapozza meg Álmos nemzetségének (a későbbi Árpád-háznak) tartós uralmát. <b>c)</b> Mert a vérszerződés után a törzsek olyan erős egységbe tömörültek Álmos vezetése alatt, hogy önálló politikai tényezőkké többé nem váltak — a valódi hatalom a fejedelmi család kezében koncentrálódott.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m2"></div>
+  </div>
+</section>
+
+<!-- ============ 3. MODUL ============ -->
+<section class="mod fade" id="m3">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">3. modul</span></div>
+    <h2>A honfoglalás és a Kárpát-medence elfoglalása</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni a Kárpát-medence honfoglalás előtti állapotát, a kettős honfoglalás elméletét, valamint a honfoglalás két szakaszát és lezárását a pozsonyi csatával.</p>
+    </div>
+
+    <h3>A Kárpát-medence a honfoglalás előtt</h3>
+    <p>Attila hun király halála (453) után a Hun Birodalom szétesett, és a Kárpát-medence germán népek (gepidák, gótok, longobárdok) hazájává vált. 568-ban Baján kagán vezetésével érkeztek az <b>avarok</b>, és az egész medencét megszállták — az Alföldet birodalmuk központjává tették. Nagy Károly frank uralkodó hadjáratai nyomán az Avar Kaganátus 822 körül összeomlott: a Nyugat-Dunántúlon frank uralom („Karoling Pannónia”) jött létre, a délkeleti és erdélyi részeken a Bolgár Birodalom befolyása érvényesült, míg a peremeken szláv népek éltek. A IX. század végén tehát a Kárpát-medence három hatalom — a keleti frank, a bolgár és a morva állam — végvidékének számított, miközben egyre nagyobb számban érkeztek szláv népek is a területre.</p>
+
+    <h3>A kettős honfoglalás elmélete</h3>
+    <p><b>László Gyula</b> XX. századi régészprofesszor jutott arra a megállapításra, hogy az avarok Kárpát-medencébe érkező második hulláma (670 körül, a griffes-indás díszítésű leletek népessége) nem török, hanem egy „elő-magyar” népesség volt, amely megélte a IX. századi magyar honfoglalást is — ezt nevezzük a <b>kettős honfoglalás elméletének</b>. Az elmélet bizonyítása nehéz, mert a tárgyak és a csontok önmagukban nem árulkodnak tulajdonosaik népi hovatartozásáról, és egy régészeti kultúrához több nép is tartozhatott. Az elmélet ugyanakkor jól magyarázná, hogy a IX. századi honfoglalók magyar nyelve miért tudott fennmaradni: mert „többségi segítséget” kapott a már ott élő rokon népességtől.</p>
+
+    <h3>A honfoglalás menete</h3>
+    <p>A magyarok Kárpát-medencei jelenlétéről először <b>862-ben</b> van adatunk, ezt követően többször visszatértek, hol morva, hol frank szövetségesként harcolva. 894-ben meghalt Szvatopluk morva fejedelem, ezután a morva állam szétesett, így hatalmi vákuum alakult ki a térségben. A honfoglalás okai között szerepelhetett egy keletről induló népvándorlás (besenyő támadás Etelköz ellen), amely miatt a magyarok a kevéssé védhető szállásterületről a védhetőbb, már jól ismert Kárpát-medencébe költöztek; a krónikai hagyomány ugyanakkor nem beszél kényszerről, hanem a magyarok tudatos döntéseként, Attila örökének visszaszerzéseként írja le az eseményt.</p>
+    <p>A honfoglalást <b>két szakaszra</b> szokás bontani:</p>
+    <ul class="marks">
+      <li><b>I. szakasz (894/895–898):</b> a magyarok valószínűleg az északkeleti (Vereckei-, Tatár-) hágókon és az erdélyi hágókon át vonultak be, majd nyugatra indulva a Garam–Duna vidékéig szállták meg a területet — jelentős ellenállással csak a bolgárok részéről találkoztak.</li>
+      <li><b>II. szakasz (899–907):</b> a magyarok előbb a morvákra (900), majd a bajorokra (901–907) támadtak, és elfoglalták Pannónia területét. <b>907. július 4–5-én, a pozsonyi csatában</b> a Keleti Frank Birodalom seregei teljes vereséget szenvedtek — ezzel a győzelemmel a magyarság szentesítette a honfoglalást, és biztosította fennmaradását a Közép-Duna-medencében.</li>
+    </ul>
+    <p>Az sem eldöntött kérdés, mikor történt pontosan a hatalomváltás Álmos és fia, Árpád között — csak az biztos, hogy Álmos már a Kárpát-medencében halt meg (valószínűleg Erdélyben, 894 körül), ezért a honfoglalás Álmos és Árpád <b>együttes</b> érdeme.</p>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Személyek, évszámok</th><th>Topográfia</th></tr></thead>
+      <tbody><tr>
+        <td>honfoglalás, kettős honfoglalás elmélete, avarok, rovásírás</td>
+        <td>Álmos, Árpád<br>895: a honfoglalás<br>907: a pozsonyi csata</td>
+        <td>Vereckei-hágó, Kárpát-medence</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>3. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">A pozsonyi csata — tartalmi kivonat egy korabeli frank évkönyv alapján</span>
+      <p class="src-txt">A Keleti Frank Birodalom nagy sereggel indult a magyarok ellen a Duna mindkét partján, hogy visszaszerezze Pannónia elvesztett területeit. A magyar könnyűlovas seregek azonban 907 nyarán, több napos harcban súlyos vereséget mértek a frank haderőre; a csatában elesett a bajor sereg vezére is. A vereség után a Keleti Frank Birodalom hosszú időre lemondott a Kárpát-medence visszaszerzéséről.</p>
+      <ol class="qs">
+        <li>Milyen célból indította a Keleti Frank Birodalom a hadjáratát a forrás szerint?</li>
+        <li>Milyen hosszú távú következménye lett a magyar győzelemnek a Kárpát-medence birtoklására nézve?</li>
+        <li>Miért mondható, hogy a pozsonyi csata „szentesítette” a honfoglalást? Fogalmazza meg egy mondatban!</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src3">Megoldásvázlat</button></div>
+      <div class="answer" id="src3"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Vissza akarta szerezni az elvesztett pannóniai (Karoling Pannónia) területeket a magyaroktól. <b>b)</b> A Keleti Frank Birodalom hosszú időre lemondott a terület visszaszerzéséről, ezzel a magyarok tartósan megvethették lábukat a Kárpát-medencében. <b>c)</b> Mert a győzelem katonai erővel biztosította azt, amit a beköltözés (895 körül) még csak megkezdett: a Kárpát-medence tartós magyar birtoklását.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m3"></div>
+  </div>
+</section>
+
+<!-- ============ 4. MODUL ============ -->
+<section class="mod fade" id="m4">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">4. modul</span></div>
+    <h2>A kalandozások (támadó hadjáratok)</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni a kalandozó hadjáratok céljait, harcmodorát és legfontosabb csatáit, és meg tudod magyarázni, miért szűntek meg 970-re.</p>
+    </div>
+
+    <h3>Célok és harcmodor</h3>
+    <p>A honfoglalás után a magyarok leggyakrabban nyugat felé indítottak támadó hadjáratokat — a köznyelv helytelenül, de általánosan <b>kalandozásoknak</b> nevezi ezeket. Német (bajor, szász) és itáliai területek voltak a leggyakoribb célpontok, de a magyar seregek eljutottak az Atlanti-óceán partjára (920, majd 937), sőt átkeltek a Pireneusokon is (942); néhány hadjárat a bolgár és bizánci területeket is elérte.</p>
+    <p>A hadjáratok célja többrétű volt: a magyar seregek gyakran „megrendelésre” érkeztek, egy-egy uralkodó a saját ellenségei meggyengítésére használta fel őket; a győzelmekben szerepet játszott a nyugatiak számára szokatlan <b>lovas-íjász harcmodor</b> — a fegyelmezett magyar csapatok színlelt megfutamodása megbontotta a nehézkes nyugati lovagi hadrendet, amelyet azután be lehetett keríteni. A hadjáratokat rendszerint zsákmányszerzés (elsősorban gazdag templomok, kolostorok kifosztása) kísérte, emellett a magyarok megismerték a nyugati hatalmi viszonyokat, és bekapcsolódtak az európai hatalmi harcokba.</p>
+
+    <h3>A legfontosabb hadjáratok és a bukás</h3>
+    <p>Az első ismert katonai akció 836–838-ban zajlott, de kalandozó hadjáratoknak valójában csak a már a Kárpát-medencéből indított vállalkozásokat tekintjük. <b>899-ben</b> a magyarok Itáliára támadtak, és <b>szeptember 24-én a Brenta folyónál</b> legyőzték Berengár királyt — aki felismerve a lovas-íjász hadviselés erejét, később már saját oldalára állította a magyar sereget (904). 899 és 970 között összesen mintegy 47 hadjáratról tudunk (38 nyugati, 9 déli-keleti irányban).</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Év</th><th>Esemény</th><th>Kimenetel</th></tr></thead>
+      <tbody>
+        <tr><td><b>899</b></td><td>Brenta menti csata (Itália)</td><td>magyar győzelem Berengár felett</td></tr>
+        <tr><td><b>910</b></td><td>Első augsburgi csata</td><td>magyar győzelem</td></tr>
+        <tr><td><b>926</b></td><td>Szent Gallen kolostorának feldúlása</td><td>sikeres zsákmányszerzés</td></tr>
+        <tr><td><b>933</b></td><td>Merseburg</td><td>I. (Madarász) Henrik győzelme a magyarok felett</td></tr>
+        <tr><td><b>937</b></td><td>Hadjárat az Atlanti-óceánig</td><td>a legtávolabbi nyugati hadjárat</td></tr>
+        <tr><td><span class="eonly">E</span><b>955</b></td><td>Második augsburgi csata (Lech-mező)</td><td>I. (Nagy) Ottó döntő győzelme — a nyugati hadjáratok vége</td></tr>
+        <tr><td><b>970</b></td><td>Arkadiupolisz (Bizánc ellen)</td><td>bizánci győzelem — a kalandozások végleges lezárása</td></tr>
+      </tbody>
+    </table></div>
+    <p>A sikerek döntően a hűbéri berendezkedésű országok politikai széttagoltságának köszönhetők; ez a helyzet azonban idővel <b>összefogásra sarkallta a nyugatiakat</b>. I. (Madarász) Henrik szász uralkodó előbb adófizetéssel vásárolt békét, majd megtagadta azt, és páncélos seregével Merseburgnál megfutamította a betörő magyarokat (933). Fia, I. (Nagy) Ottó Augsburgnál (a Lech-mezőn) mért döntő csapást a magyarokra <b>955-ben</b> — a magyar vezéreket (Bulcsú, Lehel, Súr) Regensburgban felakasztották. Ez zárta le a nyugati hadjáratokat; a Bizánc elleni hadjáratok 970-ben Arkadiupolisznál végződtek kudarccal.</p>
+    <div class="goal" style="background:#FBF6E5;border-color:#E3D19E;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó</span>
+      <p>A kalandozások bukásának <b>oka és következménye</b> egyaránt fontos vizsgapont: az ok az volt, hogy a nyugatiak fokozatosan kiismerték a magyar harcmodort és összefogtak (Henrik, majd Ottó); a következmény pedig az, hogy 970 után a magyarságnak választania kellett a régi berendezkedés fenntartása és egy új, keresztény államforma között — ez köti össze ezt a modult az 5. modullal.</p>
+    </div>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Évszámok</th></tr></thead>
+      <tbody><tr>
+        <td>kalandozások</td>
+        <td><span class="eonly">E</span>955: az augsburgi csata (Lech-mező)</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>4. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">A magyarok harcmodora — tartalmi kivonat egy nyugat-európai szerzetes krónikájából</span>
+      <p class="src-txt">A szerző leírja, hogy a magyarok soha nem bocsátkoznak nyílt, közelharcban eldöntött ütközetbe, ha tehetik: lóhátról nyilaznak, majd színlelt menekülésbe kezdenek, hogy az őket üldöző, rendezetlenné váló sereget csapdába csalják és bekerítsék. A keresztény seregek fegyelme ilyenkor felbomlik, mert azt hiszik, az ellenség már megfutamodott. A szerző szerint csak azok a seregek tudták legyőzni a magyarokat, amelyek vezetői ismerték ezt a taktikát, és nem engedték felbomlani soraikat az üldözés közben.</p>
+      <ol class="qs">
+        <li>Nevezze meg a forrás alapján a magyarok harcmodorának két legfontosabb elemét!</li>
+        <li>Milyen okot nevez meg a szerző arra, hogy a nyugati seregek kezdetben miért szenvedtek vereséget?</li>
+        <li>Milyen tényező vezetett a forrás szerint a magyar hadjáratok sikertelenségéhez a X. század közepén?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src4">Megoldásvázlat</button></div>
+      <div class="answer" id="src4"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> A lovas-íjász nyilazás és a színlelt menekülés, amellyel bekerítették az üldöző ellenséget. <b>b)</b> A nyugati seregek fegyelme felbomlott, mert az üldözés közben azt hitték, az ellenség valóban megfutamodott. <b>c)</b> Az, hogy a nyugati vezérek fokozatosan megismerték és felkészültek a magyar taktikára, és nem engedték felbomlani csapataik rendjét az üldözés során.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m4"></div>
+  </div>
+</section>
+
+<!-- ============ 5. MODUL ============ -->
+<section class="mod fade" id="m5">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">5. modul</span></div>
+    <h2>Géza fejedelemsége és Szent István hatalomra kerülése</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni Géza fejedelem reformjait és a kereszténység felé fordulás kezdetét, valamint István hatalomra kerülésének körülményeit, köztük a Koppánnyal vívott harcot és a koronázást.</p>
+    </div>
+
+    <h3>Géza fejedelemsége (972–997)</h3>
+    <p>A kalandozások bukása (970) után a magyarság válaszút elé került: vagy megőrzi az eredeti sztyeppei berendezkedést — amit Közép-Európa két korábbi sztyeppeállamának, a Hun Birodalomnak és az Avar Kaganátusnak sem sikerült tartósan fenntartania —, vagy beilleszkedik Európa politikai-kulturális közösségébe, aminek előfeltétele a keresztény rendszerváltás végrehajtása volt.</p>
+    <p><b>Géza</b> fejedelem, Taksony fia, 972-ben — az 955-ös augsburgi vereség tanulságait levonva — követeket küldött I. Ottó német-római császárhoz, jelezve megtérési szándékát; a császár térítő papokat küldött (köztük Szent Galleni Brúnót), és Géza maga is megkeresztelkedett. <b>973-ban</b> Géza 12 főemberéből álló küldöttséget küldött a quedlinburgi birodalmi gyűlésre, ahol megállapodtak a német–magyar kapcsolatok rendezéséről; a béke érdekében Géza lemondott a Lajtán túli területekről. Géza emellett megkezdte a hatalom központosítását: Esztergomot tette fejedelmi székhellyé (Kalocsa helyett), megtörte a törzsfők-nemzetségfők hatalmát, és nyugati mintájú nehézfegyverzetű lovagokra alapozva szervezte át a hadsereget. Házassága is hatalmát erősítette: feleségül vette az erdélyi Gyula leányát, <b>Saroltot</b>, ezzel a gyulák családját is magához kötve.</p>
+    <p>Géza aktív dinasztikus külpolitikát folytatott: lányait a lengyel, a velencei és a bolgár uralkodócsaládokhoz adta feleségül. Fia, Vajk (a későbbi <b>Szent István</b>) számára <b>995-ben</b> sikerült megszereznie feleségül a bajor <b>Gizellát</b> — ezzel az Árpádok rokonságba kerültek a német-római császári Szász-dinasztiával, és a Gizellával érkező lovagok tovább erősítették a fejedelmi hatalmat.</p>
+
+    <h3>István hatalomra kerülése és Koppány leverése</h3>
+    <p>Géza halálakor (997) már az Árpádok kezében volt az ország nagy része, a <b>primogenitúra</b> (az elsőszülöttségi öröklés) elve szerint fia, István következett a hatalomban. A régi, nomád öröklési rend (<b>szeniorátus</b>) szerint azonban a nemzetség legidősebb férfi tagja örökölt volna — ez esetben <b>Koppány</b>, István távoli rokona, aki ezért fellázadt. Koppány a sztyeppei rokonházasság (levirátus) szokása alapján nőül kérte az özvegy Saroltot, és Veszprém vára ellen vonult.</p>
+    <p>István serege — a sváb <b>Vecellin</b> vezetésével — legyőzte Koppányt. A megtorlás kemény volt: Koppány testét felnégyelték, és az ország négy pontján közszemlére tették, elrettentésül. István ezzel megszilárdította hatalmát, és felismerte, hogy egy új államforma nagyobb külpolitikai tekintélyt biztosít számára: a nagyfejedelmi hagyatékkal szakítva <b>királyságra</b> készült. Koronázó székhelyéül a frank–német Aachen mintájára Székesfehérvárt választotta, ahol 997–1000 között felépíttette a Szűz Mária-bazilikát.</p>
+    <p>III. Ottó császár biztatására <b>II. Szilveszter pápától</b> koronát kapott — ezt <b>Asztrik</b> (Anasztáz) hozta el Rómából —, és Istvánt <b>1000 karácsonyán</b> (más számítás szerint 1001. január 1-jén) Székesfehérvárott megkoronázták. A koronázási szertartás során István egyúttal szent olajjal felkent főpapja is lett az országnak.</p>
+    <div class="goal" style="background:#FBF6E5;border-color:#E3D19E;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó — öröklési rendek</span>
+      <p>Két öröklési elv ütközik ebben a modulban, és ez visszatérő vizsgakérdés: a <b>szeniorátus</b> (a nemzetség legidősebb tagja örököl — Koppány erre hivatkozott) és a <b>primogenitúra</b> (az elhunyt legidősebb fia örököl — ezen alapult István trónigénye). A kettő szembeállítása magyarázza Koppány felkelésének jogalapját is.</p>
+    </div>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th></tr></thead>
+      <tbody><tr>
+        <td>az Árpád-ház, kettős kereszt; <span class="eonly">E</span>primogenitúra</td>
+        <td>Géza, I. (Szent) István, Koppány; <span class="eonly">E</span>II. Szilveszter pápa</td>
+        <td>997/1000–1038: I. (Szent) István uralkodása<br><span class="eonly">E</span>972–997: Géza fejedelemsége</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>5. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">Koppány lázadása — tartalmi kivonat a Szent István-legenda alapján</span>
+      <p class="src-txt">A legenda elmondja, hogy Géza fejedelem halála után Koppány, aki magát az ősi szokás szerint jogos örökösnek tartotta, sereget gyűjtött, és Veszprém vára ellen vonult, azt remélve, hogy Sarolt fejedelemasszonyt is feleségül veheti. István azonban idegen lovagjaival — akiket még apja, Géza hívott az országba — szembeszállt vele, és véres csatában legyőzte. A győzelem után István testét négyfelé vágatta, és az ország különböző pontjaira, elrettentő példaként küldette szét.</p>
+      <ol class="qs">
+        <li>Milyen jogcímen tartotta magát Koppány a hatalom jogos örökösének?</li>
+        <li>Kik segítették Istvánt a lázadás leverésében, és mit árul el ez az ország politikai helyzetéről?</li>
+        <li>Milyen üzenetet hordozott Koppány megtorlásának módja?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src5">Megoldásvázlat</button></div>
+      <div class="answer" id="src5"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Az ősi, szeniorátus szerinti öröklési rendre hivatkozva, mint a nemzetség legidősebb férfi tagja. <b>b)</b> Idegen (nyugati, nehézfegyverzetű) lovagok, akiket még Géza hívott be — ez azt mutatja, hogy a hatalmi harc egyben a régi és az új, nyugati típusú katonai-politikai berendezkedés összecsapása is volt. <b>c)</b> Elrettentő üzenetet: mindenki számára világossá tette, hogy az új öröklési rendnek ellenszegülőket kíméletlenül megtorolják — ez szolgálta István hatalmának végleges megszilárdítását.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m5"></div>
+  </div>
+</section>
+
+<!-- ============ 6. MODUL ============ -->
+<section class="mod fade" id="m6">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">6. modul</span></div>
+    <h2>A királyi állam megszervezése — vármegye és egyházszervezet</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni a vármegyerendszer felépítését és a katonai-igazgatási szervezetet, ismered István egyházszervező munkáját, és tudod, milyen válság fenyegette életműve folytatását.</p>
+    </div>
+
+    <h3>A vármegyerendszer</h3>
+    <p>I. (Szent) István a trónért vívott harcokban kiterjesztette hatalmát az egész országra: 1003 körül legyőzte anyai nagybátyját, az erdélyi Gyulát, majd a Temes–Maros vidékét birtokló <b>Ajtonyt</b> is (Csanád vezetésével). Ennek eredményeként a földek jelentős része — kb. kétharmada, egyes becslések szerint akár háromnegyede — <b>királyi birtok</b> lett; erre alapozódott a királyi jövedelem (domaniális jövedelem), a közigazgatás és a hadszervezet is — ezt nevezzük <b>patrimoniális királyságnak</b>.</p>
+    <p>A vérségi alapon működő törzsi szerveződés helyébe István <b>területi alapú közigazgatást</b>, a <b>vármegyerendszert</b> állította. A vármegyéket a királyi várak köré szervezték, először az ország középső területein, majd fokozatosan a peremvidékeken is. A vármegye a királyi birtokok mellett magába foglalta az egyházi és magánföldesúri birtokokat is; élén a <b>megyésispán</b> állt, aki a vár ispánjaként bíráskodott, behajtotta a királyi jövedelmeket (ebből egyharmad rész illette), és katonai vezető volt. István halálakor a vármegyék száma 30–45 között mozoghatott; az első vármegye feltehetően Somogy volt.</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Réteg</th><th>Jogállás, feladat</th></tr></thead>
+      <tbody>
+        <tr><td><b>Várjobbágyok</b></td><td>korlátozott szabadságú, katonáskodó szolgálattevők a várban</td></tr>
+        <tr><td><b>Várnépek</b></td><td>szolgaállapotú, a vár ellátásához szükséges munkát (földművelés, ipar) végző, alkalmanként katonáskodó réteg</td></tr>
+        <tr><td><b>Vitézek (miles), serviensek</b></td><td>a királynak közvetlenül alárendelt szabad birtokosok, nem tartoztak az ispán alá</td></tr>
+        <tr><td><span class="eonly">E</span><b>Székelyek</b></td><td>katonai segédnép, a határterületek védelmét látták el</td></tr>
+      </tbody>
+    </table></div>
+    <p>A királyi udvartartás ellátására szolgáló birtokrészeket <b>udvarbirtokoknak</b> nevezzük, megkülönböztetve a vár ellátását biztosító várbirtokoktól. A vezető testület, a <b>királyi tanács</b> legmagasabb világi méltósága a <b>nádorispán</b> volt, aki a főpapok mellett vett részt a döntéshozatalban.</p>
+
+    <h3>Az egyházszervezés</h3>
+    <p>A mélyen vallásos István tudta: Magyarországot a kereszténység kapcsolja Európához, ezért gyorsan hozzákezdett a nyugati típusú (latin) egyházszervezet kiépítéséhez, párhuzamosan az államszervezéssel. Királysága elején, <b>1001-ben</b> létrehozta az első hazai főegyházmegyét, az <b>esztergomi érsekséget</b> — ennek jelentősége, hogy a magyar egyházszervezet függetlenné vált a német birodalmi egyháztól, és közvetlenül Róma alá tartozott. Nem sokkal később <span class="eonly">E</span><b>Kalocsa</b> püspöksége is érseki rangra emelkedett, de az egyház élén az esztergomi érsek maradt. István korában további nyolc egyházmegye (püspökség) jött létre: veszprémi, győri, pécsi, egri, váci, csanádi, bihari, erdélyi.</p>
+    <p>Az egyházi életben a szerzetesrendek is helyet kaptak: a <b>Szent Márton-hegyi (pannonhalmi) apátság</b> volt a Szent Benedek-rend első magyarországi alapítása (<b>996</b>, még Géza uralkodása alatt) — ősi mivolta miatt kizárólag a pápai joghatóság alá tartozott, kiemelve az egyházmegyei rendszerből. Két évszázad alatt félszáznál is több bencés kolostor jött létre; a bencések részt vettek a térítésben, az írásbeliség megőrzésében és új gazdasági eljárások terjesztésében.</p>
+    <p>István törvényben biztosította az egyház működési feltételeit: előírta a <b>tized</b> fizetését (a termés tizede az egyházat illette), és elrendelte, hogy minden tíz falu építsen templomot. A pogány szokásaitól nehezen szakadó lakosságot törvény erejével is a keresztény vallásgyakorlásra (böjt, gyónás, vasárnapi mise) kötelezte.</p>
+
+    <h3>A trónutódlás válsága</h3>
+    <p>István életművét váratlan esemény sodorta veszélybe: fia, <b>Imre</b> herceg vadkanvadászaton lelte halálát (1031). Az uralkodó ezután unokaöccsét, <b>Vazult</b> pogánysága miatt alkalmatlannak találta az öröklésre, és nővére fiát, a Velencében nevelkedett <b>Orseolo Pétert</b> jelölte utódjául. Vazult megvakíttatta, fiait pedig — Leventét és Andrást, majd Bélát — az ország elhagyására kényszerítette. Péter azonban méltatlannak bizonyult a bizalomra: halála (1038) után hosszú trónviszályok korszaka következett, amely csak Vazul fiainak hazatérésével (1046-tól) csitult — igaz, válságos évtizedek árán.</p>
+    <p>István uralkodása alatt sokáig kedvező volt a külpolitikai helyzet: mindkét szomszédos császársággal jó kapcsolatot ápolt, és 1030-ban egy német támadást is sikeresen visszavert, „felégetett föld” taktikával, sőt egy időre Bécset is elfoglalta. Országa vonzerejét jelzi, hogy nemcsak nyugatról, hanem keletről (besenyők) is érkeztek betelepülők — ezt a nyitottságot fogalmazta meg fiának, Imrének írt <b>Intelmeiben</b> is, amelyben az „egynyelvű és egyszokású ország” gyengeségére figyelmeztetett.</p>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Személyek</th><th>Topográfia</th></tr></thead>
+      <tbody><tr>
+        <td>vármegye, nádor, ispán</td>
+        <td>Szent Gellért, Szent Imre</td>
+        <td>Pannonhalma, Esztergom, Székesfehérvár, Erdély; <span class="eonly">E</span>Kalocsa</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>6. forrás</h4>
+    
+<!-- ATLAS_MAP_START:16a -->
+<figure class="atlas-map" data-atlas-code="16a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 16a. térkép</span>
+    <h4>A Magyar Királyság a 11. században</h4>
+    <p class="atlas-map__focus">A korai királyság területi szervezete, központjai és hatalmi viszonyai olvashatók le róla.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p018_16a.webp" target="_blank" rel="noopener" aria-label="A Magyar Királyság a 11. században – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img005.webp" alt="Történelmi térkép: A Magyar Királyság a 11. században" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:16a -->
+<div class="source">
+      <span class="src-lbl">Részlet Szent István Intelmeiből — tartalmi kivonat</span>
+      <p class="src-txt">István fiához, Imréhez így ír: ahogy a vendégek különféle nyelveket, szokásokat, tanító írásokat és fegyvereket hoznak magukkal a világ különböző részeiről, úgy válnak ezek a királyság díszére, és teszik naggyá az udvart. Az egynyelvű és csak egyetlen szokásra épülő királyság gyenge és törékeny.</p>
+      <ol class="qs">
+        <li>Milyen tanácsot ad István fiának a jövevényekkel kapcsolatban?</li>
+        <li>Fogalmazza meg a szöveg alapján, miért nem az ország öncélú benépesítéséről szól ez a tanítás!</li>
+        <li>Milyen konkrét, a fejezetben tanult ténnyel támasztható alá, hogy István gyakorlatban is követte ezt az elvet?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src6">Megoldásvázlat</button></div>
+      <div class="answer" id="src6"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Fogadja be és becsülje a más nyelvet, szokást hozó jövevényeket, mert ezek gazdagítják és erősítik az országot. <b>b)</b> Mert István kifejezetten az udvar, a hatalomgyakorló központ szemszögéből beszél: az értékes tudással érkezőket látta szívesen, nem a terület puszta feltöltését szorgalmazta. <b>c)</b> Például: Gizella bajor hercegnővel érkező nyugati lovagok befogadása, akik segítettek Koppány leverésében; vagy a besenyők betelepítésének elfogadása.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m6"></div>
+  </div>
+</section>
+
+<!-- ============ ÖSSZEFOGLALÓ ============ -->
+<section class="mod fade" id="osszefoglalo">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Összefoglaló</span></div>
+    <h2>Fogalomtár és kronológia</h2>
+
+    <h4>Fogalomtár — gépeld be, amit keresel</h4>
+    <input class="search" id="glossSearch" type="search" placeholder="Keresés a fogalmak között… (pl. vármegye, kabarok, primogenitúra)" aria-label="Keresés a fogalomtárban">
+    <div class="gloss" id="glossList"></div>
+
+    <h4>Kronológia</h4>
+    <div class="time" id="timeline"></div>
+
+    <h4>Topográfia — mit kell megmutatni az atlaszban?</h4>
+    <ul class="marks">
+      <li><b>A vándorlás állomásai:</b> Ural-hegység, Levédia (Don–Dnyeper), Etelköz (Dnyeper–Dnyeszter–Duna).</li>
+      <li><b>A honfoglalás útvonala:</b> Vereckei-hágó, Erdély, a Kárpát-medence, a Garam–Duna vonal.</li>
+      <li><b>A kalandozások célpontjai:</b> Augsburg (Lech-mező), Brenta folyó, Merseburg, az Atlanti-óceán partvidéke.</li>
+      <li><b>Az államalapítás színterei:</b> Esztergom, Székesfehérvár, Pannonhalma, Veszprém, Erdély; <span class="eonly">E</span>Kalocsa.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FELADATBANK ============ -->
+<section class="mod fade" id="bank">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Feladatbank</span></div>
+    <h2>Érettségi típusú komplex feladatok</h2>
+    <p>A három feladat az írásbeli I. részének mintájára készült: forrásalapú, több részkérdésből áll, és részpontokra megy. Oldd meg papíron, majd nyisd meg a pontozott megoldást.</p>
+
+    <div class="card">
+      <span class="task-id">K1 · a magyar vándorlás állomásai (térkép és fogalmak)</span>
+      <p style="font-size:.95rem">Adott három szállásterület: <b>Levédia</b>, <b>Etelköz</b>, <b>Kárpát-medence</b>.</p>
+      <ol class="qs">
+        <li>Állítsa időrendi sorrendbe a három szállásterületet! <b>(3 pont)</b></li>
+        <li>Nevezze meg, melyik szállásterületen történt a vérszerződés, és mely nép szomszédságában élt ekkor a magyarság! <b>(2 pont)</b></li>
+        <li>Nevezze meg azt a népcsoportot, amely Etelközben csatlakozott a magyarokhoz! <b>(1 pont)</b></li>
+        <li>Fogalmazza meg egy mondatban, miért nem helyes a vérszerződés utáni magyar berendezkedésre a „törzsszövetség” kifejezést használni! <b>(2 pont)</b></li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="k1">Pontozott megoldás</button></div>
+      <div class="answer" id="k1"><span class="lbl">Megoldás · 8 pont</span>
+        <b>a)</b> Levédia → Etelköz → Kárpát-medence. <b>b)</b> Etelközben; a Kazár Birodalom szomszédságában (bár a kazár kapcsolat inkább Levédiára jellemző, Etelközben a magyarok már el is szakadtak a kazároktól). <b>c)</b> A kabarok. <b>d)</b> Mert a vérszerződés után a törzsek olyan erős egységbe tömörültek Álmos vezetése alatt, hogy soha többé nem váltak önálló politikai tényezőkké — helyesebb a Magyar Nagyfejedelemség elnevezés.
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-id">K2 · a kalandozások okai és bukása</span>
+      <ol class="qs">
+        <li>Nevezze meg a magyar hadi sikerek két legfontosabb okát! <b>(2 pont)</b></li>
+        <li>Nevezze meg és jellemezze a magyar harcmodor lényegét egy mondatban! <b>(2 pont)</b></li>
+        <li>Nevezze meg azt a két csatát (évszámmal), amelyek lezárták a kalandozásokat nyugaton és keleten! <b>(4 pont)</b></li>
+        <li>Fogalmazza meg, milyen választás elé került a magyarság a kalandozások lezárulása (970) után! <b>(2 pont)</b></li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="k2">Pontozott megoldás</button></div>
+      <div class="answer" id="k2"><span class="lbl">Megoldás · 10 pont</span>
+        <b>a)</b> A lovas-íjász harcmodor újszerűsége nyugaton, valamint a hűbéri berendezkedésű országok politikai széttagoltsága. <b>b)</b> A lovas-íjász nyilazás és a színlelt megfutamodás, amellyel a magyarok bekerítették az üldöző ellenséget. <b>c)</b> Augsburg (Lech-mező), 955 — I. Ottó győzelme; Arkadiupolisz, 970 — bizánci győzelem. <b>d)</b> Vagy megőrzik az eredeti sztyeppei berendezkedést (amely a Hun Birodalomnak és az Avar Kaganátusnak sem sikerült tartósan), vagy végrehajtják a keresztény rendszerváltást, és beilleszkednek Európa politikai közösségébe.
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-id">K3 · Koppány és István hatalmi harca (forráselemzés)</span>
+      <div class="source" style="margin-top:6px">
+        <p class="src-txt" style="margin:0">„Koppány, a nemzetség legidősebb férfi tagjaként az ősi öröklési szokásra hivatkozva sereget gyűjtött, és nőül kívánta venni az özvegy Saroltot. István azonban idegen lovagjai segítségével legyőzte, és testét elrettentésül négy részre vágatva az ország különböző pontjain közszemlére tette.” (tartalmi összefoglalás)</p>
+      </div>
+      <ol class="qs">
+        <li>Nevezze meg azt az öröklési elvet, amelyre Koppány hivatkozott, és azt, amelyen István trónigénye alapult! <b>(2 pont)</b></li>
+        <li>Nevezze meg azt a sztyeppei szokást, amely alapján Koppány nőül kívánta venni Saroltot! <b>(1 pont)</b></li>
+        <li>Milyen külső segítséget vett igénybe István a lázadás leveréséhez? Mit árul ez el az ország politikai megosztottságáról? <b>(3 pont)</b></li>
+        <li>Fogalmazza meg, milyen üzenetet hordozott Koppány megtorlásának módja! <b>(2 pont)</b></li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="k3">Pontozott megoldás</button></div>
+      <div class="answer" id="k3"><span class="lbl">Megoldás · 8 pont</span>
+        <b>a)</b> Koppány: szeniorátus (a nemzetség legidősebb tagja örököl). István: primogenitúra (az elhunyt legidősebb fia örököl). <b>b)</b> A levirátus (a rokonházasság szokása). <b>c)</b> Idegen (nyugati, nehézfegyverzetű) lovagok segítségét, akiket még Géza hívott az országba — ez azt mutatja, hogy a belső hatalmi harcban a régi és az új berendezkedés hívei csaptak össze, és István a nyugati mintájú haderőre támaszkodott. <b>d)</b> Elrettentő üzenetet: mindenki számára egyértelművé tette, hogy az új rend elleni lázadást kíméletlenül megtorolják.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESSZÉMŰHELY ============ -->
+<section class="mod fade" id="esszemuhely">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Esszéműhely</span></div>
+    <h2>Esszéírás — szerkezet, minta, szószámláló</h2>
+
+    <h4>Fontos: ez a témakör mindig magyar történelmi</h4>
+    <p>A honfoglalás és az államalapítás magyar történelmi téma, ezért középszinten kizárólag a <b>hosszú esszében</b> (210–260 szó) szerepelhet, a rövid esszé ilyenkor egyetemes témát dolgoz fel. Emelt szinten bármelyik esszétípusban előfordulhat.</p>
+
+    <h4>Kidolgozott hosszú esszé</h4>
+    <div class="source">
+      <span class="src-lbl">A feladat</span>
+      <p style="margin:0 0 14px;font-size:.96rem">Mutassa be a források és ismeretei segítségével Szent István államalapító tevékenységét! Térjen ki a hatalomra kerülés körülményeire, a vármegyerendszerre és az egyházszervezésre! <i>(hosszú esszé, 210–260 szó)</i></p>
+      <span class="src-lbl">Mintamegoldás · 231 szó</span>
+      <div class="src-txt">
+        <p>A feladat Szent István államalapító tevékenységének bemutatását kéri a hatalomra kerüléstől a vármegye- és egyházszervezésig.</p>
+        <p>Géza fejedelem halála (997) után a primogenitúra elve szerint fia, István örökölte volna a hatalmat, ám a régi, szeniorátus szerinti rend alapján Koppány támasztott igényt a trónra. István idegen, nyugati lovagok segítségével legyőzte Koppányt, majd 1000 karácsonyán II. Szilveszter pápától kapott koronával megkoronázták Székesfehérvárott.</p>
+        <p>Az új király a vérségi alapú törzsi szerveződést területi alapú közigazgatással, a vármegyerendszerrel váltotta fel. A vármegyéket a királyi várak köré szervezték; élükön a megyésispán állt, aki bíráskodott, behajtotta a királyi jövedelmeket, és katonai vezető volt. Mindez a királyi birtokok — az ország kétharmadának — birtoklásán alapult.</p>
+        <p>István egyházszervező munkája az államszervezéssel párhuzamosan haladt. 1001-ben létrehozta az esztergomi érsekséget, amely függetlenítette a magyar egyházat a német birodalmi egyháztól. Nyolc további egyházmegyét alapított, és törvényben írta elő a tizedfizetést, valamint a templomépítést minden tíz falu számára.</p>
+        <p>István életműve azért fordulópont, mert a sztyeppei típusú Magyar Nagyfejedelemséget nyugati típusú, keresztény királysággá alakította — ezzel biztosította a magyarság tartós fennmaradását Európa politikai közösségében.</p>
+      </div>
+    </div>
+    <p><b>Miért működik?</b> Az első mondat visszahangozza a feladatot. A négy bekezdés pontosan követi a feladat három kért elemét (hatalomra kerülés, vármegye, egyház), plusz egy záró értékelést ad. A szaknyelv pontos (primogenitúra, szeniorátus, megyésispán, tized). A záró mondat nem ismétel, hanem történelmi jelentőséget fogalmaz meg.</p>
+
+    <h4>Írd meg te — élő szószámlálóval</h4>
+    <div class="essay-tool">
+      <div class="pill-row" id="essayPills"></div>
+      <p style="font-size:.94rem;color:var(--ink-soft)" id="essayPrompt"></p>
+      <textarea id="essayBox" placeholder="Ide írd az esszédet. Kezdd a feladat kérdésének visszahangzásával…" aria-label="Esszé szövege"></textarea>
+      <div class="counter">
+        <span class="n" id="wordN">0</span>
+        <div class="gauge" id="gauge"><div class="zone" id="gzone"></div><div class="mark" id="gmark" style="left:0"></div></div>
+        <span class="state" id="wordState">Kezdj el írni…</span>
+      </div>
+      <ul class="check-list">
+        <li><input type="checkbox" id="c1"><label for="c1">Az első mondatban visszahangoztam a feladat kérdését.</label></li>
+        <li><input type="checkbox" id="c2"><label for="c2">Megadtam az időt (évszázad, pontos évszám).</label></li>
+        <li><input type="checkbox" id="c3"><label for="c3">Legalább kétszer konkrétan hivatkoztam a forrásra.</label></li>
+        <li><input type="checkbox" id="c4"><label for="c4">Legalább öt szakkifejezést használtam pontosan.</label></li>
+        <li><input type="checkbox" id="c5"><label for="c5">Nem soroltam, hanem érveltem: minden állításhoz tartozik magyarázat.</label></li>
+        <li><input type="checkbox" id="c6"><label for="c6">A záró mondat értékel vagy következtet, nem ismétel.</label></li>
+      </ul>
+      <p style="font-size:.82rem;color:var(--ink-soft);margin:14px 0 0;font-style:italic">A szöveg csak ebben a böngészőablakban él — frissítéskor elvész.</p>
+    </div>
+
+    <h4>Gyakorló esszétémák</h4>
+    <ul class="marks">
+      <li><b>E1</b> — Mutassa be a magyar törzsek Etelközben történt egyesülését és a vérszerződés jelentőségét! <i>(hosszú)</i></li>
+      <li><b>E2</b> — Mutassa be a honfoglalás menetét és a pozsonyi csata jelentőségét! <i>(hosszú)</i></li>
+      <li><b>E3</b> — Fejtse ki a kalandozó hadjáratok okait, jellemzőit és bukásának okait! <i>(hosszú)</i></li>
+      <li><b>E4</b> — Mutassa be Géza fejedelem reformjait, és értékelje jelentőségüket Szent István államalapítása szempontjából! <i>(hosszú)</i></li>
+      <li><span class="eonly">E</span><b>E5</b> — Hasonlítsa össze a szeniorátus és a primogenitúra elvét Koppány és István hatalmi harcának tükrében! <i>(komplex/összehasonlító)</i></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SZÓBELI ============ -->
+<section class="mod fade" id="szobeli">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Szóbeli</span></div>
+    <h2>Tételvázlatok és vizsgáztatói kérdések</h2>
+
+    <div class="goal">
+      <span class="lbl">1. tétel</span>
+      <p><b>A honfoglalás okai és menete, a kalandozások.</b><br>A válaszában térjen ki a magyar törzsek vándorlására, Etelközre és a vérszerződésre, a honfoglalás két szakaszára, valamint a kalandozó hadjáratok céljaira és bukására! Használja a mellékelt forrásokat és az atlaszt!</p>
+    </div>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Perc</th><th>Rész</th><th>Tartalom</th></tr></thead>
+      <tbody>
+        <tr><td><b>0–2</b></td><td>Bevezetés</td><td>A vándorlás állomásai (Ural, Levédia, Etelköz); a finnugor nyelv és a törökös kultúra kettőssége.</td></tr>
+        <tr><td><b>2–6</b></td><td>Etelköz és a honfoglalás</td><td>Vérszerződés, kabarok csatlakozása; a honfoglalás két szakasza, pozsonyi csata (907). <b>Forrás:</b> a vérszerződés.</td></tr>
+        <tr><td><b>6–11</b></td><td>A kalandozások</td><td>Célok, harcmodor, legfontosabb csaták, a bukás okai (955, 970). <b>Forrás:</b> a harcmodor leírása.</td></tr>
+        <tr><td><b>11–15</b></td><td>Zárás</td><td>A 970 utáni válaszút: régi berendezkedés vagy keresztény rendszerváltás. <b>Atlasz:</b> Vereckei-hágó, Augsburg.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="goal" style="margin-top:34px">
+      <span class="lbl">2. tétel</span>
+      <p><b>Géza és I. (Szent) István államszervező tevékenysége.</b><br>A válaszában térjen ki Géza reformjaira, István hatalomra kerülésére, a vármegyerendszerre és az egyházszervezésre! Használja a mellékelt forrásokat és az atlaszt!</p>
+    </div>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Perc</th><th>Rész</th><th>Tartalom</th></tr></thead>
+      <tbody>
+        <tr><td><b>0–2</b></td><td>Bevezetés</td><td>A 970 utáni válaszút; Géza megkeresztelkedése, külpolitikája, Sarolt.</td></tr>
+        <tr><td><b>2–6</b></td><td>István hatalomra kerülése</td><td>Primogenitúra vs. szeniorátus, Koppány leverése, koronázás (1000). <b>Forrás:</b> Koppány lázadása.</td></tr>
+        <tr><td><b>6–10</b></td><td>Az államszervezet</td><td>Vármegye, ispán, nádor, a társadalom rétegei (várjobbágy, várnép, vitéz).</td></tr>
+        <tr><td><b>10–15</b></td><td>Egyházszervezés, zárás</td><td>Esztergomi érsekség, egyházmegyék, Pannonhalma, törvények. <b>Forrás:</b> az Intelmek. <b>Atlasz:</b> Esztergom, Székesfehérvár, Pannonhalma.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Várható vizsgáztatói kérdések</h4>
+    <ul class="marks">
+      <li>Miért nem helyes a magyar honfoglalás utáni berendezkedésre a „törzsszövetség” kifejezést használni?</li>
+      <li>Mi a különbség a szeniorátus és a primogenitúra öröklési elve között?</li>
+      <li>Milyen szerepe volt a megyésispánnak a vármegye életében?</li>
+      <li>Miért volt fontos az önálló esztergomi érsekség létrehozása?</li>
+      <li>Mit üzen Szent István Intelmeinek idézett részlete a jövevényekről?</li>
+      <li><span class="eonly">E</span>Milyen összefüggés van Géza 972-es követjárása és István 1000-es koronázása között?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TIPPEK ============ -->
+<section class="mod fade" id="tippek">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Tippek</span></div>
+    <h2>Tíz érettségi tipp ehhez a témakörhöz</h2>
+    <ol class="tips">
+      <li><b>Ez a témakör mindig magyar történelmi.</b> Középszinten csakis a hosszú esszében szerepelhet — ez az egyik legbiztosabban visszatérő hosszú esszétéma.</li>
+      <li><b>Három állomást köss három fogalomhoz.</b> Levédia — kazár kapcsolat. Etelköz — vérszerződés. Kárpát-medence — honfoglalás és pozsonyi csata. Ez a hármas a témakör gerince.</li>
+      <li><b>Ne mosd össze a finnugor és a török eredetet!</b> A nyelv finnugor, a harcmodor és kultúra jelentős része törökös — ez nem ellentmondás, hanem a sztyeppei népek jellemzője.</li>
+      <li><b>Vigyázz a „törzsszövetség” kifejezésre!</b> A vérszerződés után helyesebb Magyar Nagyfejedelemségről beszélni — ez tudatos tankönyvi álláspont, érdemes tudni és alkalmazni.</li>
+      <li><b>A forrás nem díszlet.</b> Minden esszében legalább kétszer hivatkozz rá konkrétan — a forráshasználat a szóbelin 12 pontot ér.</li>
+      <li><b>Két öröklési elvet ne keverj össze!</b> Szeniorátus (Koppány) kontra primogenitúra (István) — ez a Géza utáni hatalmi harc kulcsa.</li>
+      <li><b>Kösd össze az évszámokat eseményekkel.</b> 895 (honfoglalás), 907 (pozsonyi csata), 955 (augsburgi vereség), 970 (a kalandozások vége), 1000 (koronázás), 1001 (esztergomi érsekség) — ezek önmagukban is kérdezhetők.</li>
+      <li><b>A kalandozások bukása ok-okozati híd a következő korszakhoz.</b> 970 után a magyarságnak választania kellett — ez magyarázza, miért éppen ekkor kezdődött Géza térítő politikája.</li>
+      <li><b>Értékelj, ne csak ismertess!</b> István életműve azért fordulópont, mert egy sztyeppei állam helyett európai keresztény királyságot teremtett — ez a záró gondolat sok esszében pontot hoz.</li>
+      <li><b>Gyakorolj időre.</b> A hosszú esszére 45–50 perc jusson; a szóbeli 30 perces felkészülési idejében készíts a fenti perc-beosztást követő vázlatot.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap col">
+    <h3>Források és tanári megjegyzések</h3>
+    <ul>
+      <li>Oktatási Hivatal: <i>Történelem 9.</i> tankönyv (OH-TOR09TB) — Magyar őstörténet és honfoglalás, valamint Az államalapítás fejezetek.</li>
+      <li>B. Mátyus Gyöngyi – Bori István: <i>Történelem érettségi témavázlatok II. Közép- és emelt szint</i> — a honfoglalás és az államalapítás témakörök követelménytáblái és tartalmi vázlata.</li>
+      <li>A 2024-től hatályos történelem részletes érettségi vizsgakövetelmény és vizsgaleírás (Oktatási Hivatal).</li>
+    </ul>
+    <p class="note">A kurzusban szereplő korabeli források <b>tartalmi kivonatok</b>, nem szó szerinti idézetek: a krónikás hagyomány (vérszerződés, Koppány lázadása), a frank évkönyvek és Szent István Intelmeinek lényegi tartalmát foglalják össze szerkesztett, tanulási célú formában. Hivatalos szóbeli tételsorhoz javasolt Anonymus, Kézai Simon és a Képes Krónika hitelesített fordításának szó szerinti használata.</p>
+    <p class="note">A rövid feladatok és a mintaesszé saját szerkesztésű kiegészítő anyagok, amelyek a témavázlat és a tankönyv adatait dolgozzák fel gyakorlási céllal — az esszék pontos pontbontását minden vizsgaidőszakban a hivatalos javítási-értékelési útmutató rögzíti. Az őstörténeti viták (finnugor–török eredet, kettős honfoglalás) a tudomány mai állása szerint nyitott kérdések; a kurzus ezt a nyitottságot tudatosan jelzi, nem foglal állást egyik irányzat mellett sem.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+var CHAIN = [
+  "a kalandozó hadjáratok bukása (955, 970)",
+  "válaszút: a régi rend fenntarthatatlan",
+  "Géza: kapcsolatfelvétel a kereszténységgel",
+  "István legyőzi Koppányt",
+  "keresztény királyság megalapítása (1000)"
+];
+
+var TASKS = {
+  m1:[
+    {id:"F1.1",type:"tf",q:"Döntsd el az állításokról, hogy igazak vagy hamisak!",items:[
+      {t:"A magyar őstörténet-kutatás legnagyobb nehézsége az egykorú írásos források hiánya.",a:true,n:"Igaz — ezért van kiemelt szerepe más tudományágaknak (nyelvészet, régészet stb.)."},
+      {t:"A finnugor elmélet szerint a magyarok őshazája a Kaukázus vidékén volt.",a:false,n:"Hamis — az Ural-hegység és az Ob folyó menti erdős-mocsaras vidékre helyezi az őshazát."},
+      {t:"A csodaszarvasmonda a magyarok eredetmítosza.",a:true,n:"Igaz — a krónikások örökítették meg."},
+      {t:"A magyar nyelv és a magyar harcmodor/kultúra ugyanabból a forrásból ered a tankönyvi álláspont szerint.",a:false,n:"Hamis — a nyelv finnugor eredetű, míg a harcmodor és a kultúra jelentős része törökös jellegű."}
+    ]},
+    {id:"F1.2",type:"match",q:"Párosítsd a mondát a jelentésével!",
+      left:["Csodaszarvasmonda","Turulmonda","Vérszerződés","Fehér ló mondája"],
+      right:["a nép eredetmítosza","az uralkodóház eredete","a sztyeppeállam megalapítása","a honfoglalás"],
+      pairs:[0,1,2,3]},
+    {id:"F1.3",type:"open",q:"Nevezz meg két tudományágat (a nyelvészeten kívül), amelyek segítik az őstörténet-kutatást, és jellemezd röviden a kutatási módszerüket!",
+      answer:"Például: régészet (temetők feltárásával az anyagi műveltség emlékeit tárja fel); embertan és történeti genetika (a csontokból von le következtetéseket a testi jegyekről); néprajz- és népzenekutatás (a hazai és rokon kultúrák monda- és zenekincsét vizsgálja)."}
+  ],
+  m2:[
+    {id:"F2.1",type:"sort",q:"Csoportosítsd a fogalmakat aszerint, hogy Levédiához vagy Etelközhöz köthetők!",cats:["Levédia","Etelköz"],
+      items:[["kazár kapcsolat",0],["vérszerződés",1],["besenyő támadás miatti szétválás",0],["kabarok csatlakozása",1],["Don–Dnyeper vidéke",0]],
+      answer:"Levédia: kazár kapcsolat, besenyő támadás miatti szétválás, Don–Dnyeper vidéke. Etelköz: vérszerződés, kabarok csatlakozása."},
+    {id:"F2.2",type:"fill",q:"Egészítsd ki a szöveget!",
+      parts:["Etelközben a hét magyar ",0," vezetője vérszerződést kötött. A vérszerződés után csatlakoztak a magyarokhoz a ",1," -tól elpártolt ",2,", akik segédhadként harcoltak."],
+      blanks:[["torzs"],["kazaroktol","kazar"],["kabarok"]],
+      answer:"törzs — kazároktól — kabarok."},
+    {id:"F2.3",type:"open",q:"Miért nem érdemes a vérszerződés utáni magyar politikai berendezkedésre „törzsszövetségként” hivatkozni?",
+      answer:"Mert a vérszerződés után a törzsek olyan erős állami egységbe tömörültek Álmos vezetése alatt, hogy önálló politikai tényezőkké soha nem váltak — helyesebb Magyar Nagyfejedelemségről beszélni."},
+    {id:"F2.4",type:"open",q:"Nevezd meg a hét vezér közül hármat a hagyomány szerint!",
+      answer:"Álmos, Előd, Ond, Kond, Tas, Huba, Töhötöm (Tétény) közül bármely három elfogadható."}
+  ],
+  m3:[
+    {id:"F3.1",type:"choice",q:"Melyik évben zajlott a pozsonyi csata?",
+      options:["895","899","907","955"],correct:2,
+      answer:"907. július 4–5."},
+    {id:"F3.2",type:"open",q:"Mi a kettős honfoglalás elmélete, és ki dolgozta ki?",
+      answer:"László Gyula régészprofesszor elmélete szerint az avarok Kárpát-medencébe érkező második hulláma (670 körül) nem török, hanem „elő-magyar” népesség volt, amely megélte a IX. századi honfoglalást is."},
+    {id:"F3.3",type:"open",q:"Nevezd meg a honfoglalás két szakaszát évszámmal, és jellemezd röviden mindkettőt!",
+      answer:"I. szakasz (894/895–898): bevonulás a hágókon át, megszállás a Garam–Duna vonaláig. II. szakasz (899–907): támadások a morvák és a bajorok ellen, lezárás a pozsonyi csatával."},
+    {id:"F3.4",type:"open",q:"Milyen politikai helyzet uralkodott a Kárpát-medencében közvetlenül a honfoglalás előtt?",
+      answer:"Három hatalom — a keleti frank, a bolgár és a morva állam — végvidékének számított a terület, miközben egyre több szláv nép is érkezett; 894-ben Szvatopluk halálával a morva állam szétesett, hatalmi vákuum alakult ki."}
+  ],
+  m4:[
+    {id:"F4.1",type:"match",q:"Párosítsd az évet az eseménnyel!",
+      left:["899","933","955","970"],
+      right:["magyar győzelem a Brentánál","Merseburg — I. Henrik győzelme a magyarok felett","augsburgi vereség, a nyugati hadjáratok vége","Arkadiupolisz — a keleti hadjáratok vége"],
+      pairs:[0,1,2,3]},
+    {id:"F4.2",type:"open",q:"Milyen taktikát alkalmaztak a magyarok a kalandozások során? Miért volt ez sikeres kezdetben?",
+      answer:"Lovas-íjász nyilazás és színlelt megfutamodás, amellyel bekerítették az üldöző, rendezetlenné váló ellenséges lovagsereget. Kezdetben azért volt sikeres, mert a nyugatiak nem ismerték ezt a harcmodort."},
+    {id:"F4.3",type:"open",q:"Milyen két tényező vezetett a kalandozások bukásához?",
+      answer:"A nyugati uralkodók (I. Henrik, majd I. Ottó) fokozatosan megismerték és felkészültek a magyar harcmodorra; emellett a korábban politikailag megosztott nyugati országok fokozatosan összefogtak a magyar veszéllyel szemben."},
+    {id:"F4.4",type:"open",q:"Mi volt a kalandozó hadjáratok elsődleges célja a katonai siker mellett?",
+      answer:"Zsákmányszerzés (elsősorban gazdag templomok, kolostorok kifosztásával), valamint a nyugati hatalmi viszonyok megismerése és az azokba való bekapcsolódás."}
+  ],
+  m5:[
+    {id:"F5.1",type:"tf",q:"Igaz vagy hamis?",items:[
+      {t:"Géza 972-ben megkeresztelkedett.",a:true,n:"Igaz — az augsburgi vereség tanulságait levonva fordult a kereszténység felé."},
+      {t:"Koppány a primogenitúra elvére hivatkozva lázadt fel István ellen.",a:false,n:"Hamis — Koppány a szeniorátus (a nemzetség legidősebb tagjának öröklése) elvére hivatkozott."},
+      {t:"István koronáját II. Szilveszter pápától kapta.",a:true,n:"Igaz — Asztrik hozta el Rómából."}
+    ]},
+    {id:"F5.2",type:"open",q:"Milyen házassággal erősítette Géza a hatalmát, és milyen politikai haszna volt belőle?",
+      answer:"Feleségül vette az erdélyi Gyula leányát, Saroltot, ezzel megszerezve a keleti országrész (a gyulák) támogatását."},
+    {id:"F5.3",type:"open",q:"Mi történt Koppánnyal a leverése után, és milyen célt szolgált ez?",
+      answer:"Testét felnégyelték, és az ország négy pontján közszemlére tették — elrettentő példaként, hogy mindenki lássa: az új rend elleni lázadást kíméletlenül megtorolják."},
+    {id:"F5.4",type:"open",q:"Milyen házasság kötötte az Árpád-házat a német-római császári családhoz, és mikor?",
+      answer:"995-ben Vajk (a későbbi Szent István) feleségül vette a bajor Gizellát, aki a Szász-dinasztia rokona volt."}
+  ],
+  m6:[
+    {id:"F6.1",type:"sort",q:"Csoportosítsd a fogalmakat aszerint, hogy az államszervezethez vagy az egyházszervezethez kapcsolódnak!",cats:["Államszervezet","Egyházszervezet"],
+      items:[["vármegye",0],["esztergomi érsekség",1],["megyésispán",0],["tized",1],["nádorispán",0],["Pannonhalma",1]],
+      answer:"Államszervezet: vármegye, megyésispán, nádorispán. Egyházszervezet: esztergomi érsekség, tized, Pannonhalma."},
+    {id:"F6.2",type:"open",q:"Milyen három feladata volt a megyésispánnak?",
+      answer:"Bíráskodott, behajtotta és kezelte a királyi jövedelmeket (amelyből egyharmad rész illette), és katonai vezető volt."},
+    {id:"F6.3",type:"open",q:"Miért volt fontos az önálló esztergomi érsekség létrehozása (1001)?",
+      answer:"Mert ezáltal a magyar egyházszervezet függetlenné vált a német birodalmi egyháztól, és közvetlenül Róma alá tartozott — ez erősítette az ország politikai önállóságát is."},
+    {id:"F6.4",type:"open",q:"Ki lett István halála után trónörökös Imre herceg halála (1031) után, és milyen tragédia előzte meg a döntést?",
+      answer:"Orseolo Péter (István nővérének fia) lett a kijelölt utód, miután Imre herceg vadkanvadászaton életét vesztette, és Vazult István pogánysága miatt alkalmatlannak találta, ezért megvakíttatta."}
+  ]
+};
+
+var GLOSS = [
+  ["nyelvcsalád","a nyelvtani szerkezet és a szókincs hasonlósága alapján rokon nyelvek csoportja"],
+  ["finnugor elmélet","a magyar nyelv eredetét az Ural-vidéki finnugor népekhez kötő elmélet"],
+  ["törzs","a nomád társadalom nagyobb, vérségi/politikai szerveződési egysége"],
+  ["fejedelem","a Magyar Nagyfejedelemség legfőbb uralkodója Álmostól Gézáig"],
+  ["kabarok","a Kazár Birodalomtól elpártolt, Etelköz idején a magyarokhoz csatlakozott népcsoport"],
+  ["vérszerződés","a hét magyar törzs vezetőinek Etelközben kötött, Álmos hatalmát megerősítő szövetsége"],
+  ["honfoglalás","a magyar törzsek Kárpát-medencei letelepedése, kb. 895–907 között"],
+  ["kettős honfoglalás elmélete","László Gyula elmélete egy 670 körül érkező, „elő-magyar” népességről"],
+  ["avarok","a Kárpát-medencét 568-tól uraló, 822 körül összeomlott sztyeppei nép"],
+  ["rovásírás","a törökös eredetű magyar íráshasználat egyik korai formája"],
+  ["kalandozások","a honfoglalás utáni, elsősorban nyugat felé irányuló magyar támadó hadjáratok"],
+  ["az Árpád-ház","Álmos nemzetségének a XVIII. században kialakult történészi megnevezése"],
+  ["primogenitúra (E)","az elhunyt legidősebb fiának öröklési joga"],
+  ["szeniorátus","a nemzetség legidősebb férfi tagjának öröklési joga (ősi nomád szokás)"],
+  ["kettős kereszt","a magyar államiság egyik jelképe, feltehetően már Szent István korában használt"],
+  ["vármegye","a királyi várak köré szervezett területi közigazgatási egység"],
+  ["ispán","a várat és a hozzá tartozó birtokokat irányító, bíráskodó és katonáskodó tisztségviselő"],
+  ["nádor","a királyi udvar ispánja, a legmagasabb világi méltóság a királyi tanácsban"],
+  ["várjobbágy","korlátozott szabadságú, katonáskodó szolgálattevő a királyi várban"],
+  ["várnép","szolgaállapotú, a vár ellátásához munkát végző réteg"],
+  ["tized","a termés tizede, amelyet törvény szerint az egyháznak kellett fizetni"],
+  ["patrimoniális királyság","a királyi birtokok túlsúlyán alapuló államberendezkedés"],
+  ["hospes (E)","külföldről betelepült, kiváltságokkal fogadott vendégtelepes"]
+];
+
+var TIME = [
+  ["kb. 850","Etelköz, a vérszerződés","A hét törzs egyesülése Álmos vezetése alatt."],
+  ["862","Első adat a magyarok Kárpát-medencei jelenlétéről","A honfoglalást megelőző kapcsolatfelvétel."],
+  ["894/895–898","A honfoglalás I. szakasza","Bevonulás a hágókon át, megszállás a Garam–Duna vonaláig."],
+  ["899","A brentai csata (Itália)","Az első nagy kalandozó győzelem."],
+  ["899–907","A honfoglalás II. szakasza","Támadások a morvák és a bajorok ellen."],
+  ["907","A pozsonyi csata","A honfoglalás katonai megpecsételése."],
+  ["933","Merseburg","I. (Madarász) Henrik győzelme a magyarok felett."],
+  ["955","Az augsburgi csata (Lech-mező)","I. (Nagy) Ottó döntő győzelme — a nyugati hadjáratok vége."],
+  ["970","Arkadiupolisz","A keleti (bizánci) hadjáratok kudarca — a kalandozások vége."],
+  ["972–997","Géza fejedelemsége","A kereszténység felé fordulás kezdete."],
+  ["995","István és Gizella házassága","Az Árpádok rokonságba kerülnek a Szász-dinasztiával."],
+  ["997","Géza halála, Koppány leverése","István megszilárdítja hatalmát."],
+  ["1000/1001","Szent István koronázása","A keresztény magyar királyság megalapítása."],
+  ["1001","Az esztergomi érsekség megalapítása","A magyar egyház függetlenné válik a német egyháztól."],
+  ["1031","Imre herceg halála","A trónutódlás válságának kezdete."]
+];
+
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"");}
+var TOTAL=0, done={};
+function markDone(id,box){ if(done[id])return; done[id]=1; box.classList.add("done"); updateProg(); }
+function updateProg(){
+  var n=Object.keys(done).length;
+  document.getElementById("progTxt").textContent=n+"/"+TOTAL;
+  document.getElementById("progFill").style.right=(100-(n/TOTAL*100))+"%";
+}
+function answerBox(text){
+  var a=el("div","answer"); var l=el("span","lbl","Megoldás"); a.appendChild(l);
+  var p=el("p",null,text); p.style.margin="0"; a.appendChild(p); return a;
+}
+
+function buildTask(t){
+  var box=el("div","task");
+  box.appendChild(el("span","task-id",t.id));
+  box.appendChild(el("div","task-q",t.q));
+  var ans=t.answer?answerBox(t.answer):null;
+
+  if(t.type==="tf"){
+    t.items.forEach(function(it){
+      var row=el("div","tf-row");
+      row.appendChild(el("div","tf-txt",it.t));
+      var btns=el("div","tf-btns");
+      var note=el("div","tf-note",it.n);
+      ["Igaz","Hamis"].forEach(function(lbl,i){
+        var b=el("button","chip",lbl);
+        b.addEventListener("click",function(){
+          var picked=(i===0);
+          Array.prototype.forEach.call(btns.children,function(x){x.disabled=true;});
+          b.classList.add(picked===it.a?"ok":"bad");
+          note.classList.add("show");
+          markDone(t.id,box);
+        });
+        btns.appendChild(b);
+      });
+      row.appendChild(btns); row.appendChild(note); box.appendChild(row);
+    });
+  }
+
+  else if(t.type==="choice"){
+    var opts=el("div","tf-btns");
+    t.options.forEach(function(o,i){
+      var b=el("button","chip",o);
+      b.addEventListener("click",function(){
+        Array.prototype.forEach.call(opts.children,function(x){x.disabled=true;});
+        b.classList.add(i===t.correct?"ok":"bad");
+        if(i!==t.correct) opts.children[t.correct].classList.add("ok");
+        if(ans) ans.classList.add("show");
+        markDone(t.id,box);
+      });
+      opts.appendChild(b);
+    });
+    box.appendChild(opts);
+  }
+
+  else if(t.type==="match"){
+    var wrap=el("div","match");
+    var lc=el("div"), rc=el("div");
+    lc.appendChild(el("div","colhead","Elem"));
+    rc.appendChild(el("div","colhead","Megfelelője"));
+    var ls=el("div","stack"), rs=el("div","stack");
+    lc.appendChild(ls); rc.appendChild(rs);
+    var sel=null, pairedL={}, pairedR={}, count=0;
+    var rOrder=t.right.map(function(x,i){return [x,i];}).sort(function(){return Math.random()-.5;});
+    t.left.forEach(function(x,i){
+      var b=el("button","chip",x);
+      b.addEventListener("click",function(){
+        if(pairedL[i])return;
+        if(sel&&sel.b!==b) sel.b.classList.remove("sel");
+        sel={i:i,b:b}; b.classList.add("sel");
+      });
+      ls.appendChild(b);
+    });
+    rOrder.forEach(function(pair){
+      var b=el("button","chip",pair[0]);
+      b.addEventListener("click",function(){
+        if(!sel||pairedR[pair[1]])return;
+        var ok=(t.pairs[sel.i]===pair[1]);
+        sel.b.classList.remove("sel");
+        sel.b.classList.add(ok?"ok":"bad"); b.classList.add(ok?"ok":"bad");
+        if(ok){ pairedL[sel.i]=1; pairedR[pair[1]]=1; count++; }
+        else { var sb=sel.b; setTimeout(function(){sb.classList.remove("bad");b.classList.remove("bad");},900); }
+        sel=null;
+        if(count===t.left.length){ if(ans)ans.classList.add("show"); markDone(t.id,box); }
+      });
+      rs.appendChild(b);
+    });
+    wrap.appendChild(lc); wrap.appendChild(rc); box.appendChild(wrap);
+  }
+
+  else if(t.type==="sort"){
+    var listWrap=el("div");
+    var left=t.items.length;
+    t.items.forEach(function(it){
+      var row=el("div","tf-row");
+      row.appendChild(el("div","tf-txt",it[0]));
+      var btns=el("div","tf-btns");
+      t.cats.forEach(function(cat,ci){
+        var b=el("button","chip",cat);
+        b.addEventListener("click",function(){
+          Array.prototype.forEach.call(btns.children,function(x){x.disabled=true;});
+          b.classList.add(ci===it[1]?"ok":"bad");
+          if(ci!==it[1]) btns.children[it[1]].classList.add("ok");
+          left--; if(left===0){ if(ans)ans.classList.add("show"); markDone(t.id,box); }
+        });
+        btns.appendChild(b);
+      });
+      row.appendChild(btns); listWrap.appendChild(row);
+    });
+    box.appendChild(listWrap);
+  }
+
+  else if(t.type==="fill"){
+    var pWrap=el("p"); pWrap.style.lineHeight="2.2";
+    var inputs=[];
+    t.parts.forEach(function(seg){
+      if(typeof seg==="string"){ pWrap.appendChild(document.createTextNode(seg)); }
+      else{
+        var inp=document.createElement("input");
+        inp.type="text"; inp.className="fill-in"; inp.setAttribute("aria-label","Kiegészítendő szó");
+        inputs.push([inp,t.blanks[seg]]); pWrap.appendChild(inp);
+      }
+    });
+    box.appendChild(pWrap);
+    var act2=el("div","act");
+    var chk=el("button","btn","Ellenőrzés");
+    var v2=el("span","verdict","");
+    chk.addEventListener("click",function(){
+      var good=0;
+      inputs.forEach(function(pair){
+        var val=norm(pair[0].value);
+        var ok=pair[1].some(function(a){return val===norm(a);});
+        pair[0].classList.remove("ok","bad"); pair[0].classList.add(ok?"ok":"bad");
+        if(ok)good++;
+      });
+      v2.textContent=good+"/"+inputs.length+" helyes";
+      v2.className="verdict "+(good===inputs.length?"ok":"bad");
+      if(ans)ans.classList.add("show");
+      markDone(t.id,box);
+    });
+    act2.appendChild(chk); act2.appendChild(v2); box.appendChild(act2);
+  }
+
+  else {
+    var act3=el("div","act");
+    var b3=el("button","btn ghost","Megoldás megjelenítése");
+    b3.addEventListener("click",function(){
+      if(ans)ans.classList.toggle("show");
+      b3.textContent=(ans&&ans.classList.contains("show"))?"Megoldás elrejtése":"Megoldás megjelenítése";
+      markDone(t.id,box);
+    });
+    act3.appendChild(b3); box.appendChild(act3);
+  }
+
+  if(ans) box.appendChild(ans);
+  return box;
+}
+
+Object.keys(TASKS).forEach(function(m){
+  var host=document.getElementById("tasks-"+m);
+  if(!host)return;
+  TASKS[m].forEach(function(t){ TOTAL++; host.appendChild(buildTask(t)); });
+});
+updateProg();
+
+(function(){
+  var pool=document.getElementById("chainPool"),
+      track=document.getElementById("chainTrack"),
+      ph=document.getElementById("chainPlaceholder"),
+      v=document.getElementById("chainVerdict"),
+      seq=[];
+  function build(){
+    pool.innerHTML=""; track.innerHTML=""; track.appendChild(ph); ph.style.display="";
+    v.textContent=""; v.className="verdict"; seq=[];
+    CHAIN.map(function(x,i){return [x,i];}).sort(function(){return Math.random()-.5;})
+    .forEach(function(pair){
+      var b=el("button","chip",pair[0]);
+      b.addEventListener("click",function(){
+        if(b.disabled)return; b.disabled=true; b.classList.add("sel"); seq.push(pair[1]);
+        ph.style.display="none";
+        if(seq.length>1) track.appendChild(el("span","chain-arrow","→"));
+        track.appendChild(el("span","chain-slot",pair[0]));
+        if(seq.length===CHAIN.length){
+          var ok=seq.every(function(x,i){return x===i;});
+          track.appendChild(el("span","chain-arrow","→"));
+          var goal=el("span","chain-goal","KIRÁLYSÁG");
+          track.appendChild(goal);
+          if(ok){ setTimeout(function(){goal.classList.add("lit");},120);
+            v.textContent="Pontosan ez a lánc — ezt jutalmazza a javítókulcs."; v.className="verdict ok"; }
+          else { v.textContent="Nem stimmel a sorrend. Kezdd a kalandozások bukásánál, és haladj a koronázásig."; v.className="verdict bad"; }
+        }
+      });
+      pool.appendChild(b);
+    });
+  }
+  document.getElementById("chainReset").addEventListener("click",build);
+  build();
+})();
+
+(function(){
+  var host=document.getElementById("glossList"), inp=document.getElementById("glossSearch");
+  function render(q){
+    host.innerHTML="";
+    var nq=norm(q), hits=0;
+    GLOSS.forEach(function(g){
+      if(nq && norm(g[0]).indexOf(nq)<0 && norm(g[1]).indexOf(nq)<0) return;
+      hits++;
+      var row=el("div","row");
+      row.appendChild(el("dt",null,g[0])); row.appendChild(el("dd",null,g[1]));
+      host.appendChild(row);
+    });
+    if(!hits) host.appendChild(el("p","no-hit","Erre a szóra nincs találat. Próbáld a fogalom rövidebb alakjával."));
+  }
+  inp.addEventListener("input",function(){render(inp.value);});
+  render("");
+})();
+
+(function(){
+  var host=document.getElementById("timeline");
+  TIME.forEach(function(t){
+    var ev=el("div","ev");
+    ev.appendChild(el("div","yr",t[0]));
+    ev.appendChild(el("div","ttl",t[1]));
+    ev.appendChild(el("div","why",t[2]));
+    host.appendChild(ev);
+  });
+})();
+
+(function(){
+  var TYPES=[
+    {k:"Hosszú · középszint",min:210,max:260,p:"Magyar történelmi téma, például: Mutassa be Szent István államalapító tevékenységét!"},
+    {k:"Hosszú · emelt",min:240,max:290,p:"Emelt szintű hosszú esszé — mélyebb elemzés, több forrás."},
+    {k:"Rövid · emelt",min:110,max:130,p:"Emelt szintű rövid esszé, ha a témát emelt szinten rövid formában kérik."},
+    {k:"Komplex · emelt",min:290,max:340,p:"Korszakokon átívelő vagy összehasonlító esszé, például Géza és István politikájának összevetése."}
+  ];
+  var pills=document.getElementById("essayPills"), box=document.getElementById("essayBox"),
+      n=document.getElementById("wordN"), st=document.getElementById("wordState"),
+      zone=document.getElementById("gzone"), mark=document.getElementById("gmark"),
+      prompt=document.getElementById("essayPrompt");
+  var cur=0, SCALE=380;
+  TYPES.forEach(function(t,i){
+    var b=el("button","pill"+(i===0?" on":""),t.k+" · "+t.min+"–"+t.max+" szó");
+    b.addEventListener("click",function(){
+      cur=i;
+      Array.prototype.forEach.call(pills.children,function(x){x.classList.remove("on");});
+      b.classList.add("on"); paint();
+    });
+    pills.appendChild(b);
+  });
+  function count(){
+    var w=box.value.trim();
+    if(!w)return 0;
+    return w.split(/\s+/).filter(function(x){return x.length>0;}).length;
+  }
+  function paint(){
+    var t=TYPES[cur], c=count();
+    prompt.textContent=t.p;
+    n.textContent=c;
+    zone.style.left=(t.min/SCALE*100)+"%";
+    zone.style.width=((t.max-t.min)/SCALE*100)+"%";
+    mark.style.left=Math.min(c/SCALE*100,100)+"%";
+    if(c===0){ st.textContent="Kezdj el írni…"; st.style.color="var(--ink-soft)"; }
+    else if(c<t.min){ st.textContent="Még "+(t.min-c)+" szó a minimumig"; st.style.color="var(--rubric)"; }
+    else if(c<=t.max){ st.textContent="A terjedelem rendben"; st.style.color="var(--ok)"; }
+    else { st.textContent=(c-t.max)+" szóval túllépted a keretet"; st.style.color="var(--rubric)"; }
+  }
+  box.addEventListener("input",paint);
+  paint();
+})();
+
+Array.prototype.forEach.call(document.querySelectorAll("[data-reveal]"),function(b){
+  b.addEventListener("click",function(){
+    var t=document.getElementById(b.getAttribute("data-reveal"));
+    if(!t)return;
+    t.classList.toggle("show");
+    b.textContent=t.classList.contains("show")?"Megoldás elrejtése":(b.dataset.lbl||b.textContent);
+  });
+  b.dataset.lbl=b.textContent;
+});
+
+(function(){
+  var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"));}).filter(Boolean);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id);});
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px"});
+  secs.forEach(function(s){io.observe(s);});
+
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!reduce){
+    document.documentElement.classList.add("anim");
+    var fio=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); fio.unobserve(e.target);} });
+    },{rootMargin:"0px 0px -8% 0px"});
+    Array.prototype.forEach.call(document.querySelectorAll(".fade"),function(f){fio.observe(f);});
+  }
+})();
+
+})();
+</script>
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

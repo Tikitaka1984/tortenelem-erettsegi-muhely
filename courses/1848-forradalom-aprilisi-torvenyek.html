@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Az 1848-as forradalom és az áprilisi törvények — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1a17;
+  --rubric:#b8291f;
+  --lapis:#1f5c3a;
+  --gold:#c9a227;
+  --stone:#dfd3ae;
+  --paper:#f5f0e2;
+  --paper-2:#ece3c8;
+  --line:#cdbf95;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(28,26,23,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(201,162,39,.09), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(184,41,31,.06), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#f5f0e2; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+
+/* ===== HEADER ===== */
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(28,26,23,.94), rgba(31,92,58,.88)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f8f3e4;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#ecdfc0; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(245,240,226,.35); color:#f5f0e2; padding:5px 10px; border-radius:20px;
+  background:rgba(245,240,226,.06);
+}
+
+/* ok-okozati lánc */
+.chain-box{
+  background:rgba(16,14,12,.35); border:1px solid rgba(245,240,226,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(245,240,226,.35);
+  background:rgba(245,240,226,.05); color:#f5f0e2; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(245,240,226,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(245,240,226,.45);
+  border-top:1px dashed rgba(245,240,226,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(201,162,39,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+
+/* ===== NAV ===== */
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#ecdfc0; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(245,240,226,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+
+/* ===== LAYOUT ===== */
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+
+.fogodzo{
+  background:linear-gradient(120deg,#ede0b8,#f1e7c4); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(223,211,174,.3);}
+
+.source-box{background:#fbf7e9; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#3a322a; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+
+.sort-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#164a2e;}
+
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#231c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#a6851f;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+
+/* Glossary/summary */
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+
+/* feladatbank / K tasks */
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+
+/* essay workshop */
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#f4ecc9; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+
+/* szóbeli */
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+
+/* tippek */
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#f4ecc9;}
+.tips-list li.first-tip::before{background:var(--gold); color:#231c14;}
+
+footer{background:var(--ink); color:#dfd3ae; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(223,211,174,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1848. március–április</span>
+    <h1>Az 1848-as pesti forradalom és az áprilisi törvények</h1>
+    <p class="subtitle">Tizenkét pont, egy vértelen győzelem és egy törvényes forradalom</p>
+    <p class="lede">Hat modulban követjük végig, hogyan ért el a „népek tavaszának" forradalmi hulláma Pest-Budáig, hogyan vívták ki a márciusi ifjak 1848. március 15-én vér nélkül a sajtószabadságot, hogyan alakult meg Batthyány Lajos vezetésével az ország első felelős kormánya, és hogyan törvényesítette az áprilisi törvények sora — a jobbágyfelszabadítástól a népképviseleti országgyűlésig — a reformkor egész programját.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">🕊</span>
+        Rakd össze a láncot, hogy kigyulladjon a 12 pont!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Népek tavasza</a>
+    <a href="#m2">2. Felirati javaslat</a>
+    <a href="#m3">3. Március 15.</a>
+    <a href="#m4">4. Batthyány-kormány</a>
+    <a href="#m5">5. Áprilisi törvények</a>
+    <a href="#m6">6. Mérleg</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>„A népek tavasza” — az 1848-as forradalmi hullám <span class="eonly">E</span></h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Értsd meg, hogyan illeszkedett a pesti forradalom az 1848-as európai forradalmi hullámba, és milyen okok álltak a mozgalmak hátterében.</div>
+
+  <article>
+    <h3>Előzmény: az 1830-as forradalmi hullám</h3>
+    <p>1830-ban Franciaországban a „júliusi forradalom” elsöpörte a Bourbon-restaurációt, Belgium elszakadt a Németalföldi Királyságtól, a lengyel területeken pedig felkelés tört ki a cári hatalom ellen — ezt az orosz csapatok 1831-ben leverték. Ezek a mozgalmak jelezték, hogy a Szent Szövetség rendszere nem tarthatja fenn korlátlanul a status quót.</p>
+
+    <h3>1848: a „népek tavasza”</h3>
+    <p>1848 tavaszán újabb, ezúttal az egész kontinenst érintő forradalmi hullám söpört végig Európán. Okai között szerepelt Európa országainak eltérő fejlettségi szintje (a szélsőségek — az élenjáró Anglia és Hollandia, illetve a leghátrébb lévő Oroszország — kimaradtak a forradalmakból), a társadalmi feszültségek, a francia minta vonzereje, valamint az 1840-es évek élelmezési, ipari túltermelési és pénzügyi válsága. A forradalom Itáliából indult, majd Franciaországot is elérve láncreakciót váltott ki egész Európában — a Habsburg Birodalomban Bécs (március 13.), majd Pest (március 15.) következett.</p>
+    <p>A forradalmak jellemzően négy szakaszon mentek keresztül: (1) az ellenzéki erők közösen megdöntötték a fennálló kormányzatokat; (2) a liberálisok kiváltak, megbomlott a forradalmi tábor egysége; (3) a radikálisok és munkások próbálták folytatni a forradalmat, de többnyire leverték őket; (4) végül felülkerekedett az ellenforradalom.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a magyar forradalmi folyamat <strong>nem</strong> illeszkedett pontosan a fenti négyes sémába — a pesti forradalom kivételesen vér nélkül, gyorsan győzött, és Magyarország volt az egyetlen ország, amely 1849-ben, az európai forradalmak bukása után is folytatta a fegyveres küzdelmet.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Metternich <span class="eonly">E</span></td>
+        <td>1848. febr. 23. párizsi forradalom <span class="eonly">E</span>; 1848. márc. 13. bécsi forradalom <span class="eonly">E</span></td>
+        <td>Párizs <span class="eonly">E</span>; Bécs <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:43b -->
+<figure class="atlas-map" data-atlas-code="43b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 43b. térkép</span>
+    <h4>A Habsburg Birodalom 1848 tavaszán–nyarán</h4>
+    <p class="atlas-map__focus">A forradalmi hullám, a nemzetiségi mozgalmak és a birodalom politikai válsága térben értelmezhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p045_43b.webp" target="_blank" rel="noopener" aria-label="A Habsburg Birodalom 1848 tavaszán–nyarán – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img024.webp" alt="Történelmi térkép: A Habsburg Birodalom 1848 tavaszán–nyarán" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:43b -->
+<div class="source-box">
+      <h4>1. forrás — Az 1848-as európai forradalmi hullám jellemzői (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint az 1848-as forradalmak közös vonása volt az alkotmányos-parlamenti berendezkedés és a nemzeti önállóság követelése — miközben minden országban más társadalmi csoport (Franciaországban a munkásság, Itáliában a liberálisok, a Habsburg Birodalomban a polgárság és a liberális nemesség) állt a mozgalmak élén, és a kiváltó okok is országonként eltértek (Franciaországban a választójog kiszélesítésének igénye, Itáliában az egyesítés vágya, a Habsburg Birodalomban a nemzeti önállóság követelése).</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mi volt a forradalmak közös célja az eltérő országokban?</p>
+        <p><strong>b)</strong> Milyen társadalmi csoportok álltak az egyes országok mozgalmainak élén?</p>
+        <p><strong>c)</strong> Miért fontos, hogy a kiváltó okok országonként különböztek?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az alkotmányos-parlamenti rendszer és a nemzeti önállóság megteremtése.</p>
+          <p><strong>b)</strong> Franciaországban a munkásság, Itáliában a liberálisok, a Habsburg Birodalomban a polgárság és a liberális nemesség.</p>
+          <p><strong>c)</strong> Ez mutatja, hogy bár a forradalmak egy időben zajlottak, nem egyetlen egységes mozgalomról, hanem országspecifikus okokra visszavezethető, párhuzamos folyamatokról van szó.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: Az 1848-as forradalmi hullám Angliát és Oroszországot is elérte.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Honnan indult ki az 1848-as forradalmi hullám, mielőtt Franciaországot is elérte?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Németországból</button>
+        <button data-val="b">B) Itáliából</button>
+        <button data-val="c">C) Lengyelországból</button>
+        <button data-val="d">D) Oroszországból</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A bécsi forradalom kitörésének napja 1848. március ______.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>Az utolsó rendi országgyűlés és Kossuth felirati javaslata</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, hogyan gyorsította fel a párizsi és a bécsi forradalom híre a pozsonyi országgyűlés reformköveteléseit.</div>
+
+  <article>
+    <h3>A patthelyzet és a felirati javaslat</h3>
+    <p>Az 1847–48-as, utolsó rendi országgyűlésen a politikai erők egyensúlyban voltak: a konzervatívok több megyében megakadályozták a liberális követek megválasztását, de Pest vármegye Kossuth Lajost küldte Pozsonyba, aki a reformellenzék fő irányítójaként lépett fel. A párizsi forradalom hírére Kossuth 1848. március 3-án <strong>felirati javaslat</strong>ában azonnali áttörést sürgetett: örökváltságot, közteherviselést, felelős kormányt és — az örökös tartományoknak is — alkotmányt követelt. Az alsótábla elfogadta a javaslatot, de a felsőtáblán elnöklő István nádort Bécsbe rendelték, így a szavazást elhalasztották.</p>
+
+    <h3>A bécsi forradalom hatása</h3>
+    <p>Március 13-án Bécsben kitört a forradalom, amely Metternich kancellár lemondását követelte és el is érte azt. Ennek hatására másnap, március 14-én a felsőtábla is elfogadta Kossuth felirati javaslatát, amelyet egy országgyűlési küldöttség vitt Bécsbe. Eközben Pest-Budán a radikális fiatalok (a „Fiatal Magyarország” csoport, a későbbi márciusi ifjak) már aláírásgyűjtésbe kezdtek a javaslat támogatására, és a felirati beszéd tömörítésével megfogalmazták a <strong>Tizenkét pontot</strong>.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: Kossuth márciusi felirati javaslata <strong>nem</strong> azonos a 12 ponttal — a felirati javaslat az országgyűlés hivatalos, az uralkodóhoz intézett dokumentuma volt, míg a 12 pontot a pesti radikális ifjúság fogalmazta meg annak népszerűsítésére és tömörebb megfogalmazására.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Kossuth Lajos; István nádor <span class="eonly">E</span></td>
+        <td>1848. márc. 3. Kossuth felirati javaslata; 1848. márc. 13. bécsi forradalom</td>
+        <td>Pozsony <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>2. forrás — Kossuth felirati javaslata (1848. március 3., tartalmi kivonat)</h4>
+      <p class="src-text">Kossuth kifejti: az érdekek kiegyenlítése — köztük a Habsburg Birodalom osztrák tartományaival fennálló érdektalálkozás — csak a közös alkotmányosság alapján lehetséges, a nemzeti önállóság és a szabadság sérelme nélkül. Amennyiben a birodalom nem reformálja meg alkotmányos irányban kormányzási rendszerét, attól tart, hogy a nemzetek elégedetlensége veszélybe sodorja a dinasztia jövőjét is.</p>
+      <p class="src-meta">Katolikus történelem 10. tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit javasol Kossuth a birodalom és Magyarország viszonyának rendezésére?</p>
+        <p><strong>b)</strong> Milyen veszélyre figyelmezteti a dinasztiát?</p>
+        <p><strong>c)</strong> Miért volt taktikailag ügyes ez az érvelés a bécsi udvar felé?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Közös alkotmányos berendezkedést, amely tiszteletben tartja Magyarország önállóságát.</p>
+          <p><strong>b)</strong> Azt, hogy ha nem reformálják meg a rendszert, a birodalom stabilitása és a dinasztia jövője kerülhet veszélybe.</p>
+          <p><strong>c)</strong> Mert nem szakítást, hanem a dinasztia és a birodalom megmentését állította be célként — így nehezebb volt elutasítani a javaslatot.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="choice">
+      <p class="task-q">Mit követelt Kossuth a felirati javaslatában?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Teljes függetlenséget a Habsburgoktól</button>
+        <button data-val="b">B) Örökváltságot, közteherviselést, felelős kormányt és alkotmányt az örökös tartományoknak</button>
+        <button data-val="c">C) Köztársasági államformát</button>
+        <button data-val="d">D) A jobbágyság teljes eltörlését kártalanítás nélkül</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="tf">
+      <p class="task-q">Állítás: A felsőtábla azonnal, március 3-án elfogadta Kossuth felirati javaslatát.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="match">
+      <p class="task-q">Párosítsd az eseményt a dátummal!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Kossuth felirati javaslata</button>
+          <button class="match-item" data-key="p2">Bécsi forradalom</button>
+          <button class="match-item" data-key="p3">A felsőtábla elfogadja a javaslatot</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">március 3.</button>
+          <button class="match-item" data-key="r2">március 13.</button>
+          <button class="match-item" data-key="r3">március 14.</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>A pesti forradalom (1848. március 15.)</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Kövesd végig a március 15-i események menetét, és értsd meg, miért győzhetett vér nélkül a forradalom.</div>
+
+  <article>
+    <h3>A márciusi ifjak fellépése</h3>
+    <p>A bécsi forradalom híre a pesti radikálisokat is mozgósította. Március 14-én este a <strong>Pilvax kávéház</strong>ban a fiatalok — köztük Petőfi Sándor, Jókai Mór, Vasvári Pál, Irinyi József — véglegesítették a <strong>Tizenkét pontot</strong>, és tömegtüntetés összehívásáról döntöttek. Március 15-én reggel a fiatalság a Pilvaxból elindulva a Landerer és Heckenast nyomdában cenzori engedély nélkül kinyomtatta a 12 pontot és Petőfi <strong>Nemzeti dal</strong>át — ezzel gyakorlatilag kivívva az egyik legfontosabb követelést, a <strong>sajtószabadság</strong>ot.</p>
+
+    <h3>A tömegmegmozdulás és a Helytartótanács meghátrálása</h3>
+    <p>Délután mintegy húszezres tömeg gyűlt össze a Nemzeti Múzeumnál, majd a Városháza felé vonult, ahol csatlakozott hozzájuk a liberális nemesség egy-két vezetője (Nyáry Pál, Klauzál Gábor) és Pest város tanácsa is. A tömeg ezután a hajóhídon át Budára, a Helytartótanács épületéhez vonult, amely engedett a követeléseknek — kiszabadították a bebörtönzött <strong>Táncsics Mihály</strong>t. Este a korábban betiltott <em>Bánk bán</em>t adták elő a Nemzeti Színházban. A forradalom néhány óra alatt, <strong>vér nélkül</strong> győzött.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a márciusi eseményeket <strong>nem</strong> szabad kizárólag a márciusi ifjak érdemének tulajdonítani — a pesti forradalom sikere szorosan összefonódott a pozsonyi országgyűlés (Kossuth felirati javaslata) és a bécsi forradalom eseményeivel; a három szál egymást erősítve vezetett a gyors, békés győzelemhez.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>márciusi ifjak; sajtószabadság; cenzúra</td>
+        <td>Petőfi Sándor</td>
+        <td>1848. március 15. a pesti forradalom</td>
+        <td>Pest-Buda</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>3. forrás — Petőfi Sándor levele Arany Jánosnak (1848. március 21., tartalmi kivonat)</h4>
+      <p class="src-text">Petőfi lelkesen ír arról, hogy forradalom történt, és hangsúlyozza: minden erőszakos átalakulást forradalomnak tart — az, hogy nem folyt vér, csak dicsőségére válik a mozgalomnak. Felidézi, milyen halványan és remegve fogadta a Helytartótanács a követelésekkel érkező küldöttséget.</p>
+      <p class="src-meta">Katolikus történelem 10. tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Hogyan határozza meg Petőfi a forradalom fogalmát?</p>
+        <p><strong>b)</strong> Miért tartja különösen dicsőségesnek, hogy nem folyt vér?</p>
+        <p><strong>c)</strong> Milyen érzelmi állapotot ír le a Helytartótanács viselkedésével kapcsolatban?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Minden erőszakos (azaz nyomásgyakorlással kikényszerített) átalakulást forradalomnak tekint, függetlenül attól, hogy fegyveres harc történt-e.</p>
+          <p><strong>b)</strong> Mert így a cél elérése nem járt emberáldozattal, ami erkölcsi fölényt is jelentett.</p>
+          <p><strong>c)</strong> Megszeppentséget, bizonytalanságot, a hatalom gyors meghátrálását.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="match">
+      <p class="task-q">Párosítsd a helyszínt az eseménnyel!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="v1">Pilvax kávéház</button>
+          <button class="match-item" data-key="v2">Landerer és Heckenast nyomda</button>
+          <button class="match-item" data-key="v3">Helytartótanács (Budai Vár)</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="a1">A 12 pont véglegesítése</button>
+          <button class="match-item" data-key="a2">A 12 pont és a Nemzeti dal kinyomtatása</button>
+          <button class="match-item" data-key="a3">Táncsics Mihály kiszabadítása</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="sort">
+      <p class="task-q">Csoportosítsd az eseményeket: délelőtt vagy délután-este történtek március 15-én?</p>
+      <div class="sort-row"><span>A 12 pont kinyomtatása a Landerer-nyomdában</span>
+        <select data-key="s1"><option value="">válassz</option><option value="delelott">Délelőtt</option><option value="delutan">Délután-este</option></select>
+      </div>
+      <div class="sort-row"><span>Tömeggyűlés a Nemzeti Múzeumnál</span>
+        <select data-key="s2"><option value="">válassz</option><option value="delelott">Délelőtt</option><option value="delutan">Délután-este</option></select>
+      </div>
+      <div class="sort-row"><span>A Bánk bán előadása a Nemzeti Színházban</span>
+        <select data-key="s3"><option value="">válassz</option><option value="delelott">Délelőtt</option><option value="delutan">Délután-este</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Ki szabadult ki a Helytartótanács engedményeként március 15-én?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Kossuth Lajos</button>
+        <button data-val="b">B) Táncsics Mihály</button>
+        <button data-val="c">C) Vasvári Pál</button>
+        <button data-val="d">D) Batthyány Lajos</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A Batthyány-kormány megalakulása</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, hogyan alakult meg Magyarország első felelős kormánya, és milyen politikai irányzatokat képviseltek tagjai.</div>
+
+  <article>
+    <h3>A kormányalakítás</h3>
+    <p>A Pest-Budai forradalommal párhuzamosan a pozsonyi országgyűlés küldöttsége Bécsbe utazott, hogy az uralkodó elé terjessze az alkotmányos átalakulást sürgető feliratot. Március 17-én V. Ferdinánd István főherceget, a nádort teljhatalommal ruházta fel, aki ennek birtokában miniszterelnökké nevezte ki <strong>Batthyány Lajos</strong> grófot, és megbízta kormányalakítással. A kormányalakítás mintegy két hetet vett igénybe, a miniszterek április 7-én kaptak hivatalos kinevezést.</p>
+
+    <h3>A kormány tagjai és politikai jelentőségük</h3>
+    <p>Az első felelős magyar kormányban a reformkor szinte minden politikai irányzata helyet kapott: Batthyány Lajos (miniszterelnök), Szemere Bertalan (belügy), Deák Ferenc (igazságügy), <strong>Kossuth Lajos</strong> (pénzügy), Széchenyi István (közmunka- és közlekedésügy), Mészáros Lázár (hadügy), Klauzál Gábor (földművelés-, ipar- és kereskedelemügy), Eötvös József (vallás- és közoktatásügy), valamint Esterházy Pál herceg (a király személye körüli miniszter — gyakorlatilag a külügyi kapcsolattartás felelőse). A kormány a nemzetőrség felállításáról is intézkedett; a rövid szolgálati idejű, képzetlen alakulatok mellett május közepén tízezer fős reguláris erő felállítását rendelték el — ezt nevezték el <strong>honvéd</strong>ségnek, az önálló magyar haderő első alakulatait.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: Esterházy Pál herceg tisztsége — „a király személye körüli miniszter” — <strong>nem</strong> azonos a hagyományos külügyminiszteri poszttal: a magyar kormánynak ekkor még nem volt önálló külügyminisztériuma, ez a kérdés az áprilisi törvényekben is rendezetlen maradt.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>honvédség</td>
+        <td>Batthyány Lajos; Deák Ferenc <span class="eonly">E</span>; Eötvös József <span class="eonly">E</span></td>
+        <td>1848. márc. 17. Batthyány kinevezése; 1848. ápr. 7. a kormány kinevezése <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — A Batthyány-kormány megalakulásának körülményei (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint Batthyány Lajos remélte, hogy fennmarad a kedvező európai helyzet, és a kormány kiállt az ország alkotmányos önállósága mellett, ugyanakkor — a Pragmatica Sanctio elve alapján — továbbra is az Ausztriával való együttműködést szorgalmazta. Önálló mozgástér kialakítása érdekében saját fegyveres erő felállítását és saját pénzjegyek kibocsátását tervezték.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen kettős célt követett Batthyány kormánya?</p>
+        <p><strong>b)</strong> Milyen konkrét lépésekkel próbálták erősíteni az ország önállóságát?</p>
+        <p><strong>c)</strong> Miért volt fontos a Pragmatica Sanctióra való hivatkozás?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az alkotmányos önállóság megőrzését és az Ausztriával való együttműködés fenntartását egyszerre.</p>
+          <p><strong>b)</strong> Saját fegyveres erő (honvédség) felállítása és saját pénzjegyek (Kossuth-bankó) kibocsátása.</p>
+          <p><strong>c)</strong> Mert az 1723-as törvény jogi keretet adott az önállóság és a Habsburg-kapcsolat egyidejű fenntartásához, legitimálva a lépéseket.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: Kossuth Lajos a Batthyány-kormányban pénzügyminiszteri tárcát kapott.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: A Batthyány-kormány első miniszterelnöke ______ ______ gróf volt.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Milyen tárcát kapott Széchenyi István a Batthyány-kormányban?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Igazságügy</button>
+        <button data-val="b">B) Közmunka- és közlekedésügy</button>
+        <button data-val="c">C) Hadügy</button>
+        <button data-val="d">D) Vallás- és közoktatásügy</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>Az áprilisi törvények — polgári átalakulás</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg az áprilisi törvények társadalmi-gazdasági rendelkezéseit, és értsd meg jelentőségüket.</div>
+
+  <article>
+    <h3>A törvényes forradalom</h3>
+    <p>Az utolsó rendi országgyűlés által elfogadott törvénycsomagot V. Ferdinánd 1848. <strong>április 11-én</strong> szentesítette — ezzel az <strong>áprilisi törvények</strong> a márciusi eseményeket törvényes forradalommá tették. A törvények jogerőre emelkedésével a magyarországi forradalmi helyzet más európai országokhoz képest viszonylag gyorsan konszolidálódott, mintául az 1831-es belga alkotmány szolgált.</p>
+
+    <h3>A polgári átalakulás törvényei</h3>
+    <p>A társadalmi-gazdasági rendelkezések megszüntették a több évszázados feudális kiváltságokat: az úrbéres szolgáltatások (robot, dézsma, pénzbeli fizetések) megszűntek, a parasztok az általuk használt földet szabad tulajdonként kapták meg — ez volt a térség leghaladóbb <strong>jobbágyfelszabadítás</strong>a, mivel a parasztoktól nem vettek el földet, a kármentesítést pedig az állam vállalta magára (bár a gyakorlati megvalósításról nem intézkedtek részletesen). Emellett eltörölték a papi tizedet és az ősiséget, kimondták a <strong>közteherviselés</strong>t, a törvény előtti egyenlőséget és a keresztény felekezetek egyenjogúságát, valamint részletes sajtótörvényt alkottak a cenzúra eltörléséről.</p>
+    <p>Az államszervezet is átalakult: kimondták Erdély és a Partium egyesítését Magyarországgal (unió), a Határőrvidéket a magyar kormány alá rendelték, a kétkamarás, Pesten ülésező országgyűlést pedig <strong>népképviseleti</strong> alapra helyezték — vagyoni-műveltségi cenzus alapján (Európában itt volt a legalacsonyabb a vagyoni cenzus, mégis a társadalom mindössze kb. 8%-a rendelkezett választójoggal).</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az áprilisi törvények jobbágyfelszabadítása <strong>nem</strong> volt hiánytalan — a zsellérek gyakran föld nélkül szabadultak fel, a majorsági földeken maradt szőlők és irtványok kérdése rendezetlen maradt, és a nemesek tényleges kármentesítéséről sem intézkedtek részletesen, csak elvi ígéretet tettek rá.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>áprilisi törvények; népképviseleti országgyűlés</td>
+        <td>V. Ferdinánd <span class="eonly">E</span></td>
+        <td>1848. április 11. az áprilisi törvények</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>5. forrás — Az áprilisi törvényekből: a közös teherviselésről és az úrbéri szolgáltatások megszüntetéséről (tartalmi kivonat)</h4>
+      <p class="src-text">A VIII. törvénycikk kimondja, hogy Magyarország és a kapcsolt részek minden lakosa különbség nélkül, egyenlően és arányosan viseli a közterheket. A IX. törvénycikk pedig az úrbér alapján addig gyakorlatban volt szolgáltatásokat (robot, dézsma, pénzbeli fizetések) örökösen megszünteti, a magánföldesurak kármentesítését pedig a nemzeti közbecsület védpajzsa alá helyezi — vagyis a legközelebbi országgyűlésre bízza a kártalanítás részletes törvénybe iktatását.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit jelentett a közteherviselés elve a gyakorlatban?</p>
+        <p><strong>b)</strong> Mely szolgáltatásokat szüntette meg a IX. törvénycikk?</p>
+        <p><strong>c)</strong> Miért maradt bizonytalan a földesurak kármentesítése?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Azt, hogy a nemesség adómentessége megszűnt, mindenki egyenlő arányban fizet közterhet.</p>
+          <p><strong>b)</strong> A robotot, a dézsmát és a pénzbeli fizetéseket.</p>
+          <p><strong>c)</strong> Mert a törvény csak elvi ígéretet tett a kármentesítésre, a végrehajtás konkrét módját a következő országgyűlésre bízta, amire nem került sor időben.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="choice">
+      <p class="task-q">Melyik ország alkotmánya szolgált mintául az áprilisi törvények politikai berendezkedéséhez?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Franciaország</button>
+        <button data-val="b">B) Belgium</button>
+        <button data-val="c">C) Anglia</button>
+        <button data-val="d">D) Poroszország</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: Az áprilisi törvények jobbágyfelszabadítása során a parasztoktól elvették földjük egy részét kártalanítás fejében.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="match">
+      <p class="task-q">Párosítsd a rendelkezést a hatásával!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="q1">Unió</button>
+          <button class="match-item" data-key="q2">Közteherviselés</button>
+          <button class="match-item" data-key="q3">Sajtótörvény</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="w1">Erdély és a Partium egyesítése Magyarországgal</button>
+          <button class="match-item" data-key="w2">A nemesi adómentesség megszűnése</button>
+          <button class="match-item" data-key="w3">A cenzúra eltörlése</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>Államjogi törvények és a törvények mérlege</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a felelős kormányzat rendszerét és a Habsburg Birodalommal fennálló kapcsolat jogi jellegét, illetve az áprilisi törvények megoldatlan kérdéseit.</div>
+
+  <article>
+    <h3>A felelős magyar minisztérium és az államjogi kapcsolat</h3>
+    <p>Az áprilisi törvények (III. törvénycikk) létrehozták a független, az országgyűlésnek felelős magyar minisztériumot: az uralkodó (vagy távollétében a nádor) a végrehajtó hatalmat kizárólag e minisztérium útján gyakorolhatta, és minden rendelet, kinevezés csak az illetékes miniszter ellenjegyzésével volt érvényes. Államjogi értelemben az ország Habsburg Birodalmon belüli különállását mondták ki: a kapcsolat nagyjából <strong>perszonálunió</strong>s jellegű volt — ugyanakkor annál lazábbnak is tekinthető (mert a nádor teljhatalmú királyi helytettesként működött), és annál szorosabbnak is (mert az ország nem intézhette önállóan a külügyeket, és a hadüzenet-békekötés joga is az uralkodónál maradt).</p>
+
+    <h3>Az áprilisi törvények mérlege</h3>
+    <p>Az áprilisi törvények törvényesítették a forradalmat, és magukba foglalták a polgári átalakulás legfontosabb elemeit — ez tette lehetővé a gyors konszolidációt. Több törvény azonban elnagyolt, ideiglenes jellegű maradt, továbbfejlesztésre várt: a jobbágyfelszabadítás nem terjedt ki az irtványokra és szőlőkre, bizonytalan maradt a majorsági földeken élő zsellérek sorsa, elmaradtak a nemzetiségekkel kapcsolatos törvények (az „egy politikai nemzet” koncepciója miatt), megmaradtak a céhek, és a városi feszültségek miatt elhalasztották a zsidóság teljes jogi egyenjogúsítását (emancipációját). Bizonytalanság maradt továbbá az Ausztriával fenntartandó kapcsolatban is: nem tisztázták, részt kell-e vállalnia Magyarországnak a birodalmi államadósságból, illetve köteles-e katonai segítséget nyújtani Ausztriának.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az áprilisi törvények <strong>nem</strong> rendezték a hadügy, a pénzügy és a külügy kérdését egyértelműen a magyar kormány javára — ez a rendezetlenség vált a Batthyány-kormány és a bécsi udvar közötti konfliktusok egyik legfontosabb forrásává már 1848 nyarán-őszén.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>6. forrás — Somogy Alajos gazdatiszt levele Gerliczy Félixhez (1848. május 5., tartalmi kivonat)</h4>
+      <p class="src-text">A gazdatiszt arról ír, hogy a megyéjében és a szomszédos megyékben a jobbágyság magától elfoglalta a felosztott közös legelőket és mezőket, sőt egy apátot is elkergettek jobbágyai, birtokát elfoglalva, amit a kormánymegbízott csak nehezen tudott helyreállítani. A levélíró szerint jobban fél most, mint korábban, mert mindenki fegyvert hord, és úgy véli, a rendetlenségek fő oka a megyei tisztviselők hanyagsága, akik nem hajtják végre kellő eréllyel a rendelkezéseket.</p>
+      <p class="src-meta">Katolikus történelem 10. tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen problémákról számol be a gazdatiszt?</p>
+        <p><strong>b)</strong> Mivel magyarázza a rendetlenségek okát?</p>
+        <p><strong>c)</strong> Mit mutat ez a forrás az áprilisi törvények gyakorlati végrehajtásának nehézségeiről?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Közös földek és birtokok önkényes elfoglalásáról a jobbágyok részéről, illetve általános feszültségről és fegyveres légkörről.</p>
+          <p><strong>b)</strong> A megyei tisztviselők hanyagságával, a rendelkezések laza végrehajtásával.</p>
+          <p><strong>c)</strong> Azt, hogy a törvények szövege és a helyi végrehajtás gyakorlata között jelentős rés tátongott — a jogi rendezés önmagában nem oldotta meg azonnal a társadalmi feszültségeket.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott kérdést rendezték vagy rendezetlenül hagyták-e az áprilisi törvények?</p>
+      <div class="sort-row"><span>Felelős magyar minisztérium létrehozása</span>
+        <select data-key="c1"><option value="">válassz</option><option value="rendezte">Rendezte</option><option value="nem">Rendezetlenül hagyta</option></select>
+      </div>
+      <div class="sort-row"><span>Önálló magyar hadügy és külügy</span>
+        <select data-key="c2"><option value="">válassz</option><option value="rendezte">Rendezte</option><option value="nem">Rendezetlenül hagyta</option></select>
+      </div>
+      <div class="sort-row"><span>A nemzetiségek jogi helyzete</span>
+        <select data-key="c3"><option value="">válassz</option><option value="rendezte">Rendezte</option><option value="nem">Rendezetlenül hagyta</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az ország és a Habsburg Birodalom közötti államjogi kapcsolatot nagyjából ______ jellegűnek tekinthetjük.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="choice">
+      <p class="task-q">Melyik társadalmi csoport ügyét halasztották el a városi feszültségek miatt?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A zsellérekét</button>
+        <button data-val="b">B) A zsidóság teljes emancipációját</button>
+        <button data-val="c">C) A honoráciorokét</button>
+        <button data-val="d">D) A protestánsokét</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>márciusi ifjak</dt><dd>A pesti radikális fiatal értelmiségiek csoportja (Petőfi, Jókai, Vasvári, Irinyi), akik március 15-én a forradalmi tömegmegmozdulást szervezték.</dd>
+    <dt>sajtószabadság</dt><dd>A cenzúra eltörlése, a szabad publikálás joga — az egyik legfontosabb, azonnal kivívott márciusi követelés.</dd>
+    <dt>cenzúra</dt><dd>Az állami-egyházi ellenőrzés a kiadványok tartalma felett, amelyet 1848 márciusában szüntettek meg.</dd>
+    <dt>áprilisi törvények</dt><dd>Az utolsó rendi országgyűlés által elfogadott és 1848. április 11-én szentesített törvénycsomag, amely törvényesítette a polgári átalakulást.</dd>
+    <dt>népképviseleti országgyűlés</dt><dd>Az áprilisi törvényekkel bevezetett rendszer, amelyben az alsóházat választott képviselők alkották, cenzusos választójog alapján.</dd>
+    <dt>honvédség</dt><dd>Az 1848 májusában felállított, kezdetben tízezer fős reguláris magyar haderő, az önálló nemzeti hadsereg első alakulatai.</dd>
+    <dt>közteherviselés</dt><dd>A nemesi adómentesség eltörlése, amelyet az áprilisi törvények (VIII. tc.) mondtak ki.</dd>
+    <dt>unió</dt><dd>Erdély és a Partium egyesítése Magyarországgal az áprilisi törvények nyomán.</dd>
+    <dt>perszonálunió</dt><dd>Két ország azonos uralkodó általi, de egyébként önálló kormányzáson alapuló kapcsolata — az áprilisi törvények utáni magyar–osztrák viszony jellemzésére használt fogalom.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1848. febr. 23.</b> Párizsi forradalom kitörése <span class="eonly">E</span></li>
+    <li><b>1848. márc. 3.</b> Kossuth felirati javaslata</li>
+    <li><b>1848. márc. 13.</b> Bécsi forradalom, Metternich lemondása</li>
+    <li><b>1848. márc. 14.</b> A felsőtábla elfogadja a felirati javaslatot</li>
+    <li><b>1848. márc. 15.</b> A pesti forradalom — 12 pont, Nemzeti dal, sajtószabadság</li>
+    <li><b>1848. márc. 17.</b> Batthyány Lajos miniszterelnöki kinevezése</li>
+    <li><b>1848. ápr. 7.</b> A Batthyány-kormány tagjainak kinevezése <span class="eonly">E</span></li>
+    <li><b>1848. ápr. 11.</b> Az áprilisi törvények szentesítése</li>
+    <li><b>1848 nyara</b> A népképviseleti országgyűlés összeülése Pesten</li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Pest-Buda</li><li>Pilvax kávéház</li><li>Landerer és Heckenast nyomda</li>
+    <li>Nemzeti Múzeum</li><li>Városháza</li><li>Helytartótanács</li>
+    <li>Nemzeti Színház</li><li>Pozsony</li><li>Bécs</li><li>Párizs</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze a bécsi forradalmat és a pesti forradalom kitörését: <em>Kossuth felirati javaslata; bécsi forradalom; pesti forradalom; a felsőtábla elfogadja a felirati javaslatot</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> Kossuth felirati javaslata (márc. 3.) → bécsi forradalom (márc. 13.) → a felsőtábla elfogadja a javaslatot (márc. 14.) → pesti forradalom (márc. 15.).</p>
+        <p><strong>Indoklás:</strong> Kossuth javaslata önmagában nem tudta áttörni a felsőtábla ellenállását; a bécsi forradalom híre azonban megváltoztatta az erőviszonyokat, így a felsőtábla is elfogadta a javaslatot — ez a gyors bécsi fordulat adott lendületet és bátorságot a pesti radikális ifjúságnak, hogy másnap, március 15-én cselekedjen.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — A Batthyány-kormány tagjainak azonosítása</h4>
+    <p>A leírás alapján nevezze meg, ki viselte az adott tárcát: „Ő kapta a pénzügyminiszteri posztot, és minisztersége alatt kezdődött meg a magyar feliratú bankjegyek kibocsátása.” Nevezzen meg egy másik minisztert is, és adja meg tárcáját.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Kossuth Lajosra</em> vonatkozik. Egy másik lehetséges miniszter: Deák Ferenc (igazságügy) vagy Széchenyi István (közmunka- és közlekedésügy).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: a felirati javaslat és az áprilisi törvények összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: jobbágykérdés, kormányzat, adózás, jogforrás jellege), milyen mértékben valósultak meg Kossuth 1848. március 3-i felirati javaslatának céljai az áprilisi törvényekben.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Felirati javaslat (márc. 3.)</th><th>Áprilisi törvények (ápr. 11.)</th></tr>
+          <tr><td>Jobbágykérdés</td><td>Örökváltság követelése</td><td>Azonnali, állami kármentesítésű jobbágyfelszabadítás</td></tr>
+          <tr><td>Kormányzat</td><td>Felelős kormány követelése</td><td>Független, országgyűlésnek felelős minisztérium létrehozása</td></tr>
+          <tr><td>Adózás</td><td>Közteherviselés követelése</td><td>Közteherviselés törvénybe iktatása (VIII. tc.)</td></tr>
+          <tr><td>Jogforrás jellege</td><td>Javaslat, még el nem fogadott szándéknyilatkozat</td><td>Szentesített, hatályos törvény</td></tr>
+          <tr><td>Összegzés</td><td colspan="2">A felirati javaslat céljai öt hét alatt, jelentős részben megvalósultak — ez rendkívül gyors jogalkotási folyamat volt a korszak európai viszonyai között.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+  <p>A pesti forradalom és az áprilisi törvények <strong>magyar történelmi témakör</strong>, ezért középszinten és emelt szinten egyaránt megjelenhet <strong>hosszú esszé</strong> (210–260 szó) formájában — de rövid esszé (100–130 szó) témájaként is előfordulhat, ha a feladat egy szűkebb részkérdésre (pl. csak a márciusi eseményekre) korlátozódik.</p>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta hosszú esszé (kb. 250 szó):</strong> „Mutassa be az 1848. március 15-i pesti forradalom eseményeit és az áprilisi törvények jelentőségét!”</p>
+    <p>Az 1848 tavaszán Európát végigsöprő forradalmi hullám — a „népek tavasza” — a párizsi, majd a március 13-i bécsi forradalommal ért el a Habsburg Birodalomig. A pozsonyi országgyűlésen Kossuth Lajos március 3-i felirati javaslata (örökváltság, közteherviselés, felelős kormány) a bécsi események hatására gyorsan utat tört: március 14-én a felsőtábla is elfogadta azt. Ezzel egy időben a pesti radikális fiatalok — Petőfi Sándor, Jókai Mór, Vasvári Pál — március 15-én reggel a Landerer-nyomdában cenzúra nélkül kinyomtatták a 12 pontot és a Nemzeti dalt, majd a húszezres tömeg a Helytartótanácsnál kicsikarta Táncsics Mihály szabadon bocsátását. A forradalom néhány óra alatt, vér nélkül győzött.</p>
+    <p>A győzelmet március 17-én Batthyány Lajos miniszterelnöki kinevezése, majd április 11-én az áprilisi törvények szentesítése törvényesítette. A törvények megszüntették a feudális kiváltságokat: eltörölték az úrbéri szolgáltatásokat és az ősiséget, kimondták a közteherviselést és a törvény előtti egyenlőséget, létrehozták a felelős magyar minisztériumot és a népképviseleti országgyűlést. Ugyanakkor számos kérdés — a zsellérek sorsa, a nemzetiségi kérdés, az önálló hadügy és külügy — rendezetlen maradt, ami hosszabb távon feszültségek forrásává vált. Az áprilisi törvények mindazonáltal a reformkor programjának törvényes megvalósítását jelentették, és Európa-szerte kivételesen gyors, békés konszolidációt tettek lehetővé.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé egyértelmű ok-okozati láncot épít fel (európai hullám → felirati javaslat → márciusi napok → törvényes rendezés), konkrét dátumokkal és nevekkel dolgozik, és a záró gondolatban kritikai távlatot is nyit a törvények korlátaira — ez emelt szintű elemző mélységet ad.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130">Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260" selected>Hosszú esszé — középszint (210–260 szó)</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — emelt szint (210–260 szó)</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 210–260 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Kronológiailag pontos adatokat (dátum, névhasználat) tartalmaz</li>
+      <li><input type="checkbox"> Legalább két konkrét tényre vagy forrásra hivatkozik</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be, hogyan illeszkedett a pesti forradalom az 1848-as európai forradalmi hullámba! <span class="eonly">E</span></li>
+    <li><b>E2</b> Jellemezze a márciusi ifjak szerepét a pesti forradalom kirobbanásában!</li>
+    <li><b>E3</b> Mutassa be a Batthyány-kormány megalakulásának körülményeit és összetételét!</li>
+    <li><b>E4</b> Értékelje az áprilisi törvények jobbágyfelszabadításának eredményeit és korlátait!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Vesse össze Kossuth 1848. március 3-i felirati javaslatának céljait az áprilisi törvényekben ténylegesen megvalósult eredményekkel!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A pesti forradalom és az áprilisi törvények</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: az 1848-as európai forradalmi hullám és a magyar helyzet</td></tr>
+    <tr><td>2 perc</td><td>Kossuth felirati javaslata és a bécsi forradalom hatása</td></tr>
+    <tr><td>2 perc</td><td>A pesti forradalom eseményei (március 15.)</td></tr>
+    <tr><td>2 perc</td><td>A Batthyány-kormány megalakulása</td></tr>
+    <tr><td>2 perc</td><td>Az áprilisi törvények főbb rendelkezései</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: a törvények jelentősége és korlátai</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Miért nevezhető a pesti forradalom „törvényes forradalomnak”?</li>
+    <li>Milyen szerepet játszott a bécsi forradalom a pesti események felgyorsításában?</li>
+    <li>Miért volt kiemelt jelentőségű a sajtószabadság kivívása március 15-én?</li>
+    <li>Milyen politikai irányzatokat képviseltek a Batthyány-kormány tagjai?</li>
+    <li>Miben volt haladó és miben maradt hiányos az áprilisi törvények jobbágyfelszabadítása?</li>
+    <li>Milyen kérdések maradtak rendezetlenül a Habsburg Birodalommal fennálló kapcsolatban?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez magyar történelmi témakör: számíts arra, hogy hosszú esszében (210–260 szó) is kérhetik — ne csak rövid esszére készülj!</li>
+    <li>Ne keverd össze Kossuth felirati javaslatát (márc. 3., országgyűlési dokumentum) a 12 ponttal (a pesti radikális ifjúság tömör megfogalmazása).</li>
+    <li>Jegyezd meg pontosan a három kulcsdátumot: márc. 13. (Bécs), márc. 15. (Pest), ápr. 11. (áprilisi törvények szentesítése).</li>
+    <li>A pesti forradalom vér nélkül győzött — ez fontos jellemző adat, de ne feledd: az áprilisi törvények több kérdést (nemzetiségek, hadügy, külügy) rendezetlenül hagytak, ami később konfliktusforrás lett.</li>
+    <li>Figyelj a Batthyány-kormány összetételére: szinte minden reformkori irányzat képviseltette magát benne (pl. Kossuth és Széchenyi együtt).</li>
+    <li>Az áprilisi törvények jobbágyfelszabadítása a térség leghaladóbb megoldása volt — a parasztoktól nem vettek el földet —, mégsem volt hiánytalan (zsellérek, irtványföldek problémája).</li>
+    <li>Ne feledd: a választójog Európában itt volt a legalacsonyabb vagyoni cenzushoz kötve, mégis csak a lakosság kb. 8%-a szavazhatott — ez a két adat együtt árnyalja a kép.</li>
+    <li>Kronológiai csapda: Batthyányt március 17-én nevezték ki, de a kormány tagjai csak április 7-én kaptak hivatalos kinevezést — a kettő között két hét telt el.</li>
+    <li>A magyar–osztrák kapcsolat jogi jellegét (perszonálunió-szerű, de sem nem teljesen laza, sem nem teljesen szoros) érdemes pontosan, mindkét irányból megindokolva bemutatni.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni a március 15-i események pesti-budai helyszíneit (Pilvax, Landerer-nyomda, Nemzeti Múzeum, Városháza, Helytartótanács, Nemzeti Színház).</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>Száray Miklós (szerk.): Történelem 10. — OH-TOR10TA, Oktatási Hivatal</li>
+      <li>Katolikus történelem 10. tankönyv</li>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti tankönyvi és témavázlati kiadványok, illetve a hivatalos vizsgakövetelmény ajánlott.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"b"},
+    "m1-t3": {type:"fill", answers:["13","tizenharmadika","13."]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"choice", answer:"b"},
+    "m2-t2": {type:"tf", answer:false},
+    "m2-t3": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"match", pairs:{v1:"a1", v2:"a2", v3:"a3"}},
+    "m3-t2": {type:"sort", answers:{s1:"delelott", s2:"delutan", s3:"delutan"}},
+    "m3-t3": {type:"choice", answer:"b"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:true},
+    "m4-t2": {type:"fill", answers:["batthyány lajos","batthyany lajos"]},
+    "m4-t3": {type:"choice", answer:"b"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"choice", answer:"b"},
+    "m5-t2": {type:"tf", answer:false},
+    "m5-t3": {type:"match", pairs:{q1:"w1", q2:"w2", q3:"w3"}},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"sort", answers:{c1:"rendezte", c2:"nem", c3:"nem"}},
+    "m6-t2": {type:"fill", answers:["perszonálunió","perszonalunio","perszonálunió-szerű","perszonalunio-szeru"]},
+    "m6-t3": {type:"choice", answer:"b"},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  // ---- TF & CHOICE ----
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  // ---- FILL ----
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  // ---- MATCH ----
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  // ---- SORT ----
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  // ---- OPEN ----
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  // ---- OK-OKOZATI LÁNC ----
+  var chainSteps = [
+    {order:1, text:"A „népek tavasza” európai forradalmi hulláma Párizsból Bécsig ér"},
+    {order:2, text:"Kossuth felirati javaslata (márc. 3.) és a bécsi forradalom (márc. 13.) felgyorsítja az eseményeket"},
+    {order:3, text:"A pesti forradalom (márc. 15.) vér nélkül győz — 12 pont, sajtószabadság"},
+    {order:4, text:"Megalakul a Batthyány-kormány — Magyarország első felelős minisztériuma"},
+    {order:5, text:"Az áprilisi törvények (ápr. 11.) törvényesítik a polgári átalakulást"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">🕊</span>Kirakva! A lánc: népek tavasza → felirati javaslat és Bécs → pesti forradalom → Batthyány-kormány → áprilisi törvények.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  // ---- GLOSSARY SEARCH ----
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  // ---- ESSAY WORD COUNTER ----
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

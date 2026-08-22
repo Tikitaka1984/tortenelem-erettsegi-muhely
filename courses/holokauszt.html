@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A holokauszt Európában és Magyarországon — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#131313;
+  --rubric:#4a3226;
+  --lapis:#383f3c;
+  --gold:#8a7a5c;
+  --stone:#cbc7bd;
+  --paper:#e9e6df;
+  --paper-2:#ddd9cf;
+  --line:#b3ac9c;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(19,19,19,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(138,122,92,.08), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(74,50,38,.06), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#e9e6df; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(19,19,19,.95), rgba(56,63,60,.9)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.015) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2rem,4.6vw,2.9rem);
+  margin:.3em 0 .1em;
+  color:#efece5;
+  line-height:1.1;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#d5d1c6; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(233,230,223,.35); color:#e9e6df; padding:5px 10px; border-radius:20px;
+  background:rgba(233,230,223,.06);
+}
+.chain-box{
+  background:rgba(8,8,8,.35); border:1px solid rgba(233,230,223,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(233,230,223,.35);
+  background:rgba(233,230,223,.05); color:#e9e6df; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(233,230,223,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(233,230,223,.45);
+  border-top:1px dashed rgba(233,230,223,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(138,122,92,.5);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#d5d1c6; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(233,230,223,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.85rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+.fogodzo{
+  background:linear-gradient(120deg,#cec397,#d3c8a1); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(179,172,156,.3);}
+.source-box{background:#f1eee4; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#2a2823; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#6b675c; margin:-6px 0 14px 14px;}
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+.sort-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row span{flex:1 1 200px;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#252a27;}
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#221c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#6f6249;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#ddd09e; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.essay-dual{background:#e2e0d8; border:1px solid var(--lapis); border-radius:5px; padding:14px 18px; margin:16px 0; font-size:.94rem;}
+.essay-dual .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:6px;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#ddd09e;}
+.tips-list li.first-tip::before{background:var(--gold); color:#221c14;}
+footer{background:var(--ink); color:#cbc7bd; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(179,172,156,.2); padding-top:14px; font-size:.78rem; color:#9d968a;}
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1935–1945</span>
+    <h1>A holokauszt Európában és Magyarországon</h1>
+    <p class="subtitle">A jogfosztástól a megsemmisítésig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan mélyült el a nürnbergi törvényektől és az eviani konferencia kudarcától a zsidóüldözés, miként hangolták össze Wannsee-ben a már folyamatban lévő „végső megoldás” végrehajtását, és hogyan működtek a megsemmisítő táborok, hogyan korlátozták fokozatosan a magyarországi zsidóság jogait 1938-tól a zsidótörvényekkel, hogyan zajlott 1944-ben a vidéki zsidóság deportálása, és milyen szerepet játszottak az embermentők a budapesti zsidóság megmaradásában.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">🕯</span>
+        Rakd össze a láncot az emlékezés jegyében!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Kezdetek Európában</a>
+    <a href="#m2">2. Gettók, Wannsee</a>
+    <a href="#m3">3. Haláltáborok</a>
+    <a href="#m4">4. Zsidótörvények</a>
+    <a href="#m5">5. Holokauszt 1944-ben</a>
+    <a href="#m6">6. Embermentés</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>Az elnevezés és az európai zsidóüldözés kezdetei</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a holokauszt fogalmának eredetét és a németországi zsidóüldözés első szakaszát.</div>
+
+  <article>
+    <h3>Az elnevezés eredete</h3>
+    <p>A <strong>holokauszt</strong> szó görög eredetű, jelentése: istennek ajánlott, teljesen elégő tűzáldozat. A németek az „Endlösung” (végső megoldás) kifejezést használták, a héber „Soá” szó jelentése katasztrófa. Hitler hatalomra jutása után Németországban azonnal megszülettek az első zsidóellenes rendeletek: kizárták a zsidókat az állami iskolákból, korlátozták a zsidó hallgatók létszámát az egyetemeken. 1935-ben megszülettek a <strong>nürnbergi törvények</strong>, amelyek megfosztották a faji alapon zsidónak minősített embereket német állampolgárságuktól, megtiltották a zsidók és nem zsidók házasságát és szexuális kapcsolatát — a törvényi diszkrimináció és az egyre gyakoribb erőszak célja ekkor még a zsidók emigrációba kényszerítése volt, a zsidó lakosság kb. fele el is hagyta Németországot.</p>
+
+    <h3>Az eviani konferencia kudarca</h3>
+    <p>1938. július 6–15. között tartották az eviani menekültügyi konferenciát, amelyet Roosevelt amerikai elnök hívott össze. Anglia nem nyitotta meg Palesztinát a menekülő zsidók előtt, az USA pedig elzárkózott a bevándorlási kvóták emelésétől — a résztvevők végül nem tudtak megállapodni a befogadni kívánt zsidók számáról, így a konferencia sikertelenül zárult. Ez a kudarc jelezte, hogy a nemzetközi közösség nem volt kész felelősséget vállalni a náci Németországból menekülő zsidóságért.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a nürnbergi törvények és a korai üldözés célja <strong>nem</strong> még a fizikai megsemmisítés volt — a cél ekkor a zsidóság kényszerű kivándorlásra bírása volt; a szisztematikus népirtás politikája a háború alatt, több lépésben radikalizálódott. Az eviani konferencia kudarca a menekülési lehetőségek súlyos korlátait mutatta meg, de önmagában nem tekinthető a népirtás okának.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>népirtás; holokauszt</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>1. forrás — Az eviani konferencia kudarca (1938, tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint az Egyesült Államok elnöke, Roosevelt hívta össze a konferenciát a német zsidóság menekültügyének rendezésére. A résztvevő országok azonban egyike sem vállalt jelentős kötelezettséget: Nagy-Britannia nem engedte meg a Palesztinába való bevándorlás bővítését, az Egyesült Államok fenntartotta szigorú bevándorlási kvótáit. A konferencia végül konkrét megállapodás nélkül, kudarccal zárult.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Ki hívta össze az eviani konferenciát?</p>
+        <p><strong>b)</strong> Milyen magatartást tanúsított Anglia és az USA?</p>
+        <p><strong>c)</strong> Mi lett a konferencia végeredménye?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Roosevelt amerikai elnök.</p>
+          <p><strong>b)</strong> Anglia nem nyitotta meg Palesztinát, az USA nem emelte bevándorlási kvótáit.</p>
+          <p><strong>c)</strong> Nem született megállapodás, a konferencia sikertelenül zárult.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="match">
+      <p class="task-q">Párosítsd az elnevezést a nyelvi eredetével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Holokauszt</button>
+          <button class="match-item" data-key="p2">Endlösung</button>
+          <button class="match-item" data-key="p3">Soá</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">Görög eredetű</button>
+          <button class="match-item" data-key="r2">Német eredetű</button>
+          <button class="match-item" data-key="r3">Héber eredetű</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="tf">
+      <p class="task-q">Állítás: A nürnbergi törvények (1935) célja ekkor még elsősorban a zsidóság kivándorlásra kényszerítése volt, nem a fizikai megsemmisítés.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="choice">
+      <p class="task-q">Mi volt az eviani konferencia végeredménye?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Minden ország vállalta a menekültek befogadását</button>
+        <button data-val="b">B) Nem született megállapodás, kudarccal zárult</button>
+        <button data-val="c">C) Csak Anglia vállalt kötelezettséget</button>
+        <button data-val="d">D) Az USA azonnal megnyitotta határait</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>Gettók, Einsatzgruppék és a wannseei konferencia</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a gettósítás, a tömeggyilkos akciók és a „végső megoldás” intézményesítésének folyamatát.</div>
+
+  <article>
+    <h3>Gettók és a zsidótanácsok</h3>
+    <p>Hitler <strong>Heydrich</strong>et, az RSHA (a Gestapót, SD-t irányító csúcsszerv) vezetőjét bízta meg a „zsidókérdés rendezésével”. Ennek első lépése a zsidóság <strong>gettó</strong>kba tömörítése volt, ahol sokszor alkalmazták a kiéheztetés módszerét — a legnagyobb gettót Varsóban hozták létre, ahol kb. 430–500 ezer zsidót különítettek el 3,5 méter magas téglakerítéssel; a gettókba zárt közösségek élén az úgynevezett zsidótanácsok álltak, amelyek tagjait a németek jelölték ki. A Szovjetunió megtámadása után különleges alakulatok, az Einsatzgruppék alakultak, amelyek az elfoglalt területek „pacifikálása” során 1,4 millió embert (zsidókat, ellenállókat) öltek meg. 1941 novemberétől rendeleti úton véget vetettek a zsidók kivándorlásának, öltözékükön megkülönböztető jelet (sárga csillag) kellett viselniük.</p>
+
+    <h3>A wannseei konferencia</h3>
+    <p>1942. január 20-án a Berlin melletti Wannsee-ben nem a népirtás megindításáról hoztak eredeti döntést: a tömeggyilkosságok ekkor már folytak. A konferencia a náci állam szervei közötti együttműködést és az európai zsidóság deportálásának, kényszermunkájának és megsemmisítésének végrehajtását hangolta össze. A deportálások szervezésében <strong>Adolf Eichmann</strong> és a Birodalmi Biztonsági Főhivatal IV B 4 ügyosztálya központi szerepet játszott.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a gettósítás <strong>nem</strong> volt azonos a megsemmisítéssel — a gettók a jogfosztás és a kiéheztetés helyszínei voltak, gyakran hosszabb ideig fennálltak (mint Varsóban), a tömeggyilkosságok már Wannsee előtt megkezdődtek; a konferencia a „végső megoldás” európai végrehajtását hangolta össze. A gettósítás és a megsemmisítés ezért nem egyszerű, egymást élesen követő két szakasz.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>gettó; deportálás</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>2. forrás — A wannseei konferencia jegyzőkönyve és összehangoló szerepe (1942, tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a náci vezetők a Berlin melletti Wannsee-ben megbeszélést tartottak a „zsidókérdés végső megoldásáról”. A megbeszélésen elhangzottak szerint a zsidóságot keletre kell deportálni, ahol munkára fogják őket, aminek során a legyengültek vagy belehalnak a kényszermunkába, vagy közvetlenül megsemmisítik őket. A jegyzőkönyv a már folyamatban lévő üldözés és tömeggyilkosság európai, hivatalközi végrehajtását rögzítette; Eichmann a deportálások szervezésében központi szerepet játszott.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Hol és mikor tartották a konferenciát?</p>
+        <p><strong>b)</strong> Milyen „megoldást” fogalmaztak meg a résztvevők?</p>
+        <p><strong>c)</strong> Ki kapta a deportálások megszervezésének feladatát?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A Berlin melletti Wannsee-ben, 1942. január 20-án.</p>
+          <p><strong>b)</strong> A zsidóság keletre deportálását, munkára fogását, majd megsemmisítését.</p>
+          <p><strong>c)</strong> Adolf Eichmann.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="tf">
+      <p class="task-q">Állítás: A varsói gettó volt a legnagyobb zsidó gettó Európában.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="choice">
+      <p class="task-q">Milyen feladatot láttak el az Einsatzgruppék?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Gettók adminisztrálása</button>
+        <button data-val="b">B) Az elfoglalt szovjet területeken tömeggyilkosságok végrehajtása</button>
+        <button data-val="c">C) Menekültügyi konferenciák szervezése</button>
+        <button data-val="d">D) Vasúti szállítmányozás</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az öltözéken viselendő megkülönböztető jel a hatágú ______ csillag volt.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>A megsemmisítő táborok és az áldozatok Európában</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a haláltáborok működését és a holokauszt áldozatainak számát Európa országaiban.</div>
+
+  <article>
+    <h3>A haláltáborok működése</h3>
+    <p>A táborokba beérkező szerelvényekről a deportáltakat leterelték (igyekeztek megnyugtatni őket), majd szétválogatták munkaképesekre és azokra, akiket azonnal elgázosítottak. Az elgázosításra ítélteket zuhanyfürdőnek álcázott gázkamrába terelték, ahol mérges gázzal (ciángáz, Ciklon-B) ölték meg őket, a <strong>Sonderkommando</strong> (foglyokból álló munkáscsapatok) elvették értékeiket, majd a holttesteket krematóriumban elégették. <strong>Auschwitz</strong>ban a foglyokon orvosi kísérleteket is végeztek dr. Josef Mengele („a halál angyala”) vezetésével — leginkább a törpék és az ikrek érdekelték, de terhes nőkön is embertelen kísérleteket hajtottak végre. Különleges státusza volt Theresienstadtnak (elsősorban gyerekeket és öregeket tartottak fogva, viszonylag jobb körülmények között — ide vitték a Nemzetközi Vöröskereszt ellenőrző bizottságait is), és az ausztriai <strong>Mauthausen</strong>nek, ahol nagyon sok magyarországi zsidót és politikai foglyot (köztük Kállay Miklós miniszterelnököt) tartottak fogva.</p>
+
+    <h3>Áldozatszámok és a megmenekülés esélyei</h3>
+    <p>A holokauszt zsidó áldozatainak száma: az érintett országok 9,7 millió zsidó lakosságából kb. 5,8–6 millió fő. Németország zsidó lakosságából 141 ezer lett áldozattá; Lengyelország közel 3,3 milliós közösségéből kb. 3 milliót öltek meg; a Szovjetunió területén élő zsidóság kb. egyharmadát, 1,1 millió embert öltek meg (pl. a Kijev melletti Babij Jarnál 1941 szeptemberében két nap alatt több mint 33 ezer zsidót öltek meg). Nyugat-Európából is sor került deportálásokra: Franciaországban kb. 77 ezer, Hollandiában kb. 100 ezer, Belgiumban közel 29 ezer volt az áldozatok száma — Dánia és Norvégia lakossága viszont jelentős részben megmentette zsidó polgárait Svédországba menekítéssel. A háború által érintett országok közül csak néhányban (Dánia, Bulgária, Románia, Franciaország, illetve Magyarországon Budapesten) sikerült az állami hatóságok fellépésének köszönhetően megmenekülnie a zsidó lakosság egy részének.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a megmenekülés esélye <strong>nem</strong> volt egyenletesen elosztva Európában — döntően attól függött, hogy az adott ország állami hatóságai (kormánya, közigazgatása) hajlandóak voltak-e ellenállni a német nyomásnak (mint Dániában vagy részben Bulgáriában), vagy éppen aktívan együttműködtek a deportálásokban; ez a különbség kulcsfontosságú a történelmi értékelésben.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>koncentrációs tábor; haláltábor</td>
+        <td>Eichmann <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>Auschwitz; Mauthausen <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:62a -->
+<figure class="atlas-map" data-atlas-code="62a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 62a. térkép</span>
+    <h4>Az európai zsidóság holokausztja, 1933–1945</h4>
+    <p class="atlas-map__focus">A gettók, a megsemmisítő központok, a deportálási útvonalak és az áldozatok területi megoszlása vizsgálható.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p064_62a.webp" target="_blank" rel="noopener" aria-label="Az európai zsidóság holokausztja, 1933–1945 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img042.webp" alt="Történelmi térkép: Az európai zsidóság holokausztja, 1933–1945" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:62a -->
+<div class="source-box">
+      <h4>3. forrás — Országonkénti áldozatszámok (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a holokauszt áldozatszámai országonként rendkívül eltérőek voltak: míg Lengyelországban a zsidó közösség szinte teljes egészét (kb. 3 milliót) elpusztították, addig Dániában a lakosság és a hatóságok összefogása révén a zsidó közösség túlnyomó része Svédországba menekülhetett, és mindössze 60 fő vált áldozattá. Ez a különbség jól mutatja, hogy az egyes országok hatóságainak és lakosságának magatartása döntő hatással volt a túlélési esélyekre.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen szélsőséges különbséget mutat be a forrás Lengyelország és Dánia között?</p>
+        <p><strong>b)</strong> Mi tette lehetővé a dán zsidóság megmenekülését?</p>
+        <p><strong>c)</strong> Milyen általános következtetést vonhatunk le ebből?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Lengyelországban a közösség szinte teljes megsemmisülését, Dániában szinte teljes megmenekülését.</p>
+          <p><strong>b)</strong> A lakosság és a hatóságok összefogása, a Svédországba menekítés megszervezése.</p>
+          <p><strong>c)</strong> Hogy az adott ország hatóságainak és lakosságának magatartása döntően befolyásolta a túlélési esélyeket.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="tf">
+      <p class="task-q">Állítás: Auschwitzban dr. Josef Mengele orvosi kísérleteket végzett a foglyokon, elsősorban ikreken és törpéken.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="choice">
+      <p class="task-q">Melyik ausztriai táborban raboskodott Kállay Miklós magyar miniszterelnök is?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Auschwitz-Birkenau</button>
+        <button data-val="b">B) Theresienstadt</button>
+        <button data-val="c">C) Mauthausen</button>
+        <button data-val="d">D) Treblinka</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott országban jellemzően magas vagy alacsony volt a zsidó áldozatok aránya?</p>
+      <div class="sort-row"><span>Lengyelország</span>
+        <select data-key="s1"><option value="">válassz</option><option value="magas">Magas</option><option value="alacsony">Alacsony</option></select>
+      </div>
+      <div class="sort-row"><span>Dánia</span>
+        <select data-key="s2"><option value="">válassz</option><option value="magas">Magas</option><option value="alacsony">Alacsony</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A magyarországi zsidótörvények (1938–1941)</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a három magyarországi zsidótörvény tartalmát és fokozatosan szigorodó jellegét.</div>
+
+  <article>
+    <h3>Az első és második zsidótörvény</h3>
+    <p>Az első zsidótörvény, az 1938: XV. törvénycikk (1938. máj. 29.) a társadalmi és gazdasági élet egyensúlyának biztosításáról intézkedett: zsidónak minősültek az izraelita hitfelekezethez tartozók vagy az 1919. augusztus 1. után kikeresztelkedettek, és korlátozta arányukat az értelmiségi és szabadfoglalkozású pályákon (legfeljebb 20%). A törvény ellen a magyar szellemi élet nagyjai (Bartók, Kodály, Móricz) tiltakoztak. A Teleki-kormány idején elfogadott második zsidótörvény (1939. máj. 5.) már nem vallási, hanem faji alapon különböztette meg a zsidókat — önálló fajjá minősítette őket (egy zsidó szülő vagy két zsidó nagyszülő esetén), és jelentősen leszállította a kvótákat (az értelmiségi pályákon 20%-ról 6%-ra); a választójogot is korlátozta. A törvény nyomán mintegy 60 000 ember veszítette el állását.</p>
+
+    <h3>A harmadik zsidótörvény és a munkaszolgálat</h3>
+    <p>A harmadik zsidótörvényt (1941: XV. tc., 1941. aug. 8.) még a Teleki-kormány készítette elő, de Bárdossy alatt fogadták el — egyértelműen a nürnbergi faji törvények szellemében: megtiltotta a zsidók és nem zsidók házasságát és a házasságon kívüli nemi kapcsolatot is, tovább szigorítva a „zsidó” fogalmának meghatározását (négy nagyszülő közül legalább kettő izraelita vallású). 1941. április 19-én kihirdették azt a rendeletet, amely <strong>munkaszolgálat</strong>ra (fegyver nélküli frontszolgálat) kötelezte a 2. zsidótörvény hatálya alá tartozó katonaköteles férfiakat. 1941 júliusában–augusztusában végrehajtották a korábban Magyarországra menekült zsidók egy részének deportálását a német megszállás alatt lévő <strong>Kamenyec-Podolszkij</strong>ba, ahol egy SS-alakulat közel 20 ezer főt lemészárolt — az életben maradtak beszámolói nyomán Keresztes-Fischer Ferenc belügyminiszter leállította a további kitoloncolásokat.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: az első zsidótörvény <strong>nem</strong> faji, hanem vallási alapon határozta meg a „zsidó” fogalmát — csak a második törvénytől (1939) kezdve vált faji alapúvá a megkülönböztetés, ami a kikeresztelkedettek védelmét is megszüntette; ez a fokozatos szigorodás fontos vizsgacsapda.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>zsidótörvények <span class="eonly">E</span>; munkaszolgálat <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>1938 az első zsidótörvény; 1939 a második zsidótörvény; 1941 a harmadik zsidótörvény</td>
+        <td>Kamenyec Podolszk</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — A Kamenyec-Podolszkij-i mészárlás (1941, tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint 1941 nyarán a magyar hatóságok a korábban Magyarországra menekült, állampolgársággal nem rendelkező zsidók egy részét kitoloncolták a német megszállás alatt álló Kamenyec-Podolszkij környékére. Az odaérkezőket egy SS-különítmény néhány nap alatt lemészárolta — a becslések szerint közel 20 ezer ember vesztette életét. A történtekről szóló beszámolók hatására a belügyminiszter leállította a további hasonló akciókat.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Kiket toloncoltak ki Kamenyec-Podolszkijba?</p>
+        <p><strong>b)</strong> Mi történt velük a helyszínen?</p>
+        <p><strong>c)</strong> Mi lett a következménye a történteknek?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A korábban Magyarországra menekült, állampolgársággal nem rendelkező zsidókat.</p>
+          <p><strong>b)</strong> Egy SS-különítmény lemészárolta közülük mintegy 20 ezer főt.</p>
+          <p><strong>c)</strong> A belügyminiszter leállította a további kitoloncolásokat.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: Az első zsidótörvény (1938) faji alapon határozta meg, ki minősül zsidónak.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="match">
+      <p class="task-q">Párosítsd a zsidótörvényt a fő jellemzőjével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Első zsidótörvény (1938)</button>
+          <button class="match-item" data-key="p2">Második zsidótörvény (1939)</button>
+          <button class="match-item" data-key="p3">Harmadik zsidótörvény (1941)</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">Vallási alapú, 20%-os kvóta</button>
+          <button class="match-item" data-key="r2">Faji alapú, szigorúbb kvóták</button>
+          <button class="match-item" data-key="r3">Házassági és nemi kapcsolati tilalom</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Ki állította le a Kamenyec-Podolszkij-i deportálásokat?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Horthy Miklós</button>
+        <button data-val="b">B) Keresztes-Fischer Ferenc</button>
+        <button data-val="c">C) Bárdossy László</button>
+        <button data-val="d">D) Teleki Pál</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>A holokauszt Magyarországon 1944-ben</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a német megszállás utáni gettósítást, a vidéki deportálást és Horthy leállító intézkedését.</div>
+
+  <article>
+    <h3>A megszállás és a gettósítás</h3>
+    <p>A német megszállás 1944. március 19-én döntően beszűkítette Magyarország politikai mozgásterét, de a jogfosztás és az üldözés magyar állami előzményei 1938-ig nyúltak vissza. Az országba érkező Eichmann-különítmény a Sztójay-kormány belügyi vezetésével, különösen Baky László és Endre László államtitkárokkal működött együtt. A gettósítás, vagyonelkobzás és deportálás rendeleti, közigazgatási és rendészeti végrehajtását magyar állami szervek végezték; ebben a csendőrség, a rendőrség, a közigazgatás és a vasút is közreműködött. Április 5-től kötelezővé tették a sárga csillagot, április közepétől pedig vidéken megkezdődött a gettósítás és a gyűjtőtáborok felállítása.</p>
+
+    <h3>A vidéki deportálás és Horthy leállító intézkedése</h3>
+    <p>1944 májusának közepén kezdődött el a vidéki zsidóság deportálása, elsősorban Auschwitzba — először a visszacsatolt területek, majd az Alföld, végül a Dunántúl zsidósága került sorra. A deportálásokat Eichmann Sonderkommandója szervezte, a végrehajtásban a magyar csendőrség és rendőrség, a közigazgatási apparátus és a MÁV alkalmazottai is részt vettek. Veesenmayer német birodalmi meghatalmazott jelentése szerint 1944. május 15. és július 9. között összesen 147 vonattal 437 000 főt szállítottak el a koncentrációs táborokba. <strong>Horthy 1944. július 7-én leállíttatta a további deportálásokat</strong>; ez ekkor megakadályozta Budapest zsidóságának megszervezett, tömeges vasúti deportálását, de nem szüntette meg üldöztetésüket. Az intézkedés hátterében állítólag az Auschwitz-jegyzőkönyvekből szerzett értesülés állt, de valószínűbb okok az erőteljes nemzetközi és hazai (köztük a Vatikán) tiltakozás, valamint a normandiai partraszállás sikere. Az 1941-es határok között élt mintegy 825 000 fős magyarországi zsidóság vesztesége kb. 500 000–600 000 fő volt.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: Horthy leállító intézkedése (1944. júl. 7.) <strong>nem</strong> a teljes magyarországi zsidóságot mentette meg — csak a budapesti zsidóságot, mert a vidéki zsidóság ekkorra már túlnyomórészt deportálásra került (mintegy 437 000 fő 8 hét alatt); a leállítás időzítése ezért kulcsfontosságú a mértékének megértéséhez.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>1944. május a magyarországi deportálások kezdete; 1944. július a magyarországi deportálások leállítása</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:62b -->
+<figure class="atlas-map" data-atlas-code="62b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 62b. térkép</span>
+    <h4>A magyarországi vidéki zsidóság gettósítása és deportálása, 1944</h4>
+    <p class="atlas-map__focus">A gettósítási zónák, csendőrkerületek, gyűjtőhelyek és vasúti deportálási útvonalak területi rendje értelmezhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p064_62b.webp" target="_blank" rel="noopener" aria-label="A magyarországi vidéki zsidóság gettósítása és deportálása, 1944 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img043.webp" alt="Történelmi térkép: A magyarországi vidéki zsidóság gettósítása és deportálása, 1944" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:62b -->
+<div class="source-box">
+      <h4>5. forrás — Veesenmayer jelentése a deportálásokról (tartalmi kivonat)</h4>
+      <p class="src-text">A német birodalmi meghatalmazott jelentése szerint 1944. május 15. és július 9. között összesen 147 vasúti szerelvény indult Magyarországról a koncentrációs táborok felé, amelyekkel mintegy 437 000 embert szállítottak el. A deportálás a visszacsatolt területekről indult, majd fokozatosan haladt az Alföld, végül a Dunántúl felé — Budapest zsidósága a leállításig nem került sorra.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen időszakot ölel fel a jelentés?</p>
+        <p><strong>b)</strong> Hány főt és hány szerelvénnyel szállítottak el?</p>
+        <p><strong>c)</strong> Milyen sorrendben zajlott a deportálás területileg?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> 1944. május 15. és július 9. közötti időszakot.</p>
+          <p><strong>b)</strong> Mintegy 437 000 főt, 147 vonattal.</p>
+          <p><strong>c)</strong> Visszacsatolt területek → Alföld → Dunántúl.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="tf">
+      <p class="task-q">Állítás: Horthy leállító intézkedése (1944. júl. 7.) a teljes magyarországi zsidóságot megmentette a deportálástól.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="choice">
+      <p class="task-q">Melyik testület feladata volt a németek intézkedéseinek végrehajtása a zsidó közösségek felé?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A Magyar Zsidók Központi Tanácsa</button>
+        <button data-val="b">B) A Kisgazdapárt</button>
+        <button data-val="c">C) A Békepárt</button>
+        <button data-val="d">D) Az Egységes Párt</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A vidéki zsidóság deportálása elsősorban ______ koncentrációs táborba irányult.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>Embermentés és a nyilas korszak</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg az embermentők tevékenységét és a nyilas hatalomátvétel utáni tragikus eseményeket.</div>
+
+  <article>
+    <h3>Nemzetközi és belső embermentés</h3>
+    <p>A budapesti zsidóság megmentésében kulcsszerepet játszottak a nemzetközi embermentők: Carl Lutz svájci konzul, Carl Ivan Danielsson svéd követ, <strong>Raoul Wallenberg</strong> svéd követségi titkár, a spanyol és portugál követségi alkalmazottak, valamint Angelo Rotta pápai nuncius útleveleket, menleveleket adtak az üldözötteknek — a külföldi okmányokkal rendelkezők az Újlipótvárosban létesített védett házakba költözhettek. Belső segítséget nyújtott az SDG és a Jó Pásztor Egyesület (<strong>Sztehló Gábor</strong> evangélikus és Éliás József református lelkészek vezetésével), valamint rendházak (pl. Slachta Margit Szociális Testvérek Társasága) és templomok — a nyilasok <strong>Salkaházi Sára</strong> apácanővért és Bernovits Vilma világi hitoktatót 1944. dec. 27-én letartóztatták és a Dunába lőtték zsidók rejtegetése miatt (Salkaházi Sárát a katolikus egyház 2006-ban boldoggá avatta). Apor Vilmos győri és Mindszenty József veszprémi püspökök nyílt levélben tiltakoztak az üldözések ellen.</p>
+
+    <h3>A nyilas hatalomátvétel és a budapesti gettó</h3>
+    <p>A nyilas hatalomátvétel (1944. október 15.) után minden zsidó vagyont államosítottak, több tízezer úgynevezett „kölcsönzsidót” gyalogmenetben indítottak Németország felé — akiket nem lőttek le a kísérő magyar fegyveresek (mint Radnóti Miklóst és 21 társát a Győr melletti Abdán), azokat átadták az SS-nek. Felállították a budapesti gettót a VII. kerületben, ahol addig 7000-en éltek, ekkortól tízszer annyian zsúfolódtak össze — a nyilasok a gettón kívül bújkálókat összegyűjtötték, és sokukat a Dunába lőtték. A budapesti gettót a szovjet hadsereg 1945. január 18-án szabadította fel. A holokauszt politikai következménye lett Izrael állam megalakulása (1948); Jeruzsálemben, a Yad Vashem intézetben évente kitüntető oklevelet („a világ igazai”) adományoznak azoknak, akik zsidókat mentettek.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a nyilas hatalomátvétel (1944. október) <strong>nem</strong> a deportálások folytatását jelentette a korábbi formában — helyette gyalogmenetes „halálmenetek” és a budapesti gettó felállítása jellemezte ezt a szakaszt, más módszerekkel, de hasonlóan pusztító következménnyel, mint a májusi-júliusi vidéki deportálás.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Wallenberg; Salkaházi Sára; Sztehló Gábor</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>6. forrás — Az embermentők tevékenysége (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a semleges országok követségi alkalmazottai (Wallenberg, Lutz és mások) menleveleket állítottak ki, amelyekkel a birtokosaikat átmenetileg védettnek tekintették a deportálástól — az így megmentett zsidók az Újlipótvárosban létesített, úgynevezett védett házakba költözhettek. Emellett magyar egyházi és világi személyek (lelkészek, apácák, magánszemélyek) is bújtatták az üldözötteket saját életük kockáztatásával, amiért néhányukat, például Salkaházi Sárát a nyilasok kivégezték.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen eszközzel próbálták védeni az üldözötteket a semleges országok képviselői?</p>
+        <p><strong>b)</strong> Hová költözhettek az így megmentett zsidók?</p>
+        <p><strong>c)</strong> Milyen kockázatot vállaltak a belső segítők?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Menlevelek kiállításával.</p>
+          <p><strong>b)</strong> Az Újlipótvárosban létesített védett házakba.</p>
+          <p><strong>c)</strong> Az életüket kockáztatták — volt, akit ezért kivégeztek (pl. Salkaházi Sára).</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="tf">
+      <p class="task-q">Állítás: A budapesti gettót a szovjet hadsereg szabadította fel 1945 januárjában.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="choice">
+      <p class="task-q">Mit jelentettek a „kölcsönzsidók” gyalogmenetei?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Munkára toborzott önkéntesek felvonulását</button>
+        <button data-val="b">B) Németország felé indított, embertelen körülmények közötti halálmeneteket</button>
+        <button data-val="c">C) A budapesti gettó belső átköltöztetését</button>
+        <button data-val="d">D) Egy ünnepi felvonulást</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A holokauszt politikai következménye lett ______ állam megalakulása 1948-ban.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>holokauszt</dt><dd>Görög eredetű szó (teljesen elégő tűzáldozat), amely a náci Németország és szövetségesei által elkövetett zsidó népirtást jelöli.</dd>
+    <dt>gettó</dt><dd>A zsidóság elkülönített, elzárt lakónegyede, ahol gyakran alkalmazták a kiéheztetés módszerét.</dd>
+    <dt>deportálás</dt><dd>A zsidóság és más üldözöttek erőszakos elszállítása koncentrációs vagy megsemmisítő táborokba.</dd>
+    <dt>koncentrációs tábor</dt><dd>Bírósági ítélet nélküli fogva tartásra és kényszermunkára szolgáló táborok rendszere.</dd>
+    <dt>haláltábor</dt><dd>A szisztematikus, ipari méretű megsemmisítésre létrehozott tábor (pl. Auschwitz-Birkenau, Treblinka).</dd>
+    <dt>népirtás</dt><dd>Egy nemzeti, etnikai, faji vagy vallási csoport szándékos, teljes vagy részleges megsemmisítése.</dd>
+    <dt>zsidótörvények</dt><dd>Az 1938–1941 között elfogadott magyar törvények, amelyek fokozatosan korlátozták és megfosztották jogaiktól a zsidó származású állampolgárokat.</dd>
+    <dt>munkaszolgálat</dt><dd>A zsidótörvények hatálya alá tartozó férfiak fegyver nélküli, gyakran embertelen körülmények közötti frontszolgálata.</dd>
+    <dt>genocídium</dt><dd>Népirtás — egy csoport szándékos, tervszerű elpusztítása.</dd>
+    <dt>porrajmos</dt><dd>A roma népirtás elnevezése, amelynek pontos áldozatszáma a hiányos dokumentáció miatt bizonytalan.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1935</b> A nürnbergi törvények</li>
+    <li><b>1938. máj. 29.</b> Az első magyar zsidótörvény</li>
+    <li><b>1938. júl.</b> Az eviani konferencia <span class="eonly">E</span></li>
+    <li><b>1939. máj. 5.</b> A második magyar zsidótörvény</li>
+    <li><b>1941. jún.</b> A romániai holokauszt kezdete <span class="eonly">E</span></li>
+    <li><b>1941. júl.–aug.</b> A Kamenyec-Podolszkij-i mészárlás</li>
+    <li><b>1941. aug. 8.</b> A harmadik magyar zsidótörvény</li>
+    <li><b>1942. jan. 20.</b> A wannseei konferencia <span class="eonly">E</span></li>
+    <li><b>1944. márc. 19.</b> A német megszállás</li>
+    <li><b>1944. ápr. 5.</b> A sárga csillag kötelező viselése</li>
+    <li><b>1944. ápr. 7.</b> A gettósítás kezdete</li>
+    <li><b>1944. máj.</b> A magyarországi deportálások kezdete</li>
+    <li><b>1944. júl. 7.</b> A magyarországi deportálások leállítása</li>
+    <li><b>1944. okt. 15.</b> A nyilas hatalomátvétel</li>
+    <li><b>1944. dec. 27.</b> Salkaházi Sára kivégzése</li>
+    <li><b>1945. jan. 18.</b> A budapesti gettó felszabadítása</li>
+    <li><b>1948</b> Izrael állam megalakulása</li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Kamenyec Podolszk</li><li>Auschwitz</li>
+    <li>Varsó</li><li>Mauthausen</li><li>Jasenovac</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze a német megszállást és a deportálások leállítását: <em>a deportálások leállítása; a wannseei konferencia; a német megszállás; a vidéki deportálások kezdete</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> a wannseei konferencia (1942) → a német megszállás (1944. márc.) → a vidéki deportálások kezdete (1944. máj.) → a deportálások leállítása (1944. júl.).</p>
+        <p><strong>Indoklás:</strong> A wannseei konferencia a már folyamatban lévő „végső megoldás” európai végrehajtását hangolta össze; Magyarországon azonban Horthy kormányai ellenálltak ennek egészen a német megszállásig, amely lehetővé tette Eichmann számára a gyors, tömeges deportálás megszervezését; a nemzetközi és hazai tiltakozás, valamint a háborús helyzet változása vezetett Horthy leállító döntéséhez.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Embermentők azonosítása</h4>
+    <p>A leírás alapján nevezze meg, kiről van szó: „Svéd követségi titkárként menleveleket állított ki, amelyekkel több ezer budapesti zsidót mentett meg a deportálástól.” Nevezzen meg egy másik, a témakörben szereplő embermentőt is, és adja meg tevékenységét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Raoul Wallenbergre</em> vonatkozik. Egy másik lehetséges személy: Sztehló Gábor (evangélikus lelkész, gyermekmentő) vagy Salkaházi Sára (apácanővér, akit a nyilasok kivégeztek).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: a három magyar zsidótörvény összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: elfogadás éve, a „zsidó” meghatározásának alapja, fő rendelkezés, hatás), mi a hasonlóság és mi a különbség a három magyar zsidótörvény között.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>1. törvény (1938)</th><th>2. törvény (1939)</th><th>3. törvény (1941)</th></tr>
+          <tr><td>A meghatározás alapja</td><td>Vallási</td><td>Faji</td><td>Faji (kiterjesztett)</td></tr>
+          <tr><td>Fő rendelkezés</td><td>20%-os szakmai kvóta</td><td>6%-os kvóta, választójog korlátozása</td><td>Házassági és nemi kapcsolati tilalom</td></tr>
+          <tr><td>Hatás</td><td>Szakmai korlátozás</td><td>~60 000 ember állását veszítette</td><td>Nürnbergi törvények mintája</td></tr>
+          <tr><td>Közös vonás</td><td colspan="3">Mindhárom fokozatosan szűkítette a zsidóság jogait, előkészítve az 1944-es deportálást.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+
+  <div class="essay-dual">
+    <span class="lbl">Kettős jellegű témakör</span>
+    A holokauszt Európában és Magyarországon <strong>kettős jellegű témakör</strong> — az európai események (nürnbergi törvények, wannseei konferencia, haláltáborok) egyetemes tartalmúak, ezért önmagukban <strong>rövid esszében</strong> (100–130 szó) kérhetők. A magyarországi jogfosztás, a zsidótörvények és az 1944-es deportálás viszont <strong>magyar történelmi tartalom</strong>, ezért ezekről <strong>hosszú esszé</strong> (210–260 szó) is várható. A feladat pontos szövege dönti el, melyik típus illik rá — érdemes mindkettőre felkészülni.
+  </div>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta hosszú esszé (kb. 250 szó, magyarországi fókusszal):</strong> „Mutassa be a magyarországi zsidóság jogfosztásának folyamatát és az 1944-es deportálást!”</p>
+    <p>A magyarországi zsidóság jogfosztása fokozatosan haladt előre. Az első zsidótörvény (1938) még vallási alapon, 20%-os szakmai kvótával korlátozta a zsidóságot; a második (1939) már faji alapon határozta meg a fogalmat, és a kvótát 6%-ra csökkentette, mintegy 60 000 embert állásvesztésre kényszerítve; a harmadik (1941) a nürnbergi törvények mintájára megtiltotta a zsidó–nem zsidó házasságot. 1941-ben a Kamenyec-Podolszkij-i mészárlás (kb. 20 ezer áldozat) előrevetítette a későbbi tragédiát, de Horthy kormányai egészen 1944-ig ellenálltak a teljes „végső megoldás” követelésének.</p>
+    <p>A helyzet a német megszállással (1944. márc. 19.) változott meg gyökeresen: az országba érkező Eichmann és segítői (Baky, Endre) irányításával megkezdődött a sárga csillag kötelező viselése, majd a gettósítás, végül 1944 májusától a vidéki zsidóság deportálása — 147 vonattal mintegy 437 000 embert szállítottak el Auschwitzba nyolc hét alatt. Horthy 1944. július 7-én leállította a további deportálásokat, ezzel megmentve a budapesti zsidóságot, de a nyilas hatalomátvétel (október 15.) után újabb tragédia sújtotta őket: gyalogmenetek, a budapesti gettó felállítása. A magyarországi zsidóság 500–600 ezer fős vesztesége a magyar történelem egyik legsúlyosabb tragédiája.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé kronologikusan építi fel a folyamatot (törvények → megszállás → deportálás → leállítás → nyilas korszak), konkrét számadatokkal dolgozik, és tényszerű, tárgyilagos hangnemben mutatja be a tragédia mértékét.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130">Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260" selected>Hosszú esszé — középszint (210–260 szó)</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — emelt szint (210–260 szó)</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 210–260 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Kronológiailag pontos adatokat (évszám, névhasználat) tartalmaz</li>
+      <li><input type="checkbox"> Legalább két konkrét tényre vagy forrásra hivatkozik</li>
+      <li><input type="checkbox"> Tényszerű, tárgyilagos hangnemet használ</li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be a wannseei konferencia jelentőségét a holokauszt történetében! (egyetemes — rövid esszé)</li>
+    <li><b>E2</b> Jellemezze a haláltáborok működését és az áldozatok számát Európában! (egyetemes — rövid esszé)</li>
+    <li><b>E3</b> Mutassa be a három magyar zsidótörvény tartalmát! (magyar téma — hosszú esszé)</li>
+    <li><b>E4</b> Értékelje az 1944-es magyarországi deportálás folyamatát és Horthy leállító intézkedését! (magyar téma — hosszú esszé)</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze a magyarországi zsidóság sorsát 1944 tavaszán (vidéki deportálás) és őszén (nyilas korszak)!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A holokauszt Európában és Magyarországon</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: az elnevezés és az európai zsidóüldözés kezdetei</td></tr>
+    <tr><td>2 perc</td><td>Gettók, Einsatzgruppék és a wannseei konferencia</td></tr>
+    <tr><td>2 perc</td><td>A megsemmisítő táborok és az áldozatok Európában</td></tr>
+    <tr><td>2 perc</td><td>A magyarországi zsidótörvények (1938–1941)</td></tr>
+    <tr><td>2 perc</td><td>A holokauszt Magyarországon 1944-ben</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: embermentés és a nyilas korszak</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Mit jelentenek a holokauszt, az Endlösung és a Soá kifejezések?</li>
+    <li>Mi volt a wannseei konferencia szerepe a „végső megoldás” végrehajtásában?</li>
+    <li>Miért voltak ilyen eltérőek a túlélési esélyek az egyes európai országokban?</li>
+    <li>Hogyan szigorodtak a magyar zsidótörvények 1938 és 1941 között?</li>
+    <li>Hogyan zajlott a vidéki zsidóság deportálása 1944-ben, és miért állította le Horthy?</li>
+    <li>Milyen szerepet játszottak az embermentők a budapesti zsidóság megmaradásában?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez kettős jellegű témakör: az európai rész rövid esszében, a magyarországi rész hosszú esszében is kérhető — figyeld a feladat pontos megfogalmazását!</li>
+    <li>Ne keverd össze a gettósítást (jogfosztás, elzárás) és a megsemmisítést (haláltáborok, 1942-től) — időben és módszerben is elkülönülnek.</li>
+    <li>Jegyezd meg pontosan: az első zsidótörvény (1938) vallási, a második (1939) már faji alapon határozta meg a „zsidó” fogalmát.</li>
+    <li>A vidéki deportálás (1944. máj–júl.) és a nyilas korszak (1944. okt-től) két különböző szakasz — más módszerekkel (vasúti deportálás, illetve gyalogmenetek).</li>
+    <li>Ne feledd: Horthy leállító intézkedése (1944. júl. 7.) csak a budapesti zsidóságot mentette meg — a vidéki zsidóság ekkorra már túlnyomórészt deportálva volt.</li>
+    <li>A megmenekülés esélye országonként nagyon eltérő volt (Dánia szinte teljes megmenekülés, Lengyelország szinte teljes megsemmisülés) — ezt mindig konkrét példával illusztráld.</li>
+    <li>Az embermentők közül tudj legalább 2-3 nevet és tevékenységet pontosan felidézni (Wallenberg, Sztehló Gábor, Salkaházi Sára).</li>
+    <li>Kronológiai csapda: a wannseei konferencia (1942. jan.) jóval megelőzte a magyarországi deportálásokat (1944. máj.) — a magyar zsidóság sokáig viszonylagos biztonságban volt a többi országhoz képest.</li>
+    <li>A porrajmos (roma népirtás) áldozatszáma bizonytalan a hiányos dokumentáció miatt — ne adj meg egyetlen pontos számot, hanem jelezd a bizonytalanságot.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni Auschwitzot, Mauthausent, Varsót és Kamenyec-Podolszkot a térképen.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti témavázlati kiadvány, illetve a hivatalos vizsgakövetelmény ajánlott. A kurzus tényszerű, tárgyilagos hangnemben, a témavázlat adatait követve mutatja be az eseményeket.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "m1-t2": {type:"tf", answer:true},
+    "m1-t3": {type:"choice", answer:"b"},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"tf", answer:true},
+    "m2-t2": {type:"choice", answer:"b"},
+    "m2-t3": {type:"fill", answers:["sárga","sarga"]},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"tf", answer:true},
+    "m3-t2": {type:"choice", answer:"c"},
+    "m3-t3": {type:"sort", answers:{s1:"magas", s2:"alacsony"}},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:false},
+    "m4-t2": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "m4-t3": {type:"choice", answer:"b"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"tf", answer:false},
+    "m5-t2": {type:"choice", answer:"a"},
+    "m5-t3": {type:"fill", answers:["auschwitz","auschwitz-birkenau"]},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"tf", answer:true},
+    "m6-t2": {type:"choice", answer:"b"},
+    "m6-t3": {type:"fill", answers:["izrael"]},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  var chainSteps = [
+    {order:1, text:"A nürnbergi törvények (1935) és az eviani konferencia kudarca (1938) megnyitják az utat az üldözés felé"},
+    {order:2, text:"A wannseei konferencia (1942) összehangolja a már folyamatban lévő „végső megoldás” európai végrehajtását"},
+    {order:3, text:"Magyarországon 1938-tól sorra fogadják el a zsidótörvényeket, fokozatosan korlátozva a jogokat"},
+    {order:4, text:"A német megszállás után (1944) néhány hónap alatt csaknem 440 000 vidéki zsidót deportálnak"},
+    {order:5, text:"Horthy leállítja a deportálásokat, de a nyilas hatalomátvétel után újabb tragédia sújtja a budapesti zsidóságot"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">🕯</span>Kirakva! A lánc: nürnbergi törvények → wannseei konferencia → magyar zsidótörvények → 1944-es deportálás → embermentés és a nyilas korszak.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

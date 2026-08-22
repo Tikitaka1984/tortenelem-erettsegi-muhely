@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A rendszerváltás Magyarországon — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#16140f;
+  --rubric:#8a5a1f;
+  --lapis:#1f4a4a;
+  --gold:#c2a050;
+  --stone:#dccfa3;
+  --paper:#efe9d9;
+  --paper-2:#e3dabb;
+  --line:#c5b788;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(22,20,15,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(194,160,80,.09), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(31,74,74,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#efe9d9; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(22,20,15,.95), rgba(31,74,74,.88)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f3eddb;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#e1d7b8; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(239,233,217,.35); color:#efe9d9; padding:5px 10px; border-radius:20px;
+  background:rgba(239,233,217,.06);
+}
+.chain-box{
+  background:rgba(11,10,7,.35); border:1px solid rgba(239,233,217,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(239,233,217,.35);
+  background:rgba(239,233,217,.05); color:#efe9d9; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(239,233,217,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(239,233,217,.45);
+  border-top:1px dashed rgba(239,233,217,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(194,160,80,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#e1d7b8; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(239,233,217,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+.fogodzo{
+  background:linear-gradient(120deg,#e0d09a,#e5d5a4); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--rubric); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(197,183,136,.3);}
+.source-box{background:#f6efdc; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#332a1e; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+.sort-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row span{flex:1 1 200px;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#153636;}
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#221c0f; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#a1813f;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#ecdca0; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--lapis); background:#c9dcd6;}
+.tips-list li.first-tip::before{background:var(--lapis); color:#fff;}
+footer{background:var(--ink); color:#dccfa3; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(197,183,136,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1985–1991</span>
+    <h1>A rendszerváltás Magyarországon</h1>
+    <p class="subtitle">A lakiteleki találkozótól az első szabad választásokig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan szerveződtek meg az ellenzéki mozgalmak a lakiteleki és a monori találkozókon, hogyan próbálta Grósz Károly reformkommunista úton menteni a rendszert, milyen szimbolikus fordulópontok (Nagy Imre újratemetése, a határnyitás) gyorsították fel az átalakulást, hogyan zajlottak a Nemzeti Kerekasztal-tárgyalások és a köztársaság kikiáltása, és hogyan indult el az első szabad választások és az Antall-kormány nyomán a politikai és gazdasági rendszerváltás.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">🕊</span>
+        Rakd össze a láncot, hogy kikiáltsák a köztársaságot!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Ellenzéki mozgalmak</a>
+    <a href="#m2">2. Grósz és a reform</a>
+    <a href="#m3">3. Szimbolikus fordulat</a>
+    <a href="#m4">4. Kerekasztal</a>
+    <a href="#m5">5. Első választások</a>
+    <a href="#m6">6. Gazdasági átalakulás</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A pártállam válsága és az ellenzéki mozgalmak</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg az ellenzéki irányzatokat és a lakiteleki, monori találkozók jelentőségét.</div>
+
+  <article>
+    <h3>Az ellenzéki irányzatok</h3>
+    <p>A magyarországi ellenzék több, egymással is vitázó értelmiségi és társadalmi körből szerveződött. A demokratikus (emberjogi) ellenzék a jogállamiságot, az emberi és polgári jogokat, valamint a nyilvánosság szabadságát állította középpontba; 1981-től <strong>szamizdat</strong> kiadványokat jelentetett meg, köztük a Kis János által szerkesztett Beszélőt. A népi-nemzeti ellenzék a népi írók hagyományához kapcsolódva többek között a paraszti társadalom felbomlását, a népesedési válságot és a határon túli magyarság helyzetét tematizálta. Az ellenzéki csoportok tevékenységét az állambiztonság megfigyelte és korlátozta.</p>
+
+    <h3>A monori és a lakiteleki találkozó</h3>
+    <p>Az ellenzéki mozgalmak képviselői 1985-ben Monoron találkoztak Donáth Ferenc szervezésében, és közösen elemezték a rendszer válságát. 1986-ban készült el a „Fordulat és reform”, 1987-ben pedig a „Társadalmi szerződés”. <strong>1987. szeptember 27-én Lakitelken</strong>, Lezsák Sándor kertjében a népi-nemzeti ellenzék tanácskozása meghirdette a Magyar Demokrata Fórum (<strong>MDF</strong>) mozgalmát és társadalmi párbeszédet sürgető nyilatkozatot adott ki. Az MDF szervezeti megalakulását az 1988. szeptember 3-i második lakiteleki találkozón elfogadott alapítólevél és ideiglenes alapszabály rögzítette.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a demokratikus (emberjogi) és a népi-nemzeti ellenzék eltérő kérdéseket hangsúlyozott, de egyik irányzat sem volt teljesen egységes. A későbbi pártrendszer nem vezethető le egyszerűen ebből a kettősségből.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Magyar Demokrata Fórum (MDF); szamizdat <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>1987 a lakiteleki találkozó; 1985 monori találkozó <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>1. forrás — A lakiteleki találkozó nyilatkozata (1987, tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a Lezsák Sándor kertjében összegyűlt népi írók és értelmiségiek nyilatkozatukban a magyar társadalom súlyos problémáira (népességfogyás, a paraszti közösségek felbomlása, a határon túli magyarság helyzete) hívták fel a figyelmet, és társadalmi párbeszédet sürgettek ezek megoldására. A találkozó a Magyar Demokrata Fórum megalakulásához vezetett, amely az egyik legfontosabb ellenzéki szervezetté vált a rendszerváltás előkészítésében.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen problémákra hívta fel a figyelmet a nyilatkozat?</p>
+        <p><strong>b)</strong> Mit sürgetett a megoldásukra?</p>
+        <p><strong>c)</strong> Milyen szervezet jött létre a találkozó nyomán?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Népességfogyás, a paraszti közösségek felbomlása, a határon túli magyarság helyzete.</p>
+          <p><strong>b)</strong> Társadalmi párbeszédet.</p>
+          <p><strong>c)</strong> A Magyar Demokrata Fórum (MDF) mozgalma; szervezeti megalakulását 1988 szeptemberében rögzítették.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="match">
+      <p class="task-q">Párosítsd az ellenzéki irányzatot a fő témájával!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Demokratikus (emberjogi) ellenzék</button>
+          <button class="match-item" data-key="p2">Népi-nemzeti ellenzék</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">Emberi és polgári jogi követelések</button>
+          <button class="match-item" data-key="r2">Paraszti társadalom, határon túli magyarság</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="tf">
+      <p class="task-q">Állítás: A monori találkozó (1985) korábban volt, mint a lakiteleki találkozó (1987).</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A Beszélő folyóirat főszerkesztője ______ ______ filozófus volt.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>Grósz Károly és a reformkommunisták</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Kádár leváltását és a párton belüli reformtörekvéseket.</div>
+
+  <article>
+    <h3>Grósz Károly kinevezése és a világútlevél</h3>
+    <p>1987 nyarán Kádár János <strong>Grósz Károly</strong> személyében új kormányfőt nevezett ki. Újabb hitelekkel próbálták stabilizálni a gazdaságot — az ország adósságspirálba került, a korábbi hiteleket csak újabb hitelek felvételével tudták törleszteni. Közérzetjavító intézkedésként 1988 januárjában bevezették a világútlevelet, amellyel szabadabban lehetett utazni — ez azonban váratlan gazdasági problémát okozott: az emberek megtakarított pénzüket valutára váltva Ausztriába utaztak, és tömegesen vásároltak ott fogyasztási cikkeket (a „Gorenje turizmus” — Gorenje hűtőszekrény, VHS videomagnó stb.), ami az ország valutatartalékainak gyors csökkenéséhez vezetett, megerősítve a gazdasági reformok igényét.</p>
+
+    <h3>Kádár leváltása és Pozsgay nyilatkozata</h3>
+    <p>Az MSZMP 1988. május 20–22-i országos értekezletén Kádár János távozott a főtitkári tisztségből, és az újonnan létrehozott, tényleges irányító hatalommal nem járó pártelnöki posztot kapta; főtitkárrá Grósz Károlyt választották. 1988 novemberében Németh Miklós lett a miniszterelnök. Grósz gazdasági reformokat támogatott, de a politikai többpártrendszert sokáig elutasította. <strong>Pozsgay Imre</strong> államminiszter 1989. január 28-án rádiónyilatkozatban <strong>népfelkelésnek nevezte az addig ellenforradalomnak minősített 1956-os eseményeket</strong>; a nyilatkozat jelezte, hogy a pártvezetés már nem tudta fenntartani a korábbi történelmi értelmezést.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a világútlevél az utazási szabadság jelentős bővülése volt. A „Gorenje-turizmus” hozzájárult a lakossági devizakiáramláshoz, de az ország súlyos gazdasági válságát nem ez az egy intézkedés okozta: annak hátterében az eladósodás és a tervgazdaság szerkezeti problémái álltak.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Pozsgay Imre; Németh Miklós</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>2. forrás — Pozsgay Imre nyilatkozata 1956-ról (1989. január 28., tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint Pozsgay Imre államminiszter egy rádióinterjúban meglepő módon átértékelte az 1956-os eseményeket: az addig hivatalosan „ellenforradalomnak” nevezett eseményeket „népfelkelésnek” minősítette. Ez a nyilatkozat nagy port kavart a pártvezetésben, Grósz Károly nem értett vele egyet, de politikailag már nem tudta megakadályozni a hivatalos történelemszemlélet efféle nyilvános megkérdőjelezését.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit mondott Pozsgay Imre 1956-ról?</p>
+        <p><strong>b)</strong> Mi volt az addigi hivatalos minősítés?</p>
+        <p><strong>c)</strong> Hogyan reagált erre Grósz Károly?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Népfelkelésnek nevezte.</p>
+          <p><strong>b)</strong> Ellenforradalom.</p>
+          <p><strong>c)</strong> Nem tetszett neki, de kénytelen volt belenyugodni.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="tf">
+      <p class="task-q">Állítás: A világútlevél bevezetése (1988) a pártvezetés szándékával ellentétesen az ország valutatartalékainak csökkenéséhez vezetett.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="choice">
+      <p class="task-q">Milyen posztot töltött be Kádár János Grósz Károly főtitkárrá válása után?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Miniszterelnök</button>
+        <button data-val="b">B) A tényleges hatalommal nem rendelkező elnöki poszt</button>
+        <button data-val="c">C) Belügyminiszter</button>
+        <button data-val="d">D) Nem töltött be semmilyen posztot</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A tömeges ausztriai vásárlásokat a hűtőszekrénymárka nyomán ______ turizmusnak nevezték.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>Az 1989-es szimbolikus fordulópontok</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Nagy Imre újratemetését és a határnyitás jelentőségét.</div>
+
+  <article>
+    <h3>Nagy Imre újratemetése</h3>
+    <p>A Németh Miklós vezette kormány felgyorsította a piacosító intézkedéseket. Az úgynevezett spontán privatizáció során állami vállalatokat gazdasági társaságokká alakítottak, és vezetőik, illetve befektetők gyakran nem kellően átlátható feltételekkel szerezhettek tulajdonrészt, még az átfogó privatizációs szabályozás előtt. <strong>Nagy Imre és mártírtársai 1989. június 16-i gyászszertartását</strong> a Hősök terén tartották, majd földi maradványaikat az Új köztemető 301-es parcellájában helyezték nyugalomra. Orbán Viktor, a Fidesz egyik alapítója és képviselője beszédében szabad választásokat és a szovjet csapatok kivonását követelte. Július 6-án a Legfelsőbb Bíróság rehabilitálta Nagy Imrét és társait; ugyanazon a napon meghalt Kádár János.</p>
+
+    <h3>A határnyitás és a páneurópai piknik</h3>
+    <p>A nyugati határon lévő elavult műszaki határzár bontása 1989. május 2-án kezdődött. Horn Gyula magyar és Alois Mock osztrák külügyminiszter június 27-én Sopron közelében jelképesen átvágta a kerítést. Az augusztus 19-i <strong>páneurópai piknik</strong> ideiglenes határnyitását több száz, Magyarországon tartózkodó keletnémet állampolgár használta fel arra, hogy Ausztriába jusson. A kormány megszüntette az orosz nyelv kötelező oktatását, és 1989-ben felfüggesztette a bős–nagymarosi vízlépcsőrendszer nagymarosi építkezését.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a páneurópai piknik (1989. aug. 19.) <strong>nem</strong> csupán magyar belügy volt — a szimbolikus, 3 órás határnyitás nemzetközi jelentőségre tett szert azáltal, hogy kelet-német menekültek tömegesen használták ki a lehetőséget a Nyugatra szökésre, ami közvetve hozzájárult a berlini fal későbbi, novemberi leomlásához is.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Orbán Viktor</td>
+        <td>1989. június 16. Nagy Imre újratemetése <span class="eonly">E</span>; 1989. augusztus páneurópai piknik <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:71b -->
+<figure class="atlas-map" data-atlas-code="71b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 71b. térkép</span>
+    <h4>Szovjet csapatok Magyarországon, 1989</h4>
+    <p class="atlas-map__focus">A szovjet katonai jelenlét kiterjedése és a csapatkivonás szuverenitási jelentősége értelmezhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p073_71b.webp" target="_blank" rel="noopener" aria-label="Szovjet csapatok Magyarországon, 1989 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img059.webp" alt="Történelmi térkép: Szovjet csapatok Magyarországon, 1989" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:71b -->
+<div class="source-box">
+      <h4>3. forrás — A páneurópai piknik (1989. augusztus 19., tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint egy, eredetileg szimbolikus, néhány órás magyar–osztrák barátsági rendezvényként meghirdetett eseményen a szervezők 3 órára megnyitották a határátkelőt Sopron közelében. A rendezvényről tudomást szerző, Magyarországon tartózkodó több száz keletnémet menekült felhasználta az alkalmat, és átszökött Ausztriába, majd onnan tovább az NSZK-ba — ez volt az első alkalom, hogy a vasfüggöny mentén tömegesen, szervezetten sikerült átjutni Nyugatra.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Minek indult eredetileg a páneurópai piknik?</p>
+        <p><strong>b)</strong> Kik használták ki a határnyitás lehetőségét?</p>
+        <p><strong>c)</strong> Miért volt ez jelentős esemény nemzetközi szempontból?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Szimbolikus magyar-osztrák barátsági rendezvénynek.</p>
+          <p><strong>b)</strong> Magyarországon tartózkodó keletnémet menekültek.</p>
+          <p><strong>c)</strong> Mert ez volt az első tömeges, szervezett átjutás a vasfüggönyön keresztül Nyugatra.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="tf">
+      <p class="task-q">Állítás: Kádár János ugyanazon a napon halt meg, amikor a Legfelsőbb Bíróság rehabilitálta Nagy Imrét.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="choice">
+      <p class="task-q">Ki mondta a legnagyobb vihart kavaró beszédet Nagy Imre újratemetésén?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Antall József</button>
+        <button data-val="b">B) Orbán Viktor</button>
+        <button data-val="c">C) Pozsgay Imre</button>
+        <button data-val="d">D) Horn Gyula</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: 1989. június 27-én Horn Gyula ______nél szimbolikusan átvágta a határzárat.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A Nemzeti Kerekasztal-tárgyalások és a köztársaság kikiáltása</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a háromoldalú tárgyalások menetét és az 1989. október 23-i eseményt.</div>
+
+  <article>
+    <h3>A kerekasztal-tárgyalások</h3>
+    <p>1989 februárjában az MSZMP elfogadta a többpártrendszer kialakítását; márciusban létrejött az Ellenzéki Kerekasztal (EKA), júniusban pedig megkezdődtek a <strong>Nemzeti Kerekasztal</strong> háromoldalú tárgyalásai az MSZMP, az EKA és a társadalmi szervezeteket tömörítő „harmadik oldal” részvételével. Az egyeztetés az alkotmányos átmenet, a választások, a pártműködés és a köztársasági elnöki intézmény szabályairól szólt. A zárómegállapodást <strong>1989. szeptember 18-án</strong> írták alá, de az SZDSZ és a Fidesz az elnökválasztás időzítésével kapcsolatos vita miatt nem csatlakozott hozzá.</p>
+
+    <h3>A köztársaság kikiáltása és a sarkalatos törvények</h3>
+    <p>A rendszerváltás Magyarországon alapvetően békés, tárgyalásos formában zajlott. Az Országgyűlés 1989 őszén elfogadta az alkotmányos átmenet legfontosabb törvényeit. Az október 18-án kihirdetett alkotmánymódosítás október 23-án lépett hatályba; ezen a napon <strong>Szűrös Mátyás</strong>, az Országgyűlés elnöke a Parlament erkélyéről kikiáltotta a Magyar Köztársaságot. 1989. november 26-án az SZDSZ és a Fidesz kezdeményezésére megtartották a <strong>„négy igenes” népszavazást</strong>. A hivatalos kérdéssorrendben arról szavaztak, hogy a köztársasági elnököt csak az országgyűlési választások után válasszák meg, a pártszervek vonuljanak ki a munkahelyekről, az MSZMP számoljon el vagyonával, illetve oszlassák fel a Munkásőrséget. Mind a négy kérdésben az igenek győztek; az első kérdés eredménye mindössze 6404 szavazat különbséggel dőlt el.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az 1989. október 23-i köztársaság-kikiáltás <strong>nem</strong> volt azonos a rendszerváltás teljes befejezésével — ez az esemény formálisan lezárta a Kádár-korszak államformáját, de az érdemi politikai átalakulás (első szabad választások, kormányalakítás) csak 1990-ben fejeződött be; a köztársaság kikiáltása egy fontos, de közbenső lépés volt.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Nemzeti Kerekasztal; rendszerváltoztatás; „négy igenes” népszavazás <span class="eonly">E</span></td>
+        <td>Szűrös Mátyás <span class="eonly">E</span></td>
+        <td>1989. október 23. a köztársaság kikiáltása <span class="eonly">E</span>; 1989–1990 a rendszerváltoztatás</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — A Nemzeti Kerekasztal-tárgyalások (1989, tartalmi kivonat)</h4>
+      <p class="src-text">A Nemzeti Kerekasztal-tárgyalások háromoldalú egyeztetések voltak az MSZMP, az Ellenzéki Kerekasztal és a társadalmi szervezeteket tömörítő „harmadik oldal” között. A zárómegállapodást 1989. szeptember 18-án írták alá, de az SZDSZ és a Fidesz nem csatlakozott hozzá; a vitás kérdések egy részéről később népszavazás döntött.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Hány oldal vett részt a tárgyalásokon, és kik voltak ezek?</p>
+        <p><strong>b)</strong> Mikor írták alá a megállapodást?</p>
+        <p><strong>c)</strong> Milyen főbb teendőket határoztak meg?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Három oldal: MSZMP, EKA, „harmadik oldal” (Hazafias Népfront, SZOT).</p>
+          <p><strong>b)</strong> 1989. szeptember 18-án.</p>
+          <p><strong>c)</strong> Alkotmánymódosítás, pártok működése, köztársasági elnök intézménye.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: A köztársaság kikiáltásával (1989. okt. 23.) a rendszerváltás teljes politikai folyamata lezárult.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="choice">
+      <p class="task-q">Ki kiáltotta ki a köztársaságot 1989. október 23-án?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Antall József</button>
+        <button data-val="b">B) Szűrös Mátyás</button>
+        <button data-val="c">C) Németh Miklós</button>
+        <button data-val="d">D) Göncz Árpád</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="sort">
+      <p class="task-q">Csoportosítsd: melyik kérdés érintette közvetlenül a köztársasági elnök megválasztásának időzítését?</p>
+      <div class="sort-row"><span>Munkásőrség feloszlatása</span>
+        <select data-key="s1"><option value="">válassz</option><option value="pozsgay">Az elnökválasztás időzítéséről szólt</option><option value="nem">Más kérdésről szólt</option></select>
+      </div>
+      <div class="sort-row"><span>Köztársasági elnök választásának időzítése</span>
+        <select data-key="s2"><option value="">válassz</option><option value="pozsgay">Az elnökválasztás időzítéséről szólt</option><option value="nem">Más kérdésről szólt</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>Az első szabad választások és az Antall-kormány</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg az 1990-es választási rendszert és a „kamikaze-kormány” kihívásait.</div>
+
+  <article>
+    <h3>Az első szabad választások</h3>
+    <p>Az első szabad országgyűlési választás két fordulóját 1990. március 25-én és április 8-án tartották. A vegyes választási rendszer egyéni választókerületi és területi, illetve országos listás mandátumokat osztott ki; a területi listás mandátumszerzéshez 4%-os küszöb kapcsolódott. Az MDF 24,73%-kal az első helyen végzett az országos listás szavazásban, és <strong>Antall József</strong> az FKGP-vel és a KDNP-vel koalíciós kormányt alakított. Az MDF–SZDSZ-megállapodás után az Országgyűlés <strong>Göncz Árpádot</strong> választotta köztársasági elnökké. Az utolsó szovjet katona, Viktor Silov altábornagy 1991. június 19-én hagyta el Magyarországot Záhonynál; ezzel befejeződött a szovjet csapatkivonás.</p>
+
+    <h3>A „kamikaze-kormány” kihívásai</h3>
+    <p>Az MDF–FKGP–KDNP koalíciós Antall-kormányt (1990–93) a kormányfő saját szavaival „kamikaze-kormány”-nak nevezte, mert egyszerre, egyidőben megoldhatatlan feladatok vártak rá: a társadalomban volt egy elvárás, hogy rövid időn belül nyugat-európai színvonalon éljenek, ugyanakkor át kellett alakítani a politikai és gazdasági berendezkedést, ami érdekütközésekkel, társadalmi konfliktusokkal járt. A gazdasági átalakulás rendkívüli nehézségekkel járt: a keleti piacok elvesztése, a nagy állami vállalatok csődje, a szocialista nagyipar összeomlása, a mezőgazdasági tsz-ek megszűnése jelentős visszaesést eredményezett — 1989–1993 között a reál-GDP mintegy 18%-kal csökkent, felgyorsult az infláció, megnövekedett a munkanélküliség (1993-ban 12%). Politikai összecsapások alakultak ki a történelmi jogfolytonosság kérdésében (pl. a címerről, Horthy Miklós személyéről) és az igazságtétel ügyében.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az Antall-kormány „kamikaze” elnevezése <strong>nem</strong> a kormány sikertelenségére utal — Antall József maga használta ezt a kifejezést, jelezve, hogy tudatában volt annak, hogy a szükséges, de népszerűtlen reformok politikai támogatottságuk elvesztésével fognak járni; ez inkább a helyzet felismerését, mint a kormány kudarcát fejezi ki.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Antall József; Göncz Árpád</td>
+        <td>1990 az első szabad választások; 1991 a szovjet csapatok kivonulása Magyarországról</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:72b -->
+<figure class="atlas-map" data-atlas-code="72b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 72b. térkép</span>
+    <h4>A Szovjetunió szétesése, 1991</h4>
+    <p class="atlas-map__focus">A magyar rendszerváltozás nemzetközi környezete és a szovjet birodalmi keretek felbomlása helyezhető térbeli összefüggésbe.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p074_72b.webp" target="_blank" rel="noopener" aria-label="A Szovjetunió szétesése, 1991 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img060.webp" alt="Történelmi térkép: A Szovjetunió szétesése, 1991" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:72b -->
+<div class="source-box">
+      <h4>5. forrás — Az Antall-kormány kihívásai (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint Antall József maga jellemezte kormányát „kamikaze-kormányként”, utalva arra, hogy a rendszerváltás gazdasági és politikai terheinek viselése elkerülhetetlenül szembeállítja majd a kormányt a társadalom egy részével. A gazdasági átalakulás — a keleti piacok elvesztése, az állami nagyipar összeomlása — súlyos GDP-visszaesést és munkanélküliséget okozott, miközben a társadalom gyors, nyugat-európai színvonalú felzárkózást várt volna el.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Miért nevezte Antall „kamikaze-kormánynak” saját kabinetjét?</p>
+        <p><strong>b)</strong> Milyen gazdasági nehézségekkel kellett szembenéznie?</p>
+        <p><strong>c)</strong> Milyen elvárás állt szemben ezekkel a nehézségekkel?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Mert tudta, hogy a szükséges reformok népszerűtlenek lesznek.</p>
+          <p><strong>b)</strong> A keleti piacok elvesztését, az állami nagyipar összeomlását, GDP-visszaesést, munkanélküliséget.</p>
+          <p><strong>c)</strong> A gyors, nyugat-európai színvonalú felzárkózás elvárása.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="choice">
+      <p class="task-q">Melyik párt győzött az 1990-es választásokon?</p>
+      <div class="task-controls">
+        <button data-val="a">A) SZDSZ</button>
+        <button data-val="b">B) MDF</button>
+        <button data-val="c">C) MSZP</button>
+        <button data-val="d">D) Fidesz</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: Göncz Árpád, az SZDSZ jelöltje lett az első szabadon választott parlament által megválasztott köztársasági elnök.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: 1989–1993 között a reál-GDP mintegy ______%-kal csökkent.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>A rendszerváltás gazdasági következményei és céljai</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a rendszerváltás gazdasági-társadalmi feladatait és az euroatlanti integráció folyamatát.</div>
+
+  <article>
+    <h3>A rendszerváltás feladatai</h3>
+    <p>A politikai, gazdasági és társadalmi rendszer átalakításának feladatai közé tartozott: a pártállami berendezkedés megszüntetése, demokratizálás, a korábbi törvénytelenségek feltárása és orvoslása (igazságtétel), a károsultak kárpótlása; az önkormányzati rendszer kialakítása; a gazdaság átalakítása, a magántulajdonra épülő piacgazdaság megteremtése — ezen belül privatizáció (magánosítás), modernizálás (tőkehiány pótlása, technikai lemaradás csökkentése), a KGST helyett új, nyugati piacok keresése, valamint az eladósodottság csökkentése. Az új külpolitika a szuverenitás helyreállítását és a nyugati demokratikus, gazdasági és biztonsági intézményekhez való csatlakozást célozta: Magyarország 1999. március 12-én a NATO, 2004. május 1-jén pedig az Európai Unió tagja lett.</p>
+
+    <h3>A gazdasági rendszerváltás nehézségei</h3>
+    <p>A rendszerváltozás súlyos gazdasági visszaeséssel járt: az állami vállalatok jelentős része megszűnt vagy átalakult, a keleti piacok összeomlottak, az ipari és mezőgazdasági termelés csökkent. A KSH összehasonlítható volumenindexe alapján a reál-GDP 1989 és 1993 között mintegy 18%-kal esett vissza, és 2001-ben haladta meg ismét az 1989-es szintet. A munkanélküliség 1993-ban megközelítette a 12%-ot; a fogyasztói árak 1991-ben 35%-kal emelkedtek. A későbbi növekedés már a piacgazdasági intézményrendszer keretei között ment végbe.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a nominális és a reál-GDP nem azonos. A visszaesés és a felzárkózás időpontját változatlan áras, összehasonlítható volumenindex alapján kell megadni; ezen a mércén a magyar GDP 2001-ben haladta meg újra az 1989-es szintet.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:71a -->
+<figure class="atlas-map" data-atlas-code="71a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 71a. térkép</span>
+    <h4>Magyarország közigazgatása és gazdasága, 1950–1990</h4>
+    <p class="atlas-map__focus">A rendszerváltozáskor átalakítandó tervgazdasági térszerkezet, ipari központok és gazdasági körzetek vizsgálhatók.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p073_71a.webp" target="_blank" rel="noopener" aria-label="Magyarország közigazgatása és gazdasága, 1950–1990 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img061.webp" alt="Történelmi térkép: Magyarország közigazgatása és gazdasága, 1950–1990" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:71a -->
+
+<!-- ATLAS_MAP_START:72a -->
+<figure class="atlas-map" data-atlas-code="72a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 72a. térkép</span>
+    <h4>Az európai integráció, 1951–2016</h4>
+    <p class="atlas-map__focus">Magyarország euroatlanti orientációja és az Európai Unió 2004-es bővítésének földrajzi összefüggései követhetők.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p074_72a.webp" target="_blank" rel="noopener" aria-label="Az európai integráció, 1951–2016 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img062.webp" alt="Történelmi térkép: Az európai integráció, 1951–2016" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:72a -->
+<div class="source-box">
+      <h4>6. forrás — A gazdasági rendszerváltás mérlege (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a rendszerváltás gazdasági terhei rendkívül súlyosak voltak: az ország reál-GDP-je 1989 és 1993 között mintegy 18%-kal csökkent, miközben az infláció és a munkanélküliség is jelentősen megnövekedett. A gazdaság csak 1994 után kezdett újra növekedni, és 2001-ben haladta meg ismét az 1989-es szintet — akkor viszont már egy alapvetően más, piacgazdasági szerkezetben, ami hosszú távon versenyképesebb alapot teremtett az ország számára.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mekkora volt a GDP-visszaesés mértéke és időtartama?</p>
+        <p><strong>b)</strong> Mikor érte el a gazdaság ismét az 1989-es szintet?</p>
+        <p><strong>c)</strong> Miért fontos hangsúlyozni, hogy ez már más gazdasági szerkezetben történt?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Mintegy 18%, 1989 és 1993 között.</p>
+          <p><strong>b)</strong> 2001-ben.</p>
+          <p><strong>c)</strong> Mert ez már piacgazdasági, nem tervgazdasági teljesítmény volt, ami hosszú távon versenyképesebb alapot jelentett.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="tf">
+      <p class="task-q">Állítás: Magyarország előbb csatlakozott az Európai Unióhoz, mint a NATO-hoz.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="choice">
+      <p class="task-q">Mikor érte el a magyar gazdaság ismét az 1989-es GDP-szintet?</p>
+      <div class="task-controls">
+        <button data-val="a">A) 1993</button>
+        <button data-val="b">B) 1994</button>
+        <button data-val="c">C) 2001</button>
+        <button data-val="d">D) 2004</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A munkanélküliség 1993-ban érte el csúcspontját, ______%-on.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>szamizdat</dt><dd>Illegálisan sokszorosított, hivatalos cenzúrát megkerülő ellenzéki kiadvány.</dd>
+    <dt>Magyar Demokrata Fórum (MDF)</dt><dd>Az 1987-es lakiteleki tanácskozáson meghirdetett, majd 1988 szeptemberében szervezetileg megalakult népi-nemzeti gyökerű politikai mozgalom, később párt.</dd>
+    <dt>Nemzeti Kerekasztal</dt><dd>Az MSZMP, az Ellenzéki Kerekasztal és a „harmadik oldal” háromoldalú tárgyalásai 1989-ben.</dd>
+    <dt>rendszerváltoztatás</dt><dd>A pártállami diktatúrából a többpárti demokráciába és a piacgazdaságba való átmenet folyamata.</dd>
+    <dt>„négy igenes” népszavazás</dt><dd>Az SZDSZ és a Fidesz által kezdeményezett, 1989. november 26-i népszavazás négy kérdésben.</dd>
+    <dt>kamikaze-kormány</dt><dd>Antall József önjellemzése saját kormányáról, utalva a rendszerváltás elkerülhetetlenül népszerűtlen terheire.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1981</b> Szamizdat kiadványok megjelenése (Beszélő)</li>
+    <li><b>1985</b> A monori találkozó <span class="eonly">E</span></li>
+    <li><b>1986</b> „Fordulat és reform”</li>
+    <li><b>1987. szept. 27.</b> A lakiteleki találkozó; az MDF mozgalmának meghirdetése</li>
+    <li><b>1988. szept. 3.</b> Az MDF szervezeti megalakulása</li>
+    <li><b>1988. jan.</b> A világútlevél bevezetése</li>
+    <li><b>1988. máj. 20–22.</b> Az MSZMP országos értekezlete; Kádár távozása a főtitkári tisztségből</li>
+    <li><b>1988</b> A Fidesz és az SZDSZ megalakulása</li>
+    <li><b>1989. jan. 28.</b> Pozsgay Imre nyilatkozata 1956-ról</li>
+    <li><b>1989. febr.</b> Az MSZMP szakít az egypártrendszerrel</li>
+    <li><b>1989. márc.</b> Az EKA megszerveződése</li>
+    <li><b>1989. jún.</b> A Nemzeti Kerekasztal-tárgyalások kezdete</li>
+    <li><b>1989. jún. 16.</b> Nagy Imre újratemetése <span class="eonly">E</span></li>
+    <li><b>1989. jún. 27.</b> A határzár átvágása Sopronnál</li>
+    <li><b>1989. júl. 6.</b> Nagy Imre rehabilitációja; Kádár János halála</li>
+    <li><b>1989. aug. 19.</b> A páneurópai piknik <span class="eonly">E</span></li>
+    <li><b>1989. szept. 18.</b> A Nemzeti Kerekasztal megállapodása</li>
+    <li><b>1989. okt. 23.</b> A köztársaság kikiáltása <span class="eonly">E</span></li>
+    <li><b>1989. nov. 26.</b> A „négy igenes” népszavazás</li>
+    <li><b>1990. márc.–ápr.</b> Az első szabad választások</li>
+    <li><b>1991. jún. 19.</b> A szovjet csapatkivonás befejezése Magyarországról</li>
+    <li><b>1999. márc. 12.</b> NATO-tagság</li>
+    <li><b>2004. máj. 1.</b> EU-tagság</li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Lakitelek</li>
+    <li>Budapest: Hősök tere és Új köztemető, 301-es parcella</li>
+    <li>Sopron</li>
+    <li>Záhony</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze a lakiteleki találkozót és a köztársaság kikiáltását: <em>a köztársaság kikiáltása; a lakiteleki találkozó; a Nemzeti Kerekasztal-tárgyalások; Nagy Imre újratemetése</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> a lakiteleki találkozó (1987) → Nagy Imre újratemetése (1989. jún.) → a Nemzeti Kerekasztal-tárgyalások (1989. jún.–szept.) → a köztársaság kikiáltása (1989. okt. 23.).</p>
+        <p><strong>Indoklás:</strong> A lakiteleki találkozó megerősítette a népi-nemzeti ellenzék szerveződését, és meghirdette az MDF mozgalmát; Nagy Imre újratemetése tömegmozgalommá formálta az elégedetlenséget és nyilvánosan megkérdőjelezte a rendszer legitimitását; ez vezetett a Nemzeti Kerekasztal háromoldalú tárgyalásaihoz, amelyek eredményeként a felek megegyeztek az átmenet feltételeiről, és ez tette lehetővé a köztársaság békés kikiáltását.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Személyek azonosítása</h4>
+    <p>A leírás alapján nevezze meg, kiről van szó: „Miniszterelnökként saját kormányát »kamikaze-kormánynak« nevezte, tudatában lévén a rendszerváltás elkerülhetetlenül népszerűtlen terheinek.” Nevezzen meg egy másik, a témakörben szereplő személyt is, és adja meg szerepét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Antall Józsefre</em> vonatkozik. Egy másik lehetséges személy: Pozsgay Imre (a reformkommunista, aki 1956-ot népfelkelésnek nevezte) vagy Szűrös Mátyás (aki kikiáltotta a köztársaságot).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: a magyarországi és más kelet-európai átmenet összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: módszer, kulcsesemény, időtartam, kimenetel), jellemezze a magyarországi rendszerváltás módszerét, és vesse össze azzal, amit a csehszlovákiai „bársonyos forradalomról” tud.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Magyarország</th><th>Csehszlovákia</th></tr>
+          <tr><td>Módszer</td><td>Kerekasztal-tárgyalások, fokozatos</td><td>Tömegtüntetések, gyors („bársonyos forradalom”)</td></tr>
+          <tr><td>Kulcsesemény</td><td>Nemzeti Kerekasztal megállapodása</td><td>Tömegtüntetések 1989 novemberében</td></tr>
+          <tr><td>Időtartam</td><td>Több éves folyamat (1985–1990)</td><td>Néhány hetes gyors átalakulás</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindkét átalakulás alapvetően békésen, fegyveres hatalomváltás nélkül ment végbe; Csehszlovákiában ugyanakkor a november 17-i rendőri fellépés erőszakos volt.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+  <p>A rendszerváltás Magyarországon <strong>magyar történelmi témakör</strong>, ezért középszinten és emelt szinten egyaránt megjelenhet <strong>hosszú esszé</strong> (210–260 szó) formájában — de rövid esszé (100–130 szó) témájaként is előfordulhat, ha a feladat egy szűkebb részkérdésre (pl. csak a Nemzeti Kerekasztal-tárgyalásokra) korlátozódik.</p>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta hosszú esszé (kb. 250 szó):</strong> „Mutassa be a rendszerváltás folyamatát a lakiteleki találkozótól az első szabad választásokig!”</p>
+    <p>A rendszerváltás gyökerei az ellenzéki mozgalmak megszerveződéséig nyúlnak vissza: az 1985-ös monori találkozó után 1987. szeptember 27-én Lakitelken meghirdették a Magyar Demokrata Fórum mozgalmát, amely 1988 szeptemberében alakult szervezetté. Eközben a pártvezetésben is megindult a reform: Grósz Károly 1987-ben miniszterelnök lett; az MSZMP 1988. májusi országos értekezletén Kádár távozott a főtitkári tisztségből, utódjává Grószt választották. A világútlevél (1988) váratlan gazdasági következményeket hozott, Pozsgay Imre 1989 januárjában népfelkelésnek nevezte 1956-ot. Nagy Imre és társai újratemetése (1989. jún. 16.) tömegmozgalommá formálta az elégedetlenséget, majd júniusban Horn Gyula szimbolikusan átvágta a határzárat Sopronnál, augusztusban pedig a páneurópai piknik keretében keletnémet állampolgárok jutottak át Ausztriába.</p>
+    <p>A Nemzeti Kerekasztal háromoldalú tárgyalásai (MSZMP, EKA, harmadik oldal) 1989 szeptemberében zárómegállapodáshoz vezettek; ezt az SZDSZ és a Fidesz nem írta alá, a vitás kérdések egy részéről népszavazás döntött. 1989. október 23-án Szűrös Mátyás a Parlament erkélyéről kikiáltotta a köztársaságot, novemberben pedig a „négy igenes” népszavazáson mind a négy kérdésben az igenek győztek. 1990 tavaszán zajlottak le az első szabad választások, amelyeken az MDF győzött — Antall József alakított kormányt, Göncz Árpád lett a köztársasági elnök. A rendszerváltás így egy több éves, alapvetően békés, tárgyalásos folyamat eredménye volt, amelynek szuverenitási szakasza a szovjet csapatok 1991. június 19-én befejezett kivonulásával zárult.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé kronologikusan építi fel a folyamatot (ellenzéki mozgalmak → reformkommunisták → szimbolikus fordulópontok → kerekasztal → választások), konkrét dátumokkal és nevekkel dolgozik, és a záró gondolatban összegzi a folyamat jellegét — ez emelt szintű elemző mélységet ad.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130">Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260" selected>Hosszú esszé — középszint (210–260 szó)</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — emelt szint (210–260 szó)</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 210–260 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Kronológiailag pontos adatokat (évszám, névhasználat) tartalmaz</li>
+      <li><input type="checkbox"> Legalább két konkrét tényre vagy forrásra hivatkozik</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be az ellenzéki mozgalmak megszerveződését 1985–1988 között!</li>
+    <li><b>E2</b> Jellemezze Grósz Károly reformkísérletét és Kádár leváltását!</li>
+    <li><b>E3</b> Mutassa be a Nemzeti Kerekasztal-tárgyalások menetét és eredményét!</li>
+    <li><b>E4</b> Értékelje az Antall-kormány kihívásait és a gazdasági rendszerváltás nehézségeit!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze a magyarországi békés, tárgyalásos rendszerváltást más kelet-európai országok átalakulási útjával!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A rendszerváltás Magyarországon</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a pártállam válsága és az ellenzéki mozgalmak</td></tr>
+    <tr><td>2 perc</td><td>Grósz Károly és a reformkommunisták</td></tr>
+    <tr><td>2 perc</td><td>Az 1989-es szimbolikus fordulópontok</td></tr>
+    <tr><td>2 perc</td><td>A Nemzeti Kerekasztal-tárgyalások és a köztársaság kikiáltása</td></tr>
+    <tr><td>2 perc</td><td>Az első szabad választások és az Antall-kormány</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: a rendszerváltás gazdasági következményei</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Milyen irányzatai voltak a magyarországi ellenzéki mozgalomnak?</li>
+    <li>Hogyan váltották le Kádár Jánost 1988-ban?</li>
+    <li>Miért volt jelentős Nagy Imre újratemetése és a páneurópai piknik?</li>
+    <li>Kik vettek részt a Nemzeti Kerekasztal-tárgyalásokon, és mit határoztak meg?</li>
+    <li>Milyen eredménnyel zárultak az 1990-es első szabad választások?</li>
+    <li>Milyen gazdasági nehézségekkel járt a rendszerváltás?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez magyar történelmi témakör: számíts arra, hogy hosszú esszében (210–260 szó) is kérhetik — ne csak rövid esszére készülj!</li>
+    <li>Ne keverd össze a demokratikus (emberjogi) és a népi-nemzeti ellenzéket — más témák, más gyökerek.</li>
+    <li>Jegyezd meg pontosan: a lakiteleki (1987) és a monori (1985) találkozó közül a monori volt korábban.</li>
+    <li>A világútlevél bővítette az utazási szabadságot; a hozzá kapcsolódó devizakiáramlás csak egyik tényezője volt a már fennálló gazdasági válságnak.</li>
+    <li>Ne feledd: a köztársaság kikiáltása (1989. okt. 23.) még nem jelentette a rendszerváltás befejezését — az első szabad választásokig (1990) még hónapok teltek el.</li>
+    <li>A népszavazás első kérdése az elnökválasztás időzítéséről szólt, és a korai közvetlen elnökválasztás elmaradása Pozsgay Imre esélyeit is érintette.</li>
+    <li>Kronológiai csapda: Nagy Imre rehabilitációja és Kádár János halála ugyanazon a napon (1989. júl. 6.) történt.</li>
+    <li>Az Antall-kormány „kamikaze” elnevezése nem kudarcot, hanem tudatos helyzetfelismerést fejez ki — ne értelmezd negatívan.</li>
+    <li>A reál-GDP 1989–93 között mintegy 18%-kal esett vissza, és 2001-ben haladta meg ismét az 1989-es szintet; ne keverd a nominális és a reáladatot.</li>
+    <li>Az euroatlanti integráció két lépését (1999 NATO, 2004 EU) ne keverd össze időrendben.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    <li><a href="https://retorki.hu/olvasoszoba/az-mdf-elso-orszagos-gyulese">RETÖRKI – Az MDF első országos gyűlése</a></li>
+      <li><a href="https://www.archivnet.hu/grosz-karoly-1988-szeptemberi-targyalasa-erich-honeckerrel">Magyar Nemzeti Levéltár, ArchívNet – Grósz Károly 1988-as tárgyalása</a></li>
+      <li><a href="https://static.valasztas.hu/nepszav04/hu/01/nepszavmagy.html">Nemzeti Választási Iroda – az 1989-es országos népszavazás eredménye</a></li>
+      <li><a href="https://valtor.valasztas.hu/valtort/jsp/orszjkv.jsp?EA=3&W=2">Nemzeti Választási Iroda – az 1990-es országgyűlési választás országos eredménye</a></li>
+      <li><a href="https://www.ksh.hu/docs/hun/xstadat/xstadat_hosszu/h_qpt001.html">Központi Statisztikai Hivatal – a GDP hosszú idősora</a></li>
+      <li><a href="https://honvedelem.hu/hatter/multidezo/az-utolso-emberig.html">Honvédelem.hu – a szovjet csapatkivonás befejezése</a></li>
+      <li><a href="https://www.nato.int/en/about-us/nato-history/history-by-theme/my-country-and-nato/hungary-and-nato">NATO – Hungary and NATO</a></li>
+      <li><a href="https://european-union.europa.eu/principles-countries-history/country-profiles/hungary_hu">Európai Unió – Magyarország országprofilja</a></li>
+      <li>Történelmi Atlasz – 71a, 71b, 72a és 72b térkép</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti témavázlati kiadvány, illetve a hivatalos vizsgakövetelmény ajánlott.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"match", pairs:{p1:"r1", p2:"r2"}},
+    "m1-t2": {type:"tf", answer:true},
+    "m1-t3": {type:"fill", answers:["kis jános","kis janos"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"tf", answer:true},
+    "m2-t2": {type:"choice", answer:"b"},
+    "m2-t3": {type:"fill", answers:["gorenje"]},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"tf", answer:true},
+    "m3-t2": {type:"choice", answer:"b"},
+    "m3-t3": {type:"fill", answers:["sopron","sopronnál","sopronnal"]},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:false},
+    "m4-t2": {type:"choice", answer:"b"},
+    "m4-t3": {type:"sort", answers:{s1:"nem", s2:"pozsgay"}},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"choice", answer:"b"},
+    "m5-t2": {type:"tf", answer:true},
+    "m5-t3": {type:"fill", answers:["18"]},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"tf", answer:false},
+    "m6-t2": {type:"choice", answer:"c"},
+    "m6-t3": {type:"fill", answers:["12"]},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  var chainSteps = [
+    {order:1, text:"Az ellenzéki mozgalmak megszerveződése (monori, lakiteleki találkozók) aláássa a pártállam legitimitását"},
+    {order:2, text:"Kádár leváltása (1988) és Grósz reformkísérletei felgyorsítják a politikai nyitást"},
+    {order:3, text:"Az 1989-es szimbolikus események (Nagy Imre újratemetése, határnyitás) tovább gyengítik a rendszert"},
+    {order:4, text:"A Nemzeti Kerekasztal-tárgyalások és a köztársaság kikiáltása megteremtik az átmenet kereteit"},
+    {order:5, text:"Az első szabad választások (1990) és az Antall-kormány végrehajtja a rendszerváltást"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">🕊</span>Kirakva! A lánc: ellenzéki mozgalmak → Kádár leváltása → szimbolikus fordulópontok → kerekasztal → első szabad választások.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

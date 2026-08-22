@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A középkori város és a középkor gazdasága — érettségi mini kurzus</title>
+<meta name="description" content="Interaktív érettségi felkészítő mini kurzus: a középkori város, a céhek, az uradalom és a távolsági kereskedelem. Források, feladatok, mintaesszék, megoldókulcs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap&subset=latin,latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A18;
+  --ink-soft:#4F4E48;
+  --rubric:#A3251F;
+  --lapis:#28457F;
+  --gold:#B08637;
+  --stone:#EAE7DF;
+  --stone-2:#DFDBD1;
+  --paper:#FFFFFF;
+  --line:#D6D1C4;
+  --ok:#2E6B4F;
+  --bad:#A3251F;
+  --measure:absolute;
+  --serif:"EB Garamond",Garamond,Georgia,serif;
+  --sans:"Source Sans 3",-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;background:var(--stone);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.col{max-width:720px;margin:0 auto}
+
+/* ---------- fejléc ---------- */
+header.masthead{
+  background:var(--paper);border-bottom:1px solid var(--line);
+  padding:64px 0 46px;position:relative;overflow:hidden;
+}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--rubric);margin:0 0 18px;
+}
+h1{
+  font-family:var(--serif);font-weight:600;font-size:clamp(2.5rem,7vw,4.1rem);
+  line-height:1.02;margin:0 0 6px;letter-spacing:-.01em;
+}
+h1 .sub{display:block;font-weight:400;font-style:italic;color:var(--ink-soft);font-size:.62em;margin-top:.18em}
+.lede{font-family:var(--serif);font-size:1.3rem;line-height:1.5;color:var(--ink-soft);margin:26px 0 0;max-width:38em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.tag{
+  font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  border:1px solid var(--line);padding:6px 11px;color:var(--ink-soft);background:#FBFAF7;
+}
+
+/* ---------- aláhúzott jelölés ---------- */
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* ---------- navigáció ---------- */
+nav.rail{
+  position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.rail-inner{max-width:860px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:14px;height:56px}
+.rail-scroll{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+.rail-scroll::-webkit-scrollbar{display:none}
+.rail a{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-decoration:none;
+  color:var(--ink-soft);padding:7px 9px;white-space:nowrap;border-bottom:2px solid transparent;
+}
+.rail a:hover{color:var(--rubric)}
+.rail a.on{color:var(--rubric);border-bottom-color:var(--rubric)}
+.prog{display:flex;align-items:center;gap:8px;flex:none}
+.prog-bar{width:64px;height:5px;background:var(--stone-2);position:relative;overflow:hidden}
+.prog-fill{position:absolute;inset:0 100% 0 0;background:var(--gold);transition:right .5s ease}
+.prog-txt{font-family:var(--mono);font-size:11px;color:var(--ink-soft)}
+@media(max-width:640px){.prog{display:none}}
+
+/* ---------- szekciók ---------- */
+main{background:var(--stone)}
+section.mod{padding:60px 0 10px}
+.mod-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.mod-num{
+  font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.14em;
+  border:1px solid var(--gold);padding:3px 8px;flex:none;
+}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.75rem,4.2vw,2.5rem);line-height:1.14;margin:0}
+h3{font-family:var(--serif);font-weight:600;font-size:1.42rem;margin:34px 0 8px;color:var(--ink)}
+h4{font-family:var(--sans);font-weight:700;font-size:.86rem;letter-spacing:.11em;text-transform:uppercase;color:var(--rubric);margin:30px 0 10px}
+p{margin:0 0 14px}
+.card{background:var(--paper);border:1px solid var(--line);padding:26px 26px 20px;margin:18px 0}
+.goal{background:#F3F5FA;border:1px solid #C7D2E6;border-left:4px solid var(--lapis);padding:18px 20px;margin:18px 0}
+.goal .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--lapis);display:block;margin-bottom:7px}
+.goal p{margin:0;font-size:.97rem}
+ul.marks{list-style:none;padding:0;margin:0 0 14px}
+ul.marks li{position:relative;padding-left:24px;margin-bottom:8px}
+ul.marks li::before{content:"¶";position:absolute;left:0;top:0;color:var(--rubric);font-family:var(--serif);font-size:1.05em}
+
+/* ---------- táblázat ---------- */
+.tbl-scroll{overflow-x:auto;margin:18px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;background:var(--paper)}
+th{
+  background:var(--ink);color:#F7F5F0;font-family:var(--mono);font-weight:500;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:10px 12px;
+}
+td{border-bottom:1px solid var(--line);padding:10px 12px;vertical-align:top}
+tbody tr:nth-child(even) td{background:#FAF9F6}
+td strong{font-weight:700}
+
+/* ---------- forrás ---------- */
+.source{background:#FBFAF6;border:1px solid var(--line);border-left:4px solid var(--rubric);padding:22px 24px;margin:20px 0}
+.source .src-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rubric);display:block;margin-bottom:10px}
+.source .src-txt{font-family:var(--serif);font-size:1.09rem;line-height:1.6}
+.qs{list-style:none;counter-reset:q;padding:0;margin:16px 0 0}
+.qs li{counter-increment:q;position:relative;padding-left:28px;margin-bottom:9px;font-size:.95rem}
+.qs li::before{content:counter(q,lower-alpha) ")";position:absolute;left:0;font-family:var(--mono);font-size:12px;color:var(--lapis);top:2px}
+.eonly{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;background:var(--gold);color:#fff;padding:1px 5px;vertical-align:2px;margin-right:5px}
+
+/* ---------- feladatok ---------- */
+.task{background:var(--paper);border:1px solid var(--line);margin:16px 0;padding:20px 22px}
+.task.done{border-color:var(--gold);box-shadow:inset 3px 0 0 var(--gold)}
+.task-id{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--rubric);display:block;margin-bottom:6px}
+.task-q{font-weight:600;margin-bottom:14px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+.chip{
+  background:#FBFAF7;border:1px solid var(--line);padding:8px 13px;font-size:.9rem;
+  transition:all .16s ease;text-align:left;color:var(--ink);
+}
+.chip:hover{border-color:var(--lapis);color:var(--lapis)}
+.chip.sel{border-color:var(--lapis);background:#EEF2FA;color:var(--lapis)}
+.chip.ok{border-color:var(--ok);background:#EDF5F0;color:var(--ok)}
+.chip.bad{border-color:var(--bad);background:#FBEFEE;color:var(--bad)}
+.chip[disabled]{cursor:default;opacity:.85}
+.chip.num{font-family:var(--mono);font-size:.82rem}
+.tf-row{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px dotted var(--line);flex-wrap:wrap}
+.tf-row:last-of-type{border-bottom:0}
+.tf-txt{flex:1;min-width:220px;font-size:.95rem}
+.tf-btns{display:flex;gap:6px;flex-wrap:wrap}
+.tf-note{flex-basis:100%;font-size:.88rem;color:var(--ink-soft);font-style:italic;display:none;padding-top:4px}
+.tf-note.show{display:block}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.match{grid-template-columns:1fr}}
+.match .colhead{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.match .stack{display:flex;flex-direction:column;gap:7px}
+.pairbadge{font-family:var(--mono);font-size:10px;color:var(--gold);margin-left:6px}
+.fill-in{
+  font-family:var(--mono);font-size:.9rem;border:0;border-bottom:1.5px solid var(--lapis);
+  background:#F7F9FD;padding:2px 6px;min-width:130px;color:var(--ink);
+}
+.fill-in.ok{border-color:var(--ok);background:#EDF5F0}
+.fill-in.bad{border-color:var(--bad);background:#FBEFEE}
+.act{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.btn{
+  background:var(--ink);color:#F7F5F0;border:1px solid var(--ink);padding:8px 16px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+}
+.btn:hover{background:var(--rubric);border-color:var(--rubric)}
+.btn.ghost{background:transparent;color:var(--ink-soft);border-color:var(--line)}
+.btn.ghost:hover{color:var(--rubric);border-color:var(--rubric);background:transparent}
+.verdict{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em}
+.verdict.ok{color:var(--ok)}
+.verdict.bad{color:var(--bad)}
+.answer{
+  display:none;margin-top:14px;padding:15px 17px;background:#F6F4EE;
+  border-left:3px solid var(--gold);font-size:.94rem;
+}
+.answer.show{display:block}
+.answer .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
+
+/* ---------- HERO: ok-okozati lánc ---------- */
+.chain-wrap{background:var(--paper);border:1px solid var(--line);padding:28px 26px 24px;margin-top:38px;position:relative}
+.chain-wrap .src-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rubric);display:block;margin-bottom:4px}
+.chain-wrap h3{margin:0 0 4px;font-size:1.5rem}
+.chain-wrap .hint{font-size:.93rem;color:var(--ink-soft);margin-bottom:18px}
+.chain-pool{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chain-track{display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-height:46px;padding:12px;background:#FAF9F5;border:1px dashed var(--line)}
+.chain-slot{
+  font-family:var(--sans);font-size:.88rem;background:#fff;border:1px solid var(--lapis);
+  color:var(--lapis);padding:7px 12px;
+}
+.chain-arrow{color:var(--gold);font-family:var(--mono)}
+.chain-goal{
+  font-family:var(--serif);font-size:1.4rem;font-weight:600;letter-spacing:.12em;
+  color:var(--stone-2);border:1px solid var(--line);padding:8px 18px;transition:all .55s ease;
+}
+.chain-goal.lit{
+  color:#fff;background:var(--rubric);border-color:var(--rubric);
+  box-shadow:0 0 0 4px rgba(176,134,55,.28);
+}
+
+/* ---------- fogalomtár ---------- */
+.search{
+  width:100%;padding:12px 14px;border:1px solid var(--line);background:var(--paper);
+  font-family:var(--sans);font-size:.98rem;color:var(--ink);
+}
+.search:focus{outline:2px solid var(--lapis);outline-offset:-2px}
+.gloss{margin-top:14px}
+.gloss dl{margin:0}
+.gloss .row{display:grid;grid-template-columns:210px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+@media(max-width:600px){.gloss .row{grid-template-columns:1fr;gap:3px}}
+.gloss dt{font-family:var(--serif);font-size:1.1rem;font-weight:600}
+.gloss dd{margin:0;font-size:.94rem;color:var(--ink-soft)}
+.no-hit{padding:16px 0;color:var(--ink-soft);font-style:italic}
+
+/* ---------- kronológia ---------- */
+.time{border-left:2px solid var(--line);margin:18px 0 0;padding-left:0}
+.time .ev{position:relative;padding:0 0 20px 26px}
+.time .ev::before{content:"";position:absolute;left:-6px;top:8px;width:9px;height:9px;background:var(--rubric);border-radius:50%}
+.time .yr{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--rubric)}
+.time .ttl{font-family:var(--serif);font-size:1.16rem;font-weight:600;line-height:1.3}
+.time .why{font-size:.9rem;color:var(--ink-soft)}
+
+/* ---------- esszé eszköz ---------- */
+.essay-tool{background:var(--paper);border:1px solid var(--line);padding:24px}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:7px 12px;border:1px solid var(--line);background:#FBFAF7;color:var(--ink-soft)}
+.pill.on{background:var(--lapis);border-color:var(--lapis);color:#fff}
+textarea{
+  width:100%;min-height:190px;padding:14px;border:1px solid var(--line);background:#FCFBF8;
+  font-family:var(--serif);font-size:1.08rem;line-height:1.6;color:var(--ink);resize:vertical;
+}
+textarea:focus{outline:2px solid var(--lapis);outline-offset:-2px}
+.counter{display:flex;align-items:center;gap:14px;margin-top:12px;flex-wrap:wrap}
+.counter .n{font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1}
+.counter .state{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em}
+.gauge{flex:1;min-width:160px;height:8px;background:var(--stone-2);position:relative}
+.gauge .zone{position:absolute;top:0;bottom:0;background:rgba(46,107,79,.28)}
+.gauge .mark{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+.check-list{list-style:none;padding:0;margin:18px 0 0}
+.check-list li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:.93rem}
+.check-list input{margin-top:5px;accent-color:var(--rubric);width:16px;height:16px}
+
+/* ---------- tippek ---------- */
+.tips{counter-reset:tip;list-style:none;padding:0;margin:0}
+.tips li{counter-increment:tip;position:relative;padding:16px 0 16px 56px;border-bottom:1px solid var(--line)}
+.tips li::before{
+  content:counter(tip,decimal-leading-zero);position:absolute;left:0;top:16px;
+  font-family:var(--mono);font-size:13px;color:var(--gold);letter-spacing:.06em;
+}
+.tips b{font-family:var(--serif);font-size:1.14rem;display:block;margin-bottom:3px}
+
+footer{background:var(--ink);color:#CFCCC3;padding:52px 0 60px;margin-top:70px;font-size:.9rem}
+footer h3{color:#F7F5F0;font-family:var(--serif);font-size:1.4rem;margin:0 0 14px}
+footer a{color:var(--gold)}
+footer ul{padding-left:18px;margin:0 0 18px}
+footer li{margin-bottom:7px}
+.note{font-size:.85rem;color:#9C9890;font-style:italic;border-top:1px solid #35342F;padding-top:18px;margin-top:24px}
+
+.anim .fade{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.anim .fade.in{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--lapis);outline-offset:2px}
+
+@media print{
+  nav.rail,.chain-wrap,.act,.essay-tool{display:none!important}
+  body{background:#fff;font-size:11pt}
+  .answer{display:block!important}
+  section.mod{padding:14px 0;page-break-inside:auto}
+  .fade{opacity:1;transform:none}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Mini kurzus · Történelem érettségi</p>
+    <h1>A középkori város<span class="sub">és a középkor gazdasága</span></h1>
+    <p class="lede">Hét modul, hét forrás, huszonnégy feladat és két kidolgozott mintaesszé — a 2.2 Gazdaság, társadalom, állam témakör teljes érettségi anyaga, közép- és emelt szinten.</p>
+    <div class="meta">
+      <span class="tag">7 modul</span>
+      <span class="tag">24 feladat</span>
+      <span class="tag">7 forrás</span>
+      <span class="tag">Középszint + <b>E</b></span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+
+    <div class="chain-wrap" id="chain">
+      <span class="src-lbl">A témakör gerince</span>
+      <h3>Építsd fel az ok-okozati láncot!</h3>
+      <p class="hint">A javítókulcsok nem a felsorolást, hanem az összefüggést jutalmazzák. Kattints a lépésekre abban a sorrendben, ahogyan egymásból következnek — a végállomás magától kigyullad.</p>
+      <div class="chain-pool" id="chainPool"></div>
+      <div class="chain-track" id="chainTrack">
+        <span style="font-family:var(--mono);font-size:11px;color:#9A968C" id="chainPlaceholder">A sorrend ide épül…</span>
+      </div>
+      <div class="act">
+        <button class="btn ghost" id="chainReset">Újrakezdem</button>
+        <span class="verdict" id="chainVerdict"></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <div class="rail-scroll" id="railScroll">
+      <a href="#m1">1 · Agrárforradalom</a>
+      <a href="#m2">2 · Uradalom</a>
+      <a href="#m3">3 · A város</a>
+      <a href="#m4">4 · Céhek</a>
+      <a href="#m5">5 · Kereskedelem</a>
+      <a href="#m6">6 · Pestis</a>
+      <a href="#m7">7 · Magyar városok</a>
+      <a href="#osszefoglalo">Fogalomtár</a>
+      <a href="#bank">Feladatbank</a>
+      <a href="#esszemuhely">Esszéműhely</a>
+      <a href="#szobeli">Szóbeli</a>
+      <a href="#tippek">Tippek</a>
+    </div>
+    <div class="prog" title="Megoldott feladatok">
+      <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+      <span class="prog-txt" id="progTxt">0/24</span>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ 1. MODUL ============ -->
+<section class="mod fade" id="m1">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">1. modul</span></div>
+    <h2>Agrárforradalom: a mezőgazdaság átalakulása</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Meg tudod nevezni a X–XIII. századi mezőgazdasági fellendülés technikai és szervezeti újításait, és be tudod mutatni, hogyan vezetett a terményfelesleg a városok kialakulásához. Ez a modul adja az egész témakör ok-okozati alapját: a városok nem „maguktól” jöttek létre.</p>
+    </div>
+
+    <h3>A kiindulópont: önellátó gazdaság</h3>
+    <p>A Nyugatrómai Birodalom bukása (476) után Európa gazdasága évszázadokra visszaesett. A városi élet elsorvadt, a pénzhasználat háttérbe szorult, a termelés célja nem a piac, hanem a saját szükséglet kielégítése lett: ezt nevezzük <b>naturális gazdálkodásnak</b>. Az uralkodó művelési mód a <b>talajváltó (legelőváltó) rendszer</b> volt: az erdőirtással nyert földet addig művelték, amíg ki nem merült, majd elhagyták, és új területet vontak művelés alá — sok földet és állandó vándorlást igényelt, alacsony hozam mellett.</p>
+
+    <h3>Technikai újítások</h3>
+    <p>A VIII. századtól — először a nagy kolostorok birtokain — sorra jelentek meg azok az újítások, amelyek együttesen megsokszorozták a termelést. Fontos látni, hogy ezek <i>egymást feltételezték</i>: külön-külön egyik sem lett volna elegendő.</p>
+    <ul class="marks">
+      <li><b>Nehéz, csoroszlyás, kormánylemezes eke:</b> mélyen megforgatta a talajt, így alkalmas volt a kötött, nehéz észak-európai földek művelésére, és nem kellett keresztirányban újraszántani.</li>
+      <li><b>Új fogatolás:</b> a nyakhám helyett a szügyhám nem fojtotta a vonóállatot, így a húzóerő többszörösére nőtt. Ehhez társult a patkó elterjedése.</li>
+      <li><b>Vízimalom és szélmalom:</b> az őrlés gépesítése munkaerőt szabadított fel.</li>
+      <li><b>Nyomásos gazdálkodás:</b> előbb a kétnyomásos (szántó + ugar), majd a háromnyomásos rendszer (őszi vetés + tavaszi vetés + ugar). Nyugat-Európában a X–XI. századra a háromnyomásos vált általánossá, Dél-Európában megmaradt a kétnyomásos.</li>
+    </ul>
+    <p>A háromnyomásos rendszer előnye kettős: a terület kétharmada állt művelés alatt a fele helyett, és a tavaszi vetésben megjelent a <b>zab</b>, ami lehetővé tette a ló szélesebb körű használatát igavonó állatként. A trágyázás és a vetésforgó együtt megszüntette a vándorlási kényszert.</p>
+
+    <h3>Extenzív fejlődés</h3>
+    <p>Az új módszerek (intenzív fejlődés) mellett a művelésbe vont területek megsokszorozódása (extenzív fejlődés) is döntő volt: erdőirtás, gyeptörés, mocsárlecsapolás, Flandriában tengertől való területhódítás. A XI–XIII. század Európa nagy belső gyarmatosításának kora.</p>
+
+    <h4>Kötelező adatok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fogalmak</th><th>Évszámok</th><th>Topográfia</th></tr></thead>
+      <tbody><tr>
+        <td>naturális gazdálkodás, talajváltó rendszer, nyomásos gazdálkodás, ugar, nyomáskényszer, dűlő, szügyhám, nehézeke, árutermelés</td>
+        <td><b>476–1492:</b> a középkor<br><b>VIII. sz.:</b> a nyomásos gazdálkodás terjedése<br><b>X–XI. sz.:</b> a háromnyomásos rendszer általánossá válása<br><b>XI–XIII. sz.:</b> nagy erdőirtások, népességnövekedés</td>
+        <td>Nyugat-Európa (Franciaország, Flandria, Anglia); Dél-Európa (kétnyomásos gazdálkodás)</td>
+      </tr></tbody>
+    </table></div>
+
+    <h4>1. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">Nagy Károly rendelete a királyi birtokok igazgatásáról · Capitulare de villis, 800 körül · tartalmi kivonat</span>
+      <p class="src-txt">A rendelet előírja, hogy a birtokok intézői minden évben pontos jegyzéket készítsenek a termésről, az állatállományról és a beszolgáltatott javakról, és azt karácsonyra küldjék meg az uralkodónak. Meghatározza, hogy a birtokokon milyen műhelyeknek kell működniük: legyen kovács, ács, szíjgyártó, valamint sör-, illetve borkészítésre alkalmas felszerelés. Elrendeli, hogy a birtok maga állítsa elő mindazt, amire szüksége van, és csak a fölösleget adják el.</p>
+      <ol class="qs">
+        <li>Nevezze meg a forrás alapján a kora középkori gazdálkodás azon jellemzőjét, amelyet naturális gazdálkodásnak nevezünk! Idézze az alátámasztó részt!</li>
+        <li>Milyen célt szolgálhatott a részletes jegyzékkészítés előírása?</li>
+        <li>Mit árul el a forrás arról, hol folyt a kora középkorban a kézműves termelés? Miben tér el ettől a XII. századi helyzet?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src1">Megoldásvázlat</button></div>
+      <div class="answer" id="src1"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> A birtok maga állítja elő, amire szüksége van, és csak a fölösleget adja el — ez a naturális gazdálkodás. <b>b)</b> Az uralkodói ellenőrzést és a bevételek tervezhetőségét szolgálta a pénzgazdálkodás fejletlensége idején. <b>c)</b> A kézműves termelés a birtokon belül, háziipari szinten folyt; a XII. századtól ez a városi, céhes keretek közé kerül át.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m1"></div>
+  </div>
+</section>
+
+<!-- ============ 2. MODUL ============ -->
+<section class="mod fade" id="m2">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">2. modul</span></div>
+    <h2>Az uradalom és a jobbágyság</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni az uradalom felépítését, fel tudod sorolni a jobbágyi szolgáltatásokat és a jobbágy jogait, és értékelni tudod a földesúr–jobbágy viszony kettősségét: a függés és a védelem együttes jelenlétét.</p>
+    </div>
+
+    <h3>Hűbériség és társadalmi rendek</h3>
+    <p>A középkori Nyugat-Európa társadalma az antik római és a barbár germán örökség találkozásából jött létre. A rómaiaktól származott a nagybirtok (latifundium), a latin nyelv és a kereszténység; a germánoktól a kíséret intézménye. Ebből alakult ki a <b>hűbériség</b>: a hűbérúr (senior) hűbérbirtokot adott a hűbéresnek (vazallus), aki ezért katonai szolgálattal és tanáccsal tartozott. A kortársak a társadalmat három rendre osztották: az imádkozók (<i>oratores</i>), a harcolók (<i>bellatores</i>) és a dolgozók (<i>laboratores</i>) rendjére — a dolgozók rendje azonban nem volt része a hűbéri láncolatnak.</p>
+    <p><span class="eonly">E</span>A földesurak igyekeztek birtokaikra <b>immunitást</b>, azaz a királyi jogok alóli mentességet szerezni. Ahol ez sikerült, ott királyi tisztviselő nem szedhetett adót, a földesúr viszont eredendően királyi jogokat gyakorolhatott: bíráskodhatott, vásárt tarthatott, vámot szedhetett, bányát nyithatott.</p>
+
+    <h3>Az uradalom felépítése</h3>
+    <p>Az uradalom nagy kiterjedésű, de nem feltétlenül összefüggő földterület, amely falvak tucatjait fogta össze. Központja kezdetben az udvarház, a X. századtól egyre inkább a vár. Nem pusztán nagybirtok volt, hanem <b>hatalmi szervezet</b> is: igazgatási és bíráskodási feladatokat látott el.</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Az uradalom része</th><th>Ki használja?</th><th>Kié a termés?</th></tr></thead>
+      <tbody>
+        <tr><td><b>Jobbágytelkek</b><br>(belső telek: házhely, kert; külső telek: szántó)</td><td>a jobbágycsalád, saját eszközeivel</td><td>a jobbágyé, de szolgáltatásokkal tartozik érte</td></tr>
+        <tr><td><b>Majorság (allódium)</b><br>a földesúr saját kezelésű birtoka</td><td>a jobbágyok művelik robotban</td><td>teljes egészében a földesúré</td></tr>
+        <tr><td><b>Közös használatú területek</b><br>erdő, legelő, kaszáló, folyó</td><td>a falu közössége</td><td>a használatért külön díj jár a földesúrnak</td></tr>
+      </tbody>
+    </table></div>
+    <p>A szántóföldeket <b>dűlőkre</b> osztották, a parcellákat évente sorsolással osztották szét — így mindenki kapott jó és gyengébb földet is. A dűlőn belül érvényes volt a <b>nyomáskényszer</b>. Ennek két oka volt: a különböző nyomások zavarták volna egymást (az ugaron legelő állatok lelegelhették volna a szomszédos vetést), másrészt a nehézeke vontatásához 4–6 ökör kellett, amennyit egy jobbágy ritkán tartott — vagyis össze kellett fogni, ez pedig csak azonos munkarend mellett volt megszervezhető.</p>
+
+    <h3>A jobbágy jogai és kötelezettségei</h3>
+    <p>A jobbágyság a XI. századra állt össze jogilag egységesülő réteggé a lesüllyedő szabadokból, a római colonusok utódaiból és a felszabadított rabszolgákból. A jobbágy örökíthető telekkel rendelkezett, amelynek azonban csak <i>birtokosa</i> (használója) volt — a tulajdonos a földesúr maradt.</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Kötelezettségek</th><th>Jogok</th></tr></thead>
+      <tbody>
+        <tr><td><b>Terményjáradék</b> — a termés meghatározott hányada (a <b>tized</b> az egyházat illette)</td><td>Örökíthető telekhasználat: a telket örökölhette, sőt eladhatta</td></tr>
+        <tr><td><b>Pénzjáradék</b> — rendszeres pénzadó, a pénzgazdálkodás fejlődésével egyre nagyobb súllyal</td><td>Szabad költözés joga (tartozásai rendezése után)</td></tr>
+        <tr><td><b>Munkajáradék (robot)</b> — a majorsági földek megművelése</td><td>A szokásjog védelme a földesúri túlkapásokkal szemben</td></tr>
+        <tr><td>Ajándék a földesúr életének nagyobb eseményein</td><td>Az uradalom nyújtotta katonai és jogi védelem</td></tr>
+        <tr><td><span class="eonly">E</span><b>Banalitások</b> — a földesúri monopóliumok (malom, kocsma, mészárszék, sörfőzés) kötelező igénybevétele</td><td>Saját eszközeivel, saját döntése szerint gazdálkodhatott telkén</td></tr>
+      </tbody>
+    </table></div>
+    <p>A jobbágy személyében is függött urától: a földesúr bíráskodott felette (<b>úriszék</b>), és a házasodáshoz is engedélyére volt szükség. A viszony ugyanakkor nem egyoldalú: a szokásjog rögzítette a szolgáltatások mértékét, és a földesúrnak érdeke fűződött ahhoz, hogy jobbágyai életképesek maradjanak.</p>
+
+    <div class="source" style="border-left-color:var(--gold)">
+      <span class="src-lbl" style="color:var(--gold)">Forráskritikai megjegyzés — érettségin is jó pont</span>
+      <p style="margin:0;font-size:.96rem">Sok tankönyvi vázlat felsorolja a földesúri jogok között az „első éjszaka jogát” (<i>ius primae noctis</i>). A mai történettudomány álláspontja szerint gyakorlásáról nincs megbízható korabeli bizonyíték: nagy valószínűséggel késő középkori–újkori irodalmi toposzról van szó. Ha egy forrás erre hivatkozik, érdemes jelezni a keletkezés idejét és a szerző szándékát — az ilyen megjegyzés a „történelmi gondolkodás” szempontnál értékelhető.</p>
+    </div>
+
+    <h4>2. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">Nyugat-frank apátsági birtokösszeírás (urbárium), IX. század · tartalmi kivonat</span>
+      <p class="src-txt">Az összeírás birtokrészenként sorolja fel a rajta élő család nevét, a földterület nagyságát és a járandóságokat. Egy tipikus bejegyzés szerint a család a maga telke után évente meghatározott számú napot köteles az apátság saját földjén dolgozni, ezenkívül szántanivaló földdarabot művelni, kocsival fuvarozni, továbbá bort, sertést, tyúkot és tojást beszolgáltatni. A szolgáltatások mértékét a telek nagyságához és nem a család vagyonához igazítják.</p>
+      <ol class="qs">
+        <li>Csoportosítsa a szolgáltatásokat a három járadéktípus szerint! Melyik típus hiányzik, és ez mit árul el a korszak gazdaságáról?</li>
+        <li>Mit jelent, hogy a szolgáltatásokat a telek nagyságához igazították? Milyen érdeke fűződött ehhez a földesúrnak?</li>
+        <li>Milyen forrástípusba tartozik az összeírás? Mennyiben megbízhatóbb egy elbeszélő forrásnál a jobbágyi terhek vizsgálatakor?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src2">Megoldásvázlat</button></div>
+      <div class="answer" id="src2"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Terményjáradék: bor, sertés, tyúk, tojás; munkajáradék: robotnapok, szántás, fuvar. A <i>pénzjáradék</i> hiányzik, ami a pénzhasználat visszaszorulására utal. <b>b)</b> A telek nagysága a teherbíró képességet mutatta; a földesúr így tartósan fenntartható terhelést állapíthatott meg. <b>c)</b> Igazgatási (gazdasági) forrás, amely a mindennapi gyakorlatot rögzíti, ezért a terhek vizsgálatában megbízhatóbb az elbeszélő forrásoknál, bár a földesúri nézőpontot tükrözi.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m2"></div>
+  </div>
+</section>
+
+<!-- ============ 3. MODUL ============ -->
+<section class="mod fade" id="m3">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">3. modul</span></div>
+    <h2>A város születése és kiváltságai</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Meg tudod különböztetni az ókori és a középkori várost, fel tudod sorolni a városi kiváltságokat, és be tudod mutatni, hogyan vívta ki a városi közösség (kommuna) az önkormányzatot.</p>
+    </div>
+
+    <h3>Ókori vagy középkori város?</h3>
+    <p>Az ókori város népes település, hatalmi és igazgatási központ, amelynek lakói nem (csak) mezőgazdaságból éltek. A középkori város lényege ennél <i>más</i>: az országon belüli <b>jogi önállóság</b>, az önkormányzat. Ez a legfontosabb különbség, és az esszében is ezzel érdemes kezdeni. A város a feudális rendszer szempontjából „idegen test” volt: a feudális társadalomban mindenki vagy nemes, vagy egyházi személy, vagy jobbágy — a polgár egyikbe sem illett bele.</p>
+
+    <h3>Hol és miből lettek városok?</h3>
+    <p>A népvándorlás során az antik városok többsége elpusztult vagy elnéptelenedett. Az új városok a X–XIII. század között tömegesen jöttek létre, elsősorban Észak-Itáliában, Franciaországban, Angliában, Flandriában és a Baltikumban. Tipikus helyszíneik:</p>
+    <ul class="marks">
+      <li>egykori római települések helyén (a falak és utak megmaradtak);</li>
+      <li>várak és egyházi központok tövében, ahol vásárt tartottak;</li>
+      <li>kereskedelmi utak találkozásánál, folyami átkelőknél, kikötőkben;</li>
+      <li>zarándokutak állomásain, ahol a szállás- és vásárhelyek biztonságot és piacot jelentettek.</li>
+    </ul>
+    <p>A távolsági kereskedők személyük és áruik védelmére közösségeket (<b>gildéket</b>) hoztak létre; hozzájuk csatlakoztak azok a kézművesek, akik a mezőgazdasági árutermelés fejlődése miatt már iparosként is meg tudtak élni. E telepek lakói azután a kereskedők vezetésével új közösségeket, <b>kommunákat</b> szerveztek.</p>
+
+    <h3>A kiváltságok kivívása</h3>
+    <p>A városi jogokat rendszerint ki kellett harcolni a város világi vagy egyházi birtokosától. A kommunák pénzzel, ha kellett, fegyverrel vívták ki önállóságukat; a mozgalom különösen erős volt Flandriában, Észak-Itáliában és a Rajna-vidéken (Cambrai 1077, Laon 1112). Az uralkodók gyakran támogatták a törekvéseket, mert bennük a hűbérurakkal szemben szövetségest és megbízható adófizetőt láttak. <b>Ez kulcsösszefüggés:</b> a városok felemelkedése és a királyi hatalom megerősödése ugyanannak a folyamatnak a két oldala.</p>
+
+    <h4>A városi kiváltságok</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Kiváltság</th><th>Mit jelent?</th><th>Miért fontos?</th></tr></thead>
+      <tbody>
+        <tr><td><b>Önkormányzat joga</b></td><td>a polgárok közössége maga választja elöljáróit (bíró, polgármester, tanács)</td><td>a város kikerül a földesúri igazgatás alól</td></tr>
+        <tr><td><b>Szabad bíróválasztás és bíráskodás</b></td><td>saját joghatóság a város területén és lakói felett</td><td>a polgárt nem az úriszék ítéli meg</td></tr>
+        <tr><td><b>Adózás egy összegben</b></td><td>a város egy tételben fizeti adóját</td><td>a belső elosztás a város dolga</td></tr>
+        <tr><td><b>Vásártartás joga</b></td><td>heti piac és országos vásár</td><td>a város a környék gazdasági központja lesz</td></tr>
+        <tr><td><b>Árumegállító jog</b></td><td>az áthaladó kereskedőt áruja helyben tartó árusítására kötelezi</td><td>a helyi kereskedők előnyhöz jutnak</td></tr>
+        <tr><td><b>Szabad plébánosválasztás</b> (kegyúri jog)</td><td>a polgárok maguk választják papjukat</td><td>egyházi téren is önállóság</td></tr>
+        <tr><td><b>Vámmentesség; falépítés, birtokjog</b></td><td>vámkedvezmény, városfal, saját falvak</td><td>védelem és gazdasági háttér</td></tr>
+      </tbody>
+    </table></div>
+    <div class="goal" style="background:#FBF7EE;border-color:#E2D2AC;border-left-color:var(--gold)">
+      <span class="lbl" style="color:var(--gold)">Tanulási fogódzó</span>
+      <p>A kiváltságokat négy szó köré érdemes rendezni: <b>ÖNKORMÁNYZAT — BÍRÁSKODÁS — GAZDASÁG — EGYHÁZ</b>. Ha a felelet e négy csoport köré épül, a „szaknyelv” és a „történelmi ismeretek” szempontnál is előnyt jelent.</p>
+    </div>
+
+    <h3>A város képe</h3>
+    <p>A várost fallal vették körül — a falépítés maga is kiváltság volt. A falak közé szorított területen emeletes házakat építettek, keskeny, kövezetlen sikátorokkal. Csatornázás nem volt. A központ a piactér, itt állt a városháza és a főtemplom. Nyugat-Európa városainak átlagos lakossága 4–5 ezer fő körül mozgott; a távolsági kereskedelembe bekapcsolódó nagyvárosokban 10–15 ezren éltek. (Összehasonlításul: az ókori Róma lakossága a császárkorban elérte az egymilliót.) A zsúfoltság és a rossz higiénia miatt a városok a járványok melegágyai voltak.</p>
+
+    <h4>3. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">Német városalapító oklevél rendelkezései, XII. század eleje · tartalmi kivonat</span>
+      <p class="src-txt">Az oklevél szerint a városalapító úr piacot létesít, és mindenkinek, aki oda letelepszik, telket ad meghatározott évi bér fejében. A letelepülőknek szabad kereskedést és a saját maguk választotta bíró ítélkezését biztosítja. Kimondja, hogy aki egy éven és egy napon át háborítatlanul a városban él, azt szabad embernek kell tekinteni, és korábbi ura nem követelheti vissza. Megígéri továbbá, hogy a kereskedők áruik után a városban nem fizetnek vámot.</p>
+      <ol class="qs">
+        <li>Sorolja fel, milyen kiváltságokat biztosít a forrás! Csoportosítsa gazdasági és jogi jellegű jogokra!</li>
+        <li>Milyen érdeke fűződött a városalapító úrnak ahhoz, hogy ilyen kedvezményeket adjon? Két okot fogalmazzon meg!</li>
+        <li>Melyik rendelkezéshez kapcsolódik a „A városi levegő szabaddá tesz” mondás? Milyen társadalmi folyamatra utal?</li>
+        <li><span class="eonly">E</span>A mondás mai formája újkori összefoglalása a középkori gyakorlatnak. Miért kell óvatosan bánni az ilyen szállóigékkel a történeti elemzésben?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src3">Megoldásvázlat</button></div>
+      <div class="answer" id="src3"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Gazdasági: piac, szabad kereskedés, vámmentesség; jogi: szabad bíróválasztás, a személyes szabadság elnyerése. <b>b)</b> Benépesíteni a települést, adó- és vámbevételhez jutni; erősíteni saját hatalmi helyzetét. <b>c)</b> Az „egy év és egy nap” szabályához; a jobbágyok városba áramlására utal. <b>d)</b> Mert a szállóige utólagos, összefoglaló megfogalmazás, amely elfedi a helyi különbségeket és a gyakorlat korlátait.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m3"></div>
+  </div>
+</section>
+
+<!-- ============ 4. MODUL ============ -->
+<section class="mod fade" id="m4">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">4. modul</span></div>
+    <h2>A városi társadalom és a céhek</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Be tudod mutatni a városi társadalom rétegződését, és részletesen ismerteted a céhek működését: a szakmai szabályozást, a mesterré válás útját és a céhek városi szerepét. Meg tudod fogalmazni a céhrendszer kettős — védelmező és korlátozó — természetét.</p>
+    </div>
+
+    <h3>Ki a polgár?</h3>
+    <p>A városlakó szabad ember volt, viszont vagyona arányában adót fizetett. Fontos a pontos fogalomhasználat: a városlakóknak <i>csak kisebb része</i> volt polgár. Polgárjogot általában csak ingatlantulajdonos szerezhetett — elsősorban az önálló műhellyel rendelkező iparosmesterek, a kereskedők és a háztulajdonosok.</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Réteg</th><th>Kik tartoztak ide?</th><th>Jogi-politikai helyzet</th></tr></thead>
+      <tbody>
+        <tr><td><b>Patríciusok</b></td><td>a leggazdagabb kereskedő- és bankárcsaládok</td><td>kezükben a városi tanács és a bírói tisztség; közülük került ki a polgármester</td></tr>
+        <tr><td><b>Polgárok</b></td><td>ingatlannal rendelkező iparosmesterek, kereskedők</td><td>polgárjog; a XIII. századtól a mesterek kivívták a beleszólást az irányításba</td></tr>
+        <tr><td><b>Plebs</b></td><td>legények, napszámosok, beköltöző jobbágyok</td><td>személyükben szabadok, de a városi politikából kizárva</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="eonly">E</span>A városvezetésben egyes családok idővel meghatározó befolyásra tehettek szert: Firenzében a bankárból városúrrá emelkedő <b>Mediciek</b> (a család vezető szerepe 1434-től), Milánóban a Sforzák.</p>
+
+    <h3>A céhek: miért kellett szabályozni?</h3>
+    <p>A céh az azonos szakmát űző mesterek érdekvédelmi és szakmai szervezete; teljes jogú tagja csak az önálló műhellyel rendelkező mester lehetett. A rendszer alapproblémája a <b>szűk piac</b>: a középkori város néhány ezer fős vevőkört jelentett, a szállítás drága és kockázatos. Ha a mesterek szabadon versenyeztek volna, néhányan tönkremennek. A céh ezért nem növelni, hanem <i>elosztani</i> akarta a piacot: célja az volt, hogy minden mester meg tudjon élni.</p>
+    <ul class="marks">
+      <li><b>Minőségi és mennyiségi előírások</b> — milyen alapanyag, milyen szerszám, mennyi termék.</li>
+      <li><b>Árszabályozás</b> — az árak maximalizálása, hogy senki ne szoríthasson ki mást alákínálással.</li>
+      <li><b>A munkaerő korlátozása</b> — az inasok és legények száma, valamint bérük felső határa.</li>
+      <li><b>A verseny eszközeinek tiltása</b> — éjszakai munka és reklám tilalma, az ügyfélcsábítás bírsága.</li>
+      <li><b>A mesterek számának meghatározása</b> — csak annyi, amennyi meg is tud élni.</li>
+      <li><b>A kontárok üldözése</b> és a városkörnyéki falvakban az iparűzés tiltása.</li>
+    </ul>
+    <p>A céh ugyanakkor <b>védett is</b>: közös kasszát tartott fenn, amelyből a mester betegsége vagy halála esetén támogatta a családot, és a szakmai színvonal őrzésével a vásárló érdekét is szolgálta.</p>
+
+    <h3>A mesterré válás útja</h3>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Fokozat</th><th>Mit csinál?</th><th>Mit kap?</th></tr></thead>
+      <tbody>
+        <tr><td><b>Inas</b></td><td>2–10 éven át egy mester mellett tanul, a mester házában él</td><td>szállás és ellátás, bér nem</td></tr>
+        <tr><td><b>Legény</b></td><td>felszabadulás után bérért dolgozik; vándorútra indul idegen városok mestereihez</td><td>bér, szállás</td></tr>
+        <tr><td><b>Mester</b></td><td>mesterremeket készít; ha elfogadják és van tőkéje, önálló lesz</td><td>műhely, céhtagság, polgárjog lehetősége</td></tr>
+      </tbody>
+    </table></div>
+    <p>A mesterré válást további akadályok is nehezítették: a kötelező lakoma költsége, a műhelynyitáshoz szükséges tőke, és az, hogy a céhek egyre gyakrabban részesítették előnyben a mesterek fiait. A késő középkorra ezért nőtt az „örökös legények” száma — a rendszer merevségének fontos jele.</p>
+    <p>A munka jellemzője, hogy <b>nem volt munkamegosztás</b>: egyetlen ember végezte el a munkadarabon az összes műveletet. A munkaidő hajnaltól napnyugtáig tartott, viszont az év mintegy harmada ünnepnap volt. Ez a szervezeti forma a XVI. századtól, a manufaktúrák megjelenésével válik korszerűtlenné — a céh–manufaktúra szembeállítás gyakori érettségi feladat.</p>
+
+    <h4>4. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">Céhszabályzat rendelkezései, XIII–XIV. század · tartalmi kivonat</span>
+      <p class="src-txt">A szabályzat kimondja, hogy a mesterségben senki nem dolgozhat, aki nem tagja a céhnek. Előírja, hogy a mester legfeljebb két inast tarthat egyszerre. Megtiltja, hogy bárki napnyugta után gyertyafénynél dolgozzék, mert így nem lehet gondos munkát végezni. Elrendeli, hogy az elkészült árut a céh elöljárói vizsgálják meg, a hibás munkát pedig el kell kobozni. Rögzíti, hogy aki tagtársa vevőjét elcsalja, bírságot fizet a céh közös ládájába; ebből a ládából segítik a beteg mestereket és az özvegyeket is.</p>
+      <ol class="qs">
+        <li>Készítsen táblázatot arról, a céhélet mely területeit szabályozza a forrás (munkaerő, munkaidő, minőség, verseny, szociális gondoskodás)!</li>
+        <li>Nevezze meg azt a fogalmat, amellyel a céhen kívül dolgozó iparosokat illették!</li>
+        <li>Milyen két, egymással ellentétesnek tűnő célt szolgálnak a szabályok? Fogalmazza meg a céhrendszer kettősségét!</li>
+        <li><span class="eonly">E</span>Vesse össze a céhek működését a XVI. századi manufaktúrával a munkamegosztás és a verseny szempontjából!</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src4">Megoldásvázlat</button></div>
+      <div class="answer" id="src4"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Munkaerő (inasok száma), munkaidő (éjszakai munka tilalma), minőség (elöljárói vizsgálat), verseny (vevőcsalás bírsága), szociális gondoskodás (közös láda). <b>b)</b> kontár. <b>c)</b> A minőség és a megélhetés együttes biztosítása, vagyis a fogyasztó és a mester érdekének egyidejű védelme — a céh egyszerre védte és kötötte meg a városi ipart. <b>d)</b> A céhben nincs munkamegosztás és tiltott a verseny; a manufaktúrában részműveletekre bontott munka és piaci verseny jellemző.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m4"></div>
+  </div>
+</section>
+
+<!-- ============ 5. MODUL ============ -->
+<section class="mod fade" id="m5">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">5. modul</span></div>
+    <h2>Helyi és távolsági kereskedelem</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Meg tudod különböztetni a helyi és a távolsági kereskedelmet, be tudod mutatni a két nagy tengeri övezetet és összekötőjüket, a szárazföldi utakat. Ismered a Hanza és az itáliai kereskedővárosok szerepét, valamint a pénz- és hitelélet fejlődését.</p>
+    </div>
+
+    <h3>Piac és vásár</h3>
+    <p>A helyi kereskedelem a város és környéke közötti árucsere: a paraszt élelmiszert hozott, iparcikket vitt haza. Kétféle alkalom volt: a <b>heti piac</b> (helyi jelentőségű) és az évente egy-két alkalommal tartott <b>országos vásár</b>. A vásár szigorúan szabályozott esemény volt: az első napokban az árut csak felsorakoztatni lehetett; az árusítást a piaci felügyelő engedélyezte; a vitákat a piaci bíróság döntötte el; és érvényes volt a „vásár békéje” — a piacon senkit nem lehetett elfogni.</p>
+
+    <h3>A távolsági kereskedelem két jellegzetessége</h3>
+    <p>A közlekedés fejletlensége két dolgot határozott meg. Egyrészt szinte kizárólag <b>luxusárukkal</b> volt érdemes hosszú távra kereskedni, mert csak ezeknél térült meg a szállítás költsége és kockázata. Másrészt ahol lehetett, <b>vízi úton</b> szállítottak.</p>
+
+    <h3>A levantei kereskedelem</h3>
+    <p>A Levante (olaszul „napkelte”) a Földközi-tenger keleti medencéje. Innen érkezett a kínai selyem, az indiai gyapot és drágakő, valamint az indonéz fűszer — a karavánutak végpontjaiba (Bizánc, Antiochia, Alexandria), ahonnan hajóval szállították tovább. Cserébe Európa nemesfémet, nyersanyagot, később egyre inkább <i>iparcikket</i> (fegyver, posztó, bársony) adott: ez Európa gazdasági megerősödésének jele. A térség urai: a VII. századtól az arabok, a IX. századtól Bizánc, a XI. századtól — főleg a keresztes hadjáratok idejétől — <b>Velence, Genova és Pisa</b>. Velence hatalma a IV. keresztes hadjárat (1202–1204) után vált meghatározóvá.</p>
+
+    <h3>Az északi–balti övezet és a Hanza</h3>
+    <p>Keletről és északról nyersanyagok és élelmiszer érkeztek (prém, viasz, kátrány, borostyán, hering, gabona), nyugatról iparcikkek (flandriai posztó, fegyver, szerszám). Egyre nagyobb jelentőségű lett az angol gyapjú, a flandriai textilipar alapanyaga. A kereskedők egy-egy vállalkozás erejéig társultak: ezek voltak a <b>hanzák</b>. <b>1161-ben</b> az Északi- és a Balti-tenger kereskedői szövetkeztek, a XIV. században pedig létrejött az az észak-német városszövetség, amelyet nagy kezdőbetűvel <b>Hanzának</b> nevezünk (Lübeck, Hamburg, Bréma, Rostock). Jellegzetes hajójuk a <b>kogge</b>.</p>
+
+    <h3>A szárazföldi összeköttetés: Champagne</h3>
+    <p>A két tengeri övezetet a szárazföldi kereskedelem kötötte össze. Kezdeményezői az észak-itáliai kereskedővárosok (gabonára, húsra, borra volt szükségük) és a flandriai posztóvárosok (piacra) voltak. Az észak–déli kereskedelem központja a Párizstól keletre fekvő <b>Champagne</b> grófság lett: a vásárok hosszan (akár 48 napig) tartottak, biztonságosak voltak, és jelentős pénzváltó, később hiteltevékenység is működött rajtuk. Az alpesi hágók megnyitása után a délnémet városok (Augsburg, Nürnberg) piacai élénkültek meg; Közép-Európa Bécsen keresztül kapcsolódott a hálózatba. A XIII. század végétől azonban közvetlen tengeri útvonal nyílt Genova és Brugge között — ez a champagne-i vásárok hanyatlásához vezetett.</p>
+
+    <h3>Pénz, bank, hitel</h3>
+    <p>A pénzkölcsönzés mellett — az ókor után ismét — megjelent az átutalás, a letét, majd a <b>váltó</b>, amellyel nem kellett készpénzt szállítani. Az itáliai bankárcsaládok európai hálózatot építettek ki; a firenzei <b>aranyforint</b> (1252-től) a kontinens vezető pénzévé vált. A kamatszedés egyházi tilalma miatt a hitelezés sokáig kerülő úton (például árfolyamkülönbség formájában) valósult meg.</p>
+
+    <h4>5. forrás</h4>
+    
+<!-- ATLAS_MAP_START:23a -->
+<figure class="atlas-map" data-atlas-code="23a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 23a. térkép</span>
+    <h4>Európa gazdasága és kereskedelme, 14–15. század</h4>
+    <p class="atlas-map__focus">A kereskedelmi útvonalak, gazdasági központok és fontosabb árucikkek térbeli rendszere vizsgálható.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p025_23a.webp" target="_blank" rel="noopener" aria-label="Európa gazdasága és kereskedelme, 14–15. század – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img006.webp" alt="Történelmi térkép: Európa gazdasága és kereskedelme, 14–15. század" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:23a -->
+<div class="source">
+      <span class="src-lbl">Adatsor — mely árucikkek mely irányba mozogtak?</span>
+      <div class="tbl-scroll"><table>
+        <thead><tr><th>Övezet</th><th>Keletről / északról</th><th>Nyugatról / délről</th></tr></thead>
+        <tbody>
+          <tr><td><b>Levantei</b></td><td>selyem (Kína), gyapot és drágakő (India), fűszer (Indonézia)</td><td>nemesfém, nyersanyag, majd fegyver, posztó, bársony</td></tr>
+          <tr><td><b>Északi–balti</b></td><td>prém, viasz, kátrány, borostyán, hering, gabona, fa</td><td>flandriai posztó, fegyver, szerszám; angol gyapjú Flandriába</td></tr>
+          <tr><td><b>Szárazföldi</b></td><td>itáliai luxusáru és keleti fűszer észak felé</td><td>flandriai posztó dél felé; gabona, bor, hús Itáliába</td></tr>
+        </tbody>
+      </table></div>
+      <ol class="qs">
+        <li>Az atlasz XI–XIII. századi Európa-térképe segítségével nevezze meg a két tengeri övezetet összekötő útvonal legfontosabb állomásait!</li>
+        <li>Milyen változás figyelhető meg abban, hogy Európa mit szállított a Levantéra? Mire következtethetünk ebből?</li>
+        <li>Miért luxuscikkekkel kereskedtek elsősorban? Használja a „szállítási költség” kifejezést!</li>
+        <li><span class="eonly">E</span>Milyen következménye lett a Genova–Brugge tengeri útvonalnak a champagne-i vásárokra?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src5">Megoldásvázlat</button></div>
+      <div class="answer" id="src5"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Például Brugge – Champagne – az alpesi hágók – Milánó/Velence. <b>b)</b> A nemesfém és nyersanyag mellett megjelentek az iparcikkek: ez Európa ipari megerősödését jelzi. <b>c)</b> Mert a szállítási költség és kockázat magas volt, ezt csak a nagy értékű áruk viselték el. <b>d)</b> A közvetlen tengeri út miatt a szárazföldi vásárok elveszítették közvetítő szerepüket.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m5"></div>
+  </div>
+</section>
+
+<!-- ============ 6. MODUL ============ -->
+<section class="mod fade" id="m6">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">6. modul</span></div>
+    <h2>Válság és átalakulás: a nagy pestisjárvány</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Ismered a nagy pestisjárvány (1347–1352) okait és következményeit, és be tudod mutatni, hogyan alakította át a járvány a munkaerőpiacot, a jobbágyi szolgáltatásokat és a városi gazdaságot.</p>
+    </div>
+
+    <p>A XIV. század közepére a népességnövekedés elérte azt a határt, amelyet az akkori mezőgazdaság még el tudott tartani. Sorozatos rossz termések és éhínségek (1315–1317) gyengítették a lakosságot, amikor 1347-ben genovai hajókkal a Krím félszigetről Európába érkezett a pestis. A járvány <b>1347 és 1352 között</b> végigsöpört a kontinensen, és a becslések szerint Európa népességének mintegy <b>harmadát</b> elpusztította.</p>
+    <p>A pusztítás nem véletlenül volt a legnagyobb a városokban: a zsúfoltság, a csatornázás hiánya és a patkányállomány ideális körülményeket teremtett. A járvány ugyanakkor a gazdaság szerkezetét is átalakította:</p>
+    <ul class="marks">
+      <li><b>Munkaerőhiány:</b> a megfogyatkozott munkaerő értéke megnőtt, a bérek emelkedtek. Több uralkodó bérmaximáló rendeletekkel próbálta ezt megakadályozni — kevés sikerrel.</li>
+      <li><b>A jobbágyi terhek átalakulása:</b> Nyugat-Európában a földesuraknak kedvezőbb feltételeket kellett kínálniuk. Terjedt a robot pénzre váltása és a bérleti viszony; a személyi függés oldódott.</li>
+      <li><b>Feszültségek és felkelések:</b> a terhek visszaállítására tett kísérletek jobbágyfelkelésekhez vezettek (Jacquerie, 1358, Franciaország; Wat Tyler felkelése, 1381, Anglia).</li>
+      <li><b>A városok újjáéledése:</b> a XV. századra Nyugat-Európa gazdasága ismét fellendült; a fejlődés központjává (centrum) Flandria és az itáliai városok, mindenekelőtt Firenze váltak.</li>
+    </ul>
+    <p><b>Fontos érettségi összefüggés:</b> Kelet-Közép-Európában — így Magyarországon és Lengyelországban — a XV–XVI. században ezzel <i>ellentétes</i> irányú folyamat indult el: a jobbágyi terhek szigorodása és a röghöz kötés. Ez a „második jobbágyság”, amely már a kora újkor anyaga, de az összehasonlító esszéknél gyakran előkerül.</p>
+
+    <h4>6. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">Adatsor — egy nyugat-európai régió becsült népessége (1300 = 100)</span>
+      <div class="tbl-scroll"><table>
+        <thead><tr><th>Év</th><th>1300</th><th>1350</th><th>1400</th><th>1450</th><th>1500</th></tr></thead>
+        <tbody><tr><td><b>Népességindex</b></td><td>100</td><td>68</td><td>62</td><td>65</td><td>84</td></tr></tbody>
+      </table></div>
+      <ol class="qs">
+        <li>Mikor következett be a legnagyobb visszaesés? Nevezze meg az esemény pontos évhatárait!</li>
+        <li>Miért nem indult azonnal növekedésnek a népesség 1350 után? Két okot fogalmazzon meg!</li>
+        <li>Milyen gazdasági következménye lett a munkaerő megfogyatkozásának?</li>
+        <li><span class="eonly">E</span>Miért nem általánosítható Kelet-Közép-Európára a XV. századi tendencia?</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src6">Megoldásvázlat</button></div>
+      <div class="answer" id="src6"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> 1350 körül; 1347–1352. <b>b)</b> Az ismétlődő járványkitörések és a csökkent születésszám. <b>c)</b> A munkaerőhiány miatt emelkedtek a bérek, és enyhültek a jobbágyi terhek. <b>d)</b> Kelet-Közép-Európában ellentétes irányú folyamat indult: a terhek szigorodása, majd a röghöz kötés.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m6"></div>
+  </div>
+</section>
+
+<!-- ============ 7. MODUL ============ -->
+<section class="mod fade" id="m7">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">7. modul</span></div>
+    <h2>Magyar városfejlődés</h2>
+    <div class="goal">
+      <span class="lbl">Tanulási cél</span>
+      <p>Meg tudod különböztetni a szabad királyi várost, a bányavárost és a mezővárost, ismered IV. Béla és Zsigmond várospolitikáját, és be tudod mutatni, miben tért el a magyar városfejlődés a nyugat-európaitól. <b>Erre a modulra a középszintű írásbeli HOSSZÚ (magyar történelmi) esszéjénél és a szóbelin lehet szükség.</b></p>
+    </div>
+
+    <h3>IV. Béla várospolitikája</h3>
+    <p>Magyarországon a városiasodás nyugati mintára, de később és gyengébben indult meg. Fordulópontot a <b>tatárjárás (1241–1242)</b> utáni újjáépítés jelentett: IV. Béla tudatos telepítő- és várospolitikába kezdett, nyugatról <b>hospeseket</b> (vendégtelepeseket) hívott be, és kiváltságlevelekkel ösztönözte a fallal körülvett települések létrejöttét. <b>1244-ben</b> a pesti polgárok kaptak kiváltságlevelet, amely szabad bíró- és plébánosválasztást, valamint vámkedvezményeket biztosított; a lakosság egy része később a védhetőbb budai várhegyre költözött.</p>
+    <p>A gazdasági alapot a mezőgazdasági árutermelés és a pénzgazdálkodás megerősödése adta. I. Károly pénzügyi reformjai (a nemesfémbányászat fellendítése, az aranyforint verése, a kapuadó és a harmincadvám bevezetése) tovább erősítették a városok szerepét.</p>
+
+    <h3>A háromosztatú városhálózat</h3>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Várostípus</th><th>Kitől függ?</th><th>Jellemzők, példák</th></tr></thead>
+      <tbody>
+        <tr><td><b>Szabad királyi város</b></td><td>közvetlenül a királytól</td><td>teljes körű kiváltságok: fal, önkormányzat, szabad bíró- és plébánosválasztás, árumegállító jog, egy összegben fizetett adó, céhes ipar. Buda, Pozsony, Sopron, Nagyszombat, Kassa, Eperjes, Bártfa (a hét tárnoki város)</td></tr>
+        <tr><td><b>Bányaváros</b></td><td>közvetlenül a királytól</td><td>a nemesfém- és sóbányászathoz kötődő kiváltságolt települések: Körmöcbánya (arany), Selmecbánya (ezüst), Besztercebánya (réz)</td></tr>
+        <tr><td><b>Mezőváros (oppidum)</b></td><td>földesúri joghatóság alatt</td><td>mezőgazdasági jellegű, a kiváltságoknak csak szűkebb körével: legfontosabb az adó egy összegben történő megfizetése. Debrecen, Szeged, Kecskemét, Gyöngyös. <b>Ide tartozott a városok többsége.</b></td></tr>
+      </tbody>
+    </table></div>
+    <p>Külön csoportot alkottak az erdélyi szász városok (Nagyszeben, Brassó, Beszterce) és a szepességi települések (Lőcse, Késmárk), amelyek sajátos, közösségi kiváltságokkal rendelkeztek.</p>
+
+    <h3>Zsigmond várospolitikája</h3>
+    <p>Luxemburgi Zsigmond a városokban a bárókkal szemben szövetségest látott. <b>1405-ben</b> tanácskozásra hívta Budára a városok követeit, és dekrétumában kiváltságokkal (vásártartási és árumegállító jog), valamint a mértékrendszer egységesítésére tett kísérlettel támogatta őket. A XV. században a szabad királyi városok mellett gyors fejlődésnek indultak a mezővárosok is: itt bontakozott ki a leggyorsabban a mezőgazdasági árutermelés, mert a jobbágyi munka az egy összegben fizetett adó révén eredményesebbé vált.</p>
+
+    <h4>Magyar és nyugat-európai fejlődés</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Szempont</th><th>Nyugat-Európa</th><th>Magyar Királyság</th></tr></thead>
+      <tbody>
+        <tr><td>A városok sűrűsége</td><td>sűrű, egyenletes hálózat</td><td>ritka hálózat, kevés nyugati típusú város</td></tr>
+        <tr><td>A városok fő funkciója</td><td>ipari és kereskedelmi központ, céhes iparral</td><td>többségük mezőgazdasági jellegű mezőváros</td></tr>
+        <tr><td>A kiváltságok forrása</td><td>gyakran a kommuna harcolta ki a földesúrtól</td><td>többnyire királyi adományozás („felülről”)</td></tr>
+        <tr><td>A polgárság politikai súlya</td><td>jelentős, rendi képviselettel</td><td>csekély, alárendelt szerep az országgyűlésen</td></tr>
+        <tr><td>A jobbágyság XV–XVI. sz.</td><td>a személyi függés oldódása</td><td>a terhek szigorodása, majd röghöz kötés</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>7. forrás</h4>
+    <div class="source">
+      <span class="src-lbl">IV. Béla kiváltságlevele a pesti polgárok számára, 1244 · tartalmi kivonat</span>
+      <p class="src-txt">Az oklevél szerint a polgárok évente maguk választhatnak bírót, aki minden ügyükben ítélkezik; ha a bíró nem szolgáltat igazságot, a király elé lehet vinni az ügyet. A polgárok maguk választják plébánosukat is. Mentesülnek a vámok fizetése alól az ország területén, telkeiket szabadon örökíthetik és eladhatják, és kötelesek fegyveres férfiakat állítani a király hadjárataira.</p>
+      <ol class="qs">
+        <li>Sorolja fel, milyen kiváltságokat biztosít az oklevél! Melyik nyugat-európai jogelemnek felelnek meg ezek?</li>
+        <li>Mi a lényeges különbség a magyar és a nyugat-európai kiváltságszerzés módjában? Használja a „kommuna” fogalmát!</li>
+        <li>Milyen kötelezettséget ír elő a forrás? Miért volt ez fontos a királynak a tatárjárás után?</li>
+        <li><span class="eonly">E</span>Vesse össze IV. Béla és Zsigmond várospolitikáját a hatalmi érdekek szempontjából!</li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="src7">Megoldásvázlat</button></div>
+      <div class="answer" id="src7"><span class="lbl">Megoldásvázlat</span>
+        <b>a)</b> Szabad bíróválasztás, szabad plébánosválasztás, vámmentesség, szabad rendelkezés a telekkel — ezek a nyugati városi jog alapelemei. <b>b)</b> Nyugaton a kommuna harcolta ki, Magyarországon az uralkodó adományozta. <b>c)</b> Fegyveres férfiak kiállítása; a tatárjárás után a védelem megszervezése volt a legfőbb királyi cél. <b>d)</b> Mindkét uralkodó a saját hatalmi bázisát erősítette: IV. Béla a védelem és az újjáépítés, Zsigmond a bárókkal szembeni ellensúly érdekében támogatta a városokat.
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div id="tasks-m7"></div>
+  </div>
+</section>
+
+<!-- ============ ÖSSZEFOGLALÓ ============ -->
+<section class="mod fade" id="osszefoglalo">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Összefoglaló</span></div>
+    <h2>Fogalomtár és kronológia</h2>
+
+    <h4>Fogalomtár — gépeld be, amit keresel</h4>
+    <input class="search" id="glossSearch" type="search" placeholder="Keresés a fogalmak között… (pl. céh, majorság, árumegállító)" aria-label="Keresés a fogalomtárban">
+    <div class="gloss" id="glossList"></div>
+
+    <h4>Kronológia</h4>
+    <div class="time" id="timeline"></div>
+
+    <h4>Topográfia — mit kell megmutatni az atlaszban?</h4>
+    <ul class="marks">
+      <li><b>Levantei hálózat:</b> Alexandria, Bizánc (Konstantinápoly), Antiochia; a szállítást uraló itáliai városok: Velence, Genova, Pisa.</li>
+      <li><b>Hanza-hálózat:</b> Lübeck, Hamburg, Bréma, Rostock, Danzig; nyugati végpontja Brugge.</li>
+      <li><b>Flandria posztóvárosai:</b> Brugge, Gent, Ypres. Itália ipari és bankközpontja: Firenze.</li>
+      <li><b>Szárazföldi összeköttetés:</b> Champagne grófság; az Alpokon túl Augsburg, Nürnberg, Bécs.</li>
+      <li><b>Magyarország:</b> Buda, Pozsony, Sopron, Kassa, Bártfa; bányavárosok: Körmöcbánya, Selmecbánya, Besztercebánya; mezővárosok: Debrecen, Szeged.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FELADATBANK ============ -->
+<section class="mod fade" id="bank">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Feladatbank</span></div>
+    <h2>Érettségi típusú komplex feladatok</h2>
+    <p>A három feladat az írásbeli I. részének mintájára készült: forrásalapú, több részkérdésből áll, és részpontokra megy. Oldd meg papíron, majd nyisd meg a pontozott megoldást.</p>
+
+    <div class="card">
+      <span class="task-id">K1 · forrásösszevetés — a középkori társadalom két világa</span>
+      <div class="source" style="margin-top:6px">
+        <p class="src-txt" style="margin-bottom:10px"><b>„A” forrás</b> (uradalmi összeírás, IX. század): a telkes család évente meghatározott számú napot köteles a földesúr saját földjén dolgozni, terményt és baromfit beszolgáltatni, ügyeiben pedig az úr embere ítélkezik felette.</p>
+        <p class="src-txt" style="margin:0"><b>„B” forrás</b> (városalapító oklevél, XII. század): a letelepülők maguk választják bírájukat, adójukat egy összegben fizetik, és aki egy éven és egy napon át háborítatlanul a városban él, szabadnak tekintendő.</p>
+      </div>
+      <ol class="qs">
+        <li>Nevezze meg, melyik forrás melyik társadalmi csoport helyzetét mutatja be! <b>(2 pont)</b></li>
+        <li>Töltse ki a táblázatot: ki bíráskodik; hogyan fizet adót; elköltözhet-e. <b>(6 pont)</b></li>
+        <li>Melyik forrásrészlet magyarázza, miért vonzotta a város a jobbágyokat? Idézze! <b>(2 pont)</b></li>
+        <li>Miért mondható, hogy a város „idegen test” volt a feudális rendszerben? <b>(2 pont)</b></li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="k1">Pontozott megoldás</button></div>
+      <div class="answer" id="k1"><span class="lbl">Megoldás · 12 pont</span>
+        <b>a)</b> „A” – a jobbágyság, „B” – a városi polgárság. <b>b)</b> Bíráskodás: „A” a földesúr embere, „B” a választott bíró. Adózás: „A” termény- és munkajáradék, „B” egy összegben fizetett adó. Elköltözés: „A” korlátozott, engedélyhez kötött, „B” szabad; a jövevény egy év és egy nap után szabadnak számít. <b>c)</b> Az egy évre és egy napra vonatkozó rendelkezés. <b>d)</b> Mert lakói sem a nemesi, sem a jobbágyi jogálláshoz nem tartoztak: a város saját joghatósággal, önkormányzattal rendelkező, a hűbéri láncolaton kívül álló közösség volt.
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-id">K2 · a távolsági kereskedelem (atlaszhasználat)</span>
+      <p style="font-size:.95rem"><b>1. árucsoport:</b> fűszer, selyem, gyapot, drágakő · <b>2. árucsoport:</b> prém, viasz, hering, borostyán, gabona · <b>3. árucsoport:</b> posztó, fegyver, szerszám</p>
+      <ol class="qs">
+        <li>Párosítsa az árucsoportokat a kereskedelmi övezetekkel! <b>(3 pont)</b></li>
+        <li>Nevezze meg azt a két itáliai várost, amely a XI. századtól a levantei tengeri szállítást uralta! <b>(2 pont)</b></li>
+        <li>Nevezze meg azt a francia grófságot, amely az észak–déli szárazföldi kereskedelem központja volt! <b>(1 pont)</b></li>
+        <li>Miért szállítottak elsősorban luxuscikkeket? <b>(2 pont)</b></li>
+        <li><span class="eonly">E</span>Nevezzen meg egy okot, amely a champagne-i vásárok hanyatlásához vezetett! <b>(2 pont)</b></li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="k2">Pontozott megoldás</button></div>
+      <div class="answer" id="k2"><span class="lbl">Megoldás · 10 pont</span>
+        <b>a)</b> 1. – levantei; 2. – északi–balti; 3. – flandriai (nyugat-európai) kivitel. <b>b)</b> Velence és Genova (Pisa is elfogadható). <b>c)</b> Champagne. <b>d)</b> Mert a szállítás lassú, drága és kockázatos volt, így csak a kis tömegű, nagy értékű áruknál térült meg a költség. <b>e)</b> Megnyílt a közvetlen tengeri útvonal Genova és Brugge között; emellett a francia királyi hatalom terjeszkedése és a háborúk rontották a vásárok biztonságát.
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-id">K3 · a céhrendszer működése</span>
+      <div class="source" style="margin-top:6px">
+        <p class="src-txt" style="margin:0">„Aki a mesterséget űzni akarja, előbb két évig inasként szolgáljon, majd három évig legényként dolgozzék, és mutassa be munkáját az elöljáróknak. Éjjel senki ne dolgozzék. A mester kettőnél több inast ne tartson. Aki tagtársa vevőjét elcsalja, bírságot fizessen.”</p>
+      </div>
+      <ol class="qs">
+        <li>Nevezze meg a mesterré válás forrásban említett három állomását! <b>(3 pont)</b></li>
+        <li>Nevezze meg azt a két szabályt, amely a mesterek közötti versenyt korlátozta! <b>(2 pont)</b></li>
+        <li>Milyen célt szolgálhatott az éjszakai munka tilalma? Két okot! <b>(2 pont)</b></li>
+        <li>Hogyan nevezték a céhen kívül dolgozó iparost? <b>(1 pont)</b></li>
+        <li>Mi volt a céhszabályozás alapvető gazdasági oka? <b>(2 pont)</b></li>
+      </ol>
+      <div class="act"><button class="btn ghost" data-reveal="k3">Pontozott megoldás</button></div>
+      <div class="answer" id="k3"><span class="lbl">Megoldás · 10 pont</span>
+        <b>a)</b> inaskodás – legénykedés – a munka (mesterremek) bemutatása az elöljáróknak. <b>b)</b> Az inasok számának korlátozása és a vevőcsalás bírsággal sújtása (az éjszakai munka tilalma is elfogadható). <b>c)</b> Egyrészt a gyertyafénynél végzett munka rossz minőségű lett volna, másrészt így senki nem termelhetett titokban többet a megengedettnél. <b>d)</b> kontár. <b>e)</b> A városi piac szűk volt, ezért a termelést és a versenyt korlátozni kellett, hogy minden mester meg tudjon élni.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESSZÉMŰHELY ============ -->
+<section class="mod fade" id="esszemuhely">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Esszéműhely</span></div>
+    <h2>Esszéírás — szerkezet, minta, szószámláló</h2>
+
+    <h4>A vizsga szerkezete</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th></th><th>Középszint</th><th>Emelt szint</th></tr></thead>
+      <tbody>
+        <tr><td><b>Írásbeli</b></td><td>180 perc (egyben)</td><td>240 perc (I. rész 100, II. rész 140)</td></tr>
+        <tr><td><b>I. rész</b></td><td>12 rövid, forrásalapú feladat — 50 pont</td><td>12 rövid feladat — 50 pont</td></tr>
+        <tr><td><b>II. rész</b></td><td>2 esszé (1 rövid egyetemes + 1 hosszú magyar) — 50 pont</td><td>3 esszé (rövid + hosszú + komplex) — 50 pont</td></tr>
+        <tr><td><b>Terjedelem</b></td><td>rövid: 100–130 szó; hosszú: 210–260 szó</td><td>rövid: 110–130; hosszú: 240–290; komplex: 290–340</td></tr>
+        <tr><td><b>Szóbeli</b></td><td>kötelező, 50 pont, kb. 15 perc</td><td>50 pont, kb. 20 perc</td></tr>
+      </tbody>
+    </table></div>
+    <p>A szóbeli hivatalos értékelési szempontjai: <b>feladat megértése 4</b> · <b>tájékozódás térben és időben 6</b> · <b>kommunikáció, szaknyelv 10</b> · <b>források használata 12</b> · <b>történelmi gondolkodás és ismeretek 18</b> pont. Ha a feladatmegértés 0 pont, az egész felelet 0 pont — ezért az első mondat mindig a feladat kérdését hangozza vissza.</p>
+
+    <h4>Kidolgozott rövid esszé — egyetemes, 1849 előtt</h4>
+    <div class="source">
+      <span class="src-lbl">A feladat</span>
+      <p style="margin:0 0 14px;font-size:.96rem">Mutassa be a források és ismeretei segítségével a középkori céhek működését és a városi gazdaságban betöltött szerepét! <i>(rövid esszé, 100–130 szó)</i></p>
+      <span class="src-lbl">Mintamegoldás · 126 szó</span>
+      <p class="src-txt" style="margin:0">A feladat a XIII–XV. századi nyugat-európai városok céhrendszerének bemutatását kéri. A céh az azonos szakmát űző mesterek érdekvédelmi és szakmai szervezete volt. Mivel a városi piac szűk maradt, a céh nem a versenyt, hanem a megélhetést biztosította: maximálta az árakat, korlátozta a mesterek, inasok és legények számát, tiltotta az éjszakai munkát, és üldözte a céhen kívül dolgozó kontárokat. A forrás szerint szigorú minőségi ellenőrzést is végzett, hiszen az elkészült árut elöljárók vizsgálták meg. A mesterré válás hosszú út volt: inasévek, vándorút, végül a mesterremek. A céh emellett szociális és katonai feladatot is ellátott, közös ládájából segítette az özvegyeket, és felelt a városfal egy szakaszáért. A céhrendszer így egyszerre védte és kötötte meg a városi ipart.</p>
+    </div>
+    <p><b>Miért működik?</b> Az első mondat visszahangozza a feladatot, és megadja a teret és az időt. A szaknyelv pontos (céh, kontár, mesterremek, inas, legény). A forrásra kétszer is konkrétan hivatkozik. A záró mondat nem ismétel, hanem <i>értékel</i> — ez a „történelmi gondolkodás” szempontnál hoz pontot.</p>
+
+    <h4>Kidolgozott hosszú esszé — magyar történelem, 1849 előtt</h4>
+    <div class="source">
+      <span class="src-lbl">A feladat</span>
+      <p style="margin:0 0 14px;font-size:.96rem">Mutassa be a középkori magyar városfejlődés sajátosságait a XIII–XV. században! Térjen ki a várostípusokra és az uralkodók várospolitikájára! <i>(hosszú esszé, 210–260 szó)</i></p>
+      <span class="src-lbl">Mintamegoldás · 233 szó</span>
+      <div class="src-txt">
+        <p>A feladat a középkori magyar városfejlődés sajátosságainak bemutatását kéri a XIII–XV. században.</p>
+        <p>Magyarországon a városiasodás nyugat-európai mintára, de később és gyengébben indult meg. Fordulópontot a tatárjárás (1241–1242) utáni újjáépítés hozott: IV. Béla hospeseket telepített be, és kiváltságlevelekkel ösztönözte a városok megerősödését. Az 1244-es pesti kiváltságlevél — amint a forrás mutatja — szabad bíró- és plébánosválasztást, valamint vámmentességet biztosított. A gazdasági alapot a mezőgazdasági árutermelés és a pénzgazdálkodás fejlődése adta, amelyet I. Károly reformjai, a nemesfémbányászat fellendítése és az aranyforint verése erősítettek.</p>
+        <p>A magyar városhálózat háromosztatú volt. A legszélesebb kiváltságokkal a szabad királyi városok rendelkeztek (Buda, Pozsony, Sopron, Kassa, Bártfa): önkormányzat, saját bíráskodás, árumegállító jog, egy összegben fizetett adó és céhes ipar jellemezte őket. Külön csoportot alkottak a nemesfémbányászatra épülő bányavárosok (Körmöcbánya, Selmecbánya, Besztercebánya). A települések többsége azonban földesúri joghatóság alatt álló mezőváros volt — Debrecen, Szeged, Kecskemét —, amelynek legfontosabb kiváltsága az adó egy összegben történő megfizetése maradt.</p>
+        <p>Zsigmond a városokban a bárókkal szemben szövetségest látott: 1405-ben Budára hívta követeiket, egységesíteni próbálta a mértékrendszert, és vásártartási, valamint árumegállító joggal támogatta őket.</p>
+        <p>Összegzésként megállapítható, hogy a magyar városfejlődés sajátossága a kiváltságok „felülről”, királyi adományozás útján történő megszerzése, a nyugati típusú, céhes ipari városok csekély száma és a mezővárosi jelleg túlsúlya volt. Ennek következménye, hogy a polgárság nem vált a rendi politika meghatározó erejévé.</p>
+      </div>
+    </div>
+
+    <h4>Írd meg te — élő szószámlálóval</h4>
+    <div class="essay-tool">
+      <div class="pill-row" id="essayPills"></div>
+      <p style="font-size:.94rem;color:var(--ink-soft)" id="essayPrompt"></p>
+      <textarea id="essayBox" placeholder="Ide írd az esszédet. Kezdd a feladat kérdésének visszahangzásával…" aria-label="Esszé szövege"></textarea>
+      <div class="counter">
+        <span class="n" id="wordN">0</span>
+        <div class="gauge" id="gauge"><div class="zone" id="gzone"></div><div class="mark" id="gmark" style="left:0"></div></div>
+        <span class="state" id="wordState">Kezdj el írni…</span>
+      </div>
+      <ul class="check-list">
+        <li><input type="checkbox" id="c1"><label for="c1">Az első mondatban visszahangoztam a feladat kérdését.</label></li>
+        <li><input type="checkbox" id="c2"><label for="c2">Megadtam a teret (Nyugat-Európa / Magyar Királyság) és az időt.</label></li>
+        <li><input type="checkbox" id="c3"><label for="c3">Legalább kétszer konkrétan hivatkoztam a forrásra.</label></li>
+        <li><input type="checkbox" id="c4"><label for="c4">Legalább öt szakkifejezést használtam pontosan.</label></li>
+        <li><input type="checkbox" id="c5"><label for="c5">Nem soroltam, hanem érveltem: minden állításhoz tartozik magyarázat.</label></li>
+        <li><input type="checkbox" id="c6"><label for="c6">A záró mondat értékel vagy következtet, nem ismétel.</label></li>
+      </ul>
+      <p style="font-size:.82rem;color:var(--ink-soft);margin:14px 0 0;font-style:italic">A szöveg csak ebben a böngészőablakban él — frissítéskor elvész, ezért mentsd ki magadnak, ha megtartanád.</p>
+    </div>
+
+    <h4>Gyakorló esszétémák</h4>
+    <ul class="marks">
+      <li><b>E1</b> — Milyen tényezők tették lehetővé a középkori városok kialakulását a X–XIII. században? <i>(rövid, 100–130 szó)</i></li>
+      <li><b>E2</b> — Mutassa be a középkori uradalom felépítését és a jobbágyok kötelezettségeit! <i>(rövid)</i></li>
+      <li><b>E3</b> — Mutassa be a távolsági kereskedelem két nagy övezetét és összekapcsolódásukat! <i>(rövid)</i></li>
+      <li><b>E4</b> — Mutassa be a nagy pestisjárvány demográfiai és társadalmi következményeit! <i>(rövid)</i></li>
+      <li><span class="eonly">E</span><b>E5</b> — Hasonlítsa össze a nyugat-európai és a magyarországi városfejlődést a kiváltságszerzés módja, a városok funkciója és a polgárság politikai súlya szempontjából! <i>(összehasonlító esszé)</i></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SZÓBELI ============ -->
+<section class="mod fade" id="szobeli">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Szóbeli</span></div>
+    <h2>Tételvázlat és vizsgáztatói kérdések</h2>
+    <div class="goal">
+      <span class="lbl">A tétel</span>
+      <p><b>A középkori város és lakói, a város kiváltságai, a céhek, a helyi és távolsági kereskedelem.</b><br>A válaszában térjen ki a városok kialakulásának gazdasági feltételeire, a városi kiváltságokra, a városi társadalom rétegződésére és a céhek működésére! Használja a mellékelt forrásokat és az atlaszt!</p>
+    </div>
+
+    <h4>Felelet-váz (kb. 15 perc)</h4>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>Perc</th><th>Rész</th><th>Tartalom</th></tr></thead>
+      <tbody>
+        <tr><td><b>0–1</b></td><td>Bevezetés</td><td>A feladat megfogalmazása; Nyugat-Európa, X–XV. század. Kulcsállítás: a középkori város lényege nem a méret, hanem a jogi önállóság.</td></tr>
+        <tr><td><b>1–4</b></td><td>Előzmények</td><td>Nehézeke, szügyhám, háromnyomásos gazdálkodás → terményfelesleg → árutermelés → a kézművesek és kereskedők megélhetése.</td></tr>
+        <tr><td><b>4–7</b></td><td>Kialakulás, kiváltságok</td><td>Hol keletkeztek városok; kommunamozgalom; a négy kiváltságcsoport. <b>Forráshasználat:</b> a városalapító oklevél.</td></tr>
+        <tr><td><b>7–10</b></td><td>Városi társadalom</td><td>Patríciusok – polgárok – plebs; a polgárjog feltétele; városkép, higiénia, járványveszély.</td></tr>
+        <tr><td><b>10–13</b></td><td>Céhek</td><td>Cél, szabályozás, mesterré válás, szociális és katonai szerep. <b>Forráshasználat:</b> céhszabályzat.</td></tr>
+        <tr><td><b>13–15</b></td><td>Kereskedelem, zárás</td><td>Piac és vásár; levantei és Hanza övezet, Champagne. <b>Atlasz.</b> Zárás: a városok a feudális rend „idegen testeként” a polgárosodás bölcsői lettek.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Várható vizsgáztatói kérdések</h4>
+    <ul class="marks">
+      <li>Mi a legfontosabb különbség az ókori és a középkori város között?</li>
+      <li>Miért támogatták az uralkodók gyakran a városok önállósodását?</li>
+      <li>Milyen gazdasági okkal magyarázható, hogy a céhek korlátozták a termelést?</li>
+      <li>Miért éppen a városokban pusztított legjobban a pestis?</li>
+      <li>Nevezzen meg két, a levantei kereskedelmet uraló itáliai várost, és mutassa meg őket a térképen!</li>
+      <li>Miben tért el a magyar városfejlődés a nyugat-európaitól?</li>
+      <li><span class="eonly">E</span>Milyen szerepet játszottak a Mediciek Firenze életében?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TIPPEK ============ -->
+<section class="mod fade" id="tippek">
+  <div class="wrap col">
+    <div class="mod-head"><span class="mod-num">Tippek</span></div>
+    <h2>Tíz érettségi tipp ehhez a témakörhöz</h2>
+    <ol class="tips">
+      <li><b>Az ok-okozati lánc a legértékesebb tudás.</b> A javítókulcsok nem a felsorolást, hanem az összefüggést jutalmazzák. A lánc szinte minden ide tartozó feladatban felhasználható.</li>
+      <li><b>A rövid esszé egyetemes, a hosszú magyar.</b> Középszinten a városok, céhek és a kereskedelem rövid esszében, a magyar városfejlődés hosszúban kérdezhető — a 2026. májusi középszintű vizsgán éppen a céhekről lehetett rövid esszét írni.</li>
+      <li><b>Rövid feladatnál rövid válasz.</b> Ha a feladat nevet vagy évszámot kér, ne írj köré magyarázatot: a felesleges szöveg időt visz el, pontot nem hoz.</li>
+      <li><b>A forrás nem díszlet.</b> Minden esszében legalább kétszer hivatkozz rá konkrétan. A forráshasználat a szóbelin 12 pontot ér — az elérhető pontszám csaknem negyede.</li>
+      <li><b>Használd az atlaszt, és mondd is ki.</b> A „tájékozódás térben és időben” 6 pont; egyetlen pontos térképi utalás is számít.</li>
+      <li><b>Vigyázz a hasonló fogalompárokra!</b> tized (egyházi) ≠ kilenced (földesúri) · hanza (társulás) ≠ Hanza (városszövetség) · városlakó ≠ polgár · majorság ≠ jobbágytelek · céh ≠ manufaktúra.</li>
+      <li><b>Az évszámokat kösd eseményhez.</b> Az 1347–1352 és az 1244 önmagában is kérdezhető; a „XIII. század” típusú válasz kevesebbet ér a pontos évszámnál.</li>
+      <li><b>Értékelj, ne csak ismertess!</b> A céhrendszer egyszerre védett és korlátozott; a pestis egyszerre volt katasztrófa és a jobbágyi helyzet javulásának előidézője.</li>
+      <li><b>Kezeld kritikusan a közhelyeket.</b> Az „első éjszaka joga” vagy a „városi levegő szabaddá tesz” esetében érdemes jelezni, hogy utólagos hagyományról, illetve összefoglaló szállóigéről van szó.</li>
+      <li><b>Gyakorolj időre.</b> A rövid esszére 25–30, a hosszúra 45–50 perc jusson; a szóbeli 30 perces felkészülési idejében készíts a fenti perc-beosztást követő vázlatot.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap col">
+    <h3>Források és tanári megjegyzések</h3>
+    <ul>
+      <li>Oktatási Hivatal: <i>Történelem 9.</i> tankönyv (OH-TOR09TB) — a középkori Európa és a középkori Magyar Királyság fejezetei.</li>
+      <li>B. Mátyus Gyöngyi – Bori István: <i>Történelem érettségi témavázlatok II. Közép- és emelt szint</i> — a 2.2 témakör követelménytáblái.</li>
+      <li><i>Katolikus 9.</i> tankönyv — az uradalomra és a hűbériségre vonatkozó fejezetek.</li>
+      <li>A 2024-től hatályos történelem részletes érettségi vizsgakövetelmény és vizsgaleírás (Oktatási Hivatal).</li>
+    </ul>
+    <p class="note">A kurzusban szereplő korabeli források <b>tartalmi kivonatok</b>: a dokumentumok lényegi rendelkezéseit foglalják össze szerkesztett formában, tanulási célra. Hivatalos szóbeli tételsorhoz javasolt a szöveggyűjtemények szó szerinti szemelvényeinek használata pontos hivatkozással.</p>
+    <p class="note">Két ponton eltértem a felhasznált vázlattól: az „első éjszaka joga” forráskritikai keretbe került (gyakorlására nincs meggyőző korabeli bizonyíték), a három rend megnevezésénél pedig a dolgozók rendje helyesen <i>laboratores</i>. Az esszék pontos pontbontását és a népességindex-adatsort hivatalos vizsgadokumentum előtt érdemes ellenőrizni.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------------- adatok ---------------- */
+var CHAIN = [
+  "új eszközök, nyomásos gazdálkodás",
+  "nagyobb és biztonságosabb termés",
+  "népességnövekedés",
+  "tartós terményfelesleg",
+  "árutermelés, pénzhasználat",
+  "kézművesek és kereskedők megélhetése"
+];
+
+var TASKS = {
+  m1:[
+    {id:"F1.1",type:"tf",q:"Döntsd el az állításokról, hogy igazak vagy hamisak!",items:[
+      {t:"A háromnyomásos gazdálkodásban a szántóterület kétharmadán folyt termelés.",a:true,n:"Igaz — a fele helyett kétharmad áll művelés alatt."},
+      {t:"A nehézeke elterjedése csökkentette az igaerőszükségletet.",a:false,n:"Hamis — 4–6 ökröt igényelt, tehát növelte, viszont időt takarított meg."},
+      {t:"A nyomáskényszer szerint egy dűlőn belül minden parcellán ugyanazt a művelési módot kellett alkalmazni.",a:true,n:"Igaz — ezért lehetett a közös munkát megszervezni."},
+      {t:"A zab termesztésének elterjedése összefügg a ló igavonó állatként való használatával.",a:true,n:"Igaz — a tavaszi vetésben megjelenő zab tette lehetővé."}
+    ]},
+    {id:"F1.2",type:"order",q:"Kattints a folyamatokra abban a sorrendben, ahogyan egymásból következnek!",
+      items:["a nehézeke és a szügyhám elterjedése","tartós terményfelesleg","népességnövekedés","a városok számának gyors növekedése"],
+      answer:"Az új eszközök és művelési módok tartós terményfelesleget eredményeztek, ami lehetővé tette a népesség növekedését és a mezőgazdaságon kívüli népesség eltartását — így a városok kialakulását."},
+    {id:"F1.3",type:"fill",q:"Egészítsd ki a szakkifejezéseket!",
+      parts:["A kora középkori uradalom ",0," gazdálkodást folytatott. A művelés kezdeti formája a ",1," rendszer volt, amelyet Nyugat-Európában a X–XI. századra felváltott a ",2," gazdálkodás. Az évente pihentetett földdarab neve ",3,"."],
+      blanks:[["naturalis"],["talajvalto","legelovalto"],["haromnyomasos"],["ugar"]],
+      answer:"naturális — talajváltó (legelőváltó) — háromnyomásos — ugar"}
+  ],
+  m2:[
+    {id:"F2.1",type:"sort",q:"Rendezd két csoportba a fogalmakat!",cats:["Jog","Kötelezettség"],
+      items:[["robot",1],["szabad költözés",0],["tized",1],["örökíthető telek",0],["ajándék",1],["a földesúr védelme",0]],
+      answer:"Az úriszék mindkét oldalhoz köthető: kötöttséget jelent (a földesúr ítélkezik), de egyben jogorvoslati fórum és a szokásjog szerinti védelem kerete is."},
+    {id:"F2.2",type:"open",q:"Magyarázd meg két mondatban, miért volt szükség a nyomáskényszerre! Térj ki a technikai okra is.",
+      answer:"Egyrészt a különböző nyomások zavarták volna egymást (az ugaron legelő állatok lelegelték volna a szomszédos vetést), másrészt a nehézeke vontatásához 4–6 ökör kellett, amennyit egy jobbágy ritkán tartott — a közös munkavégzés csak azonos munkarend mellett volt megszervezhető."},
+    {id:"F2.3",type:"open",q:"Hasonlítsd össze a majorságot és a jobbágytelket: ki műveli, milyen munkaformában, kié a termés?",
+      answer:"Majorság: a jobbágyok művelik robotban, a termés teljes egészében a földesúré. Jobbágytelek: a jobbágycsalád műveli saját eszközeivel, a termés az övé, de szolgáltatásokkal tartozik érte."},
+    {id:"F2.4",type:"open",q:"Mi a különbség a tized és a kilenced között?",
+      answer:"A tized az egyháznak fizetett egyházi adó, a kilenced a földesúrnak járó terményjáradék Magyarországon (1351-től általánosan)."}
+  ],
+  m3:[
+    {id:"F3.1",type:"match",q:"Párosítsd a helyzetet a kiváltsággal!",
+      left:["A kereskedőnek három napig kell áruját a piacon kínálnia.","A polgárok maguk választják a plébánost.","A város egyetlen összegben fizeti adóját.","A polgár ügyét a városi bíró tárgyalja."],
+      right:["árumegállító jog","kegyúri jog","adózás egy összegben","szabad bíróválasztás"],
+      pairs:[0,1,2,3]},
+    {id:"F3.2",type:"open",q:"Mi a legfontosabb különbség az ókori és a középkori város között?",
+      answer:"Az ókori város népes település és igazgatási központ, a középkori város lényege ezzel szemben a jogi önállóság, az önkormányzat."},
+    {id:"F3.3",type:"open",q:"Miért támogatták az uralkodók gyakran a kommunamozgalmakat? Használd a „hűbérúr” és az „adó” szavakat.",
+      answer:"Az uralkodók a városokban a hűbérurakkal (nagybirtokosokkal) szemben szövetségest és megbízható, közvetlenül a kincstárnak adót fizető partnert láttak, ezért támogatták önállósodásukat."}
+  ],
+  m4:[
+    {id:"F4.1",type:"order",q:"Állítsd sorrendbe a mesterré válás állomásait!",
+      items:["inasévek","felszabadulás","vándorút","mesterremek","műhelynyitás"],
+      answer:"Inasévek (2–10 év, ellátásért) → felszabadulás → vándorút (idegen mestereknél, bérért) → mesterremek elkészítése és elfogadtatása → műhelynyitás megfelelő tőkével, céhtagsággal."},
+    {id:"F4.2",type:"match",q:"Melyik szabály melyik célt szolgálta?",
+      left:["az éjszakai munka tilalma","a legények bérének maximalizálása","a közös láda fenntartása","a kontárok üldözése"],
+      right:["a minőség védelme","a verseny korlátozása","a szociális biztonság","a céhmonopólium védelme"],
+      pairs:[0,1,2,3]},
+    {id:"F4.3",type:"open",q:"Nevezz meg két olyan szakmát, amelynek művelői nem szerveződtek céhbe, és indokold meg!",
+      answer:"Például: szénégetők (szétszórtan, a városon kívül dolgoztak); csipkeverők (nők végezték); pénzverők és bányászok (közvetlenül az uralkodó alá tartoztak)."},
+    {id:"F4.4",type:"open",q:"Mi a különbség a polgár és a plebs helyzete között? Térj ki a jogi és a politikai szempontra is.",
+      answer:"A polgár ingatlantulajdonnal és polgárjoggal rendelkezett, részt vehetett a város irányításában és bíráinak választásában. A plebs tagjai személyükben szabadok voltak, de polgárjoguk nem lévén ki voltak zárva a városi politikából, és alkalmi munkából éltek."}
+  ],
+  m5:[
+    {id:"F5.1",type:"match",q:"Párosítsd a városokat a szerepükkel!",
+      left:["Velence","Lübeck","Brugge","Firenze","Champagne"],
+      right:["a levantei kereskedelem ura","a Hanza vezető városa","posztóközpont, a Hanza nyugati végpontja","bank- és textilközpont","az észak–déli kereskedelem vásárkörzete"],
+      pairs:[0,1,2,3,4]},
+    {id:"F5.2",type:"open",q:"Magyarázd meg a különbséget a kisbetűs „hanza” és a nagybetűs „Hanza” között!",
+      answer:"A kisbetűs hanza a kereskedők egy-egy vállalkozás erejéig létrejövő társulása; a nagybetűs Hanza a XIV. században megalakult észak-német kereskedelmi városszövetség."},
+    {id:"F5.3",type:"open",q:"Melyik kiváltság kötelezte a kereskedőket a városban való megállásra, és mi haszna volt ebből a városnak?",
+      answer:"Az árumegállító jog. Az áthaladó kereskedő kénytelen volt áruját a városban kínálni, így a helyi kereskedők kedvező áron juthattak hozzá és továbbértékesíthették, a város pedig vámhoz és forgalomhoz jutott."}
+  ],
+  m6:[
+    {id:"F6.1",type:"choice",q:"Mikor tombolt Európában a nagy pestisjárvány?",
+      options:["1315–1317","1347–1352","1381–1385","1409–1415"],correct:1,
+      answer:"1347–1352. A városokban a zsúfoltság, a csatornázás hiánya és a rossz higiéniai viszonyok gyorsították a fertőzés terjedését."},
+    {id:"F6.2",type:"open",q:"Miért javult a nyugat-európai jobbágyok helyzete a járvány után? Használd a „munkaerőhiány” és az „alkupozíció” szavakat.",
+      answer:"A járvány következtében fellépő munkaerőhiány miatt a megmaradt jobbágyok és bérmunkások alkupozíciója megerősödött: a földesuraknak kedvezőbb feltételeket kellett kínálniuk (a robot pénzre váltása, bérleti viszony), különben elveszítették volna munkaerejüket."},
+    {id:"F6.3",type:"open",q:"Nevezz meg egy XIV. századi nyugat-európai jobbágyfelkelést évszámmal és országgal!",
+      answer:"Jacquerie, 1358, Franciaország; vagy Wat Tyler felkelése, 1381, Anglia."}
+  ],
+  m7:[
+    {id:"F7.1",type:"sort",q:"Csoportosítsd a településeket a három magyar várostípus szerint!",
+      cats:["Szabad királyi város","Bányaváros","Mezőváros"],
+      items:[["Buda",0],["Debrecen",2],["Körmöcbánya",1],["Kassa",0],["Kecskemét",2],["Selmecbánya",1]],
+      answer:"Szabad királyi város: Buda, Kassa. Bányaváros: Körmöcbánya, Selmecbánya. Mezőváros: Debrecen, Kecskemét."},
+    {id:"F7.2",type:"open",q:"Mi volt a mezővárosok legfontosabb kiváltsága, és miért segítette ez a mezőgazdasági árutermelést?",
+      answer:"Az adó egy összegben történő megfizetése. Mivel a közösség maga osztotta el a terhet, és a többletet megtarthatta, a jobbágyi munka eredményesebbé vált, ez pedig ösztönözte a piacra termelést."},
+    {id:"F7.3",type:"open",q:"Miben tért el a magyar városok kiváltságszerzése a nyugat-európaitól?",
+      answer:"Nyugat-Európában a kiváltságokat gyakran a városlakók közössége, a kommuna vívta ki a földesúrral szemben, olykor fegyverrel. Magyarországon a kiváltságokat többnyire az uralkodó adományozta „felülről”, telepítési és hatalmi célból."},
+    {id:"F7.4",type:"open",q:"Ki hívta 1405-ben Budára a városok követeit, és milyen két intézkedéssel támogatta a városokat?",
+      answer:"Luxemburgi Zsigmond. Például: kiváltságokat (vásártartási és árumegállító jog) adott; kísérletet tett a mértékrendszer egységesítésére."}
+  ]
+};
+
+var GLOSS = [
+  ["naturális gazdálkodás","olyan gazdálkodás, amelyben nem piacra, hanem a saját szükséglet kielégítésére termelnek"],
+  ["nyomásos gazdálkodás","a szántóterület két vagy három részre osztása, amelyekben évente váltakozik a vetés és a pihentetés (ugar)"],
+  ["uradalom","a földesúr birtokának nagyobb, önellátásra berendezkedett egysége, amely igazgatási és bíráskodási szerepet is betölt"],
+  ["majorság (allódium)","az uradalom földesúr által saját kezelésben tartott része, amelyet a jobbágyok robotban művelnek"],
+  ["jobbágy","a földesúrnak szolgáltatásokkal tartozó, telkét örökíthető birtoklással használó, személyében is függő paraszt"],
+  ["robot","munkajáradék: a jobbágy ingyenmunkája a földesúr majorsági földjén"],
+  ["tized","az egyháznak fizetett, a termés tizedére rúgó egyházi adó"],
+  ["kilenced","a földesúrnak Magyarországon fizetett terményjáradék (1351-től általános)"],
+  ["kiváltság","a jog általános rendje alóli mentesség vagy többletjog, amelyet uralkodó vagy földesúr adományoz"],
+  ["immunitás (E)","a földesúri birtok mentessége a királyi jogok, elsősorban az adószedés és a bíráskodás alól"],
+  ["banalitás (E)","földesúri monopólium (malom, kocsma, mészárszék, sörfőzés), amelyet a jobbágy köteles igénybe venni"],
+  ["kommuna (E)","a városlakók esküvel megerősített szövetsége, amely az önkormányzat kivívására szerveződött"],
+  ["polgár","a városban ingatlantulajdonnal és polgárjoggal rendelkező, a város ügyeiben részvételre jogosult lakos"],
+  ["patrícius (E)","a városvezetést kezében tartó leggazdagabb kereskedő- és bankárréteg"],
+  ["plebs (E)","a városlakók polgárjoggal nem rendelkező, szegényebb rétege"],
+  ["céh","az azonos szakmát űző mesterek érdekvédelmi és szakmai szervezete, amely szabályozza a termelést és a piacot"],
+  ["mesterremek (E)","a mesterré váláshoz készítendő, a céh által elbírált munkadarab"],
+  ["kontár (E)","a céhen kívül, engedély nélkül iparűző mesterember"],
+  ["árumegállító jog (E)","az a városi kiváltság, amely az áthaladó kereskedőt áruja helyben, meghatározott ideig tartó árusítására kötelezi"],
+  ["hanza / Hanza","kisbetűvel: kereskedők egy vállalkozásra szövetkező társulása; nagybetűvel: a XIV. századi észak-német városszövetség"],
+  ["nagy pestisjárvány","az 1347–1352 között Európán végigsöprő járvány, amely a népesség mintegy harmadát elpusztította"],
+  ["mezőváros (oppidum)","földesúri joghatóság alatt álló, mezőgazdasági jellegű magyar város, fő kiváltsága az egy összegben fizetett adó"],
+  ["hospes","a XII–XIII. században Magyarországra hívott, kiváltságokkal letelepített vendégtelepes"],
+  ["kogge","a Hanza kereskedőinek nagy teherbírású, magas oldalfalú hajója"]
+];
+
+var TIME = [
+  ["476","A Nyugatrómai Birodalom bukása","A középkor kezdete; az antik városi élet hanyatlása."],
+  ["800 k.","Nagy Károly birtokigazgatási rendelete","A naturális gazdálkodás iskolapéldája."],
+  ["X–XI. sz.","A háromnyomásos gazdálkodás általánossá válása","A mezőgazdasági fellendülés alapja."],
+  ["1077 · 1112","Cambrai, majd Laon kommunája","A kommunamozgalom jellegzetes példái."],
+  ["1161","Az északi-tengeri és balti kereskedők szövetsége","A kereskedői hanza létrejötte."],
+  ["1202–1204","IV. keresztes hadjárat","Velence uralkodó szerepe a levantei kereskedelemben."],
+  ["1241–1242","Tatárjárás","IV. Béla várospolitikájának kiindulópontja."],
+  ["1244","A pesti polgárok kiváltságlevele","A magyar városfejlődés fordulópontja."],
+  ["1252","A firenzei aranyforint verésének kezdete","A pénzgazdálkodás megerősödése."],
+  ["1347–1352","A nagy pestisjárvány","Demográfiai és társadalmi fordulat."],
+  ["1351","Nagy Lajos törvényei","A kilenced bevezetése, egységes jobbágyterhek."],
+  ["1358 · 1381","Jacquerie, Wat Tyler felkelése","A járvány utáni társadalmi feszültségek."],
+  ["1405","Zsigmond városokat támogató dekrétuma","Királyi várospolitika Magyarországon."],
+  ["1492","Amerika felfedezése","A középkor lezárása a hazai periodizáció szerint."]
+];
+
+/* ---------------- segédek ---------------- */
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
+function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]/g,"");}
+var TOTAL=0, done={};
+function markDone(id,box){ if(done[id])return; done[id]=1; box.classList.add("done"); updateProg(); }
+function updateProg(){
+  var n=Object.keys(done).length;
+  document.getElementById("progTxt").textContent=n+"/"+TOTAL;
+  document.getElementById("progFill").style.right=(100-(n/TOTAL*100))+"%";
+}
+function answerBox(text){
+  var a=el("div","answer"); var l=el("span","lbl","Megoldás"); a.appendChild(l);
+  var p=el("p",null,text); p.style.margin="0"; a.appendChild(p); return a;
+}
+
+/* ---------------- feladatok renderelése ---------------- */
+function buildTask(t){
+  var box=el("div","task");
+  box.appendChild(el("span","task-id",t.id));
+  box.appendChild(el("div","task-q",t.q));
+  var ans=t.answer?answerBox(t.answer):null;
+
+  if(t.type==="tf"){
+    t.items.forEach(function(it){
+      var row=el("div","tf-row");
+      row.appendChild(el("div","tf-txt",it.t));
+      var btns=el("div","tf-btns");
+      var note=el("div","tf-note",it.n);
+      ["Igaz","Hamis"].forEach(function(lbl,i){
+        var b=el("button","chip",lbl);
+        b.addEventListener("click",function(){
+          var picked=(i===0);
+          Array.prototype.forEach.call(btns.children,function(x){x.disabled=true;});
+          b.classList.add(picked===it.a?"ok":"bad");
+          note.classList.add("show");
+          markDone(t.id,box);
+        });
+        btns.appendChild(b);
+      });
+      row.appendChild(btns); row.appendChild(note); box.appendChild(row);
+    });
+  }
+
+  else if(t.type==="choice"){
+    var opts=el("div","opts");
+    t.options.forEach(function(o,i){
+      var b=el("button","chip",o);
+      b.addEventListener("click",function(){
+        Array.prototype.forEach.call(opts.children,function(x){x.disabled=true;});
+        b.classList.add(i===t.correct?"ok":"bad");
+        if(i!==t.correct) opts.children[t.correct].classList.add("ok");
+        if(ans) ans.classList.add("show");
+        markDone(t.id,box);
+      });
+      opts.appendChild(b);
+    });
+    box.appendChild(opts);
+  }
+
+  else if(t.type==="order"){
+    var pool=el("div","opts"), track=el("div","chain-track"), seq=[];
+    var ph=el("span",null,"A sorrend ide épül…");
+    ph.style.cssText="font-family:var(--mono);font-size:11px;color:#9A968C";
+    track.appendChild(ph);
+    var shuffled=t.items.map(function(x,i){return [x,i];}).sort(function(){return Math.random()-.5;});
+    shuffled.forEach(function(pair){
+      var b=el("button","chip",pair[0]);
+      b.addEventListener("click",function(){
+        if(b.disabled)return; b.disabled=true; b.classList.add("sel");
+        seq.push(pair[1]);
+        if(ph.parentNode)track.removeChild(ph);
+        if(seq.length>1) track.appendChild(el("span","chain-arrow","→"));
+        track.appendChild(el("span","chain-slot",pair[0]));
+        if(seq.length===t.items.length){
+          var ok=seq.every(function(v,i){return v===i;});
+          v.textContent=ok?"Helyes sorrend.":"Nem ez a sorrend — nézd meg a megoldást.";
+          v.className="verdict "+(ok?"ok":"bad");
+          if(ans) ans.classList.add("show");
+          markDone(t.id,box);
+        }
+      });
+      pool.appendChild(b);
+    });
+    var v=el("span","verdict","");
+    var act=el("div","act");
+    var reset=el("button","btn ghost","Újrakezdem");
+    reset.addEventListener("click",function(){
+      seq=[]; track.innerHTML=""; track.appendChild(ph); v.textContent="";
+      Array.prototype.forEach.call(pool.children,function(x){x.disabled=false;x.className="chip";});
+    });
+    act.appendChild(reset); act.appendChild(v);
+    box.appendChild(pool); box.appendChild(track); box.appendChild(act);
+  }
+
+  else if(t.type==="match"){
+    var wrap=el("div","match");
+    var lc=el("div"), rc=el("div");
+    lc.appendChild(el("div","colhead","Állítás"));
+    rc.appendChild(el("div","colhead","Megfelelője"));
+    var ls=el("div","stack"), rs=el("div","stack");
+    lc.appendChild(ls); rc.appendChild(rs);
+    var sel=null, pairedL={}, pairedR={}, count=0;
+    var rOrder=t.right.map(function(x,i){return [x,i];}).sort(function(){return Math.random()-.5;});
+    t.left.forEach(function(x,i){
+      var b=el("button","chip",x);
+      b.addEventListener("click",function(){
+        if(pairedL[i])return;
+        if(sel&&sel.b!==b) sel.b.classList.remove("sel");
+        sel={i:i,b:b}; b.classList.add("sel");
+      });
+      ls.appendChild(b);
+    });
+    rOrder.forEach(function(pair){
+      var b=el("button","chip",pair[0]);
+      b.addEventListener("click",function(){
+        if(!sel||pairedR[pair[1]])return;
+        var ok=(t.pairs[sel.i]===pair[1]);
+        sel.b.classList.remove("sel");
+        sel.b.classList.add(ok?"ok":"bad"); b.classList.add(ok?"ok":"bad");
+        if(ok){ pairedL[sel.i]=1; pairedR[pair[1]]=1; count++; }
+        else { var sb=sel.b; setTimeout(function(){sb.classList.remove("bad");b.classList.remove("bad");},900); }
+        sel=null;
+        if(count===t.left.length){ if(ans)ans.classList.add("show"); markDone(t.id,box); }
+      });
+      rs.appendChild(b);
+    });
+    wrap.appendChild(lc); wrap.appendChild(rc); box.appendChild(wrap);
+  }
+
+  else if(t.type==="sort"){
+    var listWrap=el("div");
+    var left=t.items.length;
+    t.items.forEach(function(it){
+      var row=el("div","tf-row");
+      row.appendChild(el("div","tf-txt",it[0]));
+      var btns=el("div","tf-btns");
+      t.cats.forEach(function(cat,ci){
+        var b=el("button","chip",cat);
+        b.addEventListener("click",function(){
+          Array.prototype.forEach.call(btns.children,function(x){x.disabled=true;});
+          b.classList.add(ci===it[1]?"ok":"bad");
+          if(ci!==it[1]) btns.children[it[1]].classList.add("ok");
+          left--; if(left===0){ if(ans)ans.classList.add("show"); markDone(t.id,box); }
+        });
+        btns.appendChild(b);
+      });
+      row.appendChild(btns); listWrap.appendChild(row);
+    });
+    box.appendChild(listWrap);
+  }
+
+  else if(t.type==="fill"){
+    var pWrap=el("p"); pWrap.style.lineHeight="2.2";
+    var inputs=[];
+    t.parts.forEach(function(seg){
+      if(typeof seg==="string"){ pWrap.appendChild(document.createTextNode(seg)); }
+      else{
+        var inp=document.createElement("input");
+        inp.type="text"; inp.className="fill-in"; inp.setAttribute("aria-label","Kiegészítendő szó");
+        inputs.push([inp,t.blanks[seg]]); pWrap.appendChild(inp);
+      }
+    });
+    box.appendChild(pWrap);
+    var act2=el("div","act");
+    var chk=el("button","btn","Ellenőrzés");
+    var v2=el("span","verdict","");
+    chk.addEventListener("click",function(){
+      var good=0;
+      inputs.forEach(function(pair){
+        var val=norm(pair[0].value);
+        var ok=pair[1].some(function(a){return val===norm(a);});
+        pair[0].classList.remove("ok","bad"); pair[0].classList.add(ok?"ok":"bad");
+        if(ok)good++;
+      });
+      v2.textContent=good+"/"+inputs.length+" helyes";
+      v2.className="verdict "+(good===inputs.length?"ok":"bad");
+      if(ans)ans.classList.add("show");
+      markDone(t.id,box);
+    });
+    act2.appendChild(chk); act2.appendChild(v2); box.appendChild(act2);
+  }
+
+  else { /* open */
+    var act3=el("div","act");
+    var b3=el("button","btn ghost","Megoldás megjelenítése");
+    b3.addEventListener("click",function(){
+      if(ans)ans.classList.toggle("show");
+      b3.textContent=(ans&&ans.classList.contains("show"))?"Megoldás elrejtése":"Megoldás megjelenítése";
+      markDone(t.id,box);
+    });
+    act3.appendChild(b3); box.appendChild(act3);
+  }
+
+  if(ans) box.appendChild(ans);
+  return box;
+}
+
+Object.keys(TASKS).forEach(function(m){
+  var host=document.getElementById("tasks-"+m);
+  if(!host)return;
+  TASKS[m].forEach(function(t){ TOTAL++; host.appendChild(buildTask(t)); });
+});
+updateProg();
+
+/* ---------------- hero lánc ---------------- */
+(function(){
+  var pool=document.getElementById("chainPool"),
+      track=document.getElementById("chainTrack"),
+      ph=document.getElementById("chainPlaceholder"),
+      v=document.getElementById("chainVerdict"),
+      seq=[];
+  function build(){
+    pool.innerHTML=""; track.innerHTML=""; track.appendChild(ph); ph.style.display="";
+    v.textContent=""; v.className="verdict"; seq=[];
+    CHAIN.map(function(x,i){return [x,i];}).sort(function(){return Math.random()-.5;})
+    .forEach(function(pair){
+      var b=el("button","chip",pair[0]);
+      b.addEventListener("click",function(){
+        if(b.disabled)return; b.disabled=true; b.classList.add("sel"); seq.push(pair[1]);
+        ph.style.display="none";
+        if(seq.length>1) track.appendChild(el("span","chain-arrow","→"));
+        track.appendChild(el("span","chain-slot",pair[0]));
+        if(seq.length===CHAIN.length){
+          var ok=seq.every(function(x,i){return x===i;});
+          track.appendChild(el("span","chain-arrow","→"));
+          var goal=el("span","chain-goal","VÁROSOK");
+          track.appendChild(goal);
+          if(ok){ setTimeout(function(){goal.classList.add("lit");},120);
+            v.textContent="Pontosan ez a lánc — ezt jutalmazza a javítókulcs."; v.className="verdict ok"; }
+          else { v.textContent="Nem stimmel a sorrend. Kezdd az eszközöknél, és haladj a következményekig."; v.className="verdict bad"; }
+        }
+      });
+      pool.appendChild(b);
+    });
+  }
+  document.getElementById("chainReset").addEventListener("click",build);
+  build();
+})();
+
+/* ---------------- fogalomtár ---------------- */
+(function(){
+  var host=document.getElementById("glossList"), inp=document.getElementById("glossSearch");
+  function render(q){
+    host.innerHTML="";
+    var nq=norm(q), hits=0;
+    GLOSS.forEach(function(g){
+      if(nq && norm(g[0]).indexOf(nq)<0 && norm(g[1]).indexOf(nq)<0) return;
+      hits++;
+      var row=el("div","row");
+      var dt=el("dt",null,g[0]), dd=el("dd",null,g[1]);
+      row.appendChild(dt); row.appendChild(dd); host.appendChild(row);
+    });
+    if(!hits) host.appendChild(el("p","no-hit","Erre a szóra nincs találat. Próbáld a fogalom rövidebb alakjával."));
+  }
+  inp.addEventListener("input",function(){render(inp.value);});
+  render("");
+})();
+
+/* ---------------- kronológia ---------------- */
+(function(){
+  var host=document.getElementById("timeline");
+  TIME.forEach(function(t){
+    var ev=el("div","ev");
+    ev.appendChild(el("div","yr",t[0]));
+    ev.appendChild(el("div","ttl",t[1]));
+    ev.appendChild(el("div","why",t[2]));
+    host.appendChild(ev);
+  });
+})();
+
+/* ---------------- esszé eszköz ---------------- */
+(function(){
+  var TYPES=[
+    {k:"Rövid · középszint",min:100,max:130,p:"Egyetemes történelmi téma, például: Mutassa be a középkori céhek működését és a városi gazdaságban betöltött szerepét!"},
+    {k:"Hosszú · középszint",min:210,max:260,p:"Magyar történelmi téma, például: Mutassa be a középkori magyar városfejlődés sajátosságait a XIII–XV. században!"},
+    {k:"Hosszú · emelt",min:240,max:290,p:"Emelt szintű hosszú esszé — mélyebb elemzés, több forrásösszevetés."},
+    {k:"Komplex · emelt",min:290,max:340,p:"Korszakokon átívelő vagy összehasonlító esszé, például a nyugati és a magyar városfejlődés összevetése."}
+  ];
+  var pills=document.getElementById("essayPills"), box=document.getElementById("essayBox"),
+      n=document.getElementById("wordN"), st=document.getElementById("wordState"),
+      zone=document.getElementById("gzone"), mark=document.getElementById("gmark"),
+      prompt=document.getElementById("essayPrompt");
+  var cur=0, SCALE=380;
+  TYPES.forEach(function(t,i){
+    var b=el("button","pill"+(i===0?" on":""),t.k+" · "+t.min+"–"+t.max+" szó");
+    b.addEventListener("click",function(){
+      cur=i;
+      Array.prototype.forEach.call(pills.children,function(x){x.classList.remove("on");});
+      b.classList.add("on"); paint();
+    });
+    pills.appendChild(b);
+  });
+  function count(){
+    var w=box.value.trim();
+    if(!w)return 0;
+    return w.split(/\s+/).filter(function(x){return x.length>0;}).length;
+  }
+  function paint(){
+    var t=TYPES[cur], c=count();
+    prompt.textContent=t.p;
+    n.textContent=c;
+    zone.style.left=(t.min/SCALE*100)+"%";
+    zone.style.width=((t.max-t.min)/SCALE*100)+"%";
+    mark.style.left=Math.min(c/SCALE*100,100)+"%";
+    if(c===0){ st.textContent="Kezdj el írni…"; st.style.color="var(--ink-soft)"; }
+    else if(c<t.min){ st.textContent="Még "+(t.min-c)+" szó a minimumig"; st.style.color="var(--rubric)"; }
+    else if(c<=t.max){ st.textContent="A terjedelem rendben"; st.style.color="var(--ok)"; }
+    else { st.textContent=(c-t.max)+" szóval túllépted a keretet"; st.style.color="var(--rubric)"; }
+  }
+  box.addEventListener("input",paint);
+  paint();
+})();
+
+/* ---------------- általános reveal gombok ---------------- */
+Array.prototype.forEach.call(document.querySelectorAll("[data-reveal]"),function(b){
+  b.addEventListener("click",function(){
+    var t=document.getElementById(b.getAttribute("data-reveal"));
+    if(!t)return;
+    t.classList.toggle("show");
+    b.textContent=t.classList.contains("show")?"Megoldás elrejtése":(b.dataset.lbl||b.textContent);
+  });
+  b.dataset.lbl=b.textContent;
+});
+
+/* ---------------- nav aktív állapot + fade ---------------- */
+(function(){
+  var links=Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute("href"));}).filter(Boolean);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id);});
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px"});
+  secs.forEach(function(s){io.observe(s);});
+
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce) return;
+  document.documentElement.classList.add("anim");
+  var fio=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); fio.unobserve(e.target);} });
+  },{rootMargin:"0px 0px -8% 0px"});
+  Array.prototype.forEach.call(document.querySelectorAll(".fade"),function(f){fio.observe(f);});
+})();
+
+})();
+</script>
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

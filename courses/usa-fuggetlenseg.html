@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Az USA függetlensége és kezdeti működése — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b1a1c;
+  --rubric:#9c2b2b;
+  --lapis:#1f3f6e;
+  --gold:#b8923f;
+  --stone:#d6cdb8;
+  --paper:#f2ede0;
+  --paper-2:#e8dfc7;
+  --line:#c6bb99;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(27,26,28,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(184,146,63,.08), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(31,63,110,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#f2ede0; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(27,26,28,.94), rgba(31,63,110,.85)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f7f2e3;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#e6dcc4; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(242,237,224,.35); color:#f2ede0; padding:5px 10px; border-radius:20px;
+  background:rgba(242,237,224,.06);
+}
+.chain-box{
+  background:rgba(14,14,16,.35); border:1px solid rgba(242,237,224,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(242,237,224,.35);
+  background:rgba(242,237,224,.05); color:#f2ede0; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(242,237,224,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(242,237,224,.45);
+  border-top:1px dashed rgba(242,237,224,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(184,146,63,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#e6dcc4; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(242,237,224,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+.fogodzo{
+  background:linear-gradient(120deg,#e8dcb3,#ede3c1); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(214,205,184,.3);}
+.source-box{background:#fbf8ec; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#3a322a; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+.sort-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row span{flex:1 1 200px;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#152f52;}
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#231c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#977633;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#f1e6c4; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.essay-dual{background:#e7ecf3; border:1px solid var(--lapis); border-radius:5px; padding:14px 18px; margin:16px 0; font-size:.94rem;}
+.essay-dual .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:6px;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#f1e6c4;}
+.tips-list li.first-tip::before{background:var(--gold); color:#231c14;}
+footer{background:var(--ink); color:#d6cdb8; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(214,205,184,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1763–1791</span>
+    <h1>Az USA függetlensége és kezdeti működése</h1>
+    <p class="subtitle">A „kellemetlenkedő törvényektől” a Bill of Rightsig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan vezetett a hétéves háború utáni brit adóterhelés a tizenhárom gyarmat ellenállásához, hogyan robbant ki a függetlenségi háború a bostoni teadélután és a „tűrhetetlen törvények” nyomán, hogyan mondta ki a Kongresszus 1776-ban a Függetlenségi Nyilatkozatot, és hogyan alapozta meg az 1787-es alkotmány — a hatalmi ágak szétválasztásával és a „fékek és egyensúlyok” rendszerével — az USA szövetségi köztársasági berendezkedését.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">🦅</span>
+        Rakd össze a láncot, hogy kigyulladjon a Függetlenségi Nyilatkozat!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Gyarmatok, adóterhek</a>
+    <a href="#m2">2. Bostoni teadélután</a>
+    <a href="#m3">3. Nyilatkozat</a>
+    <a href="#m4">4. A háború menete</a>
+    <a href="#m5">5. Alkotmány</a>
+    <a href="#m6">6. Bill of Rights</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A tizenhárom gyarmat és a brit adóterhek</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a tizenhárom gyarmat berendezkedését, és értsd meg, miért vezetett a hétéves háború az anyaországgal való konfliktushoz.</div>
+
+  <article>
+    <h3>A gyarmatok gazdasági-társadalmi jellemzői</h3>
+    <p>A 18. században az Atlanti-óceán partvidékén fekvő tizenhárom angol gyarmat dinamikusan fejlődött. Az északi (Új-Anglia) és középső területeken az iparból (vasipar, hajóépítés) és a kereskedelemből élő városokat szabad farmergazdaságok gabonatermelése látta el; délen az ültetvényeken Afrikából behurcolt fekete rabszolgákkal termeltek dohányt, rizst és gyapotot, amelyet Európában értékesítettek. A gyarmatok lakossága a bevándorlás és a magas gyermekszám miatt ugrásszerűen megnőtt (1720: 300 ezer fő; 1775: 2 millió fő). A fehér gyarmatosok teljes jogú brit állampolgárnak tekintették magukat, London azonban elutasította az egyenrangúságot, és gyarmati alattvalóként kezelte őket. A londoni parlament sokáig nem szólt bele a gyarmati önigazgatásba, csak a külügyet és a hadügyet felügyelte.</p>
+
+    <h3>A hétéves háború és a „kellemetlenkedő törvények”</h3>
+    <p>A hétéves háború (1756–1763) során a brit hadsereg legyőzte a franciákat és megszerezte Kanadát — a franciák kiszorítása Észak-Amerikából ugyanakkor jelentős államadósságot okozott Nagy-Britanniának. A londoni parlament a háborús kiadások egy részét az addig alig adózó gyarmatokkal akarta megfizettetni, ez azonban komoly ellenállásba ütközött: a gyarmati gyűlések azzal érveltek, hogy mivel nincs képviselőjük a londoni parlamentben, annak nincs joga adót kivetni rájuk — ez volt a „<strong>nincs adózás képviselet nélkül</strong>” elve. 1763-tól sorra következtek a gyarmatok által „kellemetlenkedő törvényeknek” nevezett intézkedések: letelepedési tilalom az Appalache-hegységtől nyugatra (1763), cukor-törvény (1764, behozatali vám), elszállásolási törvény (1765, brit katonák elszállásolása), és a <strong>bélyeg-törvény</strong> (1765, minden hivatalos irat okmánybélyeg-kötelezettsége — közvetlen adóként értelmezve). A felháborodott gyarmatok nyomására 1766-ban Anglia visszavonta a bélyeg-törvényt, 1767-ben azonban Townshend pénzügyminiszter újabb vámokat vetett ki (üveg, festék, ólom, tea, papír) — ezeket a gyarmatok bojkottal és tüntetésekkel érték el, hogy visszavonják, a teára kivetett vám kivételével.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a gyarmatok tiltakozása kezdetben <strong>nem</strong> a függetlenség kivívására irányult, hanem a brit alkotmányos hagyományra hivatkozva a képviselet nélküli adóztatás jogtalanságát kifogásolta — a teljes elszakadás gondolata csak fokozatosan, a konfliktus eszkalálódásával erősödött meg.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>1756–1763 hétéves háború <span class="eonly">E</span>; 1765 bélyeg-törvény <span class="eonly">E</span></td>
+        <td>Amerikai Egyesült Államok</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:39a -->
+<figure class="atlas-map" data-atlas-code="39a">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 39a. térkép</span>
+    <h4>Észak-Amerika a 18. század közepén</h4>
+    <p class="atlas-map__focus">A tizenhárom gyarmat elhelyezkedése és a kontinens gyarmati megosztottsága vizsgálható.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p041_39a.webp" target="_blank" rel="noopener" aria-label="Észak-Amerika a 18. század közepén – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img019.webp" alt="Történelmi térkép: Észak-Amerika a 18. század közepén" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:39a -->
+<div class="source-box">
+      <h4>1. forrás — A bostoni Gazette hasábjairól (1765. április 29., tartalmi kivonat)</h4>
+      <p class="src-text">A lap gúnyosan azt írja: egyetlen gyarmati lakos sem készíthet el akár egy gombot vagy egy patkószeget sem anélkül, hogy valamelyik brit vasműves vagy gombkötő ne panaszkodna, hogy becsületén csorba esett, és hogy a „gyalázatos amerikai republikánusok” becsapták és kirabolták őket.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen gazdasági ellentétet fogalmaz meg a cikk?</p>
+        <p><strong>b)</strong> Milyen hangnemben ír a gyarmati lakosokról a brit kézműves?</p>
+        <p><strong>c)</strong> Milyen szó utal már ekkor a gyarmatok politikai önértelmezésére?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Azt, hogy a gyarmati önálló kézműipar konkurenciát jelent a brit iparosoknak, akik ezt sérelmezik.</p>
+          <p><strong>b)</strong> Gúnyos, lekicsinylő, sértett hangnemben.</p>
+          <p><strong>c)</strong> A „republikánusok” kifejezés, amely már ekkor is politikai önállósági törekvésre utal.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: A londoni parlament a hétéves háború előtt rendszeresen beavatkozott a gyarmatok belső ügyeibe.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Mit jelentett a „nincs adózás képviselet nélkül” elv?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A gyarmatoknak nem kell adót fizetniük soha</button>
+        <button data-val="b">B) A parlamentnek nincs joga adót kivetni olyanokra, akiknek nincs ott képviselőjük</button>
+        <button data-val="c">C) Csak a nemesség fizethet adót</button>
+        <button data-val="d">D) A gyarmatok saját parlamentet akartak Londonban</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az 1765-ös törvény, amely minden hivatalos iratra okmánybélyeg vásárlását írta elő, a ______-törvény.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>A bostoni teadélután és a „tűrhetetlen törvények”</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a bostoni teadélután körülményeit és a brit megtorló intézkedések hatását a gyarmatok összefogására.</div>
+
+  <article>
+    <h3>A tea-törvény és a bostoni teadélután</h3>
+    <p>A rövid nyugalmat az 1773-as <strong>tea-törvény</strong> törte meg: a Brit Kelet-indiai Társaságnak mintegy 10 ezer tonna eladatlan teája halmozódott fel, ezért a brit kormány gyakorlatilag monopóliumot adott neki a gyarmatok teával való ellátására. A gyarmatok ezt elutasították: volt, ahol nem engedték partra vinni a teát, volt, ahol felgyújtották a szállítmányt. 1773. december 16-án Bostonban mohawk indiánnak öltözött polgárok (mivel az indiánokra nem vonatkozott az angol jog) a tengerbe szórták a Kelet-indiai Társaság tearakományát — ez volt a „<strong>bostoni teadélután</strong>”.</p>
+
+    <h3>A „tűrhetetlen törvények” és az első Kontinentális Kongresszus</h3>
+    <p>A gyarmatok engedetlenségére az angol kormány kemény, az amerikaiak által „tűrhetetlen törvényeknek” nevezett kényszerítő intézkedésekkel válaszolt: lezárták Boston kikötőjét, Massachusettsben katonai kormányzást vezettek be, a gyarmati bűnpereket Angliába helyezték át, megkezdték a brit hadsereg beszállásolását, és a francia lakosságú Québec határait a gyarmatok rovására terjesztették ki. A brit lépésekre válaszul a gyarmatok összefogtak — „Boston ügye egész Brit Amerika ügye” jelszóval —, és 1774-ben Philadelphiában összeült az <strong>első Kontinentális Kongresszus</strong>, amely kimondta az angol áruk bojkottját, és várta a tűrhetetlen törvények visszavonását.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a bostoni teadélután résztvevői <strong>nem</strong> a tea drágasága, hanem a Brit Kelet-indiai Társaság kényszerű monopóliuma ellen tiltakoztak — a teát valójában a monopólium miatt olcsóbban is meg lehetett volna venni, a gyarmatok mégis elvi okokból (a beleszólás nélküli szabályozás elutasítása miatt) utasították el azt.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>1773 bostoni teadélután <span class="eonly">E</span>; 1774 első Kontinentális Kongresszus <span class="eonly">E</span></td>
+        <td>Boston <span class="eonly">E</span>; Philadelphia <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>2. forrás — A tea-törvény és a bostoni teadélután háttere (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a Brit Kelet-indiai Társaság hatalmas, eladatlan teakészlete anyagi válságot okozott a vállalatnak, ezért a brit kormány úgy döntött, hogy monopóliumot ad neki a gyarmatok teapiacára — ez lehetővé tette volna, hogy a társaság a helyi kereskedőket megkerülve, közvetlenül árusítson. A gyarmatok ezt nem a tea ára, hanem az önrendelkezésük megsértése miatt utasították vissza, és több kikötőben is megakadályozták a rakomány partra vitelét.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Miért adott a brit kormány monopóliumot a Kelet-indiai Társaságnak?</p>
+        <p><strong>b)</strong> Kiket sértett volna ez a monopólium a gyarmatokon?</p>
+        <p><strong>c)</strong> Miért nem elsősorban gazdasági, hanem elvi tiltakozás volt a bostoni teadélután?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Mert a társaságnak hatalmas, eladatlan teakészlete volt, és ezt a monopólium segítségével akarta értékesíteni.</p>
+          <p><strong>b)</strong> A helyi (gyarmati) teakereskedőket, akiket megkerült volna a közvetlen értékesítés.</p>
+          <p><strong>c)</strong> Mert a gyarmatok az önrendelkezésük és beleszólási joguk hiányát, nem a tea árát kifogásolták.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="choice">
+      <p class="task-q">Miért öltöztek mohawk indiánnak a bostoni teadélután résztvevői?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Mert az indiánokkal szövetségben cselekedtek</button>
+        <button data-val="b">B) Mert az angol jog nem vonatkozott az indiánokra, így nehezebb volt őket azonosítani</button>
+        <button data-val="c">C) Mert a Kelet-indiai Társaság alkalmazottai voltak</button>
+        <button data-val="d">D) Mert ünnepséget tartottak</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="tf">
+      <p class="task-q">Állítás: Az első Kontinentális Kongresszus (1774) már kimondta a gyarmatok teljes függetlenségét.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="match">
+      <p class="task-q">Párosítsd a „tűrhetetlen törvény” rendelkezését a hatásával!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Boston kikötőjének lezárása</button>
+          <button class="match-item" data-key="p2">Massachusetts katonai kormányzása</button>
+          <button class="match-item" data-key="p3">Bűnperek Angliába helyezése</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">A kereskedelem megbénítása</button>
+          <button class="match-item" data-key="r2">A gyarmati önkormányzat felfüggesztése</button>
+          <button class="match-item" data-key="r3">A helyi igazságszolgáltatás megkerülése</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>A háború kitörése és a Függetlenségi Nyilatkozat</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a háború kirobbanását és a Függetlenségi Nyilatkozat legfontosabb tartalmi elemeit.</div>
+
+  <article>
+    <h3>Lexington és a második Kontinentális Kongresszus</h3>
+    <p>A függetlenségi háború 1775. április 19-én <strong>Lexington</strong>nál, a brit gyarmati hadsereg katonáira leadott sortűzzel kezdődött, bár a gyarmatok ezután is még sokáig a megegyezésre törekedtek. 1775. május 10-én ült össze a második Kontinentális Kongresszus: felállították a kontinentális hadsereget, amelynek vezetője a virginiai földbirtokos, <strong>George Washington</strong> lett. Miután a megegyezésre már kevés esély látszott — hiszen szövetségeseket csak független államok találhattak, lázadó alattvalók nem —, megkezdődött a függetlenség kikiáltásának előkészítése.</p>
+
+    <h3>A Függetlenségi Nyilatkozat (1776)</h3>
+    <p>1776. július 4-én a Kongresszus elfogadta a <strong>Függetlenségi Nyilatkozat</strong>ot, amelynek szövegét <strong>Thomas Jefferson</strong> írta. A dokumentum az első volt, amely kimondta, hogy egy nemzetnek joga van megválasztani azt a kormányformát, amely alatt élni akar. Első része az új nemzet politikai alapelveit fogalmazta meg: minden ember egyenlő, az emberek elidegeníthetetlen jogokkal rendelkeznek (élethez, szabadsághoz, a boldogság kereséséhez való jog), és e jogokat az emberek megbízásából működő kormányok biztosítják. A második rész felsorolta a gyarmatok sérelmeit (amelyekért formálisan a királyt tették felelőssé), a harmadik rész pedig kimondta a gyarmatok elszakadását és a függetlenséget.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a Függetlenségi Nyilatkozat „minden ember egyenlő” kijelentése <strong>nem</strong> jelentette a rabszolgák felszabadítását vagy egyenjogúsítását — Jefferson és kortársai tudatosan kerülték a rabszolgakérdés felvetését, nehogy az konfliktust okozzon a frissen függetlenné vált országban.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>George Washington</td>
+        <td>1776 a Függetlenségi Nyilatkozat</td>
+        <td>Lexington <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>3. forrás — A Függetlenségi Nyilatkozatból (1776. július 4., tartalmi kivonat)</h4>
+      <p class="src-text">A dokumentum magától értetődőnek tekinti, hogy minden ember egyenlőnek van teremtve, és a Teremtő elidegeníthetetlen jogokkal ruházta fel őket, köztük az élethez, a szabadsághoz és a boldogság kereséséhez való joggal. E jogok biztosítására kormányzatok alakultak, amelyek jogos hatalma a kormányzottak beleegyezéséből fakad. Ha egy kormányforma veszélyezteti ezeket a célokat, a népnek joga van megváltoztatni vagy megsemmisíteni azt, és új kormányzatot alkotni.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen jogokat sorol fel a szöveg mint elidegeníthetetlen emberi jogokat?</p>
+        <p><strong>b)</strong> Honnan ered a kormányzatok jogos hatalma a szöveg szerint?</p>
+        <p><strong>c)</strong> Milyen jogot biztosít a nép számára rossz kormányzás esetén?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az élethez, a szabadsághoz és a boldogság kereséséhez való jogot.</p>
+          <p><strong>b)</strong> A kormányzottak beleegyezéséből — ez a népfelség elvének kifejeződése.</p>
+          <p><strong>c)</strong> A kormányforma megváltoztatásának vagy megsemmisítésének jogát, és új kormányzat alkotásának jogát.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="match">
+      <p class="task-q">Párosítsd az eseményt a leírásával!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="v1">Lexington</button>
+          <button class="match-item" data-key="v2">Második Kontinentális Kongresszus</button>
+          <button class="match-item" data-key="v3">Függetlenségi Nyilatkozat</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="a1">A háború kezdő fegyveres összecsapása</button>
+          <button class="match-item" data-key="a2">Washington kinevezése a hadsereg élére</button>
+          <button class="match-item" data-key="a3">A gyarmatok elszakadásának kimondása</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott elem a Nyilatkozat melyik részéhez tartozik?</p>
+      <div class="sort-row"><span>„Minden ember egyenlőnek van teremtve”</span>
+        <select data-key="s1"><option value="">válassz</option><option value="elvek">Alapelvek (1. rész)</option><option value="fuggetlenseg">Függetlenség kimondása (3. rész)</option></select>
+      </div>
+      <div class="sort-row"><span>A gyarmatok elszakadásának kinyilvánítása</span>
+        <select data-key="s2"><option value="">válassz</option><option value="elvek">Alapelvek (1. rész)</option><option value="fuggetlenseg">Függetlenség kimondása (3. rész)</option></select>
+      </div>
+      <div class="sort-row"><span>Az elidegeníthetetlen jogok felsorolása</span>
+        <select data-key="s3"><option value="">válassz</option><option value="elvek">Alapelvek (1. rész)</option><option value="fuggetlenseg">Függetlenség kimondása (3. rész)</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Ki írta a Függetlenségi Nyilatkozat szövegét?</p>
+      <div class="task-controls">
+        <button data-val="a">A) George Washington</button>
+        <button data-val="b">B) Benjamin Franklin</button>
+        <button data-val="c">C) Thomas Jefferson</button>
+        <button data-val="d">D) Alexander Hamilton</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A háború menete és a párizsi béke</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Kövesd végig a függetlenségi háború fordulópontjait, és értsd meg, miért szenvedett vereséget Nagy-Britannia.</div>
+
+  <article>
+    <h3>A háború fordulópontjai</h3>
+    <p>1776-ban New Yorkban 32 ezer brit katona szállt partra, a Washington vezette amerikai csapatok visszavonultak, majd két győzelmet arattak (Trenton, 1776. december; Princeton, 1777. január). A háború igazi fordulópontja <strong>Saratoga</strong> volt (1777. október 17.): Burgoyne angol tábornok seregét az amerikai csapatok bekerítették, és fegyverletételre kényszerítették. A siker ellenére az amerikai oldalon számos probléma jelentkezett — pénzügyi és utánpótlási gondok, dezertálás, az 1777/78-as kemény tél megtizedelte Washington seregét. A saratogai győzelem híre azonban Franciaországot (1778), majd Spanyolországot és Hollandiát (1780) is háborúba léptette az amerikaiak oldalán; Oroszország, Dánia és Svédország pedig angolellenes semlegességi szövetséget alakított.</p>
+
+    <h3>Yorktown és a párizsi béke</h3>
+    <p>Az amerikai hadsereg újjászervezésében jelentős szerepet játszottak a csatlakozó külföldi katonák: a francia La Fayette, a lengyel Kosciuszko, a porosz Von Steuben, és a magyar Kováts Mihály ezredes, aki az amerikai könnyűlovasság megteremtésében vállalt szerepet, és 1779-ben Charlestonnál hősi halált halt. 1781-ben <strong>Yorktown</strong>nál a franciákkal megerősített amerikai haderő Washington vezetésével bekerítette és megadásra kényszerítette Cornwallis angol tábornok seregét — ez döntőnek bizonyult, és megkezdődtek a béketárgyalások. 1783-ban Párizsban kötötték meg a háborút lezáró békét: Anglia elismerte az Amerikai Egyesült Államok függetlenségét, Florida pedig Spanyolországé lett.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: Nagy-Britannia veresége <strong>nem</strong> elsősorban katonai kudarcnak, hanem logisztikai-politikai kudarcnak volt tulajdonítható — a világ legnagyobb flottájával rendelkező, fegyelmezett brit hadsereg számára rendkívül időigényes volt a csapatok átszállítása és ellátása egy ekkora, ismeretlen terepen, miközben az amerikaiak jól ismerték a hadszínteret, és gerilla-hadviseléssel akadályozták az utánpótlást.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>1777 Saratoga <span class="eonly">E</span>; 1781 Yorktown <span class="eonly">E</span>; 1783 párizsi béke <span class="eonly">E</span></td>
+        <td>Saratoga <span class="eonly">E</span>; Yorktown <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:39b -->
+<figure class="atlas-map" data-atlas-code="39b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 39b. térkép</span>
+    <h4>Az észak-amerikai függetlenségi háború, 1775–1783</h4>
+    <p class="atlas-map__focus">A háború fontosabb hadműveletei, csatái és a francia segítség térbeli jelentősége követhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p041_39b.webp" target="_blank" rel="noopener" aria-label="Az észak-amerikai függetlenségi háború, 1775–1783 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img020.webp" alt="Történelmi térkép: Az észak-amerikai függetlenségi háború, 1775–1783" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:39b -->
+<div class="source-box">
+      <h4>4. forrás — Az amerikai és a brit hadsereg összevetése (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint az amerikai hadsereg képzetlen önkéntesekből állt, akiknek zsoldja és ellátása kezdetben akadozott, létszáma pedig 20 ezer főről a hadjáratok végére akár néhány ezer főre is lecsökkent. Ezzel szemben a brit haderő fegyelmezett, jól kiképzett hivatásos katonákból állt, mintegy 50 ezer fős sereget vezényeltek át Észak-Amerikába — a világ legnagyobb flottája állt rendelkezésükre, a csapatok átszállítása és ellátása azonban rendkívül időigényesnek bizonyult.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen hátrányokkal küzdött az amerikai hadsereg?</p>
+        <p><strong>b)</strong> Milyen erőfölénnyel rendelkezett a brit hadsereg?</p>
+        <p><strong>c)</strong> Milyen logisztikai probléma nehezítette a brit hadviselést mégis?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Képzetlenség, rendszertelen zsold és ellátás, jelentős dezertálás.</p>
+          <p><strong>b)</strong> Fegyelmezett, kiképzett, nagyobb létszámú hadsereg és a világ legnagyobb flottája.</p>
+          <p><strong>c)</strong> A csapatok átszállítása és ellátása az óceánon át rendkívül időigényes és nehézkes volt.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: Saratoga után Franciaország, majd Spanyolország és Hollandia is háborúba lépett az amerikaiak oldalán.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: A háborút lezáró békét 1783-ban ______ városában kötötték meg.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Melyik magyar tiszt vett részt az amerikai függetlenségi háborúban?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Bem József</button>
+        <button data-val="b">B) Kováts Mihály</button>
+        <button data-val="c">C) Görgei Artúr</button>
+        <button data-val="d">D) Damjanich János</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>Az USA alkotmánya (1787)</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a konföderációs kísérlet kudarcát, és értsd meg az 1787-es alkotmány felépítését és alapelveit.</div>
+
+  <article>
+    <h3>A konföderáció kudarca</h3>
+    <p>A függetlenségi háború idején — a zsarnokinak tartott központi hatalomtól tartva — az újonnan függetlenné vált Egyesült Államok élére egy egykamarás, csak a törvényhozó hatalmat megtestesítő Kongresszust hoztak létre, amely azonban nem rendelkezett adó- és vámkivetési joggal, és nem hoztak létre sem végrehajtó, sem igazságszolgáltató szervet. A hatékony központi hatalom hiánya rövidesen az állam belső működési zavaraihoz vezetett: nem volt hadsereg a Spanyolországgal és Angliával fennálló területi viták rendezésére, az eladósodott farmerek fellázadtak, és elszabadult az államadósság és az infláció.</p>
+
+    <h3>Az alkotmányozó konvenció és az alkotmány felépítése</h3>
+    <p>1787-ben Philadelphiában összeült az <strong>Alkotmányozó Konvenció</strong>, amelyet a tagállamok 55 küldötte, az „alapító atyák” alkottak. A <strong>föderalisták</strong> (Washington, John Adams, Hamilton) erősebb központi hatalmat kívántak, az <strong>antiföderalisták</strong> (Jefferson, Madison) a tagállamok szuverenitását részesítették előnyben — a két álláspont között Benjamin Franklin közvetített. 1787. szeptember 17-én megszületett az USA <strong>alkotmánya</strong>: az első, Montesquieu hatalommegosztás-elvére és a „<strong>fékek és egyensúlyok</strong>” (checks and balances) rendszerére épülő, modern, szövetségi berendezkedésű köztársasági alkotmány. Az államszervezet kétszintű: szövetségi szinten (honvédelem, külpolitika, pénzkibocsátás) és tagállami szinten (minden más terület, saját törvényhozással). A törvényhozó hatalmat a kétkamarás Kongresszus (lakosságarányos Képviselőház és államonként két fős Szenátus), a végrehajtó hatalmat a négyévente közvetve választott elnök, a bírói hatalmat pedig a Legfelsőbb Bíróság gyakorolja — mindhárom hatalmi ág kölcsönösen ellenőrizheti és korlátozhatja a másik kettőt.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az 1787-es alkotmány <strong>nem</strong> vezette be azonnal az általános választójogot — a választásra jogosultak körét vagyoni és műveltségi cenzus szűkítette, kizárták a fekete rabszolgákat, az indián őslakosokat, és a nők sem szavazhattak; ezek a korlátozások csak a következő évszázadok reformjai során oldódtak fel fokozatosan.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>elektori rendszer <span class="eonly">E</span></td>
+        <td>Thomas Jefferson <span class="eonly">E</span>; Benjamin Franklin <span class="eonly">E</span></td>
+        <td>1787 az USA alkotmánya <span class="eonly">E</span></td>
+        <td>Philadelphia <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>5. forrás — Az Amerikai Egyesült Államok alkotmányának bevezetője (1787, tartalmi kivonat)</h4>
+      <p class="src-text">A dokumentum kinyilvánítja: „Mi, az Egyesült Államok népe” azért fogadja el az alkotmányt, hogy tökéletesebbé tegyék az Uniót, megvalósítsák az igazságosságot, biztosítsák a szabadság áldásait maguk és utódaik számára, és bevezessék az Amerikai Egyesült Államok alkotmányát.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Ki nevében fogalmazódik meg az alkotmány bevezetője?</p>
+        <p><strong>b)</strong> Milyen célokat sorol fel a szöveg?</p>
+        <p><strong>c)</strong> Milyen ellentmondás figyelhető meg az „Egyesült Államok népe” megfogalmazás és a korabeli választójogi gyakorlat között?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az „Egyesült Államok népe” nevében.</p>
+          <p><strong>b)</strong> Az Unió tökéletesítését, az igazságosságot és a szabadság biztosítását a jelen és a jövő nemzedékei számára.</p>
+          <p><strong>c)</strong> A „nép” elvi megszólítása ellenére a valós politikai jogokból (választójog) a rabszolgák, indiánok és nők ki voltak zárva.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="choice">
+      <p class="task-q">Melyik hatalmi ág gyakorolja az USA alkotmánya szerint a bírói hatalmat?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A Kongresszus</button>
+        <button data-val="b">B) Az elnök</button>
+        <button data-val="c">C) A Legfelsőbb Bíróság</button>
+        <button data-val="d">D) A Szenátus önmagában</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: Az 1787 előtti konföderációs Kongresszus rendelkezett adó- és vámkivetési joggal.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="match">
+      <p class="task-q">Párosítsd a kongresszusi kamarát a jellemzőjével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="q1">Képviselőház</button>
+          <button class="match-item" data-key="q2">Szenátus</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="w1">Lakosságarányos képviselet</button>
+          <button class="match-item" data-key="w2">Államonként két-két fős képviselet</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>A Bill of Rights és az első elnökség</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a Bill of Rights tartalmát, és értsd meg a függetlenségi háború hosszú távú társadalmi jelentőségét.</div>
+
+  <article>
+    <h3>A Bill of Rights (1791)</h3>
+    <p>Az alkotmány módosítása kiegészítésekkel történik; az első kiegészítésekre 1791-ben került sor — ez volt a <strong>Bill of Rights</strong> (Jogok törvénye). Az első tíz kiegészítés az állampolgári alapjogokat rögzítette: vallás-, szólás-, sajtó- és gyülekezési szabadság, a fegyvertartás joga, a vagyonbiztonság, az ártatlanság vélelme és a független bíróság előtti megjelenés joga. A Kongresszus törvényt nem alkothat vallás alapítása vagy szabad gyakorlásának eltiltása tárgyában, nem csorbíthatja a szólás- vagy sajtószabadságot, sem a békés gyülekezéshez való jogot.</p>
+
+    <h3>Az első elnökség és a forradalom jelentősége</h3>
+    <p>Az alkotmányt a tagállamok rövidesen elfogadták, és ezzel egy időben, 1789-ben az első elnökké <strong>George Washington</strong>ot választották (1789–1797) — utóda, John Adams alatt épült ki a mai Fehér Ház elődje. A választójog akkor még nem volt általános: kizárták a fekete rabszolgákat és az indián őslakosokat, a szabad polgárok közül is vagyoni-műveltségi cenzus szűkítette a jogosultak körét, és a nők sem szavazhattak. Az amerikaiak mégis forradalomnak tekintik a háború eseményeit, mert a politikában és a társadalomban az örökletes hatalom helyett a választott hatalom elve került előtérbe: eltörölték a nemesi címeket és előjogokat, a születés helyett az egyéni érdem vált meghatározóvá.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az amerikai függetlenségi háborút <strong>nem</strong> pusztán politikai-katonai eseménysorként, hanem társadalmi „forradalomként” szokás jellemezni — nem azért, mert radikális társadalmi átalakulást hozott (a rabszolgaság és a választójogi korlátok fennmaradtak), hanem mert alapjaiban kérdőjelezte meg az örökletes hatalom elvét, és a választott, érdemeken alapuló hatalomgyakorlást tette normává.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>cenzus; általános választójog</td>
+        <td>George Washington</td>
+        <td>1791 Bill of Rights <span class="eonly">E</span>; 1789–1797 Washington elnöksége</td>
+        <td>Washington DC <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>6. forrás — A Bill of Rights I. és II. kiegészítéséből (1791, tartalmi kivonat)</h4>
+      <p class="src-text">Az I. kiegészítés kimondja: a Kongresszus nem alkothat törvényt vallás alapítása vagy szabad gyakorlásának eltiltása tárgyában, nem csorbíthatja a szólás- vagy sajtószabadságot, sem a népnek a békés gyülekezéshez és a kormányhoz fordulás jogát. A II. kiegészítés szerint, mivel egy jól szervezett milícia szükséges a szabad állam biztonságához, nem lehet a népnek a fegyverek birtoklásához és viseléséhez való jogát csorbítani.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen szabadságjogokat sorol fel az I. kiegészítés?</p>
+        <p><strong>b)</strong> Milyen indoklással biztosítja a II. kiegészítés a fegyvertartás jogát?</p>
+        <p><strong>c)</strong> Miért vált a II. kiegészítés napjainkig tartó társadalmi vita tárgyává?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A vallásszabadságot, a szólás- és sajtószabadságot, valamint a gyülekezési jogot.</p>
+          <p><strong>b)</strong> Azzal, hogy a szabad állam biztonságához jól szervezett milíciára van szükség.</p>
+          <p><strong>c)</strong> Mert a fegyvertartás joga a modern amerikai társadalomban is élénk vitákat vált ki a közbiztonság és az egyéni szabadságjogok viszonyáról.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: az adott csoport rendelkezett-e választójoggal az 1787-es alkotmány elfogadásakor?</p>
+      <div class="sort-row"><span>Vagyonos, fehér férfiak</span>
+        <select data-key="c1"><option value="">válassz</option><option value="igen">Rendelkezett választójoggal</option><option value="nem">Nem rendelkezett választójoggal</option></select>
+      </div>
+      <div class="sort-row"><span>Nők</span>
+        <select data-key="c2"><option value="">válassz</option><option value="igen">Rendelkezett választójoggal</option><option value="nem">Nem rendelkezett választójoggal</option></select>
+      </div>
+      <div class="sort-row"><span>Fekete rabszolgák</span>
+        <select data-key="c3"><option value="">válassz</option><option value="igen">Rendelkezett választójoggal</option><option value="nem">Nem rendelkezett választójoggal</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: Az alkotmány első tíz kiegészítését, amely az állampolgári alapjogokat rögzíti, ______ ______ néven ismerjük.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="choice">
+      <p class="task-q">Miért tekintik forradalomnak a történészek az amerikai függetlenségi háborút, ha a választójog korlátozott maradt?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Mert azonnal eltörölték a rabszolgaságot</button>
+        <button data-val="b">B) Mert az örökletes hatalom helyett a választott hatalom elve vált meghatározóvá</button>
+        <button data-val="c">C) Mert a nők azonnal szavazati jogot kaptak</button>
+        <button data-val="d">D) Mert megszűnt a magántulajdon</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>elnök</dt><dd>Az USA végrehajtó hatalmának feje, egyben államfő és kormányfő; négyévente közvetve, elektori testület útján választják.</dd>
+    <dt>cenzus</dt><dd>Vagyoni vagy műveltségi feltétel, amely az 1787-es alkotmány idején szűkítette a választójogot.</dd>
+    <dt>általános választójog</dt><dd>Az az elv, hogy minden felnőtt állampolgárt megillet a szavazati jog — az USA-ban csak fokozatosan, évszázadok alatt valósult meg.</dd>
+    <dt>elektori rendszer</dt><dd>Az USA elnökválasztási rendszere, amelyben a választópolgárok nem közvetlenül, hanem államonként kialakított elektori testületeken keresztül választják meg az elnököt.</dd>
+    <dt>fékek és egyensúlyok (checks and balances)</dt><dd>Az az elv, hogy a törvényhozó, végrehajtó és bírói hatalom kölcsönösen ellenőrizheti és korlátozhatja egymást.</dd>
+    <dt>Bill of Rights</dt><dd>Az USA alkotmányának első tíz kiegészítése (1791), amely az állampolgári alapjogokat rögzíti.</dd>
+    <dt>konföderáció</dt><dd>Laza államszövetség, amelyben a tagállamok megtartják szuverenitásukat — az 1776–1787 közötti amerikai berendezkedés jellemzője volt.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1756–1763</b> Hétéves háború <span class="eonly">E</span></li>
+    <li><b>1763</b> Letelepedési tilalom az Appalache-hegységtől nyugatra <span class="eonly">E</span></li>
+    <li><b>1765</b> Bélyeg-törvény <span class="eonly">E</span></li>
+    <li><b>1773</b> Bostoni teadélután <span class="eonly">E</span></li>
+    <li><b>1774</b> Első Kontinentális Kongresszus <span class="eonly">E</span></li>
+    <li><b>1775. ápr. 19.</b> Lexington — a háború kezdete</li>
+    <li><b>1775. máj. 10.</b> Második Kontinentális Kongresszus <span class="eonly">E</span></li>
+    <li><b>1776. júl. 4.</b> A Függetlenségi Nyilatkozat elfogadása</li>
+    <li><b>1777</b> Saratoga <span class="eonly">E</span></li>
+    <li><b>1781</b> Yorktown <span class="eonly">E</span></li>
+    <li><b>1783</b> Párizsi béke <span class="eonly">E</span></li>
+    <li><b>1787</b> Az USA alkotmánya <span class="eonly">E</span></li>
+    <li><b>1789–1797</b> George Washington elnöksége</li>
+    <li><b>1791</b> Bill of Rights <span class="eonly">E</span></li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Amerikai Egyesült Államok</li><li>Boston</li><li>Philadelphia</li>
+    <li>Lexington</li><li>Saratoga</li><li>Yorktown</li><li>Washington DC</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze a hétéves háborút és a bostoni teadélutánt: <em>bostoni teadélután; hétéves háború; bélyeg-törvény; tea-törvény</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> hétéves háború (1756–1763) → bélyeg-törvény (1765) → tea-törvény (1773) → bostoni teadélután (1773).</p>
+        <p><strong>Indoklás:</strong> A hétéves háború győzelme jelentős államadóssággal járt Nagy-Britannia számára, ezért a parlament sorozatosan új adókat és vámokat vetett ki a gyarmatokra (pl. bélyeg-törvény); ez a folyamat vezetett el a tea-törvényhez, amely a Kelet-indiai Társaságnak adott monopóliumot, és amelyet a gyarmatok a bostoni teadélutánnal utasítottak vissza.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Csaták azonosítása</h4>
+    <p>A leírás alapján nevezze meg, melyik csatáról van szó: „Ennél a csatánál 1777 októberében az amerikai csapatok bekerítették és fegyverletételre kényszerítették Burgoyne angol tábornok seregét, ami Franciaország hadba lépéséhez vezetett.” Nevezzen meg egy másik fontos ütközetet is, és adja meg jelentőségét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Saratogára</em> vonatkozik. Egy másik lehetséges ütközet: Yorktown (1781, a háborút eldöntő végső amerikai-francia győzelem) vagy Lexington (1775, a háború kezdő összecsapása).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: a konföderáció és az 1787-es alkotmány összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: adókivetési jog, hadsereg, végrehajtó hatalom, hatékonyság), mi a hasonlóság és mi a különbség az 1776–1787 közötti konföderációs berendezkedés és az 1787-es szövetségi alkotmány rendszere között.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Konföderáció (1776–1787)</th><th>Szövetségi alkotmány (1787 után)</th></tr>
+          <tr><td>Adókivetési jog</td><td>A Kongresszusnak nem volt joga hozzá</td><td>A Kongresszus jogosult adót és vámot kivetni</td></tr>
+          <tr><td>Hadsereg</td><td>Nem volt állandó hadsereg</td><td>Az elnök a hadsereg főparancsnoka</td></tr>
+          <tr><td>Végrehajtó hatalom</td><td>Nem létezett önálló végrehajtó szerv</td><td>Erős, közvetve választott elnöki hatalom</td></tr>
+          <tr><td>Hatékonyság</td><td>Alacsony, belső zavarokkal küzdött</td><td>Magasabb, stabil szövetségi berendezkedés</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindkettő elutasította a zsarnokinak tartott, korlátlan központi hatalmat, és a tagállami jogokat is tiszteletben kívánta tartani.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+
+  <div class="essay-dual">
+    <span class="lbl">Egyetemes témakör</span>
+    Az USA függetlensége és kezdeti működése <strong>egyetemes (világtörténelmi) témakör</strong> — nem magyar történelmi esemény, ezért középszinten <strong>csak rövid esszében</strong> (100–130 szó) kérhető, hosszú esszé témájaként nem szerepel. Emelt szinten is elsősorban rövid, tömör kifejtést vár a feladat, de mélyebb, elemző-összehasonlító tartalommal.
+  </div>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta rövid esszé (kb. 120 szó):</strong> „Mutassa be a Függetlenségi Nyilatkozat (1776) legfontosabb elveit!”</p>
+    <p>A második Kontinentális Kongresszus 1776. július 4-én fogadta el a Thomas Jefferson által megfogalmazott Függetlenségi Nyilatkozatot. A dokumentum kimondta, hogy minden ember egyenlőnek született, és elidegeníthetetlen jogokkal rendelkezik: élethez, szabadsághoz és a boldogság kereséséhez való joggal. Ezeket a jogokat a kormányzottak beleegyezéséből fakadó hatalommal rendelkező kormányzatok biztosítják — ha egy kormányforma veszélyezteti ezeket a célokat, a népnek joga van megváltoztatni vagy megsemmisíteni azt. A dokumentum felsorolta a gyarmatok sérelmeit is, majd kimondta a Nagy-Britanniától való elszakadást — ez volt az első olyan irat, amely egy nemzet önrendelkezési jogát ünnepélyesen kinyilvánította.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé rövid terjedelemben is pontosan idézi a Nyilatkozat kulcsfogalmait (elidegeníthetetlen jogok, népfelség), történelmi kontextusba helyezi a dokumentumot, és egy összegző mondattal zárja a gondolatmenetet — tömör, mégis tartalmilag pontos.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130" selected>Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260">Hosszú esszé — nem jellemző erre a témára*</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — nem jellemző erre a témára*</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 100–130 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Konkrét évszámokat és eseményeket nevez meg</li>
+      <li><input type="checkbox"> Nem keveri össze a konföderáció és az 1787-es alkotmány időszakát</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be a gyarmatok és az anyaország közötti gazdasági-politikai ellentétek okait!</li>
+    <li><b>E2</b> Jellemezze a bostoni teadélután és a „tűrhetetlen törvények” szerepét a háború kirobbanásában!</li>
+    <li><b>E3</b> Mutassa be a Függetlenségi Nyilatkozat legfontosabb elveit!</li>
+    <li><b>E4</b> Értékelje az 1787-es alkotmány hatalommegosztási rendszerét!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze a konföderációs berendezkedést (1776–1787) és az 1787-es szövetségi alkotmány rendszerét!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: Az Amerikai Egyesült Államok függetlensége és kezdeti működése</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a tizenhárom gyarmat és a brit adóterhek</td></tr>
+    <tr><td>2 perc</td><td>A bostoni teadélután és a „tűrhetetlen törvények”</td></tr>
+    <tr><td>2 perc</td><td>A háború kitörése és a Függetlenségi Nyilatkozat (1776)</td></tr>
+    <tr><td>2 perc</td><td>A háború fordulópontjai és a párizsi béke (1783)</td></tr>
+    <tr><td>2 perc</td><td>Az 1787-es alkotmány és a Bill of Rights</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: a függetlenségi háború társadalmi jelentősége</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Miért vezetett a hétéves háború a gyarmatok és az anyaország konfliktusához?</li>
+    <li>Miért volt fordulópont Saratoga csatája?</li>
+    <li>Milyen felvilágosodás kori eszméket tartalmaz a Függetlenségi Nyilatkozat?</li>
+    <li>Miért bukott meg a konföderációs berendezkedés?</li>
+    <li>Hogyan valósul meg a „fékek és egyensúlyok” elve az USA alkotmányában?</li>
+    <li>Miért nevezik forradalomnak a függetlenségi háborút a korlátozott választójog ellenére is?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez egyetemes (világtörténelmi) témakör: mind középszinten, mind emelt szinten elsősorban rövid esszében (100–130 szó) kérhető — ne készülj hosszú esszére ehhez a témához!</li>
+    <li>Ne keverd össze a bélyeg-törvényt (1765) és a tea-törvényt (1773) — mindkettő adóügyi rendelkezés volt, de más árukra és más évben.</li>
+    <li>Jegyezd meg pontosan: a háború 1775-ben (Lexington) kezdődött, de a Függetlenségi Nyilatkozatot csak 1776-ban fogadták el — a kettő nem esik egybe.</li>
+    <li>Saratoga (1777) a háború fordulópontja volt, mert ez után léptek be a franciák a háborúba — ne keverd össze Yorktownnal (1781), amely a döntő, háborút lezáró győzelem volt.</li>
+    <li>A Függetlenségi Nyilatkozat „minden ember egyenlő” elve nem terjedt ki a rabszolgákra — ezt a vizsgacsapdát mindig érdemes megemlíteni.</li>
+    <li>Figyelj a konföderáció (1776–1787) és a szövetségi alkotmány (1787-től) közötti alapvető különbségre: az előbbinek nem volt hatékony központi hatalma.</li>
+    <li>Ne feledd a „fékek és egyensúlyok” elvét: mindhárom hatalmi ág (Kongresszus, elnök, Legfelsőbb Bíróság) ellenőrizheti a másik kettőt.</li>
+    <li>A Bill of Rights (1791) és az alkotmány (1787) két különböző dokumentum — a Bill of Rights az alkotmány első tíz kiegészítése.</li>
+    <li>Kronológiai csapda: az általános választójog nem 1787-ben, hanem csak évszázadokkal később valósult meg — ne írd le úgy, mintha az alkotmány demokratikus választójogot vezetett volna be azonnal.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni a háború fontosabb helyszíneit (Boston, Lexington, Saratoga, Yorktown) és Philadelphiát mint az alkotmányozás helyszínét.</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>Száray Miklós (szerk.): Történelem 10. — OH-TOR10TA, Oktatási Hivatal</li>
+      <li>Katolikus történelem 10. tankönyv</li>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti tankönyvi és témavázlati kiadványok, illetve a hivatalos vizsgakövetelmény ajánlott.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"b"},
+    "m1-t3": {type:"fill", answers:["bélyeg","belyeg"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"choice", answer:"b"},
+    "m2-t2": {type:"tf", answer:false},
+    "m2-t3": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"match", pairs:{v1:"a1", v2:"a2", v3:"a3"}},
+    "m3-t2": {type:"sort", answers:{s1:"elvek", s2:"fuggetlenseg", s3:"elvek"}},
+    "m3-t3": {type:"choice", answer:"c"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:true},
+    "m4-t2": {type:"fill", answers:["párizs","parizs"]},
+    "m4-t3": {type:"choice", answer:"b"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"choice", answer:"c"},
+    "m5-t2": {type:"tf", answer:false},
+    "m5-t3": {type:"match", pairs:{q1:"w1", q2:"w2"}},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"sort", answers:{c1:"igen", c2:"nem", c3:"nem"}},
+    "m6-t2": {type:"fill", answers:["bill of rights"]},
+    "m6-t3": {type:"choice", answer:"b"},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  var chainSteps = [
+    {order:1, text:"A hétéves háború utáni brit adóterhek („kellemetlenkedő törvények”) kiváltják a gyarmatok ellenállását"},
+    {order:2, text:"A bostoni teadélután és a „tűrhetetlen törvények” összefogásra késztetik a gyarmatokat (1774)"},
+    {order:3, text:"Lexington után a Kongresszus elfogadja a Függetlenségi Nyilatkozatot (1776)"},
+    {order:4, text:"Saratoga és a francia szövetség fordulatot hoz, Yorktownnál a britek megadják magukat (1781)"},
+    {order:5, text:"Az 1787-es alkotmány és az 1791-es Bill of Rights megalapozza az USA szövetségi köztársasági berendezkedését"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">🦅</span>Kirakva! A lánc: adóterhek → bostoni teadélután → Függetlenségi Nyilatkozat → Yorktown → alkotmány és Bill of Rights.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

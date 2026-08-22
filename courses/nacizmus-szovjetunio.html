@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A nemzetiszocialista Németország és a kommunista Szovjetunió — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#131313;
+  --rubric:#5c1414;
+  --lapis:#3a3d40;
+  --gold:#8c7a4a;
+  --stone:#cfc9ba;
+  --paper:#e8e4dc;
+  --paper-2:#dcd6c6;
+  --line:#b6ac96;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(19,19,19,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(140,122,74,.09), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(92,20,20,.07), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#e8e4dc; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(19,19,19,.95), rgba(58,61,64,.88)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2rem,4.6vw,2.9rem);
+  margin:.3em 0 .1em;
+  color:#eeeae0;
+  line-height:1.1;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#d9d3c1; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(232,228,220,.35); color:#e8e4dc; padding:5px 10px; border-radius:20px;
+  background:rgba(232,228,220,.06);
+}
+.chain-box{
+  background:rgba(8,8,8,.35); border:1px solid rgba(232,228,220,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(232,228,220,.35);
+  background:rgba(232,228,220,.05); color:#e8e4dc; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(232,228,220,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(232,228,220,.45);
+  border-top:1px dashed rgba(232,228,220,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(140,122,74,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#d9d3c1; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(232,228,220,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.85rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+.fogodzo{
+  background:linear-gradient(120deg,#d3c496,#d8caa0); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(182,172,150,.3);}
+.source-box{background:#f0ecdf; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#302c26; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+.sort-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row span{flex:1 1 200px;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#25272a;}
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#231c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#6f6039;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#dfd0a0; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.essay-dual{background:#e2e4de; border:1px solid var(--lapis); border-radius:5px; padding:14px 18px; margin:16px 0; font-size:.94rem;}
+.essay-dual .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:6px;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#dfd0a0;}
+.tips-list li.first-tip::before{background:var(--gold); color:#231c14;}
+footer{background:var(--ink); color:#cfc9ba; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(182,172,150,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 1922–1939</span>
+    <h1>A nemzetiszocialista Németország és a kommunista Szovjetunió</h1>
+    <p class="subtitle">Két totalitárius diktatúra a két világháború között</p>
+    <p class="lede">Hat modulban követjük végig, hogyan omlott össze a weimári köztársaság és emelkedett hatalomra Hitler 1933-ban, hogyan épült ki a náci totális állam, hogyan jutott egyeduralomra Sztálin a Szovjetunióban, hogyan zajlott a kollektivizálás, az erőltetett iparosítás és a sztálini terror, és hogyan vezetett Hitler expanziós külpolitikája — Anschluss, München, a Molotov–Ribbentrop paktum — a második világháború kitöréséhez.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">⚑</span>
+        Rakd össze a láncot, hogy kitörjön a második világháború!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Weimar válsága</a>
+    <a href="#m2">2. Náci diktatúra</a>
+    <a href="#m3">3. Totális állam</a>
+    <a href="#m4">4. Sztálin, kollektivizálás</a>
+    <a href="#m5">5. Terror, tervgazdaság</a>
+    <a href="#m6">6. Hitler külpolitikája</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>A weimári köztársaság válsága és a nácizmus ideológiai gyökerei</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a weimári köztársaság megrendülésének okait és a náci ideológia kialakulásának forrásait.</div>
+
+  <article>
+    <h3>A weimári köztársaság megrendülései</h3>
+    <p>A weimári köztársaság egy forradalom és egy kommunista hatalomátvételi kísérlet után, 1919-ben született meg. A fiatal köztársaság súlyos erőpróbákat élt át: a békeszerződés aláírása (1919), a szélsőjobboldali-katonai Kapp–Lüttwitz-puccs (1920), a jóvátételi fizetések elmaradása miatti francia-belga bevonulás a Ruhr-vidékre (1923), és Hitler müncheni „sörpuccsa” (1923). Az 1920-as évek közepétől stabilizálódott a helyzet: a Dawes-terv (1924) amerikai kölcsönökkel indította el a gazdasági talpraállást, az 1925-ös locarnói szerződésekben pedig Németország lemondott határai erőszakos megváltoztatásáról. A nagy gazdasági világválság (1929–33) azonban ismét megingatta a stabilitást: bár 1929-ben elfogadták a jóvátételi fizetéseket rendező Young-tervet, a gazdaság a leálló amerikai kölcsönök miatt megrendült, és megerősödtek a szélsőséges pártok — az 1930. szeptemberi választásokon a szociáldemokraták mögött már második lett az NSDAP, harmadik a kommunista párt.</p>
+
+    <h3>A náci ideológia gyökerei</h3>
+    <p>A náci ideológia több hagyományos mozgalom ötvöződéséből alakult ki: az osztrák területeken jelentkező pángermanizmus és antiszemitizmus, valamint a németországi népi (völkisch) mozgalom, amely a régi germán hagyományokhoz nyúlt vissza. Ezeken kívül XIX. századi ideológiák is meghatározták: a fajelmélet (a történelem a fajok harca), a térelmélet (a népek fennmaradása a lakosság és a terület növelésétől függ), a tömeglélektan (az arctalan tömeg irányítható, igényli, hogy vezessék) és a szociál- és nacionáldarwinizmus (a népek között is dúl a létharc). <strong>Hitler</strong> a Mein Kampfban fejtette ki elveit: fajelmélete szerint léteznek magasabb rendű fajok (árják/germánok), alacsonyabb rendű, rabszolgasorba taszítandó fajok (latin népek, szlávok), és kiirtandó népek (zsidók, cigányok). Az élettér-elmélet szerint hódításai három lépcsőben valósulnának meg: Európa németjeinek egyesítése, egy európai német dominanciájú birodalom, majd német világbirodalom.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a weimári köztársaság <strong>nem</strong> a gazdasági világválság miatt omlott össze közvetlenül — a válság csak felerősítette a már korábban is meglévő politikai instabilitást (puccsok, radikális pártok), és ezt a felerősödést használta ki a náci mozgalom, hogy jelentős választási sikereket érjen el.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>nemzetiszocializmus; fajelmélet; antiszemitizmus</td>
+        <td>Hitler</td>
+        <td>—</td>
+        <td>Berlin</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:58b -->
+<figure class="atlas-map" data-atlas-code="58b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 58b. térkép</span>
+    <h4>A nagy gazdasági világválság, 1929–1933</h4>
+    <p class="atlas-map__focus">A válság nemzetközi terjedése és a német politikai radikalizálódás gazdasági háttere vizsgálható.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p060_58b.webp" target="_blank" rel="noopener" aria-label="A nagy gazdasági világválság, 1929–1933 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img036.webp" alt="Történelmi térkép: A nagy gazdasági világválság, 1929–1933" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:58b -->
+<div class="source-box">
+      <h4>1. forrás — Hitler fajelmélete a Mein Kampfból (tartalmi kivonat)</h4>
+      <p class="src-text">Hitler szerint a történelem a fajok szüntelen harca, amelyben az erősebb győz, a gyengébb elpusztul. Elmélete a fajokat hierarchikus rendbe sorolta: a germán (árja) fajt tekintette a legmagasabb rendűnek, hivatott uralkodó népnek; a latin, szláv és más népeket alacsonyabb rendű, szolgasorba taszítandó népeknek; a zsidóságot pedig a legalacsonyabb rendű, ugyanakkor — mert szerinte mindenütt jelen van — a legveszélyesebb fajnak tartotta.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen elvi alapon rendezte Hitler hierarchiába a fajokat?</p>
+        <p><strong>b)</strong> Melyik népet tartotta a legmagasabb rendűnek?</p>
+        <p><strong>c)</strong> Miért tartotta különösen veszélyesnek a zsidóságot?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A szociáldarwinista fajelmélet alapján, amely szerint a történelem a fajok harca.</p>
+          <p><strong>b)</strong> A germán (árja) fajt.</p>
+          <p><strong>c)</strong> Mert úgy vélte, a zsidóság mindenütt jelen van (a társadalom minden rétegében), ezért különösen nehéz ellene védekezni.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: A Dawes-terv (1924) amerikai kölcsönökkel segítette a német gazdaság talpraállását.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Az 1930. szeptemberi választásokon hányadik legerősebb párt lett az NSDAP?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Első</button>
+        <button data-val="b">B) Második</button>
+        <button data-val="c">C) Harmadik</button>
+        <button data-val="d">D) Negyedik</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: Hitler elveit és terveit a ______ ______ (jelentése: „Harcom”) című könyvében fejtette ki.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>A náci diktatúra kiépítése (1933–1934)</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, hogyan alakította ki Hitler a totális hatalmat a kancellárrá válásától a hosszú kések éjszakájáig.</div>
+
+  <article>
+    <h3>Hatalomátvétel és a felhatalmazási törvény</h3>
+    <p>1932-ben három választás bizonyult döntőnek: elnökké választották a 85 éves Hindenburgot; a júliusi parlamenti választásokat az NSDAP nyerte (37,4%), de Hitler abszolút többséget akart; a novemberi választásokat ismét az NSDAP nyerte, de kevesebb szavazattal (33%). <strong>1933. január 30-án Hitler lett Németország kancellárja.</strong> Az abszolút többség érdekében márciusban újabb választásokat tartottak, de az NSDAP csak 43,9%-ot szerzett, így csak koalíciós partnerével haladta meg az 50%-ot. Hitler azonban 1933. március 24-én elfogadtatta a felhatalmazási törvényt, amely törvényhozói teljhatalommal ruházta fel a kormányt.</p>
+
+    <h3>A totális állam kiépítése és a hosszú kések éjszakája</h3>
+    <p>Megindult az államéletet, a gazdaságot, a társadalmat teljesen ellenőrzése alá vonó totális állam kiépítése: felállították az első koncentrációs tábort (Dachau), ahová bírósági ítélet nélkül deportálhattak „gyanús elemeket”; Göring vezetésével megalakult a politikai rendőrség, a GESTAPO; feloszlatták a szakszervezeteket; betiltották az ellenzéki újságokat; júniusban betiltották az SPD-t, majd a többi pártot is, kihirdették az egypártrendszert; megszüntették az ország szövetségi jellegét. 1934-ben, Hindenburg halála után Hitler lett az elnök és a hadsereg főparancsnoka is. Hitler leszámolt pártbeli ellenfeleivel is: 1934. június 30-án, a „hosszú kések éjszakáján” meggyilkolták Gregor Strassert (a párt „szocialista” vonulatának vezetőjét) és Ernst Röhmöt (az SA vezetőjét) — ezután csökkent az SA és növekedett a Himmler vezette SS szerepe.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a felhatalmazási törvény (1933. március) <strong>nem</strong> volt Hitler első hatalomátvételi lépése — előbb kancellárrá nevezték ki (január 30.), majd választásokon próbált abszolút többséget szerezni, és csak ezután, koalíciós partnerrel elért többség birtokában fogadtatta el a törvényhozói teljhatalmat biztosító felhatalmazási törvényt.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>totális állam; Führer; SS</td>
+        <td>—</td>
+        <td>1933 a náci hatalomátvétel</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>2. forrás — A felhatalmazási törvény (1933. március 24., tartalmi kivonat)</h4>
+      <p class="src-text">A törvény kimondja, hogy a birodalmi kormány törvényeket alkothat a birodalmi alkotmányban rögzített eljárástól eltérően is, ezek a törvények a kancellár aláírásával lépnek hatályba, és eltérhetnek a birodalmi alkotmánytól. A törvény négy évre szólt, és lényegében a törvényhozói hatalmat teljes egészében a kormány (a gyakorlatban Hitler) kezébe adta, megkerülve a parlamentet.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen jogkört biztosított a törvény a kormánynak?</p>
+        <p><strong>b)</strong> Milyen eljárási kötöttségektől szabadult meg a kormány?</p>
+        <p><strong>c)</strong> Miért volt ez a törvény a diktatúra kiépítésének kulcslépése?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A törvényhozói teljhatalmat, az alkotmánytól eltérő törvényalkotás jogát.</p>
+          <p><strong>b)</strong> A birodalmi alkotmányban rögzített törvényalkotási eljárástól.</p>
+          <p><strong>c)</strong> Mert ezzel a parlament gyakorlatilag kikapcsolódott a törvényalkotásból, és Hitler jogilag is korlátlan hatalomhoz jutott.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="match">
+      <p class="task-q">Párosítsd az eseményt a dátummal!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Hitler kancellárrá válása</button>
+          <button class="match-item" data-key="p2">A felhatalmazási törvény elfogadása</button>
+          <button class="match-item" data-key="p3">A hosszú kések éjszakája</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">1933. jan. 30.</button>
+          <button class="match-item" data-key="r2">1933. márc. 24.</button>
+          <button class="match-item" data-key="r3">1934. jún. 30.</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="tf">
+      <p class="task-q">Állítás: A hosszú kések éjszakáján meggyilkolt Ernst Röhm az SA vezetője volt.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="choice">
+      <p class="task-q">Melyik volt az első koncentrációs tábor, amelyet felállítottak?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Auschwitz</button>
+        <button data-val="b">B) Dachau</button>
+        <button data-val="c">C) Buchenwald</button>
+        <button data-val="d">D) Treblinka</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>A totális állam jellemzői és a zsidóüldözés</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a totalitarizmus elméleti jellemzőit, a náci propagandát és a zsidóüldözés fokozatait.</div>
+
+  <article>
+    <h3>A totalitarizmus jellemzői</h3>
+    <p>Brzezinski totalitarizmus-elmélete szerint a totális államokat (Németország, Szovjetunió) hat közös vonás jellemezte: egy egységes ideológia (nácizmus, illetve marxizmus-leninizmus); egy tömegpárt (NSDAP, illetve a kommunista párt); terrorisztikus, titkos rendőrség (GESTAPO, illetve NKVD); sajtómonopólium (propaganda: újság, rádió, film); fegyvermonopólium (SA, SS, hadsereg, illetve a Vörös Hadsereg); és központilag irányított gazdaság (Németországban 1936-tól a 4 éves terv, a Szovjetunióban a tervgazdálkodás). Mindkét rendszer meghatározott egy közösségi ellenségképet is: Németországban a zsidóság, a Szovjetunióban a „kizsákmányoló osztályok” (kulákok, burzsoázia).</p>
+
+    <h3>A zsidóüldözés fokozatai és a náci propaganda</h3>
+    <p>1933-tól megindult a zsidóság szervezett üldözése (üzletek bojkottja, kizárásuk az egyetemekről és a köztisztviselői karból). 1935-ben a <strong>nürnbergi törvények</strong> megfosztották a zsidókat német állampolgárságuktól, megtiltották a zsidók és árják közötti házasságot és szexuális kapcsolatot. 1938. november 9–10-én zajlott a „Kristályéjszaka”: szervezett támadás a zsidóság ellen (zsinagógák felgyújtása, üzletek kifosztása) egész Németországban. A náci propaganda a brit első világháborús propagandát és az üzleti reklámokat vette mintául; elvei a totalitás (az élet minden területére kiterjedjen), a széles tömegekhez szólás, a szubjektivitás és a kevés téma kitartó ismétlése voltak. <strong>1933-tól Goebbels</strong> volt a propagandaminiszter — a nácik a sajtót, a rádiót, tömeggyűléseket, hatalmas ünnepségeket (nürnbergi pártkongresszusok), filmeket (Leni Riefenstahl: „Akarat diadala”) és nyilvános könyvégetéseket használtak fel.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a náci Németország és a sztálini Szovjetunió <strong>nem</strong> azonos ideológiai tartalommal, hanem hasonló szerkezeti, működésbeli jellemzőkkel (egypárt, terror, propaganda, tervgazdaság) rendelkező totalitárius rendszerek voltak — a totalitarizmus fogalma a hatalomgyakorlás módjára, nem az ideológiai tartalomra utal, ezért helyes egy tág kategóriaként kezelni mindkét, egymással ellentétes ideológiájú rendszert.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Harmadik Birodalom <span class="eonly">E</span>; nürnbergi törvények <span class="eonly">E</span></td>
+        <td>Goebbels <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>3. forrás — A nürnbergi törvények (1935, tartalmi kivonat)</h4>
+      <p class="src-text">A törvények kimondják: a zsidók nem lehetnek német állampolgárok, csak „állam alattvalói”, ezáltal elvesztik politikai jogaikat. Megtiltják a házasságot és a nemi kapcsolatot zsidók és „árja vérűek” között, az ilyen kapcsolatokat büntetendővé nyilvánítják. A törvények részletesen szabályozzák, hogy ki minősül „zsidónak” a felmenők vallása és származása alapján.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen állampolgári jogtól fosztották meg a zsidókat?</p>
+        <p><strong>b)</strong> Milyen kapcsolatokat tiltottak meg?</p>
+        <p><strong>c)</strong> Milyen alapon határozták meg, hogy ki minősül zsidónak?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A teljes jogú német állampolgárságtól és az ezzel járó politikai jogoktól.</p>
+          <p><strong>b)</strong> A zsidók és „árja vérűek” közötti házasságot és nemi kapcsolatot.</p>
+          <p><strong>c)</strong> A felmenők vallása és származása alapján.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: a totalitarizmus jellemzője melyik rendszerhez rendelhető konkrét intézményként?</p>
+      <div class="sort-row"><span>GESTAPO</span>
+        <select data-key="s1"><option value="">válassz</option><option value="nemet">Náci Németország</option><option value="szovjet">Szovjetunió</option></select>
+      </div>
+      <div class="sort-row"><span>NKVD</span>
+        <select data-key="s2"><option value="">válassz</option><option value="nemet">Náci Németország</option><option value="szovjet">Szovjetunió</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="tf">
+      <p class="task-q">Állítás: A Kristályéjszaka (1938) volt az első szervezett, országos méretű zsidóellenes akció Németországban.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Ki volt a náci propagandaminiszter?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Göring</button>
+        <button data-val="b">B) Goebbels</button>
+        <button data-val="c">C) Himmler</button>
+        <button data-val="d">D) Ribbentrop</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>Sztálin hatalomra kerülése és a kollektivizálás</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg Sztálin és Trockij hatalmi harcát, valamint a kollektivizálás és a holodomor eseményeit.</div>
+
+  <article>
+    <h3>Sztálin és Trockij hatalmi harca</h3>
+    <p>Lenin 1922-től súlyos beteg volt, halálakor (1924) két esélyes volt az utódlásra, bár egyiküket sem tartotta alkalmasnak: Trockij (hadügyi, majd külügyi népbiztos, népszerű szónok) és <strong>Sztálin</strong> (nemzetiségügyi népbiztos, 1922-től a párt főtitkára). Véleményük két fontos dologban különbözött: a NEP (új gazdaságpolitika) kérdésében Trockij szigorúbb állami kontrollt akart, Sztálin Buharinnal együtt a NEP fenntartását hirdette; a világforradalom kérdésében Sztálin Lenin tételét fogadta el, miszerint a világforradalom a közeljövőben nem várható, ezért meg kell kezdeni „a szocializmus egy országban” való felépítését, míg Trockij továbbra is a világforradalomban bízott. Sztálin titkos szövetségre lépett Kamenyevvel és Zinovjevvel („trojka”), elszigetelte Trockijt, majd 1927–28-ban felszámolta a trojkát is — ezután gyakorlatilag egyedül irányította a Szovjetuniót.</p>
+
+    <h3>A fordulat és a kollektivizálás</h3>
+    <p>Az 1928–29-es fordulat okai: megtorpant a NEP-hez köthető gazdasági fejlődés, növekedett a külpolitikai veszélyérzet, és növekedni látszottak a belső társadalmi veszélyek — a NEP-nek köszönhetően gazdagodtak a parasztok (<strong>kulák</strong>ok) és felemelkedett egy szűk városi réteg is. Sztálin úgy döntött, fel kell gyorsítani a szocializmus építését — felszámolták a NEP-et, megkezdődött a sztálini kollektivizálás és iparosítás. 1928–29-től előkészítés nélkül, erőszakos módszerekkel megkezdődött a mezőgazdaság szövetkezetesítése (kolhozok szervezése), az iparosításhoz szükséges tőkét a mezőgazdaságból kívánták kivonni. Az erőltetett kollektivizálás a parasztság elkeseredett ellenállásába ütközött, a mezőgazdasági teljesítmény visszaesett. 1932–33-ban következett be a nagy ukrajnai éhínség (<strong>holodomor</strong>): a szovjet vezetés a rossz termés és a csökkenő gabonatermelés ellenére fenntartotta az élelmiszer-begyűjtést és a gabonaexportot, ez súlyos éhezéshez vezetett, becslések szerint 7–10 millió ember halálát okozva — egyes vélemények szerint ez tudatos népirtás volt az ukrán nép ellen.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: Sztálin és Trockij vitája <strong>nem</strong> csupán személyes hatalmi harc volt — mögötte valódi elvi-ideológiai különbségek húzódtak (a NEP fenntartása vagy megszigorítása, a világforradalom kérdése), amelyeket a vizsgán mindig érdemes konkrétan megnevezni, nem csak a hatalmi versengésre utalni.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>kulák; kollektivizálás; holodomor</td>
+        <td>Sztálin</td>
+        <td>1922 a Szovjetunió létrejötte</td>
+        <td>Szovjetunió</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — Sztálin és Trockij vitájának lényege (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint Trockij úgy vélte, hogy ellenséges kapitalista környezetben, egyetlen országban nem lehet felépíteni a szocializmust, ezért a világforradalom mielőbbi kirobbantására kell törekedni, és a NEP-et szigorúbb állami kontroll alá kell vonni. Sztálin ezzel szemben azt hirdette, hogy a szocializmust „egy országban” is fel lehet és fel is kell építeni, mivel a közeljövőben nem várható világforradalom, és eleinte a NEP fenntartása mellett érvelt Buharinnal együtt.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit gondolt Trockij a szocializmus egy országban való felépíthetőségéről?</p>
+        <p><strong>b)</strong> Milyen tételt fogadott el Sztálin ezzel szemben?</p>
+        <p><strong>c)</strong> Kivel szövetkezett kezdetben Sztálin a NEP kérdésében?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Úgy vélte, ellenséges környezetben egyetlen országban nem lehet felépíteni a szocializmust.</p>
+          <p><strong>b)</strong> A „szocializmus egy országban” tételét, mivel a közeljövőben nem várható világforradalom.</p>
+          <p><strong>c)</strong> Buharinnal.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: A holodomor idején a szovjet vezetés leállította a gabonaexportot, hogy enyhítse az éhínséget.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: A meggazdagodó parasztokat, akiket a kollektivizálás idején üldöztek, ______-nak nevezték.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Mikor számolta fel Sztálin véglegesen a „trojkát”, ezzel egyedüli vezetővé válva?</p>
+      <div class="task-controls">
+        <button data-val="a">A) 1922-ben</button>
+        <button data-val="b">B) 1924-ben</button>
+        <button data-val="c">C) 1927–28-ban</button>
+        <button data-val="d">D) 1932-ben</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>A szovjet tervgazdaság és a sztálini terror</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg az ötéves terveket, a tervgazdálkodás jellemzőit és a sztálini terror eszközeit.</div>
+
+  <article>
+    <h3>Az ötéves tervek és a tervgazdálkodás</h3>
+    <p>Az első ötéves terv (1928–32) a számok bűvöletében készült: a beruházások döntő részét a nehézipar kapta, amely jelentős fejlődést produkált (új iparágak, új iparvidékek, pl. Urál-vidék), a fogyasztási cikkeket előállító ipar viszont alig termelt, állandósult az áruhiány. A második ötéves terv (1933–37) már nagyobb hangsúlyt fektetett a fogyasztási cikkek gyártására. Az ipari össztermelésben a Szovjetunió (legalábbis statisztikailag) megelőzte Németországot, Angliát, Franciaországot, de az egy főre jutó fejlettségi mutatókban messze elmaradt tőlük. A gazdaságpolitika céljai az önellátás megteremtése és a háborúra való felkészülés voltak. A <strong>tervgazdálkodás</strong>t az állami tervutasításos rendszer jellemezte, élén a GOSZPLAN állami tervhivatallal — ez megszüntette a piaci viszonyokat, gazdaságilag irracionális, irreális terveket kellett teljesíteni, a munkaerő mértéktelen kihasználására épült (munkaversenyek, <strong>sztahanovista mozgalom</strong>). Az eredmény: meghamisított gazdasági adatok, mérhetetlen pazarlás, súlyos környezetkárosítás.</p>
+
+    <h3>A sztálini terror eszközei</h3>
+    <p>Az erőszakszervezetek (Cseka–GPU–OGPU, majd 1934-től NKVD) vezetői sorra váltották egymást: Jagoda (1934–36), Jezsov (1936–38), <strong>Berija</strong> (1938-tól). Sztálin lehetséges ellenfeleit meggyilkoltatta (1934: Kirov, a leningrádi pártbizottság titkára; 1940: Trockij, Mexikóban). A koncepciós perek Visinszkij főügyész irányításával, előre megírt forgatókönyv alapján zajlottak — a vádak bizonyításához elegendő volt a vádlottak beismerő vallomása, amit kényszerítő módszerekkel csikartak ki: 1936 augusztusában az első nagy moszkvai per (Zinovjev, Kamenyev kivégzése), 1937 elején a második nagy moszkvai per, 1937 júniusában Tuhacsevszkij pere (a hadsereg „lefejezése”), 1938 márciusában a harmadik nagy moszkvai per (Buharin, Rikov, Jagoda kivégzése). A <strong>GULAG</strong> (Lágerek Főparancsnoksága) munkatáborai a Szovjetunió minden részén, de leghírhedtebben Szibériában (Kolima-vidék) működtek — embertelen körülmények, magas elhalálozási arány jellemezte őket, milliós nagyságrendű halottal a II. világháborúig.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a koncepciós perek <strong>nem</strong> valódi bizonyítékokon alapultak — a vádak igazolásához elegendő volt a vádlott beismerő vallomása, amelyet kínzással és pszichológiai nyomással csikartak ki; ez alapvetően megkülönbözteti a koncepciós pert a jogállami büntetőeljárástól, és fontos vizsgacsapda.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>személyi kultusz; koncepciós per; gulág; tervgazdaság</td>
+        <td>—</td>
+        <td>—</td>
+        <td>Szibéria; Kolima-vidék</td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:LOC-GULAG -->
+<figure class="atlas-map" data-atlas-code="LOC-GULAG">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Library of Congress</span>
+    <h4>A Dalstroj területén működő javító-munkatáborok, 1930–1950</h4>
+    <p class="atlas-map__focus">A kolimai GULAG-táborhálózat, a kényszermunka és a nyersanyag-kitermelés térbeli összekapcsolódása értelmezhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tile.loc.gov/image-services/iiif/public:gdc:2018688076:kl0014u/full/pct:100.0/0/default.jpg" target="_blank" rel="noopener" aria-label="A Dalstroj területén működő javító-munkatáborok, 1930–1950 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img037.webp" alt="Történelmi térkép: A Dalstroj területén működő javító-munkatáborok, 1930–1950" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://www.loc.gov/item/2018688076/" target="_blank" rel="noopener">Library of Congress</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:LOC-GULAG -->
+<div class="source-box">
+      <h4>5. forrás — A koncepciós perek jellemzői (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint a nagy moszkvai perek forgatókönyvét előre megírták, a vádlottakat gyakran korábbi bolsevik vezetők, Sztálin egykori harcostársai közül válogatták. A bíróság nem igényelt tárgyi bizonyítékot: elegendő volt, ha a vádlott — hosszas kihallgatás, kényszer és fenyegetés hatására — beismerő vallomást tett a koholt vádakra (kémkedés, szabotázs, összeesküvés). A pereket Visinszkij főügyész vezette, a kimenetel szinte mindig előre eldöntött volt: halálos ítélet vagy hosszú kényszermunka.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen módszerrel csikarták ki a beismerő vallomásokat?</p>
+        <p><strong>b)</strong> Kik voltak jellemzően a vádlottak?</p>
+        <p><strong>c)</strong> Ki vezette a pereket?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Kényszer, fenyegetés és hosszas kihallgatás útján.</p>
+          <p><strong>b)</strong> Gyakran korábbi bolsevik vezetők, Sztálin egykori harcostársai.</p>
+          <p><strong>c)</strong> Visinszkij főügyész.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="match">
+      <p class="task-q">Párosítsd az NKVD vezetőjét az időszakával!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">Jagoda</button>
+          <button class="match-item" data-key="p2">Jezsov</button>
+          <button class="match-item" data-key="p3">Berija</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">1934–36</button>
+          <button class="match-item" data-key="r2">1936–38</button>
+          <button class="match-item" data-key="r3">1938-tól</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: A GULAG munkatáborai kizárólag Moszkva környékén működtek.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="choice">
+      <p class="task-q">Melyik ágazat kapta a beruházások döntő részét az első ötéves terv idején?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Fogyasztási cikkek ipara</button>
+        <button data-val="b">B) Nehézipar</button>
+        <button data-val="c">C) Mezőgazdaság</button>
+        <button data-val="d">D) Szolgáltatóipar</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>Hitler külpolitikája és az út a második világháborúig</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Kövesd végig Hitler expanziós lépéseit az Anschlusstól a Molotov–Ribbentrop paktumig.</div>
+
+  <article>
+    <h3>A gazdaságpolitika és a kezdeti diplomáciai lépések</h3>
+    <p>A nagy gazdasági világválságból a náci diktatúra — az amerikai New Deallal szemben — a háborús felkészülés megkezdésével, erőteljes állami irányítással és megrendelésekkel lábalt ki: 1936-tól Göring vezetésével 4 éves terv kezdődött, amely már konkrétan a háborús felkészülést célozta; 1939-re gyakorlatilag megszűnt a munkanélküliség. Hitler kezdeti külpolitikai lépései a nemzetközi közvélemény megnyugtatását szolgálták: bár 1933-ban Németország kilépett a Népszövetségből, 1934-ben megnemtámadási szerződést kötött Lengyelországgal, 1935-ben népszavazással visszaszerezte a Saar-vidéket, júniusban pedig flottaegyezményt írt alá Angliával.</p>
+
+    <h3>Az expanzió és a háborúhoz vezető út</h3>
+    <p>1935 októberében Mussolini lerohanta Etiópiát, Hitler felajánlotta támogatását, a két ország közeledni kezdett egymáshoz. Ezt kihasználva Hitler 1936. március 7-én megszállta a Rajna-vidék demilitarizált övezetét. 1936. október 25-én létrejött a Berlin–Róma tengelyszerződés, november 25-én pedig Németország és Japán aláírta az antikomintern paktumot. A spanyol polgárháborúban (1936–39) Németország és Olaszország Franco tábornokot támogatta. <strong>1938. március 12-én</strong> a német csapatok bevonultak Ausztriába (<strong>Anschluss</strong>). Ezután Hitler a Szudéta-vidék átadását követelte Csehszlovákiától — az <strong>1938. szeptember 29–30-i müncheni konferencián</strong> Chamberlain, Daladier, Mussolini és Hitler megállapodtak a Szudéta-vidék átadásáról, cserébe Hitler garantálta Csehszlovákia függetlenségét. A valóságban azonban Németország Szlovákia és Kárpát-Ukrajna autonómiáját támogatva elősegítette Csehszlovákia felbomlását: 1939. március 14-én Szlovákia kikiáltotta függetlenségét, március 15-én a németek bevonultak Prágába. Hitler ezután Danzig átadását követelte Lengyelországtól — mivel a nyugati hatalmakkal folytatott tárgyalások megszakadtak, Hitler a Szovjetunió felé fordult: 1939. augusztus 23-án megkötötték a <strong>Molotov–Ribbentrop paktum</strong>ot (német–szovjet megnemtámadási szerződés, titkos záradékkal Lengyelország felosztásáról). 1939. szeptember 1-jén Hitler megindította a támadást Lengyelország ellen — ezzel kezdetét vette a második világháború.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a müncheni konferencia <strong>nem</strong> hozott tartós békét, ahogy azt Chamberlain és Daladier remélték — Hitler a Szudéta-vidék megszerzése után hamarosan (fél éven belül) elősegítette Csehszlovákia teljes felbomlását is, megszegve a konferencián tett ígéretét az ország függetlenségének garantálásáról.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul <span class="eonly">E</span></caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>Anschluss</td>
+        <td>—</td>
+        <td>1938 az Anschluss; 1938 a müncheni konferencia; 1936 Berlin–Róma tengely <span class="eonly">E</span></td>
+        <td>Szudéta-vidék <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:60c -->
+<figure class="atlas-map" data-atlas-code="60c">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 60c. térkép</span>
+    <h4>A náci Németország területi terjeszkedése, 1935–1942</h4>
+    <p class="atlas-map__focus">Hitler 1935–1939 közötti külpolitikai lépései és a háború alatti további terjeszkedés időrendben különíthető el.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p062_60c.webp" target="_blank" rel="noopener" aria-label="A náci Németország területi terjeszkedése, 1935–1942 – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img038.webp" alt="Történelmi térkép: A náci Németország területi terjeszkedése, 1935–1942" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:60c -->
+<div class="source-box">
+      <h4>6. forrás — A müncheni konferencia és a Molotov–Ribbentrop paktum (tartalmi kivonat)</h4>
+      <p class="src-text">A müncheni megállapodás szerint Csehszlovákia átadja Németországnak a Szudéta-vidék 50%-nál nagyobb német lakosságú részeit, cserébe Hitler garantálja az ország további függetlenségét. A brit és francia vezetés úgy vélte, ezzel sikerült elkerülni a háborút. Kevesebb mint egy évvel később, 1939 augusztusában Németország és a Szovjetunió megnemtámadási szerződést kötött, amelynek titkos záradéka Lengyelország felosztásáról és a baltikumi érdekszférák elhatárolásáról rendelkezett.</p>
+      <p class="src-meta">Történelem érettségi témavázlatok II. nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Mit ígért Hitler cserébe a Szudéta-vidékért?</p>
+        <p><strong>b)</strong> Mit reméltek elérni ezzel a nyugati hatalmak?</p>
+        <p><strong>c)</strong> Mit rendezett a Molotov–Ribbentrop paktum titkos záradéka?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Csehszlovákia további függetlenségének garantálását.</p>
+          <p><strong>b)</strong> A háború elkerülését, Európa békéjének megőrzését.</p>
+          <p><strong>c)</strong> Lengyelország felosztását és a baltikumi érdekszférák elhatárolását Németország és a Szovjetunió között.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: az esemény Hitler „megnyugtató” kezdeti lépései közé, vagy a nyílt szerződésszegő lépések közé tartozik?</p>
+      <div class="sort-row"><span>Megnemtámadási szerződés Lengyelországgal (1934)</span>
+        <select data-key="s1"><option value="">válassz</option><option value="megnyugtato">Megnyugtató lépés</option><option value="szerzodesszego">Szerződésszegő lépés</option></select>
+      </div>
+      <div class="sort-row"><span>A Rajna-vidék megszállása (1936)</span>
+        <select data-key="s2"><option value="">válassz</option><option value="megnyugtato">Megnyugtató lépés</option><option value="szerzodesszego">Szerződésszegő lépés</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="tf">
+      <p class="task-q">Állítás: Hitler betartotta a müncheni konferencián tett ígéretét Csehszlovákia függetlenségének megőrzéséről.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="choice">
+      <p class="task-q">Mikor indította el Hitler a Lengyelország elleni támadást, amivel kitört a második világháború?</p>
+      <div class="task-controls">
+        <button data-val="a">A) 1938. március 12.</button>
+        <button data-val="b">B) 1939. augusztus 23.</button>
+        <button data-val="c">C) 1939. szeptember 1.</button>
+        <button data-val="d">D) 1940. június</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>totális állam</dt><dd>Az államéletet, a gazdaságot, a társadalmat és az egyéni életet is teljesen ellenőrzése alá vonó diktatúra.</dd>
+    <dt>nemzetiszocializmus</dt><dd>Hitler ideológiája, amely fajelméletet, antiszemitizmust és totális állami berendezkedést ötvözött.</dd>
+    <dt>Anschluss</dt><dd>Ausztria 1938-as bekebelezése Németországba.</dd>
+    <dt>nürnbergi törvények</dt><dd>Az 1935-ös törvények, amelyek megfosztották a zsidókat német állampolgárságuktól és megtiltották a zsidó-árja házasságot.</dd>
+    <dt>személyi kultusz</dt><dd>A vezető (Sztálin) túlzó, propagandisztikus dicsőítése képekben, versekben, szobrokban.</dd>
+    <dt>koncepciós per</dt><dd>Előre megírt forgatókönyv alapján lezajló, kikényszerített beismerő vallomásra épülő, koholt vádakon alapuló per.</dd>
+    <dt>gulág</dt><dd>A szovjet munkatáborrendszer, amely embertelen körülmények között milliókat foglalkoztatott kényszermunkán.</dd>
+    <dt>holodomor</dt><dd>Az 1932–33-as ukrajnai éhínség, amelyet a kollektivizálás és a folytatott gabonaexport súlyosbított.</dd>
+    <dt>kulák</dt><dd>A NEP idején meggazdagodott, majd a kollektivizálás során üldözött parasztréteg.</dd>
+    <dt>tervgazdaság</dt><dd>Az állami tervutasításos gazdasági rendszer, amely megszüntette a piaci viszonyokat.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1922</b> A Szovjetunió létrejötte</li>
+    <li><b>1923</b> Ruhr-válság; Hitler müncheni sörpuccsa</li>
+    <li><b>1924</b> Lenin halála; a Dawes-terv</li>
+    <li><b>1927–28</b> Sztálin felszámolja a „trojkát”</li>
+    <li><b>1928–29</b> A sztálini fordulat, a kollektivizálás kezdete</li>
+    <li><b>1932–33</b> A holodomor</li>
+    <li><b>1933. jan. 30.</b> Hitler kancellárrá válása</li>
+    <li><b>1933. márc. 24.</b> A felhatalmazási törvény elfogadása</li>
+    <li><b>1934. jún. 30.</b> A hosszú kések éjszakája</li>
+    <li><b>1935</b> A nürnbergi törvények</li>
+    <li><b>1936</b> Berlin–Róma tengely <span class="eonly">E</span>; a Rajna-vidék megszállása</li>
+    <li><b>1936–38</b> A nagy moszkvai perek</li>
+    <li><b>1938. márc. 12.</b> Az Anschluss</li>
+    <li><b>1938. szept. 29–30.</b> A müncheni konferencia</li>
+    <li><b>1938. nov. 9–10.</b> A Kristályéjszaka</li>
+    <li><b>1939. márc. 15.</b> A németek bevonulnak Prágába</li>
+    <li><b>1939. aug. 23.</b> A Molotov–Ribbentrop paktum</li>
+    <li><b>1939. szept. 1.</b> Németország megtámadja Lengyelországot</li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Berlin</li><li>Szudéta-vidék</li><li>Szovjetunió</li>
+    <li>Szibéria</li><li>Kolima-vidék</li><li>Leningrád</li><li>Moszkva</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze a müncheni konferenciát és a második világháború kitörését: <em>a Lengyelország elleni támadás; a müncheni konferencia; a Molotov–Ribbentrop paktum; Csehszlovákia felbomlása</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> a müncheni konferencia (1938. szept.) → Csehszlovákia felbomlása (1939. márc.) → a Molotov–Ribbentrop paktum (1939. aug.) → a Lengyelország elleni támadás (1939. szept. 1.).</p>
+        <p><strong>Indoklás:</strong> A müncheni engedmény után Hitler megszegte ígéretét, és elősegítette Csehszlovákia teljes felbomlását, ami megmutatta, hogy a megbékéltető politika kudarcot vallott; ezután Hitler a Szovjetunió felé fordult, hogy biztosítsa hátát a Lengyelország elleni támadáshoz, amit a Molotov–Ribbentrop paktum tett lehetővé, és amely közvetlenül elvezetett a háború kitöréséhez.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Politikusok azonosítása</h4>
+    <p>A leírás alapján nevezze meg, kiről van szó: „1922-től a szovjet kommunista párt főtitkára, aki elszigetelte, majd legyőzte politikai vetélytársát, és 1928-tól gyakorlatilag egyeduralkodóként irányította a Szovjetuniót.” Nevezzen meg egy másik, a témakörben szereplő politikust is, és adja meg szerepét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>Sztálinra</em> vonatkozik. Egy másik lehetséges politikus: Trockij (Sztálin legyőzött vetélytársa) vagy Goebbels (náci propagandaminiszter).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: a náci és a szovjet terrorgépezet összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: titkosrendőrség, tábortípus, célcsoport, eljárás jellege), mi a hasonlóság és mi a különbség a náci és a sztálini terror eszközei között.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Náci Németország</th><th>Sztálini Szovjetunió</th></tr>
+          <tr><td>Titkosrendőrség</td><td>GESTAPO</td><td>NKVD</td></tr>
+          <tr><td>Tábortípus</td><td>Koncentrációs tábor (pl. Dachau)</td><td>GULAG munkatáborok (pl. Kolima)</td></tr>
+          <tr><td>Célcsoport</td><td>Zsidók, baloldaliak, „gyanús elemek”</td><td>Kulákok, „kártevők”, politikai ellenfelek</td></tr>
+          <tr><td>Eljárás jellege</td><td>Bírósági ítélet nélküli deportálás</td><td>Koncepciós perek koholt vádakkal</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindkettő a totalitárius hatalomgyakorlás eszköze volt, amely félelmen és önkényes eljáráson alapult.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+
+  <div class="essay-dual">
+    <span class="lbl">Egyetemes témakör</span>
+    A nemzetiszocialista Németország és a kommunista Szovjetunió <strong>egyetemes (világtörténelmi) témakör</strong> — nem magyar történelmi esemény, ezért középszinten <strong>csak rövid esszében</strong> (100–130 szó) kérhető, hosszú esszé témájaként nem szerepel. Emelt szinten is elsősorban rövid, tömör kifejtést vár a feladat, de mélyebb, elemző-összehasonlító tartalommal.
+  </div>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta rövid esszé (kb. 120 szó):</strong> „Mutassa be a totális állam jellemzőit a nemzetiszocialista Németország példáján!”</p>
+    <p>A totalitárius állam Brzezinski elmélete szerint hat közös jellemzővel rendelkezik: egységes ideológia, egy tömegpárt, terrorisztikus titkosrendőrség, sajtómonopólium, fegyvermonopólium és központilag irányított gazdaság. Németországban ez a nácizmus ideológiájában, az NSDAP egyeduralmában, a GESTAPO titkosrendőrségben, a Goebbels vezette propagandagépezetben, az SS és SA fegyveres szervezeteiben, valamint az 1936-tól induló 4 éves tervben nyilvánult meg. A rendszer közösségi ellenségképet is meghatározott: a zsidóságot, amelynek üldözése 1933-tól fokozatosan súlyosbodott (bojkott, nürnbergi törvények 1935, Kristályéjszaka 1938). A totális állam így minden társadalmi és gazdasági szférát ellenőrzése alá vont.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé rövid terjedelemben is pontosan alkalmazza az elméleti keretet (Brzezinski hat jellemzője) konkrét németországi példákkal, konkrét évszámokkal — tömör, mégis tartalmilag pontos.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130" selected>Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260">Hosszú esszé — nem jellemző erre a témára*</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — nem jellemző erre a témára*</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 100–130 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Konkrét évszámokat és neveket nevez meg</li>
+      <li><input type="checkbox"> Nem keveri össze a náci és a szovjet rendszer intézményeit</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be a náci ideológia gyökereit és Hitler fajelméletét!</li>
+    <li><b>E2</b> Jellemezze a náci diktatúra kiépítésének lépéseit 1933–34-ben!</li>
+    <li><b>E3</b> Mutassa be a kollektivizálás és a holodomor eseményeit!</li>
+    <li><b>E4</b> Értékelje Hitler expanziós külpolitikájának lépéseit 1936–39 között!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze a náci Németország és a sztálini Szovjetunió terrorgépezetét!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: A nemzetiszocialista Németország és a kommunista Szovjetunió</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a weimári köztársaság válsága és a nácizmus gyökerei</td></tr>
+    <tr><td>2 perc</td><td>A náci diktatúra kiépítése (1933–34)</td></tr>
+    <tr><td>2 perc</td><td>A totális állam jellemzői és a zsidóüldözés</td></tr>
+    <tr><td>2 perc</td><td>Sztálin hatalomra kerülése és a kollektivizálás</td></tr>
+    <tr><td>2 perc</td><td>A szovjet tervgazdaság és a sztálini terror</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: Hitler külpolitikája és az út a második világháborúig</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Milyen tényezők vezettek a weimári köztársaság összeomlásához?</li>
+    <li>Hogyan épült ki a náci totális állam 1933–34-ben?</li>
+    <li>Milyen közös jellemzői voltak a náci és a szovjet totalitárius rendszernek?</li>
+    <li>Hogyan jutott egyeduralomra Sztálin?</li>
+    <li>Milyen célt szolgáltak a koncepciós perek?</li>
+    <li>Hogyan vezetett Hitler külpolitikája a második világháború kitöréséhez?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez egyetemes (világtörténelmi) témakör: mind középszinten, mind emelt szinten elsősorban rövid esszében (100–130 szó) kérhető — ne készülj hosszú esszére ehhez a témához!</li>
+    <li>Ne keverd össze a GESTAPO-t (náci titkosrendőrség) és az NKVD-t (szovjet titkosrendőrség) — más rendszer, más elnevezés.</li>
+    <li>Jegyezd meg pontosan: Hitler 1933. január 30-án lett kancellár, de a teljhatalmat csak a március 24-i felhatalmazási törvénnyel szerezte meg — ez két külön lépés.</li>
+    <li>A müncheni konferencia (1938) nem hozott tartós békét — Hitler néhány hónapon belül megszegte ígéretét, és elősegítette Csehszlovákia teljes felbomlását.</li>
+    <li>Ne feledd a totalitarizmus hat közös jellemzőjét (Brzezinski elmélete): ideológia, tömegpárt, titkosrendőrség, sajtómonopólium, fegyvermonopólium, központi gazdaságirányítás.</li>
+    <li>Sztálin és Trockij vitája nem csak személyes hatalmi harc volt — konkrét elvi kérdésekben (NEP, világforradalom) is különböztek, ezt mindig nevezd meg.</li>
+    <li>A holodomor (1932–33) és a nagy moszkvai perek (1936–38) két különböző, egymást követő időszak eseményei — ne keverd össze az évszámokat.</li>
+    <li>Kronológiai csapda: az Anschluss (1938. márc.) megelőzte a müncheni konferenciát (1938. szept.) — mindkettő 1938-ban történt, de más hónapban.</li>
+    <li>A Molotov–Ribbentrop paktum (1939. aug. 23.) alig egy héttel előzte meg a Lengyelország elleni támadást (szept. 1.) — ez a közvetlen előzmény.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni Berlint, a Szudéta-vidéket, valamint a szovjet GULAG helyszíneit (Szibéria, Kolima-vidék).</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti témavázlati kiadvány, illetve a hivatalos vizsgakövetelmény ajánlott.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:true},
+    "m1-t2": {type:"choice", answer:"b"},
+    "m1-t3": {type:"fill", answers:["mein kampf"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "m2-t2": {type:"tf", answer:true},
+    "m2-t3": {type:"choice", answer:"b"},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"sort", answers:{s1:"nemet", s2:"szovjet"}},
+    "m3-t2": {type:"tf", answer:false},
+    "m3-t3": {type:"choice", answer:"b"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:false},
+    "m4-t2": {type:"fill", answers:["kulák","kulak"]},
+    "m4-t3": {type:"choice", answer:"c"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "m5-t2": {type:"tf", answer:false},
+    "m5-t3": {type:"choice", answer:"b"},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"sort", answers:{s1:"megnyugtato", s2:"szerzodesszego"}},
+    "m6-t2": {type:"tf", answer:false},
+    "m6-t3": {type:"choice", answer:"c"},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  var chainSteps = [
+    {order:1, text:"A weimári köztársaság válsága és a gazdasági világválság megerősíti a szélsőséges pártokat"},
+    {order:2, text:"Hitler kancellárrá válása (1933) és a felhatalmazási törvény kiépíti a náci totális államot"},
+    {order:3, text:"Sztálin egyeduralomra jutása elindítja a kollektivizálást és az erőltetett iparosítást"},
+    {order:4, text:"A sztálini terror és a náci zsidóüldözés a totalitárius diktatúrák jellegzetes eszközei"},
+    {order:5, text:"Hitler expanziós külpolitikája (Anschluss, München, Molotov–Ribbentrop paktum) elvezet a világháborúhoz"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">⚑</span>Kirakva! A lánc: weimári válság → náci hatalomátvétel → sztálini fordulat → terror mindkét rendszerben → 1939 világháború.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>

@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Az angol alkotmányos monarchia — Érettségi mini kurzus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1a19;
+  --rubric:#6e2020;
+  --lapis:#1f6b3f;
+  --gold:#b8923f;
+  --stone:#d9cfb5;
+  --paper:#f3eee0;
+  --paper-2:#e9e0c7;
+  --line:#c9bd9b;
+  --ok:#2f6b3e;
+  --bad:#a4342a;
+  --shadow:0 6px 18px rgba(28,26,25,.16);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Source Sans 3',sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(184,146,63,.08), transparent 40%),
+    radial-gradient(circle at 85% 92%, rgba(110,32,32,.06), transparent 45%);
+}
+h1,h2,h3,h4{font-family:'EB Garamond',serif; color:var(--ink); font-weight:600; letter-spacing:.2px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--rubric);}
+a{color:var(--lapis);}
+.eonly{
+  display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:.68rem; font-weight:600;
+  background:var(--rubric); color:#f3eee0; border-radius:2px; padding:1px 5px; margin-left:4px; vertical-align:2px;
+}
+
+/* ===== HEADER ===== */
+header.masthead{
+  background:
+    linear-gradient(160deg, rgba(28,26,25,.94), rgba(31,107,63,.85)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px);
+  color:var(--paper);
+  padding:52px 22px 40px;
+  position:relative;
+  border-bottom:6px solid var(--rubric);
+}
+.masthead-inner{max-width:920px; margin:0 auto;}
+.masthead .eyebrow{color:var(--gold);}
+header.masthead h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  margin:.3em 0 .1em;
+  color:#f7f2e3;
+  line-height:1.08;
+}
+header.masthead .subtitle{
+  font-family:'EB Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--stone); margin:0 0 20px;
+}
+header.masthead .lede{max-width:66ch; color:#e7ddc4; font-size:1.02rem;}
+.tagrow{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 30px;}
+.tag{
+  font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em;
+  border:1px solid rgba(243,238,224,.35); color:#f3eee0; padding:5px 10px; border-radius:20px;
+  background:rgba(243,238,224,.06);
+}
+
+/* ok-okozati lánc */
+.chain-box{
+  background:rgba(15,14,13,.35); border:1px solid rgba(243,238,224,.22); border-radius:6px; padding:20px;
+}
+.chain-title{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em; color:var(--gold); margin-bottom:12px; text-transform:uppercase;}
+.chain-row{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch;}
+.chain-item{
+  flex:1 1 150px; text-align:left; cursor:pointer; border:1px solid rgba(243,238,224,.35);
+  background:rgba(243,238,224,.05); color:#f3eee0; font-family:'Source Sans 3',sans-serif; font-size:.86rem;
+  padding:12px 12px; border-radius:4px; transition:.15s; line-height:1.3;
+}
+.chain-item:hover{background:rgba(243,238,224,.14);}
+.chain-item.done{background:rgba(47,107,62,.35); border-color:#5aa06a; color:#eafff0; cursor:default;}
+.chain-item.wrong{animation:shake .3s;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.chain-target{
+  margin-top:16px; text-align:center; font-family:'EB Garamond',serif; font-size:1.05rem; color:rgba(243,238,224,.45);
+  border-top:1px dashed rgba(243,238,224,.25); padding-top:14px; transition:.4s;
+}
+.chain-target.lit{color:var(--gold); text-shadow:0 0 18px rgba(184,146,63,.6);}
+.chain-target .crest{font-size:1.6rem; display:block; margin-bottom:4px;}
+
+/* ===== NAV ===== */
+nav.rail{
+  position:sticky; top:0; z-index:50; background:var(--ink); color:var(--paper);
+  border-bottom:2px solid var(--rubric); font-family:'IBM Plex Mono',monospace; font-size:.76rem;
+}
+.rail-inner{max-width:1080px; margin:0 auto; display:flex; align-items:center; gap:2px; padding:0 10px; overflow-x:auto;}
+.rail-inner a{
+  color:#e7ddc4; text-decoration:none; padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent;
+}
+.rail-inner a:hover{border-bottom-color:var(--gold); color:#fff;}
+.rail-progress{
+  margin-left:auto; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 10px; white-space:nowrap;
+}
+.rail-progress-track{width:90px; height:6px; background:rgba(243,238,224,.18); border-radius:4px; overflow:hidden;}
+.rail-progress-fill{height:100%; width:0%; background:var(--gold); transition:width .3s;}
+#progress-label{color:var(--gold); font-weight:600;}
+
+/* ===== LAYOUT ===== */
+main{max-width:920px; margin:0 auto; padding:6px 22px 80px;}
+section.module{padding:44px 0; border-bottom:1px solid var(--line);}
+section.module:last-of-type{border-bottom:none;}
+.module-head{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
+.module-num{font-family:'IBM Plex Mono',monospace; color:var(--rubric); font-weight:600; font-size:1rem;}
+section.module h2{font-size:1.9rem; margin:0 0 4px;}
+.goal-box{
+  background:var(--paper-2); border-left:4px solid var(--lapis); padding:14px 18px; margin:16px 0 26px;
+  font-size:.96rem; border-radius:0 4px 4px 0;
+}
+.goal-box .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:4px;}
+
+article h3{font-size:1.28rem; margin:26px 0 8px; color:var(--rubric); border-bottom:1px solid var(--line); padding-bottom:4px;}
+article p{margin:0 0 14px;}
+strong{color:var(--ink); font-weight:700;}
+
+.fogodzo{
+  background:linear-gradient(120deg,#e9dcb6,#eee3c3); border:1px solid var(--gold); border-radius:5px;
+  padding:16px 18px; margin:20px 0; position:relative;
+}
+.fogodzo::before{
+  content:"⚑ TANULÁSI FOGÓDZÓ"; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.09em;
+  color:var(--gold); display:block; margin-bottom:6px; font-weight:600;
+}
+.fogodzo p{margin:0; font-size:.95rem;}
+
+table.datatable{width:100%; border-collapse:collapse; margin:18px 0; font-size:.88rem;}
+table.datatable caption{
+  caption-side:top; text-align:left; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--lapis); margin-bottom:6px;
+}
+table.datatable th{background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px; font-weight:600;}
+table.datatable td{padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.datatable tr:nth-child(even) td{background:rgba(217,207,181,.3);}
+
+.source-box{background:#fbf7ea; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:22px 0;}
+.source-box h4{margin:0 0 8px; font-size:1.05rem; color:var(--lapis);}
+.source-box .src-text{font-family:'EB Garamond',serif; font-style:italic; font-size:1.02rem; color:#3a322a; margin:0 0 12px; padding-left:14px; border-left:3px solid var(--stone);}
+.source-box .src-meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#7a705d; margin:-6px 0 14px 14px;}
+
+.task{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:14px 0;}
+.task .task-q{margin:0 0 10px; font-weight:600;}
+.task-controls{display:flex; flex-wrap:wrap; gap:8px;}
+.task-controls button{
+  font-family:'Source Sans 3',sans-serif; font-size:.88rem; background:var(--paper-2); border:1px solid var(--line);
+  border-radius:20px; padding:7px 14px; cursor:pointer; transition:.12s;
+}
+.task-controls button:hover{background:var(--stone);}
+.task-controls button.correct{background:var(--ok); color:#fff; border-color:var(--ok);}
+.task-controls button.incorrect{background:var(--bad); color:#fff; border-color:var(--bad);}
+.task-controls button:disabled{cursor:default; opacity:.85;}
+.task-feedback{margin-top:10px; font-size:.86rem; font-weight:600;}
+.task-feedback.ok{color:var(--ok);}
+.task-feedback.bad{color:var(--bad);}
+
+.match-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 18px;}
+.match-col{display:flex; flex-direction:column; gap:8px;}
+.match-item{
+  text-align:left; font-size:.86rem; background:var(--paper-2); border:1px solid var(--line); border-radius:4px;
+  padding:9px 11px; cursor:pointer;
+}
+.match-item.selected{outline:2px solid var(--lapis);}
+.match-item.matched{background:var(--ok); color:#fff; border-color:var(--ok); cursor:default;}
+.match-item.wrong-flash{background:var(--bad); color:#fff;}
+
+.sort-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 0; border-bottom:1px dashed var(--line); font-size:.9rem;}
+.sort-row select{font-family:'Source Sans 3',sans-serif; font-size:.86rem; padding:5px 6px; border-radius:4px; border:1px solid var(--line);}
+.check-btn{
+  margin-top:12px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; background:var(--lapis); color:#fff;
+  border:none; border-radius:20px; padding:8px 16px; cursor:pointer;
+}
+.check-btn:hover{background:#164d2d;}
+
+.fill-input{font-size:.92rem; padding:8px 10px; border:1px solid var(--line); border-radius:4px; width:100%; max-width:340px; margin-bottom:10px; font-family:'Source Sans 3',sans-serif;}
+
+.reveal-btn{
+  font-family:'IBM Plex Mono',monospace; font-size:.76rem; background:var(--gold); color:#231c14; border:none;
+  border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+}
+.reveal-btn:hover{background:#977633;}
+.solution{margin-top:12px; background:var(--paper-2); border-left:3px solid var(--gold); padding:10px 14px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.solution.hidden{display:none;}
+.subq{margin:10px 0 14px;}
+.subq p{margin:0 0 6px;}
+
+/* Glossary/summary */
+#osszefoglalo{padding:44px 0; border-bottom:1px solid var(--line);}
+#osszefoglalo h2{font-size:1.9rem;}
+.glossary-search{width:100%; max-width:380px; padding:9px 12px; border:1px solid var(--line); border-radius:20px; font-size:.9rem; margin:14px 0 18px; font-family:'Source Sans 3',sans-serif;}
+dl.glossary{margin:0;}
+dl.glossary dt{font-family:'EB Garamond',serif; font-weight:700; color:var(--rubric); margin-top:14px; font-size:1.02rem;}
+dl.glossary dd{margin:2px 0 0; font-size:.92rem;}
+.glossary-hidden{display:none;}
+
+.timeline{list-style:none; margin:16px 0; padding:0; border-left:2px solid var(--gold); position:relative;}
+.timeline li{padding:2px 0 16px 20px; position:relative; font-size:.92rem;}
+.timeline li::before{content:""; position:absolute; left:-6px; top:5px; width:10px; height:10px; border-radius:50%; background:var(--gold);}
+.timeline li b{font-family:'IBM Plex Mono',monospace; color:var(--lapis); margin-right:6px;}
+
+.topo-list{columns:2; column-gap:30px; font-size:.9rem; margin:14px 0;}
+.topo-list li{break-inside:avoid; margin-bottom:6px;}
+
+/* feladatbank / K tasks */
+.kfeladat{background:#fff; border:1px solid var(--line); border-radius:5px; padding:18px 20px; margin:16px 0;}
+.kfeladat h4{margin:0 0 8px; color:var(--rubric);}
+.kfeladat .pont{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--lapis); float:right;}
+
+/* essay workshop */
+.essay-box{background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin:16px 0;}
+.essay-mintaesszay{background:#fff; border:1px solid var(--line); border-radius:5px; padding:16px 18px; margin:16px 0; font-family:'EB Garamond',serif; font-size:1.01rem; line-height:1.68;}
+.essay-why{background:#f2e7c4; border-left:3px solid var(--gold); padding:10px 14px; margin-top:12px; font-size:.9rem; border-radius:0 4px 4px 0;}
+.essay-dual{background:#e6efe8; border:1px solid var(--lapis); border-radius:5px; padding:14px 18px; margin:16px 0; font-size:.94rem;}
+.essay-dual .lbl{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.1em; color:var(--lapis); display:block; margin-bottom:6px;}
+.writer-controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:12px;}
+.writer-controls select{padding:7px 10px; border-radius:4px; border:1px solid var(--line); font-family:'Source Sans 3',sans-serif; max-width:100%;}
+textarea#essay-area{
+  width:100%; min-height:220px; font-family:'EB Garamond',serif; font-size:1.02rem; padding:14px; border:1px solid var(--line);
+  border-radius:5px; line-height:1.6; resize:vertical;
+}
+.word-counter{font-family:'IBM Plex Mono',monospace; font-size:.86rem; margin:8px 0; font-weight:600;}
+.word-counter.in-range{color:var(--ok);}
+.word-counter.out-range{color:var(--bad);}
+.checklist{list-style:none; padding:0; margin:14px 0;}
+.checklist li{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; font-size:.9rem;}
+.essay-topics{list-style:none; padding:0; margin:14px 0;}
+.essay-topics li{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 14px; margin-bottom:8px; font-size:.92rem;}
+.essay-topics li b{font-family:'IBM Plex Mono',monospace; color:var(--rubric); margin-right:6px;}
+
+/* szóbeli */
+.oral-table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.88rem;}
+.oral-table th{background:var(--lapis); color:#fff; padding:7px 10px; text-align:left;}
+.oral-table td{padding:7px 10px; border-bottom:1px solid var(--line);}
+.oral-questions{margin:14px 0; padding-left:20px; font-size:.92rem;}
+.oral-questions li{margin-bottom:6px;}
+
+/* tippek */
+.tips-list{counter-reset:tip; list-style:none; padding:0; margin:16px 0;}
+.tips-list li{
+  counter-increment:tip; position:relative; padding:10px 10px 10px 46px; margin-bottom:8px; background:#fff;
+  border:1px solid var(--line); border-radius:5px; font-size:.92rem;
+}
+.tips-list li::before{
+  content:counter(tip); position:absolute; left:10px; top:8px; width:24px; height:24px; border-radius:50%;
+  background:var(--rubric); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:.8rem; display:flex;
+  align-items:center; justify-content:center; font-weight:600;
+}
+.tips-list li.first-tip{border-color:var(--gold); background:#f2e7c4;}
+.tips-list li.first-tip::before{background:var(--gold); color:#231c14;}
+
+footer{background:var(--ink); color:#d9cfb5; padding:36px 22px; font-size:.82rem;}
+footer .footer-inner{max-width:920px; margin:0 auto;}
+footer h4{color:var(--gold); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; font-size:.74rem; letter-spacing:.08em; margin-bottom:8px;}
+footer ul{margin:0 0 18px; padding-left:18px;}
+footer .legal{border-top:1px solid rgba(217,207,181,.2); padding-top:14px; font-size:.78rem; color:#a89f8c;}
+
+@media (max-width:600px){
+  .match-grid{grid-template-columns:1fr;}
+  .topo-list{columns:1;}
+  .chain-row{flex-direction:column;}
+  header.masthead{padding:40px 16px 30px;}
+  main{padding:6px 14px 60px;}
+  .rail-progress{padding:6px 8px;}
+  .rail-progress-track{width:56px;}
+  table.datatable, table.oral-table{display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;}
+  table.datatable tr, table.oral-table tr{display:table-row;}
+  table.datatable td, table.datatable th, table.oral-table td, table.oral-table th{white-space:normal; min-width:120px;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001s !important; transition-duration:.001s !important; scroll-behavior:auto !important;}
+}
+@media print{
+  nav.rail{position:static;}
+  .solution.hidden{display:block !important;}
+  .task-controls, .reveal-btn, .check-btn{display:none;}
+  .rail-progress{display:none;}
+}
+</style>
+<!-- ATLAS_MAP_STYLE_START -->
+<style>
+.atlas-map{margin:24px 0;background:#fff;border:1px solid var(--line,#d8cfbd);border-radius:8px;overflow:hidden;box-shadow:var(--shadow,0 10px 28px rgba(0,0,0,.12));color:#28251f}
+.atlas-map__head{padding:14px 18px 12px;background:linear-gradient(180deg,#faf7ef,#eee5d2);border-bottom:1px solid var(--line,#d8cfbd)}
+.atlas-map__eyebrow{display:block;margin-bottom:4px;font:700 .72rem/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rubric,var(--accent,#7a2430))}
+.atlas-map__head h4{margin:0;color:var(--rubric,var(--lapis,var(--accent,#7a2430)));font-size:1.12rem;line-height:1.35}
+.atlas-map__focus{margin:6px 0 0;font-size:.9rem;line-height:1.5;color:#5f584d}
+.atlas-map__image-link{display:block;background:#fff;line-height:0;cursor:zoom-in}
+.atlas-map__image{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;background:#fff}
+.atlas-map__foot{padding:10px 18px 12px;border-top:1px solid var(--line,#d8cfbd);font-size:.78rem;line-height:1.45;color:#6e6659}
+.atlas-map__foot a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:700px){.atlas-map{margin:18px 0}.atlas-map__head{padding:12px 14px 10px}.atlas-map__head h4{font-size:1rem}.atlas-map__focus{font-size:.84rem}.atlas-map__foot{padding:9px 14px 11px}}
+@media print{.atlas-map{break-inside:avoid;box-shadow:none}.atlas-map__image{max-height:205mm}}
+</style>
+<!-- ATLAS_MAP_STYLE_END -->
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <span class="eyebrow">Történelem érettségi · 17–18. század</span>
+    <h1>Az angol alkotmányos monarchia</h1>
+    <p class="subtitle">A Stuart-abszolutizmustól a Jognyilatkozatig</p>
+    <p class="lede">Hat modulban követjük végig, hogyan vezetett a Stuart-királyok abszolutista törekvése az angol polgárháborúhoz és I. Károly kivégzéséhez, hogyan bukott meg Cromwell köztársasága, hogyan zajlott le a „dicsőséges forradalom” 1688-ban, és hogyan alapozta meg az 1689-es Jognyilatkozat — majd a 18. századi miniszterelnöki intézmény és pártrendszer — Európa első alkotmányos monarchiáját.</p>
+    <div class="tagrow">
+      <span class="tag">6 modul</span>
+      <span class="tag">27 feladat</span>
+      <span class="tag">6 korabeli forrás</span>
+      <span class="tag">Középszint + E</span>
+      <span class="tag">Megoldókulccsal</span>
+    </div>
+    <div class="chain-box">
+      <div class="chain-title">Ok-okozati lánc — kattints a helyes időrendi sorrendben</div>
+      <div class="chain-row" id="chain-row"></div>
+      <div class="chain-target" id="chain-target">
+        <span class="crest">⚖</span>
+        Rakd össze a láncot, hogy kigyulladjon a Jognyilatkozat!
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a href="#m1">1. Stuart-abszolutizmus</a>
+    <a href="#m2">2. Polgárháború</a>
+    <a href="#m3">3. Dicsőséges forradalom</a>
+    <a href="#m4">4. Jognyilatkozat</a>
+    <a href="#m5">5. Pártrendszer</a>
+    <a href="#m6">6. Működés</a>
+    <a href="#fogalomtar">Fogalomtár</a>
+    <a href="#feladatbank">Feladatbank</a>
+    <a href="#esszemuhely">Esszéműhely</a>
+    <a href="#szobeli">Szóbeli</a>
+    <a href="#tippek">Tippek</a>
+    <div class="rail-progress">
+      <span id="progress-label">0/27</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- MODUL 1 -->
+<!-- ============================================================ -->
+<section class="module" id="m1">
+  <div class="module-head"><span class="module-num">01</span><h2>Előzmények: a Stuart-abszolutizmus és a polgárháború kitörése</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg az angol parlamentarizmus középkori gyökereit és a Stuart-királyok abszolutista törekvéseinek okozta feszültséget.</div>
+
+  <article>
+    <h3>A parlament középkori gyökerei és a Tudor-kor</h3>
+    <p>Angliában a 13. század óta létezett rendi országgyűlés (parlament); a parlamentáris hagyományt még az anglikán egyházi reformot bevezető, erős kézzel uralkodó VIII. Henrik (1509–1547) sem törölte el, bár ekkor a parlament még csupán a király kibővített tanácsaként működött. I. Erzsébet (1558–1603) idején Anglia jelentős sikereket ért el: 1584-ben megalapította Virginiát, az első észak-amerikai gyarmatot, 1588-ban pedig az angol flotta legyőzte a spanyol Nagy Armadát a La Manche csatornában.</p>
+
+    <h3>A Stuart-abszolutizmus és a puritán ellenállás</h3>
+    <p>I. Erzsébet halála után Skócia királya, I. Jakab örökölte az angol trónt; ő az anglikán egyházra támaszkodott, az ellenállás pedig vallási jelleget öltött — ez volt a <strong>puritanizmus</strong> (presbiteriánusok és independensek), amely nemcsak a katolicizmust utasította el, hanem kálvini elvek alapján az anglikán egyházat is meg akarta tisztítani a „külsőségektől”. Fia, <strong>I. Károly</strong> (1625–1649) folytatta apja abszolutista politikáját. A 17. században alapvető változás történt: a parlamenti képviselők önálló politikai tényezőként léptek fel az uralkodóval szemben, elsődleges „fegyverük” az adónövelések elutasítása volt. A királlyal szembeforduló erőket társadalmilag főként a <strong>gentry</strong> (vállalkozó szellemű köznemesség) és a <strong>yeoman</strong> (módosabb parasztság) rétege támogatta.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a 17. századi angol parlament <strong>nem</strong> a mai értelemben vett népképviseleti testület volt — a felsőházba az arisztokrácia és az egyházi főrendek tartoztak, az alsóházba pedig cenzusos alapon választott képviselők kerültek; a konfliktus lényege nem a demokrácia, hanem a királyi és a parlamenti hatalom egyensúlya körül forgott.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 1. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>alkotmány</td>
+        <td>I. Károly <span class="eonly">E</span></td>
+        <td>—</td>
+        <td>Nagy-Britannia; London</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>1. forrás — A Stuart-abszolutizmus jellemzői (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint I. Károly meggyőződése volt, hogy királyi hatalma Istentől ered, ezért a parlament hozzájárulása nélkül is jogosultnak érezte magát adók kivetésére és rendeletek kibocsátására. Az egyre súlyosbodó pénzügyi nehézségek miatt végül kénytelen volt összehívni a parlamentet, amely azonban a hatalmi visszaéléseket sérelmezve nem volt hajlandó további adókat megszavazni mindaddig, amíg sérelmeit nem orvosolják.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen elvi alapon gyakorolta I. Károly a hatalmát?</p>
+        <p><strong>b)</strong> Miért volt kénytelen mégis összehívni a parlamentet?</p>
+        <p><strong>c)</strong> Milyen feltételt szabott a parlament az adók megszavazásához?</p>
+      </div>
+      <div class="task" data-id="F1a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Az isteni jogon alapuló királyi hatalom elvén (a hatalom Istentől ered, nem a néptől vagy a parlamenttől).</p>
+          <p><strong>b)</strong> A súlyosbodó pénzügyi (költségvetési) nehézségek miatt, mert adóbevételre volt szüksége.</p>
+          <p><strong>c)</strong> A sérelmek (a hatalmi visszaélések) előzetes orvoslását.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m1-t1" data-type="tf">
+      <p class="task-q">Állítás: VIII. Henrik teljesen eltörölte az angol parlamentet uralkodása alatt.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t2" data-type="choice">
+      <p class="task-q">Melyik társadalmi rétegek támogatták leginkább a királlyal szembeforduló parlamenti erőket?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Arisztokrácia és anglikán főpapság</button>
+        <button data-val="b">B) Gentry és yeoman</button>
+        <button data-val="c">C) Ír katolikus nemesség</button>
+        <button data-val="d">D) Városi kereskedő céhek kizárólag</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m1-t3" data-type="fill">
+      <p class="task-q">Egészítsd ki: A katolicizmust és az anglikán egyház „külsőségeit” egyaránt elutasító vallási-politikai mozgalom neve ______.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 2 -->
+<!-- ============================================================ -->
+<section class="module" id="m2">
+  <div class="module-head"><span class="module-num">02</span><h2>A polgárháború és a köztársaság kora</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a polgárháború menetét, Cromwell szerepét és a köztársasági kísérlet jellemzőit.</div>
+
+  <article>
+    <h3>A polgárháború kitörése és Cromwell felemelkedése</h3>
+    <p>1640. április 13-án összehívták a „Rövid” parlamentet, amelyet a király hamarosan feloszlatott; november 3-án azonban létrejött a „Hosszú” parlament, amely előtt I. Károly kénytelen volt engedni a puritán ellenzék (a „kerekfejűek”) követeléseinek. 1642. január 10-én a király Észak-Angliába szökött Londonból — ezzel kitört a <strong>polgárháború</strong>. A kezdeti királyi győzelmek (1642, Edge-hill) után egy addig ismeretlen parlamenti képviselő, <strong>Oliver Cromwell</strong> fordította meg a háború menetét: az általa szervezett önkéntes haderő, a „vasbordájú szentek” (New Model Army) fanatikus kálvinista harcosokból állt, és két döntő győzelmet aratott — Marston Moornál (1644) és Naseby-nél (1645).</p>
+
+    <h3>I. Károly kivégzése és a köztársaság</h3>
+    <p>Miután az independens hadsereg 1648-ban Prestonnál újra legyőzte a királyi csapatokat, bevonult Londonba, és mintegy 150 presbiteriánus képviselőt eltávolítottak a parlamentből — ez maradt a „csonka parlament”. A parlament ezután törvénybe iktatta, hogy a királyi tisztség szükségtelen, terhes és veszélyes a nép szabadságára nézve; I. Károlyt bíróság elé állították, halálra ítélték, és 1649. január 30-án kivégezték. Anglia köztársaság lett, amelyet egy 41 tagú, Cromwell vezette államtanács irányított. Cromwell 1653-ban szétzavarta a csonka parlamentet, és megkapta a „Lord Protector” (az állam védnöke) címet — 1655-től katonai diktatúrát vezetett be, a parlamentet csak ritkán hívta össze. Cromwell nem jelöltette magát királynak, mert úgy vélte, a köztársaság isteni elrendelés eredménye, és Isten kiválasztott népe, az angolok fölött nem uralkodhat senki.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: Cromwell köztársasága <strong>nem</strong> volt demokratikus berendezkedés — bár megdöntötte a monarchiát, a gyakorlatban katonai diktatúrát vezetett be, amelyben a parlamentet csak ritkán hívták össze, és a valódi hatalmat az általa irányított Államtanács gyakorolta.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 2. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>Oliver Cromwell</td>
+        <td>1649 I. Károly kivégzése <span class="eonly">E</span></td>
+        <td>Naseby <span class="eonly">E</span>; Marston Moor <span class="eonly">E</span></td>
+      </tr>
+    </table>
+
+    
+<!-- ATLAS_MAP_START:33b -->
+<figure class="atlas-map" data-atlas-code="33b">
+  <figcaption class="atlas-map__head">
+    <span class="atlas-map__eyebrow">Történelmi Atlasz · 33b. térkép</span>
+    <h4>A Brit-szigetek a 17. században</h4>
+    <p class="atlas-map__focus">Az angol polgárháború területi megosztottsága, fő csatái, Cromwell hadjáratai és az 1688–1689-es alkotmányos fordulat térben együtt értelmezhető.</p>
+  </figcaption>
+  <a class="atlas-map__image-link" href="https://tortenelmi-atlasz.vercel.app/maps/p035_33b.webp" target="_blank" rel="noopener" aria-label="A Brit-szigetek a 17. században – megnyitás teljes méretben">
+    <img class="atlas-map__image" src="../images/img016.webp" alt="Történelmi térkép: A Brit-szigetek a 17. században" loading="lazy" decoding="async">
+  </a>
+  <div class="atlas-map__foot">Forrás: <a href="https://tortenelmi-atlasz.vercel.app/" target="_blank" rel="noopener">Történelmi Atlasz</a>. A térkép kattintással teljes méretben megnyitható.</div>
+</figure>
+<!-- ATLAS_MAP_END:33b -->
+<div class="source-box">
+      <h4>2. forrás — A monarchia eltörléséről szóló parlamenti határozat (1649, tartalmi kivonat)</h4>
+      <p class="src-text">A parlament kijelenti: a tapasztalat azt bizonyította, hogy a királyi tisztség és a hozzá tartozó egyszemélyi hatalom Angliában és Írországban szükségtelen, terhes és veszélyes a nép szabadságára, biztonságára és általános érdekeire nézve, mivel a királyi hatalmat és felségjogokat a legtöbbször az alattvalók elnyomására, kifosztására és leigázására használták fel. Ezért törvénybe iktatják, hogy a királyi tisztséget Angliában többé senki sem viselheti és gyakorolhatja.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen indoklással törli el a parlament a királyi tisztséget?</p>
+        <p><strong>b)</strong> Milyen vádat fogalmaz meg a korábbi királyi hatalomgyakorlással szemben?</p>
+        <p><strong>c)</strong> Mire utal, hogy a határozat külön megemlíti Írországot is?</p>
+      </div>
+      <div class="task" data-id="F2a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Azzal, hogy a királyi hatalom szükségtelen és veszélyes a nép szabadságára és biztonságára nézve.</p>
+          <p><strong>b)</strong> Azzal, hogy a hatalmat rendszeresen az alattvalók elnyomására és kifosztására használták.</p>
+          <p><strong>c)</strong> Arra, hogy Írország is angol fennhatóság alatt állt, és a parlament döntése rá is kiterjedt.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m2-t1" data-type="choice">
+      <p class="task-q">Melyik győzelem NEM kötődik Cromwell hadseregéhez?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Marston Moor (1644)</button>
+        <button data-val="b">B) Naseby (1645)</button>
+        <button data-val="c">C) Preston (1648)</button>
+        <button data-val="d">D) Edge-hill (1642)</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t2" data-type="tf">
+      <p class="task-q">Állítás: Cromwell a köztársaság kikiáltása után királlyá koronáztatta magát.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m2-t3" data-type="match">
+      <p class="task-q">Párosítsd az eseményt az évszámmal!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="p1">A Hosszú parlament összehívása</button>
+          <button class="match-item" data-key="p2">I. Károly kivégzése</button>
+          <button class="match-item" data-key="p3">Cromwell „Lord Protector” címet kap</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="r1">1640</button>
+          <button class="match-item" data-key="r2">1649</button>
+          <button class="match-item" data-key="r3">1653</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 3 -->
+<!-- ============================================================ -->
+<section class="module" id="m3">
+  <div class="module-head"><span class="module-num">03</span><h2>A restauráció és a dicsőséges forradalom</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg, hogyan vezetett a Stuartok visszatérése II. Jakab bukásához és az 1688-as „dicsőséges forradalom”-hoz.</div>
+
+  <article>
+    <h3>A Stuartok visszahívása</h3>
+    <p>Cromwell 1658-as halála után hatalmi válság alakult ki: fia, Richard átmenetileg irányította az országot, végül azonban a parlament az instabil helyzetet a Stuartok visszahívásával oldotta meg. A kivégzett I. Károly fiai — <strong>II. Károly</strong> (1660–1685) és <strong>II. Jakab</strong> (1685–1688) — megszüntették a puritánok egyeduralmát, de tartózkodtak a nagyobb megtorlástól. Néhány évtized elteltével azonban a régi problémák törtek felszínre: II. Károly tervbe vette az abszolutizmus visszaállítását, és kísérletet tett a katolikusok egyenjogúsítására.</p>
+
+    <h3>II. Jakab bukása és a „dicsőséges forradalom”</h3>
+    <p>II. Jakab folytatta bátyja politikáját — mivel ő maga is katolikus vallású volt, 1687-ben teljes vallási türelmet hirdetett, amit a parlament és az anglikán egyház a katolikus hatalomátvétel előkészítéseként értelmezett. II. Jakab franciabarát politikája és a jezsuiták megjelenése az országban tovább fokozta a parlamenti erők ellenállását. 1688-ban egy küldöttség meghívta a trónra a király protestáns hitű lányának, Máriának a férjét, <strong>Orániai Vilmos</strong>t, Hollandia kormányzóját. Orániai Vilmos november 5-én partra szállt Angliában, és — mivel II. Jakab támogatás híján elmenekült az országból — harc nélkül elfoglalhatta a trónt. Ezért nevezik ezt az eseménysort „dicsőséges” vagy „vér nélküli forradalom”-nak.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: II. Jakab 1687-es vallási türelmi rendelete <strong>nem</strong> vallási toleranciaként, hanem politikai fenyegetésként vált ismertté a kortársak szemében — a parlament és az anglikán egyház attól tartott, hogy a türelem valójában a katolikus egyeduralom visszaállításának első lépése.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 3. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>—</td>
+        <td>—</td>
+        <td>1688 a dicsőséges forradalom <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>3. forrás — II. Jakab politikájának megítélése (tartalmi kivonat)</h4>
+      <p class="src-text">A korabeli parlamenti körök II. Jakab 1687-es vallási türelmi rendeletét nem őszinte toleranciaként, hanem a katolikus hatalomátvétel álcázott előkészítéseként értelmezték — annál is inkább, mert a király franciabarát külpolitikát folytatott, és egyre több jezsuita jelent meg az udvarban és a közéletben. Ez a bizalmatlanság vezetett oda, hogy a parlamenti vezetők inkább egy külföldi, protestáns uralkodót hívtak meg a trónra, mintsem elfogadják II. Jakab politikáját.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Miért nem bíztak a parlamenti körök II. Jakab vallási türelmi rendeletében?</p>
+        <p><strong>b)</strong> Milyen külpolitikai tényező erősítette a gyanakvást?</p>
+        <p><strong>c)</strong> Milyen szélsőséges lépésre szánta el magát végül a parlament?</p>
+      </div>
+      <div class="task" data-id="F3a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Mert a katolikus hatalomátvétel előkészítésének gyanúját keltette bennük.</p>
+          <p><strong>b)</strong> A franciabarát külpolitika és a jezsuiták megjelenése az udvarban.</p>
+          <p><strong>c)</strong> Egy külföldi, protestáns uralkodó (Orániai Vilmos) meghívását a trónra, a törvényes uralkodóval szemben.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m3-t1" data-type="match">
+      <p class="task-q">Párosítsd az uralkodót a jellemző intézkedésével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="v1">II. Károly</button>
+          <button class="match-item" data-key="v2">II. Jakab</button>
+          <button class="match-item" data-key="v3">Orániai Vilmos</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="a1">Tervbe vette az abszolutizmus visszaállítását</button>
+          <button class="match-item" data-key="a2">Vallási türelmi rendeletet adott ki katolikus háttérrel</button>
+          <button class="match-item" data-key="a3">Harc nélkül elfoglalta a trónt 1688-ban</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t2" data-type="sort">
+      <p class="task-q">Csoportosítsd az eseményeket: a restauráció (1660–1688) vagy a dicsőséges forradalom (1688) időszakához tartoznak?</p>
+      <div class="sort-row"><span>A Stuartok visszahívása</span>
+        <select data-key="s1"><option value="">válassz</option><option value="restauracio">Restauráció</option><option value="dicso">Dicsőséges forradalom</option></select>
+      </div>
+      <div class="sort-row"><span>Orániai Vilmos partraszállása</span>
+        <select data-key="s2"><option value="">válassz</option><option value="restauracio">Restauráció</option><option value="dicso">Dicsőséges forradalom</option></select>
+      </div>
+      <div class="sort-row"><span>II. Jakab elmenekülése az országból</span>
+        <select data-key="s3"><option value="">válassz</option><option value="restauracio">Restauráció</option><option value="dicso">Dicsőséges forradalom</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m3-t3" data-type="choice">
+      <p class="task-q">Miért nevezik az 1688-as eseményeket „dicsőséges forradalomnak”?</p>
+      <div class="task-controls">
+        <button data-val="a">A) Mert hosszú, véres háborúval járt</button>
+        <button data-val="b">B) Mert vér nélkül, harc nélkül zajlott le</button>
+        <button data-val="c">C) Mert Cromwell vezette</button>
+        <button data-val="d">D) Mert köztársaságot hozott létre</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 4 -->
+<!-- ============================================================ -->
+<section class="module" id="m4">
+  <div class="module-head"><span class="module-num">04</span><h2>A Jognyilatkozat (1689) és az alkotmányos monarchia alapelvei</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a Jognyilatkozat legfontosabb rendelkezéseit és az alkotmányos monarchia alapintézményeit.</div>
+
+  <article>
+    <h3>A Jognyilatkozat elfogadása</h3>
+    <p>1689-ben a parlament csak egy előzetes alkotmánytervezet aláírása után volt hajlandó megkoronáztatni Orániai Vilmost (III. Vilmos néven, 1689–1702). Az összehívott parlament 1689. december 16-án cikkelyezte be a <strong>Jogok törvényét</strong> (<em>Bill of Rights</em>, magyarul Jognyilatkozat), amelynek rendelkezései meghatározták az alkotmányos monarchia alapelveit. A törvény kimondta: törvényellenes, ha az uralkodó parlamenti hozzájárulás nélkül függeszt fel törvényeket vagy tekint el végrehajtásuktól; törvényellenes békeidőben állandó hadsereget fenntartani a parlament hozzájárulása nélkül; a parlament tagjainak megválasztása szabadon kell történjen; a parlamenti szabad szólást parlamenten kívüli bíróság nem vonhatja felelősségre; és gyakran kell parlamentet tartani.</p>
+
+    <h3>Az alkotmányos monarchia alapelvei</h3>
+    <p>A Jognyilatkozat nyomán a hatalom súlypontja áthelyeződött: <strong>„a király uralkodik, de nem kormányoz”</strong> — az uralkodó kezében nem összpontosult valódi hatalom, a parlament vált az állam életének igazi irányítójává. A törvényhozói és bírói hatalom függetlenedett a királytól: a törvényeket a háromévente szabadon választott, rendszeresen ülésező parlament alkotta, amely rendelkezett a hadsereggel és a pénzügyekkel is, a királynak pedig csak szentesítő és korlátozott vétójoga maradt. A polgárok szabadságát biztosító <strong>Habeas Corpus</strong> törvény kimondta, hogy vádemelés nélkül senkit sem lehet őrizetben tartani. Az államháztartás költségeit különválasztották a királyi udvar költségeitől, és ezt is a parlament hagyta jóvá.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: a Jognyilatkozat (1689) <strong>nem</strong> hozott létre azonnal teljes, modern parlamentáris kormányzást — a király, a parlament és a kormány közötti munkamegosztás csak évtizedek alatt formálódott ki a 18. század folyamán, fokozatosan alakult ki a miniszterelnöki intézmény és a kormány kollektív felelőssége.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 4. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>alkotmányos monarchia</td>
+        <td>—</td>
+        <td>1689 a Jognyilatkozat</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>4. forrás — A Jognyilatkozatból (1689, tartalmi kivonat)</h4>
+      <p class="src-text">A dokumentum kijelenti: törvényellenes, ha az uralkodó parlamenti hozzájárulás nélkül függeszt fel törvényeket vagy azok végrehajtását; törvényellenes békeidőben állandó hadsereget fenntartani a parlament hozzájárulása nélkül; a parlament tagjainak megválasztása szabadon kell történjen; a parlamenti szabad szólás és viták ügyében semmiféle parlamenten kívüli bíróság nem járhat el; és a panaszok orvoslása, valamint a törvények megjavítása érdekében gyakran kell parlamentet tartani.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen két területen korlátozza a Jognyilatkozat a királyi hatalmat konkrétan?</p>
+        <p><strong>b)</strong> Milyen védelmet biztosít a parlamenti képviselőknek?</p>
+        <p><strong>c)</strong> Miért fontos az a kikötés, hogy „gyakran kell parlamentet tartani”?</p>
+      </div>
+      <div class="task" data-id="F4a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A törvények felfüggesztésének tilalmában és az állandó hadsereg fenntartásának tilalmában parlamenti hozzájárulás nélkül.</p>
+          <p><strong>b)</strong> A parlamenti szabad szólás védelmét parlamenten kívüli bírósági eljárással szemben.</p>
+          <p><strong>c)</strong> Mert ez biztosítja, hogy a király ne kormányozhasson tartósan a parlament megkerülésével, hosszú szünetek beiktatásával.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m4-t1" data-type="tf">
+      <p class="task-q">Állítás: A Jognyilatkozat szerint az uralkodó parlamenti hozzájárulás nélkül is fenntarthat állandó hadsereget békeidőben.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: A törvény, amely kimondta, hogy vádemelés nélkül senkit sem lehet őrizetben tartani, a ______ ______.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m4-t3" data-type="choice">
+      <p class="task-q">Melyik mondás fejezi ki legjobban a Jognyilatkozat utáni királyi szerepkört?</p>
+      <div class="task-controls">
+        <button data-val="a">A) „Az állam én vagyok”</button>
+        <button data-val="b">B) „A király uralkodik, de nem kormányoz”</button>
+        <button data-val="c">C) „Vissza a természethez”</button>
+        <button data-val="d">D) „Sapere aude”</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 5 -->
+<!-- ============================================================ -->
+<section class="module" id="m5">
+  <div class="module-head"><span class="module-num">05</span><h2>A pártrendszer és a miniszterelnöki intézmény kialakulása</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Ismerd meg a whigek és toryk kialakulását, valamint Robert Walpole miniszterelnöki szerepét.</div>
+
+  <article>
+    <h3>Whigek és toryk</h3>
+    <p>A 18. századi Angliában két politikai tömörülés alakult ki — ezek azonban még nem a mai értelemben vett pártok voltak, csak laza, alacsony taglétszámú, kevéssé kikristályosodott programú politikai csoportosulások („klubpártok”). A <strong>whigek</strong> protestánsokból és mérsékelt anglikánokból álltak, akik az Orániai Vilmos utáni uralkodókat (Hannoveri-ház) támogatták; a <strong>toryk</strong> anglikánok voltak, puritánellenesek, akik a Stuart-házat támogatták. A kormányzásban egyre nagyobb szerepe lett a választásokon győztes párt vezetőjéből miniszterelnökké kinevezett politikusoknak — a század első felében a whig <strong>Sir Robert Walpole</strong> (1721–1742), a második felében William Pitt kormányai működtek I. és II. György királyok alatt.</p>
+
+    <h3>A miniszterelnöki intézmény kialakulása</h3>
+    <p>A végrehajtó hatalmat kezdetben egy minisztertanács gyakorolta, majd az 1720-as évektől kialakult a vezető miniszter, a miniszterelnök (<em>prime minister</em>) rangja. A törvényhozó testület munkáját még számos visszaélés jellemezte — a képviselők körében bevált módszer volt a nyílt korrupció, a vesztegetés és a hivatalok osztogatása. A választások sem feleltek meg a mai demokratikus normáknak: a magas vagyoni cenzus miatt csak egy szűk választópolgári réteg (a legmagasabb adófizetői kategóriákba tartozók) adhatta le szavazatát, ez kizárta a társadalom nagy többségét a közéletből. A választásokon győztes párt vezetőjét a király kérte fel miniszterelnöknek; a megalakuló kormány gyakorolta a végrehajtó hatalmat.</p>
+
+    <div class="fogodzo"><p>Fontos megkülönböztetés: a 18. századi whigek és toryk <strong>nem</strong> a mai értelemben vett, szervezett, ideológiailag kikristályosodott pártok voltak — inkább laza, személyi kapcsolatokon és dinasztikus preferenciákon alapuló politikai csoportosulások, amelyeknek nem volt egységes, írásos programja.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 5. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>miniszterelnök; cenzus</td>
+        <td>—</td>
+        <td>1721–1742 Robert Walpole miniszterelnöksége <span class="eonly">E</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>5. forrás — Samuel Sandys beszéde az alsóházban Walpole ellen (1741, tartalmi kivonat)</h4>
+      <p class="src-text">Sandys, az ellenzék vezetője azzal vádolja Walpole miniszterelnököt, hogy bár az alkotmány szerint több, egymástól független főminiszternek kellene irányítania az egyes területeket, Walpole egyedülálló befolyásra tett szert minden állami főhivatalban, és minden tisztviselőt elmozdított, aki nem engedelmeskedett utasításainak — még olyan ügyekben is, amelyek nem tartoztak a saját területéhez. Ezzel kisajátította a korona kegyeit, a rangokat, kegydíjakat és címeket, és vak engedelmességet követelt a választásokon és a parlamentben.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen alkotmányos elvre hivatkozik Sandys vádjának alapjaként?</p>
+        <p><strong>b)</strong> Mivel vádolja konkrétan Walpole-t?</p>
+        <p><strong>c)</strong> Mit árul el ez a forrás a 18. századi angol politikai élet valós működéséről?</p>
+      </div>
+      <div class="task" data-id="F5a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> Arra, hogy az alkotmány szerint több, egymástól független főminiszternek kellene megosztania a hatalmat.</p>
+          <p><strong>b)</strong> Azzal, hogy egy kézbe összpontosította a hatalmat, és korrupt módon (kegyek, kinevezések osztogatásával) tartotta fenn befolyását.</p>
+          <p><strong>c)</strong> Azt, hogy a formális alkotmányos elvek (hatalommegosztás) és a valós gyakorlat (egyszemélyi befolyás, korrupció) között jelentős szakadék volt.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m5-t1" data-type="choice">
+      <p class="task-q">Melyik politikai csoportosulás támogatta a Hannoveri-házat?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A toryk</button>
+        <button data-val="b">B) A whigek</button>
+        <button data-val="c">C) A puritánok kizárólag</button>
+        <button data-val="d">D) A jezsuiták</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t2" data-type="tf">
+      <p class="task-q">Állítás: A 18. századi angol választójog általános volt, minden felnőtt férfit megillette.</p>
+      <div class="task-controls"><button data-val="true">Igaz</button><button data-val="false">Hamis</button></div>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m5-t3" data-type="match">
+      <p class="task-q">Párosítsd a fogalmat a jelentésével!</p>
+      <div class="match-grid">
+        <div class="match-col left">
+          <button class="match-item" data-key="q1">Whigek</button>
+          <button class="match-item" data-key="q2">Toryk</button>
+          <button class="match-item" data-key="q3">Cenzus</button>
+        </div>
+        <div class="match-col right">
+          <button class="match-item" data-key="w1">Protestánsok, a Hannoveri-ház támogatói</button>
+          <button class="match-item" data-key="w2">Anglikánok, a Stuartok támogatói</button>
+          <button class="match-item" data-key="w3">Vagyoni feltétel a választójog gyakorlásához</button>
+        </div>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- MODUL 6 -->
+<!-- ============================================================ -->
+<section class="module" id="m6">
+  <div class="module-head"><span class="module-num">06</span><h2>Az alkotmányos monarchia működése és jelentősége</h2></div>
+  <div class="goal-box"><span class="lbl">Tanulási cél</span>Értsd meg az alkotmányos monarchia tényleges működését, és tisztázz két gyakori tévhitet a rendszerről.</div>
+
+  <article>
+    <h3>A hatalmi ágak munkamegosztása</h3>
+    <p>A király, a parlament és a kormány közötti munkamegosztás csak évtizedek alatt formálódott ki: a király a 18. század második felétől már nem vett részt a kormány ülésein; a választásokon győztes párt vezetőjét a király nevezte ki miniszterelnöknek, de a parlament beleegyezésével; a miniszterek egy-egy részterületet irányítottak, de a kormány tetteiért közösen vállaltak felelősséget a parlament előtt. Ez a fokozatosan kialakuló gyakorlat vált a modern parlamentáris kormányzás alapjává — nem egyetlen törvény, hanem évtizedes politikai szokásjog eredményeként.</p>
+
+    <h3>Két gyakori tévhit tisztázása</h3>
+    <p>Az első tévhit, hogy a <strong>parlamentarizmus egyenlő az anarchiával</strong>: a 18. században sokan úgy gondolták, hogy ahol a királyi hatalom gyenge, ott szükségképpen zűrzavar uralkodik (ahogy például Lengyelországban történt). Anglia ennek éppen az ellenkezőjét bizonyította: a szabadság és a rend együttesen létezett, a kulcsfontosságú pénzügyeket is eredményesen irányították. A második tévhit, hogy a <strong>parlamentarizmus egyenlő a demokráciával</strong>: a parlamenti kormányzás önmagában még nem jelentett demokráciát, hiszen a választások vagyoni cenzushoz kötődtek (jómódú birtokosok küldtek a parlamentbe jómódú birtokosokat), a választókörzetek a népességhez képest aránytalanul voltak kialakítva, és a választásokon rendszeresen előfordultak csalások.</p>
+
+    <div class="fogodzo"><p>Vizsgacsapda: az angol alkotmányos monarchia <strong>nem</strong> vált azonnal modern demokráciává 1689 után — a valódi, tömeges választójog kiterjesztése csak a 19–20. századi választójogi reformok (1832, 1867, 1884, majd a 20. századi további bővítések) eredményeként valósult meg fokozatosan.</p></div>
+
+    <table class="datatable">
+      <caption>Kötelező adatok — 6. modul</caption>
+      <tr><th>Fogalmak</th><th>Személyek</th><th>Kronológia</th><th>Topográfia</th></tr>
+      <tr>
+        <td>felelős kormány</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </table>
+
+    <div class="source-box">
+      <h4>6. forrás — Az angol alkotmányos monarchia működéséről (tartalmi kivonat)</h4>
+      <p class="src-text">A leírás szerint az angol modell két, egymással látszólag ellentétes elvárásnak felelt meg egyszerre: biztosította a rendet és a stabilitást (szemben a gyenge királyi hatalomról alkotott korabeli előítéletekkel), miközben korlátozta a királyi önkényt is. Ugyanakkor a rendszer korántsem volt demokratikus: a szűk, vagyoni cenzushoz kötött választójog és az aránytalan választókörzetek miatt a lakosság túlnyomó többsége kimaradt a politikai döntéshozatalból.</p>
+      <p class="src-meta">OH-TOR10TA tankönyv nyomán, tartalmi összefoglalás</p>
+      <div class="subq">
+        <p><strong>a)</strong> Milyen két, egymásnak ellentmondónak tűnő elvárásnak felelt meg az angol modell?</p>
+        <p><strong>b)</strong> Milyen tényezők miatt nem volt demokratikus a rendszer?</p>
+        <p><strong>c)</strong> Miért fontos megkülönböztetni a „parlamentarizmus” és a „demokrácia” fogalmát?</p>
+      </div>
+      <div class="task" data-id="F6a" data-type="open">
+        <button class="reveal-btn">Megoldásvázlat megjelenítése</button>
+        <div class="solution hidden">
+          <p><strong>a)</strong> A rend és stabilitás fenntartását, illetve egyúttal a királyi önkény korlátozását.</p>
+          <p><strong>b)</strong> A vagyoni cenzushoz kötött választójog és az aránytalanul kialakított választókörzetek miatt.</p>
+          <p><strong>c)</strong> Mert a két fogalom összemosása téves történelmi képet ad — a parlamenti kormányzás önmagában nem garantálja a széles körű politikai részvételt.</p>
+        </div>
+      </div>
+    </div>
+
+    <h4>Ellenőrző feladatok</h4>
+    <div class="task" data-id="m6-t1" data-type="sort">
+      <p class="task-q">Csoportosítsd: igaz vagy hamis állítás az angol alkotmányos monarchiáról?</p>
+      <div class="sort-row"><span>A gyenge királyi hatalom szükségszerűen anarchiához vezet</span>
+        <select data-key="c1"><option value="">válassz</option><option value="hamis">Tévhit (hamis)</option><option value="igaz">Igaz állítás</option></select>
+      </div>
+      <div class="sort-row"><span>A parlamentarizmus önmagában egyenlő a demokráciával</span>
+        <select data-key="c2"><option value="">válassz</option><option value="hamis">Tévhit (hamis)</option><option value="igaz">Igaz állítás</option></select>
+      </div>
+      <div class="sort-row"><span>A választójogot a 18. században vagyoni cenzushoz kötötték</span>
+        <select data-key="c3"><option value="">válassz</option><option value="hamis">Tévhit (hamis)</option><option value="igaz">Igaz állítás</option></select>
+      </div>
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t2" data-type="fill">
+      <p class="task-q">Egészítsd ki: A kormány tetteiért közösen vállalt felelősséget a parlament előtt — ez a ______ kormány elve.</p>
+      <input type="text" class="fill-input" placeholder="Válaszod...">
+      <button class="check-btn">Ellenőrzés</button>
+      <div class="task-feedback"></div>
+    </div>
+    <div class="task" data-id="m6-t3" data-type="choice">
+      <p class="task-q">Mikortól nem vett részt a brit király a kormány ülésein?</p>
+      <div class="task-controls">
+        <button data-val="a">A) A 17. század elejétől</button>
+        <button data-val="b">B) 1689-től azonnal</button>
+        <button data-val="c">C) A 18. század második felétől</button>
+        <button data-val="d">D) A 20. századtól</button>
+      </div>
+      <div class="task-feedback"></div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================================================ -->
+<!-- ÖSSZEFOGLALÓ: FOGALOMTÁR / KRONOLÓGIA / TOPOGRÁFIA -->
+<!-- ============================================================ -->
+<section id="osszefoglalo">
+  <div class="module-head"><h2>Összefoglaló</h2></div>
+
+  <h3 id="fogalomtar">Kereshető fogalomtár</h3>
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="Keress egy fogalomra...">
+  <dl class="glossary" id="glossary-list">
+    <dt>alkotmány</dt><dd>Az állam berendezkedését, a hatalmi ágak működését és a polgárok jogait szabályozó alapnorma.</dd>
+    <dt>alkotmányos monarchia</dt><dd>Olyan államforma, amelyben az uralkodó hatalmát törvény (alkotmány) korlátozza, a tényleges hatalom a választott parlament kezében van.</dd>
+    <dt>puritanizmus</dt><dd>A katolicizmust és az anglikán egyház „külsőségeit” egyaránt elutasító, kálvini elveket követő vallási-politikai mozgalom.</dd>
+    <dt>Jognyilatkozat (Bill of Rights)</dt><dd>Az 1689-es törvény, amely lefektette az angol alkotmányos monarchia alapelveit és korlátozta a királyi hatalmat.</dd>
+    <dt>Habeas Corpus</dt><dd>A polgári szabadságjogokat védő törvény, amely kimondja: vádemelés nélkül senkit sem lehet őrizetben tartani.</dd>
+    <dt>miniszterelnök</dt><dd>A választásokon győztes párt vezetője, akit a király a kormány élére nevez ki — az intézmény az 1720-as évektől alakult ki.</dd>
+    <dt>felelős kormány</dt><dd>Az az elv, hogy a kormány tetteiért közösen tartozik felelősséggel a parlamentnek.</dd>
+    <dt>cenzus</dt><dd>Vagyoni vagy adófizetési feltétel, amely a 18–19. századi Angliában a választójog gyakorlásának előfeltétele volt.</dd>
+  </dl>
+
+  <h3>Kronológia</h3>
+  <ul class="timeline">
+    <li><b>1509–1547</b> VIII. Henrik uralkodása, az anglikán egyház kialakulása</li>
+    <li><b>1558–1603</b> I. Erzsébet uralkodása</li>
+    <li><b>1640</b> A Rövid, majd a Hosszú parlament összehívása</li>
+    <li><b>1642</b> A polgárháború kitörése; Edge-hill</li>
+    <li><b>1644</b> Marston Moor <span class="eonly">E</span></li>
+    <li><b>1645</b> Naseby <span class="eonly">E</span></li>
+    <li><b>1648</b> Preston; a „csonka parlament” létrejötte <span class="eonly">E</span></li>
+    <li><b>1649</b> I. Károly kivégzése; köztársaság kikiáltása</li>
+    <li><b>1653</b> Cromwell „Lord Protector” lesz <span class="eonly">E</span></li>
+    <li><b>1660</b> A Stuartok visszahívása — restauráció</li>
+    <li><b>1688</b> A dicsőséges forradalom — Orániai Vilmos partraszállása</li>
+    <li><b>1689</b> A Jognyilatkozat (Bill of Rights) elfogadása</li>
+    <li><b>1721–1742</b> Robert Walpole miniszterelnöksége <span class="eonly">E</span></li>
+  </ul>
+
+  <h3>Topográfia</h3>
+  <ul class="topo-list">
+    <li>Nagy-Britannia</li><li>London</li><li>Edge-hill</li>
+    <li>Marston Moor</li><li>Naseby</li><li>Preston</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- FELADATBANK -->
+<!-- ============================================================ -->
+<section id="feladatbank">
+  <div class="module-head"><h2>Feladatbank</h2></div>
+  <p>Az alábbi három komplex, forrásalapú feladat az írásbeli érettségi I. részének mintájára készült. Mindegyik pontozott, a megoldás kinyitható.</p>
+
+  <div class="kfeladat">
+    <span class="pont">8 pont</span>
+    <h4>K1 — Kronológiai ok-okozat</h4>
+    <p>Állítsa időrendbe az alábbi eseményeket, és röviden (2–3 mondatban) indokolja, milyen ok-okozati kapcsolat fűzi össze I. Károly kivégzését és a Jognyilatkozat elfogadását: <em>a dicsőséges forradalom; I. Károly kivégzése; a Jognyilatkozat elfogadása; a restauráció</em>.</p>
+    <div class="task" data-id="K1" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Helyes sorrend:</strong> I. Károly kivégzése (1649) → a restauráció (1660) → a dicsőséges forradalom (1688) → a Jognyilatkozat elfogadása (1689).</p>
+        <p><strong>Indoklás:</strong> I. Károly kivégzése megmutatta, hogy a parlament fegyveresen is fel tud lépni az önkényuralommal szemben, de a köztársasági kísérlet (Cromwell diktatúrája) kudarca miatt visszahívták a Stuartokat; amikor azonban II. Jakab ismét abszolutista-katolikus irányba fordult, a parlament végleg jogi (nem katonai) úton, a Jognyilatkozattal korlátozta a királyi hatalmat, elkerülve egy újabb polgárháborút.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">6 pont</span>
+    <h4>K2 — Uralkodók azonosítása</h4>
+    <p>A leírás alapján nevezze meg, melyik uralkodóról van szó: „1687-ben teljes vallási türelmet hirdetett, amit a parlament a katolikus hatalomátvétel előkészítéseként értelmezett, és emiatt el kellett menekülnie az országból.” Nevezzen meg egy másik Stuart-uralkodót is, és adja meg uralkodásának egy jellemzőjét.</p>
+    <div class="task" data-id="K2" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <p><strong>Válasz:</strong> A leírás <em>II. Jakabra</em> vonatkozik. Egy másik lehetséges uralkodó: I. Károly (abszolutista politika, polgárháborúhoz vezetett, kivégezték) vagy II. Károly (tervbe vette az abszolutizmus visszaállítását).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kfeladat">
+    <span class="pont">10 pont</span>
+    <h4>K3 — Forráselemzés: Cromwell köztársasága és az 1689 utáni alkotmányos monarchia összevetése</h4>
+    <p>A modulokban megismert információk alapján töltse ki táblázatosan (min. 4 szempont szerint: a hatalom gyakorlója, a parlament szerepe, jogi keretezés, tartósság), mi a hasonlóság és mi a különbség Cromwell köztársasága és az 1689 utáni alkotmányos monarchia között.</p>
+    <div class="task" data-id="K3" data-type="open">
+      <button class="reveal-btn">Megoldás megjelenítése</button>
+      <div class="solution hidden">
+        <table class="datatable">
+          <tr><th>Szempont</th><th>Cromwell köztársasága (1649–1660)</th><th>Alkotmányos monarchia (1689 után)</th></tr>
+          <tr><td>A hatalom gyakorlója</td><td>Cromwell és az Államtanács (katonai diktatúra)</td><td>Parlament és a fokozatosan kialakuló kormány</td></tr>
+          <tr><td>A parlament szerepe</td><td>Háttérbe szorult, ritkán hívták össze</td><td>Rendszeresen ülésező, meghatározó szerepű testület</td></tr>
+          <tr><td>Jogi keretezés</td><td>Ideiglenes, katonai erőn alapuló</td><td>Törvénybe iktatott (Jognyilatkozat)</td></tr>
+          <tr><td>Tartósság</td><td>Rövid életű, Cromwell halála után összeomlott</td><td>Tartós, máig ható berendezkedés alapjai</td></tr>
+          <tr><td>Közös vonás</td><td colspan="2">Mindkettő a korlátlan királyi hatalom elleni fellépésből született, és korlátozta az uralkodói önkényt.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ESSZÉMŰHELY -->
+<!-- ============================================================ -->
+<section id="esszemuhely">
+  <div class="module-head"><h2>Esszéműhely</h2></div>
+
+  <div class="essay-dual">
+    <span class="lbl">Egyetemes témakör</span>
+    Az angol alkotmányos monarchia kialakulása <strong>egyetemes (világtörténelmi) témakör</strong> — nem magyar történelmi esemény, ezért középszinten <strong>csak rövid esszében</strong> (100–130 szó) kérhető, hosszú esszé témájaként nem szerepel. Emelt szinten is elsősorban rövid, tömör kifejtést vár a feladat, de mélyebb, elemző-összehasonlító tartalommal.
+  </div>
+
+  <div class="essay-mintaesszay">
+    <p><strong>Minta rövid esszé (kb. 120 szó):</strong> „Mutassa be a Jognyilatkozat (1689) legfontosabb rendelkezéseit!”</p>
+    <p>Az 1688-as dicsőséges forradalom után a parlament 1689-ben, Orániai Vilmos megkoronázásának feltételeként fogadtatta el a Jognyilatkozatot (Bill of Rights). A dokumentum kimondta, hogy törvényellenes a törvények parlamenti hozzájárulás nélküli felfüggesztése, valamint az állandó hadsereg fenntartása parlamenti engedély nélkül. Rögzítette a parlament szabad megválasztásának jogát és a képviselők szólásszabadságát. A törvényhozói hatalom ettől kezdve jogilag is a parlament kezébe került, míg a királynak csak szentesítő, korlátozott vétójoga maradt — ez alapozta meg Európa első alkotmányos monarchiáját, összefoglalva: „a király uralkodik, de nem kormányoz”.</p>
+    <div class="essay-why"><strong>Miért működik?</strong> Az esszé rövid terjedelemben is pontosan felsorolja a Jognyilatkozat konkrét rendelkezéseit, elhelyezi történelmi kontextusban, és egy találó idézettel zárja a gondolatmenetet — tömör, mégis tartalmilag pontos.</div>
+  </div>
+
+  <div class="essay-box">
+    <h4 style="margin-top:0; font-family:'EB Garamond',serif; color:var(--lapis);">Élő esszéíró eszköz</h4>
+    <div class="writer-controls">
+      <label for="essay-type">Esszétípus:</label>
+      <select id="essay-type">
+        <option value="rovid-kozep" data-min="100" data-max="130" selected>Rövid esszé — középszint (100–130 szó)</option>
+        <option value="rovid-emelt" data-min="100" data-max="130">Rövid esszé — emelt szint (100–130 szó)</option>
+        <option value="hosszu-kozep" data-min="210" data-max="260">Hosszú esszé — nem jellemző erre a témára*</option>
+        <option value="hosszu-emelt" data-min="210" data-max="260">Hosszú esszé — nem jellemző erre a témára*</option>
+      </select>
+    </div>
+    <textarea id="essay-area" placeholder="Kezdd el írni az esszédet ide..."></textarea>
+    <div class="word-counter" id="word-counter">0 szó (cél: 100–130 szó)</div>
+    <ul class="checklist">
+      <li><input type="checkbox"> Van egyértelmű bevezető tézismondat</li>
+      <li><input type="checkbox"> Konkrét évszámokat és eseményeket nevez meg</li>
+      <li><input type="checkbox"> Nem keveri össze a polgárháború, a restauráció és a dicsőséges forradalom időszakát</li>
+      <li><input type="checkbox"> Emelt szinten: tartalmaz elemző következtetést vagy összehasonlítást <span class="eonly">E</span></li>
+      <li><input type="checkbox"> A záró gondolat visszautal a bevezető tézisre</li>
+    </ul>
+  </div>
+
+  <h4>Gyakorló esszétémák</h4>
+  <ul class="essay-topics">
+    <li><b>E1</b> Mutassa be a Stuart-abszolutizmus és a parlament közötti konfliktus okait!</li>
+    <li><b>E2</b> Jellemezze Cromwell köztársaságának berendezkedését!</li>
+    <li><b>E3</b> Mutassa be a dicsőséges forradalom (1688) eseményeit!</li>
+    <li><b>E4</b> Értékelje a Jognyilatkozat (1689) jelentőségét az alkotmányos monarchia kialakulásában!</li>
+    <li><b>E5</b> <span class="eonly">E</span> Hasonlítsa össze Cromwell köztársaságát és az 1689 utáni alkotmányos monarchiát a hatalomgyakorlás szempontjából!</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- SZÓBELI -->
+<!-- ============================================================ -->
+<section id="szobeli">
+  <div class="module-head"><h2>Szóbeli tételvázlat</h2></div>
+  <h3>Tétel: Az angol alkotmányos monarchia kialakulása</h3>
+  <table class="oral-table">
+    <tr><th>Idő</th><th>Tartalmi elem</th></tr>
+    <tr><td>1 perc</td><td>Bevezetés: a Stuart-abszolutizmus és a parlamenti ellenállás</td></tr>
+    <tr><td>2 perc</td><td>A polgárháború és Cromwell köztársasága</td></tr>
+    <tr><td>2 perc</td><td>A restauráció és a dicsőséges forradalom (1688)</td></tr>
+    <tr><td>2 perc</td><td>A Jognyilatkozat (1689) és az alkotmányos monarchia alapelvei</td></tr>
+    <tr><td>2 perc</td><td>A pártrendszer és a miniszterelnöki intézmény kialakulása</td></tr>
+    <tr><td>1 perc</td><td>Összegzés: az alkotmányos monarchia működése és korlátai</td></tr>
+  </table>
+  <h4>Várható vizsgáztatói kérdések</h4>
+  <ol class="oral-questions">
+    <li>Milyen tényezők vezettek az angol polgárháború kitöréséhez?</li>
+    <li>Miért nem tudott tartós maradni Cromwell köztársasága?</li>
+    <li>Miért nevezik az 1688-as eseményeket „dicsőséges” forradalomnak?</li>
+    <li>Mit jelent a mondás: „a király uralkodik, de nem kormányoz”?</li>
+    <li>Miért nem tekinthető demokratikusnak a 18. századi angol parlamentarizmus?</li>
+    <li>Hogyan alakult ki fokozatosan a miniszterelnöki intézmény?</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<!-- TIPPEK -->
+<!-- ============================================================ -->
+<section id="tippek">
+  <div class="module-head"><h2>10 tipp a felkészüléshez</h2></div>
+  <ol class="tips-list">
+    <li class="first-tip">Ez egyetemes (világtörténelmi) témakör: mind középszinten, mind emelt szinten elsősorban rövid esszében (100–130 szó) kérhető — ne készülj hosszú esszére ehhez a témához!</li>
+    <li>Ne keverd össze a polgárháború (1642–49), a köztársaság (1649–60), a restauráció (1660–88) és a dicsőséges forradalom (1688) egymást követő időszakait.</li>
+    <li>Jegyezd meg pontosan: I. Károlyt kivégezték (1649), II. Jakabot viszont csak elűzték (1688) — a két uralkodó sorsa alapvetően különbözik.</li>
+    <li>A Jognyilatkozat (1689) korlátozta a királyi hatalmat, de nem szüntette meg a monarchiát — ez alapvető különbség Cromwell köztársaságához képest.</li>
+    <li>Figyelj a „dicsőséges forradalom” kifejezés jelentésére: azért nevezik így, mert vér nélkül, harc nélkül zajlott le.</li>
+    <li>A whigek és a toryk (18. század) még nem modern pártok — ne írj róluk úgy, mintha szervezett, mai értelemben vett politikai pártok lettek volna.</li>
+    <li>Ne feledd a két tévhit tisztázását: a parlamentarizmus nem egyenlő az anarchiával, és nem egyenlő a demokráciával sem — ez tipikus emelt szintű esszétéma.</li>
+    <li>A miniszterelnöki intézmény (Robert Walpole, 1721-től) fokozatosan, nem egyetlen törvénnyel alakult ki — hangsúlyozd az évtizedes folyamat jellegét.</li>
+    <li>Kronológiai csapda: a Habeas Corpus és a Jognyilatkozat két különböző dokumentum — mindkettő a polgári szabadságjogokat erősítette, de más-más tartalommal.</li>
+    <li>A topográfiai kérdéseknél tudd elhelyezni a polgárháború fontosabb csatahelyszíneit (Edge-hill, Marston Moor, Naseby, Preston).</li>
+  </ol>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <h4>Felhasznált források</h4>
+    <ul>
+      <li>Száray Miklós (szerk.): Történelem 10. — OH-TOR10TA, Oktatási Hivatal</li>
+      <li>Katolikus történelem 10. tankönyv</li>
+      <li>B. Mátyus Gyöngyi – Bori István: Történelem érettségi témavázlatok II. Közép- és emelt szint</li>
+      <li>A 2024-től hatályos részletes történelem érettségi vizsgakövetelmény és vizsgaleírás</li>
+    </ul>
+    <div class="legal">Forráskritikai megjegyzés: a kurzusban szereplő valamennyi korabeli forrás tartalmi kivonat, nem szó szerinti idézet — a hiteles, teljes szövegekért a fenti tankönyvi és témavázlati kiadványok, illetve a hivatalos vizsgakövetelmény ajánlott.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var TASKS = {
+    "m1-t1": {type:"tf", answer:false},
+    "m1-t2": {type:"choice", answer:"b"},
+    "m1-t3": {type:"fill", answers:["puritanizmus"]},
+    "F1a": {type:"open"},
+    "m2-t1": {type:"choice", answer:"d"},
+    "m2-t2": {type:"tf", answer:false},
+    "m2-t3": {type:"match", pairs:{p1:"r1", p2:"r2", p3:"r3"}},
+    "F2a": {type:"open"},
+    "m3-t1": {type:"match", pairs:{v1:"a1", v2:"a2", v3:"a3"}},
+    "m3-t2": {type:"sort", answers:{s1:"restauracio", s2:"dicso", s3:"dicso"}},
+    "m3-t3": {type:"choice", answer:"b"},
+    "F3a": {type:"open"},
+    "m4-t1": {type:"tf", answer:false},
+    "m4-t2": {type:"fill", answers:["habeas corpus"]},
+    "m4-t3": {type:"choice", answer:"b"},
+    "F4a": {type:"open"},
+    "m5-t1": {type:"choice", answer:"b"},
+    "m5-t2": {type:"tf", answer:false},
+    "m5-t3": {type:"match", pairs:{q1:"w1", q2:"w2", q3:"w3"}},
+    "F5a": {type:"open"},
+    "m6-t1": {type:"sort", answers:{c1:"hamis", c2:"hamis", c3:"igaz"}},
+    "m6-t2": {type:"fill", answers:["felelős","felelos"]},
+    "m6-t3": {type:"choice", answer:"c"},
+    "F6a": {type:"open"},
+    "K1": {type:"open"},
+    "K2": {type:"open"},
+    "K3": {type:"open"}
+  };
+
+  var TOTAL = Object.keys(TASKS).length;
+  var completed = new Set();
+
+  function normalize(s){
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function updateProgress(){
+    document.getElementById("progress-label").textContent = completed.size + "/" + TOTAL;
+    document.getElementById("progress-fill").style.width = (completed.size / TOTAL * 100) + "%";
+  }
+
+  function markDone(id){
+    completed.add(id);
+    updateProgress();
+  }
+
+  // ---- TF & CHOICE ----
+  document.querySelectorAll('.task[data-type="tf"], .task[data-type="choice"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    el.querySelectorAll(".task-controls button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (el.classList.contains("locked")) return;
+        var val = btn.getAttribute("data-val");
+        var correct = (def.type === "tf") ? (val === String(def.answer)) : (val === def.answer);
+        el.querySelectorAll(".task-controls button").forEach(function(b){ b.disabled = true; });
+        btn.classList.add(correct ? "correct" : "incorrect");
+        if (!correct){
+          el.querySelectorAll(".task-controls button").forEach(function(b){
+            if (b.getAttribute("data-val") === (def.type==="tf"?String(def.answer):def.answer)) b.classList.add("correct");
+          });
+        }
+        fb.textContent = correct ? "Helyes válasz!" : "Nem egészen — a helyes válasz zölddel jelölve.";
+        fb.className = "task-feedback " + (correct ? "ok" : "bad");
+        el.classList.add("locked");
+        markDone(id);
+      });
+    });
+  });
+
+  // ---- FILL ----
+  document.querySelectorAll('.task[data-type="fill"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var input = el.querySelector(".fill-input");
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var val = normalize(input.value || "");
+      var correct = def.answers.some(function(a){ return normalize(a) === val; });
+      fb.textContent = correct ? "Helyes válasz!" : ("Nem egészen — helyes válasz: " + def.answers[0] + ".");
+      fb.className = "task-feedback " + (correct ? "ok" : "bad");
+      input.disabled = true;
+      btn.disabled = true;
+      el.classList.add("locked");
+      markDone(id);
+    });
+  });
+
+  // ---- MATCH ----
+  document.querySelectorAll('.task[data-type="match"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var fb = el.querySelector(".task-feedback");
+    var selectedLeft = null;
+    var matchedCount = 0;
+    var totalPairs = Object.keys(def.pairs).length;
+    el.querySelectorAll(".match-col.left .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (btn.classList.contains("matched")) return;
+        el.querySelectorAll(".match-col.left .match-item").forEach(function(b){ b.classList.remove("selected"); });
+        btn.classList.add("selected");
+        selectedLeft = btn;
+      });
+    });
+    el.querySelectorAll(".match-col.right .match-item").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        if (!selectedLeft || btn.classList.contains("matched")) return;
+        var leftKey = selectedLeft.getAttribute("data-key");
+        var rightKey = btn.getAttribute("data-key");
+        if (def.pairs[leftKey] === rightKey){
+          selectedLeft.classList.add("matched");
+          selectedLeft.classList.remove("selected");
+          btn.classList.add("matched");
+          matchedCount++;
+          if (matchedCount === totalPairs){
+            fb.textContent = "Minden pár helyesen összeillesztve!";
+            fb.className = "task-feedback ok";
+            markDone(id);
+          }
+        } else {
+          btn.classList.add("wrong-flash");
+          selectedLeft.classList.add("wrong-flash");
+          setTimeout(function(){
+            btn.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("wrong-flash");
+            selectedLeft.classList.remove("selected");
+          }, 400);
+        }
+        selectedLeft = null;
+      });
+    });
+  });
+
+  // ---- SORT ----
+  document.querySelectorAll('.task[data-type="sort"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var def = TASKS[id];
+    var btn = el.querySelector(".check-btn");
+    var fb = el.querySelector(".task-feedback");
+    btn.addEventListener("click", function(){
+      if (el.classList.contains("locked")) return;
+      var allCorrect = true;
+      el.querySelectorAll("select").forEach(function(sel){
+        var key = sel.getAttribute("data-key");
+        var val = sel.value;
+        if (val !== def.answers[key]) {
+          allCorrect = false;
+          sel.style.borderColor = "var(--bad)";
+        } else {
+          sel.style.borderColor = "var(--ok)";
+        }
+      });
+      fb.textContent = allCorrect ? "Minden besorolás helyes!" : "Néhány besorolás hibás — a piros keretűeket nézd át újra.";
+      fb.className = "task-feedback " + (allCorrect ? "ok" : "bad");
+      if (allCorrect){
+        el.classList.add("locked");
+        el.querySelectorAll("select").forEach(function(s){ s.disabled = true; });
+        btn.disabled = true;
+        markDone(id);
+      }
+    });
+  });
+
+  // ---- OPEN ----
+  document.querySelectorAll('.task[data-type="open"]').forEach(function(el){
+    var id = el.getAttribute("data-id");
+    var btn = el.querySelector(".reveal-btn");
+    var sol = el.querySelector(".solution");
+    btn.addEventListener("click", function(){
+      sol.classList.remove("hidden");
+      btn.disabled = true;
+      btn.textContent = "Megoldás megjelenítve";
+      markDone(id);
+    });
+  });
+
+  updateProgress();
+
+  // ---- OK-OKOZATI LÁNC ----
+  var chainSteps = [
+    {order:1, text:"A Stuart-királyok abszolutista törekvései szembefordítják a parlamentet az uralkodóval"},
+    {order:2, text:"A polgárháborúban Cromwell és a New Model Army győz, I. Károlyt kivégzik (1649)"},
+    {order:3, text:"A restauráció után II. Jakab katolikus-abszolutista politikája kiváltja a dicsőséges forradalmat (1688)"},
+    {order:4, text:"Orániai Vilmos elfogadja a Jognyilatkozatot (1689) — megszületik az alkotmányos monarchia"},
+    {order:5, text:"A 18. században kialakul a miniszterelnöki intézmény és a pártrendszer"}
+  ];
+  var shuffled = chainSteps.slice().sort(function(){ return Math.random() - 0.5; });
+  var chainRow = document.getElementById("chain-row");
+  var nextExpected = 1;
+  shuffled.forEach(function(step){
+    var b = document.createElement("button");
+    b.className = "chain-item";
+    b.textContent = step.text;
+    b.setAttribute("data-order", step.order);
+    b.addEventListener("click", function(){
+      if (b.classList.contains("done")) return;
+      if (parseInt(b.getAttribute("data-order"),10) === nextExpected){
+        b.classList.add("done");
+        b.disabled = true;
+        nextExpected++;
+        if (nextExpected > chainSteps.length){
+          var target = document.getElementById("chain-target");
+          target.classList.add("lit");
+          target.innerHTML = '<span class="crest">⚖</span>Kirakva! A lánc: Stuart-abszolutizmus → polgárháború és Cromwell → dicsőséges forradalom → Jognyilatkozat (1689) → pártrendszer.';
+        }
+      } else {
+        b.classList.add("wrong");
+        setTimeout(function(){ b.classList.remove("wrong"); }, 300);
+      }
+    });
+    chainRow.appendChild(b);
+  });
+
+  // ---- GLOSSARY SEARCH ----
+  var searchInput = document.getElementById("glossary-search");
+  var glossaryList = document.getElementById("glossary-list");
+  searchInput.addEventListener("input", function(){
+    var q = normalize(searchInput.value || "");
+    var dts = glossaryList.querySelectorAll("dt");
+    dts.forEach(function(dt){
+      var dd = dt.nextElementSibling;
+      var match = normalize(dt.textContent + " " + dd.textContent).indexOf(q) !== -1;
+      dt.classList.toggle("glossary-hidden", !match && q.length > 0);
+      dd.classList.toggle("glossary-hidden", !match && q.length > 0);
+    });
+  });
+
+  // ---- ESSAY WORD COUNTER ----
+  var essayType = document.getElementById("essay-type");
+  var essayArea = document.getElementById("essay-area");
+  var counter = document.getElementById("word-counter");
+  function updateCounter(){
+    var opt = essayType.options[essayType.selectedIndex];
+    var min = parseInt(opt.getAttribute("data-min"),10);
+    var max = parseInt(opt.getAttribute("data-max"),10);
+    var text = essayArea.value.trim();
+    var words = text.length ? text.split(/\s+/).length : 0;
+    var inRange = words >= min && words <= max;
+    counter.textContent = words + " szó (cél: " + min + "–" + max + " szó)";
+    counter.className = "word-counter " + (words === 0 ? "" : (inRange ? "in-range" : "out-range"));
+  }
+  essayType.addEventListener("change", updateCounter);
+  essayArea.addEventListener("input", updateCounter);
+  updateCounter();
+
+})();
+</script>
+
+<script>
+document.addEventListener('click', function(event) {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (!hash || hash === '#') return;
+  let target = null;
+  try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) {}
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}, true);
+</script>
+</body>
+</html>
