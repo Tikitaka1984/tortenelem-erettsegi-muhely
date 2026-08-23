@@ -1,4 +1,4 @@
-# Történelem Érettségi Műhely — WEB 1.3
+# Történelem Érettségi Műhely — WEB 1.4
 
 ## Verziók és baseline
 
@@ -6,7 +6,8 @@
 - **WEB 1.1 sprint:** telepíthető PWA, offline alkalmazáskeret és verziózott helyi haladáskövetés.
 - **WEB 1.2 sprint:** tanulói fiók, Supabase Auth, saját felhős haladás, többeszközös folytatás és RLS-alapú felhasználói elkülönítés.
 - **WEB 1.3 sprint:** személyes tanulási dashboard, „Haladásom” nézet, folytatás, kedvencek, legutóbbi aktivitás és determinisztikus kurzusajánlás.
-- A WEB 1.0–1.2 változat a Git-előzményekből teljes egészében visszakereshető; a 32 kurzus oktatási tartalma és a 62 kép a WEB 1.3 fejlesztésben nem változott.
+- **WEB 1.4 sprint:** felhős könyvjelzők, saját jegyzetek, ismétlendő jelölések és kereshető „Saját anyagaim” nézet.
+- A WEB 1.0–1.3 változat a Git-előzményekből teljes egészében visszakereshető; a 32 kurzus oktatási tartalma és a 62 kép a WEB 1.4 fejlesztésben nem változott.
 
 ## Mi ez?
 Ez a mappa a "Történelem Érettségi Műhely" alkalmazás **teljes, működő, Vercelre telepíthető** változata:
@@ -35,11 +36,12 @@ favicon.svg           → böngészőikon és PWA-ikon alaphelye
 icons/*.png           → 192×192, 512×512 és maskable production appikonok
 service-worker.js     → verziózott offline alkalmazáskeret és runtime cache
 account-cloud.js      → fiókkezelés, local-first felhőszinkron és konfliktuskezelés
+annotations.js        → személyes könyvjelzők, jegyzetek, ismétlendő jelölések és sajátanyag-nézet
 dashboard-logic.js    → a dashboard összesítési, ajánlási és dátumformázási logikája
 api/config.js         → kizárólag a nyilvános Supabase klienskonfiguráció
 supabase/schema.sql   → adatmodell, triggerek, jogosultságok és RLS policy-k
 vendor/               → verzióhoz rögzített Supabase böngészőkliens
-AUDIT-JELENTES.md     → a WEB 1.0–1.3 production ellenőrzések eredménye
+AUDIT-JELENTES.md     → a WEB 1.0–1.4 production ellenőrzések eredménye
 ```
 
 ## Telepítés Vercelre — 2 lehetőség
@@ -135,3 +137,33 @@ amit a diákok közvetlenül böngészőben megnyithatnak, telefonon is.
 - A „Haladásom” nézet mind a 32 kurzust állapot- és kedvencszűrőkkel, hozzáférhető folyamatjelzőkkel jeleníti meg.
 - Vendégmódban a korábbi helyi működés változatlan; a személyes felhős listák kizárólag hitelesített felhasználónál láthatók.
 - Az e-mailes megerősítési és helyreállítási munkamenetek töredékét a kezdőoldal az Auth kliens feldolgozásáig megőrzi.
+
+## WEB 1.4 – személyes tanulási eszközök
+
+### Adatmodell és jogosultságok
+
+- A `student_annotations` tábla felhasználónként és kurzusonként tárolja a `bookmark`, `note` és `review` típusú személyes elemeket.
+- Minden rekordhoz szemantikus szakaszazonosító, címszöveg és közelítő görgetési pozíció tartozik; ez teszi lehetővé a mentett rész visszanyitását akkor is, ha a képernyő mérete eltér.
+- Az egyedi kulcs megakadályozza ugyanazon felhasználó, kurzus, típus és horgonypont ismétlődő mentését.
+- A RLS kényszerített: a bejelentkezett tanuló kizárólag a saját személyes elemeit olvashatja, hozhatja létre, módosíthatja és törölheti.
+
+### Könyvjelző, jegyzet és ismétlendő jelölés
+
+- A kurzuseszköztárból egy kattintással elmenthető vagy eltávolítható a könyvjelző és az „Ezt ismételd át” jelölés.
+- A jegyzet legfeljebb 2000 karakteres; létrehozható, szerkeszthető és külön megerősítéssel törölhető.
+- A jegyzet szövege biztonságos szövegként jelenik meg, nem kerül HTML-ként a dokumentumba.
+- A mentés felhőalapú, ezért csak bejelentkezve és működő internetkapcsolattal írható; az alkalmazás offline állapotban nem jelez valótlan sikeres mentést.
+
+### „Saját anyagaim” és több eszköz
+
+- A kezdőoldali összesítő külön mutatja a könyvjelzők, jegyzetek és ismétlendő elemek számát, valamint az öt legutóbbi személyes anyagot.
+- A „Saját anyagaim” nézet típus szerint szűrhető, szövegesen kereshető, időrend vagy kurzus szerint rendezhető.
+- A mentett elemek közvetlenül visszanyitják a kapcsolódó kurzust és a mentéshez tartozó szakaszt vagy közelítő olvasási pozíciót.
+- Bejelentkezés után egyetlen lekérdezés tölti le a felhasználó személyes elemeit; ugyanazok az adatok másik böngészőlapon vagy eszközön is megjelennek.
+- Kijelentkezéskor a felhasználóhoz tartozó megjelenítési gyorsítótár és minden személyes blokk eltűnik a felületről.
+
+### Offline működés és ismert korlátok
+
+- Az alkalmazáskeret és a korábban megnyitott kurzus offline továbbra is olvasható; a már letöltött személyes elemek a munkamenet helyi gyorsítótárából megjeleníthetők.
+- Új könyvjelző, jegyzet vagy ismétlendő jelölés offline nem hozható létre és nem módosítható. Szándékosan nincs háttérben várakozó írási sor, így nincs rejtett konfliktus vagy téves „mentve” állapot.
+- A horgonypont visszaállítása szemantikus címsorra támaszkodik, majd görgetési pozícióra vált; a kurzustartalom későbbi jelentős szerkezeti átírása ezért közelítő visszaállítást eredményezhet.

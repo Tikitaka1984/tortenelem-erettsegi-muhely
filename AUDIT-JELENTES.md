@@ -384,3 +384,89 @@ A reprodukálható ellenőrzés a `scripts/audit-production.mjs` fájllal futtat
 ### WEB 1.3 végső production minősítés
 
 **PASS WITH WARNINGS** – a WEB 1.3 production kiadása READY állapotban működik, a teljes fájl- és élő regresszió sikeres. Nem blokkoló megjegyzésként megmarad, hogy a teszt-automatizálási réteg nem minden szintetikus billentyűleütést továbbított; a natív vezérlők, hozzáférhető nevek, tab-sorrend és látható fókuszállapot alapellenőrzése PASS.
+
+## WEB 1.4 – személyes tanulási eszközök
+
+### Baseline és változási kör
+
+- WEB 1.3 alkalmazásbaseline: `30f2a59b443ab3b508384a3eb7111a08848b4eb8`.
+- Preview branch: `web-1.4`.
+- Auditált preview: https://tortenelem-erettsegi-muhely-git-web-14-takacs-tamas-s-projects.vercel.app/
+- Az audit 2026. augusztus 23-án, az élő Vercel preview és a hozzá kapcsolt Supabase projekt környezetében futott.
+- A 32 kurzus oktatási HTML-tartalma és a 62 kép nem módosult.
+
+### Adatmodell, RLS és személyes funkciók
+
+| Ellenőrzés | Eredmény | Megjegyzés |
+|---|---:|---|
+| `student_annotations` adatmodell | **PASS** | UUID, felhasználó, 1–32 kurzus, három típus, horgonypont, jegyzetszöveg és időbélyegek |
+| Egyedi személyes horgonypont | **PASS** | azonos felhasználó/kurzus/típus/horgonypont nem duplikálható |
+| RLS olvasási elkülönítés | **PASS** | B felhasználó A próbarekordjaiból 0 sort látott |
+| RLS módosítás és törlés elkülönítése | **PASS** | B felhasználó A rekordját 0 sorban módosíthatta vagy törölhette |
+| RLS idegen beszúrás blokkolása | **PASS** | más felhasználó azonosítójával végzett beszúrás elutasítva; A rekordja megmaradt |
+| Könyvjelző létrehozás és eltávolítás | **PASS** | 29. kurzus, szemantikus horgonypont, duplikáció nélkül |
+| Jegyzet létrehozás | **PASS** | 20. kurzus, felhős mentés és 2000 karakteres számláló |
+| Jegyzet szerkesztés | **PASS** | módosított szöveg új munkamenetben is változatlanul megjelent |
+| Jegyzet törlés és megerősítés | **PASS** | a megerősített törlés után 0 jegyzetkártya; kontrollként a jegyzet újra létrehozva |
+| Ismétlendő jelölés | **PASS** | 18. kurzus, kapcsolható állapot és mentett horgonypont |
+| Dashboard személyes összesítő | **PASS** | kontrolladat: 1 könyvjelző, 1 jegyzet, 1 ismétlendő jelölés |
+| „Saját anyagaim” nézet | **PASS** | 3 elem; típus-szűrés, szöveges keresés és három rendezési mód |
+| Mentett rész visszanyitása | **PASS** | könyvjelző és ismétlendő jelölés a megfelelő kurzushoz és szakaszhoz vitt |
+| Több munkamenetes visszatöltés | **PASS** | A felhasználó 1/1/1 eleme és a szerkesztett jegyzet új munkamenetben megjelent |
+| Kétfelhasználós UI-elkülönítés | **PASS** | B felhasználó személyes számlálói 0/0/0 értéket mutattak |
+| Kijelentkezési adatvédelem | **PASS** | személyes összesítő és nézet rejtve; a jegyzetszöveg nem maradt a dokumentumban |
+| XSS-alapellenőrzés | **PASS** | a felhasználói jegyzet kizárólag szövegcsomópontként jelenik meg |
+
+### Offline és PWA-regresszió
+
+| Ellenőrzés | Eredmény | Megjegyzés |
+|---|---:|---|
+| Service worker automatikus regisztráció | **PASS** | aktív regisztráció és kontrollált oldal |
+| Offline alkalmazáskeret | **PASS** | a kezdőoldal hálózat nélkül betöltődött |
+| Korábban megnyitott kurzus offline | **PASS** | a runtime cache-ből olvasható maradt |
+| Offline személyes írás | **PASS** | világos tájékoztatás jelent meg; az alkalmazás nem állított valótlan sikeres mentést |
+
+Az új személyes elemek írásához internetkapcsolat szükséges. A WEB 1.4 szándékosan nem tart fenn offline írási sort; ez dokumentált működési korlát, nem hibás mentési állapot.
+
+### Mobil és responsive regresszió
+
+Minden előírt méreten tényleges Chromium viewport-teszt futott. Ellenőrzésre került a kezdőoldal, a 32 kártya, a kereső, a szűrők, a navigáció, a személyes eszköztár, a szövegek és képek törése, valamint a viewporton kívülre kerülő vezérlők száma.
+
+| Viewport | Eredmény | Megjegyzés |
+|---|---:|---|
+| 390×844 | **PASS** | 0 horizontális overflow; kereső és 32 kártya; 0 kilógó fő vezérlő |
+| 430×932 | **PASS** | 0 horizontális overflow; kereső és 32 kártya; 0 kilógó fő vezérlő |
+| 768×1024 | **PASS** | 0 horizontális overflow; tabletelrendezés stabil |
+| 1366×768 | **PASS** | 0 horizontális overflow; asztali rács és navigáció stabil |
+| 1920×1080 | **PASS** | 0 horizontális overflow; széles elrendezés stabil |
+
+A 390×844-es nézetben az 1., 16., 18., 20., 29. és 32. kurzus külön megnyílt. Mind a hatnál 0 belső overflow, 0 hibás kép és legalább 44 px magas, viewporton belüli személyeseszköz-gomb jelent meg. A jegyzetszerkesztő párbeszédablak 390×844 méreten teljesen a viewporton belül maradt; a szövegmező és a 44 px-es műveletgombok használhatók voltak.
+
+### Billentyűzetes és accessibility regresszió
+
+| Ellenőrzés | Eredmény | Megjegyzés |
+|---|---:|---|
+| Tab navigáció | **PASS** | témaváltó, fiókgomb, kezdőlap, kereső és kurzusgombok tényleges Tab-sorrendben elérhetők |
+| Fókuszállapot | **PASS** | a vizsgált fő vezérlőkön látható, 2 px-es folytonos fókuszjelölés |
+| Fő funkciók billentyűzetről | **PASS** | témaváltás Enterrel, vendég könyvjelző Space-szel, kurzusnyitás és visszalépés Enterrel |
+| Alt/ARIA alapellenőrzés | **PASS** | 0 címke nélküli mező, 0 hiányzó képi alt, 0 cím nélküli iframe |
+| Heading hierarchy | **PASS** | az alkalmazáskeret alapellenőrzése 0 szintugrást talált |
+| Konzolhiba / váratlan 404 | **PASS** | 0 / 0 |
+
+Nincs billentyűzettel teljesen elérhetetlen fő WEB 1.4 funkció. A párbeszédablakok fókuszcsapdát, Escape-bezárást és fókusz-visszaállítást használnak; ez alapregressziós ellenőrzés, nem teljes WCAG-tanúsítás.
+
+### Statikus és tartalmi regresszió
+
+| Ellenőrzés | Eredmény |
+|---|---:|
+| Kurzus HTML | **32/32 PASS** |
+| Kurzusmeta, egyedi ID, forrás és tartalom | **32/32 PASS** |
+| Képek | **62/62 PASS** |
+| Helyi relatív hivatkozások | **0 hibás** |
+| JavaScript-szintaxis | **0 hiba** |
+| Manifest, Vercel-konfiguráció és PWA-ikonok | **PASS** |
+| WEB 1.4 service-worker shell | **PASS** – az `annotations.js` is verziózott gyorsítótárban szerepel |
+
+### WEB 1.4 végső preview minősítés
+
+**PASS** – a felhős könyvjelzők, jegyzetek, ismétlendő jelölések, a „Saját anyagaim” nézet, a szemantikus visszanyitás, a több munkamenetes visszatöltés, a kijelentkezési adatvédelem és a kényszerített RLS-elkülönítés működik. A teljes WEB 1.3 regresszió, az öt előírt viewport, a billentyűzetes fő funkciók, a 32 kurzus és a 62 kép ellenőrzése sikeres; hibás helyi hivatkozás, JavaScript-szintaktikai hiba, konzolhiba és váratlan 404 nélkül.
