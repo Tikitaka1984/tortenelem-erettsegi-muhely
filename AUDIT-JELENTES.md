@@ -230,3 +230,54 @@ Production URL: https://tortenelem-erettsegi-muhely-hqnj.vercel.app/
 ### WEB 1.1 végső minősítés
 
 **PASS WITH WARNINGS** – a PWA, az offline alkalmazáskeret, a verziózott localStorage-haladás, a Folytatás funkció, a kedvencek és a kézi befejezés production környezetben működik. Mind a 32 kurzus és mind a 62 kép regressziója sikeres, JavaScript-hiba és váratlan 404 nélkül. Nem blokkoló korlát, hogy az adatok nem szinkronizálódnak eszközök között, egy kurzus csak első online megnyitás után érhető el offline, és a telepítési felület böngésző/platformfüggő.
+
+## WEB 1.2 – tanulói fiók és felhőszinkron
+
+### Változási kör és biztonság
+
+- A 32 kurzus HTML-tartalma és a 62 kép nem módosult.
+- A kliensben kizárólag a Supabase nyilvános publishable/anon kulcsa használható; service role kulcs nincs a forrásban.
+- A `profiles` és `course_progress` táblákon a RLS engedélyezett és kényszerített; az `anon` tábla-jogosultságok vissza vannak vonva.
+- A felhasználói megjelenített név kizárólag `textContent` útján kerül a felületre.
+- Az `/api/config` válasz `no-store`; a service worker ezt az útvonalat nem gyorsítótárazza.
+
+### Preview funkcionális audit – 2026. augusztus 23.
+
+| Ellenőrzés | Eredmény | Megjegyzés |
+|---|---:|---|
+| Supabase projekt és Vercel env kapcsolat | **PASS** | a preview a megfelelő `ozsyllfdppjeacrslnbt` projektet használta; kulcsérték nem került naplóba |
+| Regisztráció és munkamenet | **PASS** | új felhasználó, profiltrigger, azonnali munkamenet és személyes név megjelenítése működött |
+| Kötelező e-mail-megerősítés | **PASS** | production beállítás visszaellenőrizve: bekapcsolva |
+| Vendégmód | **PASS** | felhő nélkül is használható, a helyi mentés megmarad |
+| 29. kurzus felhős mentése | **PASS** | 54,39%, kedvenc, aktív szakasz és pozitív görgetési pozíció az adatbázisban |
+| Új böngészőlapon folytatás | **PASS** | a 29. kurzus, 54% és kedvencjelölés megjelent; a tényleges görgetési pozíció 54%-ra állt vissza |
+| Kétfelhasználós UI-elkülönítés | **PASS** | B felhasználó nem látta A felhasználó haladását vagy kedvencét |
+| RLS olvasási izoláció | **PASS** | B JWT-kontextusában A rekordjainak látható száma: 0 |
+| RLS írási izoláció | **PASS** | B nevében A rekordjára végzett INSERT `42501` RLS hibával blokkolva |
+| Local-first háttérszinkron | **PASS** | azonnali helyi állapot, majd `Szinkronizálva` állapot; adatbázisrekord egyezett |
+| Jelszó-visszaállítási felület | **WARNING** | a felület és redirect konfiguráció működik; a teljes e-mail-kézbesítés ideiglenes tesztcím nélkül nem igazolható |
+| Jelszavas visszabelépés automatizált mezőkitöltéssel | **WARNING** | a tesztjelszó hash-egyezése igazolt, de a böngésző automatizált `current-password` kitöltése `invalid_credentials` választ kapott; a regisztrációs munkamenet és Auth végpont ettől függetlenül működött |
+| Ideiglenes tesztadatok takarítása | **PASS** | 9 tesztfiók törölve; ellenőrzött maradványszám: 0; kapcsolódó haladás kaszkáddal törlődött |
+
+Az audit idejére az e-mail-megerősítés rövid, kontrollált tesztszakaszban ki lett kapcsolva az azonnali, postafiók nélküli munkamenetek létrehozásához, majd a kétfelhasználós teszt után vissza lett kapcsolva és `true` állapotban ellenőrizve.
+
+### Regresszió
+
+| Terület | Eredmény |
+|---|---:|
+| Kurzusmeta / HTML | **32/32 PASS** |
+| Képek | **62/62 PASS** |
+| JavaScript-szintaxis | **0 hiba** |
+| Helyi relatív hivatkozások | **0 hibás** |
+| 390×844 | **PASS – 0 horizontális overflow** |
+| 430×932 | **PASS – 0 horizontális overflow** |
+| 768×1024 | **PASS – 0 horizontális overflow** |
+| 1366×768 | **PASS – 0 horizontális overflow** |
+| 1920×1080 | **PASS – 0 horizontális overflow** |
+| Mobil kurzusnyitás: 1., 16., 29., 30., 31., 32. | **6/6 PASS** |
+| Billentyűzet, fókusz, label/ARIA/alt alapellenőrzés | **PASS** |
+| Service worker és offline shell | **PASS** – `tem-web-1.2-shell-v1` |
+
+### WEB 1.2 minősítés
+
+**PASS WITH WARNINGS** – a fiókalapú felhőszinkron, a többnézetes folytatás, a vendégmód, az offline alkalmazáskeret és a kétfelhasználós RLS-elkülönítés működik. A két figyelmeztetés a postafiók nélküli jelszó-visszaállítás teljes kézbesítésére, illetve az automatizált böngésző `current-password` mezőkitöltésére vonatkozik; egyik sem érinti a kurzustartalmat vagy az igazolt felhős adatizolációt.
