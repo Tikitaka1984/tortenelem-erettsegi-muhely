@@ -287,7 +287,12 @@ async function deleteAllLearningData(){
 byId('loginForm')?.addEventListener('submit',async event=>{
   event.preventDefault();const form=event.currentTarget;if(!client){setMessage('loginMessage','A felhőszolgáltatás most nem érhető el. Vendégként továbbra is használhatod az alkalmazást.','error');return;}
   setBusy(form,true);setMessage('loginMessage','Belépés…');
-  try{const data=new FormData(form),result=await client.auth.signInWithPassword({email:String(data.get('email')).trim(),password:String(data.get('password'))});if(result.error)throw result.error;closeDialog(authDialog);form.reset();}
+  try{
+    const email=String(form.elements.namedItem('email')?.value||'').trim();
+    const password=String(form.elements.namedItem('password')?.value||'');
+    const result=await client.auth.signInWithPassword({email,password});
+    if(result.error)throw result.error;closeDialog(authDialog);form.reset();
+  }
   catch(error){setMessage('loginMessage',friendlyError(error,'login'),'error');}finally{setBusy(form,false);}
 });
 byId('registerForm')?.addEventListener('submit',async event=>{
