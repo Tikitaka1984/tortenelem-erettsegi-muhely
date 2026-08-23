@@ -2219,7 +2219,9 @@ installButton.addEventListener('click',async()=>{
 });
 window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;installButton.hidden=true;});
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(()=>{}));
+  const registerServiceWorker=()=>navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(()=>{});
+  if(document.readyState==='complete')registerServiceWorker();
+  else window.addEventListener('load',registerServiceWorker,{once:true});
 }
 
 window.addEventListener('keydown',event=>{
