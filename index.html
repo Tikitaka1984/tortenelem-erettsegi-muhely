@@ -171,7 +171,7 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 .dashboard-hero p{color:#b6c1d1;font-size:clamp(14px,1.5vw,17px);line-height:1.62;margin:17px 0 0;max-width:53em}
 .dashboard-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
 .install-app[hidden]{display:none}.install-app{min-height:44px}
-.dash-primary,.dash-secondary{border-radius:12px;padding:10px 15px;cursor:pointer;font-weight:800;border:1px solid transparent;transition:.16s ease}
+.dash-primary,.dash-secondary{min-height:44px;border-radius:12px;padding:10px 15px;cursor:pointer;font-weight:800;border:1px solid transparent;transition:.16s ease}
 .dash-primary{background:var(--accent);border-color:var(--accent);color:#172033;box-shadow:0 7px 22px rgba(224,183,95,.16)}
 .dash-primary:hover{background:var(--accent-2);transform:translateY(-1px)}
 .dash-secondary{background:rgba(255,255,255,.045);border-color:var(--line-strong);color:#e5eaf1}
@@ -190,7 +190,7 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 .section-heading__copy h3{font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:600;margin:0;color:#eef3f8}
 .section-heading__copy p{margin:4px 0 0;color:var(--muted);font-size:12px}
 .dashboard-filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.dashboard-filter{border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--muted);padding:7px 10px;border-radius:999px;cursor:pointer;font-size:10.5px;font-weight:800}
+.dashboard-filter{min-height:44px;border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--muted);padding:7px 12px;border-radius:999px;cursor:pointer;font-size:10.5px;font-weight:800}
 .dashboard-filter:hover,.dashboard-filter.active{background:var(--accent-soft);border-color:rgba(224,183,95,.3);color:var(--accent-2)}
 
 .continue-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;border:1px solid rgba(224,183,95,.22);border-radius:20px;background:linear-gradient(135deg,rgba(224,183,95,.09),rgba(110,150,216,.055));padding:20px 22px}
@@ -222,10 +222,29 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 .dashboard-course__track{height:5px;background:rgba(255,255,255,.065);border-radius:99px;overflow:hidden}
 .dashboard-course__fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,#608bc9,var(--accent))}
 .dashboard-course__actions{display:flex;gap:7px;margin-top:12px}
-.dashboard-course__open{flex:1;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.035);color:#dbe2eb;padding:7px 9px;cursor:pointer;font-size:10.5px;font-weight:800}
+.dashboard-course__open{flex:1;min-height:44px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.035);color:#dbe2eb;padding:7px 9px;cursor:pointer;font-size:10.5px;font-weight:800}
 .dashboard-course__open:hover{background:rgba(255,255,255,.07)}
 .dashboard-empty{display:none;border:1px dashed var(--line);border-radius:16px;padding:28px;text-align:center;color:var(--muted);font-size:12px}
 .dashboard-empty.show{display:block}
+.dashboard-overview-heading{margin-top:28px}
+.dashboard-loading,.dashboard-message{margin:18px 0 0;border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:var(--muted);font-size:12px;background:rgba(255,255,255,.025)}
+.dashboard-loading::before{content:"";display:inline-block;width:12px;height:12px;margin-right:9px;border:2px solid rgba(224,183,95,.25);border-top-color:var(--accent);border-radius:50%;vertical-align:-2px;animation:dashboard-spin .8s linear infinite}
+.dashboard-message[data-state="error"]{border-color:rgba(202,95,95,.28);color:#d9a1a1}
+@keyframes dashboard-spin{to{transform:rotate(360deg)}}
+.overall-progress-card{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(260px,1.2fr);align-items:center;gap:22px;border:1px solid var(--line);border-radius:17px;padding:16px 18px;background:rgba(13,26,45,.62)}
+.overall-progress-card strong{display:block;color:#eef3f8;font-size:13px}.overall-progress-card span{display:block;color:var(--muted);font-size:10.5px;margin-top:4px}
+.overall-progress-track{height:10px;border-radius:99px;background:rgba(255,255,255,.075);overflow:hidden}
+.overall-progress-fill{width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--accent));transition:width .25s ease}
+.recommendation-card{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:18px;border:1px solid rgba(110,150,216,.25);border-radius:18px;padding:18px 20px;background:linear-gradient(135deg,rgba(110,150,216,.08),rgba(224,183,95,.055))}
+.recommendation-card h4{margin:4px 0;color:#eef3f8;font:600 19px Georgia,"Times New Roman",serif}.recommendation-card p{margin:0;color:var(--muted);font-size:11.5px;line-height:1.5}.recommendation-card .dash-primary{min-height:44px}
+.personal-dashboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.personal-panel{min-width:0}
+.personal-list{display:grid;gap:9px}.personal-list-card{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;border:1px solid var(--line);border-radius:14px;padding:13px 14px;background:rgba(255,255,255,.025)}
+.personal-list-card__copy{min-width:0}.personal-list-card__copy strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#e9eef4;font-size:12px}.personal-list-card__copy span{display:block;color:var(--muted);font-size:10px;margin-top:4px}.personal-list-card button{min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.035);color:#e2e8f0;cursor:pointer;font-size:10.5px;font-weight:800}.personal-list-card button:hover{background:rgba(255,255,255,.075)}
+.personal-empty{border:1px dashed var(--line);border-radius:14px;padding:20px;color:var(--muted);font-size:11.5px;line-height:1.5}
+.activity-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.activity-list li{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:rgba(255,255,255,.02);min-width:0}.activity-list strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#e8edf4;font-size:11.5px}.activity-list span{color:var(--muted);font-size:10px;white-space:nowrap}
+.progress-view-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.progress-filters{justify-content:flex-start;margin-top:8px}.progress-view__heading{align-items:center}
+.dashboard__inner.progress-mode>.dashboard-hero,.dashboard__inner.progress-mode>#dashboardLoading,.dashboard__inner.progress-mode>#dashboardMessage,.dashboard__inner.progress-mode>#dashboardOverview,.dashboard__inner.progress-mode>#continueSection,.dashboard__inner.progress-mode>#personalDashboard,.dashboard__inner.progress-mode>#courseBrowserSection,.dashboard__inner.progress-mode>.dashboard-reset{display:none!important}
+.dashboard__inner:not(.progress-mode) #progressView{display:none!important}
 .dashboard-reset{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;color:#78869a;font-size:11px}
 .reset-progress{border:1px solid rgba(202,95,95,.25);border-radius:9px;background:rgba(202,95,95,.055);color:#d49a9a;padding:7px 10px;cursor:pointer;font-size:10px;font-weight:800}
 .reset-progress:hover{background:rgba(202,95,95,.10);border-color:rgba(202,95,95,.38)}
@@ -240,6 +259,7 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 
 @media(max-width:1180px){
   .dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .progress-view-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .dashboard-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
   .toolbar-progress{display:none}
 }
@@ -249,6 +269,10 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
   .dashboard-hero{border-radius:20px;padding:26px 22px}
   .dashboard-hero h2{font-size:clamp(2rem,8vw,3rem)}
   .continue-card{grid-template-columns:1fr}.continue-card .dash-primary{width:100%}
+  .recommendation-card{grid-template-columns:1fr}.recommendation-card .dash-primary{width:100%}
+  .personal-dashboard-grid{grid-template-columns:1fr}
+  .overall-progress-card{grid-template-columns:1fr}
+  .activity-list{grid-template-columns:1fr}
   .dashboard-reset{align-items:flex-start;flex-direction:column}
 }
 @media(max-width:800px){
@@ -261,6 +285,7 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
   .stat-card strong{font-size:25px}
   .section-heading{align-items:flex-start;flex-direction:column}
   .dashboard-filters{justify-content:flex-start}
+  .progress-view-grid{grid-template-columns:1fr}
 }
 @media(max-width:500px){
   .dashboard-stats{grid-template-columns:1fr 1fr}
@@ -372,6 +397,14 @@ html[data-app-theme="light"] .stat-card{
 }
 html[data-app-theme="light"] .stat-card strong{color:#1c2a3d}
 html[data-app-theme="light"] .stat-card small{color:#758397}
+html[data-app-theme="light"] .dashboard-loading,html[data-app-theme="light"] .dashboard-message,
+html[data-app-theme="light"] .overall-progress-card,html[data-app-theme="light"] .personal-list-card,
+html[data-app-theme="light"] .activity-list li{background:rgba(255,255,255,.84)}
+html[data-app-theme="light"] .overall-progress-card strong,html[data-app-theme="light"] .recommendation-card h4,
+html[data-app-theme="light"] .personal-list-card__copy strong,html[data-app-theme="light"] .activity-list strong{color:#223147}
+html[data-app-theme="light"] .overall-progress-track{background:rgba(35,53,77,.09)}
+html[data-app-theme="light"] .recommendation-card{background:linear-gradient(135deg,rgba(78,120,181,.07),rgba(168,120,42,.055));border-color:rgba(78,120,181,.18)}
+html[data-app-theme="light"] .personal-list-card button{background:#fff;color:#34445a}
 html[data-app-theme="light"] .section-heading__copy h3{color:#1c2a3d}
 html[data-app-theme="light"] .dashboard-filter{background:rgba(38,57,83,.025)}
 html[data-app-theme="light"] .continue-card{
@@ -561,7 +594,7 @@ html[data-app-theme="dark"] .dashboard-course__open{background:rgba(255,255,255,
 html[data-app-theme="dark"] .dashboard-course__open:hover{background:rgba(255,255,255,.095)}
 html[data-app-theme="dark"] .dashboard-reset{color:#9ba8b8}
 
-/* ---------- WEB 1.2: tanulói fiók és felhőszinkron ---------- */
+/* ---------- WEB 1.3: tanulói fiók, felhőszinkron és személyes dashboard ---------- */
 .account-launch{width:100%;min-height:44px;margin-top:12px;padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.045);color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;text-align:left}
 .account-launch:hover{border-color:rgba(224,183,95,.34);background:rgba(255,255,255,.07)}
 .account-launch__name{min-width:0;font-size:11px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -625,7 +658,7 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
     </div>
     <nav class="course-list" id="courseList" aria-label="Kurzusok kronologikus sorrendben"></nav>
     <div class="empty-state" id="emptyState">Nincs a keresésnek megfelelő kurzus.<br>Próbálj másik kulcsszót.</div>
-    <footer class="sidebar-footer"><span>Érettségi műhely · WEB 1.2</span><strong id="footerRange">01–32</strong></footer>
+    <footer class="sidebar-footer"><span>Érettségi műhely · WEB 1.3</span><strong id="footerRange">01–32</strong></footer>
   </aside>
   <section class="viewer home-mode" id="viewer">
     <div class="toolbar">
@@ -656,7 +689,7 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
           <div class="dashboard__inner">
             <header class="dashboard-hero">
               <div class="dashboard-hero__content">
-                <div class="dashboard-kicker">Történelem Érettségi Műhely · WEB 1.2</div>
+                <div class="dashboard-kicker">Történelem Érettségi Műhely · WEB 1.3</div>
                 <p class="personal-welcome" id="personalWelcome" hidden></p>
           <h2>Haladj végig a 32 érettségi témakörön.</h2>
                 <p>A műhely megjegyzi, mely kurzusokat kezdted el, meddig jutottál bennük, melyeket jelölted meg, és melyeket tekinted befejezettnek.</p>
@@ -670,21 +703,70 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
               </div>
             </header>
 
-            <div class="dashboard-stats" aria-label="Tanulási statisztikák">
-              <article class="stat-card"><span>Megkezdett</span><strong id="statStarted">0</strong><small>a 32 kurzusból</small></article>
-              <article class="stat-card"><span>Befejezett</span><strong id="statCompleted">0</strong><small>késznek jelölve</small></article>
-              <article class="stat-card"><span>Megjelölt</span><strong id="statFavorites">0</strong><small>kiemelt kurzus</small></article>
-              <article class="stat-card"><span>Összhaladás</span><strong id="statProgress">0%</strong><small>olvasási előrehaladás</small></article>
-            </div>
+            <div id="dashboardLoading" class="dashboard-loading" role="status" aria-live="polite" hidden>Haladás betöltése…</div>
+            <div id="dashboardMessage" class="dashboard-message" role="status" aria-live="polite" hidden></div>
+
+            <section id="dashboardOverview" aria-labelledby="progressOverviewHeading">
+              <div class="section-heading dashboard-overview-heading"><div class="section-heading__copy"><h3 id="progressOverviewHeading">Haladásod</h3><p>A 32 kurzusban elért összesített tanulási állapot.</p></div></div>
+              <div class="dashboard-stats" aria-label="Tanulási statisztikák">
+                <article class="stat-card"><span>Befejezett</span><strong id="statCompleted">0</strong><small>a 32 kurzusból</small></article>
+                <article class="stat-card"><span>Folyamatban</span><strong id="statStarted">0</strong><small>megkezdett kurzus</small></article>
+                <article class="stat-card"><span>Még nem kezdett</span><strong id="statNotStarted">32</strong><small>választható kurzus</small></article>
+                <article class="stat-card"><span>Összhaladás</span><strong id="statProgress">0%</strong><small>átlag a 32 kurzuson</small></article>
+              </div>
+              <div class="overall-progress-card">
+                <div><strong id="overallProgressText">Összesített haladás: 0%</strong><span>A nem megkezdett kurzusok 0%-kal számítanak.</span></div>
+                <div class="overall-progress-track" id="overallProgress" role="progressbar" aria-label="Összesített tanulási haladás" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="overall-progress-fill" id="overallProgressFill"></div></div>
+              </div>
+            </section>
 
             <section class="dashboard-section" id="continueSection">
               <div class="section-heading"><div class="section-heading__copy"><h3 id="continueHeading">Folytatás</h3><p>A legutóbb megnyitott kurzus és a mentett olvasási pozíció.</p></div></div>
               <div class="continue-card" id="continueCard"></div>
             </section>
 
-            <section class="dashboard-section">
+            <div id="personalDashboard" hidden>
+              <section class="dashboard-section" aria-labelledby="recommendationHeading">
+                <div class="section-heading"><div class="section-heading__copy"><h3 id="recommendationHeading">Mit érdemes folytatnod?</h3><p>Egyszerű, a mentett haladásod alapján készült javaslat.</p></div></div>
+                <div class="recommendation-card" id="recommendationCard"></div>
+              </section>
+
+              <div class="personal-dashboard-grid">
+                <section class="dashboard-section personal-panel" aria-labelledby="inProgressHeading">
+                  <div class="section-heading"><div class="section-heading__copy"><h3 id="inProgressHeading">Folyamatban</h3><p>Legutóbb használt, még nem befejezett kurzusok.</p></div></div>
+                  <div class="personal-list" id="inProgressList"></div>
+                </section>
+                <section class="dashboard-section personal-panel" aria-labelledby="favoritesHeading">
+                  <div class="section-heading"><div class="section-heading__copy"><h3 id="favoritesHeading">Kedvenceid</h3><p>A megjelölt kurzusaid közül legfeljebb öt.</p></div></div>
+                  <div class="personal-list" id="favoritesList"></div>
+                </section>
+              </div>
+
+              <section class="dashboard-section" aria-labelledby="recentHeading">
+                <div class="section-heading"><div class="section-heading__copy"><h3 id="recentHeading">Legutóbbi tanulásaid</h3><p>A legfrissebb mentett aktivitások időrendben.</p></div></div>
+                <ol class="activity-list" id="recentActivityList"></ol>
+              </section>
+            </div>
+
+            <section class="dashboard-section progress-view" id="progressView" aria-labelledby="progressViewHeading" hidden>
+              <div class="section-heading progress-view__heading">
+                <div class="section-heading__copy"><h3 id="progressViewHeading">Haladásom</h3><p>Mind a 32 kurzusod állapota egy helyen.</p></div>
+                <button class="dash-secondary" id="backToDashboard" type="button">Vissza az áttekintéshez</button>
+              </div>
+              <div class="dashboard-filters progress-filters" id="progressFilters" role="group" aria-label="Haladás szűrése">
+                <button class="dashboard-filter active" type="button" data-progress-filter="all">Összes</button>
+                <button class="dashboard-filter" type="button" data-progress-filter="started">Folyamatban</button>
+                <button class="dashboard-filter" type="button" data-progress-filter="completed">Befejezett</button>
+                <button class="dashboard-filter" type="button" data-progress-filter="new">Nem kezdett</button>
+                <button class="dashboard-filter" type="button" data-progress-filter="favorites">Kedvenc</button>
+              </div>
+              <div class="progress-view-grid" id="progressViewGrid"></div>
+              <div class="dashboard-empty" id="progressViewEmpty">Ebben a kategóriában még nincs kurzus.</div>
+            </section>
+
+            <section class="dashboard-section" id="courseBrowserSection">
               <div class="section-heading">
-                <div class="section-heading__copy"><h3>Kurzusok</h3><p>Jelöld meg a fontos témákat, vagy szűrj a tanulási állapot szerint.</p></div>
+                <div class="section-heading__copy"><h3>Összes kurzus</h3><p>Jelöld meg a fontos témákat, vagy szűrj a tanulási állapot szerint.</p></div>
                 <div class="dashboard-filters" id="dashboardFilters" role="group" aria-label="Kurzusok szűrése">
                   <button class="dashboard-filter active" type="button" data-filter="all">Mind</button>
                   <button class="dashboard-filter" type="button" data-filter="started">Megkezdett</button>
@@ -738,6 +820,7 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
   <div class="account-dialog__body"><div class="confirm-actions"><button class="auth-secondary" id="declineImport" type="button">Nem</button><button class="auth-submit" id="acceptImport" type="button">Igen</button></div></div>
 </dialog>
 
+<script src="./dashboard-logic.js"></script>
 <script>
 (async function(){
 "use strict";
@@ -1596,6 +1679,7 @@ applyAppTheme(appTheme,false);
 
 
 const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const dashboardLogic=window.TEM_DASHBOARD_LOGIC;
 
 /* ---------- Helyi tanulói állapot ---------- */
 const STORAGE_KEY='tortenelem-erettsegi-muhely-ui2-progress-v1';
@@ -1604,6 +1688,11 @@ const stateDefaults={version:2,lastCourse:null,favorites:[],courses:{}};
 let activeStorageKey=STORAGE_KEY;
 let appState=loadAppState();
 let dashboardFilter='all';
+let progressViewFilter='all';
+let dashboardAuthenticated=false;
+let dashboardCloudLoading=false;
+let dashboardError='';
+let dashboardMode='home';
 let frameTrackingCleanup=null;
 let saveTimer=null;
 
@@ -1672,8 +1761,7 @@ function courseStatus(index){
   return {key:'new',label:'Nincs elkezdve'};
 }
 function formatDate(ts){
-  if(!ts)return 'még nincs mentett aktivitás';
-  try{return new Intl.DateTimeFormat('hu-HU',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(ts));}
+  try{return dashboardLogic.formatHungarianDate(ts);}
   catch(_){return '';}
 }
 
@@ -1718,6 +1806,11 @@ document.getElementById('dashboardFilters').addEventListener('click',event=>{
   const b=event.target.closest('[data-filter]');if(!b)return;
   dashboardFilter=b.dataset.filter;setDashboardFilterButtons();renderDashboardCourses();
 });
+document.getElementById('progressFilters').addEventListener('click',event=>{
+  const b=event.target.closest('[data-progress-filter]');if(!b)return;
+  progressViewFilter=b.dataset.progressFilter;renderProgressView();
+});
+document.getElementById('backToDashboard').addEventListener('click',showDashboardHome);
 document.getElementById('resetProgress').addEventListener('click',()=>{
   if(window.TEM_CLOUD?.isAuthenticated?.()){window.TEM_CLOUD.deleteAll();return;}
   if(!confirm('Biztosan törlöd az összes mentett haladást, kurzusjelölést és esszévázlatot ezen a böngészőn?'))return;
@@ -1741,32 +1834,112 @@ search?.addEventListener('input',()=>{
 
 /* ---------- Dashboard ---------- */
 function setDashboardFilterButtons(){
-  document.querySelectorAll('.dashboard-filter').forEach(b=>b.classList.toggle('active',b.dataset.filter===dashboardFilter));
+  document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===dashboardFilter));
+}
+function courseActivityTime(index){
+  const state=getCourseState(index);return Math.max(Number(state.lastOpened)||0,Number(state.updatedAt)||0,Number(state.completedAt)||0);
+}
+function latestCourseIndex(predicate=()=>true){
+  return courses.map((_,index)=>index).filter(predicate).sort((a,b)=>courseActivityTime(b)-courseActivityTime(a)||a-b)[0] ?? null;
+}
+function setDashboardCloudState({authenticated=dashboardAuthenticated,loading=false,error=''}={}){
+  dashboardAuthenticated=Boolean(authenticated);dashboardCloudLoading=Boolean(loading);dashboardError=String(error||'');
+  if(!dashboardAuthenticated&&dashboardMode==='progress')dashboardMode='home';
+  renderDashboard();
+}
+function setDashboardMode(mode,focus=false){
+  dashboardMode=mode==='progress'&&dashboardAuthenticated?'progress':'home';
+  const inner=document.querySelector('.dashboard__inner'),progress=document.getElementById('progressView');
+  inner?.classList.toggle('progress-mode',dashboardMode==='progress');
+  progress.hidden=dashboardMode!=='progress';
+  if(focus&&dashboardMode==='progress'){
+    const heading=document.getElementById('progressViewHeading');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});
+  }
+}
+function showDashboardHome(){
+  setDashboardMode('home');history.replaceState(null,'','#home');renderDashboard();
+  document.querySelector('.dashboard__scroll')?.scrollTo({top:0,behavior:'smooth'});
+}
+function showProgressView(){
+  if(!dashboardAuthenticated){showDashboardHome();return;}
+  setDashboardMode('progress',true);history.replaceState(null,'','#progress');renderProgressView();
+  document.querySelector('.dashboard__scroll')?.scrollTo({top:0,behavior:'smooth'});
 }
 function renderDashboard(){
   const states=courses.map((_,i)=>getCourseState(i));
-  const started=states.filter(s=>s.visited).length;
-  const completed=states.filter(s=>s.completed).length;
-  const fav=appState.favorites.filter(id=>courses.some(c=>c.id===id)).length;
-  const avg=Math.round(states.reduce((sum,_,i)=>sum+courseProgress(i),0)/courses.length);
-  document.getElementById('statStarted').textContent=started;
-  document.getElementById('statCompleted').textContent=completed;
-  document.getElementById('statFavorites').textContent=fav;
-  document.getElementById('statProgress').textContent=avg+'%';
+  const summary=dashboardLogic.summarize(states.map((state,index)=>({...state,progress:courseProgress(index)})),courses.length);
+  document.getElementById('statStarted').textContent=summary.inProgress;
+  document.getElementById('statCompleted').textContent=summary.completed;
+  document.getElementById('statNotStarted').textContent=summary.notStarted;
+  document.getElementById('statProgress').textContent=summary.aggregate+'%';
+  document.getElementById('overallProgressText').textContent='Összesített haladás: '+summary.aggregate+'%';
+  document.getElementById('overallProgressFill').style.width=summary.aggregate+'%';
+  document.getElementById('overallProgress').setAttribute('aria-valuenow',String(summary.aggregate));
 
-  const last=Number.isInteger(appState.lastCourse) && courses[appState.lastCourse]?appState.lastCourse:null;
+  const loading=document.getElementById('dashboardLoading'),message=document.getElementById('dashboardMessage');
+  loading.hidden=!dashboardCloudLoading;
+  message.hidden=!dashboardError;message.textContent=dashboardError;message.dataset.state=dashboardError?'error':'';
+  document.getElementById('dashboardOverview').hidden=dashboardAuthenticated&&dashboardCloudLoading;
+  document.getElementById('continueSection').hidden=dashboardAuthenticated&&dashboardCloudLoading;
+  document.getElementById('personalDashboard').hidden=!dashboardAuthenticated||dashboardCloudLoading;
+
+  const last=latestCourseIndex(index=>getCourseState(index).visited||getCourseState(index).completed);
   const continueButton=document.getElementById('continueButton');
   const card=document.getElementById('continueCard');
   if(last===null){
     continueButton.textContent='Kezdés az első kurzussal';
-    card.innerHTML='<div><div class="continue-card__eyebrow">Első lépés</div><h4>1. · '+escapeHtml(courses[0].label)+'</h4><p>Még nincs mentett tanulási előzmény. Indítsd el az első témakört, vagy válassz a kurzusok közül.</p><div class="continue-progress"><div class="mini-track" role="progressbar" aria-label="Kurzus haladása" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="mini-fill" style="width:0%"></div></div><span>0%</span></div></div><button class="dash-primary" type="button" data-continue="0">Kezdés</button>';
+    card.innerHTML='<div><div class="continue-card__eyebrow">Első lépés</div><h4>Még nem kezdtél el kurzust.</h4><p>Válaszd ki az első témakört, vagy böngéssz az összes kurzus között.</p></div><button class="dash-primary" type="button" data-continue="0">Kurzus választása</button>';
   }else{
     const c=courses[last],s=getCourseState(last),pct=courseProgress(last);
     continueButton.textContent='Folytatás · '+String(last+1).padStart(2,'0');
-    card.innerHTML='<div><div class="continue-card__eyebrow">Legutóbbi kurzus</div><h4>'+String(last+1).padStart(2,'0')+' · '+escapeHtml(c.label)+'</h4><p>'+escapeHtml(c.period)+' · utolsó aktivitás: '+escapeHtml(formatDate(s.lastOpened))+'</p><div class="continue-progress"><div class="mini-track" role="progressbar" aria-label="Kurzus haladása" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><div class="mini-fill" style="width:'+pct+'%"></div></div><span>'+pct+'%</span></div></div><button class="dash-primary" type="button" data-continue="'+last+'">Folytatás</button>';
+    const status=courseStatus(last).label;
+    card.innerHTML='<div><div class="continue-card__eyebrow">Legutóbbi kurzus</div><h4>'+String(last+1).padStart(2,'0')+' · '+escapeHtml(c.label)+'</h4><p>'+escapeHtml(status)+' · '+escapeHtml(formatDate(courseActivityTime(last)))+'</p><div class="continue-progress"><div class="mini-track" role="progressbar" aria-label="'+escapeHtml(c.label)+' kurzus '+pct+' százalékban teljesítve" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><div class="mini-fill" style="width:'+pct+'%"></div></div><span>'+pct+'%</span></div></div><button class="dash-primary" type="button" data-continue="'+last+'">Folytatás</button>';
   }
   card.querySelector('[data-continue]')?.addEventListener('click',e=>show(Number(e.currentTarget.dataset.continue)));
+  if(dashboardAuthenticated&&!dashboardCloudLoading)renderPersonalDashboard();
+  setDashboardMode(dashboardMode);
   renderDashboardCourses();
+  if(dashboardMode==='progress')renderProgressView();
+}
+function renderPersonalDashboard(){
+  const inProgress=courses.map((_,index)=>index).filter(index=>{const s=getCourseState(index);return s.visited&&!s.completed;}).sort((a,b)=>courseActivityTime(b)-courseActivityTime(a)||courseProgress(b)-courseProgress(a)).slice(0,5);
+  const favorites=courses.map((_,index)=>index).filter(index=>isFavorite(index)).sort((a,b)=>courseActivityTime(b)-courseActivityTime(a)||a-b).slice(0,5);
+  renderPersonalList('inProgressList',inProgress,'Még nincs folyamatban lévő kurzusod.');
+  renderPersonalList('favoritesList',favorites,'Még nincs kedvencnek jelölt kurzusod.');
+
+  const recent=courses.map((_,index)=>index).filter(index=>courseActivityTime(index)>0).sort((a,b)=>courseActivityTime(b)-courseActivityTime(a)).slice(0,5);
+  const activity=document.getElementById('recentActivityList');activity.innerHTML='';
+  if(!recent.length){const li=document.createElement('li');li.className='personal-empty';li.textContent='Még nincs mentett tanulási aktivitásod.';activity.appendChild(li);}
+  recent.forEach(index=>{const li=document.createElement('li'),pct=courseProgress(index),status=getCourseState(index).completed?'Befejezve':pct+'%';li.innerHTML='<strong>'+escapeHtml(courses[index].label)+'</strong><span>'+escapeHtml(status)+' · '+escapeHtml(formatDate(courseActivityTime(index)))+'</span>';activity.appendChild(li);});
+
+  const recommendationResult=getRecommendation(),recommendation=recommendationResult?.index ?? null;
+  const recommendationCard=document.getElementById('recommendationCard');
+  const progress=recommendation===null?0:courseProgress(recommendation);
+  let reason='A következő még nem kezdett kurzus a kronologikus sorrendben.';
+  if(recommendationResult?.reason==='recent')reason='Ezt tanultad legutóbb.';
+  if(recommendationResult?.reason==='progress')reason='Ezt a kurzust már '+progress+'%-ban teljesítetted.';
+  recommendationCard.innerHTML=recommendation===null?'<div><h4>Minden kurzust befejeztél.</h4><p>A teljes tananyag elkészült.</p></div>':'<div><h4>'+String(recommendation+1).padStart(2,'0')+' · '+escapeHtml(courses[recommendation].label)+'</h4><p>'+escapeHtml(reason)+'</p></div><button class="dash-primary" type="button">'+(progress>0?'Folytatás':'Kurzus megnyitása')+'</button>';
+  recommendationCard.querySelector('button')?.addEventListener('click',()=>show(recommendation));
+}
+function getRecommendation(){
+  return dashboardLogic.recommendation(courses.map((_,index)=>{const state=getCourseState(index);return {index,visited:state.visited,completed:state.completed,progress:courseProgress(index),lastOpened:state.lastOpened,updatedAt:state.updatedAt,completedAt:state.completedAt};}));
+}
+function renderPersonalList(id,indexes,emptyText){
+  const list=document.getElementById(id);list.innerHTML='';
+  if(!indexes.length){const emptyItem=document.createElement('div');emptyItem.className='personal-empty';emptyItem.textContent=emptyText;list.appendChild(emptyItem);return;}
+  indexes.forEach(index=>{const item=document.createElement('article'),pct=courseProgress(index);item.className='personal-list-card';item.innerHTML='<div class="personal-list-card__copy"><strong>'+escapeHtml(courses[index].label)+'</strong><span>'+pct+'% · '+escapeHtml(formatDate(courseActivityTime(index)))+'</span></div><button type="button" aria-label="'+escapeHtml(courses[index].label)+' folytatása">Folytatás</button>';item.querySelector('button').addEventListener('click',()=>show(index));list.appendChild(item);});
+}
+function renderProgressView(){
+  document.querySelectorAll('[data-progress-filter]').forEach(button=>button.classList.toggle('active',button.dataset.progressFilter===progressViewFilter));
+  const grid=document.getElementById('progressViewGrid'),emptyView=document.getElementById('progressViewEmpty');grid.innerHTML='';let shown=0;
+  courses.forEach((course,index)=>{const state=getCourseState(index),favorite=isFavorite(index);const match=progressViewFilter==='all'||(progressViewFilter==='started'&&state.visited&&!state.completed)||(progressViewFilter==='completed'&&state.completed)||(progressViewFilter==='new'&&!state.visited&&!state.completed)||(progressViewFilter==='favorites'&&favorite);if(!match)return;grid.appendChild(createCourseCard(index));shown++;});
+  emptyView.classList.toggle('show',shown===0);
+}
+function createCourseCard(index){
+  const course=courses[index],s=getCourseState(index),fav=isFavorite(index),status=courseStatus(index),pct=courseProgress(index);
+  const card=document.createElement('article');card.className='dashboard-course'+(s.completed?' complete':'');
+  card.innerHTML='<div class="dashboard-course__top"><div class="dashboard-course__id"><span class="dashboard-course__icon" aria-hidden="true">'+course.icon+'</span><span class="dashboard-course__num">Kurzus '+String(index+1).padStart(2,'0')+'</span></div><button class="favorite-btn'+(fav?' active':'')+'" type="button" aria-label="'+escapeHtml(course.label)+(fav?' eltávolítása a kedvencek közül':' hozzáadása a kedvencekhez')+'" aria-pressed="'+(fav?'true':'false')+'" title="'+(fav?'Jelölés eltávolítása':'Kurzus megjelölése')+'">★</button></div><h4>'+escapeHtml(course.label)+'</h4><div class="dashboard-course__period">'+escapeHtml(course.period)+'</div><div class="dashboard-course__bottom"><div class="dashboard-course__statusrow"><span class="status-label '+status.key+'">'+status.label+'</span><span class="dashboard-course__pct">'+pct+'%</span></div><div class="dashboard-course__track" role="progressbar" aria-label="'+escapeHtml(course.label)+' kurzus '+pct+' százalékban teljesítve" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><div class="dashboard-course__fill" style="width:'+pct+'%"></div></div><div class="dashboard-course__actions"><button class="dashboard-course__open" type="button">'+(s.visited?'Megnyitás / folytatás':'Kurzus megnyitása')+'</button></div></div>';
+  card.querySelector('.favorite-btn').addEventListener('click',()=>setFavorite(index,!fav));card.querySelector('.dashboard-course__open').addEventListener('click',()=>show(index));return card;
 }
 function renderDashboardCourses(){
   const grid=document.getElementById('dashboardGrid');
@@ -1774,19 +1947,14 @@ function renderDashboardCourses(){
   grid.innerHTML='';
   let shown=0;
   courses.forEach((course,index)=>{
-    const s=getCourseState(index),fav=isFavorite(index),status=courseStatus(index),pct=courseProgress(index);
+    const s=getCourseState(index),fav=isFavorite(index);
     const match=dashboardFilter==='all'||
       (dashboardFilter==='started'&&s.visited&&!s.completed)||
       (dashboardFilter==='favorites'&&fav)||
       (dashboardFilter==='completed'&&s.completed);
     const queryMatch=!dashboardQuery||normalize(course.label+' '+course.period).includes(dashboardQuery);
     if(!match||!queryMatch)return;shown++;
-    const card=document.createElement('article');
-    card.className='dashboard-course'+(s.completed?' complete':'');
-    card.innerHTML='<div class="dashboard-course__top"><div class="dashboard-course__id"><span class="dashboard-course__icon" aria-hidden="true">'+course.icon+'</span><span class="dashboard-course__num">Kurzus '+String(index+1).padStart(2,'0')+'</span></div><button class="favorite-btn'+(fav?' active':'')+'" type="button" aria-label="'+escapeHtml(course.label)+(fav?' eltávolítása a kedvencek közül':' hozzáadása a kedvencekhez')+'" aria-pressed="'+(fav?'true':'false')+'" title="'+(fav?'Jelölés eltávolítása':'Kurzus megjelölése')+'">★</button></div><h4>'+escapeHtml(course.label)+'</h4><div class="dashboard-course__period">'+escapeHtml(course.period)+'</div><div class="dashboard-course__bottom"><div class="dashboard-course__statusrow"><span class="status-label '+status.key+'">'+status.label+'</span><span class="dashboard-course__pct">'+pct+'%</span></div><div class="dashboard-course__track" role="progressbar" aria-label="'+escapeHtml(course.label)+' haladása" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><div class="dashboard-course__fill" style="width:'+pct+'%"></div></div><div class="dashboard-course__actions"><button class="dashboard-course__open" type="button">'+(s.visited?'Megnyitás / folytatás':'Kurzus megnyitása')+'</button></div></div>';
-    card.querySelector('.favorite-btn').addEventListener('click',()=>setFavorite(index,!fav));
-    card.querySelector('.dashboard-course__open').addEventListener('click',()=>show(index));
-    grid.appendChild(card);
+    grid.appendChild(createCourseCard(index));
   });
   emptyDash.classList.toggle('show',shown===0);
 }
@@ -1901,11 +2069,13 @@ function refreshChrome(){
 }
 function showHome(){
   captureFrameProgress();
+  setDashboardMode('home');
   document.getElementById('viewer').classList.add('home-mode');
   document.getElementById('sidebarHome').setAttribute('aria-current','page');
   document.querySelectorAll('.course').forEach(b=>b.setAttribute('aria-current','false'));
   history.replaceState(null,'','#home');
   renderDashboard();refreshSidebarStates();
+  if(window.TEM_CLOUD?.isAuthenticated?.())setTimeout(()=>window.TEM_CLOUD?.refresh?.(),0);
 }
 function show(index){
   if(index<0||index>=courses.length)return;
@@ -1966,6 +2136,7 @@ window.addEventListener('keydown',event=>{
 window.addEventListener('beforeunload',()=>{captureFrameProgress();saveAppState(true);});
 window.addEventListener('hashchange',()=>{
   const h=location.hash.slice(1);
+  if(h==='progress'){showProgressView();return;}
   if(h==='home'||!h){showHome();return;}
   const n=parseInt(h,10);if(Number.isFinite(n)&&n>=1&&n<=courses.length)show(n-1);
 });
@@ -1990,6 +2161,8 @@ window.TEM_APP={
   save:immediate=>saveAppState(Boolean(immediate)),
   refresh:()=>{refreshChrome();renderDashboard();},
   showHome,
+  showProgressView,
+  setDashboardCloudState,
   setFilter:value=>{dashboardFilter=value;setDashboardFilterButtons();renderDashboardCourses();},
   scrollToProgress:()=>document.querySelector('.dashboard-stats')?.scrollIntoView({behavior:'smooth',block:'start'})
 };

@@ -73,9 +73,10 @@ function setSyncStatus(text,state){
   const pill=byId('syncStatus');if(pill){pill.textContent=text;pill.dataset.state=state||'ok';}
   if(byId('accountButtonStatus'))byId('accountButtonStatus').textContent=text;
 }
-function updateAccountUi(){
+function updateAccountUi(dashboardError=''){
   const signedIn=Boolean(currentUser);
-  const name=currentProfile?.display_name||currentUser?.user_metadata?.display_name||currentUser?.email?.split('@')[0]||'Tanuló';
+  const rawName=currentProfile?.display_name||currentUser?.user_metadata?.display_name||currentUser?.email?.split('@')[0]||'Tanuló';
+  const name=String(rawName).trim().slice(0,48)||'Tanuló';
   byId('accountButtonName').textContent=signedIn?name:'Bejelentkezés';
   byId('personalWelcome').hidden=!signedIn;
   byId('personalWelcome').textContent=signedIn?'Üdv újra, '+name+'!':'';
@@ -84,6 +85,7 @@ function updateAccountUi(){
   byId('continueHeading').textContent=signedIn?'Folytasd, ahol abbahagytad':'Folytatás';
   byId('userDisplayName').textContent=name;
   byId('userEmail').textContent=currentUser?.email||'';
+  app.setDashboardCloudState?.({authenticated:signedIn,loading:false,error:dashboardError});
   if(!signedIn)setSyncStatus('Vendégmód · helyi mentés','guest');
 }
 accountButton?.addEventListener('click',()=>{
@@ -173,6 +175,7 @@ async function applySession(session,event){
     app.setState(app.loadState(app.guestStorageKey),app.guestStorageKey);updateAccountUi();return;
   }
   currentUser=session.user;
+  app.setDashboardCloudState?.({authenticated:true,loading:true,error:''});
   setSyncStatus('Felhőadatok betöltése…','syncing');
   try{
     currentProfile=await loadProfile(currentUser);if(revision!==sessionRevision)return;
@@ -191,8 +194,19 @@ async function applySession(session,event){
     if(pendingCourses.size)scheduleSync(100);
     if(event==='PASSWORD_RECOVERY'){showAuthPanel('password');openDialog(authDialog,'#newPassword');}
   }catch(error){
-    console.warn('Cloud session setup failed',error);setSyncStatus(friendlyError(error,'sync'),'error');updateAccountUi();
+    console.warn('Cloud session setup failed',error);setSyncStatus(friendlyError(error,'sync'),'error');updateAccountUi('A felhőben tárolt haladás most nem tölthető be. A helyi adataid továbbra is használhatók.');
   }
+}
+
+async function refreshCloudProgress(){
+  if(!currentUser||!client||!navigator.onLine)return;
+  const userId=currentUser.id;setSyncStatus('Haladás frissítése…','syncing');
+  try{
+    const response=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at');
+    if(response.error)throw response.error;if(currentUser?.id!==userId)return;
+    const key=app.cloudCachePrefix+userId,merged=stateFromRows(response.data,app.loadState(key));app.setState(merged.state,key);
+    merged.localNewer.forEach(index=>pendingCourses.add(index));updateAccountUi();setSyncStatus('Szinkronizálva','ok');if(pendingCourses.size)scheduleSync(100);
+  }catch(error){console.warn('Dashboard refresh failed',error);updateAccountUi('A felhőben tárolt haladás most nem tölthető be. A helyi adataid továbbra is használhatók.');setSyncStatus(friendlyError(error,'sync'),'error');}
 }
 
 function rowFromState(index){
@@ -292,14 +306,14 @@ byId('logoutButton')?.addEventListener('click',async()=>{
   try{localStorage.removeItem(app.cloudCachePrefix+oldId);}catch(_){}closeDialog(userDialog);
 });
 byId('deleteLearningData')?.addEventListener('click',deleteAllLearningData);
-byId('showProgress')?.addEventListener('click',()=>{closeDialog(userDialog);app.showHome();setTimeout(app.scrollToProgress,80);});
+byId('showProgress')?.addEventListener('click',()=>{closeDialog(userDialog);app.showHome();setTimeout(app.showProgressView,80);});
 byId('showFavorites')?.addEventListener('click',()=>{closeDialog(userDialog);app.showHome();app.setFilter('favorites');});
 
 window.addEventListener('online',()=>{if(currentUser){setSyncStatus('Szinkronizálás…','syncing');scheduleSync(50);}});
 window.addEventListener('offline',()=>{if(currentUser)setSyncStatus('Offline – később szinkronizáljuk','offline');});
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&pendingCourses.size)flushPending();});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&pendingCourses.size)flushPending();if(document.visibilityState==='visible'&&currentUser)refreshCloudProgress();});
 
-window.TEM_CLOUD={queueCourse,isAuthenticated:()=>Boolean(currentUser),deleteAll:deleteAllLearningData,flush:flushPending};
+window.TEM_CLOUD={queueCourse,isAuthenticated:()=>Boolean(currentUser),deleteAll:deleteAllLearningData,flush:flushPending,refresh:refreshCloudProgress};
 updateAccountUi();setSyncStatus('Felhőkapcsolat ellenőrzése…','syncing');
 
 (async function init(){
