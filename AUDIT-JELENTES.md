@@ -470,3 +470,30 @@ Nincs billentyűzettel teljesen elérhetetlen fő WEB 1.4 funkció. A párbeszé
 ### WEB 1.4 végső preview minősítés
 
 **PASS** – a felhős könyvjelzők, jegyzetek, ismétlendő jelölések, a „Saját anyagaim” nézet, a szemantikus visszanyitás, a több munkamenetes visszatöltés, a kijelentkezési adatvédelem és a kényszerített RLS-elkülönítés működik. A teljes WEB 1.3 regresszió, az öt előírt viewport, a billentyűzetes fő funkciók, a 32 kurzus és a 62 kép ellenőrzése sikeres; hibás helyi hivatkozás, JavaScript-szintaktikai hiba, konzolhiba és váratlan 404 nélkül.
+
+### WEB 1.4 production kiadás – 2026. augusztus 23.
+
+- Production URL: https://tortenelem-erettsegi-muhely-hqnj.vercel.app/
+- Auditált alkalmazáscommit: `7d096c9`.
+- Branch: `main`.
+- Deployment státusz: **READY / Production**.
+
+| Production ellenőrzés | Eredmény |
+|---|---:|
+| Kezdőoldal és WEB 1.4 személyesanyag-modul | **PASS – HTTP 200** |
+| Kurzusfájlok | **32/32 HTTP 200** |
+| Képfájlok | **62/62 HTTP 200** |
+| 390×844 | **PASS** – 32 kártya, kereső, 0 overflow, 0 kilógó fő vezérlő |
+| 430×932 | **PASS** – 32 kártya, kereső, 0 overflow, 0 kilógó fő vezérlő |
+| 768×1024 | **PASS** – 32 kártya, kereső, 0 overflow, 0 kilógó fő vezérlő |
+| 1366×768 | **PASS** – 32 kártya, kereső, 0 overflow, 0 kilógó fő vezérlő |
+| 1920×1080 | **PASS** – 32 kártya, kereső, 0 overflow, 0 kilógó fő vezérlő |
+| Mobil kurzusnyitás: 1., 16., 18., 20., 29., 32. | **6/6 PASS** – 0 belső overflow, 0 hibás kép, 44 px-es eszközgombok |
+| A felhasználó személyes anyagai | **PASS** – 1 könyvjelző, 1 jegyzet, 1 ismétlendő; 3 kártya |
+| B felhasználó elkülönítése | **PASS** – 0/0/0 személyes elem |
+| Böngészőkonzol- / oldalhiba | **0 / 0** |
+| Váratlan 404 / sikertelen HTTP-erőforrás | **0 / 0** |
+
+### WEB 1.4 végső production minősítés
+
+**PASS** – a WEB 1.4 éles kiadása működik. A 32 kurzus, 62 kép, öt előírt viewport, hat kijelölt mobil kurzus, két külön felhasználó személyesadat-elkülönítése és a személyes tanulási eszközök production ellenőrzése hiba nélkül lezárult.
