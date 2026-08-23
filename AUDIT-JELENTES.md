@@ -354,3 +354,33 @@ A reprodukálható ellenőrzés a `scripts/audit-production.mjs` fájllal futtat
 ### WEB 1.3 végső preview minősítés
 
 **PASS WITH WARNINGS** – a személyes dashboard, a „Haladásom” nézet, a folytatás, a kedvencek, a legutóbbi aktivitás, a determinisztikus ajánlás, a vendégmód és a felhőszinkron működik. A 32 kurzus, 62 kép, öt előírt viewport és hat kijelölt mobil kurzus regressziója sikeres, hibás helyi hivatkozás és JavaScript-szintaktikai hiba nélkül. Az egyetlen nem blokkoló megjegyzés, hogy az automatizálási réteg nem minden szintetikus billentyűleütést továbbított; a natív szemantika és fókuszállapot ettől függetlenül megfelelt az alapellenőrzésen.
+
+### WEB 1.3 production kiadás – 2026. augusztus 23.
+
+- Production URL: https://tortenelem-erettsegi-muhely-hqnj.vercel.app/
+- Alkalmazáscommit: `30f2a59b443ab3b508384a3eb7111a08848b4eb8`.
+- Kiadási címke: `WEB-1.3`.
+- Branch: `main`.
+- Deployment státusz: **READY / Production**.
+
+| Production ellenőrzés | Eredmény |
+|---|---:|
+| Kezdőoldal, 32 kurzusopció és WEB 1.3 dashboard | **PASS** |
+| 390×844 | **PASS** – 0 overflow, 0 kilógó vagy levágott elem, 0 kis fő célterület |
+| 430×932 | **PASS** – 0 overflow, 0 kilógó vagy levágott elem, 0 kis fő célterület |
+| 768×1024 | **PASS** – 0 overflow, 0 kilógó vagy levágott elem, 0 kis fő célterület |
+| 1366×768 | **PASS** – 0 overflow, 0 kilógó vagy levágott elem, 0 kis fő célterület |
+| 1920×1080 | **PASS** – 0 overflow, 0 kilógó vagy levágott elem, 0 kis fő célterület |
+| Mobil kurzusnyitás: 1., 16., 29., 30., 31., 32. | **6/6 PASS** |
+| Mobil kurzuseszköztár | **PASS** – minden vezérlő legalább 44×44 px, belső scroll nélkül |
+| Kereső | **PASS** – „Kádár” keresésre pontosan a 30. kurzus |
+| Témaváltás és kurzusból visszalépés | **PASS** |
+| Production kurzus-HTTP | **32/32 HTTP 200** |
+| Production kép-HTTP | **62/62 HTTP 200** |
+| Összes production HTTP-erőforrás | **104/104 HTTP 200** |
+| Váratlan 404 / hibás helyi hivatkozás | **0 / 0** |
+| Böngészőkonzol- / JavaScript-szintaktikai hiba | **0 / 0** |
+
+### WEB 1.3 végső production minősítés
+
+**PASS WITH WARNINGS** – a WEB 1.3 production kiadása READY állapotban működik, a teljes fájl- és élő regresszió sikeres. Nem blokkoló megjegyzésként megmarad, hogy a teszt-automatizálási réteg nem minden szintetikus billentyűleütést továbbított; a natív vezérlők, hozzáférhető nevek, tab-sorrend és látható fókuszállapot alapellenőrzése PASS.
