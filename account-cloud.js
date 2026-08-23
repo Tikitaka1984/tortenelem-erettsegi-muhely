@@ -58,6 +58,7 @@ function friendlyError(error,context){
   const value=String(error?.message||error||'').toLowerCase();
   if(!navigator.onLine||value.includes('fetch')||value.includes('network'))return 'Nincs megfelelő hálózati kapcsolat. Próbáld meg újra, amikor helyreállt az internet.';
   if(value.includes('invalid login credentials')||value.includes('invalid_credentials'))return 'A megadott e-mail-cím vagy jelszó nem megfelelő.';
+  if((value.includes('email')&&(value.includes('invalid')||value.includes('validate')))||value.includes('validation_failed'))return 'Adj meg egy érvényes e-mail-címet.';
   if(value.includes('email not confirmed'))return 'A belépés előtt erősítsd meg az e-mail-címedet a kapott levélben.';
   if(value.includes('already registered')||value.includes('user already exists'))return 'Ezzel az e-mail-címmel már létezik fiók.';
   if(value.includes('password')&&value.includes('least'))return 'A jelszó legalább 8 karakter hosszú legyen.';
