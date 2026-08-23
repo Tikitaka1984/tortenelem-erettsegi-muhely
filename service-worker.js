@@ -1,8 +1,8 @@
 const CACHE_PREFIX='tem-web-';
-const SHELL_CACHE=CACHE_PREFIX+'1.3-shell-v1';
-const RUNTIME_CACHE=CACHE_PREFIX+'1.3-runtime-v1';
+const SHELL_CACHE=CACHE_PREFIX+'1.4-shell-v1';
+const RUNTIME_CACHE=CACHE_PREFIX+'1.4-runtime-v1';
 const SHELL_ASSETS=[
-  './','./index.html','./dashboard-logic.js','./account-cloud.js','./vendor/supabase.min.js','./course-meta.json','./manifest.webmanifest','./favicon.svg',
+  './','./index.html','./dashboard-logic.js','./annotations.js','./account-cloud.js','./vendor/supabase.min.js','./course-meta.json','./manifest.webmanifest','./favicon.svg',
   './icons/icon-192.png','./icons/icon-512.png','./icons/icon-512-maskable.png'
 ];
 

@@ -64,6 +64,7 @@ function friendlyError(error,context){
   if(value.includes('password')&&value.includes('least'))return 'A jelszó legalább 8 karakter hosszú legyen.';
   if(value.includes('rate')||value.includes('too many'))return 'Túl sok próbálkozás történt. Várj néhány percet, majd próbáld újra.';
   if(value.includes('stale_progress_update'))return 'Újabb felhőadat található; a rendszer azt tartotta meg.';
+  if(value.includes('stale_annotation_update'))return 'A személyes elemet egy másik eszközön időközben módosították; a frissebb változat maradt meg.';
   if(context==='sync')return 'A felhőmentés most nem sikerült. A helyi változás megmaradt, később újra próbáljuk.';
   if(context==='session')return 'A munkamenet lejárt. Jelentkezz be újra.';
   return 'A művelet most nem sikerült. Kérjük, próbáld meg később.';
@@ -81,7 +82,7 @@ function updateAccountUi(dashboardError=''){
   byId('personalWelcome').hidden=!signedIn;
   byId('personalWelcome').textContent=signedIn?'Üdv újra, '+name+'!':'';
   byId('storageNote').textContent=signedIn?'A haladás helyben azonnal mentődik, majd biztonságosan szinkronizálódik a fiókoddal.':'Vendégmódban a haladás ezen a böngészőn, helyben mentődik.';
-  byId('resetDescription').textContent=signedIn?'A törlés a fiókod teljes felhőben tárolt tanulási haladását eltávolítja.':'Vendégmódban a mentés kizárólag ezen az eszközön és ebben a böngészőben történik.';
+  byId('resetDescription').textContent=signedIn?'A törlés a fiókod teljes felhőben tárolt tanulási haladását és személyes tanulási anyagait eltávolítja.':'Vendégmódban a mentés kizárólag ezen az eszközön és ebben a böngészőben történik.';
   byId('continueHeading').textContent=signedIn?'Folytasd, ahol abbahagytad':'Folytatás';
   byId('userDisplayName').textContent=name;
   byId('userEmail').textContent=currentUser?.email||'';
@@ -172,9 +173,11 @@ async function applySession(session,event){
   const revision=++sessionRevision;
   if(!session?.user){
     currentUser=null;currentProfile=null;pendingCourses.clear();clearTimeout(syncTimer);
+    await window.TEM_ANNOTATIONS?.setSession?.(null);
     updateAccountUi();app.setState(app.loadState(app.guestStorageKey),app.guestStorageKey);return;
   }
   currentUser=session.user;
+  const annotationsReady=window.TEM_ANNOTATIONS?.setSession?.({client,user:currentUser})||Promise.resolve();
   app.setDashboardCloudState?.({authenticated:true,loading:true,error:''});
   setSyncStatus('Felhőadatok betöltése…','syncing');
   try{
@@ -190,6 +193,7 @@ async function applySession(session,event){
       const accepted=await askImport();localStorage.setItem(decisionKey,accepted?'yes':'no');
       if(accepted){const imported=mergeGuestIntoState(guest,app.getState());app.setState(imported.state,cacheKey);imported.changed.forEach(index=>pendingCourses.add(index));}
     }
+    await annotationsReady;if(revision!==sessionRevision)return;
     updateAccountUi();setSyncStatus(navigator.onLine?'Szinkronizálva':'Offline – később szinkronizáljuk',navigator.onLine?'ok':'offline');
     if(pendingCourses.size)scheduleSync(100);
     if(event==='PASSWORD_RECOVERY'){showAuthPanel('password');openDialog(authDialog,'#newPassword');}
@@ -267,11 +271,16 @@ function queueCourse(index){
 
 async function deleteAllLearningData(){
   if(!currentUser)return;
-  if(!confirm('Biztosan törlöd a fiókod teljes tanulási haladását, kedvenceit és befejezett jelöléseit? Ez nem vonható vissza.'))return;
+  if(!confirm('Biztosan törlöd a fiókod teljes tanulási haladását, kedvenceit, jegyzeteit, könyvjelzőit és ismétlendő jelöléseit? Ez nem vonható vissza.'))return;
   setMessage('userMessage','Törlés folyamatban…');
-  const result=await client.from('course_progress').delete().eq('user_id',currentUser.id);
-  if(result.error){setMessage('userMessage',friendlyError(result.error,'sync'),'error');return;}
+  const [progressResult,annotationResult]=await Promise.all([
+    client.from('course_progress').delete().eq('user_id',currentUser.id),
+    client.from('student_annotations').delete().eq('user_id',currentUser.id)
+  ]);
+  const error=progressResult.error||annotationResult.error;
+  if(error){setMessage('userMessage',friendlyError(error,'sync'),'error');return;}
   pendingCourses.clear();const key=app.cloudCachePrefix+currentUser.id;try{localStorage.removeItem(key);}catch(_){}
+  window.TEM_ANNOTATIONS?.clearForUser?.(currentUser.id);
   app.setState(app.emptyState(),key);setMessage('userMessage','A tanulási adatok törlése sikerült.','success');setSyncStatus('Szinkronizálva','ok');
 }
 
@@ -308,12 +317,13 @@ byId('logoutButton')?.addEventListener('click',async()=>{
 byId('deleteLearningData')?.addEventListener('click',deleteAllLearningData);
 byId('showProgress')?.addEventListener('click',()=>{closeDialog(userDialog);app.showHome();setTimeout(app.showProgressView,80);});
 byId('showFavorites')?.addEventListener('click',()=>{closeDialog(userDialog);app.showHome();app.setFilter('favorites');});
+byId('showMaterialsMenu')?.addEventListener('click',()=>{closeDialog(userDialog);app.showHome();setTimeout(()=>window.TEM_ANNOTATIONS?.showMaterials?.(),80);});
 
 window.addEventListener('online',()=>{if(currentUser){setSyncStatus('Szinkronizálás…','syncing');scheduleSync(50);}});
 window.addEventListener('offline',()=>{if(currentUser)setSyncStatus('Offline – később szinkronizáljuk','offline');});
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&pendingCourses.size)flushPending();if(document.visibilityState==='visible'&&currentUser)refreshCloudProgress();});
 
-window.TEM_CLOUD={queueCourse,isAuthenticated:()=>Boolean(currentUser),deleteAll:deleteAllLearningData,flush:flushPending,refresh:refreshCloudProgress};
+window.TEM_CLOUD={queueCourse,isAuthenticated:()=>Boolean(currentUser),deleteAll:deleteAllLearningData,flush:flushPending,refresh:refreshCloudProgress,openAuth:()=>{showAuthPanel('login');openDialog(authDialog,'#loginEmail');}};
 updateAccountUi();setSyncStatus('Felhőkapcsolat ellenőrzése…','syncing');
 
 (async function init(){

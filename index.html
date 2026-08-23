@@ -632,6 +632,40 @@ html[data-app-theme="light"] .auth-tab{color:#647286}html[data-app-theme="light"
 html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme="light"] .auth-field input{background:#fff;color:#1b293c;border-color:#cdd6e0}
 @media(max-width:520px){.account-dialog{width:calc(100vw - 20px);max-height:calc(100dvh - 20px)}.account-dialog__head{padding:18px 16px 10px}.account-dialog__body{padding:6px 16px 18px}}
 
+/* ---------- WEB 1.4: személyes tanulási eszközök ---------- */
+.annotation-toolbar{flex:0 0 auto;display:flex;align-items:center;gap:8px;min-width:0;padding:8px 14px;border-bottom:1px solid var(--line);background:rgba(10,20,35,.82);backdrop-filter:blur(16px)}
+.viewer.home-mode .annotation-toolbar{display:none}
+.annotation-toolbar__label{color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.annotation-tools{display:flex;gap:6px;min-width:0}
+.annotation-tool{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line-strong);border-radius:11px;background:rgba(255,255,255,.045);color:var(--text);padding:0 12px;cursor:pointer;font-size:11px;font-weight:800}
+.annotation-tool:hover{background:rgba(255,255,255,.08);border-color:rgba(224,183,95,.38)}
+.annotation-tool.active,.annotation-tool[aria-pressed="true"]{background:var(--accent-soft);border-color:rgba(224,183,95,.55);color:var(--accent-2)}
+.annotation-tool__icon{font-size:16px;line-height:1}.annotation-status{margin-left:auto;min-width:0;color:var(--muted);font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.annotation-status[data-state="error"]{color:#efa5a5}.annotation-status[data-state="success"]{color:#94d8b4}.annotation-status[data-state="offline"],.annotation-status[data-state="warning"]{color:#e6c681}
+
+.annotation-dialog{width:min(620px,calc(100vw - 28px));max-height:min(760px,calc(100dvh - 28px));overflow:auto;border:1px solid var(--line-strong);border-radius:20px;background:var(--panel-solid);color:var(--text);padding:0;box-shadow:0 28px 80px rgba(0,0,0,.42)}
+.annotation-dialog::backdrop{background:rgba(3,9,18,.72);backdrop-filter:blur(3px)}
+.annotation-dialog__head{padding:22px 22px 10px}.annotation-dialog__head h2{margin:0;font-family:Georgia,serif;font-size:23px}.annotation-dialog__head p{margin:7px 0 0;color:var(--muted);font-size:12px;line-height:1.45}
+.annotation-dialog__body{padding:12px 22px 22px}.annotation-field{display:grid;gap:7px}.annotation-field label{font-size:11px;font-weight:800;color:var(--muted)}
+.annotation-field textarea{width:100%;min-height:180px;resize:vertical;border:1px solid var(--line-strong);border-radius:13px;background:rgba(255,255,255,.045);color:var(--text);padding:13px;line-height:1.5;outline:none}
+.annotation-field textarea:focus{border-color:rgba(224,183,95,.55);box-shadow:0 0 0 3px rgba(224,183,95,.1)}
+.annotation-field__meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:10px}.annotation-dialog__actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-top:18px}
+.annotation-action{min-height:44px;border:1px solid var(--line-strong);border-radius:10px;background:rgba(255,255,255,.045);color:var(--text);padding:0 15px;cursor:pointer;font-weight:800;font-size:11px}.annotation-action.primary{background:linear-gradient(135deg,#b98d3d,#d4ad60);border-color:#d4ad60;color:#111b29}.annotation-action.danger{margin-right:auto;color:#f0a8a8;border-color:rgba(218,104,104,.35)}
+.annotation-dialog-message{min-height:18px;margin:12px 0 0;color:var(--muted);font-size:11px}.annotation-dialog-message[data-state="error"]{color:#efa5a5}.annotation-dialog-message[data-state="success"]{color:#94d8b4}
+
+.materials-summary{margin-top:24px}.material-counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}.material-count{border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.03);padding:13px}.material-count span{display:block;color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}.material-count strong{display:block;margin-top:5px;font-size:25px;font-variant-numeric:tabular-nums}
+.materials-latest{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:7px}.material-latest{width:100%;min-height:52px;display:grid;gap:3px;text-align:left;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025);color:var(--text);padding:10px 12px;cursor:pointer}.material-latest:hover{background:rgba(255,255,255,.055)}.material-latest span{font-size:11px;font-weight:800}.material-latest small{color:var(--muted);font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.materials-summary__actions{display:flex;justify-content:flex-end;margin-top:12px}
+
+.dashboard__inner.materials-mode>.dashboard-hero,.dashboard__inner.materials-mode>#dashboardLoading,.dashboard__inner.materials-mode>#dashboardMessage,.dashboard__inner.materials-mode>#dashboardOverview,.dashboard__inner.materials-mode>#continueSection,.dashboard__inner.materials-mode>#personalDashboard,.dashboard__inner.materials-mode>#courseBrowserSection,.dashboard__inner.materials-mode>.dashboard-reset{display:none!important}
+.dashboard__inner:not(.materials-mode) #materialsView{display:none!important}
+.materials-view__heading{align-items:flex-start}.materials-controls{display:grid;grid-template-columns:minmax(220px,1fr) minmax(170px,auto);gap:10px;margin:17px 0 12px}.materials-controls label{display:grid;gap:6px;color:var(--muted);font-size:10px;font-weight:800}.materials-controls input,.materials-controls select{min-height:44px;border:1px solid var(--line-strong);border-radius:11px;background:rgba(255,255,255,.04);color:var(--text);padding:0 12px;outline:none}.materials-controls input:focus,.materials-controls select:focus{border-color:rgba(224,183,95,.5);box-shadow:0 0 0 3px rgba(224,183,95,.09)}
+.materials-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:15px}.material-card{min-width:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.028);padding:15px}.material-card__head{display:flex;align-items:center;justify-content:space-between;gap:10px}.material-card time{color:var(--muted);font-size:9.5px}.material-type{display:inline-flex;align-items:center;min-height:26px;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:9px;font-weight:850;text-transform:uppercase;letter-spacing:.07em}.material-type.bookmark{color:#e4c67d}.material-type.note{color:#9fc1ed}.material-type.review{color:#efaeae}.material-card h4{margin:13px 0 5px;font-size:15px}.material-anchor{margin:0;color:var(--muted);font-size:11px;line-height:1.45}.material-note-preview{margin:12px 0 0;padding:11px;border-left:3px solid var(--blue);border-radius:8px;background:rgba(110,150,216,.08);font-size:12px;line-height:1.48;white-space:pre-wrap;overflow-wrap:anywhere}.material-card__actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:14px}.material-card__actions button{min-height:44px;border:1px solid var(--line-strong);border-radius:9px;background:rgba(255,255,255,.045);color:var(--text);padding:0 12px;cursor:pointer;font-size:10px;font-weight:800}.material-card__actions button.danger{color:#efa5a5;border-color:rgba(218,104,104,.3)}.materials-empty{margin-top:16px;border:1px dashed var(--line-strong);border-radius:14px;padding:24px;text-align:center;color:var(--muted);font-size:12px;line-height:1.55}
+
+html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92)}html[data-app-theme="light"] .annotation-tool,html[data-app-theme="light"] .material-count,html[data-app-theme="light"] .material-latest,html[data-app-theme="light"] .material-card{background:#fff;color:#26364c}html[data-app-theme="light"] .annotation-dialog{background:#fff;color:#1d2b3e;border-color:#d6dde6}html[data-app-theme="light"] .annotation-field textarea,html[data-app-theme="light"] .materials-controls input,html[data-app-theme="light"] .materials-controls select{background:#fff;color:#1d2b3e;border-color:#cdd6e0}html[data-app-theme="light"] .annotation-action,html[data-app-theme="light"] .material-card__actions button{background:#f5f7fa;color:#26364c;border-color:#d9e0e8}html[data-app-theme="light"] .material-note-preview{background:#eef4fb}
+@media(max-width:800px){.annotation-toolbar{padding:6px 8px;gap:6px;overflow:hidden}.annotation-toolbar__label{display:none}.annotation-tools{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.annotation-tool{width:100%;padding:0 6px}.annotation-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.materials-list{grid-template-columns:1fr}.materials-controls{grid-template-columns:1fr}.material-counts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:430px){.annotation-tool__label{font-size:9.5px}.annotation-dialog{width:calc(100vw - 18px);max-height:calc(100dvh - 18px)}.annotation-dialog__head{padding:18px 16px 8px}.annotation-dialog__body{padding:10px 16px 18px}.annotation-dialog__actions{justify-content:stretch}.annotation-action{flex:1}.annotation-action.danger{flex-basis:100%;margin:0}.material-count{padding:10px 8px}.material-count strong{font-size:22px}}
+
 </style>
 </head>
 <body>
@@ -658,7 +692,7 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
     </div>
     <nav class="course-list" id="courseList" aria-label="Kurzusok kronologikus sorrendben"></nav>
     <div class="empty-state" id="emptyState">Nincs a keresésnek megfelelő kurzus.<br>Próbálj másik kulcsszót.</div>
-    <footer class="sidebar-footer"><span>Érettségi műhely · WEB 1.3</span><strong id="footerRange">01–32</strong></footer>
+    <footer class="sidebar-footer"><span>Érettségi műhely · WEB 1.4</span><strong id="footerRange">01–32</strong></footer>
   </aside>
   <section class="viewer home-mode" id="viewer">
     <div class="toolbar">
@@ -683,13 +717,22 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
         <button id="next" type="button" aria-label="Következő kurzus"><span class="label">Következő</span><span aria-hidden="true">→</span></button>
       </div>
     </div>
+    <div class="annotation-toolbar" id="annotationToolbar" aria-label="Személyes tanulási eszközök">
+      <span class="annotation-toolbar__label">Saját jelölések</span>
+      <div class="annotation-tools">
+        <button class="annotation-tool" id="annotationBookmark" type="button" aria-label="Könyvjelző" aria-pressed="false"><span class="annotation-tool__icon" aria-hidden="true">🔖</span><span class="annotation-tool__label">Könyvjelző</span></button>
+        <button class="annotation-tool" id="annotationNote" type="button" aria-label="Jegyzet" aria-pressed="false"><span class="annotation-tool__icon" aria-hidden="true">✎</span><span class="annotation-tool__label">Jegyzet</span></button>
+        <button class="annotation-tool" id="annotationReview" type="button" aria-label="Ezt ismételd át" aria-pressed="false"><span class="annotation-tool__icon" aria-hidden="true">↻</span><span class="annotation-tool__label">Ezt ismételd át</span></button>
+      </div>
+      <span class="annotation-status" id="annotationStatus" role="status" aria-live="polite"></span>
+    </div>
     <div class="viewer__surface">
       <section class="dashboard" id="dashboard" aria-label="Történelem Érettségi Műhely kezdőoldal">
         <div class="dashboard__scroll">
           <div class="dashboard__inner">
             <header class="dashboard-hero">
               <div class="dashboard-hero__content">
-                <div class="dashboard-kicker">Történelem Érettségi Műhely · WEB 1.3</div>
+                <div class="dashboard-kicker">Történelem Érettségi Műhely · WEB 1.4</div>
                 <p class="personal-welcome" id="personalWelcome" hidden></p>
           <h2>Haladj végig a 32 érettségi témakörön.</h2>
                 <p>A műhely megjegyzi, mely kurzusokat kezdted el, meddig jutottál bennük, melyeket jelölted meg, és melyeket tekinted befejezettnek.</p>
@@ -746,6 +789,17 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
                 <div class="section-heading"><div class="section-heading__copy"><h3 id="recentHeading">Legutóbbi tanulásaid</h3><p>A legfrissebb mentett aktivitások időrendben.</p></div></div>
                 <ol class="activity-list" id="recentActivityList"></ol>
               </section>
+
+              <section class="dashboard-section materials-summary" id="materialsSummary" aria-labelledby="materialsSummaryHeading" hidden>
+                <div class="section-heading"><div class="section-heading__copy"><h3 id="materialsSummaryHeading">Saját tanulási anyagaim</h3><p>Könyvjelzőid, saját jegyzeteid és ismétlendő részeid egy helyen.</p></div></div>
+                <div class="material-counts" aria-label="Személyes tanulási anyagok száma">
+                  <div class="material-count"><span>Könyvjelzők</span><strong id="materialBookmarkCount">0</strong></div>
+                  <div class="material-count"><span>Jegyzetek</span><strong id="materialNoteCount">0</strong></div>
+                  <div class="material-count"><span>Ismétlendő</span><strong id="materialReviewCount">0</strong></div>
+                </div>
+                <ol class="materials-latest" id="materialsLatest"></ol>
+                <div class="materials-summary__actions"><button class="dash-secondary" id="showMaterialsDashboard" type="button">Saját anyagaim megnyitása</button></div>
+              </section>
             </div>
 
             <section class="dashboard-section progress-view" id="progressView" aria-labelledby="progressViewHeading" hidden>
@@ -762,6 +816,26 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
               </div>
               <div class="progress-view-grid" id="progressViewGrid"></div>
               <div class="dashboard-empty" id="progressViewEmpty">Ebben a kategóriában még nincs kurzus.</div>
+            </section>
+
+            <section class="dashboard-section materials-view" id="materialsView" aria-labelledby="materialsViewHeading" hidden>
+              <div class="section-heading materials-view__heading">
+                <div class="section-heading__copy"><h3 id="materialsViewHeading">Saját anyagaim</h3><p>A személyes könyvjelzők, jegyzetek és ismétlendő kurzusrészek gyűjteménye.</p></div>
+                <button class="dash-secondary" id="materialsBack" type="button">Vissza az áttekintéshez</button>
+              </div>
+              <div class="materials-controls">
+                <label for="materialsSearch">Keresés<input id="materialsSearch" type="search" autocomplete="off" placeholder="Kurzus, szakasz vagy jegyzet…"></label>
+                <label for="materialsSort">Rendezés<select id="materialsSort"><option value="recent">Legutóbb módosított</option><option value="oldest">Legrégebbi</option><option value="course">Kurzus szerint</option></select></label>
+              </div>
+              <div class="dashboard-filters" id="materialsFilters" role="group" aria-label="Személyes anyagok szűrése">
+                <button class="dashboard-filter active" type="button" data-material-filter="all" aria-pressed="true">Összes</button>
+                <button class="dashboard-filter" type="button" data-material-filter="bookmark" aria-pressed="false">Könyvjelzők</button>
+                <button class="dashboard-filter" type="button" data-material-filter="note" aria-pressed="false">Jegyzetek</button>
+                <button class="dashboard-filter" type="button" data-material-filter="review" aria-pressed="false">Ismétlendő</button>
+              </div>
+              <p id="materialsResultCount" class="list-caption" aria-live="polite">0 elem</p>
+              <div class="materials-list" id="materialsList"></div>
+              <div class="materials-empty" id="materialsEmpty">Még nincs saját tanulási anyagod.</div>
             </section>
 
             <section class="dashboard-section" id="courseBrowserSection">
@@ -812,12 +886,26 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
 
 <dialog class="account-dialog" id="userDialog" aria-labelledby="userDialogTitle">
   <div class="account-dialog__head"><div><h2 id="userDialogTitle">Tanulói fiók</h2><p>Felhőben mentett haladás és személyes beállítások.</p></div><button class="dialog-close" type="button" data-close-dialog="userDialog" aria-label="Ablak bezárása">×</button></div>
-  <div class="account-dialog__body"><div class="user-summary"><strong id="userDisplayName">Tanuló</strong><span id="userEmail"></span></div><div class="user-actions"><button class="user-menu-action" id="showProgress" type="button">Haladásom</button><button class="user-menu-action" id="showFavorites" type="button">Kedvenceim</button><button class="user-menu-action" id="logoutButton" type="button">Kijelentkezés</button><button class="user-menu-action danger" id="deleteLearningData" type="button">Tanulási adataim törlése</button></div><p class="auth-message" id="userMessage" role="status" aria-live="polite"></p></div>
+  <div class="account-dialog__body"><div class="user-summary"><strong id="userDisplayName">Tanuló</strong><span id="userEmail"></span></div><div class="user-actions"><button class="user-menu-action" id="showProgress" type="button">Haladásom</button><button class="user-menu-action" id="showFavorites" type="button">Kedvenceim</button><button class="user-menu-action" id="showMaterialsMenu" type="button">Saját anyagaim</button><button class="user-menu-action" id="logoutButton" type="button">Kijelentkezés</button><button class="user-menu-action danger" id="deleteLearningData" type="button">Tanulási adataim törlése</button></div><p class="auth-message" id="userMessage" role="status" aria-live="polite"></p></div>
 </dialog>
 
 <dialog class="account-dialog" id="importDialog" aria-labelledby="importDialogTitle">
   <div class="account-dialog__head"><div><h2 id="importDialogTitle">Korábbi haladás összekapcsolása</h2><p>Ezen az eszközön található korábbi tanulási adat. Szeretnéd összekapcsolni a fiókoddal?</p></div></div>
   <div class="account-dialog__body"><div class="confirm-actions"><button class="auth-secondary" id="declineImport" type="button">Nem</button><button class="auth-submit" id="acceptImport" type="button">Igen</button></div></div>
+</dialog>
+
+<dialog class="annotation-dialog" id="annotationNoteDialog" aria-labelledby="annotationNoteHeading" aria-describedby="annotationNoteContext">
+  <div class="annotation-dialog__head"><h2 id="annotationNoteHeading">Új saját jegyzet</h2><p id="annotationNoteContext">Aktuális kurzusrész</p></div>
+  <div class="annotation-dialog__body">
+    <div class="annotation-field"><label for="annotationNoteText">Saját jegyzet</label><textarea id="annotationNoteText" maxlength="2000" placeholder="Például: Ezt használhatom az esszében."></textarea><div class="annotation-field__meta"><span>A jegyzet a fiókodhoz és ehhez a kurzusrészhez kapcsolódik.</span><span id="annotationNoteCounter">0 / 2000</span></div></div>
+    <p class="annotation-dialog-message" id="annotationNoteStatus" role="status" aria-live="polite"></p>
+    <div class="annotation-dialog__actions"><button class="annotation-action danger" id="annotationNoteDelete" type="button" hidden>Jegyzet törlése</button><button class="annotation-action" id="annotationNoteCancel" type="button">Mégse</button><button class="annotation-action primary" id="annotationNoteSave" type="button">Mentés</button></div>
+  </div>
+</dialog>
+
+<dialog class="annotation-dialog" id="annotationDeleteDialog" aria-labelledby="annotationDeleteHeading" aria-describedby="annotationDeleteText">
+  <div class="annotation-dialog__head"><h2 id="annotationDeleteHeading">Személyes elem törlése</h2><p id="annotationDeleteText">Biztosan törlöd ezt a személyes elemet?</p></div>
+  <div class="annotation-dialog__body"><p class="annotation-dialog-message" id="annotationDeleteStatus" role="status" aria-live="polite"></p><div class="annotation-dialog__actions"><button class="annotation-action" id="annotationDeleteCancel" type="button">Mégse</button><button class="annotation-action danger" id="annotationDeleteConfirm" type="button">Törlés</button></div></div>
 </dialog>
 
 <script src="./dashboard-logic.js"></script>
@@ -1844,16 +1932,18 @@ function latestCourseIndex(predicate=()=>true){
 }
 function setDashboardCloudState({authenticated=dashboardAuthenticated,loading=false,error=''}={}){
   dashboardAuthenticated=Boolean(authenticated);dashboardCloudLoading=Boolean(loading);dashboardError=String(error||'');
-  if(!dashboardAuthenticated&&dashboardMode==='progress')dashboardMode='home';
+  if(!dashboardAuthenticated&&(dashboardMode==='progress'||dashboardMode==='materials'))dashboardMode='home';
   renderDashboard();
 }
 function setDashboardMode(mode,focus=false){
-  dashboardMode=mode==='progress'&&dashboardAuthenticated?'progress':'home';
-  const inner=document.querySelector('.dashboard__inner'),progress=document.getElementById('progressView');
+  dashboardMode=(mode==='progress'||mode==='materials')&&dashboardAuthenticated?mode:'home';
+  const inner=document.querySelector('.dashboard__inner'),progress=document.getElementById('progressView'),materials=document.getElementById('materialsView');
   inner?.classList.toggle('progress-mode',dashboardMode==='progress');
+  inner?.classList.toggle('materials-mode',dashboardMode==='materials');
   progress.hidden=dashboardMode!=='progress';
-  if(focus&&dashboardMode==='progress'){
-    const heading=document.getElementById('progressViewHeading');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});
+  materials.hidden=dashboardMode!=='materials';
+  if(focus&&dashboardMode!=='home'){
+    const heading=document.getElementById(dashboardMode==='progress'?'progressViewHeading':'materialsViewHeading');heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});
   }
 }
 function showDashboardHome(){
@@ -1863,6 +1953,11 @@ function showDashboardHome(){
 function showProgressView(){
   if(!dashboardAuthenticated){showDashboardHome();return;}
   setDashboardMode('progress',true);history.replaceState(null,'','#progress');renderProgressView();
+  document.querySelector('.dashboard__scroll')?.scrollTo({top:0,behavior:'smooth'});
+}
+function showMaterialsView(){
+  if(!dashboardAuthenticated){showDashboardHome();return;}
+  setDashboardMode('materials',true);history.replaceState(null,'','#materials');window.TEM_ANNOTATIONS?.render?.();
   document.querySelector('.dashboard__scroll')?.scrollTo({top:0,behavior:'smooth'});
 }
 function renderDashboard(){
@@ -1900,6 +1995,7 @@ function renderDashboard(){
   setDashboardMode(dashboardMode);
   renderDashboardCourses();
   if(dashboardMode==='progress')renderProgressView();
+  window.TEM_ANNOTATIONS?.render?.();
 }
 function renderPersonalDashboard(){
   const inProgress=courses.map((_,index)=>index).filter(index=>{const s=getCourseState(index);return s.visited&&!s.completed;}).sort((a,b)=>courseActivityTime(b)-courseActivityTime(a)||courseProgress(b)-courseProgress(a)).slice(0,5);
@@ -2137,6 +2233,7 @@ window.addEventListener('beforeunload',()=>{captureFrameProgress();saveAppState(
 window.addEventListener('hashchange',()=>{
   const h=location.hash.slice(1);
   if(h==='progress'){showProgressView();return;}
+  if(h==='materials'){showMaterialsView();return;}
   if(h==='home'||!h){showHome();return;}
   const n=parseInt(h,10);if(Number.isFinite(n)&&n>=1&&n<=courses.length)show(n-1);
 });
@@ -2150,6 +2247,7 @@ const initialCourse=parseInt(initialHash,10);
 const cloudAuthHash=/(^|&)access_token=/.test(initialHash)||/(^|&)refresh_token=/.test(initialHash)||/(^|&)type=(signup|recovery|magiclink)(?:&|$)/.test(initialHash);
 if(Number.isFinite(initialCourse)&&initialCourse>=1&&initialCourse<=courses.length)show(initialCourse-1);
 else if(initialHash==='progress')showProgressView();
+else if(initialHash==='materials')showMaterialsView();
 else if(cloudAuthHash){setDashboardMode('home');renderDashboard();}
 else showHome();
 
@@ -2166,6 +2264,10 @@ window.TEM_APP={
   refresh:()=>{refreshChrome();renderDashboard();},
   showHome,
   showProgressView,
+  showMaterialsView,
+  showCourse:show,
+  getCurrentIndex:()=>current,
+  getFrame:()=>frame,
   setDashboardCloudState,
   setFilter:value=>{dashboardFilter=value;setDashboardFilterButtons();renderDashboardCourses();},
   scrollToProgress:()=>document.querySelector('.dashboard-stats')?.scrollIntoView({behavior:'smooth',block:'start'})
@@ -2174,6 +2276,7 @@ window.dispatchEvent(new Event('tem-app-ready'));
 
 })();
 </script>
+<script src="./annotations.js"></script>
 <script src="./account-cloud.js"></script>
 </body>
 </html>

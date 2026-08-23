@@ -84,7 +84,7 @@ for (const image of imageFiles) {
   if (fs.statSync(path.join(root, "images", image)).size === 0) fail.push(`Üres képfájl: images/${image}`);
 }
 
-for (const file of ["dashboard-logic.js", "account-cloud.js", "service-worker.js", "api/config.js"]) {
+for (const file of ["dashboard-logic.js", "annotations.js", "account-cloud.js", "service-worker.js", "api/config.js"]) {
   try {
     new vm.Script(read(file), { filename: file });
   } catch (error) {
