@@ -172,7 +172,7 @@ async function applySession(session,event){
   const revision=++sessionRevision;
   if(!session?.user){
     currentUser=null;currentProfile=null;pendingCourses.clear();clearTimeout(syncTimer);
-    app.setState(app.loadState(app.guestStorageKey),app.guestStorageKey);updateAccountUi();return;
+    updateAccountUi();app.setState(app.loadState(app.guestStorageKey),app.guestStorageKey);return;
   }
   currentUser=session.user;
   app.setDashboardCloudState?.({authenticated:true,loading:true,error:''});
