@@ -1993,6 +1993,7 @@ window.TEM_APP={
   setFilter:value=>{dashboardFilter=value;setDashboardFilterButtons();renderDashboardCourses();},
   scrollToProgress:()=>document.querySelector('.dashboard-stats')?.scrollIntoView({behavior:'smooth',block:'start'})
 };
+window.dispatchEvent(new Event('tem-app-ready'));
 
 })();
 </script>

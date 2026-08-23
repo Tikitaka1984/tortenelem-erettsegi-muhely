@@ -1,8 +1,8 @@
-(function(){
+(function bootCloud(){
 'use strict';
 
+if(!window.TEM_APP){window.addEventListener('tem-app-ready',bootCloud,{once:true});return;}
 const app=window.TEM_APP;
-if(!app)return;
 
 const byId=id=>document.getElementById(id);
 const authDialog=byId('authDialog');
