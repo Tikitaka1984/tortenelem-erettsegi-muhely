@@ -2147,7 +2147,11 @@ frame.addEventListener('load',()=>{attachFrameTracking();});
 refreshSidebarStates();renderDashboard();
 const initialHash=location.hash.slice(1);
 const initialCourse=parseInt(initialHash,10);
-if(Number.isFinite(initialCourse)&&initialCourse>=1&&initialCourse<=courses.length)show(initialCourse-1);else showHome();
+const cloudAuthHash=/(^|&)access_token=/.test(initialHash)||/(^|&)refresh_token=/.test(initialHash)||/(^|&)type=(signup|recovery|magiclink)(?:&|$)/.test(initialHash);
+if(Number.isFinite(initialCourse)&&initialCourse>=1&&initialCourse<=courses.length)show(initialCourse-1);
+else if(initialHash==='progress')showProgressView();
+else if(cloudAuthHash){setDashboardMode('home');renderDashboard();}
+else showHome();
 
 window.TEM_APP={
   courses,
