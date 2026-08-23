@@ -1,8 +1,8 @@
 const CACHE_PREFIX='tem-web-';
-const SHELL_CACHE=CACHE_PREFIX+'1.1-shell-v1';
-const RUNTIME_CACHE=CACHE_PREFIX+'1.1-runtime-v1';
+const SHELL_CACHE=CACHE_PREFIX+'1.2-shell-v1';
+const RUNTIME_CACHE=CACHE_PREFIX+'1.2-runtime-v1';
 const SHELL_ASSETS=[
-  './','./index.html','./course-meta.json','./manifest.webmanifest','./favicon.svg',
+  './','./index.html','./account-cloud.js','./vendor/supabase.min.js','./course-meta.json','./manifest.webmanifest','./favicon.svg',
   './icons/icon-192.png','./icons/icon-512.png','./icons/icon-512-maskable.png'
 ];
 
@@ -35,6 +35,10 @@ self.addEventListener('fetch',event=>{
   if(request.method!=='GET')return;
   const url=new URL(request.url);
   if(url.origin!==self.location.origin)return;
+  if(url.pathname==='/api/config'){
+    event.respondWith(fetch(request));
+    return;
+  }
   if(request.mode==='navigate'){
     event.respondWith(networkFirst(request,'./index.html').then(response=>response||caches.match('./index.html')));
     return;

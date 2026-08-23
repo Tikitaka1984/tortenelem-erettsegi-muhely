@@ -561,6 +561,44 @@ html[data-app-theme="dark"] .dashboard-course__open{background:rgba(255,255,255,
 html[data-app-theme="dark"] .dashboard-course__open:hover{background:rgba(255,255,255,.095)}
 html[data-app-theme="dark"] .dashboard-reset{color:#9ba8b8}
 
+/* ---------- WEB 1.2: tanulói fiók és felhőszinkron ---------- */
+.account-launch{width:100%;min-height:44px;margin-top:12px;padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.045);color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;text-align:left}
+.account-launch:hover{border-color:rgba(224,183,95,.34);background:rgba(255,255,255,.07)}
+.account-launch__name{min-width:0;font-size:11px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.account-launch__status{font-size:9px;color:var(--muted);white-space:nowrap}
+.personal-welcome{margin:0 0 8px;color:var(--accent-2);font-size:13px;font-weight:800}
+.sync-pill{display:inline-flex;min-height:28px;align-items:center;margin-top:9px;padding:5px 9px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:9.5px;font-weight:800}
+.sync-pill[data-state="error"],.sync-pill[data-state="offline"]{color:#d9a1a1;border-color:rgba(202,95,95,.3)}
+.account-dialog{width:min(94vw,520px);max-height:min(88vh,760px);padding:0;border:1px solid rgba(164,181,204,.28);border-radius:18px;background:#111d2c;color:#edf2f7;box-shadow:0 28px 90px rgba(0,0,0,.45)}
+.account-dialog::backdrop{background:rgba(3,8,15,.72);backdrop-filter:blur(5px)}
+.account-dialog__head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 22px 12px}
+.account-dialog__head h2{margin:0;font-size:21px}.account-dialog__head p{margin:5px 0 0;color:#9eabba;font-size:12px;line-height:1.5}
+.dialog-close{width:44px;height:44px;flex:none;border:1px solid rgba(255,255,255,.12);border-radius:11px;background:rgba(255,255,255,.055);color:#edf2f7;cursor:pointer;font-size:19px}
+.account-dialog__body{padding:8px 22px 22px}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px;padding:4px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(255,255,255,.035)}
+.auth-tab{min-height:44px;border:0;border-radius:9px;background:transparent;color:#aab6c5;cursor:pointer;font-weight:800}
+.auth-tab[aria-selected="true"]{background:rgba(224,183,95,.14);color:#f3d99d}
+.auth-panel[hidden]{display:none}.auth-form{display:grid;gap:12px}.auth-field{display:grid;gap:6px}.auth-field label{font-size:11px;font-weight:800;color:#c5cfdb}
+.auth-field input{min-height:46px;width:100%;border:1px solid rgba(255,255,255,.14);border-radius:11px;background:rgba(255,255,255,.055);color:#fff;padding:10px 12px;font:inherit;outline:none}
+.auth-field input:focus{border-color:#d8ad58;box-shadow:0 0 0 3px rgba(216,173,88,.14)}
+.auth-submit,.auth-secondary,.user-menu-action{min-height:44px;border-radius:11px;padding:9px 13px;cursor:pointer;font-weight:800}
+.auth-submit{border:1px solid rgba(224,183,95,.45);background:linear-gradient(135deg,#d8ad58,#b88935);color:#182131}
+.auth-secondary,.user-menu-action{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.05);color:#edf2f7}
+.auth-link{min-height:44px;border:0;background:transparent;color:#d8b66d;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.auth-message{min-height:20px;margin:0;color:#aeb9c8;font-size:11px;line-height:1.45}.auth-message.error{color:#efaaaa}.auth-message.success{color:#9bd6b7}
+.guest-choice{display:grid;gap:7px;margin-top:16px;padding-top:15px;border-top:1px solid rgba(255,255,255,.1)}.guest-choice small{color:#96a4b5;line-height:1.5}
+.user-summary{padding:14px;border:1px solid rgba(255,255,255,.1);border-radius:13px;background:rgba(255,255,255,.04)}.user-summary strong{display:block;font-size:16px}.user-summary span{display:block;margin-top:4px;color:#9eabba;font-size:11px;overflow-wrap:anywhere}
+.user-actions{display:grid;gap:8px;margin-top:14px}.user-menu-action.danger{color:#efaaaa;border-color:rgba(218,104,104,.28)}
+.confirm-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-top:18px}
+html[data-app-theme="light"] .account-launch{background:#fff;color:#233248}
+html[data-app-theme="light"] .account-dialog{background:#fff;color:#1d2b3e;border-color:#d6dde6}
+html[data-app-theme="light"] .account-dialog__head p,html[data-app-theme="light"] .auth-message,html[data-app-theme="light"] .guest-choice small,html[data-app-theme="light"] .user-summary span{color:#68768a}
+html[data-app-theme="light"] .dialog-close,html[data-app-theme="light"] .auth-secondary,html[data-app-theme="light"] .user-menu-action,html[data-app-theme="light"] .user-summary{background:#f5f7fa;color:#26364c;border-color:#d9e0e8}
+html[data-app-theme="light"] .auth-tabs{background:#f3f5f8;border-color:#dce2e9}
+html[data-app-theme="light"] .auth-tab{color:#647286}html[data-app-theme="light"] .auth-tab[aria-selected="true"]{background:#fff;color:#76531c}
+html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme="light"] .auth-field input{background:#fff;color:#1b293c;border-color:#cdd6e0}
+@media(max-width:520px){.account-dialog{width:calc(100vw - 20px);max-height:calc(100dvh - 20px)}.account-dialog__head{padding:18px 16px 10px}.account-dialog__body{padding:6px 16px 18px}}
+
 </style>
 </head>
 <body>
@@ -577,6 +615,7 @@ html[data-app-theme="dark"] .dashboard-reset{color:#9ba8b8}
       </div>
       <p>Interaktív, kronologikus érettségi felkészítő műhely önálló tanuláshoz és tanórai használatra.</p>
       <div class="brand__meta"><span class="meta-chip">32 témakör</span><span class="meta-chip">Interaktív</span><span class="meta-chip">Érettségi fókusz</span></div>
+      <button class="account-launch" id="accountButton" type="button" aria-haspopup="dialog"><span class="account-launch__name" id="accountButtonName">Bejelentkezés</span><span class="account-launch__status" id="accountButtonStatus">Vendégmód</span></button>
       <select class="mobile-select" id="mobileSelect" aria-label="Kurzus kiválasztása"></select>
     </header>
     <div class="sidebar-tools">
@@ -586,7 +625,7 @@ html[data-app-theme="dark"] .dashboard-reset{color:#9ba8b8}
     </div>
     <nav class="course-list" id="courseList" aria-label="Kurzusok kronologikus sorrendben"></nav>
     <div class="empty-state" id="emptyState">Nincs a keresésnek megfelelő kurzus.<br>Próbálj másik kulcsszót.</div>
-    <footer class="sidebar-footer"><span>Érettségi műhely · WEB 1.1</span><strong id="footerRange">01–32</strong></footer>
+    <footer class="sidebar-footer"><span>Érettségi műhely · WEB 1.2</span><strong id="footerRange">01–32</strong></footer>
   </aside>
   <section class="viewer home-mode" id="viewer">
     <div class="toolbar">
@@ -617,7 +656,8 @@ html[data-app-theme="dark"] .dashboard-reset{color:#9ba8b8}
           <div class="dashboard__inner">
             <header class="dashboard-hero">
               <div class="dashboard-hero__content">
-                <div class="dashboard-kicker">Történelem Érettségi Műhely · WEB 1.1</div>
+                <div class="dashboard-kicker">Történelem Érettségi Műhely · WEB 1.2</div>
+                <p class="personal-welcome" id="personalWelcome" hidden></p>
           <h2>Haladj végig a 32 érettségi témakörön.</h2>
                 <p>A műhely megjegyzi, mely kurzusokat kezdted el, meddig jutottál bennük, melyeket jelölted meg, és melyeket tekinted befejezettnek.</p>
                 <div class="dashboard-actions">
@@ -625,7 +665,8 @@ html[data-app-theme="dark"] .dashboard-reset{color:#9ba8b8}
                   <button class="dash-secondary" id="browseFavorites" type="button">Megjelölt kurzusok</button>
                   <button class="dash-secondary install-app" id="installApp" type="button" hidden>Telepítés</button>
                 </div>
-                <div class="storage-note">A haladás ezen a böngészőn, helyben mentődik. Az esszéműhely szövegtervezetei is megmaradnak.</div>
+                <div class="storage-note" id="storageNote">Vendégmódban a haladás ezen a böngészőn, helyben mentődik.</div>
+                <div class="sync-pill" id="syncStatus" data-state="guest" role="status" aria-live="polite">Vendégmód · helyi mentés</div>
               </div>
             </header>
 
@@ -637,7 +678,7 @@ html[data-app-theme="dark"] .dashboard-reset{color:#9ba8b8}
             </div>
 
             <section class="dashboard-section" id="continueSection">
-              <div class="section-heading"><div class="section-heading__copy"><h3>Folytatás</h3><p>A legutóbb megnyitott kurzus és a mentett olvasási pozíció.</p></div></div>
+              <div class="section-heading"><div class="section-heading__copy"><h3 id="continueHeading">Folytatás</h3><p>A legutóbb megnyitott kurzus és a mentett olvasási pozíció.</p></div></div>
               <div class="continue-card" id="continueCard"></div>
             </section>
 
@@ -656,7 +697,7 @@ html[data-app-theme="dark"] .dashboard-reset{color:#9ba8b8}
             </section>
 
             <div class="dashboard-reset">
-              <span>A mentés kizárólag ezen az eszközön és ebben a böngészőben történik.</span>
+              <span id="resetDescription">Vendégmódban a mentés kizárólag ezen az eszközön és ebben a böngészőben történik.</span>
               <button class="reset-progress" id="resetProgress" type="button">Mentett haladás törlése</button>
             </div>
           </div>
@@ -666,6 +707,36 @@ html[data-app-theme="dark"] .dashboard-reset{color:#9ba8b8}
     </div>
   </section>
 </main>
+
+<dialog class="account-dialog" id="authDialog" aria-labelledby="authDialogTitle">
+  <div class="account-dialog__head"><div><h2 id="authDialogTitle">Tanulói fiók</h2><p>Jelentkezz be a több eszközön folytatható tanuláshoz, vagy használd tovább vendégként.</p></div><button class="dialog-close" type="button" data-close-dialog="authDialog" aria-label="Ablak bezárása">×</button></div>
+  <div class="account-dialog__body">
+    <div class="auth-tabs" role="tablist" aria-label="Fiókművelet"><button class="auth-tab" id="loginTab" type="button" role="tab" aria-selected="true" aria-controls="loginPanel">Belépés</button><button class="auth-tab" id="registerTab" type="button" role="tab" aria-selected="false" aria-controls="registerPanel">Regisztráció</button></div>
+    <section class="auth-panel" id="loginPanel" role="tabpanel" aria-labelledby="loginTab">
+      <form class="auth-form" id="loginForm"><div class="auth-field"><label for="loginEmail">E-mail-cím</label><input id="loginEmail" name="email" type="email" autocomplete="email" required></div><div class="auth-field"><label for="loginPassword">Jelszó</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" required></div><p class="auth-message" id="loginMessage" role="status" aria-live="polite"></p><button class="auth-submit" type="submit">Belépés</button><button class="auth-link" id="showReset" type="button">Elfelejtettem a jelszavam</button></form>
+    </section>
+    <section class="auth-panel" id="registerPanel" role="tabpanel" aria-labelledby="registerTab" hidden>
+      <form class="auth-form" id="registerForm"><div class="auth-field"><label for="registerName">Megjelenített név</label><input id="registerName" name="display_name" type="text" autocomplete="name" minlength="1" maxlength="80" required></div><div class="auth-field"><label for="registerEmail">E-mail-cím</label><input id="registerEmail" name="email" type="email" autocomplete="email" required></div><div class="auth-field"><label for="registerPassword">Jelszó</label><input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="8" required></div><p class="auth-message" id="registerMessage" role="status" aria-live="polite"></p><button class="auth-submit" type="submit">Fiók létrehozása</button></form>
+    </section>
+    <section class="auth-panel" id="resetPanel" role="tabpanel" hidden>
+      <form class="auth-form" id="resetForm"><div class="auth-field"><label for="resetEmail">E-mail-cím</label><input id="resetEmail" name="email" type="email" autocomplete="email" required></div><p class="auth-message" id="resetMessage" role="status" aria-live="polite"></p><button class="auth-submit" type="submit">Jelszó-visszaállító levél kérése</button><button class="auth-link" id="backToLogin" type="button">Vissza a belépéshez</button></form>
+    </section>
+    <section class="auth-panel" id="passwordPanel" role="tabpanel" hidden>
+      <form class="auth-form" id="passwordForm"><div class="auth-field"><label for="newPassword">Új jelszó</label><input id="newPassword" name="password" type="password" autocomplete="new-password" minlength="8" required></div><p class="auth-message" id="passwordMessage" role="status" aria-live="polite"></p><button class="auth-submit" type="submit">Új jelszó mentése</button></form>
+    </section>
+    <div class="guest-choice"><button class="auth-secondary" id="continueAsGuest" type="button">Vendégként használom</button><small>Vendégként a haladás csak ezen az eszközön marad meg, a korábban megnyitott kurzusok pedig offline is olvashatók.</small></div>
+  </div>
+</dialog>
+
+<dialog class="account-dialog" id="userDialog" aria-labelledby="userDialogTitle">
+  <div class="account-dialog__head"><div><h2 id="userDialogTitle">Tanulói fiók</h2><p>Felhőben mentett haladás és személyes beállítások.</p></div><button class="dialog-close" type="button" data-close-dialog="userDialog" aria-label="Ablak bezárása">×</button></div>
+  <div class="account-dialog__body"><div class="user-summary"><strong id="userDisplayName">Tanuló</strong><span id="userEmail"></span></div><div class="user-actions"><button class="user-menu-action" id="showProgress" type="button">Haladásom</button><button class="user-menu-action" id="showFavorites" type="button">Kedvenceim</button><button class="user-menu-action" id="logoutButton" type="button">Kijelentkezés</button><button class="user-menu-action danger" id="deleteLearningData" type="button">Tanulási adataim törlése</button></div><p class="auth-message" id="userMessage" role="status" aria-live="polite"></p></div>
+</dialog>
+
+<dialog class="account-dialog" id="importDialog" aria-labelledby="importDialogTitle">
+  <div class="account-dialog__head"><div><h2 id="importDialogTitle">Korábbi haladás összekapcsolása</h2><p>Ezen az eszközön található korábbi tanulási adat. Szeretnéd összekapcsolni a fiókoddal?</p></div></div>
+  <div class="account-dialog__body"><div class="confirm-actions"><button class="auth-secondary" id="declineImport" type="button">Nem</button><button class="auth-submit" id="acceptImport" type="button">Igen</button></div></div>
+</dialog>
 
 <script>
 (async function(){
@@ -1528,38 +1599,58 @@ const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
 
 /* ---------- Helyi tanulói állapot ---------- */
 const STORAGE_KEY='tortenelem-erettsegi-muhely-ui2-progress-v1';
-const stateDefaults={version:1,lastCourse:null,favorites:[],courses:{}};
+const CLOUD_CACHE_PREFIX='tortenelem-erettsegi-muhely-cloud-v1:';
+const stateDefaults={version:2,lastCourse:null,favorites:[],courses:{}};
+let activeStorageKey=STORAGE_KEY;
 let appState=loadAppState();
 let dashboardFilter='all';
 let frameTrackingCleanup=null;
 let saveTimer=null;
 
-function loadAppState(){
+function normalizeAppState(saved){
+  return {
+    version:2,
+    lastCourse:Number.isInteger(saved?.lastCourse)?saved.lastCourse:null,
+    favorites:Array.isArray(saved?.favorites)?saved.favorites.map(Number).filter(Number.isFinite):[],
+    courses:saved?.courses && typeof saved.courses==='object'?saved.courses:{}
+  };
+}
+function loadAppState(key=activeStorageKey){
   try{
-    const raw=localStorage.getItem(STORAGE_KEY);
+    const raw=localStorage.getItem(key);
     if(!raw)return JSON.parse(JSON.stringify(stateDefaults));
-    const saved=JSON.parse(raw);
-    return {
-      version:1,
-      lastCourse:Number.isInteger(saved.lastCourse)?saved.lastCourse:null,
-      favorites:Array.isArray(saved.favorites)?saved.favorites.map(Number).filter(Number.isFinite):[],
-      courses:saved.courses && typeof saved.courses==='object'?saved.courses:{}
-    };
+    return normalizeAppState(JSON.parse(raw));
   }catch(_){return JSON.parse(JSON.stringify(stateDefaults));}
 }
 function saveAppState(immediate=false){
-  const write=()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(appState));}catch(_){}};
+  const write=()=>{try{localStorage.setItem(activeStorageKey,JSON.stringify(appState));}catch(_){}};
   if(immediate){clearTimeout(saveTimer);write();return;}
   clearTimeout(saveTimer);saveTimer=setTimeout(write,180);
+}
+function setActiveAppState(next,key=STORAGE_KEY){
+  activeStorageKey=key;
+  appState=normalizeAppState(next||stateDefaults);
+  saveAppState(true);
+  refreshChrome();renderDashboard();
+}
+function queueCloudCourse(index){
+  try{window.TEM_CLOUD?.queueCourse?.(index);}catch(_){}
+}
+function touchCourse(index){
+  const s=getCourseState(index);s.updatedAt=Date.now();queueCloudCourse(index);return s;
 }
 function courseKey(index){return String(courses[index]?.id ?? (index+1));}
 function getCourseState(index){
   const key=courseKey(index);
-  if(!appState.courses[key])appState.courses[key]={visited:false,maxRead:0,lastRead:0,completed:false,lastOpened:0,drafts:{}};
+  if(!appState.courses[key])appState.courses[key]={visited:false,maxRead:0,lastRead:0,completed:false,lastOpened:0,sectionId:null,scrollPosition:0,updatedAt:0,completedAt:null,drafts:{}};
   const s=appState.courses[key];
   if(!s.drafts || typeof s.drafts!=='object')s.drafts={};
   s.maxRead=Math.max(0,Math.min(100,Number(s.maxRead)||0));
   s.lastRead=Math.max(0,Math.min(100,Number(s.lastRead)||0));
+  s.scrollPosition=Math.max(0,Math.round(Number(s.scrollPosition)||0));
+  s.sectionId=typeof s.sectionId==='string'&&s.sectionId.length<=200?s.sectionId:null;
+  s.updatedAt=Math.max(0,Number(s.updatedAt)||Number(s.lastOpened)||0);
+  s.completedAt=s.completed?(Number(s.completedAt)||Number(s.updatedAt)||Date.now()):null;
   return s;
 }
 function isFavorite(index){return appState.favorites.includes(courses[index].id);}
@@ -1567,6 +1658,7 @@ function setFavorite(index,on){
   const id=courses[index].id;
   appState.favorites=appState.favorites.filter(x=>x!==id);
   if(on)appState.favorites.push(id);
+  touchCourse(index);
   saveAppState();refreshChrome();renderDashboard();
 }
 function courseProgress(index){
@@ -1611,7 +1703,7 @@ document.getElementById('sidebarHome').addEventListener('click',showHome);
 
 document.getElementById('favoriteToggle').addEventListener('click',()=>setFavorite(current,!isFavorite(current)));
 document.getElementById('completeToggle').addEventListener('click',()=>{
-  const s=getCourseState(current);s.completed=!s.completed;if(s.completed)s.maxRead=100;
+  const s=getCourseState(current);s.completed=!s.completed;if(s.completed){s.maxRead=100;s.completedAt=Date.now();}else{s.completedAt=null;}touchCourse(current);
   saveAppState();refreshChrome();renderDashboard();
 });
 
@@ -1627,6 +1719,7 @@ document.getElementById('dashboardFilters').addEventListener('click',event=>{
   dashboardFilter=b.dataset.filter;setDashboardFilterButtons();renderDashboardCourses();
 });
 document.getElementById('resetProgress').addEventListener('click',()=>{
+  if(window.TEM_CLOUD?.isAuthenticated?.()){window.TEM_CLOUD.deleteAll();return;}
   if(!confirm('Biztosan törlöd az összes mentett haladást, kurzusjelölést és esszévázlatot ezen a böngészőn?'))return;
   appState=JSON.parse(JSON.stringify(stateDefaults));
   saveAppState(true);refreshChrome();renderDashboard();
@@ -1700,6 +1793,17 @@ function renderDashboardCourses(){
 function escapeHtml(value){return String(value??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));}
 
 /* ---------- Kurzuson belüli mentés ---------- */
+function findActiveSectionId(doc,win){
+  try{
+    const nodes=[...doc.querySelectorAll('section[id],article[id],h1[id],h2[id],h3[id],h4[id],[data-section-id]')];
+    let active=null,best=-Infinity;
+    nodes.forEach(node=>{
+      const top=node.getBoundingClientRect().top;
+      if(top<=Math.max(120,win.innerHeight*.34)&&top>best){active=node;best=top;}
+    });
+    return active?(active.id||active.getAttribute('data-section-id')||null):null;
+  }catch(_){return null;}
+}
 function captureFrameProgress(){
   if(document.getElementById('viewer').classList.contains('home-mode'))return;
   try{
@@ -1708,6 +1812,7 @@ function captureFrameProgress(){
     const max=Math.max(0,doc.documentElement.scrollHeight-win.innerHeight);
     const ratio=max>0?Math.max(0,Math.min(100,(win.scrollY/max)*100)):100;
     s.lastRead=ratio;s.maxRead=Math.max(s.maxRead,ratio);s.lastOpened=Date.now();s.visited=true;
+    s.scrollPosition=Math.max(0,Math.round(win.scrollY));s.sectionId=findActiveSectionId(doc,win);touchCourse(current);
     captureDrafts(doc,s);
     saveAppState();updateReadProgressUI();
   }catch(_){}
@@ -1753,8 +1858,12 @@ function attachFrameTracking(){
     const restore=()=>{
       if(current!==courseIndex)return;
       const max=Math.max(0,doc.documentElement.scrollHeight-win.innerHeight);
-      const y=max*(Math.max(0,Math.min(100,s.lastRead||0))/100);
-      try{win.scrollTo(0,y);}catch(_){}
+      const fallback=Number.isFinite(Number(s.scrollPosition))&&Number(s.scrollPosition)>0?Number(s.scrollPosition):max*(Math.max(0,Math.min(100,s.lastRead||0))/100);
+      try{
+        const target=s.sectionId?doc.getElementById(s.sectionId)||doc.querySelector('[data-section-id="'+CSS.escape(s.sectionId)+'"]'):null;
+        if(target){target.scrollIntoView({block:'start'});const semanticTop=win.scrollY;win.scrollTo(0,Math.max(semanticTop,fallback));}
+        else win.scrollTo(0,fallback);
+      }catch(_){try{win.scrollTo(0,fallback);}catch(__){}}
     };
     requestAnimationFrame(()=>{restore();setTimeout(restore,130);setTimeout(()=>{restore();restoring=false;},550);});
     frameTrackingCleanup=()=>{clearTimeout(timer);win.removeEventListener('scroll',onScroll);doc.removeEventListener('keydown',onFrameKeydown,true);};
@@ -1803,7 +1912,7 @@ function show(index){
   captureFrameProgress();
   current=index;
   const course=courses[index],s=getCourseState(index);
-  s.visited=true;s.lastOpened=Date.now();appState.lastCourse=index;saveAppState();
+  s.visited=true;s.lastOpened=Date.now();appState.lastCourse=index;touchCourse(index);saveAppState();
   document.getElementById('viewer').classList.remove('home-mode');
   document.getElementById('sidebarHome').removeAttribute('aria-current');
   document.querySelectorAll('.course').forEach((button,i)=>button.setAttribute('aria-current',i===index?'true':'false'));
@@ -1869,7 +1978,24 @@ const initialHash=location.hash.slice(1);
 const initialCourse=parseInt(initialHash,10);
 if(Number.isFinite(initialCourse)&&initialCourse>=1&&initialCourse<=courses.length)show(initialCourse-1);else showHome();
 
+window.TEM_APP={
+  courses,
+  guestStorageKey:STORAGE_KEY,
+  cloudCachePrefix:CLOUD_CACHE_PREFIX,
+  emptyState:()=>JSON.parse(JSON.stringify(stateDefaults)),
+  loadState:key=>loadAppState(key),
+  getState:()=>appState,
+  setState:(next,key)=>setActiveAppState(next,key),
+  getCourseState,
+  save:immediate=>saveAppState(Boolean(immediate)),
+  refresh:()=>{refreshChrome();renderDashboard();},
+  showHome,
+  setFilter:value=>{dashboardFilter=value;setDashboardFilterButtons();renderDashboardCourses();},
+  scrollToProgress:()=>document.querySelector('.dashboard-stats')?.scrollIntoView({behavior:'smooth',block:'start'})
+};
+
 })();
 </script>
+<script src="./account-cloud.js"></script>
 </body>
 </html>
