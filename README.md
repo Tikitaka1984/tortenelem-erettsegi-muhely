@@ -1,11 +1,12 @@
-# Történelem Érettségi Műhely — WEB 1.2
+# Történelem Érettségi Műhely — WEB 1.3
 
 ## Verziók és baseline
 
 - **WEB 1.0 production baseline:** `d5414ce5cbe21fa38ff28666ef16422dcff0ed8a`
 - **WEB 1.1 sprint:** telepíthető PWA, offline alkalmazáskeret és verziózott helyi haladáskövetés.
 - **WEB 1.2 sprint:** tanulói fiók, Supabase Auth, saját felhős haladás, többeszközös folytatás és RLS-alapú felhasználói elkülönítés.
-- A WEB 1.0 és WEB 1.1 változat a Git-előzményekből teljes egészében visszakereshető; a 32 kurzus oktatási tartalma és a 62 kép a WEB 1.2 fejlesztésben nem változott.
+- **WEB 1.3 sprint:** személyes tanulási dashboard, „Haladásom” nézet, folytatás, kedvencek, legutóbbi aktivitás és determinisztikus kurzusajánlás.
+- A WEB 1.0–1.2 változat a Git-előzményekből teljes egészében visszakereshető; a 32 kurzus oktatási tartalma és a 62 kép a WEB 1.3 fejlesztésben nem változott.
 
 ## Mi ez?
 Ez a mappa a "Történelem Érettségi Műhely" alkalmazás **teljes, működő, Vercelre telepíthető** változata:
@@ -34,10 +35,11 @@ favicon.svg           → böngészőikon és PWA-ikon alaphelye
 icons/*.png           → 192×192, 512×512 és maskable production appikonok
 service-worker.js     → verziózott offline alkalmazáskeret és runtime cache
 account-cloud.js      → fiókkezelés, local-first felhőszinkron és konfliktuskezelés
+dashboard-logic.js    → a dashboard összesítési, ajánlási és dátumformázási logikája
 api/config.js         → kizárólag a nyilvános Supabase klienskonfiguráció
 supabase/schema.sql   → adatmodell, triggerek, jogosultságok és RLS policy-k
 vendor/               → verzióhoz rögzített Supabase böngészőkliens
-AUDIT-JELENTES.md     → a WEB 1.0–1.2 production ellenőrzések eredménye
+AUDIT-JELENTES.md     → a WEB 1.0–1.3 production ellenőrzések eredménye
 ```
 
 ## Telepítés Vercelre — 2 lehetőség
@@ -123,3 +125,13 @@ amit a diákok közvetlenül böngészőben megnyithatnak, telefonon is.
 - A „Tanulási adataim törlése” a bejelentkezett felhasználó saját `course_progress` rekordjait törli; más felhasználó adataihoz nem fér hozzá.
 - A fiók jelszava és hitelesítési munkamenete a Supabase Auth kezelésében marad; az alkalmazás nem naplózza és nem tárolja külön a jelszót.
 - A `profiles.user_id` és `course_progress.user_id` az `auth.users` rekordra hivatkozik, fióktörléskor kaszkádolt takarítással.
+
+## WEB 1.3 – személyes tanulási dashboard
+
+- A kezdőoldali „Haladásod” blokk a 32 kurzus alapján mutatja a befejezett, folyamatban lévő és még nem kezdett témák számát, valamint az összesített százalékot.
+- A „Folytasd, ahol abbahagytad” blokk az utoljára megnyitott kurzushoz és a mentett olvasási pozícióhoz vezet vissza; új tanulónál egyértelmű kezdőállapot jelenik meg.
+- Bejelentkezve külön listában láthatók a folyamatban lévő kurzusok, a kedvencek és a legutóbbi aktivitások.
+- A kurzusajánlás kizárólag a saját haladási adatokból, kiszámítható szabályok szerint készül: legutóbbi aktív kurzus, legelőrébb tartó folyamatban lévő kurzus, majd a következő még nem kezdett téma.
+- A „Haladásom” nézet mind a 32 kurzust állapot- és kedvencszűrőkkel, hozzáférhető folyamatjelzőkkel jeleníti meg.
+- Vendégmódban a korábbi helyi működés változatlan; a személyes felhős listák kizárólag hitelesített felhasználónál láthatók.
+- Az e-mailes megerősítési és helyreállítási munkamenetek töredékét a kezdőoldal az Auth kliens feldolgozásáig megőrzi.
