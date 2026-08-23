@@ -281,3 +281,76 @@ Az audit idejére az e-mail-megerősítés rövid, kontrollált tesztszakaszban 
 ### WEB 1.2 minősítés
 
 **PASS WITH WARNINGS** – a fiókalapú felhőszinkron, a többnézetes folytatás, a vendégmód, az offline alkalmazáskeret és a kétfelhasználós RLS-elkülönítés működik. A két figyelmeztetés a postafiók nélküli jelszó-visszaállítás teljes kézbesítésére, illetve az automatizált böngésző `current-password` mezőkitöltésére vonatkozik; egyik sem érinti a kurzustartalmat vagy az igazolt felhős adatizolációt.
+
+## WEB 1.3 – személyes tanulási dashboard
+
+### Baseline és tesztkörnyezet
+
+- WEB 1.2 production baseline: `cd307f5373c0c191c5621c2aaf30ef23d1785925`.
+- Preview branch: `web-1.3`.
+- Auditált preview: https://tortenelem-erettsegi-muhely-git-web-13-takacs-tamas-s-projects.vercel.app/
+- Az audit 2026. augusztus 23-án, az élő Vercel preview környezetben futott.
+- A 32 kurzus oktatási HTML-tartalma és a 62 kép nem módosult.
+
+### Dashboard és felhőszinkron
+
+| Ellenőrzés | Eredmény | Megjegyzés |
+|---|---:|---|
+| Új tanuló kezdőállapota | **PASS** | 0 befejezett, 0 folyamatban, 32 nem kezdett, 0%; első kurzus ajánlása |
+| Aktív tanuló összesítése | **PASS** | kontrolladat: 1 befejezett, 3 folyamatban, 28 nem kezdett, 8% |
+| Folytatás blokk | **PASS** | a legutóbbi kurzust és a mentett pozíciót nyitja meg |
+| Determinisztikus ajánlás | **PASS** | a legutóbbi aktív 29. kurzust választotta, indoklással |
+| Folyamatban / kedvencek / aktivitás | **PASS** | tartalom, sorrend és emberi dátumformátum helyes |
+| „Haladásom” nézet | **PASS** | mind: 32; folyamatban: 3; kész: 1; nem kezdett: 28; kedvenc: 1 |
+| Friss böngészőlap / többeszközös visszatöltés | **PASS** | 1/3/28/8% állapot és `Szinkronizálva` jelzés visszatöltődött |
+| Vendégmód és kijelentkezési adatvédelem | **PASS** | személyes blokkok és korábbi név eltűntek; 0/0/32/0% helyi állapot |
+| RLS olvasási elkülönítés | **PASS** | másik felhasználó rekordjaiból 0 sor volt látható |
+| RLS írási elkülönítés | **PASS** | idegen felhasználó rekordjának létrehozása HTTP 403 választ kapott |
+| Böngészőkonzol hiba | **PASS** | az ellenőrzött dashboard- és kurzusfolyamatokban 0 alkalmazáshiba |
+
+### Mobil és responsive regresszió
+
+Minden méreten ellenőrzésre került a kezdőoldal, a dashboard, a kereső, a szűrők, a navigáció, a kártyák, a szöveg- és képtörés, a fixed/sticky elemek és a vízszintes túlcsordulás. A 390×844-es mobilnézetben az 1., 16., 29., 30., 31. és 32. kurzus külön is megnyílt; mind a hatnál teljes `srcdoc`, helyes iframe-cím, képi alt és működő visszanavigálás volt.
+
+| Viewport | Eredmény | Megjegyzés |
+|---|---:|---|
+| 390×844 | **PASS** | 0 horizontális overflow; 6/6 kijelölt kurzus betöltődött |
+| 430×932 | **PASS** | a kereső, szűrők, kártyák és érintési célok használhatók |
+| 768×1024 | **PASS** | tabletelrendezés stabil, szöveg- és képlevágás nélkül |
+| 1366×768 | **PASS** | asztali navigáció és dashboard-rács stabil |
+| 1920×1080 | **PASS** | széles nézetben sincs kilógás vagy indokolatlan nyúlás |
+
+Az audit egyetlen javítandó célméretet talált: a „Mentett haladás törlése” gomb 28 px magas volt. A WEB 1.3 javítás után legalább 44 px magas, így mobilon is megfelelően kattintható.
+
+### Billentyűzetes és accessibility regresszió
+
+| Ellenőrzés | Eredmény | Megjegyzés |
+|---|---:|---|
+| Tab navigáció | **PASS** | 22 látható fő vezérlő natív tab-sorrendben, negatív `tabindex` nélkül |
+| Fókuszállapot | **PASS** | a fő interaktív elemekhez látható `:focus-visible` jelölés tartozik |
+| Fő funkciók billentyűzetről | **PASS** | kereső, témaváltó, szűrők, kurzusgombok és visszalépés natív input/button/select elemek |
+| Alt/ARIA alapellenőrzés | **PASS** | 0 címke nélküli mező, 0 cím nélküli iframe, 0 hiányzó képi alt, 0 névtelen fő gomb/link |
+| Folyamatjelzők | **PASS** | névvel és értékkel rendelkező progressbar szemantika |
+| Heading hierarchy | **PASS WITH NOTE** | az alkalmazáskeret H1→H2→H3→H4 szerkezete rendezett; a kurzustartalom nem változott |
+
+A tesztelt fő funkciók között nincs kizárólag egérrel elérhető vezérlő. A böngésző-automatizálási réteg a szintetikus Tab/Enter billentyűleütést nem minden esetben továbbította, ezért a sorrend és aktiválhatóság ellenőrzése a tényleges élő DOM natív vezérlőtípusai, fókuszolhatósága, hozzáférhető neve és fókuszstílusa alapján történt; ez nem teljes WCAG-tanúsítás.
+
+### Statikus és PWA-regresszió
+
+| Ellenőrzés | Eredmény |
+|---|---:|
+| Kurzus HTML | **32/32 PASS** |
+| Kurzusmeta, egyedi ID és forrás | **32/32 PASS** |
+| Tartalmilag egyedi kurzusfájl | **32/32 PASS** |
+| Képek | **62/62 PASS** |
+| Helyi HTML/CSS/manifest hivatkozások | **0 hibás** |
+| JavaScript-szintaxis | **0 hiba** |
+| Manifest és három PWA-ikon | **PASS** |
+| WEB 1.3 service-worker shell | **PASS** – `dashboard-logic.js` is gyorsítótárazva |
+| Vercel-konfiguráció | **PASS** |
+
+A reprodukálható ellenőrzés a `scripts/audit-production.mjs` fájllal futtatható; hibánál nem nulla kilépési kódot ad.
+
+### WEB 1.3 végső preview minősítés
+
+**PASS WITH WARNINGS** – a személyes dashboard, a „Haladásom” nézet, a folytatás, a kedvencek, a legutóbbi aktivitás, a determinisztikus ajánlás, a vendégmód és a felhőszinkron működik. A 32 kurzus, 62 kép, öt előírt viewport és hat kijelölt mobil kurzus regressziója sikeres, hibás helyi hivatkozás és JavaScript-szintaktikai hiba nélkül. Az egyetlen nem blokkoló megjegyzés, hogy az automatizálási réteg nem minden szintetikus billentyűleütést továbbított; a natív szemantika és fókuszállapot ettől függetlenül megfelelt az alapellenőrzésen.
