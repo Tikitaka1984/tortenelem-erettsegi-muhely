@@ -320,7 +320,7 @@ Minden méreten ellenőrzésre került a kezdőoldal, a dashboard, a kereső, a 
 | 1366×768 | **PASS** | asztali navigáció és dashboard-rács stabil |
 | 1920×1080 | **PASS** | széles nézetben sincs kilógás vagy indokolatlan nyúlás |
 
-Az audit egyetlen javítandó célméretet talált: a „Mentett haladás törlése” gomb 28 px magas volt. A WEB 1.3 javítás után legalább 44 px magas, így mobilon is megfelelően kattintható.
+Az audit kisebb célméreteket talált a „Mentett haladás törlése” gombnál, a témaváltónál és néhány mobil vezérlőnél. A WEB 1.3 javítás után a törlésgomb, a témaváltó, a kereső, a mobil kurzusválasztó és a kurzuseszköztár vezérlői legalább 44×44 px-es érintési területet kapnak.
 
 ### Billentyűzetes és accessibility regresszió
 
