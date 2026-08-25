@@ -49,6 +49,8 @@ button{color:inherit}
 .sidebar{position:relative;z-index:2;display:flex;min-height:0;flex-direction:column;border-right:1px solid var(--line);background:linear-gradient(180deg,rgba(12,25,45,.96),rgba(7,16,31,.96));backdrop-filter:blur(22px)}
 .brand{padding:26px 22px 19px;border-bottom:1px solid var(--line)}
 .brand__top{display:flex;align-items:center;gap:13px}
+.mobile-menu-toggle{display:none;margin-left:0;flex:none;width:44px;height:44px;border:1px solid var(--line-strong);border-radius:11px;background:rgba(255,255,255,.035);color:var(--text);cursor:pointer;place-items:center;font-size:19px;line-height:1}
+.mobile-menu-toggle:hover{border-color:rgba(224,183,95,.34);background:rgba(255,255,255,.07)}
 .brand__mark{width:42px;height:42px;border:1px solid rgba(224,183,95,.42);border-radius:13px;background:linear-gradient(145deg,rgba(224,183,95,.18),rgba(224,183,95,.04));box-shadow:inset 0 1px rgba(255,255,255,.08);display:grid;place-items:center;color:var(--accent-2);font-family:Georgia,serif;font-weight:700;letter-spacing:-.04em}
 .brand__copy{min-width:0}
 .brand small{display:block;color:var(--accent);font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
@@ -117,16 +119,20 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 @media(max-width:800px){
   body{overflow:hidden}.app{height:100dvh;display:flex;flex-direction:column}
   .sidebar{display:block;min-height:auto;border-right:0;border-bottom:1px solid var(--line)}
-  .brand{padding:12px 14px}.brand__mark{width:36px;height:36px;border-radius:11px}.brand h1{font-size:17px}.brand p,.brand__meta,.course-list,.sidebar-footer{display:none}
-  .sidebar-tools{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;padding:0 14px 10px}
+  .brand{min-height:60px;padding:8px 10px}.brand__top{gap:8px}.brand__mark{width:36px;height:36px;border-radius:11px}.brand__copy{flex:1}.brand small{font-size:11px;line-height:1.2;letter-spacing:.055em}.brand h1,.brand p,.brand__meta,.course-list,.sidebar-footer{display:none}
+  .brand-theme-toggle{margin-left:0}.mobile-menu-toggle{display:grid}
+  .brand .account-launch,.mobile-select,.sidebar-tools{display:none}
+  .sidebar.mobile-menu-open .brand{padding-bottom:10px}
+  .sidebar.mobile-menu-open .brand .account-launch{display:flex;margin-top:8px}
+  .sidebar.mobile-menu-open .mobile-select{display:block;margin-top:8px}
+  .sidebar.mobile-menu-open .sidebar-tools{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;padding:8px 10px 10px}
   .sidebar-home{margin:0;padding:8px 10px}.sidebar-tools .list-caption{display:none}.search-wrap{min-width:0}
-  .mobile-select{display:block}
   .viewer{flex:1;min-height:0}
   .toolbar{height:60px;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:7px 8px}
   .current__eyebrow{display:none}.current strong{font-size:14px}.toolbar button{height:44px;width:44px;padding:0}.toolbar button .label{display:none}
   .viewer__surface{padding:8px}.frame-shell{border-radius:13px}
 }
-@media(max-width:440px){.brand small{font-size:9px}.brand h1{font-size:15px}.sidebar-home span:last-child{display:none}.toolbar{height:54px}.current strong{font-size:12.5px}.viewer__surface{padding:6px}.frame-shell{border-radius:10px}}
+@media(max-width:440px){.brand small{font-size:10.5px}.brand h1{font-size:15px}.sidebar-home span:last-child{display:none}.toolbar{height:54px}.current strong{font-size:12.5px}.viewer__surface{padding:6px}.frame-shell{border-radius:10px}}
 @media print{.sidebar,.toolbar{display:none}.app{display:block}.viewer__surface{padding:0}.frame-shell{border:0;box-shadow:none;border-radius:0}.viewer,iframe{height:100vh}}
 
 
@@ -482,15 +488,16 @@ html[data-app-theme="light"] .toolbar-exit:hover{background:rgba(168,120,42,.17)
   .viewer:not(.home-mode) .course-position{display:none}
 }
 @media(max-width:800px){
-  .viewer:not(.home-mode) .toolbar{height:auto !important;min-height:96px;grid-template-columns:minmax(0,1fr) !important;grid-template-areas:"current" "nav" !important;gap:6px;padding:7px 10px 8px}
-  .viewer:not(.home-mode) .toolbar-nav{gap:3px;scrollbar-width:none}
+  .viewer:not(.home-mode) .toolbar{height:58px !important;min-height:58px;display:block;padding:7px 8px}
+  .viewer:not(.home-mode) .toolbar .current{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .viewer:not(.home-mode) .toolbar-nav{height:44px;gap:3px;scrollbar-width:none}
   .viewer:not(.home-mode) .toolbar-nav::-webkit-scrollbar{display:none}
   .viewer:not(.home-mode) .toolbar button{width:44px;min-width:44px;padding:0}
   .viewer:not(.home-mode) .toolbar-exit{width:auto !important;min-width:76px !important;padding:0 9px !important}
   .viewer:not(.home-mode) .toolbar-exit .label{display:inline !important}
 }
 @media(max-width:440px){
-  .viewer:not(.home-mode) .toolbar{min-height:92px}
+  .viewer:not(.home-mode) .toolbar{height:58px !important;min-height:58px}
   .viewer:not(.home-mode) .toolbar-exit{min-width:76px !important;padding:0 9px !important}
 }
 
@@ -670,7 +677,7 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
 </head>
 <body>
 <main class="app">
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <header class="brand">
       <div class="brand__top">
         <div class="brand__mark" aria-hidden="true">TÉ</div>
@@ -679,6 +686,7 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
           <h1>32 kurzus · végleges bemutató</h1>
         </div>
         <button class="brand-theme-toggle app-theme-toggle" data-app-theme-toggle type="button" aria-label="Világos mód bekapcsolása" title="Világos mód bekapcsolása"><span class="app-theme-icon" aria-hidden="true">☀</span></button>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Mobil navigáció megnyitása" aria-expanded="false" aria-controls="sidebar">☰</button>
       </div>
       <p>Interaktív, kronologikus érettségi felkészítő műhely önálló tanuláshoz és tanórai használatra.</p>
       <div class="brand__meta"><span class="meta-chip">32 témakör</span><span class="meta-chip">Interaktív</span><span class="meta-chip">Érettségi fókusz</span></div>
@@ -1535,8 +1543,12 @@ button{touch-action:manipulation}
   body{font-size:15.6px !important;line-height:1.62 !important}
   body>main{padding:10px 8px 48px !important}
   section.mod,.module,body>main>section:not(.mod):not(.module){margin:10px 0 !important;border-radius:15px !important;padding:24px 15px !important}
-  header.masthead{padding-top:34px !important;padding-bottom:30px !important}
-  h1{font-size:clamp(2rem,10vw,3rem) !important}
+  header.masthead{padding-top:22px !important;padding-bottom:18px !important}
+  header.masthead .eyebrow{margin-bottom:8px !important}
+  header.masthead .lede{font-size:.96rem !important;line-height:1.48 !important}
+  header.masthead .meta,header.masthead .tagrow{margin-top:14px !important}
+  nav.rail{position:static !important}
+  h1{font-size:clamp(1.7rem,8vw,2.25rem) !important;line-height:1.08 !important}
   h2{font-size:1.75rem !important}
   h3{font-size:1.28rem !important}
   .source,.source-box,.task,.card,.essay-tool,.essay-box,.chain-wrap,.chain-box,.kfeladat{padding:16px !important}
@@ -1765,6 +1777,19 @@ function applyAppTheme(theme,persist=true){
 document.querySelectorAll('[data-app-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>applyAppTheme(appTheme==='dark'?'light':'dark')));
 applyAppTheme(appTheme,false);
 
+/* ---------- Mobil navigáció: kompakt, összecsukható vezérlőpanel ---------- */
+const mobileSidebar=document.getElementById('sidebar');
+const mobileMenuToggle=document.getElementById('mobileMenuToggle');
+function setMobileMenu(open){
+  const expanded=Boolean(open)&&matchMedia('(max-width:800px)').matches;
+  mobileSidebar?.classList.toggle('mobile-menu-open',expanded);
+  mobileMenuToggle?.setAttribute('aria-expanded',expanded?'true':'false');
+  if(mobileMenuToggle){mobileMenuToggle.setAttribute('aria-label',expanded?'Mobil navigáció bezárása':'Mobil navigáció megnyitása');mobileMenuToggle.textContent=expanded?'×':'☰';}
+}
+mobileMenuToggle?.addEventListener('click',()=>setMobileMenu(mobileMenuToggle.getAttribute('aria-expanded')!=='true'));
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&mobileMenuToggle?.getAttribute('aria-expanded')==='true'){setMobileMenu(false);mobileMenuToggle.focus();}});
+matchMedia('(max-width:800px)').addEventListener('change',event=>{if(!event.matches)setMobileMenu(false);});
+
 
 const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const dashboardLogic=window.TEM_DASHBOARD_LOGIC;
@@ -1871,11 +1896,11 @@ courses.forEach((course,index)=>{
   select.appendChild(option);
 });
 
-select.addEventListener('change',()=>show(Number(select.value)));
+select.addEventListener('change',()=>{show(Number(select.value));setMobileMenu(false);});
 document.getElementById('previous').addEventListener('click',()=>show(current-1));
 document.getElementById('next').addEventListener('click',()=>show(current+1));
 document.getElementById('homeButton').addEventListener('click',showHome);
-document.getElementById('sidebarHome').addEventListener('click',showHome);
+document.getElementById('sidebarHome').addEventListener('click',()=>{showHome();setMobileMenu(false);});
 
 document.getElementById('favoriteToggle').addEventListener('click',()=>setFavorite(current,!isFavorite(current)));
 document.getElementById('completeToggle').addEventListener('click',()=>{
