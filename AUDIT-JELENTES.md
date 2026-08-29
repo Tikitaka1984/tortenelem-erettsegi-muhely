@@ -514,6 +514,7 @@ Az új „Művészettörténeti korstílusok” kurzus az eredeti 32 kurzus és 
 | JavaScript-szintaxis | **PASS** | 0 hiba |
 | Mezőcímkék és ARIA | **PASS** | 0 címke nélküli input, select vagy textarea a 33. kurzusban |
 | Mobil érintési célok | **PASS** | minden feladatgomb és mező legalább 44 px |
+| Supabase kurzustartomány | **PASS** | `course_progress` és `student_annotations`: 1–33, adatbázisból visszaolvasva |
 
 ### Responsive ellenőrzés
 
@@ -529,4 +530,15 @@ A 390×844-es nézetben az 1., 16., 29., 30., 31., 32. és 33. kurzus külön me
 
 ### Helyi integrációs minősítés
 
-**PASS** – 33 egyedi kurzus, 62 változatlan külső kép, 12 új beágyazott képforrás, 0 hibás helyi hivatkozás és 0 JavaScript-szintaktikai hiba. A végleges production minősítés a Supabase-korlát módosítása, a preview regresszió és az éles visszaellenőrzés után adható ki.
+**PASS** – 33 egyedi kurzus, 62 változatlan külső kép, 12 új beágyazott képforrás, 0 hibás helyi hivatkozás és 0 JavaScript-szintaktikai hiba. A végleges production minősítés a tiszta Auth- és személyesadat-regresszió, valamint az éles visszaellenőrzés után adható ki.
+
+### Vercel preview – `8973bc3`
+
+- Deployment: `Aq7kjX3MNRSinZKjF1ZbuNDdrLZs`
+- Preview URL: https://tortenelem-erettsegi-muhely-hqnj-47nohngud.vercel.app/
+- Vercel állapot: **READY**; GitHub ellenőrzések: **3/3 PASS**.
+- 390×844, 430×932, 768×1024, 1366×768 és 1920×1080: **PASS**, minden méreten 33 kártya és 0 horizontális overflow.
+- Mobil kurzusnyitás: 1., 16., 29., 30., 31., 32. és 33.: **7/7 PASS**.
+- 33. kurzus preview: 6 modul, 27 feladat, 12 egyedi beágyazott kép, 0 hiányzó alt, 0 címke nélküli mező, 44 px-es minimális vezérlőméret, 0 belső overflow.
+
+A Supabase-migráció production adatbázisban sikeresen lefutott és visszaellenőrzésre került. A két ideiglenes tesztfelhasználó és profil létrejött. A tiszta több munkamenetes Auth- és személyesadat-regresszió még folyamatban van; ezért a 33 kurzusos változat production minősítése és merge-e nincs lezárva.
