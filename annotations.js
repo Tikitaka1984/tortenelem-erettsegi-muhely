@@ -57,7 +57,7 @@ function saveCache(){
 }
 function clearCache(userId){try{localStorage.removeItem(cacheKey(userId));}catch(_){} }
 function validAnnotation(item){
-  return item&&Number.isInteger(item.course_id)&&item.course_id>=1&&item.course_id<=32&&Object.hasOwn(TYPE_LABELS,item.annotation_type)&&item.anchor_key;
+  return item&&Number.isInteger(item.course_id)&&item.course_id>=1&&item.course_id<=app.courses.length&&Object.hasOwn(TYPE_LABELS,item.annotation_type)&&item.anchor_key;
 }
 function setStatus(message,state='ok'){
   const status=byId('annotationStatus');if(status){status.textContent=message||'';status.dataset.state=state;}

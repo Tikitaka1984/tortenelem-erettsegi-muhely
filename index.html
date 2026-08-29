@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Interaktív, kronologikus történelemérettségi-felkészítő 32 kurzussal, feladatokkal és helyben mentett tanulási haladással.">
+<meta name="description" content="Interaktív történelemérettségi-felkészítő 33 kurzussal, feladatokkal, felhőben menthető haladással és személyes tanulási eszközökkel.">
 <meta name="theme-color" content="#07101f">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Történelem Érettségi Műhely – 32 interaktív kurzus</title>
+<title>Történelem Érettségi Műhely – 33 interaktív kurzus</title>
 <style>
 :root{
   color-scheme:dark;
@@ -49,6 +49,8 @@ button{color:inherit}
 .sidebar{position:relative;z-index:2;display:flex;min-height:0;flex-direction:column;border-right:1px solid var(--line);background:linear-gradient(180deg,rgba(12,25,45,.96),rgba(7,16,31,.96));backdrop-filter:blur(22px)}
 .brand{padding:26px 22px 19px;border-bottom:1px solid var(--line)}
 .brand__top{display:flex;align-items:center;gap:13px}
+.mobile-menu-toggle{display:none;margin-left:0;flex:none;width:44px;height:44px;border:1px solid var(--line-strong);border-radius:11px;background:rgba(255,255,255,.035);color:var(--text);cursor:pointer;place-items:center;font-size:19px;line-height:1}
+.mobile-menu-toggle:hover{border-color:rgba(224,183,95,.34);background:rgba(255,255,255,.07)}
 .brand__mark{width:42px;height:42px;border:1px solid rgba(224,183,95,.42);border-radius:13px;background:linear-gradient(145deg,rgba(224,183,95,.18),rgba(224,183,95,.04));box-shadow:inset 0 1px rgba(255,255,255,.08);display:grid;place-items:center;color:var(--accent-2);font-family:Georgia,serif;font-weight:700;letter-spacing:-.04em}
 .brand__copy{min-width:0}
 .brand small{display:block;color:var(--accent);font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
@@ -117,16 +119,20 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 @media(max-width:800px){
   body{overflow:hidden}.app{height:100dvh;display:flex;flex-direction:column}
   .sidebar{display:block;min-height:auto;border-right:0;border-bottom:1px solid var(--line)}
-  .brand{padding:12px 14px}.brand__mark{width:36px;height:36px;border-radius:11px}.brand h1{font-size:17px}.brand p,.brand__meta,.course-list,.sidebar-footer{display:none}
-  .sidebar-tools{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;padding:0 14px 10px}
+  .brand{min-height:60px;padding:8px 10px}.brand__top{gap:8px}.brand__mark{width:36px;height:36px;border-radius:11px}.brand__copy{flex:1}.brand small{font-size:11px;line-height:1.2;letter-spacing:.055em}.brand h1,.brand p,.brand__meta,.course-list,.sidebar-footer{display:none}
+  .brand-theme-toggle{margin-left:0}.mobile-menu-toggle{display:grid}
+  .brand .account-launch,.mobile-select,.sidebar-tools{display:none}
+  .sidebar.mobile-menu-open .brand{padding-bottom:10px}
+  .sidebar.mobile-menu-open .brand .account-launch{display:flex;margin-top:8px}
+  .sidebar.mobile-menu-open .mobile-select{display:block;margin-top:8px}
+  .sidebar.mobile-menu-open .sidebar-tools{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;padding:8px 10px 10px}
   .sidebar-home{margin:0;padding:8px 10px}.sidebar-tools .list-caption{display:none}.search-wrap{min-width:0}
-  .mobile-select{display:block}
   .viewer{flex:1;min-height:0}
   .toolbar{height:60px;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:7px 8px}
   .current__eyebrow{display:none}.current strong{font-size:14px}.toolbar button{height:44px;width:44px;padding:0}.toolbar button .label{display:none}
   .viewer__surface{padding:8px}.frame-shell{border-radius:13px}
 }
-@media(max-width:440px){.brand small{font-size:9px}.brand h1{font-size:15px}.sidebar-home span:last-child{display:none}.toolbar{height:54px}.current strong{font-size:12.5px}.viewer__surface{padding:6px}.frame-shell{border-radius:10px}}
+@media(max-width:440px){.brand small{font-size:10.5px}.brand h1{font-size:15px}.sidebar-home span:last-child{display:none}.toolbar{height:54px}.current strong{font-size:12.5px}.viewer__surface{padding:6px}.frame-shell{border-radius:10px}}
 @media print{.sidebar,.toolbar{display:none}.app{display:block}.viewer__surface{padding:0}.frame-shell{border:0;box-shadow:none;border-radius:0}.viewer,iframe{height:100vh}}
 
 
@@ -482,15 +488,16 @@ html[data-app-theme="light"] .toolbar-exit:hover{background:rgba(168,120,42,.17)
   .viewer:not(.home-mode) .course-position{display:none}
 }
 @media(max-width:800px){
-  .viewer:not(.home-mode) .toolbar{height:auto !important;min-height:96px;grid-template-columns:minmax(0,1fr) !important;grid-template-areas:"current" "nav" !important;gap:6px;padding:7px 10px 8px}
-  .viewer:not(.home-mode) .toolbar-nav{gap:3px;scrollbar-width:none}
+  .viewer:not(.home-mode) .toolbar{height:58px !important;min-height:58px;display:block;padding:7px 8px}
+  .viewer:not(.home-mode) .toolbar .current{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .viewer:not(.home-mode) .toolbar-nav{height:44px;gap:3px;scrollbar-width:none}
   .viewer:not(.home-mode) .toolbar-nav::-webkit-scrollbar{display:none}
   .viewer:not(.home-mode) .toolbar button{width:44px;min-width:44px;padding:0}
   .viewer:not(.home-mode) .toolbar-exit{width:auto !important;min-width:76px !important;padding:0 9px !important}
   .viewer:not(.home-mode) .toolbar-exit .label{display:inline !important}
 }
 @media(max-width:440px){
-  .viewer:not(.home-mode) .toolbar{min-height:92px}
+  .viewer:not(.home-mode) .toolbar{height:58px !important;min-height:58px}
   .viewer:not(.home-mode) .toolbar-exit{min-width:76px !important;padding:0 9px !important}
 }
 
@@ -670,29 +677,30 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
 </head>
 <body>
 <main class="app">
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <header class="brand">
       <div class="brand__top">
         <div class="brand__mark" aria-hidden="true">TÉ</div>
         <div class="brand__copy">
           <small>Történelem Érettségi Műhely</small>
-          <h1>32 kurzus · végleges bemutató</h1>
+          <h1>33 kurzus · végleges bemutató</h1>
         </div>
         <button class="brand-theme-toggle app-theme-toggle" data-app-theme-toggle type="button" aria-label="Világos mód bekapcsolása" title="Világos mód bekapcsolása"><span class="app-theme-icon" aria-hidden="true">☀</span></button>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Mobil navigáció megnyitása" aria-expanded="false" aria-controls="sidebar">☰</button>
       </div>
       <p>Interaktív, kronologikus érettségi felkészítő műhely önálló tanuláshoz és tanórai használatra.</p>
-      <div class="brand__meta"><span class="meta-chip">32 témakör</span><span class="meta-chip">Interaktív</span><span class="meta-chip">Érettségi fókusz</span></div>
+      <div class="brand__meta"><span class="meta-chip">33 témakör</span><span class="meta-chip">Interaktív</span><span class="meta-chip">Érettségi fókusz</span></div>
       <button class="account-launch" id="accountButton" type="button" aria-haspopup="dialog"><span class="account-launch__name" id="accountButtonName">Bejelentkezés</span><span class="account-launch__status" id="accountButtonStatus">Vendégmód</span></button>
       <select class="mobile-select" id="mobileSelect" aria-label="Kurzus kiválasztása"></select>
     </header>
     <div class="sidebar-tools">
       <button class="sidebar-home" id="sidebarHome" type="button" title="Kilépés a kurzusból és vissza a kezdőoldalra"><span class="sidebar-home__icon" aria-hidden="true">←</span><span>Kezdőoldal / kilépés</span></button>
       <div class="search-wrap"><input class="course-search" id="courseSearch" type="search" autocomplete="off" placeholder="Kurzus keresése…" aria-label="Kurzus keresése"></div>
-      <div class="list-caption"><span>Kurzusok</span><span class="course-count" id="courseCount">32 / 32</span></div>
+      <div class="list-caption"><span>Kurzusok</span><span class="course-count" id="courseCount">33 / 33</span></div>
     </div>
     <nav class="course-list" id="courseList" aria-label="Kurzusok kronologikus sorrendben"></nav>
     <div class="empty-state" id="emptyState">Nincs a keresésnek megfelelő kurzus.<br>Próbálj másik kulcsszót.</div>
-    <footer class="sidebar-footer"><span>Érettségi műhely · WEB 1.4</span><strong id="footerRange">01–32</strong></footer>
+    <footer class="sidebar-footer"><span>Érettségi műhely · WEB 1.4</span><strong id="footerRange">01–33</strong></footer>
   </aside>
   <section class="viewer home-mode" id="viewer">
     <div class="toolbar">
@@ -734,7 +742,7 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
               <div class="dashboard-hero__content">
                 <div class="dashboard-kicker">Történelem Érettségi Műhely · WEB 1.4</div>
                 <p class="personal-welcome" id="personalWelcome" hidden></p>
-          <h2>Haladj végig a 32 érettségi témakörön.</h2>
+          <h2>Haladj végig a 33 érettségi témakörön.</h2>
                 <p>A műhely megjegyzi, mely kurzusokat kezdted el, meddig jutottál bennük, melyeket jelölted meg, és melyeket tekinted befejezettnek.</p>
                 <div class="dashboard-actions">
                   <button class="dash-primary" id="continueButton" type="button">Kezdés az első kurzussal</button>
@@ -750,12 +758,12 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
             <div id="dashboardMessage" class="dashboard-message" role="status" aria-live="polite" hidden></div>
 
             <section id="dashboardOverview" aria-labelledby="progressOverviewHeading">
-              <div class="section-heading dashboard-overview-heading"><div class="section-heading__copy"><h3 id="progressOverviewHeading">Haladásod</h3><p>A 32 kurzusban elért összesített tanulási állapot.</p></div></div>
+              <div class="section-heading dashboard-overview-heading"><div class="section-heading__copy"><h3 id="progressOverviewHeading">Haladásod</h3><p>A 33 kurzusban elért összesített tanulási állapot.</p></div></div>
               <div class="dashboard-stats" aria-label="Tanulási statisztikák">
-                <article class="stat-card"><span>Befejezett</span><strong id="statCompleted">0</strong><small>a 32 kurzusból</small></article>
+                <article class="stat-card"><span>Befejezett</span><strong id="statCompleted">0</strong><small>a 33 kurzusból</small></article>
                 <article class="stat-card"><span>Folyamatban</span><strong id="statStarted">0</strong><small>megkezdett kurzus</small></article>
-                <article class="stat-card"><span>Még nem kezdett</span><strong id="statNotStarted">32</strong><small>választható kurzus</small></article>
-                <article class="stat-card"><span>Összhaladás</span><strong id="statProgress">0%</strong><small>átlag a 32 kurzuson</small></article>
+                <article class="stat-card"><span>Még nem kezdett</span><strong id="statNotStarted">33</strong><small>választható kurzus</small></article>
+                <article class="stat-card"><span>Összhaladás</span><strong id="statProgress">0%</strong><small>átlag a 33 kurzuson</small></article>
               </div>
               <div class="overall-progress-card">
                 <div><strong id="overallProgressText">Összesített haladás: 0%</strong><span>A nem megkezdett kurzusok 0%-kal számítanak.</span></div>
@@ -804,7 +812,7 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
 
             <section class="dashboard-section progress-view" id="progressView" aria-labelledby="progressViewHeading" hidden>
               <div class="section-heading progress-view__heading">
-                <div class="section-heading__copy"><h3 id="progressViewHeading">Haladásom</h3><p>Mind a 32 kurzusod állapota egy helyen.</p></div>
+                <div class="section-heading__copy"><h3 id="progressViewHeading">Haladásom</h3><p>Mind a 33 kurzusod állapota egy helyen.</p></div>
                 <button class="dash-secondary" id="backToDashboard" type="button">Vissza az áttekintéshez</button>
               </div>
               <div class="dashboard-filters progress-filters" id="progressFilters" role="group" aria-label="Haladás szűrése">
@@ -1329,7 +1337,7 @@ h4{line-height:1.35 !important}
 .task-q{line-height:1.5 !important}
 .task-controls,.tf-btns,.act{gap:8px !important}
 .task-controls button,.tf-btns .chip,.task .chip{
-  min-height:38px !important;
+  min-height:44px !important;
   line-height:1.3 !important;
 }
 .task-controls button{border-radius:10px !important;text-align:left !important}
@@ -1372,7 +1380,7 @@ h4{line-height:1.35 !important}
 .match-item.wrong-flash{background:#a74343 !important;color:#fff !important;border-color:#a74343 !important}
 
 /* Hiányos szöveg */
-.fill-in,.fill-input{min-height:39px !important}
+.fill-in,.fill-input{min-height:44px !important}
 .fill-in.ok{background:#edf7f1 !important;color:#1f664a !important;border-color:#70aa8d !important}
 .fill-in.bad{background:#fbefef !important;color:#973737 !important;border-color:#cf9090 !important}
 .fill-input{max-width:420px !important;margin-right:7px !important}
@@ -1535,8 +1543,12 @@ button{touch-action:manipulation}
   body{font-size:15.6px !important;line-height:1.62 !important}
   body>main{padding:10px 8px 48px !important}
   section.mod,.module,body>main>section:not(.mod):not(.module){margin:10px 0 !important;border-radius:15px !important;padding:24px 15px !important}
-  header.masthead{padding-top:34px !important;padding-bottom:30px !important}
-  h1{font-size:clamp(2rem,10vw,3rem) !important}
+  header.masthead{padding-top:22px !important;padding-bottom:18px !important}
+  header.masthead .eyebrow{margin-bottom:8px !important}
+  header.masthead .lede{font-size:.96rem !important;line-height:1.48 !important}
+  header.masthead .meta,header.masthead .tagrow{margin-top:14px !important}
+  nav.rail{position:static !important}
+  h1{font-size:clamp(1.7rem,8vw,2.25rem) !important;line-height:1.08 !important}
   h2{font-size:1.75rem !important}
   h3{font-size:1.28rem !important}
   .source,.source-box,.task,.card,.essay-tool,.essay-box,.chain-wrap,.chain-box,.kfeladat{padding:16px !important}
@@ -1765,6 +1777,19 @@ function applyAppTheme(theme,persist=true){
 document.querySelectorAll('[data-app-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>applyAppTheme(appTheme==='dark'?'light':'dark')));
 applyAppTheme(appTheme,false);
 
+/* ---------- Mobil navigáció: kompakt, összecsukható vezérlőpanel ---------- */
+const mobileSidebar=document.getElementById('sidebar');
+const mobileMenuToggle=document.getElementById('mobileMenuToggle');
+function setMobileMenu(open){
+  const expanded=Boolean(open)&&matchMedia('(max-width:800px)').matches;
+  mobileSidebar?.classList.toggle('mobile-menu-open',expanded);
+  mobileMenuToggle?.setAttribute('aria-expanded',expanded?'true':'false');
+  if(mobileMenuToggle){mobileMenuToggle.setAttribute('aria-label',expanded?'Mobil navigáció bezárása':'Mobil navigáció megnyitása');mobileMenuToggle.textContent=expanded?'×':'☰';}
+}
+mobileMenuToggle?.addEventListener('click',()=>setMobileMenu(mobileMenuToggle.getAttribute('aria-expanded')!=='true'));
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&mobileMenuToggle?.getAttribute('aria-expanded')==='true'){setMobileMenu(false);mobileMenuToggle.focus();}});
+matchMedia('(max-width:800px)').addEventListener('change',event=>{if(!event.matches)setMobileMenu(false);});
+
 
 const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const dashboardLogic=window.TEM_DASHBOARD_LOGIC;
@@ -1859,7 +1884,7 @@ courses.forEach((course,index)=>{
   button.type='button';
   button.className='course';
   button.dataset.index=index;
-  button.dataset.search=normalize(course.label+' '+course.period);
+  button.dataset.search=normalize(course.label+' '+course.period+' '+(course.keywords||''));
   const n=String(index+1).padStart(2,'0');
   button.innerHTML='<span class="course__icon" aria-hidden="true">'+course.icon+'</span><span><span class="course__title">'+n+' · '+course.label+'</span><span class="course__period">'+course.period+'</span></span><span class="course__status" aria-hidden="true"><span class="course__favorite"></span><span class="course__state"></span></span>';
   button.addEventListener('click',()=>show(index));
@@ -1871,11 +1896,11 @@ courses.forEach((course,index)=>{
   select.appendChild(option);
 });
 
-select.addEventListener('change',()=>show(Number(select.value)));
+select.addEventListener('change',()=>{show(Number(select.value));setMobileMenu(false);});
 document.getElementById('previous').addEventListener('click',()=>show(current-1));
 document.getElementById('next').addEventListener('click',()=>show(current+1));
 document.getElementById('homeButton').addEventListener('click',showHome);
-document.getElementById('sidebarHome').addEventListener('click',showHome);
+document.getElementById('sidebarHome').addEventListener('click',()=>{showHome();setMobileMenu(false);});
 
 document.getElementById('favoriteToggle').addEventListener('click',()=>setFavorite(current,!isFavorite(current)));
 document.getElementById('completeToggle').addEventListener('click',()=>{
@@ -2048,7 +2073,7 @@ function renderDashboardCourses(){
       (dashboardFilter==='started'&&s.visited&&!s.completed)||
       (dashboardFilter==='favorites'&&fav)||
       (dashboardFilter==='completed'&&s.completed);
-    const queryMatch=!dashboardQuery||normalize(course.label+' '+course.period).includes(dashboardQuery);
+    const queryMatch=!dashboardQuery||normalize(course.label+' '+course.period+' '+(course.keywords||'')).includes(dashboardQuery);
     if(!match||!queryMatch)return;shown++;
     grid.appendChild(createCourseCard(index));
   });

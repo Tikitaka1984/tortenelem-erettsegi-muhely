@@ -1,226 +1,234 @@
 [
-{
-"id": 1,
-"source": "zsido-kereszteny-vallas.html",
-"label": "Zsidó és keresztény vallás",
-"period": "Ókor",
-"icon": "📜"
-},
-{
-"id": 2,
-"source": "atheni-demokracia.html",
-"label": "Athéni demokrácia",
-"period": "Kr. e. 5. század",
-"icon": "🏛️"
-},
-{
-"id": 3,
-"source": "honfoglalas-allamalapitas.html",
-"label": "Honfoglalás és államalapítás",
-"period": "895–1038",
-"icon": "🐎"
-},
-{
-"id": 4,
-"source": "kozepkori-varos-es-gazdasag.html",
-"label": "Középkori városok és gazdaság",
-"period": "11–13. század",
-"icon": "🏰"
-},
-{
-"id": 5,
-"source": "aranybulla-tatarjaras.html",
-"label": "Aranybulla és tatárjárás",
-"period": "1222–1242",
-"icon": "🛡️"
-},
-{
-"id": 6,
-"source": "karoly-robert.html",
-"label": "Károly Róbert",
-"period": "1308–1342",
-"icon": "👑"
-},
-{
-"id": 7,
-"source": "hunyadi-janos-matyas.html",
-"label": "Hunyadi János és Mátyás",
-"period": "15. század",
-"icon": "⚔️"
-},
-{
-"id": 8,
-"source": "mohacs-harom-resz.html",
-"label": "A mohácsi csata és az ország három részre szakadása",
-"period": "1526–1541",
-"icon": "🗺️"
-},
-{
-"id": 9,
-"source": "reformacio-ellenreformacio.html",
-"label": "Reformáció és ellenreformáció",
-"period": "1517-től",
-"icon": "📖"
-},
-{
-"id": 10,
-"source": "reformacio-magyarorszagon-erdely.html",
-"label": "Reformáció Magyarországon és Erdélyben",
-"period": "16–17. század",
-"icon": "⛪"
-},
-{
-"id": 11,
-"source": "varhaboruk-kora.html",
-"label": "A várháborúk kora",
-"period": "1541–1568",
-"icon": "🏯"
-},
-{
-"id": 12,
-"source": "angol-alkotmanyos-monarchia.html",
-"label": "Az angol alkotmányos monarchia",
-"period": "1603–1689",
-"icon": "⚖️"
-},
-{
-"id": 13,
-"source": "rakoczi-szabadsagharc.html",
-"label": "A Rákóczi-szabadságharc",
-"period": "1703–1711",
-"icon": "🦅"
-},
-{
-"id": 14,
-"source": "felvilagosodas-uj-eszmek.html",
-"label": "Felvilágosodás – új eszmék",
-"period": "17–18. század",
-"icon": "🔆"
-},
-{
-"id": 15,
-"source": "usa-fuggetlenseg.html",
-"label": "Az USA függetlensége és létrejötte",
-"period": "1763–1791",
-"icon": "🗽"
-},
-{
-"id": 16,
-"source": "ipari-forradalom.html",
-"label": "Az ipari forradalom",
-"period": "18–19. század",
-"icon": "⚙️"
-},
-{
-"id": 17,
-"source": "felvilagosult-abszolutizmus.html",
-"label": "Felvilágosult abszolutizmus",
-"period": "18. század",
-"icon": "💡"
-},
-{
-"id": 18,
-"source": "reformkor-szechenyi-kossuth.html",
-"label": "Reformkor: Széchenyi és Kossuth",
-"period": "1825–1848",
-"icon": "⚖️"
-},
-{
-"id": 19,
-"source": "1848-forradalom-aprilisi-torvenyek.html",
-"label": "1848 és az áprilisi törvények",
-"period": "1848",
-"icon": "🇭🇺"
-},
-{
-"id": 20,
-"source": "kiegyezes.html",
-"label": "A kiegyezés",
-"period": "1867",
-"icon": "🤝"
-},
-{
-"id": 21,
-"source": "torlodo-tarsadalom.html",
-"label": "Torlódó társadalom",
-"period": "1867–1914",
-"icon": "👥"
-},
-{
-"id": 22,
-"source": "elso-vilaghaboru.html",
-"label": "Az első világháború",
-"period": "1914–1918",
-"icon": "🌍"
-},
-{
-"id": 23,
-"source": "trianon.html",
-"label": "A trianoni békerendszer és következményei",
-"period": "1918–1921",
-"icon": "🕊️"
-},
-{
-"id": 24,
-"source": "horthy-bethlen.html",
-"label": "A Horthy-korszak és a bethleni konszolidáció",
-"period": "1919–1931",
-"icon": "🏛️"
-},
-{
-"id": 25,
-"source": "nacizmus-szovjetunio.html",
-"label": "A nemzetiszocialista Németország és a kommunista Szovjetunió",
-"period": "1919–1939",
-"icon": "⚠️"
-},
-{
-"id": 26,
-"source": "magyarorszag-2vh.html",
-"label": "Magyarország a második világháborúban",
-"period": "1938–1944",
-"icon": "🪖"
-},
-{
-"id": 27,
-"source": "holokauszt.html",
-"label": "A holokauszt Európában és Magyarországon",
-"period": "1933–1945",
-"icon": "🕯️"
-},
-{
-"id": 28,
-"source": "rakosi-korszak.html",
-"label": "A Rákosi-korszak",
-"period": "1945–1956",
-"icon": "⭐"
-},
-{
-"id": 29,
-"source": "1956-forradalom.html",
-"label": "Az 1956-os forradalom és szabadságharc",
-"period": "1953–1963",
-"icon": "🕊️"
-},
-{
-"id": 30,
-"source": "kadar-korszak.html",
-"label": "A Kádár-korszak",
-"period": "1956–1988",
-"icon": "🏢"
-},
-{
-"id": 31,
-"source": "hideghaboru.html",
-"label": "A hidegháború kezdete és kiteljesedése",
-"period": "1945–1962",
-"icon": "☢️"
-},
-{
-"id": 32,
-"source": "rendszervaltas.html",
-"label": "A rendszerváltás Magyarországon",
-"period": "1985–1991",
-"icon": "🗳️"
+  {
+    "id": 1,
+    "source": "zsido-kereszteny-vallas.html",
+    "label": "Zsidó és keresztény vallás",
+    "period": "Ókor",
+    "icon": "📜"
+  },
+  {
+    "id": 2,
+    "source": "atheni-demokracia.html",
+    "label": "Athéni demokrácia",
+    "period": "Kr. e. 5. század",
+    "icon": "🏛️"
+  },
+  {
+    "id": 3,
+    "source": "honfoglalas-allamalapitas.html",
+    "label": "Honfoglalás és államalapítás",
+    "period": "895–1038",
+    "icon": "🐎"
+  },
+  {
+    "id": 4,
+    "source": "kozepkori-varos-es-gazdasag.html",
+    "label": "Középkori városok és gazdaság",
+    "period": "11–13. század",
+    "icon": "🏰"
+  },
+  {
+    "id": 5,
+    "source": "aranybulla-tatarjaras.html",
+    "label": "Aranybulla és tatárjárás",
+    "period": "1222–1242",
+    "icon": "🛡️"
+  },
+  {
+    "id": 6,
+    "source": "karoly-robert.html",
+    "label": "Károly Róbert",
+    "period": "1308–1342",
+    "icon": "👑"
+  },
+  {
+    "id": 7,
+    "source": "hunyadi-janos-matyas.html",
+    "label": "Hunyadi János és Mátyás",
+    "period": "15. század",
+    "icon": "⚔️"
+  },
+  {
+    "id": 8,
+    "source": "mohacs-harom-resz.html",
+    "label": "A mohácsi csata és az ország három részre szakadása",
+    "period": "1526–1541",
+    "icon": "🗺️"
+  },
+  {
+    "id": 9,
+    "source": "reformacio-ellenreformacio.html",
+    "label": "Reformáció és ellenreformáció",
+    "period": "1517-től",
+    "icon": "📖"
+  },
+  {
+    "id": 10,
+    "source": "reformacio-magyarorszagon-erdely.html",
+    "label": "Reformáció Magyarországon és Erdélyben",
+    "period": "16–17. század",
+    "icon": "⛪"
+  },
+  {
+    "id": 11,
+    "source": "varhaboruk-kora.html",
+    "label": "A várháborúk kora",
+    "period": "1541–1568",
+    "icon": "🏯"
+  },
+  {
+    "id": 12,
+    "source": "angol-alkotmanyos-monarchia.html",
+    "label": "Az angol alkotmányos monarchia",
+    "period": "1603–1689",
+    "icon": "⚖️"
+  },
+  {
+    "id": 13,
+    "source": "rakoczi-szabadsagharc.html",
+    "label": "A Rákóczi-szabadságharc",
+    "period": "1703–1711",
+    "icon": "🦅"
+  },
+  {
+    "id": 14,
+    "source": "felvilagosodas-uj-eszmek.html",
+    "label": "Felvilágosodás – új eszmék",
+    "period": "17–18. század",
+    "icon": "🔆"
+  },
+  {
+    "id": 15,
+    "source": "usa-fuggetlenseg.html",
+    "label": "Az USA függetlensége és létrejötte",
+    "period": "1763–1791",
+    "icon": "🗽"
+  },
+  {
+    "id": 16,
+    "source": "ipari-forradalom.html",
+    "label": "Az ipari forradalom",
+    "period": "18–19. század",
+    "icon": "⚙️"
+  },
+  {
+    "id": 17,
+    "source": "felvilagosult-abszolutizmus.html",
+    "label": "Felvilágosult abszolutizmus",
+    "period": "18. század",
+    "icon": "💡"
+  },
+  {
+    "id": 18,
+    "source": "reformkor-szechenyi-kossuth.html",
+    "label": "Reformkor: Széchenyi és Kossuth",
+    "period": "1825–1848",
+    "icon": "⚖️"
+  },
+  {
+    "id": 19,
+    "source": "1848-forradalom-aprilisi-torvenyek.html",
+    "label": "1848 és az áprilisi törvények",
+    "period": "1848",
+    "icon": "🇭🇺"
+  },
+  {
+    "id": 20,
+    "source": "kiegyezes.html",
+    "label": "A kiegyezés",
+    "period": "1867",
+    "icon": "🤝"
+  },
+  {
+    "id": 21,
+    "source": "torlodo-tarsadalom.html",
+    "label": "Torlódó társadalom",
+    "period": "1867–1914",
+    "icon": "👥"
+  },
+  {
+    "id": 22,
+    "source": "elso-vilaghaboru.html",
+    "label": "Az első világháború",
+    "period": "1914–1918",
+    "icon": "🌍"
+  },
+  {
+    "id": 23,
+    "source": "trianon.html",
+    "label": "A trianoni békerendszer és következményei",
+    "period": "1918–1921",
+    "icon": "🕊️"
+  },
+  {
+    "id": 24,
+    "source": "horthy-bethlen.html",
+    "label": "A Horthy-korszak és a bethleni konszolidáció",
+    "period": "1919–1931",
+    "icon": "🏛️"
+  },
+  {
+    "id": 25,
+    "source": "nacizmus-szovjetunio.html",
+    "label": "A nemzetiszocialista Németország és a kommunista Szovjetunió",
+    "period": "1919–1939",
+    "icon": "⚠️"
+  },
+  {
+    "id": 26,
+    "source": "magyarorszag-2vh.html",
+    "label": "Magyarország a második világháborúban",
+    "period": "1938–1944",
+    "icon": "🪖"
+  },
+  {
+    "id": 27,
+    "source": "holokauszt.html",
+    "label": "A holokauszt Európában és Magyarországon",
+    "period": "1933–1945",
+    "icon": "🕯️"
+  },
+  {
+    "id": 28,
+    "source": "rakosi-korszak.html",
+    "label": "A Rákosi-korszak",
+    "period": "1945–1956",
+    "icon": "⭐"
+  },
+  {
+    "id": 29,
+    "source": "1956-forradalom.html",
+    "label": "Az 1956-os forradalom és szabadságharc",
+    "period": "1953–1963",
+    "icon": "🕊️"
+  },
+  {
+    "id": 30,
+    "source": "kadar-korszak.html",
+    "label": "A Kádár-korszak",
+    "period": "1956–1988",
+    "icon": "🏢"
+  },
+  {
+    "id": 31,
+    "source": "hideghaboru.html",
+    "label": "A hidegháború kezdete és kiteljesedése",
+    "period": "1945–1962",
+    "icon": "☢️"
+  },
+  {
+    "id": 32,
+    "source": "rendszervaltas.html",
+    "label": "A rendszerváltás Magyarországon",
+    "period": "1985–1991",
+    "icon": "🗳️"
+  },
+  {
+    "id": 33,
+    "source": "muveszettortenet-korstilusok.html",
+  "label": "Művészettörténeti korstílusok",
+  "period": "11–18. század",
+  "icon": "🎨",
+  "keywords": "művészet művészettörténet korstílus román gótika reneszánsz barokk Mátyás"
 }
 ]

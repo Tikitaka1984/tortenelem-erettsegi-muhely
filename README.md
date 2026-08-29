@@ -7,28 +7,28 @@
 - **WEB 1.2 sprint:** tanulói fiók, Supabase Auth, saját felhős haladás, többeszközös folytatás és RLS-alapú felhasználói elkülönítés.
 - **WEB 1.3 sprint:** személyes tanulási dashboard, „Haladásom” nézet, folytatás, kedvencek, legutóbbi aktivitás és determinisztikus kurzusajánlás.
 - **WEB 1.4 sprint:** felhős könyvjelzők, saját jegyzetek, ismétlendő jelölések és kereshető „Saját anyagaim” nézet.
-- A WEB 1.0–1.3 változat a Git-előzményekből teljes egészében visszakereshető; a 32 kurzus oktatási tartalma és a 62 kép a WEB 1.4 fejlesztésben nem változott.
+- **WEB 1.4 tartalmi bővítés:** a meglévő 32 kurzus változtatása nélkül bekerült a 33. „Művészettörténeti korstílusok” kurzus.
+- A WEB 1.0–1.3 változat a Git-előzményekből teljes egészében visszakereshető; az eredeti 32 kurzus oktatási tartalma és a 62 külső kép a WEB 1.4 fejlesztésben nem változott.
 
 ## Mi ez?
 Ez a mappa a "Történelem Érettségi Műhely" alkalmazás **teljes, működő, Vercelre telepíthető** változata:
-mind a 32 kurzus, optimalizált (átlagosan kicsinyített, tömörített) képekkel.
+mind a 33 kurzus, optimalizált külső képekkel, valamint a 33. kurzus önállóan beágyazott képforrásaival.
 
 Az eredeti 45,8 MB-os, egyetlen fájlba ágyazott bemutatóhoz képest a fő változás:
-- A 32 kurzus és a 62 kép **külön fájlokba** került (nem egy hatalmas JSON-tömbbe ágyazva).
+- Az eredeti 32 kurzus és 62 kép **külön fájlokba** került; a 33. kurzus 12 egyedi képforrást saját HTML-fájljában tartalmaz.
 - A kezdőlap (`index.html`) a kurzusokat **csak megnyitáskor**, egyenként tölti be (`fetch`),
   nem induláskor egyben — ez drasztikusan lecsökkenti a kezdeti betöltési méretet és időt.
 - A képek 900px szélességre és kb. 52%-os WebP minőségre lettek újrakódolva,
   ezzel a képek mérete kb. 30,6 MB → 5,2 MB-ra csökkent.
-- Javítva lett két korábbi felületi hiba is: a lábléc és a fejléc most helyesen 32 kurzust mutat
-  (korábban "01–24" és "28 témakör" szerepelt egy 32 kurzusos verzióban).
+- A lábléc, a fejléc, a kereső és a dashboard egységesen 33 kurzust mutat.
 
 Teljes méret: kb. 8,3 MB (a dokumentációval és PWA-előkészítéssel együtt 101 fájl) — a korábbi 45,8 MB helyett.
 
 ## Mappa-szerkezet
 ```
 index.html            → a shell alkalmazás (navigáció, keresés, kedvencek, haladáskövetés)
-course-meta.json       → a 32 kurzus metaadata (cím, korszak, ikon, fájlnév)
-courses/*.html          → a 32 kurzus teljes tartalma, külön fájlokban
+course-meta.json       → a 33 kurzus metaadata (cím, korszak, ikon, fájlnév, keresési kulcsszavak)
+courses/*.html          → a 33 kurzus teljes tartalma, külön fájlokban
 images/*.webp           → az összes beágyazott kép, optimalizált méretben
 vercel.json (ha hiányzik, lásd lent) → egyszerű statikus-oldal beállítás
 manifest.webmanifest  → webalkalmazás-metaadatok és ikonkapcsolat
