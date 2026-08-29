@@ -14,7 +14,7 @@
     return Math.max(Number(item?.lastOpened)||0,Number(item?.updatedAt)||0,Number(item?.completedAt)||0);
   }
 
-  function summarize(items,total=32){
+  function summarize(items,total=33){
     const normalized=Array.isArray(items)?items:[];
     const completed=normalized.filter(item=>Boolean(item?.completed)).length;
     const inProgress=normalized.filter(item=>Boolean(item?.visited)&&!item?.completed).length;

@@ -497,3 +497,36 @@ Nincs billentyűzettel teljesen elérhetetlen fő WEB 1.4 funkció. A párbeszé
 ### WEB 1.4 végső production minősítés
 
 **PASS** – a WEB 1.4 éles kiadása működik. A 32 kurzus, 62 kép, öt előírt viewport, hat kijelölt mobil kurzus, két külön felhasználó személyesadat-elkülönítése és a személyes tanulási eszközök production ellenőrzése hiba nélkül lezárult.
+
+## WEB 1.4 – 33. kurzus integrációs audit
+
+Az új „Művészettörténeti korstílusok” kurzus az eredeti 32 kurzus és 62 külső kép módosítása nélkül került a WEB 1.4 alkalmazásba. Ez a szakasz a helyi integráció eredményét rögzíti; a felhős adatmodell, a preview és a production minősítés csak az éles környezeti ellenőrzés után zárható le.
+
+| Ellenőrzés | Eredmény | Megjegyzés |
+|---|---:|---|
+| Kurzus HTML és metaadat | **33/33 PASS** | egyedi ID, forrásfájl és tartalom |
+| Eredeti külső képek | **62/62 PASS** | változatlan állományok |
+| 33. kurzus moduljai | **6/6 PASS** | minden modul betöltődik |
+| 33. kurzus feladatai | **27/27 PASS** | minden feladattípus ténylegesen működtetve; 27/27 haladás |
+| 33. kurzus képforrásai | **12/12 PASS** | 15 képhelyen 12 egyedi beágyazott kép; 0 hiányzó alt |
+| Keresés | **PASS** | művészet, művészettörténet, korstílus, reneszánsz és barokk kulcsszó |
+| Helyi relatív hivatkozások | **PASS** | 0 hibás |
+| JavaScript-szintaxis | **PASS** | 0 hiba |
+| Mezőcímkék és ARIA | **PASS** | 0 címke nélküli input, select vagy textarea a 33. kurzusban |
+| Mobil érintési célok | **PASS** | minden feladatgomb és mező legalább 44 px |
+
+### Responsive ellenőrzés
+
+| Viewport | Eredmény | Megjegyzés |
+|---|---:|---|
+| 390×844 | **PASS** | 33 kártya, 0 horizontális overflow, 33. kurzus betöltődik |
+| 430×932 | **PASS** | 33 kártya, 0 horizontális overflow, 33. kurzus betöltődik |
+| 768×1024 | **PASS** | 33 kártya, 0 horizontális overflow, 33. kurzus betöltődik |
+| 1366×768 | **PASS** | 33 kártya, 0 horizontális overflow, 33. kurzus betöltődik |
+| 1920×1080 | **PASS** | 33 kártya, 0 horizontális overflow, 33. kurzus betöltődik |
+
+A 390×844-es nézetben az 1., 16., 29., 30., 31., 32. és 33. kurzus külön megnyílt; mind a hét esetben 0 alkalmazáskeret-overflow mellett a helyes kurzuscím jelent meg.
+
+### Helyi integrációs minősítés
+
+**PASS** – 33 egyedi kurzus, 62 változatlan külső kép, 12 új beágyazott képforrás, 0 hibás helyi hivatkozás és 0 JavaScript-szintaktikai hiba. A végleges production minősítés a Supabase-korlát módosítása, a preview regresszió és az éles visszaellenőrzés után adható ki.

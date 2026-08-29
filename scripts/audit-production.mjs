@@ -18,9 +18,9 @@ const meta = JSON.parse(read("course-meta.json"));
 const manifest = JSON.parse(read("manifest.webmanifest"));
 const courses = Array.isArray(meta) ? meta : meta.courses;
 
-if (courseFiles.length !== 32) fail.push(`Kurzusfájlok száma: ${courseFiles.length}`);
+if (courseFiles.length !== 33) fail.push(`Kurzusfájlok száma: ${courseFiles.length}`);
 if (imageFiles.length !== 62) fail.push(`Képfájlok száma: ${imageFiles.length}`);
-if (!Array.isArray(courses) || courses.length !== 32) fail.push(`Metaadat-rekordok száma: ${courses?.length ?? 0}`);
+if (!Array.isArray(courses) || courses.length !== 33) fail.push(`Metaadat-rekordok száma: ${courses?.length ?? 0}`);
 
 const ids = courses?.map((course) => String(course.id)) ?? [];
 const sources = courses?.map((course) => course.source || course.file || course.src || course.path).filter(Boolean) ?? [];
@@ -39,6 +39,13 @@ const scriptErrors = [];
 const referencePattern = /(?:src|href)\s*=\s*["']([^"']+)["']/gi;
 const cssReferencePattern = /url\(\s*["']?([^"')]+)["']?\s*\)/gi;
 const scriptPattern = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
+const artCourse = read("courses/muveszettortenet-korstilusok.html");
+const artTaskIds = [...artCourse.matchAll(/class="task[^>]*data-id="([^"]+)"/g)].map((match) => match[1]);
+const artImagePayloads = [...artCourse.matchAll(/<img\b[^>]*\bsrc="data:image\/[^;]+;base64,([^"]+)"[^>]*>/gi)].map((match) => match[1]);
+const artModules = [...artCourse.matchAll(/<section[^>]+id="m([1-6])"/g)].map((match) => match[1]);
+if (artTaskIds.length !== 27 || new Set(artTaskIds).size !== 27) fail.push(`Művészettörténeti feladatok: ${artTaskIds.length}/${new Set(artTaskIds).size}`);
+if (new Set(artImagePayloads).size !== 12) fail.push(`Művészettörténeti beágyazott képek: ${new Set(artImagePayloads).size}`);
+if (new Set(artModules).size !== 6) fail.push(`Művészettörténeti modulok: ${new Set(artModules).size}`);
 
 for (const htmlFile of htmlFiles) {
   const html = read(htmlFile);
@@ -103,6 +110,9 @@ const result = {
   uniqueCourseSources: new Set(sources).size,
   uniqueCourseContents: new Set(courseHashes).size,
   images: imageFiles.length,
+  artHistoryModules: new Set(artModules).size,
+  artHistoryTasks: artTaskIds.length,
+  artHistoryEmbeddedImages: new Set(artImagePayloads).size,
   htmlFilesChecked: htmlFiles.length,
   brokenLocalReferences: brokenReferences.length,
   javascriptSyntaxErrors: scriptErrors.length,
