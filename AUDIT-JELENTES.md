@@ -541,4 +541,26 @@ A 390×844-es nézetben az 1., 16., 29., 30., 31., 32. és 33. kurzus külön me
 - Mobil kurzusnyitás: 1., 16., 29., 30., 31., 32. és 33.: **7/7 PASS**.
 - 33. kurzus preview: 6 modul, 27 feladat, 12 egyedi beágyazott kép, 0 hiányzó alt, 0 címke nélküli mező, 44 px-es minimális vezérlőméret, 0 belső overflow.
 
-A Supabase-migráció production adatbázisban sikeresen lefutott és visszaellenőrzésre került. A két ideiglenes tesztfelhasználó és profil létrejött. A tiszta több munkamenetes Auth- és személyesadat-regresszió még folyamatban van; ezért a 33 kurzusos változat production minősítése és merge-e nincs lezárva.
+A Supabase-migráció production adatbázisban sikeresen lefutott és visszaellenőrzésre került. A `course_progress` és a `student_annotations` kurzustartomány-korlátja egyaránt 1–33.
+
+### Auth-, személyesadat- és PWA-preview regresszió
+
+| Ellenőrzés | Eredmény | Megjegyzés |
+|---|---:|---|
+| Bejelentkezés és felhőszinkron | **PASS** | A tesztfelhasználó belépett; `Szinkronizálva` állapot, 0 konzolhiba |
+| Könyvjelző | **PASS** | két külön szemantikus horgonypont mentése és visszatöltése |
+| Jegyzet létrehozás és szerkesztés | **PASS** | a szerkesztett szöveg új böngészőlapon is megjelent |
+| „Ezt ismételd át” | **PASS** | a jelölés felhőből visszatöltődött |
+| „Saját anyagaim” | **PASS** | 4 elem: 2 könyvjelző, 1 jegyzet, 1 ismétlendő jelölés |
+| Több munkamenetes visszatöltés | **PASS** | azonos origin új böngészőlapján 4/4 elem és szerkesztett jegyzet |
+| Kijelentkezési adatvédelem | **PASS** | a személyes jegyzetszöveg kijelentkezés után nem maradt a dokumentumban |
+| Kétfelhasználós elkülönítés | **PASS** | B felhasználó 0 személyes elemet látott, A jegyzete nem jelent meg |
+| Manifest | **PASS** | preview URL-en a 33 kurzusos manifest tényleges JSON-tartalma betöltődött |
+| Service worker | **PASS** | a verziózott `1.4-shell-v2` és `1.4-runtime-v2` programfájl betöltődött |
+| Böngészőkonzol JavaScript-hiba | **PASS** | 0 |
+
+Megjegyzés: a hitelesítés nélküli parancssori lekérés a Vercel preview-védelmi oldal HTML-jét adja vissza; a hitelesített böngészős ellenőrzés igazolta, hogy ez nem alkalmazás-útválasztási vagy PWA-hiba.
+
+### 33. kurzus végső preview minősítés
+
+**PASS** – a 33 kurzusos WEB 1.4 preview minden statikus, responsive, interaktív, Supabase Auth-, személyesadat-elkülönítési és PWA-alapregressziós ellenőrzésen megfelelt. A production merge és az éles URL-en végzett utóellenőrzés még nem történt meg.
