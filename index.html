@@ -683,13 +683,13 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
         <div class="brand__mark" aria-hidden="true">TÉ</div>
         <div class="brand__copy">
           <small>Történelem Érettségi Műhely</small>
-          <h1>33 kurzus · végleges bemutató</h1>
+          <h1><span data-course-total>33</span> kurzus · végleges bemutató</h1>
         </div>
         <button class="brand-theme-toggle app-theme-toggle" data-app-theme-toggle type="button" aria-label="Világos mód bekapcsolása" title="Világos mód bekapcsolása"><span class="app-theme-icon" aria-hidden="true">☀</span></button>
         <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Mobil navigáció megnyitása" aria-expanded="false" aria-controls="sidebar">☰</button>
       </div>
       <p>Interaktív, kronologikus érettségi felkészítő műhely önálló tanuláshoz és tanórai használatra.</p>
-      <div class="brand__meta"><span class="meta-chip">33 témakör</span><span class="meta-chip">Interaktív</span><span class="meta-chip">Érettségi fókusz</span></div>
+      <div class="brand__meta"><span class="meta-chip"><span data-course-total>33</span> témakör</span><span class="meta-chip">Interaktív</span><span class="meta-chip">Érettségi fókusz</span></div>
       <button class="account-launch" id="accountButton" type="button" aria-haspopup="dialog"><span class="account-launch__name" id="accountButtonName">Bejelentkezés</span><span class="account-launch__status" id="accountButtonStatus">Vendégmód</span></button>
       <select class="mobile-select" id="mobileSelect" aria-label="Kurzus kiválasztása"></select>
     </header>
@@ -742,7 +742,7 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
               <div class="dashboard-hero__content">
                 <div class="dashboard-kicker">Történelem Érettségi Műhely · WEB 1.4</div>
                 <p class="personal-welcome" id="personalWelcome" hidden></p>
-          <h2>Haladj végig a 33 érettségi témakörön.</h2>
+          <h2>Haladj végig a <span data-course-total>33</span> érettségi témakörön.</h2>
                 <p>A műhely megjegyzi, mely kurzusokat kezdted el, meddig jutottál bennük, melyeket jelölted meg, és melyeket tekinted befejezettnek.</p>
                 <div class="dashboard-actions">
                   <button class="dash-primary" id="continueButton" type="button">Kezdés az első kurzussal</button>
@@ -758,12 +758,12 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
             <div id="dashboardMessage" class="dashboard-message" role="status" aria-live="polite" hidden></div>
 
             <section id="dashboardOverview" aria-labelledby="progressOverviewHeading">
-              <div class="section-heading dashboard-overview-heading"><div class="section-heading__copy"><h3 id="progressOverviewHeading">Haladásod</h3><p>A 33 kurzusban elért összesített tanulási állapot.</p></div></div>
+              <div class="section-heading dashboard-overview-heading"><div class="section-heading__copy"><h3 id="progressOverviewHeading">Haladásod</h3><p>A <span data-course-total>33</span> kurzusban elért összesített tanulási állapot.</p></div></div>
               <div class="dashboard-stats" aria-label="Tanulási statisztikák">
-                <article class="stat-card"><span>Befejezett</span><strong id="statCompleted">0</strong><small>a 33 kurzusból</small></article>
+                <article class="stat-card"><span>Befejezett</span><strong id="statCompleted">0</strong><small>a <span data-course-total>33</span> kurzusból</small></article>
                 <article class="stat-card"><span>Folyamatban</span><strong id="statStarted">0</strong><small>megkezdett kurzus</small></article>
                 <article class="stat-card"><span>Még nem kezdett</span><strong id="statNotStarted">33</strong><small>választható kurzus</small></article>
-                <article class="stat-card"><span>Összhaladás</span><strong id="statProgress">0%</strong><small>átlag a 33 kurzuson</small></article>
+                <article class="stat-card"><span>Összhaladás</span><strong id="statProgress">0%</strong><small>átlag a <span data-course-total>33</span> kurzuson</small></article>
               </div>
               <div class="overall-progress-card">
                 <div><strong id="overallProgressText">Összesített haladás: 0%</strong><span>A nem megkezdett kurzusok 0%-kal számítanak.</span></div>
@@ -812,7 +812,7 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
 
             <section class="dashboard-section progress-view" id="progressView" aria-labelledby="progressViewHeading" hidden>
               <div class="section-heading progress-view__heading">
-                <div class="section-heading__copy"><h3 id="progressViewHeading">Haladásom</h3><p>Mind a 33 kurzusod állapota egy helyen.</p></div>
+                <div class="section-heading__copy"><h3 id="progressViewHeading">Haladásom</h3><p>Mind a <span data-course-total>33</span> kurzusod állapota egy helyen.</p></div>
                 <button class="dash-secondary" id="backToDashboard" type="button">Vissza az áttekintéshez</button>
               </div>
               <div class="dashboard-filters progress-filters" id="progressFilters" role="group" aria-label="Haladás szűrése">
@@ -934,6 +934,9 @@ const select=document.getElementById('mobileSelect');
 const frame=document.getElementById('courseFrame');
 const search=document.getElementById('courseSearch');
 const count=document.getElementById('courseCount');
+document.querySelectorAll('[data-course-total]').forEach(element=>{element.textContent=String(courses.length);});
+document.getElementById('statNotStarted').textContent=String(courses.length);
+document.getElementById('footerRange').textContent='01–'+String(courses.length).padStart(2,'0');
 const empty=document.getElementById('emptyState');
 const positionText=document.getElementById('positionText');
 const positionFill=document.getElementById('positionFill');
@@ -1797,7 +1800,7 @@ const dashboardLogic=window.TEM_DASHBOARD_LOGIC;
 /* ---------- Helyi tanulói állapot ---------- */
 const STORAGE_KEY='tortenelem-erettsegi-muhely-ui2-progress-v1';
 const CLOUD_CACHE_PREFIX='tortenelem-erettsegi-muhely-cloud-v1:';
-const stateDefaults={version:2,lastCourse:null,favorites:[],courses:{}};
+const stateDefaults={version:3,lastCourse:null,favorites:[],favoriteUpdatedAt:{},courses:{}};
 let activeStorageKey=STORAGE_KEY;
 let appState=loadAppState();
 let dashboardFilter='all';
@@ -1811,9 +1814,10 @@ let saveTimer=null;
 
 function normalizeAppState(saved){
   return {
-    version:2,
+    version:3,
     lastCourse:Number.isInteger(saved?.lastCourse)?saved.lastCourse:null,
     favorites:Array.isArray(saved?.favorites)?saved.favorites.map(Number).filter(Number.isFinite):[],
+    favoriteUpdatedAt:saved?.favoriteUpdatedAt&&typeof saved.favoriteUpdatedAt==='object'?saved.favoriteUpdatedAt:{},
     courses:saved?.courses && typeof saved.courses==='object'?saved.courses:{}
   };
 }
@@ -1860,7 +1864,8 @@ function setFavorite(index,on){
   const id=courses[index].id;
   appState.favorites=appState.favorites.filter(x=>x!==id);
   if(on)appState.favorites.push(id);
-  touchCourse(index);
+  appState.favoriteUpdatedAt[String(id)]=Date.now();
+  queueCloudCourse(index);
   saveAppState();refreshChrome();renderDashboard();
 }
 function courseProgress(index){

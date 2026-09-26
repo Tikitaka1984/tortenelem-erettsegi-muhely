@@ -18,9 +18,9 @@ const meta = JSON.parse(read("course-meta.json"));
 const manifest = JSON.parse(read("manifest.webmanifest"));
 const courses = Array.isArray(meta) ? meta : meta.courses;
 
-if (courseFiles.length !== 33) fail.push(`Kurzusfájlok száma: ${courseFiles.length}`);
 if (imageFiles.length !== 62) fail.push(`Képfájlok száma: ${imageFiles.length}`);
-if (!Array.isArray(courses) || courses.length !== 33) fail.push(`Metaadat-rekordok száma: ${courses?.length ?? 0}`);
+if (!Array.isArray(courses)) fail.push("A kurzus-metaadat nem tömb");
+else if (courses.length !== courseFiles.length) fail.push(`A kurzus-metaadat (${courses.length}) és a kurzusfájlok (${courseFiles.length}) száma eltér`);
 
 const ids = courses?.map((course) => String(course.id)) ?? [];
 const sources = courses?.map((course) => course.source || course.file || course.src || course.path).filter(Boolean) ?? [];
