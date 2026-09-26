@@ -14,12 +14,13 @@
     return Math.max(Number(item?.lastOpened)||0,Number(item?.updatedAt)||0,Number(item?.completedAt)||0);
   }
 
-  function summarize(items,total=33){
+  function summarize(items,total){
     const normalized=Array.isArray(items)?items:[];
+    const courseTotal=Number.isFinite(total)?Math.max(0,total):normalized.length;
     const completed=normalized.filter(item=>Boolean(item?.completed)).length;
     const inProgress=normalized.filter(item=>Boolean(item?.visited)&&!item?.completed).length;
-    const notStarted=Math.max(0,total-completed-inProgress);
-    const aggregate=Math.round(normalized.reduce((sum,item)=>sum+clampProgress(item?.progress,item?.completed),0)/Math.max(1,total));
+    const notStarted=Math.max(0,courseTotal-completed-inProgress);
+    const aggregate=Math.round(normalized.reduce((sum,item)=>sum+clampProgress(item?.progress,item?.completed),0)/Math.max(1,courseTotal));
     return {completed,inProgress,notStarted,aggregate};
   }
 

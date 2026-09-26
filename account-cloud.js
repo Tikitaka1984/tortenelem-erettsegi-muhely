@@ -11,6 +11,7 @@ const importDialog=byId('importDialog');
 const accountButton=byId('accountButton');
 const IMPORT_PREFIX='tortenelem-erettsegi-muhely-import-decision-v1:';
 const SDK_URL='./vendor/supabase.min.js';
+const PROGRESS_COLUMNS='course_id,progress_percent,status,section_id,scroll_position,favorite,favorite_updated_at,last_opened_at,client_updated_at,updated_at,completed_at';
 
 let client=null;
 let cloudConfig=null;
@@ -126,18 +127,22 @@ function stateFromRows(rows,cached){
     const key=String(row.course_id),local=cached.courses?.[key];remoteIds.add(key);
     const remoteTime=Date.parse(row.client_updated_at||row.updated_at)||0;
     const localTime=Number(local?.updatedAt)||0;
-    if(local&&localTime>remoteTime){next.courses[key]=local;if(cached.favorites.includes(Number(key)))next.favorites.push(Number(key));localNewer.push(index);continue;}
-    next.courses[key]={
+    if(local&&localTime>remoteTime){next.courses[key]=local;localNewer.push(index);}
+    else next.courses[key]={
       visited:row.status!=='not_started',maxRead:Number(row.progress_percent)||0,lastRead:Number(row.progress_percent)||0,
       completed:row.status==='completed',lastOpened:Date.parse(row.last_opened_at)||0,sectionId:row.section_id||null,
       scrollPosition:Number(row.scroll_position)||0,updatedAt:remoteTime,completedAt:Date.parse(row.completed_at)||null,
       drafts:local?.drafts&&typeof local.drafts==='object'?local.drafts:{}
     };
-    if(row.favorite)next.favorites.push(Number(row.course_id));
+    const remoteFavoriteTime=Date.parse(row.favorite_updated_at||row.client_updated_at||row.updated_at)||0;
+    const localFavoriteTime=Number(cached.favoriteUpdatedAt?.[key])||0;
+    next.favoriteUpdatedAt[key]=Math.max(remoteFavoriteTime,localFavoriteTime);
+    if(localFavoriteTime>remoteFavoriteTime){if(cached.favorites.includes(Number(key)))next.favorites.push(Number(key));if(!localNewer.includes(index))localNewer.push(index);}
+    else if(row.favorite)next.favorites.push(Number(row.course_id));
   }
   app.courses.forEach((course,index)=>{
     const key=String(course.id),local=cached.courses?.[key];
-    if(!remoteIds.has(key)&&local&&meaningfulState(cached,index)){next.courses[key]=local;if(cached.favorites.includes(Number(key)))next.favorites.push(Number(key));localNewer.push(index);}
+    if(!remoteIds.has(key)&&local&&meaningfulState(cached,index)){next.courses[key]=local;if(cached.favorites.includes(Number(key)))next.favorites.push(Number(key));next.favoriteUpdatedAt[key]=Number(cached.favoriteUpdatedAt?.[key])||0;localNewer.push(index);}
   });
   let latest=-1,latestTime=-1;
   app.courses.forEach((course,index)=>{const t=Number(next.courses?.[String(course.id)]?.lastOpened)||0;if(t>latestTime){latestTime=t;latest=index;}});
@@ -152,6 +157,7 @@ function mergeGuestIntoState(guest,cloud){
     const key=String(course.id),guestItem=guest.courses?.[key],cloudItem=merged.courses?.[key];
     if(guestItem&&(!cloudItem||(Number(guestItem.updatedAt)||Number(guestItem.lastOpened)||0)>=(Number(cloudItem.updatedAt)||0))){merged.courses[key]=guestItem;changed.push(index);}
     if(guest.favorites?.includes(Number(course.id))&&!merged.favorites.includes(Number(course.id))){merged.favorites.push(Number(course.id));if(!changed.includes(index))changed.push(index);}
+    if(guest.favoriteUpdatedAt?.[key])merged.favoriteUpdatedAt[key]=guest.favoriteUpdatedAt[key];
   });
   if(Number.isInteger(guest.lastCourse))merged.lastCourse=guest.lastCourse;
   return {state:merged,changed};
@@ -192,7 +198,7 @@ async function applySession(session,event){
     currentProfile=await loadProfile(currentUser);if(revision!==sessionRevision)return;
     const cacheKey=app.cloudCachePrefix+currentUser.id;
     const cached=app.loadState(cacheKey);
-    const response=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at');
+    const response=await client.from('course_progress').select(PROGRESS_COLUMNS);
     if(response.error)throw response.error;if(revision!==sessionRevision)return;
     const merged=stateFromRows(response.data,cached);app.setState(merged.state,cacheKey);
     merged.localNewer.forEach(index=>pendingCourses.add(index));
@@ -215,7 +221,7 @@ async function refreshCloudProgress(){
   if(!currentUser||!client||!navigator.onLine)return;
   const userId=currentUser.id;setSyncStatus('Haladás frissítése…','syncing');
   try{
-    const response=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at');
+    const response=await client.from('course_progress').select(PROGRESS_COLUMNS);
     if(response.error)throw response.error;if(currentUser?.id!==userId)return;
     const key=app.cloudCachePrefix+userId,merged=stateFromRows(response.data,app.loadState(key));app.setState(merged.state,key);
     merged.localNewer.forEach(index=>pendingCourses.add(index));updateAccountUi();setSyncStatus('Szinkronizálva','ok');if(pendingCourses.size)scheduleSync(100);
@@ -230,6 +236,7 @@ function rowFromState(index){
     user_id:currentUser.id,course_id:Number(course.id),progress_percent:completed?100:Math.max(0,Math.min(100,Number(item.maxRead)||0)),
     status:completed?'completed':(visited?'in_progress':'not_started'),section_id:item.sectionId||null,
     scroll_position:Math.max(0,Math.round(Number(item.scrollPosition)||0)),favorite:state.favorites.includes(Number(course.id)),
+    favorite_updated_at:new Date(Number(state.favoriteUpdatedAt?.[String(course.id)])||updated).toISOString(),
     last_opened_at:item.lastOpened?new Date(item.lastOpened).toISOString():null,client_updated_at:new Date(updated).toISOString(),
     completed_at:completed?new Date(Number(item.completedAt)||updated).toISOString():null
   };
@@ -241,30 +248,28 @@ function applyRemoteRow(row,index){
     scrollPosition:Number(row.scroll_position)||0,updatedAt:Date.parse(row.client_updated_at||row.updated_at)||0,
     completedAt:Date.parse(row.completed_at)||null,drafts:existing?.drafts||{}};
   state.favorites=state.favorites.filter(id=>Number(id)!==Number(row.course_id));if(row.favorite)state.favorites.push(Number(row.course_id));
+  state.favoriteUpdatedAt[key]=Date.parse(row.favorite_updated_at||row.client_updated_at||row.updated_at)||0;
   app.save(true);app.refresh();
 }
 async function syncOne(index,userId){
   if(!currentUser||currentUser.id!==userId)return;
   const local=rowFromState(index);
-  const found=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at').eq('course_id',local.course_id).maybeSingle();
+  const found=await client.from('course_progress').select(PROGRESS_COLUMNS).eq('course_id',local.course_id).maybeSingle();
   if(found.error)throw found.error;
-  const remoteTime=Date.parse(found.data?.client_updated_at||found.data?.updated_at)||0;
-  const localTime=Date.parse(local.client_updated_at)||0;
-  if(found.data&&remoteTime>localTime){applyRemoteRow(found.data,index);return;}
-  const saved=await client.from('course_progress').upsert(local,{onConflict:'user_id,course_id'});
+  const saved=await client.from('course_progress').upsert(local,{onConflict:'user_id,course_id'}).select(PROGRESS_COLUMNS).single();
   if(saved.error){
     if(String(saved.error.message||'').includes('stale_progress_update')){
-      const newest=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at').eq('course_id',local.course_id).single();
+      const newest=await client.from('course_progress').select(PROGRESS_COLUMNS).eq('course_id',local.course_id).single();
       if(newest.error)throw newest.error;applyRemoteRow(newest.data,index);return;
     }
     throw saved.error;
-  }
+  }else applyRemoteRow(saved.data,index);
 }
 async function syncBatch(indexes,userId){
   if(!indexes.length||!currentUser||currentUser.id!==userId)return {synced:[],error:null};
   const rows=indexes.map(rowFromState);
-  const saved=await client.from('course_progress').upsert(rows,{onConflict:'user_id,course_id'});
-  if(!saved.error)return {synced:indexes,error:null};
+  const saved=await client.from('course_progress').upsert(rows,{onConflict:'user_id,course_id'}).select(PROGRESS_COLUMNS);
+  if(!saved.error){(saved.data||[]).forEach(row=>{const index=courseIndexById(row.course_id);if(index>=0)applyRemoteRow(row,index);});return {synced:indexes,error:null};}
   if(!String(saved.error.message||'').includes('stale_progress_update'))throw saved.error;
   const synced=[];let fallbackError=null;
   for(const index of indexes){
