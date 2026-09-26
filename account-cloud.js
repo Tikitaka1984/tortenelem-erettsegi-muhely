@@ -13,11 +13,14 @@ const IMPORT_PREFIX='tortenelem-erettsegi-muhely-import-decision-v1:';
 const SDK_URL='./vendor/supabase.min.js';
 
 let client=null;
+let cloudConfig=null;
 let currentUser=null;
+let currentAccessToken=null;
 let currentProfile=null;
 let syncTimer=null;
 let syncing=false;
 let sessionRevision=0;
+let activeImport=null;
 const pendingCourses=new Set();
 
 function openDialog(dialog,focusSelector){
@@ -153,12 +156,16 @@ function mergeGuestIntoState(guest,cloud){
   if(Number.isInteger(guest.lastCourse))merged.lastCourse=guest.lastCourse;
   return {state:merged,changed};
 }
-function askImport(){
-  return new Promise(resolve=>{
+function askImport(userId){
+  if(activeImport?.userId===userId)return activeImport.promise;
+  activeImport?.finish(null);
+  let finish;
+  const promise=new Promise(resolve=>{
     const yes=byId('acceptImport'),no=byId('declineImport');
-    const finish=value=>{yes.onclick=null;no.onclick=null;closeDialog(importDialog);resolve(value);};
+    finish=value=>{yes.onclick=null;no.onclick=null;closeDialog(importDialog);if(activeImport?.promise===promise)activeImport=null;resolve(value);};
     yes.onclick=()=>finish(true);no.onclick=()=>finish(false);openDialog(importDialog,'#acceptImport');
   });
+  activeImport={userId,promise,finish};return promise;
 }
 
 async function loadProfile(user){
@@ -172,11 +179,12 @@ async function loadProfile(user){
 async function applySession(session,event){
   const revision=++sessionRevision;
   if(!session?.user){
-    currentUser=null;currentProfile=null;pendingCourses.clear();clearTimeout(syncTimer);
+    activeImport?.finish(null);
+    currentUser=null;currentProfile=null;currentAccessToken=null;pendingCourses.clear();clearTimeout(syncTimer);
     await window.TEM_ANNOTATIONS?.setSession?.(null);
     updateAccountUi();app.setState(app.loadState(app.guestStorageKey),app.guestStorageKey);return;
   }
-  currentUser=session.user;
+  currentUser=session.user;currentAccessToken=session.access_token||null;
   const annotationsReady=window.TEM_ANNOTATIONS?.setSession?.({client,user:currentUser})||Promise.resolve();
   app.setDashboardCloudState?.({authenticated:true,loading:true,error:''});
   setSyncStatus('Felhőadatok betöltése…','syncing');
@@ -190,7 +198,8 @@ async function applySession(session,event){
     merged.localNewer.forEach(index=>pendingCourses.add(index));
     const guest=app.loadState(app.guestStorageKey),decisionKey=IMPORT_PREFIX+currentUser.id;
     if(hasGuestProgress(guest)&&!localStorage.getItem(decisionKey)){
-      const accepted=await askImport();localStorage.setItem(decisionKey,accepted?'yes':'no');
+      const accepted=await askImport(currentUser.id);if(revision!==sessionRevision)return;
+      localStorage.setItem(decisionKey,accepted?'yes':'no');
       if(accepted){const imported=mergeGuestIntoState(guest,app.getState());app.setState(imported.state,cacheKey);imported.changed.forEach(index=>pendingCourses.add(index));}
     }
     await annotationsReady;if(revision!==sessionRevision)return;
@@ -246,10 +255,24 @@ async function syncOne(index,userId){
   if(saved.error){
     if(String(saved.error.message||'').includes('stale_progress_update')){
       const newest=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at').eq('course_id',local.course_id).single();
-      if(!newest.error)applyRemoteRow(newest.data,index);return;
+      if(newest.error)throw newest.error;applyRemoteRow(newest.data,index);return;
     }
     throw saved.error;
   }
+}
+async function syncBatch(indexes,userId){
+  if(!indexes.length||!currentUser||currentUser.id!==userId)return {synced:[],error:null};
+  const rows=indexes.map(rowFromState);
+  const saved=await client.from('course_progress').upsert(rows,{onConflict:'user_id,course_id'});
+  if(!saved.error)return {synced:indexes,error:null};
+  if(!String(saved.error.message||'').includes('stale_progress_update'))throw saved.error;
+  const synced=[];let fallbackError=null;
+  for(const index of indexes){
+    if(currentUser?.id!==userId)break;
+    try{await syncOne(index,userId);if(currentUser?.id===userId)synced.push(index);}
+    catch(error){fallbackError||=error;}
+  }
+  return {synced,error:fallbackError};
 }
 async function flushPending(){
   if(syncing||!currentUser||!client)return;
@@ -257,7 +280,9 @@ async function flushPending(){
   syncing=true;clearTimeout(syncTimer);setSyncStatus('Szinkronizálás…','syncing');
   const userId=currentUser.id;
   try{
-    while(pendingCourses.size&&currentUser?.id===userId){const index=pendingCourses.values().next().value;pendingCourses.delete(index);await syncOne(index,userId);}
+    const batch=[...pendingCourses],result=await syncBatch(batch,userId);
+    if(currentUser?.id===userId)result.synced.forEach(index=>pendingCourses.delete(index));
+    if(result.error)throw result.error;
     if(currentUser?.id===userId)setSyncStatus('Szinkronizálva','ok');
   }catch(error){
     console.warn('Cloud progress sync failed',error);setSyncStatus(friendlyError(error,'sync'),navigator.onLine?'error':'offline');
@@ -267,6 +292,12 @@ function scheduleSync(delay=1300){clearTimeout(syncTimer);syncTimer=setTimeout(f
 function queueCourse(index){
   if(!currentUser||!Number.isInteger(index))return;
   pendingCourses.add(index);setSyncStatus(navigator.onLine?'Szinkronizálás…':'Offline – később szinkronizáljuk',navigator.onLine?'syncing':'offline');scheduleSync();
+}
+function savePendingOnPageHide(){
+  if(!currentUser||!currentAccessToken||!cloudConfig||!pendingCourses.size)return;
+  const rows=[...pendingCourses].map(rowFromState);
+  const endpoint=cloudConfig.supabaseUrl.replace(/\/$/,'')+'/rest/v1/course_progress?on_conflict=user_id%2Ccourse_id';
+  fetch(endpoint,{method:'POST',keepalive:true,headers:{apikey:cloudConfig.supabaseKey,Authorization:'Bearer '+currentAccessToken,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates'},body:JSON.stringify(rows)}).catch(()=>{});
 }
 
 async function deleteAllLearningData(){
@@ -326,6 +357,7 @@ byId('showMaterialsMenu')?.addEventListener('click',()=>{closeDialog(userDialog)
 
 window.addEventListener('online',()=>{if(currentUser){setSyncStatus('Szinkronizálás…','syncing');scheduleSync(50);}});
 window.addEventListener('offline',()=>{if(currentUser)setSyncStatus('Offline – később szinkronizáljuk','offline');});
+window.addEventListener('pagehide',savePendingOnPageHide);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&pendingCourses.size)flushPending();if(document.visibilityState==='visible'&&currentUser)refreshCloudProgress();});
 
 window.TEM_CLOUD={queueCourse,isAuthenticated:()=>Boolean(currentUser),deleteAll:deleteAllLearningData,flush:flushPending,refresh:refreshCloudProgress,openAuth:()=>{showAuthPanel('login');openDialog(authDialog,'#loginEmail');}};
@@ -334,9 +366,10 @@ updateAccountUi();setSyncStatus('Felhőkapcsolat ellenőrzése…','syncing');
 (async function init(){
   try{
     const [config]=await Promise.all([loadConfig(),loadSdk()]);
+    cloudConfig=config;
     client=window.supabase.createClient(config.supabaseUrl,config.supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storageKey:'tem-web-1.2-auth'}});
-    client.auth.onAuthStateChange((event,session)=>setTimeout(()=>applySession(session,event),0));
-    const result=await client.auth.getSession();if(result.error)throw result.error;await applySession(result.data.session,'INITIAL_SESSION');
+    let initialSessionHandled=false;
+    client.auth.onAuthStateChange((event,session)=>{if(event==='INITIAL_SESSION'){if(initialSessionHandled)return;initialSessionHandled=true;}setTimeout(()=>applySession(session,event),0);});
   }catch(error){console.warn('Cloud services unavailable; guest mode remains active',error);currentUser=null;currentProfile=null;updateAccountUi();setSyncStatus('Vendégmód · felhő nem elérhető','error');}
 })();
 
