@@ -934,6 +934,12 @@ const select=document.getElementById('mobileSelect');
 const frame=document.getElementById('courseFrame');
 const search=document.getElementById('courseSearch');
 const count=document.getElementById('courseCount');
+function updateDocumentCourseCount(total){
+  const description=document.querySelector('meta[name="description"]');
+  document.title='Történelem Érettségi Műhely – '+total+' interaktív kurzus';
+  if(description)description.content='Interaktív történelemérettségi-felkészítő '+total+' kurzussal, feladatokkal, felhőben menthető haladással és személyes tanulási eszközökkel.';
+}
+updateDocumentCourseCount(courses.length);
 document.querySelectorAll('[data-course-total]').forEach(element=>{element.textContent=String(courses.length);});
 document.getElementById('statNotStarted').textContent=String(courses.length);
 document.getElementById('footerRange').textContent='01–'+String(courses.length).padStart(2,'0');
