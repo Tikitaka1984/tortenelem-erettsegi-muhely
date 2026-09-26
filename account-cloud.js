@@ -11,13 +11,17 @@ const importDialog=byId('importDialog');
 const accountButton=byId('accountButton');
 const IMPORT_PREFIX='tortenelem-erettsegi-muhely-import-decision-v1:';
 const SDK_URL='./vendor/supabase.min.js';
+const PROGRESS_COLUMNS='course_id,progress_percent,status,section_id,scroll_position,favorite,favorite_updated_at,last_opened_at,client_updated_at,updated_at,completed_at';
 
 let client=null;
+let cloudConfig=null;
 let currentUser=null;
+let currentAccessToken=null;
 let currentProfile=null;
 let syncTimer=null;
 let syncing=false;
 let sessionRevision=0;
+let activeImport=null;
 const pendingCourses=new Set();
 
 function openDialog(dialog,focusSelector){
@@ -123,14 +127,19 @@ function stateFromRows(rows,cached){
     const key=String(row.course_id),local=cached.courses?.[key];remoteIds.add(key);
     const remoteTime=Date.parse(row.client_updated_at||row.updated_at)||0;
     const localTime=Number(local?.updatedAt)||0;
-    if(local&&localTime>remoteTime){next.courses[key]=local;if(cached.favorites.includes(Number(key)))next.favorites.push(Number(key));localNewer.push(index);continue;}
-    next.courses[key]={
+    const remoteFavoriteTime=Date.parse(row.favorite_updated_at||row.client_updated_at||row.updated_at)||0;
+    const localFavoriteTime=Number(local?.favoriteUpdatedAt)||localTime;
+    const useLocalProgress=Boolean(local&&localTime>remoteTime);
+    const useLocalFavorite=Boolean(local&&localFavoriteTime>remoteFavoriteTime);
+    next.courses[key]=useLocalProgress?local:{
       visited:row.status!=='not_started',maxRead:Number(row.progress_percent)||0,lastRead:Number(row.progress_percent)||0,
       completed:row.status==='completed',lastOpened:Date.parse(row.last_opened_at)||0,sectionId:row.section_id||null,
       scrollPosition:Number(row.scroll_position)||0,updatedAt:remoteTime,completedAt:Date.parse(row.completed_at)||null,
       drafts:local?.drafts&&typeof local.drafts==='object'?local.drafts:{}
     };
-    if(row.favorite)next.favorites.push(Number(row.course_id));
+    next.courses[key].favoriteUpdatedAt=useLocalFavorite?localFavoriteTime:remoteFavoriteTime;
+    if(useLocalFavorite?cached.favorites.includes(Number(key)):row.favorite)next.favorites.push(Number(row.course_id));
+    if(useLocalProgress||useLocalFavorite)localNewer.push(index);
   }
   app.courses.forEach((course,index)=>{
     const key=String(course.id),local=cached.courses?.[key];
@@ -153,12 +162,16 @@ function mergeGuestIntoState(guest,cloud){
   if(Number.isInteger(guest.lastCourse))merged.lastCourse=guest.lastCourse;
   return {state:merged,changed};
 }
-function askImport(){
-  return new Promise(resolve=>{
+function askImport(userId){
+  if(activeImport?.userId===userId)return activeImport.promise;
+  activeImport?.finish(null);
+  let finish;
+  const promise=new Promise(resolve=>{
     const yes=byId('acceptImport'),no=byId('declineImport');
-    const finish=value=>{yes.onclick=null;no.onclick=null;closeDialog(importDialog);resolve(value);};
+    finish=value=>{yes.onclick=null;no.onclick=null;closeDialog(importDialog);if(activeImport?.promise===promise)activeImport=null;resolve(value);};
     yes.onclick=()=>finish(true);no.onclick=()=>finish(false);openDialog(importDialog,'#acceptImport');
   });
+  activeImport={userId,promise,finish};return promise;
 }
 
 async function loadProfile(user){
@@ -172,11 +185,12 @@ async function loadProfile(user){
 async function applySession(session,event){
   const revision=++sessionRevision;
   if(!session?.user){
-    currentUser=null;currentProfile=null;pendingCourses.clear();clearTimeout(syncTimer);
+    activeImport?.finish(null);
+    currentUser=null;currentProfile=null;currentAccessToken=null;pendingCourses.clear();clearTimeout(syncTimer);
     await window.TEM_ANNOTATIONS?.setSession?.(null);
     updateAccountUi();app.setState(app.loadState(app.guestStorageKey),app.guestStorageKey);return;
   }
-  currentUser=session.user;
+  currentUser=session.user;currentAccessToken=session.access_token||null;
   const annotationsReady=window.TEM_ANNOTATIONS?.setSession?.({client,user:currentUser})||Promise.resolve();
   app.setDashboardCloudState?.({authenticated:true,loading:true,error:''});
   setSyncStatus('Felhőadatok betöltése…','syncing');
@@ -184,13 +198,14 @@ async function applySession(session,event){
     currentProfile=await loadProfile(currentUser);if(revision!==sessionRevision)return;
     const cacheKey=app.cloudCachePrefix+currentUser.id;
     const cached=app.loadState(cacheKey);
-    const response=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at');
+    const response=await client.from('course_progress').select(PROGRESS_COLUMNS);
     if(response.error)throw response.error;if(revision!==sessionRevision)return;
     const merged=stateFromRows(response.data,cached);app.setState(merged.state,cacheKey);
     merged.localNewer.forEach(index=>pendingCourses.add(index));
     const guest=app.loadState(app.guestStorageKey),decisionKey=IMPORT_PREFIX+currentUser.id;
     if(hasGuestProgress(guest)&&!localStorage.getItem(decisionKey)){
-      const accepted=await askImport();localStorage.setItem(decisionKey,accepted?'yes':'no');
+      const accepted=await askImport(currentUser.id);if(revision!==sessionRevision)return;
+      localStorage.setItem(decisionKey,accepted?'yes':'no');
       if(accepted){const imported=mergeGuestIntoState(guest,app.getState());app.setState(imported.state,cacheKey);imported.changed.forEach(index=>pendingCourses.add(index));}
     }
     await annotationsReady;if(revision!==sessionRevision)return;
@@ -206,7 +221,7 @@ async function refreshCloudProgress(){
   if(!currentUser||!client||!navigator.onLine)return;
   const userId=currentUser.id;setSyncStatus('Haladás frissítése…','syncing');
   try{
-    const response=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at');
+    const response=await client.from('course_progress').select(PROGRESS_COLUMNS);
     if(response.error)throw response.error;if(currentUser?.id!==userId)return;
     const key=app.cloudCachePrefix+userId,merged=stateFromRows(response.data,app.loadState(key));app.setState(merged.state,key);
     merged.localNewer.forEach(index=>pendingCourses.add(index));updateAccountUi();setSyncStatus('Szinkronizálva','ok');if(pendingCourses.size)scheduleSync(100);
@@ -220,7 +235,7 @@ function rowFromState(index){
   return {
     user_id:currentUser.id,course_id:Number(course.id),progress_percent:completed?100:Math.max(0,Math.min(100,Number(item.maxRead)||0)),
     status:completed?'completed':(visited?'in_progress':'not_started'),section_id:item.sectionId||null,
-    scroll_position:Math.max(0,Math.round(Number(item.scrollPosition)||0)),favorite:state.favorites.includes(Number(course.id)),
+    scroll_position:Math.max(0,Math.round(Number(item.scrollPosition)||0)),favorite:state.favorites.includes(Number(course.id)),favorite_updated_at:new Date(Number(item.favoriteUpdatedAt)||updated).toISOString(),
     last_opened_at:item.lastOpened?new Date(item.lastOpened).toISOString():null,client_updated_at:new Date(updated).toISOString(),
     completed_at:completed?new Date(Number(item.completedAt)||updated).toISOString():null
   };
@@ -230,26 +245,36 @@ function applyRemoteRow(row,index){
   state.courses[key]={visited:row.status!=='not_started',maxRead:Number(row.progress_percent)||0,lastRead:Number(row.progress_percent)||0,
     completed:row.status==='completed',lastOpened:Date.parse(row.last_opened_at)||0,sectionId:row.section_id||null,
     scrollPosition:Number(row.scroll_position)||0,updatedAt:Date.parse(row.client_updated_at||row.updated_at)||0,
-    completedAt:Date.parse(row.completed_at)||null,drafts:existing?.drafts||{}};
+    completedAt:Date.parse(row.completed_at)||null,favoriteUpdatedAt:Date.parse(row.favorite_updated_at||row.client_updated_at||row.updated_at)||0,drafts:existing?.drafts||{}};
   state.favorites=state.favorites.filter(id=>Number(id)!==Number(row.course_id));if(row.favorite)state.favorites.push(Number(row.course_id));
   app.save(true);app.refresh();
 }
 async function syncOne(index,userId){
   if(!currentUser||currentUser.id!==userId)return;
   const local=rowFromState(index);
-  const found=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at').eq('course_id',local.course_id).maybeSingle();
-  if(found.error)throw found.error;
-  const remoteTime=Date.parse(found.data?.client_updated_at||found.data?.updated_at)||0;
-  const localTime=Date.parse(local.client_updated_at)||0;
-  if(found.data&&remoteTime>localTime){applyRemoteRow(found.data,index);return;}
-  const saved=await client.from('course_progress').upsert(local,{onConflict:'user_id,course_id'});
+  const saved=await client.from('course_progress').upsert(local,{onConflict:'user_id,course_id'}).select(PROGRESS_COLUMNS).single();
   if(saved.error){
     if(String(saved.error.message||'').includes('stale_progress_update')){
-      const newest=await client.from('course_progress').select('course_id,progress_percent,status,section_id,scroll_position,favorite,last_opened_at,client_updated_at,updated_at,completed_at').eq('course_id',local.course_id).single();
-      if(!newest.error)applyRemoteRow(newest.data,index);return;
+      const newest=await client.from('course_progress').select(PROGRESS_COLUMNS).eq('course_id',local.course_id).single();
+      if(newest.error)throw newest.error;applyRemoteRow(newest.data,index);return;
     }
     throw saved.error;
   }
+  applyRemoteRow(saved.data,index);
+}
+async function syncBatch(indexes,userId){
+  if(!indexes.length||!currentUser||currentUser.id!==userId)return {synced:[],error:null};
+  const rows=indexes.map(rowFromState);
+  const saved=await client.from('course_progress').upsert(rows,{onConflict:'user_id,course_id'}).select(PROGRESS_COLUMNS);
+  if(!saved.error){saved.data.forEach(row=>{const index=courseIndexById(row.course_id);if(index>=0)applyRemoteRow(row,index);});return {synced:indexes,error:null};}
+  if(!String(saved.error.message||'').includes('stale_progress_update'))throw saved.error;
+  const synced=[];let fallbackError=null;
+  for(const index of indexes){
+    if(currentUser?.id!==userId)break;
+    try{await syncOne(index,userId);if(currentUser?.id===userId)synced.push(index);}
+    catch(error){fallbackError||=error;}
+  }
+  return {synced,error:fallbackError};
 }
 async function flushPending(){
   if(syncing||!currentUser||!client)return;
@@ -257,7 +282,9 @@ async function flushPending(){
   syncing=true;clearTimeout(syncTimer);setSyncStatus('Szinkronizálás…','syncing');
   const userId=currentUser.id;
   try{
-    while(pendingCourses.size&&currentUser?.id===userId){const index=pendingCourses.values().next().value;pendingCourses.delete(index);await syncOne(index,userId);}
+    const batch=[...pendingCourses],result=await syncBatch(batch,userId);
+    if(currentUser?.id===userId)result.synced.forEach(index=>pendingCourses.delete(index));
+    if(result.error)throw result.error;
     if(currentUser?.id===userId)setSyncStatus('Szinkronizálva','ok');
   }catch(error){
     console.warn('Cloud progress sync failed',error);setSyncStatus(friendlyError(error,'sync'),navigator.onLine?'error':'offline');
@@ -267,6 +294,12 @@ function scheduleSync(delay=1300){clearTimeout(syncTimer);syncTimer=setTimeout(f
 function queueCourse(index){
   if(!currentUser||!Number.isInteger(index))return;
   pendingCourses.add(index);setSyncStatus(navigator.onLine?'Szinkronizálás…':'Offline – később szinkronizáljuk',navigator.onLine?'syncing':'offline');scheduleSync();
+}
+function savePendingOnPageHide(){
+  if(!currentUser||!currentAccessToken||!cloudConfig||!pendingCourses.size)return;
+  const rows=[...pendingCourses].map(rowFromState);
+  const endpoint=cloudConfig.supabaseUrl.replace(/\/$/,'')+'/rest/v1/course_progress?on_conflict=user_id%2Ccourse_id';
+  fetch(endpoint,{method:'POST',keepalive:true,headers:{apikey:cloudConfig.supabaseKey,Authorization:'Bearer '+currentAccessToken,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates'},body:JSON.stringify(rows)}).catch(()=>{});
 }
 
 async function deleteAllLearningData(){
@@ -326,6 +359,7 @@ byId('showMaterialsMenu')?.addEventListener('click',()=>{closeDialog(userDialog)
 
 window.addEventListener('online',()=>{if(currentUser){setSyncStatus('Szinkronizálás…','syncing');scheduleSync(50);}});
 window.addEventListener('offline',()=>{if(currentUser)setSyncStatus('Offline – később szinkronizáljuk','offline');});
+window.addEventListener('pagehide',savePendingOnPageHide);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&pendingCourses.size)flushPending();if(document.visibilityState==='visible'&&currentUser)refreshCloudProgress();});
 
 window.TEM_CLOUD={queueCourse,isAuthenticated:()=>Boolean(currentUser),deleteAll:deleteAllLearningData,flush:flushPending,refresh:refreshCloudProgress,openAuth:()=>{showAuthPanel('login');openDialog(authDialog,'#loginEmail');}};
@@ -334,9 +368,10 @@ updateAccountUi();setSyncStatus('Felhőkapcsolat ellenőrzése…','syncing');
 (async function init(){
   try{
     const [config]=await Promise.all([loadConfig(),loadSdk()]);
+    cloudConfig=config;
     client=window.supabase.createClient(config.supabaseUrl,config.supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storageKey:'tem-web-1.2-auth'}});
-    client.auth.onAuthStateChange((event,session)=>setTimeout(()=>applySession(session,event),0));
-    const result=await client.auth.getSession();if(result.error)throw result.error;await applySession(result.data.session,'INITIAL_SESSION');
+    let initialSessionHandled=false;
+    client.auth.onAuthStateChange((event,session)=>{if(event==='INITIAL_SESSION'){if(initialSessionHandled)return;initialSessionHandled=true;}setTimeout(()=>applySession(session,event),0);});
   }catch(error){console.warn('Cloud services unavailable; guest mode remains active',error);currentUser=null;currentProfile=null;updateAccountUi();setSyncStatus('Vendégmód · felhő nem elérhető','error');}
 })();
 

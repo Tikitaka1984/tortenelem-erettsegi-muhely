@@ -57,7 +57,7 @@ function saveCache(){
 }
 function clearCache(userId){try{localStorage.removeItem(cacheKey(userId));}catch(_){} }
 function validAnnotation(item){
-  return item&&Number.isInteger(item.course_id)&&item.course_id>=1&&item.course_id<=app.courses.length&&Object.hasOwn(TYPE_LABELS,item.annotation_type)&&item.anchor_key;
+  return item&&Number.isInteger(item.course_id)&&courseIndex(item.course_id)>=0&&Object.hasOwn(TYPE_LABELS,item.annotation_type)&&item.anchor_key;
 }
 function setStatus(message,state='ok'){
   const status=byId('annotationStatus');if(status){status.textContent=message||'';status.dataset.state=state;}
@@ -66,6 +66,7 @@ function setStatus(message,state='ok'){
 function friendlyError(error){
   const value=String(error?.message||error||'').toLowerCase();
   if(!navigator.onLine||value.includes('fetch')||value.includes('network'))return 'A felhő most nem érhető el. A személyes elem nem lett elmentve; próbáld újra internetkapcsolattal.';
+  if(value.includes('annotation_limit_reached'))return 'Elérted az 1000 személyes elem korlátját. Új elem mentéséhez törölj egy korábbit.';
   if(value.includes('stale_annotation_update'))return 'A jegyzetet egy másik eszközön időközben módosították. Frissítettük a legújabb változatra.';
   if(value.includes('row-level security')||value.includes('42501')||value.includes('403'))return 'Ehhez a személyes elemhez nincs jogosultságod.';
   return 'A művelet most nem sikerült. Próbáld meg később.';
