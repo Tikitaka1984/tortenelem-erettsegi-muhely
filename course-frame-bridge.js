@@ -28,7 +28,9 @@ function applyTheme(theme,unified){
 function restore(value={}){
   const saved=value||{};
   document.querySelectorAll('textarea').forEach((el,index)=>{const key=el.id||el.name||'textarea-'+index;if(Object.hasOwn(saved.drafts||{},key)){el.value=saved.drafts[key];el.dispatchEvent(new Event('input',{bubbles:true}));}});
+  const normalize=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
   const run=()=>{let target=null;if(saved.sectionId){target=document.getElementById(saved.sectionId);try{target=target||document.querySelector('[data-section-id="'+CSS.escape(saved.sectionId)+'"]');}catch(_){}}
+    if(!target&&saved.anchorText){const wanted=normalize(saved.anchorText);target=[...document.querySelectorAll('h1,h2,h3,h4')].find(heading=>{const text=normalize(heading.textContent);return text===wanted||text.includes(wanted)||wanted.includes(text);})||null;}
     if(target)target.scrollIntoView({block:'start'});else scrollTo(0,Math.max(0,Number(saved.scrollPosition)||0));};
   requestAnimationFrame(()=>{run();setTimeout(run,130);setTimeout(run,500);});
 }

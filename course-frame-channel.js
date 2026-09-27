@@ -33,22 +33,24 @@ function loadCourseFrame(course,options={}){
   initData={theme:options.theme||'dark',unifiedTheme:options.unifiedTheme!==false,restore:options.restore||{}};
   frame.src='courses/'+course.source;
 }
-function requestCourseContext(){
+function requestCourseContext(timeoutMs=1200){
   if(!ready)return Promise.resolve(null);
-  const requestId=String(++contextSequence);
+  const requestId=String(++contextSequence),requestedCourseId=courseId,requestedChannelId=channelId;
   return new Promise(resolve=>{
-    const timer=setTimeout(()=>{pendingContexts.delete(requestId);resolve(null);},1200);
-    pendingContexts.set(requestId,{resolve:value=>{clearTimeout(timer);resolve(value);}});
-    send('request-context',{requestId});
+    const timer=setTimeout(()=>{pendingContexts.delete(requestId);resolve(null);},timeoutMs);
+    pendingContexts.set(requestId,{courseId:requestedCourseId,channelId:requestedChannelId,resolve:value=>{clearTimeout(timer);resolve(value?{...value,courseId:requestedCourseId}:null);}});
+    if(!send('request-context',{requestId})){clearTimeout(timer);pendingContexts.delete(requestId);resolve(null);}
   });
 }
+function flushCourseProgress(){return requestCourseContext(350);}
+
 window.TEM_COURSE_FRAME={
   loadCourseFrame,
   setCourseTheme:(theme,unifiedTheme)=>send('theme',{theme,unifiedTheme:Boolean(unifiedTheme)}),
   restoreCourseLocation:restore=>send('restore',{restore}),
   restoreCourseDrafts:drafts=>send('restore',{restore:{drafts}}),
   requestCourseContext,
-  flushCourseProgress:()=>send('request-context',{requestId:'flush'}),
+  flushCourseProgress,
   on(type,handler){if(!listeners.has(type))listeners.set(type,[]);listeners.get(type).push(handler);return()=>{listeners.set(type,(listeners.get(type)||[]).filter(fn=>fn!==handler));};}
 };
 })();

@@ -1146,18 +1146,28 @@ function renderDashboardCourses(){
 function escapeHtml(value){return String(value??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));}
 
 /* ---------- Kurzuson belüli mentés ---------- */
-function applyFrameSnapshot(data){
-  if(document.getElementById('viewer').classList.contains('home-mode')||!data)return;
-  const s=getCourseState(current);
-  const ratio=Math.max(0,Math.min(100,Number(data.lastRead)||0));
+function applyFrameSnapshotForCourse(courseId,data){
+  if(!data)return false;
+  const courseIndex=courseIndexById(courseId);if(courseIndex<0)return false;
+  const s=getCourseState(courseIndex),ratio=Math.max(0,Math.min(100,Number(data.lastRead)||0));
   s.lastRead=ratio;s.maxRead=Math.max(s.maxRead,ratio);s.lastOpened=Date.now();s.visited=true;
   s.scrollPosition=Math.max(0,Math.round(Number(data.scrollPosition)||0));s.sectionId=data.sectionId||null;
   if(data.drafts&&typeof data.drafts==='object')s.drafts={...data.drafts};
-  touchCourse(current);saveAppState();updateReadProgressUI();refreshSidebarStates();
+  touchCourse(courseIndex);saveAppState();
+  if(courseIndex===current&&!document.getElementById('viewer').classList.contains('home-mode'))updateReadProgressUI();
+  refreshSidebarStates();return true;
 }
-function captureFrameProgress(){window.TEM_COURSE_FRAME?.flushCourseProgress();}
-window.TEM_COURSE_FRAME?.on('progress',applyFrameSnapshot);
-window.TEM_COURSE_FRAME?.on('draft-change',data=>{const s=getCourseState(current);if(data.drafts&&typeof data.drafts==='object'){s.drafts={...data.drafts};touchCourse(current);saveAppState();}});
+async function captureFrameProgress(courseId=courseIdAtIndex(current)){
+  const snapshot=await window.TEM_COURSE_FRAME?.flushCourseProgress?.();
+  if(snapshot&&Number(snapshot.courseId)===Number(courseId))applyFrameSnapshotForCourse(courseId,snapshot);
+  return snapshot;
+}
+window.TEM_COURSE_FRAME?.on('progress',data=>applyFrameSnapshotForCourse(data.courseId,data));
+window.TEM_COURSE_FRAME?.on('draft-change',data=>{
+  const courseIndex=courseIndexById(data.courseId);if(courseIndex<0||!data.drafts||typeof data.drafts!=='object')return;
+  const s=getCourseState(courseIndex);s.drafts={...data.drafts};touchCourse(courseIndex);saveAppState();
+});
+
 function attachFrameTracking(){}
 
 /* ---------- Nézet és navigáció ---------- */
@@ -1189,8 +1199,12 @@ function refreshChrome(){
   if(done){done.setAttribute('aria-pressed',s.completed?'true':'false');done.title=s.completed?'Befejezett jelölés visszavonása':'Kurzus késznek jelölése';}
   updateReadProgressUI();
 }
-function showHome(){
-  captureFrameProgress();
+let navigationSequence=0;
+async function showHome(){
+  const navigationId=++navigationSequence;
+  const departingCourseId=courseIdAtIndex(current);
+  if(!document.getElementById('viewer').classList.contains('home-mode'))await captureFrameProgress(departingCourseId);
+  if(navigationId!==navigationSequence)return false;
   setDashboardMode('home');
   document.getElementById('viewer').classList.add('home-mode');
   document.getElementById('sidebarHome').setAttribute('aria-current','page');
@@ -1198,10 +1212,14 @@ function showHome(){
   history.replaceState(null,'','#home');
   renderDashboard();refreshSidebarStates();
   if(window.TEM_CLOUD?.isAuthenticated?.())setTimeout(()=>window.TEM_CLOUD?.refresh?.(),0);
+  return true;
 }
-function show(index){
-  if(index<0||index>=courses.length)return;
-  captureFrameProgress();
+async function show(index){
+  if(index<0||index>=courses.length)return false;
+  const navigationId=++navigationSequence;
+  const departingCourseId=courseIdAtIndex(current);
+  if(!document.getElementById('viewer').classList.contains('home-mode'))await captureFrameProgress(departingCourseId);
+  if(navigationId!==navigationSequence)return false;
   current=index;
   const course=courses[index],s=getCourseState(index);
   s.visited=true;s.lastOpened=Date.now();appState.lastCourseId=Number(course.id);touchCourse(index);saveAppState();
@@ -1220,8 +1238,9 @@ function show(index){
   syncThemeToggle();refreshChrome();renderDashboard();
   history.replaceState(null,'','#'+course.id);
   document.querySelector('.course[aria-current="true"]')?.scrollIntoView({block:'nearest',behavior:'smooth'});
+  return true;
 }
-function showCourseById(courseId){const index=courseIndexById(courseId);if(index<0)return false;show(index);return true;}
+function showCourseById(courseId){const index=courseIndexById(courseId);if(index<0)return false;void show(index);return true;}
 
 /* ---------- PWA telepítés és frissítés ---------- */
 const installButton=document.getElementById('installApp');
