@@ -73,8 +73,7 @@ function friendlyError(error){
 }
 
 function currentContext(){
-  const index=app.getCurrentIndex?.();
-  const course=app.courses[index];
+  const course=app.courseById?.(app.getCurrentCourseId?.());
   if(!course)return null;
   let sectionId=null,anchorText=course.label,scrollPosition=0;
   try{
@@ -309,11 +308,11 @@ function createMaterialCard(item){
 }
 
 function openAnnotation(item){
-  const index=courseIndex(item.course_id);if(index<0)return;
-  pendingRestore={...item};app.showCourse?.(index);setStatus('A mentett kurzusrész megnyitása…','syncing');
+  if(courseIndex(item.course_id)<0)return;
+  pendingRestore={...item};app.showCourseById?.(item.course_id);setStatus('A mentett kurzusrész megnyitása…','syncing');
 }
 function restoreAnnotation(){
-  if(!pendingRestore||Number(app.courses[app.getCurrentIndex?.()]?.id)!==Number(pendingRestore.course_id))return;
+  if(!pendingRestore||Number(app.getCurrentCourseId?.())!==Number(pendingRestore.course_id))return;
   const targetItem=pendingRestore;pendingRestore=null;
   try{
     const win=frame.contentWindow,doc=frame.contentDocument;if(!win||!doc)return;
