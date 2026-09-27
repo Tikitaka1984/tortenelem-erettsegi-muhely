@@ -1,8 +1,8 @@
 const CACHE_PREFIX='tem-web-';
-const SHELL_CACHE=CACHE_PREFIX+'1.4-shell-v2';
-const RUNTIME_CACHE=CACHE_PREFIX+'1.4-runtime-v2';
+const SHELL_CACHE=CACHE_PREFIX+'1.5-shell-v3';
+const RUNTIME_CACHE=CACHE_PREFIX+'1.5-runtime-v3';
 const SHELL_ASSETS=[
-  './','./index.html','./dashboard-logic.js','./annotations.js','./account-cloud.js','./vendor/supabase.min.js','./course-meta.json','./manifest.webmanifest','./favicon.svg',
+  './','./index.html','./dashboard-logic.js','./app.js','./course-frame-channel.js','./course-frame-bridge.js','./course-theme.css','./course-theme-dark.css','./annotations.js','./account-cloud.js','./vendor/supabase.min.js','./course-meta.json','./manifest.webmanifest','./favicon.svg',
   './icons/icon-192.png','./icons/icon-512.png','./icons/icon-512-maskable.png'
 ];
 
@@ -27,7 +27,7 @@ async function networkFirst(request,fallback){
 }
 
 function offlineCourseResponse(){
-  return new Response(`<!doctype html><html lang="hu"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kurzus offline nem elérhető</title><style>body{margin:0;background:#f5f7fb;color:#253247;font:16px/1.6 system-ui,sans-serif}.box{max-width:620px;margin:12vh auto;padding:32px}.box h1{font-size:1.45rem}</style><main class="box"><h1>Ez a kurzus még nincs offline elmentve</h1><p>Internetkapcsolat mellett nyisd meg egyszer, majd később offline is elérhető lesz.</p></main></html>`,{headers:{'Content-Type':'text/html; charset=utf-8'}});
+  return new Response(`<!doctype html><html lang="hu"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kurzus offline nem elérhető</title><style>body{margin:0;background:#f5f7fb;color:#253247;font:16px/1.6 system-ui,sans-serif}.box{max-width:620px;margin:12vh auto;padding:32px}.box h1{font-size:1.45rem}</style><main class="box"><h1>Ez a kurzus még nincs offline elmentve</h1><p>Internetkapcsolat mellett nyisd meg egyszer, majd később offline is elérhető lesz.</p></main><script src="../course-frame-bridge.js"></script></html>`,{headers:{'Content-Type':'text/html; charset=utf-8'}});
 }
 
 self.addEventListener('fetch',event=>{
@@ -39,12 +39,12 @@ self.addEventListener('fetch',event=>{
     event.respondWith(fetch(request));
     return;
   }
-  if(request.mode==='navigate'){
-    event.respondWith(networkFirst(request,'./index.html').then(response=>response||caches.match('./index.html')));
-    return;
-  }
   if(url.pathname.includes('/courses/')&&url.pathname.endsWith('.html')){
     event.respondWith(networkFirst(request).then(response=>response||offlineCourseResponse()));
+    return;
+  }
+  if(request.mode==='navigate'){
+    event.respondWith(networkFirst(request,'./index.html').then(response=>response||caches.match('./index.html')));
     return;
   }
   if(url.pathname.includes('/images/')){

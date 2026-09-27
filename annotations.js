@@ -24,6 +24,7 @@ let pendingRestore=null;
 let frameCleanup=null;
 let toolbarTimer=null;
 let restoreFocus=null;
+let lastFrameContext=null;
 
 function normalizeText(value){
   return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
@@ -72,32 +73,21 @@ function friendlyError(error){
   return 'A művelet most nem sikerült. Próbáld meg később.';
 }
 
-function currentContext(){
-  const course=app.courseById?.(app.getCurrentCourseId?.());
-  if(!course)return null;
-  let sectionId=null,anchorText=course.label,scrollPosition=0;
-  try{
-    const win=frame.contentWindow,doc=frame.contentDocument;
-    if(win&&doc){
-      scrollPosition=Math.max(0,Math.round(win.scrollY));
-      const candidates=[...doc.querySelectorAll('h1,h2,h3,h4,[data-section-id],section[id],article[id]')];
-      let active=null,best=-Infinity;
-      candidates.forEach(node=>{
-        const rect=node.getBoundingClientRect();
-        if(rect.top<=Math.max(130,win.innerHeight*.38)&&rect.top>best){active=node;best=rect.top;}
-      });
-      if(active){
-        const container=active.closest('section[id],article[id],[data-section-id]');
-        sectionId=clip(active.id||active.getAttribute('data-section-id')||container?.id||container?.getAttribute('data-section-id')||'',200)||null;
-        const heading=/^H[1-4]$/.test(active.tagName)?active:active.querySelector('h1,h2,h3,h4');
-        anchorText=clip(heading?.textContent||active.getAttribute('aria-label')||active.textContent||course.label,500)||course.label;
-      }
-    }
-  }catch(_){}
+function normalizeContext(context){
+  const course=app.courseById?.(app.getCurrentCourseId?.());if(!course)return null;
+  const sectionId=clip(context?.sectionId||'',200)||null;
+  const scrollPosition=Math.max(0,Math.round(Number(context?.scrollPosition)||0));
+  const anchorText=clip(context?.anchorText||course.label,500)||course.label;
   const normalized=normalizeText(anchorText).slice(0,240);
-  const anchorKey=sectionId?'section:'+sectionId:(normalized?'text:'+normalized:'scroll:'+Math.round(scrollPosition/250)*250);
-  return {course_id:Number(course.id),section_id:sectionId,scroll_position:scrollPosition,anchor_key:anchorKey,anchor_text:anchorText};
+  return {course_id:Number(course.id),section_id:sectionId,scroll_position:scrollPosition,anchor_key:clip(context?.anchorKey||(sectionId?'section:'+sectionId:(normalized?'text:'+normalized:'scroll:'+Math.round(scrollPosition/250)*250)),300),anchor_text:anchorText};
 }
+function currentContext(){return normalizeContext(lastFrameContext);}
+async function freshContext(){
+  const context=await app.courseFrame?.requestCourseContext?.();
+  if(context)lastFrameContext=context;
+  return currentContext();
+}
+
 function itemAt(type,context=currentContext()){
   if(!context)return null;
   return annotations.find(item=>item.annotation_type===type&&item.course_id===context.course_id&&item.anchor_key===context.anchor_key)||null;
@@ -137,7 +127,7 @@ function requireCloud(){
 }
 async function createToggle(type){
   if(!requireCloud())return;
-  const context=currentContext();if(!context)return;
+  const context=await freshContext();if(!context)return;
   const existing=itemAt(type,context);
   if(existing){openDeleteDialog(existing);return;}
   setStatus('Mentés…','syncing');
@@ -156,11 +146,11 @@ function replaceAnnotation(item){
   annotations.sort((a,b)=>annotationTime(b)-annotationTime(a));saveCache();renderAll();
 }
 
-function openNoteDialog(item=null){
+async function openNoteDialog(item=null){
   if(!requireCloud())return;
   const context=item?{
     course_id:item.course_id,section_id:item.section_id,scroll_position:item.scroll_position,anchor_key:item.anchor_key,anchor_text:item.anchor_text
-  }:currentContext();
+  }:await freshContext();
   if(!context)return;
   const existing=item||itemAt('note',context);
   editingNote={item:existing,context};
@@ -314,29 +304,17 @@ function openAnnotation(item){
 function restoreAnnotation(){
   if(!pendingRestore||Number(app.getCurrentCourseId?.())!==Number(pendingRestore.course_id))return;
   const targetItem=pendingRestore;pendingRestore=null;
-  try{
-    const win=frame.contentWindow,doc=frame.contentDocument;if(!win||!doc)return;
-    let target=targetItem.section_id?(doc.getElementById(targetItem.section_id)||doc.querySelector('[data-section-id="'+CSS.escape(targetItem.section_id)+'"]')):null;
-    if(!target&&targetItem.anchor_text){
-      const wanted=normalizeText(targetItem.anchor_text);
-      target=[...doc.querySelectorAll('h1,h2,h3,h4')].find(node=>normalizeText(node.textContent)===wanted||normalizeText(node.textContent).includes(wanted))||null;
-    }
-    if(target){
-      const top=target.getBoundingClientRect().top+win.scrollY-82;win.scrollTo(0,Math.max(0,top));
-      if(!target.hasAttribute('tabindex'))target.setAttribute('tabindex','-1');target.focus({preventScroll:true});
-    }else win.scrollTo(0,Math.max(0,Number(targetItem.scroll_position)||0));
-    setStatus('A mentett kurzusrész megnyílt.','success');
-  }catch(_){setStatus('A kurzus megnyílt; a mentett pozíció csak közelítőleg állítható vissza.','warning');}
+  app.courseFrame?.restoreCourseLocation({sectionId:targetItem.section_id,scrollPosition:targetItem.scroll_position,anchorText:targetItem.anchor_text});
+  setStatus('A mentett kurzusrész megnyílt.','success');
 }
+
 function bindFrame(){
   if(frameCleanup){frameCleanup();frameCleanup=null;}
-  try{
-    const win=frame.contentWindow;if(!win)return;
-    const update=()=>{clearTimeout(toolbarTimer);toolbarTimer=setTimeout(updateToolbar,150);};
-    win.addEventListener('scroll',update,{passive:true});frameCleanup=()=>win.removeEventListener('scroll',update);
-    setTimeout(updateToolbar,100);setTimeout(restoreAnnotation,650);
-  }catch(_){}
+  const offProgress=app.courseFrame?.on('progress',data=>{lastFrameContext=data;clearTimeout(toolbarTimer);toolbarTimer=setTimeout(updateToolbar,150);});
+  const offStatus=app.courseFrame?.on('frame-status',()=>{setTimeout(updateToolbar,100);setTimeout(restoreAnnotation,650);});
+  frameCleanup=()=>{offProgress?.();offStatus?.();};
 }
+bindFrame();
 
 function showMaterials(){if(!currentUser){window.TEM_CLOUD?.openAuth?.();return;}app.showMaterialsView?.();renderMaterials();}
 function closeAndRestore(dialog){if(dialog.open)dialog.close();}
@@ -366,7 +344,7 @@ byId('materialsBack')?.addEventListener('click',app.showHome);
 byId('materialsSearch')?.addEventListener('input',event=>{materialsQuery=normalizeText(event.target.value);renderMaterials();});
 byId('materialsSort')?.addEventListener('change',event=>{materialsSort=event.target.value;renderMaterials();});
 byId('materialsFilters')?.addEventListener('click',event=>{const button=event.target.closest('[data-material-filter]');if(!button)return;materialsFilter=button.dataset.materialFilter;renderMaterials();});
-frame?.addEventListener('load',bindFrame);
+
 [byId('annotationNoteDialog'),byId('annotationDeleteDialog')].filter(Boolean).forEach(setupDialog);
 window.addEventListener('online',()=>currentUser&&refresh());
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&currentUser)refresh();});
