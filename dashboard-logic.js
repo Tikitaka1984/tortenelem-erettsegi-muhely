@@ -14,6 +14,45 @@
     return Math.max(Number(item?.lastOpened)||0,Number(item?.updatedAt)||0,Number(item?.completedAt)||0);
   }
 
+  function normalizedCourseId(value){
+    const id=Number(value);
+    return Number.isFinite(id)?id:null;
+  }
+
+  function courseIndexById(courses,courseId){
+    const id=normalizedCourseId(courseId);
+    if(id===null)return -1;
+    return (Array.isArray(courses)?courses:[]).findIndex(course=>Number(course?.id)===id);
+  }
+
+  function courseIdAtIndex(courses,index){
+    if(!Number.isInteger(index)||index<0||index>=(Array.isArray(courses)?courses.length:0))return null;
+    return normalizedCourseId(courses[index]?.id);
+  }
+
+  function normalizeState(saved,courses){
+    const source=saved&&typeof saved==='object'?saved:{};
+    const version=Number(source.version);
+    const legacy=!Number.isFinite(version)||version<=3;
+    const candidate=legacy&&Number.isInteger(source.lastCourse)
+      ?courseIdAtIndex(courses,source.lastCourse)
+      :normalizedCourseId(source.lastCourseId);
+    const lastCourseId=courseIndexById(courses,candidate)>=0?candidate:null;
+    return {
+      version:4,
+      lastCourseId,
+      favorites:Array.isArray(source.favorites)?source.favorites.map(Number).filter(Number.isFinite):[],
+      favoriteUpdatedAt:source.favoriteUpdatedAt&&typeof source.favoriteUpdatedAt==='object'?source.favoriteUpdatedAt:{},
+      courses:source.courses&&typeof source.courses==='object'?source.courses:{}
+    };
+  }
+
+  function courseIdFromHash(hash,courses){
+    const value=String(hash||'').replace(/^#/,'');
+    const id=normalizedCourseId(value);
+    return courseIndexById(courses,id)>=0?id:null;
+  }
+
   function summarize(items,total){
     const normalized=Array.isArray(items)?items:[];
     const courseTotal=Number.isFinite(total)?Math.max(0,total):normalized.length;
@@ -25,16 +64,16 @@
   }
 
   function recommendation(items){
-    const normalized=(Array.isArray(items)?items:[]).map((item,index)=>({...item,index:item?.index??index}));
+    const normalized=(Array.isArray(items)?items:[]).map((item,index)=>({...item,index:item?.index??index,courseId:normalizedCourseId(item?.courseId)}));
     const unfinished=normalized.filter(item=>item.visited&&!item.completed);
     if(unfinished.length){
       const latest=[...unfinished].sort((a,b)=>activityTime(b)-activityTime(a)||b.progress-a.progress||a.index-b.index)[0];
-      if(activityTime(latest)>0)return {index:latest.index,reason:'recent'};
+      if(activityTime(latest)>0)return {courseId:latest.courseId,reason:'recent'};
       const highest=[...unfinished].sort((a,b)=>b.progress-a.progress||a.index-b.index)[0];
-      return {index:highest.index,reason:'progress'};
+      return {courseId:highest.courseId,reason:'progress'};
     }
     const next=normalized.find(item=>!item.completed);
-    return next?{index:next.index,reason:'next'}:null;
+    return next?{courseId:next.courseId,reason:'next'}:null;
   }
 
   function formatHungarianDate(timestamp,nowValue=Date.now()){
@@ -49,5 +88,5 @@
     return new Intl.DateTimeFormat('hu-HU',{month:'long',day:'numeric'}).format(date);
   }
 
-  return Object.freeze({activityTime,clampProgress,summarize,recommendation,formatHungarianDate});
+  return Object.freeze({activityTime,clampProgress,courseIndexById,courseIdAtIndex,normalizeState,courseIdFromHash,summarize,recommendation,formatHungarianDate});
 });

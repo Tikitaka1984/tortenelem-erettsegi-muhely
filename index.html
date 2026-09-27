@@ -947,7 +947,7 @@ const empty=document.getElementById('emptyState');
 const positionText=document.getElementById('positionText');
 const positionFill=document.getElementById('positionFill');
 const currentIndex=document.getElementById('currentIndex');
-let current=Math.max(0,Math.min(courses.length-1,(parseInt(location.hash.slice(1),10)||1)-1));
+let current=0;
 let unifiedTheme=true;
 let dashboardQuery='';
 const UNIFIED_THEME_CSS=`
@@ -1806,7 +1806,7 @@ const dashboardLogic=window.TEM_DASHBOARD_LOGIC;
 /* ---------- Helyi tanulói állapot ---------- */
 const STORAGE_KEY='tortenelem-erettsegi-muhely-ui2-progress-v1';
 const CLOUD_CACHE_PREFIX='tortenelem-erettsegi-muhely-cloud-v1:';
-const stateDefaults={version:3,lastCourse:null,favorites:[],favoriteUpdatedAt:{},courses:{}};
+const stateDefaults={version:4,lastCourseId:null,favorites:[],favoriteUpdatedAt:{},courses:{}};
 let activeStorageKey=STORAGE_KEY;
 let appState=loadAppState();
 let dashboardFilter='all';
@@ -1819,14 +1819,11 @@ let frameTrackingCleanup=null;
 let saveTimer=null;
 
 function normalizeAppState(saved){
-  return {
-    version:3,
-    lastCourse:Number.isInteger(saved?.lastCourse)?saved.lastCourse:null,
-    favorites:Array.isArray(saved?.favorites)?saved.favorites.map(Number).filter(Number.isFinite):[],
-    favoriteUpdatedAt:saved?.favoriteUpdatedAt&&typeof saved.favoriteUpdatedAt==='object'?saved.favoriteUpdatedAt:{},
-    courses:saved?.courses && typeof saved.courses==='object'?saved.courses:{}
-  };
+  return dashboardLogic.normalizeState(saved,courses);
 }
+function courseIndexById(courseId){return dashboardLogic.courseIndexById(courses,courseId);}
+function courseById(courseId){const index=courseIndexById(courseId);return index>=0?courses[index]:null;}
+function courseIdAtIndex(index){return dashboardLogic.courseIdAtIndex(courses,index);}
 function loadAppState(key=activeStorageKey){
   try{
     const raw=localStorage.getItem(key);
@@ -1845,13 +1842,13 @@ function setActiveAppState(next,key=STORAGE_KEY){
   saveAppState(true);
   refreshChrome();renderDashboard();
 }
-function queueCloudCourse(index){
-  try{window.TEM_CLOUD?.queueCourse?.(index);}catch(_){}
+function queueCloudCourse(courseId){
+  try{window.TEM_CLOUD?.queueCourse?.(courseId);}catch(_){}
 }
 function touchCourse(index){
-  const s=getCourseState(index);s.updatedAt=Date.now();queueCloudCourse(index);return s;
+  const s=getCourseState(index);s.updatedAt=Date.now();queueCloudCourse(courseIdAtIndex(index));return s;
 }
-function courseKey(index){return String(courses[index]?.id ?? (index+1));}
+function courseKey(index){return String(courses[index]?.id);}
 function getCourseState(index){
   const key=courseKey(index);
   if(!appState.courses[key])appState.courses[key]={visited:false,maxRead:0,lastRead:0,completed:false,lastOpened:0,sectionId:null,scrollPosition:0,updatedAt:0,completedAt:null,drafts:{}};
@@ -1871,7 +1868,7 @@ function setFavorite(index,on){
   appState.favorites=appState.favorites.filter(x=>x!==id);
   if(on)appState.favorites.push(id);
   appState.favoriteUpdatedAt[String(id)]=Date.now();
-  queueCloudCourse(index);
+  queueCloudCourse(id);
   saveAppState();refreshChrome();renderDashboard();
 }
 function courseProgress(index){
@@ -1894,22 +1891,22 @@ courses.forEach((course,index)=>{
   const button=document.createElement('button');
   button.type='button';
   button.className='course';
-  button.dataset.index=index;
+  button.dataset.courseId=String(course.id);
   button.dataset.search=normalize(course.label+' '+course.period+' '+(course.keywords||''));
   const n=String(index+1).padStart(2,'0');
   button.innerHTML='<span class="course__icon" aria-hidden="true">'+escapeHtml(course.icon)+'</span><span><span class="course__title">'+n+' · '+escapeHtml(course.label)+'</span><span class="course__period">'+escapeHtml(course.period)+'</span></span><span class="course__status" aria-hidden="true"><span class="course__favorite"></span><span class="course__state"></span></span>';
-  button.addEventListener('click',()=>show(index));
+  button.addEventListener('click',()=>showCourseById(course.id));
   list.appendChild(button);
 
   const option=document.createElement('option');
-  option.value=index;
+  option.value=String(course.id);
   option.textContent=n+' · '+course.label;
   select.appendChild(option);
 });
 
-select.addEventListener('change',()=>{show(Number(select.value));setMobileMenu(false);});
-document.getElementById('previous').addEventListener('click',()=>show(current-1));
-document.getElementById('next').addEventListener('click',()=>show(current+1));
+select.addEventListener('change',()=>{showCourseById(select.value);setMobileMenu(false);});
+document.getElementById('previous').addEventListener('click',()=>showCourseById(courseIdAtIndex(current-1)));
+document.getElementById('next').addEventListener('click',()=>showCourseById(courseIdAtIndex(current+1)));
 document.getElementById('homeButton').addEventListener('click',showHome);
 document.getElementById('sidebarHome').addEventListener('click',()=>{showHome();setMobileMenu(false);});
 
@@ -1920,7 +1917,7 @@ document.getElementById('completeToggle').addEventListener('click',()=>{
 });
 
 document.getElementById('continueButton').addEventListener('click',()=>{
-  const i=Number.isInteger(appState.lastCourse)?appState.lastCourse:0;show(Math.max(0,Math.min(courses.length-1,i)));
+  if(!showCourseById(appState.lastCourseId))showCourseById(courseIdAtIndex(0));
 });
 document.getElementById('browseFavorites').addEventListener('click',()=>{
   dashboardFilter='favorites';setDashboardFilterButtons();renderDashboardCourses();
@@ -2019,14 +2016,14 @@ function renderDashboard(){
   const card=document.getElementById('continueCard');
   if(last===null){
     continueButton.textContent='Kezdés az első kurzussal';
-    card.innerHTML='<div><div class="continue-card__eyebrow">Első lépés</div><h4>Még nem kezdtél el kurzust.</h4><p>Válaszd ki az első témakört, vagy böngéssz az összes kurzus között.</p></div><button class="dash-primary" type="button" data-continue="0">Kurzus választása</button>';
+    card.innerHTML='<div><div class="continue-card__eyebrow">Első lépés</div><h4>Még nem kezdtél el kurzust.</h4><p>Válaszd ki az első témakört, vagy böngéssz az összes kurzus között.</p></div><button class="dash-primary" type="button" data-course-id="'+courseIdAtIndex(0)+'">Kurzus választása</button>';
   }else{
     const c=courses[last],s=getCourseState(last),pct=courseProgress(last);
     continueButton.textContent='Folytatás · '+String(last+1).padStart(2,'0');
     const status=courseStatus(last).label;
-    card.innerHTML='<div><div class="continue-card__eyebrow">Legutóbbi kurzus</div><h4>'+String(last+1).padStart(2,'0')+' · '+escapeHtml(c.label)+'</h4><p>'+escapeHtml(status)+' · '+escapeHtml(formatDate(courseActivityTime(last)))+'</p><div class="continue-progress"><div class="mini-track" role="progressbar" aria-label="'+escapeHtml(c.label)+' kurzus '+pct+' százalékban teljesítve" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><div class="mini-fill" style="width:'+pct+'%"></div></div><span>'+pct+'%</span></div></div><button class="dash-primary" type="button" data-continue="'+last+'">Folytatás</button>';
+    card.innerHTML='<div><div class="continue-card__eyebrow">Legutóbbi kurzus</div><h4>'+String(last+1).padStart(2,'0')+' · '+escapeHtml(c.label)+'</h4><p>'+escapeHtml(status)+' · '+escapeHtml(formatDate(courseActivityTime(last)))+'</p><div class="continue-progress"><div class="mini-track" role="progressbar" aria-label="'+escapeHtml(c.label)+' kurzus '+pct+' százalékban teljesítve" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><div class="mini-fill" style="width:'+pct+'%"></div></div><span>'+pct+'%</span></div></div><button class="dash-primary" type="button" data-course-id="'+c.id+'">Folytatás</button>';
   }
-  card.querySelector('[data-continue]')?.addEventListener('click',e=>show(Number(e.currentTarget.dataset.continue)));
+  card.querySelector('[data-course-id]')?.addEventListener('click',e=>showCourseById(e.currentTarget.dataset.courseId));
   if(dashboardAuthenticated&&!dashboardCloudLoading)renderPersonalDashboard();
   setDashboardMode(dashboardMode);
   renderDashboardCourses();
@@ -2044,22 +2041,22 @@ function renderPersonalDashboard(){
   if(!recent.length){const li=document.createElement('li');li.className='personal-empty';li.textContent='Még nincs mentett tanulási aktivitásod.';activity.appendChild(li);}
   recent.forEach(index=>{const li=document.createElement('li'),pct=courseProgress(index),status=getCourseState(index).completed?'Befejezve':pct+'%';li.innerHTML='<strong>'+escapeHtml(courses[index].label)+'</strong><span>'+escapeHtml(status)+' · '+escapeHtml(formatDate(courseActivityTime(index)))+'</span>';activity.appendChild(li);});
 
-  const recommendationResult=getRecommendation(),recommendation=recommendationResult?.index ?? null;
+  const recommendationResult=getRecommendation(),recommendation=courseIndexById(recommendationResult?.courseId);
   const recommendationCard=document.getElementById('recommendationCard');
-  const progress=recommendation===null?0:courseProgress(recommendation);
+  const progress=recommendation<0?0:courseProgress(recommendation);
   let reason='A következő még nem kezdett kurzus a kronologikus sorrendben.';
   if(recommendationResult?.reason==='recent')reason='Ezt tanultad legutóbb.';
   if(recommendationResult?.reason==='progress')reason='Ezt a kurzust már '+progress+'%-ban teljesítetted.';
-  recommendationCard.innerHTML=recommendation===null?'<div><h4>Minden kurzust befejeztél.</h4><p>A teljes tananyag elkészült.</p></div>':'<div><h4>'+String(recommendation+1).padStart(2,'0')+' · '+escapeHtml(courses[recommendation].label)+'</h4><p>'+escapeHtml(reason)+'</p></div><button class="dash-primary" type="button">'+(progress>0?'Folytatás':'Kurzus megnyitása')+'</button>';
-  recommendationCard.querySelector('button')?.addEventListener('click',()=>show(recommendation));
+  recommendationCard.innerHTML=recommendation<0?'<div><h4>Minden kurzust befejeztél.</h4><p>A teljes tananyag elkészült.</p></div>':'<div><h4>'+String(recommendation+1).padStart(2,'0')+' · '+escapeHtml(courses[recommendation].label)+'</h4><p>'+escapeHtml(reason)+'</p></div><button class="dash-primary" type="button">'+(progress>0?'Folytatás':'Kurzus megnyitása')+'</button>';
+  recommendationCard.querySelector('button')?.addEventListener('click',()=>showCourseById(recommendationResult.courseId));
 }
 function getRecommendation(){
-  return dashboardLogic.recommendation(courses.map((_,index)=>{const state=getCourseState(index);return {index,visited:state.visited,completed:state.completed,progress:courseProgress(index),lastOpened:state.lastOpened,updatedAt:state.updatedAt,completedAt:state.completedAt};}));
+  return dashboardLogic.recommendation(courses.map((course,index)=>{const state=getCourseState(index);return {courseId:Number(course.id),index,visited:state.visited,completed:state.completed,progress:courseProgress(index),lastOpened:state.lastOpened,updatedAt:state.updatedAt,completedAt:state.completedAt};}));
 }
 function renderPersonalList(id,indexes,emptyText){
   const list=document.getElementById(id);list.innerHTML='';
   if(!indexes.length){const emptyItem=document.createElement('div');emptyItem.className='personal-empty';emptyItem.textContent=emptyText;list.appendChild(emptyItem);return;}
-  indexes.forEach(index=>{const item=document.createElement('article'),pct=courseProgress(index);item.className='personal-list-card';item.innerHTML='<div class="personal-list-card__copy"><strong>'+escapeHtml(courses[index].label)+'</strong><span>'+pct+'% · '+escapeHtml(formatDate(courseActivityTime(index)))+'</span></div><button type="button" aria-label="'+escapeHtml(courses[index].label)+' folytatása">Folytatás</button>';item.querySelector('button').addEventListener('click',()=>show(index));list.appendChild(item);});
+  indexes.forEach(index=>{const item=document.createElement('article'),pct=courseProgress(index),course=courses[index];item.className='personal-list-card';item.innerHTML='<div class="personal-list-card__copy"><strong>'+escapeHtml(course.label)+'</strong><span>'+pct+'% · '+escapeHtml(formatDate(courseActivityTime(index)))+'</span></div><button type="button" aria-label="'+escapeHtml(course.label)+' folytatása">Folytatás</button>';item.querySelector('button').addEventListener('click',()=>showCourseById(course.id));list.appendChild(item);});
 }
 function renderProgressView(){
   document.querySelectorAll('[data-progress-filter]').forEach(button=>button.classList.toggle('active',button.dataset.progressFilter===progressViewFilter));
@@ -2071,7 +2068,7 @@ function createCourseCard(index){
   const course=courses[index],s=getCourseState(index),fav=isFavorite(index),status=courseStatus(index),pct=courseProgress(index);
   const card=document.createElement('article');card.className='dashboard-course'+(s.completed?' complete':'');
   card.innerHTML='<div class="dashboard-course__top"><div class="dashboard-course__id"><span class="dashboard-course__icon" aria-hidden="true">'+escapeHtml(course.icon)+'</span><span class="dashboard-course__num">Kurzus '+String(index+1).padStart(2,'0')+'</span></div><button class="favorite-btn'+(fav?' active':'')+'" type="button" aria-label="'+escapeHtml(course.label)+(fav?' eltávolítása a kedvencek közül':' hozzáadása a kedvencekhez')+'" aria-pressed="'+(fav?'true':'false')+'" title="'+(fav?'Jelölés eltávolítása':'Kurzus megjelölése')+'">★</button></div><h4>'+escapeHtml(course.label)+'</h4><div class="dashboard-course__period">'+escapeHtml(course.period)+'</div><div class="dashboard-course__bottom"><div class="dashboard-course__statusrow"><span class="status-label '+escapeHtml(status.key)+'">'+escapeHtml(status.label)+'</span><span class="dashboard-course__pct">'+pct+'%</span></div><div class="dashboard-course__track" role="progressbar" aria-label="'+escapeHtml(course.label)+' kurzus '+pct+' százalékban teljesítve" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pct+'"><div class="dashboard-course__fill" style="width:'+pct+'%"></div></div><div class="dashboard-course__actions"><button class="dashboard-course__open" type="button">'+(s.visited?'Megnyitás / folytatás':'Kurzus megnyitása')+'</button></div></div>';
-  card.querySelector('.favorite-btn').addEventListener('click',()=>setFavorite(index,!fav));card.querySelector('.dashboard-course__open').addEventListener('click',()=>show(index));return card;
+  card.querySelector('.favorite-btn').addEventListener('click',()=>setFavorite(index,!fav));card.querySelector('.dashboard-course__open').addEventListener('click',()=>showCourseById(course.id));return card;
 }
 function renderDashboardCourses(){
   const grid=document.getElementById('dashboardGrid');
@@ -2214,11 +2211,11 @@ function show(index){
   captureFrameProgress();
   current=index;
   const course=courses[index],s=getCourseState(index);
-  s.visited=true;s.lastOpened=Date.now();appState.lastCourse=index;touchCourse(index);saveAppState();
+  s.visited=true;s.lastOpened=Date.now();appState.lastCourseId=Number(course.id);touchCourse(index);saveAppState();
   document.getElementById('viewer').classList.remove('home-mode');
   document.getElementById('sidebarHome').removeAttribute('aria-current');
   document.querySelectorAll('.course').forEach((button,i)=>button.setAttribute('aria-current',i===index?'true':'false'));
-  select.value=String(index);
+  select.value=String(course.id);
   document.getElementById('currentTitle').textContent=course.label;
   currentIndex.textContent=String(index+1).padStart(2,'0');
   positionText.textContent=(index+1)+' / '+courses.length;
@@ -2232,9 +2229,10 @@ function show(index){
     .then(html=>{ if(current===index) frame.srcdoc=applyUnifiedTheme(html); })
     .catch(err=>{ if(current===index) frame.srcdoc='<!doctype html><html lang="hu"><meta charset="utf-8"><body style="font-family:system-ui,sans-serif;color:#526173;padding:40px;max-width:560px"><h2 style="color:#253247">A kurzus nem tölthető be</h2><p>Átmeneti betöltési hiba történt. Frissítsd az oldalt, majd próbáld meg újra. Ha a hiba továbbra is fennáll, válassz másik kurzust.</p></body></html>'; });
   syncThemeToggle();refreshChrome();renderDashboard();
-  history.replaceState(null,'','#'+(index+1));
+  history.replaceState(null,'','#'+course.id);
   document.querySelector('.course[aria-current="true"]')?.scrollIntoView({block:'nearest',behavior:'smooth'});
 }
+function showCourseById(courseId){const index=courseIndexById(courseId);if(index<0)return false;show(index);return true;}
 
 /* ---------- PWA telepítés és frissítés ---------- */
 const installButton=document.getElementById('installApp');
@@ -2263,8 +2261,8 @@ if('serviceWorker' in navigator){
 window.addEventListener('keydown',event=>{
   if(event.key==='Escape' && !document.getElementById('viewer').classList.contains('home-mode')){showHome();return;}
   if(event.target && /INPUT|SELECT|TEXTAREA/.test(event.target.tagName))return;
-  if(event.altKey && event.key==='ArrowLeft')show(current-1);
-  if(event.altKey && event.key==='ArrowRight')show(current+1);
+  if(event.altKey && event.key==='ArrowLeft')showCourseById(courseIdAtIndex(current-1));
+  if(event.altKey && event.key==='ArrowRight')showCourseById(courseIdAtIndex(current+1));
   if(event.altKey && (event.key==='Home'||event.key.toLowerCase()==='h'))showHome();
 });
 window.addEventListener('beforeunload',()=>{captureFrameProgress();saveAppState(true);});
@@ -2273,7 +2271,7 @@ window.addEventListener('hashchange',()=>{
   if(h==='progress'){showProgressView();return;}
   if(h==='materials'){showMaterialsView();return;}
   if(h==='home'||!h){showHome();return;}
-  const n=parseInt(h,10);if(Number.isFinite(n)&&n>=1&&n<=courses.length)show(n-1);
+  showCourseById(h);
 });
 
 frame.addEventListener('load',()=>{attachFrameTracking();});
@@ -2281,9 +2279,9 @@ frame.addEventListener('load',()=>{attachFrameTracking();});
 /* Induló nézet: közvetlen #N link nyisson kurzust, egyébként kezdőoldal. */
 refreshSidebarStates();renderDashboard();
 const initialHash=location.hash.slice(1);
-const initialCourse=parseInt(initialHash,10);
+const initialCourseId=dashboardLogic.courseIdFromHash(initialHash,courses);
 const cloudAuthHash=/(^|&)access_token=/.test(initialHash)||/(^|&)refresh_token=/.test(initialHash)||/(^|&)type=(signup|recovery|magiclink)(?:&|$)/.test(initialHash);
-if(Number.isFinite(initialCourse)&&initialCourse>=1&&initialCourse<=courses.length)show(initialCourse-1);
+if(initialCourseId!==null)showCourseById(initialCourseId);
 else if(initialHash==='progress')showProgressView();
 else if(initialHash==='materials')showMaterialsView();
 else if(cloudAuthHash){setDashboardMode('home');renderDashboard();}
@@ -2304,6 +2302,12 @@ window.TEM_APP={
   showProgressView,
   showMaterialsView,
   showCourse:show,
+  showCourseById,
+  courseIndexById,
+  courseById,
+  courseIdAtIndex,
+  getCurrentCourseId:()=>courseIdAtIndex(current),
+  getCourseStateById:courseId=>{const index=courseIndexById(courseId);return index>=0?getCourseState(index):null;},
   getCurrentIndex:()=>current,
   getFrame:()=>frame,
   setDashboardCloudState,
