@@ -1,0 +1,125 @@
+/* ============================================================
+   TÖRTÉNELEM ÉRETTSÉGI MŰHELY — DARK COURSE THEME
+   Az egységes design system sötét, kontrasztbiztos változata.
+   ============================================================ */
+:root{
+  color-scheme:dark !important;
+  --ink:#e8edf5 !important;--ink-soft:#a8b4c5 !important;--rubric:#e0b76b !important;
+  --lapis:#8eb2e2 !important;--gold:#d8ad58 !important;--stone:#091322 !important;
+  --stone-2:#152235 !important;--paper:#101c2d !important;--line:#2a3a50 !important;
+  --ok:#79cfa5 !important;--bad:#ef8e8e !important;
+}
+html{background:#091322 !important;color-scheme:dark !important}
+body{background:#091322 !important;color:#e8edf5 !important}
+body::selection{background:rgba(216,173,88,.28) !important}
+header.masthead{
+  background:radial-gradient(circle at 88% 12%,rgba(216,173,88,.13),transparent 28%),linear-gradient(145deg,#101d30 0%,#0c1727 68%,#091421 100%) !important;
+  border-bottom-color:#26374c !important;box-shadow:0 12px 36px rgba(0,0,0,.22) !important
+}
+header.masthead::after{background:linear-gradient(90deg,#6f98cc 0 68%,#d8ad58 68% 100%) !important}
+.eyebrow{color:#e0b76b !important}h1{color:#f1f4f8 !important}h1 .sub,.subtitle{color:#aeb9c8 !important}.lede{color:#b8c3d1 !important}
+.tag{background:#142238 !important;border-color:#2b3c53 !important;color:#bac5d3 !important;box-shadow:none !important}
+nav.rail{background:rgba(10,20,34,.94) !important;border-bottom-color:#28394f !important;box-shadow:0 6px 22px rgba(0,0,0,.18) !important}
+.rail a{color:#a5b2c4 !important}.rail a:hover,.rail a.on{background:#16263d !important;color:#9fc1ed !important}
+.prog-bar,.rail-progress-track{background:#1c2b40 !important}.prog-fill,.rail-progress-fill{background:linear-gradient(90deg,#6f98cc,#d8ad58) !important}
+body>main{background:transparent !important}
+section.mod,.module,body>main>section:not(.mod):not(.module){background:#101c2d !important;border-color:#293a50 !important;box-shadow:0 14px 38px rgba(0,0,0,.18) !important}
+.mod-num,.module-num{background:#211d19 !important;border-color:#5a4930 !important;color:#e0b76b !important}
+h2{color:#edf2f8 !important}h3{color:#dfe8f4 !important}h4{color:#e0b76b !important}
+p,li,dd,td{color:#d9e1eb !important}dt,strong,b{color:inherit}
+.goal,.goal-box{background:#10253a !important;border-color:#294766 !important;border-left-color:#6f98cc !important;color:#dce9f6 !important}
+.goal .lbl,.goal-box .lbl{color:#9fc1ed !important}
+.fogodzo{background:#251f15 !important;border-color:#5a4930 !important;border-left-color:#d8ad58 !important;color:#eadfc8 !important}
+.source,.source-box{background:#1b1a18 !important;border-color:#4a4030 !important;border-left-color:#d19b4c !important;color:#e8dfd1 !important;box-shadow:none !important}
+.source .src-lbl,.source-box h4{color:#e0b76b !important}.source .src-txt,.source-box .src-text{color:#e5dccf !important}.src-meta{color:#a99f91 !important}
+.card,.task,.essay-tool,.essay-box,.chain-wrap,.chain-box,.kfeladat{background:#111e30 !important;border-color:#2b3c52 !important;color:#e1e8f1 !important;box-shadow:0 7px 22px rgba(0,0,0,.14) !important}
+.task.done{border-color:#6b5735 !important;box-shadow:inset 3px 0 0 #d8ad58 !important}.task-id{color:#dfb66a !important}.task-q{color:#edf2f8 !important}
+.chip,.pill,.sort-row select,.fill-in,.fill-input,input[type="text"],input[type="search"],textarea,.search{
+  background:#0d1828 !important;border-color:#314359 !important;color:#e7edf5 !important
+}
+.chip:hover,.pill:hover{border-color:#6f98cc !important;color:#b7d3f3 !important}.chip.sel,.pill.on{background:#18304d !important;border-color:#6f98cc !important;color:#d9e9fb !important}
+.chip.ok,.fill-in.ok,.fill-input.ok{background:#122a22 !important;border-color:#4e9c76 !important;color:#9de0bd !important}
+.chip.bad,.fill-in.bad,.fill-input.bad{background:#331b20 !important;border-color:#b65e6b !important;color:#f0a5ad !important}
+.tf-row{border-bottom-color:#2d3c50 !important}.tf-txt,.tf-note{color:#d5deea !important}
+.btn,.task-controls button{background:#223652 !important;border-color:#36506f !important;color:#f0f4f8 !important}.btn:hover,.task-controls button:hover{background:#2a4264 !important;border-color:#6f98cc !important}
+.btn.ghost{background:transparent !important;color:#b4c0cf !important;border-color:#3a4b60 !important}.btn.ghost:hover{color:#e0b76b !important;border-color:#d8ad58 !important}
+.answer,.answer-box,.feedback,.solution{background:#211e18 !important;border-color:#5a4930 !important;color:#e9dfcd !important}.answer .lbl{color:#e0b76b !important}
+.verdict.ok,.feedback.ok{color:#84d5ac !important}.verdict.bad,.feedback.bad{color:#f09a9a !important}
+.chain-track,.chain-box .chain-track,.sort-zone{background:#0d1929 !important;border-color:#3b4b61 !important;color:#dce5f0 !important}
+.chain-slot,.chain-item,.chain-box .chain-item,.chain-pool button,.chain-box button,.sort-item{
+  background:#16263b !important;border-color:#4a6688 !important;color:#e2ebf6 !important
+}
+.chain-slot:hover,.chain-item:hover,.chain-box .chain-item:hover,.chain-pool button:hover{background:#1d324d !important;border-color:#7da3d2 !important;color:#ffffff !important}
+.chain-item.correct,.chain-box .chain-item.correct,.chain-slot.correct{background:#153126 !important;border-color:#5ba57f !important;color:#b6e8cd !important}
+.chain-item.wrong,.chain-box .chain-item.wrong,.chain-slot.wrong{background:#351d23 !important;border-color:#b86772 !important;color:#f3b4bc !important}
+.chain-goal{color:#9aa8ba !important;border-color:#42536a !important;background:#111e30 !important}.chain-goal.lit{color:#fff !important;background:#7b5422 !important;border-color:#d8ad58 !important}
+.gloss .row,.glossary .row{border-bottom-color:#2b3a4f !important}.gloss dt,.glossary dt{color:#edf2f7 !important}.gloss dd,.glossary dd{color:#aeb9c8 !important}.no-hit{color:#a8b4c4 !important}
+.time,.timeline{border-left-color:#34465d !important}.time .ev::before,.timeline .ev::before{background:#d8ad58 !important}.time .yr,.timeline .yr{color:#e0b76b !important}.time .ttl,.timeline .ttl{color:#edf2f7 !important}.time .why,.timeline .why{color:#aeb9c8 !important}
+table{background:#101c2d !important;color:#e2e9f2 !important}th{background:#1d3049 !important;color:#f2f5f8 !important}td{border-bottom-color:#2d3d52 !important}tbody tr:nth-child(even) td{background:#132137 !important}
+.tbl-scroll{border-color:#2c3d52 !important}.datatable,.oral-table{background:#101c2d !important}
+.atlas-map{background:#101c2d !important;border-color:#2d3d52 !important;color:#e2e9f2 !important;box-shadow:0 10px 28px rgba(0,0,0,.18) !important}
+.atlas-map__head{background:linear-gradient(180deg,#17253a,#111d2e) !important;border-bottom-color:#2d3d52 !important}.atlas-map__head h4{color:#e4bd73 !important}.atlas-map__focus,.atlas-map__foot{color:#abb7c6 !important}.atlas-map__image-link,.atlas-map__image{background:#fff !important}.atlas-map__foot{border-top-color:#2d3d52 !important}
+textarea:focus,.search:focus,input:focus,select:focus{outline-color:#7da3d2 !important}
+.check-list li{color:#d8e0ea !important}.tips li{border-bottom-color:#2c3b4f !important}.tips b{color:#edf2f8 !important}
+.gauge,.essay-gauge{background:#1d2b3e !important}.gauge .zone,.essay-gauge .zone{background:rgba(82,169,125,.28) !important}.gauge .mark,.essay-gauge .mark{background:#f0f3f7 !important}
+footer{background:#07101c !important;color:#aeb8c7 !important}footer h3{color:#eef3f8 !important}.note{color:#8794a7 !important;border-top-color:#2b394c !important}
+:focus-visible{outline-color:#8eb2e2 !important}
+
+/* UI 2.3 — lágyabb sötét kurzustéma */
+:root{
+  --ink:#edf2f7 !important;--ink-soft:#bdc7d3 !important;--rubric:#e4bd73 !important;
+  --lapis:#9fc1ed !important;--gold:#dcb360 !important;--stone:#1b2736 !important;
+  --stone-2:#2a394c !important;--paper:#243244 !important;--line:#45566d !important;
+  --ok:#83d4ad !important;--bad:#f29a9a !important;
+}
+html{background:#1b2736 !important}
+body{background:#1b2736 !important;color:#edf2f7 !important}
+header.masthead{
+  background:radial-gradient(circle at 88% 12%,rgba(220,179,96,.15),transparent 28%),linear-gradient(145deg,#2b3a4f 0%,#233247 68%,#1d2939 100%) !important;
+  border-bottom-color:#43546b !important;box-shadow:0 12px 32px rgba(7,14,24,.16) !important
+}
+nav.rail{background:rgba(30,43,59,.95) !important;border-bottom-color:#46576d !important;box-shadow:0 6px 18px rgba(7,14,24,.12) !important}
+.rail a{color:#bac5d2 !important}.rail a:hover,.rail a.on{background:#314158 !important;color:#b8d3f2 !important}
+.prog-bar,.rail-progress-track{background:#334258 !important}
+section.mod,.module,body>main>section:not(.mod):not(.module){background:#243244 !important;border-color:#46586f !important;box-shadow:0 12px 30px rgba(7,14,24,.12) !important}
+.mod-num,.module-num{background:#332d25 !important;border-color:#715b38 !important;color:#e4bd73 !important}
+.goal,.goal-box{background:#253b52 !important;border-color:#466887 !important;border-left-color:#7fa9dc !important}
+.fogodzo{background:#3a3225 !important;border-color:#76613e !important;border-left-color:#dcb360 !important;color:#efe5d4 !important}
+.source,.source-box{background:#34302a !important;border-color:#655846 !important;border-left-color:#d7a65a !important;color:#eee5d8 !important}
+.card,.task,.essay-tool,.essay-box,.chain-wrap,.chain-box,.kfeladat{background:#283749 !important;border-color:#4a5c73 !important;color:#e8edf4 !important;box-shadow:0 7px 18px rgba(7,14,24,.10) !important}
+.chip,.pill,.sort-row select,.fill-in,.fill-input,input[type="text"],input[type="search"],textarea,.search{background:#202d3e !important;border-color:#52657d !important;color:#edf2f7 !important}
+.chip:hover,.pill:hover{border-color:#8db2e0 !important;color:#d7e7f9 !important}.chip.sel,.pill.on{background:#304969 !important;border-color:#86addd !important;color:#eef6ff !important}
+.btn,.task-controls button{background:#36506f !important;border-color:#587496 !important}.btn:hover,.task-controls button:hover{background:#426084 !important;border-color:#8db2e0 !important}
+.answer,.answer-box,.feedback,.solution{background:#373126 !important;border-color:#745f3e !important;color:#f0e6d5 !important}
+.chain-track,.chain-box .chain-track,.sort-zone{background:#202e3f !important;border-color:#53657b !important;color:#e6edf5 !important}
+.chain-slot,.chain-item,.chain-box .chain-item,.chain-pool button,.chain-box button,.sort-item{background:#2d4056 !important;border-color:#6681a2 !important;color:#edf3fa !important}
+.chain-slot:hover,.chain-item:hover,.chain-box .chain-item:hover,.chain-pool button:hover{background:#38516e !important;border-color:#91b5df !important}
+.chain-goal{color:#b0bdcc !important;border-color:#5d7089 !important;background:#29394c !important}
+table{background:#243244 !important;color:#e9eef5 !important}th{background:#344b66 !important;color:#f5f7fa !important}td{border-bottom-color:#4b5d73 !important}tbody tr:nth-child(even) td{background:#2a394d !important}
+.atlas-map{background:#243244 !important;border-color:#4b5d73 !important;color:#e9eef5 !important;box-shadow:0 9px 22px rgba(7,14,24,.11) !important}
+.atlas-map__head{background:linear-gradient(180deg,#314359,#28374a) !important;border-bottom-color:#4b5d73 !important}
+.gauge,.essay-gauge{background:#344357 !important}
+footer{background:#192433 !important;color:#bac4d0 !important}.note{color:#9aa7b7 !important;border-top-color:#44546a !important}
+
+/* UI 2.4 — célzott kontrasztjavítások sötét módban */
+.goal,.goal-box,.goal p,.goal li,.goal dd,.goal td,.goal-box p,.goal-box li,.goal-box dd,.goal-box td,.goal-box{color:#e7eef7 !important}
+.goal .lbl,.goal-box .lbl{color:#b8d5f6 !important}
+.goal b,.goal strong,.goal-box b,.goal-box strong{color:#f3f7fb !important}
+.goal[style],.goal[style*="background"],.goal[style*="border"]{background:#3a3225 !important;border-color:#76613e !important;border-left-color:#dcb360 !important;color:#efe5d4 !important}
+.goal[style] p,.goal[style] li,.goal[style] dd,.goal[style] td{color:#efe5d4 !important}
+.goal[style] .lbl{color:#e7bf74 !important}
+.fogodzo,.fogodzo p,.fogodzo li,.fogodzo dd,.fogodzo td{color:#efe5d4 !important}
+.source,.source-box,.source p,.source li,.source dd,.source td,.source-box p,.source-box li,.source-box dd,.source-box td{color:#eee5d8 !important}
+.source .src-lbl,.source-box h4,.source-box .src-lbl{color:#e7bf74 !important}
+.answer,.answer-box,.feedback,.solution,.answer p,.answer li,.answer-box p,.answer-box li,.feedback p,.solution p{color:#f0e6d5 !important}
+.task,.task p,.task li,.task dd,.task td,.essay-tool,.essay-tool p,.essay-tool li,.essay-box,.essay-box p,.essay-box li,.chain-wrap,.chain-wrap p,.chain-wrap li,.chain-box,.chain-box p,.chain-box li{color:#e8edf4 !important}
+.chain-wrap .src-lbl,.chain-box .src-lbl,.task-id{color:#e4bd73 !important}
+
+table td,.datatable td,.oral-table td{color:#e9eef5 !important;background:#243244 !important;border-bottom-color:#4b5d73 !important}
+table td strong,.datatable td strong,.oral-table td strong{color:#f6f8fb !important}
+tbody tr:nth-child(even) td{background:#2a394d !important}
+table caption,.datatable caption{color:#c6d1de !important}
+
+.gloss dd,.glossary dd,.time .why,.timeline .why,.tips li,.tips-list li,.essay-topics li,.check-list li{color:#dce5ef !important}
+.fill-in,.fill-input,input[type="text"],input[type="search"],select,textarea,.search{color:#edf2f7 !important}
+::placeholder{color:#aeb9c8 !important;opacity:1 !important}
