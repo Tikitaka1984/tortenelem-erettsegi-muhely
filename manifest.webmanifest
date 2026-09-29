@@ -7,8 +7,16 @@
   "scope": "./",
   "id": "./",
   "display": "standalone",
+  "orientation": "any",
+  "categories": ["education"],
+  "prefer_related_applications": false,
   "background_color": "#07101f",
   "theme_color": "#07101f",
+  "shortcuts": [
+    {"name": "Kezdőlap", "url": "./#home"},
+    {"name": "Haladásom", "url": "./#progress"},
+    {"name": "Saját anyagaim", "url": "./#materials"}
+  ],
   "icons": [
     {
       "src": "icons/icon-192.png",
