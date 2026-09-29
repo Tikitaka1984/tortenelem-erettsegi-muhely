@@ -1242,30 +1242,6 @@ async function show(index){
 }
 function showCourseById(courseId){const index=courseIndexById(courseId);if(index<0)return false;void show(index);return true;}
 
-/* ---------- PWA telepítés és frissítés ---------- */
-const installButton=document.getElementById('installApp');
-let deferredInstallPrompt=null;
-window.addEventListener('beforeinstallprompt',event=>{
-  event.preventDefault();
-  deferredInstallPrompt=event;
-  installButton.hidden=false;
-});
-installButton.addEventListener('click',async()=>{
-  if(!deferredInstallPrompt)return;
-  installButton.disabled=true;
-  await deferredInstallPrompt.prompt();
-  try{await deferredInstallPrompt.userChoice;}catch(_){}
-  deferredInstallPrompt=null;
-  installButton.hidden=true;
-  installButton.disabled=false;
-});
-window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;installButton.hidden=true;});
-if('serviceWorker' in navigator){
-  const registerServiceWorker=()=>navigator.serviceWorker.register('./service-worker.js',{scope:'./'}).catch(()=>{});
-  if(document.readyState==='complete')registerServiceWorker();
-  else window.addEventListener('load',registerServiceWorker,{once:true});
-}
-
 window.addEventListener('keydown',event=>{
   if(event.key==='Escape' && !document.getElementById('viewer').classList.contains('home-mode')){showHome();return;}
   if(event.target && /INPUT|SELECT|TEXTAREA/.test(event.target.tagName))return;
