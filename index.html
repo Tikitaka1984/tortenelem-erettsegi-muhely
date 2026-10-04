@@ -2,7 +2,10 @@
 <html lang="hu">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TÉ Műhely">
 <meta name="description" content="Interaktív történelemérettségi-felkészítő 33 kurzussal, feladatokkal, felhőben menthető haladással és személyes tanulási eszközökkel.">
 <meta name="theme-color" content="#07101f">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -177,6 +180,7 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 .dashboard-hero p{color:#b6c1d1;font-size:clamp(14px,1.5vw,17px);line-height:1.62;margin:17px 0 0;max-width:53em}
 .dashboard-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
 .install-app[hidden]{display:none}.install-app{min-height:44px}
+.pwa-panel{border:1px solid var(--line);border-radius:17px;background:rgba(13,26,45,.78);padding:18px;margin:20px 0 28px}.pwa-panel__head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}.pwa-panel h3{margin:0;color:#eef3f8;font:600 21px Georgia,"Times New Roman",serif}.pwa-panel p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.5}.network-chip{display:inline-flex;align-items:center;min-height:30px;border:1px solid rgba(83,183,132,.32);border-radius:999px;padding:4px 11px;color:#83cfaa;font-size:11px;font-weight:800}.network-chip[data-state="offline"]{border-color:rgba(224,183,95,.38);color:var(--accent)}.pwa-panel__actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}.pwa-panel__actions button,.pwa-dialog button,.pwa-update button{min-height:44px}.offline-package-meta{margin-top:13px;color:#aeb9c8;font-size:11px}.pwa-message{min-height:1.5em;color:#c7d0dc;font-size:11px}.pwa-update{position:fixed;z-index:80;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:10px;max-width:calc(100% - 28px);padding:10px 12px;border:1px solid rgba(224,183,95,.4);border-radius:14px;background:#13233a;color:#eef3f8;box-shadow:var(--shadow)}.pwa-update[hidden]{display:none}.pwa-update button{border:1px solid var(--line-strong);border-radius:9px;background:rgba(255,255,255,.06);color:inherit;padding:0 12px;cursor:pointer;font-weight:800}.pwa-update [data-update]{background:var(--accent);color:#172033}.pwa-dialog{max-width:min(460px,calc(100% - 28px));border:1px solid var(--line-strong);border-radius:16px;background:#13233a;color:#eef3f8;padding:22px}.pwa-dialog::backdrop{background:rgba(0,0,0,.65)}.pwa-dialog h2{margin-top:0}.pwa-dialog button{width:100%;border:1px solid var(--line-strong);border-radius:10px;background:var(--accent);color:#172033;font-weight:800;cursor:pointer}@media(display-mode:standalone){.dashboard__scroll{padding-top:max(30px,env(safe-area-inset-top));padding-right:max(22px,env(safe-area-inset-right));padding-bottom:max(56px,env(safe-area-inset-bottom));padding-left:max(22px,env(safe-area-inset-left))}}@media(display-mode:standalone) and (max-width:800px){.brand{padding-top:calc(8px + env(safe-area-inset-top));padding-right:max(10px,env(safe-area-inset-right));padding-left:max(10px,env(safe-area-inset-left))}.viewer:not(.home-mode) .toolbar{height:calc(58px + env(safe-area-inset-top))!important;min-height:calc(58px + env(safe-area-inset-top));padding-top:calc(7px + env(safe-area-inset-top));padding-right:max(8px,env(safe-area-inset-right));padding-left:max(8px,env(safe-area-inset-left))}.viewer__surface{padding-right:max(8px,env(safe-area-inset-right));padding-bottom:max(8px,env(safe-area-inset-bottom));padding-left:max(8px,env(safe-area-inset-left))}.viewer.home-mode .dashboard__scroll{padding-right:max(14px,env(safe-area-inset-right));padding-bottom:max(44px,env(safe-area-inset-bottom));padding-left:max(14px,env(safe-area-inset-left))}}@media(max-width:500px){.pwa-panel__actions>*{width:100%}.pwa-update{flex-wrap:wrap;justify-content:center}.pwa-update span{width:100%;text-align:center}}
 .dash-primary,.dash-secondary{min-height:44px;border-radius:12px;padding:10px 15px;cursor:pointer;font-weight:800;border:1px solid transparent;transition:.16s ease}
 .dash-primary{background:var(--accent);border-color:var(--accent);color:#172033;box-shadow:0 7px 22px rgba(224,183,95,.16)}
 .dash-primary:hover{background:var(--accent-2);transform:translateY(-1px)}
@@ -249,7 +253,7 @@ iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 .personal-empty{border:1px dashed var(--line);border-radius:14px;padding:20px;color:var(--muted);font-size:11.5px;line-height:1.5}
 .activity-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.activity-list li{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:rgba(255,255,255,.02);min-width:0}.activity-list strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#e8edf4;font-size:11.5px}.activity-list span{color:var(--muted);font-size:10px;white-space:nowrap}
 .progress-view-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.progress-filters{justify-content:flex-start;margin-top:8px}.progress-view__heading{align-items:center}
-.dashboard__inner.progress-mode>.dashboard-hero,.dashboard__inner.progress-mode>#dashboardLoading,.dashboard__inner.progress-mode>#dashboardMessage,.dashboard__inner.progress-mode>#dashboardOverview,.dashboard__inner.progress-mode>#continueSection,.dashboard__inner.progress-mode>#personalDashboard,.dashboard__inner.progress-mode>#courseBrowserSection,.dashboard__inner.progress-mode>.dashboard-reset{display:none!important}
+.dashboard__inner.progress-mode>.dashboard-hero,.dashboard__inner.progress-mode>#dashboardLoading,.dashboard__inner.progress-mode>#dashboardMessage,.dashboard__inner.progress-mode>.pwa-panel,.dashboard__inner.progress-mode>#dashboardOverview,.dashboard__inner.progress-mode>#continueSection,.dashboard__inner.progress-mode>#personalDashboard,.dashboard__inner.progress-mode>#courseBrowserSection,.dashboard__inner.progress-mode>.dashboard-reset{display:none!important}
 .dashboard__inner:not(.progress-mode) #progressView{display:none!important}
 .dashboard-reset{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;color:#78869a;font-size:11px}
 .reset-progress{min-height:44px;border:1px solid rgba(202,95,95,.25);border-radius:9px;background:rgba(202,95,95,.055);color:#d49a9a;padding:10px;cursor:pointer;font-size:10px;font-weight:800}
@@ -664,7 +668,7 @@ html[data-app-theme="light"] .auth-field label{color:#415168}html[data-app-theme
 .materials-latest{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:7px}.material-latest{width:100%;min-height:52px;display:grid;gap:3px;text-align:left;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025);color:var(--text);padding:10px 12px;cursor:pointer}.material-latest:hover{background:rgba(255,255,255,.055)}.material-latest span{font-size:11px;font-weight:800}.material-latest small{color:var(--muted);font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .materials-summary__actions{display:flex;justify-content:flex-end;margin-top:12px}
 
-.dashboard__inner.materials-mode>.dashboard-hero,.dashboard__inner.materials-mode>#dashboardLoading,.dashboard__inner.materials-mode>#dashboardMessage,.dashboard__inner.materials-mode>#dashboardOverview,.dashboard__inner.materials-mode>#continueSection,.dashboard__inner.materials-mode>#personalDashboard,.dashboard__inner.materials-mode>#courseBrowserSection,.dashboard__inner.materials-mode>.dashboard-reset{display:none!important}
+.dashboard__inner.materials-mode>.dashboard-hero,.dashboard__inner.materials-mode>#dashboardLoading,.dashboard__inner.materials-mode>#dashboardMessage,.dashboard__inner.materials-mode>.pwa-panel,.dashboard__inner.materials-mode>#dashboardOverview,.dashboard__inner.materials-mode>#continueSection,.dashboard__inner.materials-mode>#personalDashboard,.dashboard__inner.materials-mode>#courseBrowserSection,.dashboard__inner.materials-mode>.dashboard-reset{display:none!important}
 .dashboard__inner:not(.materials-mode) #materialsView{display:none!important}
 .materials-view__heading{align-items:flex-start}.materials-controls{display:grid;grid-template-columns:minmax(220px,1fr) minmax(170px,auto);gap:10px;margin:17px 0 12px}.materials-controls label{display:grid;gap:6px;color:var(--muted);font-size:10px;font-weight:800}.materials-controls input,.materials-controls select{min-height:44px;border:1px solid var(--line-strong);border-radius:11px;background:rgba(255,255,255,.04);color:var(--text);padding:0 12px;outline:none}.materials-controls input:focus,.materials-controls select:focus{border-color:rgba(224,183,95,.5);box-shadow:0 0 0 3px rgba(224,183,95,.09)}
 .materials-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:15px}.material-card{min-width:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.028);padding:15px}.material-card__head{display:flex;align-items:center;justify-content:space-between;gap:10px}.material-card time{color:var(--muted);font-size:9.5px}.material-type{display:inline-flex;align-items:center;min-height:26px;border:1px solid var(--line);border-radius:99px;padding:0 9px;font-size:9px;font-weight:850;text-transform:uppercase;letter-spacing:.07em}.material-type.bookmark{color:#e4c67d}.material-type.note{color:#9fc1ed}.material-type.review{color:#efaeae}.material-card h4{margin:13px 0 5px;font-size:15px}.material-anchor{margin:0;color:var(--muted);font-size:11px;line-height:1.45}.material-note-preview{margin:12px 0 0;padding:11px;border-left:3px solid var(--blue);border-radius:8px;background:rgba(110,150,216,.08);font-size:12px;line-height:1.48;white-space:pre-wrap;overflow-wrap:anywhere}.material-card__actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:14px}.material-card__actions button{min-height:44px;border:1px solid var(--line-strong);border-radius:9px;background:rgba(255,255,255,.045);color:var(--text);padding:0 12px;cursor:pointer;font-size:10px;font-weight:800}.material-card__actions button.danger{color:#efa5a5;border-color:rgba(218,104,104,.3)}.materials-empty{margin-top:16px;border:1px dashed var(--line-strong);border-radius:14px;padding:24px;text-align:center;color:var(--muted);font-size:12px;line-height:1.55}
@@ -756,6 +760,14 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
 
             <div id="dashboardLoading" class="dashboard-loading" role="status" aria-live="polite" hidden>Haladás betöltése…</div>
             <div id="dashboardMessage" class="dashboard-message" role="status" aria-live="polite" hidden></div>
+
+            <section class="pwa-panel" aria-labelledby="pwaPanelHeading">
+              <div class="pwa-panel__head"><div><h3 id="pwaPanelHeading">Offline használat</h3><p>Az összes kurzust és helyi képet lementheted erre az eszközre.</p></div><span class="network-chip" id="networkStatus" role="status">Online</span></div>
+              <p id="networkHelp" hidden>A helyi haladás mentődik. A felhőszinkron internetkapcsolat után folytatódik.</p>
+              <div class="offline-package-meta"><strong id="offlinePackageStatus">Állapot ellenőrzése…</strong> · <span id="offlinePackageSize">Méret betöltése…</span></div>
+              <div class="pwa-panel__actions"><button class="dash-primary" id="offlinePackageAction" type="button" disabled>Előkészítés…</button><button class="dash-secondary" id="offlinePackageRemove" type="button" hidden>Offline csomag eltávolítása</button></div>
+              <p class="pwa-message" id="offlinePackageMessage" role="status" aria-live="polite"></p>
+            </section>
 
             <section id="dashboardOverview" aria-labelledby="progressOverviewHeading">
               <div class="section-heading dashboard-overview-heading"><div class="section-heading__copy"><h3 id="progressOverviewHeading">Haladásod</h3><p>A <span data-course-total>33</span> kurzusban elért összesített tanulási állapot.</p></div></div>
@@ -916,9 +928,17 @@ html[data-app-theme="light"] .annotation-toolbar{background:rgba(245,248,251,.92
   <div class="annotation-dialog__body"><p class="annotation-dialog-message" id="annotationDeleteStatus" role="status" aria-live="polite"></p><div class="annotation-dialog__actions"><button class="annotation-action" id="annotationDeleteCancel" type="button">Mégse</button><button class="annotation-action danger" id="annotationDeleteConfirm" type="button">Törlés</button></div></div>
 </dialog>
 
+<dialog class="pwa-dialog" id="installDialog" aria-labelledby="installDialogTitle">
+  <h2 id="installDialogTitle">Telepítés iPhone-ra vagy iPadre</h2>
+  <p>A telepítéshez nyisd meg a Megosztás menüt, majd válaszd a Főképernyőhöz adás lehetőséget.</p>
+  <button type="button" data-close>Rendben</button>
+</dialog>
+<div class="pwa-update" id="pwaUpdate" role="status" aria-live="polite" hidden><span>Új verzió érhető el.</span><button type="button" data-update>Frissítés most</button><button type="button" data-later>Később</button></div>
+
 <script src="./dashboard-logic.js"></script>
 <script src="./course-frame-channel.js"></script>
 <script src="./app.js"></script>
+<script src="./pwa.js"></script>
 
 <script src="./annotations.js"></script>
 <script src="./account-cloud.js"></script>
