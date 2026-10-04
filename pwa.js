@@ -12,7 +12,7 @@ const removeButton=document.getElementById('offlinePackageRemove');
 const packageMessage=document.getElementById('offlinePackageMessage');
 const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
-let deferredInstallPrompt=null,registration=null,reloading=false,refreshRequested=false,workerReady=false,downloadInProgress=false,manifest=null,offlineState='missing';
+let deferredInstallPrompt=null,registration=null,reloading=false,refreshRequested=false,workerReady=false,downloadInProgress=false,removeInProgress=false,workerBusy=false,statusRequestPending=false,manifest=null,offlineState='missing';
 
 function updateInstallVisibility(){installButton.hidden=standalone()||(!deferredInstallPrompt&&!ios);}
 window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();deferredInstallPrompt=event;updateInstallVisibility();});
@@ -35,7 +35,7 @@ function updateNetwork(){
   statusChip.textContent=online?'Online':'Offline mód';statusChip.dataset.state=online?'online':'offline';
   statusHelp.hidden=online;
 }
-window.addEventListener('online',updateNetwork);window.addEventListener('offline',updateNetwork);updateNetwork();
+window.addEventListener('online',()=>{updateNetwork();if(workerReady&&!downloadInProgress&&!removeInProgress)requestStatus();});window.addEventListener('offline',updateNetwork);updateNetwork();
 
 function showUpdate(worker){
   if(!worker||sessionStorage.getItem('tem-update-later')==='1')return;
@@ -65,35 +65,60 @@ async function registerServiceWorker(){
 }
 
 function send(type){const worker=navigator.serviceWorker.controller||registration?.active;if(!worker)return false;worker.postMessage({type});return true;}
-function requestStatus(){return send('PWA_GET_OFFLINE_STATUS');}
+function requestStatus(){
+  if(statusRequestPending)return true;
+  statusRequestPending=true;
+  if(send('PWA_GET_OFFLINE_STATUS'))return true;
+  statusRequestPending=false;return false;
+}
 function formatBytes(bytes){return new Intl.NumberFormat('hu-HU',{style:'unit',unit:'megabyte',maximumFractionDigits:1}).format(bytes/1e6);}
 function renderPackage(status,cached=0,total=manifest?.assets.length||0){
   offlineState=status;
-  const labels={ready:'Offline csomag kész',outdated:'Frissítés érhető el',partial:'Részleges letöltés',missing:'Nincs letöltve'};
+  const labels={ready:'Offline csomag kész',outdated:'Frissítés érhető el',partial:'Részleges letöltés',missing:'Nincs letöltve',unknown:'Az offline állapot nem ellenőrizhető'};
   packageStatus.textContent=labels[status]||labels.missing;
-  packageButton.textContent=status==='outdated'?'Offline csomag frissítése':status==='ready'?'Offline csomag kész':'Offline csomag letöltése';
-  packageButton.disabled=!workerReady||downloadInProgress||status==='ready';removeButton.hidden=status==='missing';
+  packageButton.textContent=status==='unknown'?'Állapot újraellenőrzése':status==='outdated'?'Offline csomag frissítése':status==='ready'?'Offline csomag kész':'Offline csomag letöltése';
+  packageButton.disabled=!workerReady||downloadInProgress||removeInProgress||workerBusy||status==='ready';removeButton.hidden=status==='missing'||status==='unknown';
+  removeButton.disabled=!workerReady||downloadInProgress||removeInProgress||workerBusy;
   if(status==='partial')packageStatus.textContent=`Részleges letöltés (${cached} / ${total})`;
 }
 function handleWorkerMessage(event){
   const data=event.data||{};
-  if(data.type==='PWA_OFFLINE_STATUS'){workerReady=true;renderPackage(data.status,data.cached,data.total);}
+  if(data.type==='PWA_OFFLINE_STATUS'){statusRequestPending=false;workerReady=true;workerBusy=Boolean(data.busy);renderPackage(data.status,data.cached,data.total);}
+  if(data.type==='PWA_OFFLINE_BUSY'){workerBusy=true;packageButton.disabled=true;removeButton.disabled=true;}
+  if(data.type==='PWA_OFFLINE_IDLE'){workerBusy=false;requestStatus();}
   if(data.type==='PWA_OFFLINE_PROGRESS'){packageButton.disabled=true;packageButton.textContent=`Letöltés… ${data.done} / ${data.total}`;}
   if(data.type==='PWA_OFFLINE_DONE'){downloadInProgress=false;renderPackage('ready',data.total,data.total);packageMessage.textContent='Az offline tananyag használatra kész.';}
-  if(data.type==='PWA_OFFLINE_ERROR'){downloadInProgress=false;packageMessage.textContent='Az offline csomagot nem sikerült teljesen elmenteni. Ellenőrizd a tárhelyet és az internetkapcsolatot, majd próbáld újra.';requestStatus();}
-  if(data.type==='PWA_OFFLINE_REMOVED'){renderPackage('missing');packageMessage.textContent='Az offline tananyag eltávolítva. A tanulási adataid megmaradtak.';}
+  if(data.type==='PWA_OFFLINE_ERROR'){
+    const statusError=data.requestType==='PWA_GET_OFFLINE_STATUS'||(!data.requestType&&statusRequestPending&&!downloadInProgress&&!removeInProgress);
+    downloadInProgress=false;removeInProgress=false;
+    packageMessage.textContent='Az offline művelet nem sikerült. Ellenőrizd a tárhelyet és az internetkapcsolatot, majd próbáld újra.';
+    if(statusError){statusRequestPending=false;renderPackage('unknown');return;}
+    requestStatus();
+  }
+  if(data.type==='PWA_OFFLINE_REMOVED'){removeInProgress=false;renderPackage('missing');packageMessage.textContent='Az offline tananyag eltávolítva. A tanulási adataid megmaradtak.';}
 }
 packageButton.addEventListener('click',async()=>{
   if(!workerReady||downloadInProgress||offlineState==='ready')return;
-  downloadInProgress=true;packageButton.disabled=true;
+  if(removeInProgress||workerBusy)return;
+  if(offlineState==='unknown'){packageButton.disabled=true;requestStatus();return;}
+  downloadInProgress=true;packageButton.disabled=true;removeButton.disabled=true;
   if(navigator.storage?.estimate&&manifest){
-    const {quota=0,usage=0}=await navigator.storage.estimate();
-    if(quota&&quota-usage<manifest.totalBytes*1.15){downloadInProgress=false;renderPackage(offlineState);packageMessage.textContent='Nincs elegendő szabad tárhely az offline csomaghoz.';return;}
+    // Storage estimates are optional; a rejected estimate must not lock the UI.
+    try{
+      const {quota=0,usage=0}=await navigator.storage.estimate();
+      if(quota&&quota-usage<manifest.totalBytes*1.15){downloadInProgress=false;renderPackage(offlineState);packageMessage.textContent='Nincs elegendő szabad tárhely az offline csomaghoz.';return;}
+    }catch(_){}
   }
   if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});packageMessage.textContent='';
   if(!send('PWA_CACHE_OFFLINE_PACKAGE')){downloadInProgress=false;workerReady=false;packageButton.disabled=true;packageButton.textContent='Előkészítés…';packageMessage.textContent='Az offline funkció előkészítése folyamatban van.';}
 });
-removeButton.addEventListener('click',()=>{if(confirm('Eltávolítod az offline tananyagcsomagot? A tanulási adataid megmaradnak.'))send('PWA_REMOVE_OFFLINE_PACKAGE');});
+removeButton.addEventListener('click',()=>{
+  if(!workerReady||downloadInProgress||removeInProgress||workerBusy)return;
+  if(confirm('Eltávolítod az offline tananyagcsomagot? A tanulási adataid megmaradnak.')){
+    removeInProgress=true;packageButton.disabled=true;removeButton.disabled=true;
+    if(!send('PWA_REMOVE_OFFLINE_PACKAGE')){removeInProgress=false;renderPackage(offlineState);}
+  }
+});
 fetch('./offline-assets.json').then(response=>{if(!response.ok)throw new Error();return response.json();}).then(data=>{manifest=data;packageSize.textContent=`kb. ${formatBytes(data.totalBytes)}`;}).catch(()=>{packageSize.textContent='A méret nem érhető el.';});
 window.addEventListener('load',()=>{registerServiceWorker().catch(()=>{packageMessage.textContent='Az offline funkciók ebben a böngészőben nem érhetők el.';});},{once:true});
 })();
